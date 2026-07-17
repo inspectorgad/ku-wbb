@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-07-17T23:28:26Z",
+ "generatedAt": "2026-07-17T23:32:23Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -7280,6 +7280,56 @@
      "gs": 0
     }
    ]
+  },
+  {
+   "date": "2026-10-22",
+   "opponent": "Northeastern State (exh.)",
+   "season": "2026-27"
+  },
+  {
+   "date": "2026-10-29",
+   "opponent": "Washburn (exh.)",
+   "season": "2026-27"
+  },
+  {
+   "date": "2026-11-03",
+   "opponent": "Omaha",
+   "season": "2026-27"
+  },
+  {
+   "date": "2026-11-07",
+   "opponent": "Drake",
+   "season": "2026-27"
+  },
+  {
+   "date": "2026-11-10",
+   "opponent": "Oral Roberts",
+   "season": "2026-27"
+  },
+  {
+   "date": "2026-11-14",
+   "opponent": "Nebraska",
+   "season": "2026-27"
+  },
+  {
+   "date": "2026-11-18",
+   "opponent": "Minnesota",
+   "season": "2026-27"
+  },
+  {
+   "date": "2026-11-22",
+   "opponent": "South Dakota State",
+   "season": "2026-27"
+  },
+  {
+   "date": "2026-11-26",
+   "opponent": "TBD",
+   "season": "2026-27"
+  },
+  {
+   "date": "2026-11-27",
+   "opponent": "TBD",
+   "season": "2026-27"
   }
  ]
 }
