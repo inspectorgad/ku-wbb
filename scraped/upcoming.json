@@ -1,0 +1,52 @@
+[
+ {
+  "date": "2026-10-22",
+  "opponent": "Northeastern State (exh.)",
+  "home": true
+ },
+ {
+  "date": "2026-10-29",
+  "opponent": "Washburn (exh.)",
+  "home": true
+ },
+ {
+  "date": "2026-11-03",
+  "opponent": "Omaha",
+  "home": true
+ },
+ {
+  "date": "2026-11-07",
+  "opponent": "Drake",
+  "home": true
+ },
+ {
+  "date": "2026-11-10",
+  "opponent": "Oral Roberts",
+  "home": true
+ },
+ {
+  "date": "2026-11-14",
+  "opponent": "Nebraska",
+  "home": true
+ },
+ {
+  "date": "2026-11-18",
+  "opponent": "Minnesota",
+  "home": false
+ },
+ {
+  "date": "2026-11-22",
+  "opponent": "South Dakota State",
+  "home": true
+ },
+ {
+  "date": "2026-11-26",
+  "opponent": "TBD",
+  "home": true
+ },
+ {
+  "date": "2026-11-27",
+  "opponent": "TBD",
+  "home": true
+ }
+]

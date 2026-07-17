@@ -252,10 +252,17 @@
    "away": "Haskell",
    "boxscored": true
   },
-  "6519561": {
-   "date": "2025-12-21",
+  "6517716": {
+   "date": "2026-01-25",
    "final": true,
-   "home": "Iowa St.",
+   "home": "Kansas",
+   "away": "Kansas St.",
+   "boxscored": true
+  },
+  "6517724": {
+   "date": "2026-02-21",
+   "final": true,
+   "home": "Kansas St.",
    "away": "Kansas",
    "boxscored": true
   },
@@ -266,10 +273,31 @@
    "away": "West Virginia",
    "boxscored": true
   },
-  "6520144": {
-   "date": "2026-01-04",
+  "6518541": {
+   "date": "2026-02-07",
    "final": true,
-   "home": "UCF",
+   "home": "Kansas",
+   "away": "Cincinnati",
+   "boxscored": true
+  },
+  "6518562": {
+   "date": "2026-02-01",
+   "final": true,
+   "home": "Kansas",
+   "away": "Colorado",
+   "boxscored": true
+  },
+  "6519224": {
+   "date": "2026-01-29",
+   "final": true,
+   "home": "TCU",
+   "away": "Kansas",
+   "boxscored": true
+  },
+  "6519314": {
+   "date": "2026-01-17",
+   "final": true,
+   "home": "Arizona St.",
    "away": "Kansas",
    "boxscored": true
   },
@@ -280,13 +308,6 @@
    "away": "Utah",
    "boxscored": true
   },
-  "6520145": {
-   "date": "2026-01-11",
-   "final": true,
-   "home": "Baylor",
-   "away": "Kansas",
-   "boxscored": true
-  },
   "6519528": {
    "date": "2026-01-14",
    "final": true,
@@ -294,73 +315,24 @@
    "away": "Oklahoma St.",
    "boxscored": true
   },
-  "6519314": {
-   "date": "2026-01-17",
+  "6519561": {
+   "date": "2025-12-21",
    "final": true,
-   "home": "Arizona St.",
+   "home": "Iowa St.",
    "away": "Kansas",
    "boxscored": true
   },
-  "6520146": {
-   "date": "2026-01-20",
+  "6519570": {
+   "date": "2026-02-28",
    "final": true,
-   "home": "Arizona",
+   "home": "Oklahoma St.",
    "away": "Kansas",
-   "boxscored": true
-  },
-  "6517716": {
-   "date": "2026-01-25",
-   "final": true,
-   "home": "Kansas",
-   "away": "Kansas St.",
-   "boxscored": true
-  },
-  "6519224": {
-   "date": "2026-01-29",
-   "final": true,
-   "home": "TCU",
-   "away": "Kansas",
-   "boxscored": true
-  },
-  "6518562": {
-   "date": "2026-02-01",
-   "final": true,
-   "home": "Kansas",
-   "away": "Colorado",
-   "boxscored": true
-  },
-  "6520148": {
-   "date": "2026-02-04",
-   "final": true,
-   "home": "Kansas",
-   "away": "BYU",
-   "boxscored": true
-  },
-  "6518541": {
-   "date": "2026-02-07",
-   "final": true,
-   "home": "Kansas",
-   "away": "Cincinnati",
    "boxscored": true
   },
   "6519789": {
    "date": "2026-02-10",
    "final": true,
    "home": "Texas Tech",
-   "away": "Kansas",
-   "boxscored": true
-  },
-  "6520147": {
-   "date": "2026-02-14",
-   "final": true,
-   "home": "Kansas",
-   "away": "Houston",
-   "boxscored": true
-  },
-  "6517724": {
-   "date": "2026-02-21",
-   "final": true,
-   "home": "Kansas St.",
    "away": "Kansas",
    "boxscored": true
   },
@@ -371,10 +343,45 @@
    "away": "Texas Tech",
    "boxscored": true
   },
-  "6519570": {
-   "date": "2026-02-28",
+  "6520144": {
+   "date": "2026-01-04",
    "final": true,
-   "home": "Oklahoma St.",
+   "home": "UCF",
+   "away": "Kansas",
+   "boxscored": true
+  },
+  "6520145": {
+   "date": "2026-01-11",
+   "final": true,
+   "home": "Baylor",
+   "away": "Kansas",
+   "boxscored": true
+  },
+  "6520146": {
+   "date": "2026-01-20",
+   "final": true,
+   "home": "Arizona",
+   "away": "Kansas",
+   "boxscored": true
+  },
+  "6520147": {
+   "date": "2026-02-14",
+   "final": true,
+   "home": "Kansas",
+   "away": "Houston",
+   "boxscored": true
+  },
+  "6520148": {
+   "date": "2026-02-04",
+   "final": true,
+   "home": "Kansas",
+   "away": "BYU",
+   "boxscored": true
+  },
+  "6593280": {
+   "date": "2026-03-05",
+   "final": true,
+   "home": "Colorado",
    "away": "Kansas",
    "boxscored": true
   },
@@ -385,25 +392,11 @@
    "away": "UCF",
    "boxscored": true
   },
-  "6593280": {
-   "date": "2026-03-05",
+  "6595192": {
+   "date": "2026-03-30",
    "final": true,
-   "home": "Colorado",
+   "home": "BYU",
    "away": "Kansas",
-   "boxscored": true
-  },
-  "6595213": {
-   "date": "2026-03-19",
-   "final": true,
-   "home": "Kansas",
-   "away": "Troy",
-   "boxscored": true
-  },
-  "6595201": {
-   "date": "2026-03-22",
-   "final": true,
-   "home": "Kansas",
-   "away": "Rice",
    "boxscored": true
   },
   "6595195": {
@@ -413,11 +406,18 @@
    "away": "San Diego St.",
    "boxscored": true
   },
-  "6595192": {
-   "date": "2026-03-30",
+  "6595201": {
+   "date": "2026-03-22",
    "final": true,
-   "home": "BYU",
-   "away": "Kansas",
+   "home": "Kansas",
+   "away": "Rice",
+   "boxscored": true
+  },
+  "6595213": {
+   "date": "2026-03-19",
+   "final": true,
+   "home": "Kansas",
+   "away": "Troy",
    "boxscored": true
   }
  }
