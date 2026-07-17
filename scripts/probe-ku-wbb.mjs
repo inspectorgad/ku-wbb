@@ -102,7 +102,8 @@ for (const g of games) {
     // Consistency check: per-team sum of player points vs final score.
     const teams = box.teams || [];
     for (const tb of box.teamBoxscore || []) {
-      const team = teams.find((t) => t.teamId === tb.teamId);
+      // teams[].teamId is a string but teamBoxscore[].teamId is a number
+      const team = teams.find((t) => String(t.teamId) === String(tb.teamId));
       const isKuSide = team?.seoname === TEAM_SEO || /kansas jayhawks/i.test(team?.nameFull || '');
       const finalScore = Number(team?.isHome ? g.homeScore : g.awayScore);
       const players = tb.playerStats || [];
