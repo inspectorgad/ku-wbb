@@ -42,6 +42,23 @@ All data is stored locally on the device in a Room (SQLite) database.
 Install the latest build directly on a phone:
 `https://github.com/inspectorgad/ku-wbb/releases/latest/download/app-debug.apk`
 
+### If Advanced Protection blocks the install
+
+Android's Advanced Protection mode blocks APKs downloaded in the browser but
+allows installs from a computer over ADB:
+
+1. On the phone: Settings → About phone → tap **Build number** 7 times, then
+   Settings → System → Developer options → enable **USB debugging**.
+2. On the computer: install
+   [Android platform-tools](https://developer.android.com/tools/releases/platform-tools)
+   (macOS: `brew install android-platform-tools`).
+3. Plug the phone in, accept the "Allow USB debugging?" prompt, and run
+   `scripts/adb-install.sh` (Mac/Linux) or `scripts\adb-install.bat` (Windows).
+
+The scripts download the latest release APK and run `adb install -r`, which
+keeps the app's data on upgrades. Turning USB debugging back off afterward is
+fine — it's only needed while installing.
+
 ## Tech
 
 - Kotlin + Jetpack Compose (Material 3), KU crimson & blue theme
