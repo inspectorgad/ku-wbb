@@ -1,0 +1,650 @@
+[
+ {
+  "gameId": "6515413",
+  "date": "2025-11-05",
+  "ku": false,
+  "players": 12,
+  "playerPtsSum": 74,
+  "finalScore": 64,
+  "match": false
+ },
+ {
+  "gameId": "6515413",
+  "date": "2025-11-05",
+  "ku": false,
+  "players": 11,
+  "playerPtsSum": 64,
+  "finalScore": 64,
+  "match": true
+ },
+ {
+  "gameId": "6515414",
+  "date": "2025-11-09",
+  "ku": false,
+  "players": 12,
+  "playerPtsSum": 75,
+  "finalScore": 60,
+  "match": false
+ },
+ {
+  "gameId": "6515414",
+  "date": "2025-11-09",
+  "ku": false,
+  "players": 13,
+  "playerPtsSum": 60,
+  "finalScore": 60,
+  "match": true
+ },
+ {
+  "gameId": "6515415",
+  "date": "2025-11-12",
+  "ku": false,
+  "players": 11,
+  "playerPtsSum": 65,
+  "finalScore": 54,
+  "match": false
+ },
+ {
+  "gameId": "6515415",
+  "date": "2025-11-12",
+  "ku": false,
+  "players": 10,
+  "playerPtsSum": 54,
+  "finalScore": 54,
+  "match": true
+ },
+ {
+  "gameId": "6515416",
+  "date": "2025-11-15",
+  "ku": false,
+  "players": 10,
+  "playerPtsSum": 77,
+  "finalScore": 82,
+  "match": false
+ },
+ {
+  "gameId": "6515416",
+  "date": "2025-11-15",
+  "ku": false,
+  "players": 9,
+  "playerPtsSum": 82,
+  "finalScore": 82,
+  "match": true
+ },
+ {
+  "gameId": "6515417",
+  "date": "2025-11-19",
+  "ku": false,
+  "players": 10,
+  "playerPtsSum": 63,
+  "finalScore": 57,
+  "match": false
+ },
+ {
+  "gameId": "6515417",
+  "date": "2025-11-19",
+  "ku": false,
+  "players": 9,
+  "playerPtsSum": 57,
+  "finalScore": 57,
+  "match": true
+ },
+ {
+  "gameId": "6515418",
+  "date": "2025-11-23",
+  "ku": false,
+  "players": 11,
+  "playerPtsSum": 86,
+  "finalScore": 75,
+  "match": false
+ },
+ {
+  "gameId": "6515418",
+  "date": "2025-11-23",
+  "ku": false,
+  "players": 12,
+  "playerPtsSum": 75,
+  "finalScore": 75,
+  "match": true
+ },
+ {
+  "gameId": "6515419",
+  "date": "2025-11-28",
+  "ku": false,
+  "players": 11,
+  "playerPtsSum": 68,
+  "finalScore": 62,
+  "match": false
+ },
+ {
+  "gameId": "6515419",
+  "date": "2025-11-28",
+  "ku": false,
+  "players": 10,
+  "playerPtsSum": 62,
+  "finalScore": 62,
+  "match": true
+ },
+ {
+  "gameId": "6515420",
+  "date": "2025-11-29",
+  "ku": false,
+  "players": 10,
+  "playerPtsSum": 59,
+  "finalScore": 58,
+  "match": false
+ },
+ {
+  "gameId": "6515420",
+  "date": "2025-11-29",
+  "ku": false,
+  "players": 11,
+  "playerPtsSum": 58,
+  "finalScore": 58,
+  "match": true
+ },
+ {
+  "gameId": "6515421",
+  "date": "2025-12-03",
+  "ku": false,
+  "players": 10,
+  "playerPtsSum": 62,
+  "finalScore": 74,
+  "match": false
+ },
+ {
+  "gameId": "6515421",
+  "date": "2025-12-03",
+  "ku": false,
+  "players": 9,
+  "playerPtsSum": 74,
+  "finalScore": 74,
+  "match": true
+ },
+ {
+  "gameId": "6515422",
+  "date": "2025-12-07",
+  "ku": false,
+  "players": 9,
+  "playerPtsSum": 70,
+  "finalScore": 73,
+  "match": false
+ },
+ {
+  "gameId": "6515422",
+  "date": "2025-12-07",
+  "ku": false,
+  "players": 9,
+  "playerPtsSum": 73,
+  "finalScore": 73,
+  "match": true
+ },
+ {
+  "gameId": "6515423",
+  "date": "2025-12-14",
+  "ku": false,
+  "players": 10,
+  "playerPtsSum": 77,
+  "finalScore": 38,
+  "match": false
+ },
+ {
+  "gameId": "6515423",
+  "date": "2025-12-14",
+  "ku": false,
+  "players": 14,
+  "playerPtsSum": 38,
+  "finalScore": 38,
+  "match": true
+ },
+ {
+  "gameId": "6515424",
+  "date": "2025-12-17",
+  "ku": false,
+  "players": 10,
+  "playerPtsSum": 107,
+  "finalScore": 39,
+  "match": false
+ },
+ {
+  "gameId": "6515424",
+  "date": "2025-12-17",
+  "ku": false,
+  "players": 14,
+  "playerPtsSum": 39,
+  "finalScore": 39,
+  "match": true
+ },
+ {
+  "gameId": "6519561",
+  "date": "2025-12-21",
+  "ku": false,
+  "players": 8,
+  "playerPtsSum": 79,
+  "finalScore": 76,
+  "match": false
+ },
+ {
+  "gameId": "6519561",
+  "date": "2025-12-21",
+  "ku": false,
+  "players": 9,
+  "playerPtsSum": 76,
+  "finalScore": 76,
+  "match": true
+ },
+ {
+  "gameId": "6517867",
+  "date": "2026-01-01",
+  "ku": false,
+  "players": 8,
+  "playerPtsSum": 72,
+  "finalScore": 79,
+  "match": false
+ },
+ {
+  "gameId": "6517867",
+  "date": "2026-01-01",
+  "ku": false,
+  "players": 10,
+  "playerPtsSum": 79,
+  "finalScore": 79,
+  "match": true
+ },
+ {
+  "gameId": "6520144",
+  "date": "2026-01-04",
+  "ku": false,
+  "players": 9,
+  "playerPtsSum": 68,
+  "finalScore": 83,
+  "match": false
+ },
+ {
+  "gameId": "6520144",
+  "date": "2026-01-04",
+  "ku": false,
+  "players": 11,
+  "playerPtsSum": 83,
+  "finalScore": 83,
+  "match": true
+ },
+ {
+  "gameId": "6519436",
+  "date": "2026-01-07",
+  "ku": false,
+  "players": 10,
+  "playerPtsSum": 59,
+  "finalScore": 62,
+  "match": false
+ },
+ {
+  "gameId": "6519436",
+  "date": "2026-01-07",
+  "ku": false,
+  "players": 10,
+  "playerPtsSum": 62,
+  "finalScore": 62,
+  "match": true
+ },
+ {
+  "gameId": "6520145",
+  "date": "2026-01-11",
+  "ku": false,
+  "players": 9,
+  "playerPtsSum": 79,
+  "finalScore": 64,
+  "match": false
+ },
+ {
+  "gameId": "6520145",
+  "date": "2026-01-11",
+  "ku": false,
+  "players": 10,
+  "playerPtsSum": 64,
+  "finalScore": 64,
+  "match": true
+ },
+ {
+  "gameId": "6519528",
+  "date": "2026-01-14",
+  "ku": false,
+  "players": 8,
+  "playerPtsSum": 76,
+  "finalScore": 85,
+  "match": false
+ },
+ {
+  "gameId": "6519528",
+  "date": "2026-01-14",
+  "ku": false,
+  "players": 8,
+  "playerPtsSum": 85,
+  "finalScore": 85,
+  "match": true
+ },
+ {
+  "gameId": "6519314",
+  "date": "2026-01-17",
+  "ku": false,
+  "players": 9,
+  "playerPtsSum": 67,
+  "finalScore": 51,
+  "match": false
+ },
+ {
+  "gameId": "6519314",
+  "date": "2026-01-17",
+  "ku": false,
+  "players": 11,
+  "playerPtsSum": 51,
+  "finalScore": 51,
+  "match": true
+ },
+ {
+  "gameId": "6520146",
+  "date": "2026-01-20",
+  "ku": false,
+  "players": 9,
+  "playerPtsSum": 69,
+  "finalScore": 80,
+  "match": false
+ },
+ {
+  "gameId": "6520146",
+  "date": "2026-01-20",
+  "ku": false,
+  "players": 9,
+  "playerPtsSum": 80,
+  "finalScore": 80,
+  "match": true
+ },
+ {
+  "gameId": "6517716",
+  "date": "2026-01-25",
+  "ku": false,
+  "players": 11,
+  "playerPtsSum": 83,
+  "finalScore": 61,
+  "match": false
+ },
+ {
+  "gameId": "6517716",
+  "date": "2026-01-25",
+  "ku": false,
+  "players": 12,
+  "playerPtsSum": 61,
+  "finalScore": 61,
+  "match": true
+ },
+ {
+  "gameId": "6519224",
+  "date": "2026-01-29",
+  "ku": false,
+  "players": 9,
+  "playerPtsSum": 79,
+  "finalScore": 77,
+  "match": false
+ },
+ {
+  "gameId": "6519224",
+  "date": "2026-01-29",
+  "ku": false,
+  "players": 9,
+  "playerPtsSum": 77,
+  "finalScore": 77,
+  "match": true
+ },
+ {
+  "gameId": "6518562",
+  "date": "2026-02-01",
+  "ku": false,
+  "players": 10,
+  "playerPtsSum": 66,
+  "finalScore": 69,
+  "match": false
+ },
+ {
+  "gameId": "6518562",
+  "date": "2026-02-01",
+  "ku": false,
+  "players": 10,
+  "playerPtsSum": 69,
+  "finalScore": 69,
+  "match": true
+ },
+ {
+  "gameId": "6520148",
+  "date": "2026-02-04",
+  "ku": false,
+  "players": 10,
+  "playerPtsSum": 81,
+  "finalScore": 60,
+  "match": false
+ },
+ {
+  "gameId": "6520148",
+  "date": "2026-02-04",
+  "ku": false,
+  "players": 10,
+  "playerPtsSum": 60,
+  "finalScore": 60,
+  "match": true
+ },
+ {
+  "gameId": "6518541",
+  "date": "2026-02-07",
+  "ku": false,
+  "players": 10,
+  "playerPtsSum": 80,
+  "finalScore": 71,
+  "match": false
+ },
+ {
+  "gameId": "6518541",
+  "date": "2026-02-07",
+  "ku": false,
+  "players": 11,
+  "playerPtsSum": 71,
+  "finalScore": 71,
+  "match": true
+ },
+ {
+  "gameId": "6519789",
+  "date": "2026-02-10",
+  "ku": false,
+  "players": 9,
+  "playerPtsSum": 70,
+  "finalScore": 65,
+  "match": false
+ },
+ {
+  "gameId": "6519789",
+  "date": "2026-02-10",
+  "ku": false,
+  "players": 9,
+  "playerPtsSum": 65,
+  "finalScore": 65,
+  "match": true
+ },
+ {
+  "gameId": "6520147",
+  "date": "2026-02-14",
+  "ku": false,
+  "players": 10,
+  "playerPtsSum": 85,
+  "finalScore": 68,
+  "match": false
+ },
+ {
+  "gameId": "6520147",
+  "date": "2026-02-14",
+  "ku": false,
+  "players": 10,
+  "playerPtsSum": 68,
+  "finalScore": 68,
+  "match": true
+ },
+ {
+  "gameId": "6517724",
+  "date": "2026-02-21",
+  "ku": false,
+  "players": 8,
+  "playerPtsSum": 68,
+  "finalScore": 75,
+  "match": false
+ },
+ {
+  "gameId": "6517724",
+  "date": "2026-02-21",
+  "ku": false,
+  "players": 10,
+  "playerPtsSum": 75,
+  "finalScore": 75,
+  "match": true
+ },
+ {
+  "gameId": "6519790",
+  "date": "2026-02-25",
+  "ku": false,
+  "players": 10,
+  "playerPtsSum": 68,
+  "finalScore": 59,
+  "match": false
+ },
+ {
+  "gameId": "6519790",
+  "date": "2026-02-25",
+  "ku": false,
+  "players": 9,
+  "playerPtsSum": 59,
+  "finalScore": 59,
+  "match": true
+ },
+ {
+  "gameId": "6519570",
+  "date": "2026-02-28",
+  "ku": false,
+  "players": 10,
+  "playerPtsSum": 70,
+  "finalScore": 56,
+  "match": false
+ },
+ {
+  "gameId": "6519570",
+  "date": "2026-02-28",
+  "ku": false,
+  "players": 10,
+  "playerPtsSum": 56,
+  "finalScore": 56,
+  "match": true
+ },
+ {
+  "gameId": "6593284",
+  "date": "2026-03-04",
+  "ku": false,
+  "players": 11,
+  "playerPtsSum": 56,
+  "finalScore": 35,
+  "match": false
+ },
+ {
+  "gameId": "6593284",
+  "date": "2026-03-04",
+  "ku": false,
+  "players": 13,
+  "playerPtsSum": 35,
+  "finalScore": 35,
+  "match": true
+ },
+ {
+  "gameId": "6593280",
+  "date": "2026-03-05",
+  "ku": false,
+  "players": 13,
+  "playerPtsSum": 55,
+  "finalScore": 48,
+  "match": false
+ },
+ {
+  "gameId": "6593280",
+  "date": "2026-03-05",
+  "ku": false,
+  "players": 11,
+  "playerPtsSum": 48,
+  "finalScore": 48,
+  "match": true
+ },
+ {
+  "gameId": "6595213",
+  "date": "2026-03-19",
+  "ku": false,
+  "players": 9,
+  "playerPtsSum": 79,
+  "finalScore": 70,
+  "match": false
+ },
+ {
+  "gameId": "6595213",
+  "date": "2026-03-19",
+  "ku": false,
+  "players": 10,
+  "playerPtsSum": 70,
+  "finalScore": 70,
+  "match": true
+ },
+ {
+  "gameId": "6595201",
+  "date": "2026-03-22",
+  "ku": false,
+  "players": 10,
+  "playerPtsSum": 62,
+  "finalScore": 55,
+  "match": false
+ },
+ {
+  "gameId": "6595201",
+  "date": "2026-03-22",
+  "ku": false,
+  "players": 9,
+  "playerPtsSum": 55,
+  "finalScore": 55,
+  "match": true
+ },
+ {
+  "gameId": "6595195",
+  "date": "2026-03-26",
+  "ku": false,
+  "players": 9,
+  "playerPtsSum": 78,
+  "finalScore": 78,
+  "match": true
+ },
+ {
+  "gameId": "6595195",
+  "date": "2026-03-26",
+  "ku": false,
+  "players": 9,
+  "playerPtsSum": 85,
+  "finalScore": 78,
+  "match": false
+ },
+ {
+  "gameId": "6595192",
+  "date": "2026-03-30",
+  "ku": false,
+  "players": 9,
+  "playerPtsSum": 67,
+  "finalScore": 67,
+  "match": true
+ },
+ {
+  "gameId": "6595192",
+  "date": "2026-03-30",
+  "ku": false,
+  "players": 9,
+  "playerPtsSum": 70,
+  "finalScore": 67,
+  "match": false
+ }
+]
