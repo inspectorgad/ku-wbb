@@ -42,6 +42,17 @@ All data is stored locally on the device in a Room (SQLite) database.
 Install the latest build directly on a phone:
 `https://github.com/inspectorgad/ku-wbb/releases/latest/download/app-debug.apk`
 
+## Season dashboard
+
+An interactive season dashboard — team stats, game-by-game margins,
+leaders, and clickable per-player game logs — is published to GitHub Pages:
+
+**https://inspectorgad.github.io/ku-wbb/**
+
+It's generated from the same `seed.json` the app uses
+(`scripts/build-dashboard.py` + `docs/dashboard.template.html`) and
+republished automatically by the nightly scrape when season data changes.
+
 ### If Advanced Protection blocks the install
 
 Android's Advanced Protection mode blocks APKs downloaded in the browser but
