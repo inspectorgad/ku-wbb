@@ -1,0 +1,653 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>KU Women's Basketball 2025-26</title>
+<style>
+  :root {
+    --ground: #F5F6F9;
+    --surface: #FFFFFF;
+    --surface2: #EDEFF4;
+    --ink: #131A26;
+    --muted: #5A6373;
+    --faint: #C9CEDA;
+    --blue: #0051BA;
+    --blue-ink: #FFFFFF;
+    --crimson: #D0000C;
+    --gold: #9A7000;
+    --banner-gold: #FFC82D;
+    --win: #0051BA;
+    --loss: #D0000C;
+    --win-bg: #E3ECFA;
+    --loss-bg: #FBE5E6;
+    --chart-grid: #E2E5EC;
+    --shadow: 0 1px 3px rgba(19, 26, 38, .08), 0 4px 16px rgba(19, 26, 38, .06);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --ground: #10141C;
+      --surface: #171D28;
+      --surface2: #1F2734;
+      --ink: #ECEFF5;
+      --muted: #98A1B3;
+      --faint: #3A4354;
+      --blue: #5D95E8;
+      --blue-ink: #0C1526;
+      --crimson: #E24B55;
+      --gold: #B08420;
+      --banner-gold: #D9A62E;
+      --win: #5D95E8;
+      --loss: #E24B55;
+      --win-bg: #1B2A44;
+      --loss-bg: #381E22;
+      --chart-grid: #262E3D;
+      --shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 4px 16px rgba(0, 0, 0, .3);
+    }
+  }
+  :root[data-theme="light"] {
+    --ground: #F5F6F9; --surface: #FFFFFF; --surface2: #EDEFF4;
+    --ink: #131A26; --muted: #5A6373; --faint: #C9CEDA;
+    --blue: #0051BA; --blue-ink: #FFFFFF; --crimson: #D0000C; --gold: #9A7000;
+    --banner-gold: #FFC82D; --win: #0051BA; --loss: #D0000C;
+    --win-bg: #E3ECFA; --loss-bg: #FBE5E6; --chart-grid: #E2E5EC;
+    --shadow: 0 1px 3px rgba(19, 26, 38, .08), 0 4px 16px rgba(19, 26, 38, .06);
+  }
+  :root[data-theme="dark"] {
+    --ground: #10141C; --surface: #171D28; --surface2: #1F2734;
+    --ink: #ECEFF5; --muted: #98A1B3; --faint: #3A4354;
+    --blue: #5D95E8; --blue-ink: #0C1526; --crimson: #E24B55; --gold: #B08420;
+    --banner-gold: #D9A62E; --win: #5D95E8; --loss: #E24B55;
+    --win-bg: #1B2A44; --loss-bg: #381E22; --chart-grid: #262E3D;
+    --shadow: 0 1px 3px rgba(0, 0, 0, .4), 0 4px 16px rgba(0, 0, 0, .3);
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--ground);
+    color: var(--ink);
+    font: 15px/1.5 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 20px 64px; }
+
+  /* ---------- header scoreboard ---------- */
+  header {
+    background: linear-gradient(120deg, #0051BA 0%, #003A85 100%);
+    color: #fff;
+    border-bottom: 6px solid var(--banner-gold);
+  }
+  .head-in {
+    max-width: 1080px; margin: 0 auto; padding: 30px 20px 26px;
+    display: flex; flex-wrap: wrap; align-items: flex-end; gap: 16px 32px;
+  }
+  .eyebrow {
+    font-size: 11px; font-weight: 700; letter-spacing: .14em;
+    text-transform: uppercase; opacity: .85;
+  }
+  h1 {
+    margin: 2px 0 0; font-size: clamp(26px, 4.5vw, 40px); line-height: 1.05;
+    font-weight: 900; letter-spacing: -.02em; text-wrap: balance;
+  }
+  h1 .thin { font-weight: 400; opacity: .9; }
+  .head-spacer { flex: 1; }
+  .record {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+  }
+  .record .num { font-size: clamp(34px, 5vw, 52px); font-weight: 900; line-height: 1; }
+  .record .sub { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; opacity: .85; margin-top: 4px; }
+
+  /* ---------- sections ---------- */
+  section { margin-top: 40px; }
+  .sec-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px; }
+  .sec-head h2 {
+    margin: 0; font-size: 19px; font-weight: 800; letter-spacing: -.01em;
+  }
+  .sec-head .note { color: var(--muted); font-size: 13px; }
+  .rule { flex: 1; height: 3px; border-radius: 2px;
+    background: linear-gradient(90deg, var(--blue) 0 40%, var(--crimson) 40% 70%, var(--banner-gold) 70% 100%);
+    opacity: .55; }
+
+  /* ---------- stat tiles ---------- */
+  .tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-top: 24px; }
+  .tile {
+    background: var(--surface); border-radius: 10px; box-shadow: var(--shadow);
+    padding: 14px 16px 12px;
+    border-top: 3px solid var(--blue);
+  }
+  .tile.alt { border-top-color: var(--crimson); }
+  .tile .v { font-size: 26px; font-weight: 800; font-variant-numeric: tabular-nums; letter-spacing: -.02em; }
+  .tile .l { font-size: 11px; font-weight: 700; color: var(--muted); letter-spacing: .1em; text-transform: uppercase; margin-top: 2px; }
+  .tile .d { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+  /* ---------- cards ---------- */
+  .card {
+    background: var(--surface); border-radius: 12px; box-shadow: var(--shadow);
+    padding: 18px 20px;
+  }
+
+  /* ---------- margin chart ---------- */
+  #marginChart { display: block; width: 100%; height: auto; }
+  .chart-legend { display: flex; gap: 18px; font-size: 12px; color: var(--muted); margin-top: 8px; flex-wrap: wrap; }
+  .chart-legend .k { display: inline-flex; align-items: center; gap: 6px; }
+  .swatch { width: 10px; height: 10px; border-radius: 3px; display: inline-block; }
+
+  /* ---------- tooltip ---------- */
+  #tip {
+    position: fixed; z-index: 50; pointer-events: none; display: none;
+    background: var(--ink); color: var(--ground);
+    font-size: 12.5px; line-height: 1.45; padding: 8px 11px; border-radius: 8px;
+    box-shadow: 0 4px 14px rgba(0,0,0,.25); max-width: 260px;
+  }
+  #tip b { font-weight: 700; }
+
+  /* ---------- leaders ---------- */
+  .leader-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 12px; }
+  .leader-row { display: grid; grid-template-columns: 148px 1fr 52px; align-items: center; gap: 10px; padding: 5px 0; font-size: 13.5px; }
+  .leader-row .nm { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .leader-row .bar-track { background: var(--surface2); border-radius: 4px; height: 14px; position: relative; }
+  .leader-row .bar { position: absolute; inset: 0 auto 0 0; border-radius: 4px; background: var(--blue); min-width: 3px; }
+  .leader-row .val { text-align: right; font-weight: 700; font-variant-numeric: tabular-nums; }
+  .leader-card h3 { margin: 0 0 8px; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+
+  /* ---------- tables ---------- */
+  .tbl-wrap { overflow-x: auto; }
+  table { border-collapse: collapse; width: 100%; font-size: 13.5px; font-variant-numeric: tabular-nums; }
+  th, td { padding: 7px 10px; text-align: right; white-space: nowrap; }
+  th:first-child, td:first-child, th.lft, td.lft { text-align: left; }
+  thead th {
+    font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
+    color: var(--muted); border-bottom: 2px solid var(--faint); position: sticky; top: 0;
+    background: var(--surface);
+  }
+  tbody tr { border-bottom: 1px solid var(--chart-grid); }
+  tbody tr:hover { background: var(--surface2); }
+  .chip {
+    display: inline-block; min-width: 20px; text-align: center;
+    font-weight: 800; font-size: 12px; border-radius: 5px; padding: 2px 7px;
+  }
+  .chip.W { color: var(--win); background: var(--win-bg); }
+  .chip.L { color: var(--loss); background: var(--loss-bg); }
+  .dim { color: var(--muted); }
+  .phase-lbl { font-size: 10.5px; letter-spacing: .1em; color: var(--muted); text-transform: uppercase; }
+
+  /* ---------- players ---------- */
+  .roster-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
+  .pcard {
+    background: var(--surface); border-radius: 12px; box-shadow: var(--shadow);
+    padding: 14px 16px; cursor: pointer; border: 1px solid transparent;
+    transition: transform .12s ease, border-color .12s ease;
+    text-align: left; font: inherit; color: inherit; width: 100%;
+  }
+  .pcard:hover, .pcard:focus-visible { transform: translateY(-2px); border-color: var(--blue); outline: none; }
+  .pcard .top { display: flex; align-items: center; gap: 10px; }
+  .jersey {
+    width: 38px; height: 38px; flex: 0 0 38px; border-radius: 50%;
+    background: var(--blue); color: var(--blue-ink);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 15px;
+  }
+  .pcard.former .jersey { background: var(--surface2); color: var(--muted); }
+  .pcard .nm { font-weight: 700; line-height: 1.2; }
+  .pcard .pos { font-size: 12px; color: var(--muted); }
+  .pcard .mini { display: flex; gap: 14px; margin-top: 10px; font-variant-numeric: tabular-nums; }
+  .pcard .mini div { font-size: 15px; font-weight: 800; }
+  .pcard .mini span { display: block; font-size: 10px; font-weight: 700; color: var(--muted); letter-spacing: .08em; }
+  .spark { margin-top: 10px; display: block; width: 100%; height: 26px; }
+  .former-head { grid-column: 1 / -1; font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-top: 10px; }
+
+  /* ---------- player modal ---------- */
+  dialog#pmodal {
+    border: none; border-radius: 14px; padding: 0;
+    width: min(880px, calc(100vw - 32px));
+    max-height: calc(100vh - 48px);
+    background: var(--surface); color: var(--ink); box-shadow: var(--shadow);
+  }
+  dialog#pmodal::backdrop { background: rgba(8, 12, 22, .55); }
+  .m-head {
+    background: linear-gradient(120deg, #0051BA, #003A85);
+    color: #fff; padding: 20px 24px; border-bottom: 4px solid var(--banner-gold);
+    display: flex; align-items: center; gap: 14px;
+  }
+  .m-head .jersey { background: rgba(255,255,255,.16); color: #fff; width: 46px; height: 46px; flex-basis: 46px; font-size: 18px; }
+  .m-head h3 { margin: 0; font-size: 22px; font-weight: 900; letter-spacing: -.01em; }
+  .m-head .sub { font-size: 12.5px; opacity: .85; }
+  .m-close {
+    margin-left: auto; background: rgba(255,255,255,.14); color: #fff; border: none;
+    width: 34px; height: 34px; border-radius: 50%; font-size: 17px; cursor: pointer;
+  }
+  .m-close:hover { background: rgba(255,255,255,.28); }
+  .m-body { padding: 18px 24px 24px; overflow-y: auto; max-height: calc(100vh - 48px - 95px); }
+  .m-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 10px; }
+  .m-tiles .tile { padding: 10px 12px 8px; }
+  .m-tiles .tile .v { font-size: 21px; }
+  .m-sec { margin-top: 20px; }
+  .m-sec h4 { margin: 0 0 8px; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
+  #pgChart { display: block; width: 100%; height: auto; }
+
+  footer { margin-top: 48px; color: var(--muted); font-size: 12.5px; }
+  footer a { color: var(--blue); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .pcard { transition: none; }
+  }
+</style>
+
+<header>
+  <div class="head-in">
+    <div>
+      <div class="eyebrow">2025–26 Season · NCAA Division I</div>
+      <h1>KANSAS JAYHAWKS <span class="thin">Women's Basketball</span></h1>
+    </div>
+    <div class="head-spacer"></div>
+    <div class="record">
+      <div class="num" id="recNum"></div>
+      <div class="sub" id="recSub"></div>
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <div class="tiles" id="teamTiles"></div>
+
+  <section>
+    <div class="sec-head">
+      <h2>Season, game by game</h2>
+      <span class="note">margin of victory · hover any bar</span>
+      <div class="rule"></div>
+    </div>
+    <div class="card">
+      <svg id="marginChart" viewBox="0 0 1000 300" role="img" aria-label="Bar chart of scoring margin for each of the 36 games"></svg>
+      <div class="chart-legend">
+        <span class="k"><span class="swatch" style="background:var(--win)"></span>Win</span>
+        <span class="k"><span class="swatch" style="background:var(--loss)"></span>Loss</span>
+        <span class="k dim">Full results in the table below</span>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>Team leaders</h2>
+      <span class="note">season totals &amp; rates</span>
+      <div class="rule"></div>
+    </div>
+    <div class="leader-grid" id="leaders"></div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>All 36 games</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="card tbl-wrap" style="max-height:460px; overflow-y:auto;">
+      <table id="gamesTbl">
+        <thead>
+          <tr><th class="lft">#</th><th class="lft">Date</th><th class="lft">Opponent</th><th class="lft"></th>
+              <th>Score</th><th class="lft">Quarters</th><th class="lft">Top scorer</th><th class="lft"></th></tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <h2>Roster</h2>
+      <span class="note">click a player for their game-by-game stats</span>
+      <div class="rule"></div>
+    </div>
+    <div class="roster-grid" id="roster"></div>
+  </section>
+
+  <footer>
+    Data: official NCAA box scores via the nightly
+    <a href="https://github.com/inspectorgad/ku-wbb">ku-wbb</a> scrape ·
+    Player points verified against final scores in all 36 games ·
+    "Former" = no longer on the current KU roster.
+  </footer>
+</div>
+
+<div id="tip"></div>
+
+<dialog id="pmodal" aria-label="Player detail">
+  <div class="m-head">
+    <div class="jersey" id="mJersey"></div>
+    <div>
+      <h3 id="mName"></h3>
+      <div class="sub" id="mSub"></div>
+    </div>
+    <button class="m-close" id="mClose" aria-label="Close">✕</button>
+  </div>
+  <div class="m-body">
+    <div class="m-tiles" id="mTiles"></div>
+    <div class="m-sec">
+      <h4>Points by game <span style="text-transform:none; letter-spacing:0; font-weight:400">· bar color = team result (<span style="color:var(--win); font-weight:700">win</span> / <span style="color:var(--loss); font-weight:700">loss</span>)</span></h4>
+      <svg id="pgChart" viewBox="0 0 1000 190" role="img" aria-label="Bar chart of points in each game"></svg>
+    </div>
+    <div class="m-sec">
+      <h4>Game log</h4>
+      <div class="tbl-wrap">
+        <table id="logTbl">
+          <thead><tr>
+            <th class="lft">Date</th><th class="lft">Opponent</th><th class="lft"></th>
+            <th>MIN</th><th>PTS</th><th>FG</th><th>3PT</th><th>FT</th>
+            <th>REB</th><th>AST</th><th>STL</th><th>BLK</th><th>TO</th><th>PF</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+const DATA = /*__DATA__*/;
+
+// ---------- derived data ----------
+const games = DATA.games.filter(g => g.teamScore != null);
+games.sort((a, b) => a.date < b.date ? -1 : 1);
+
+function phaseOf(g) {
+  if (g.date < "2025-12-21") return "Non-conference";
+  if (g.date <= "2026-02-28") return "Big 12";
+  if (g.date < "2026-03-10") return "Big 12 Tournament";
+  return "WBIT";
+}
+// short forms for the narrow chart segments at the end of the season
+const PHASE_SHORT = { "Non-conference": "NON-CONFERENCE", "Big 12": "BIG 12", "Big 12 Tournament": "B12T", "WBIT": "WBIT" };
+const fmtDate = iso => {
+  const [y, m, d] = iso.split("-").map(Number);
+  return ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][m-1] + " " + d;
+};
+const pct = (m, a) => a ? (m / a) : 0;
+const fPct = v => (v ? v.toFixed(3).replace(/^0/, "") : ".000");
+const f1 = v => v.toFixed(1);
+
+// per-player aggregation
+const players = new Map();
+for (const p of DATA.players) {
+  players.set(p.name, { ...p, log: [],
+    t: { g:0, gs:0, min:0, fgm:0, fga:0, tpm:0, tpa:0, ftm:0, fta:0, oreb:0, reb:0, ast:0, to:0, stl:0, blk:0, pf:0, pts:0 } });
+}
+games.forEach((g, gi) => {
+  g.n = gi + 1;
+  g.margin = g.teamScore - g.opponentScore;
+  g.won = g.margin > 0;
+  let top = null;
+  for (const l of g.lines || []) {
+    const p = players.get(l.player);
+    if (!p) continue;
+    p.log.push({ g, l });
+    const t = p.t;
+    t.g++; t.gs += l.gs || 0; t.min += l.min; t.fgm += l.fgm; t.fga += l.fga;
+    t.tpm += l.tpm; t.tpa += l.tpa; t.ftm += l.ftm; t.fta += l.fta;
+    t.oreb += l.oreb; t.reb += l.reb; t.ast += l.ast; t.to += l.to;
+    t.stl += l.stl; t.blk += l.blk; t.pf += l.pf; t.pts += l.pts;
+    if (!top || l.pts > top.pts) top = { name: l.player, pts: l.pts };
+  }
+  g.top = top;
+});
+const played = [...players.values()].filter(p => p.t.g > 0);
+
+// team totals
+const team = { pf: 0, pa: 0, fgm:0, fga:0, tpm:0, tpa:0, ftm:0, fta:0, reb:0, ast:0, stl:0, blk:0 };
+for (const g of games) {
+  team.pf += g.teamScore; team.pa += g.opponentScore;
+  for (const l of g.lines || []) {
+    team.fgm += l.fgm; team.fga += l.fga; team.tpm += l.tpm; team.tpa += l.tpa;
+    team.ftm += l.ftm; team.fta += l.fta; team.reb += l.reb; team.ast += l.ast;
+    team.stl += l.stl; team.blk += l.blk;
+  }
+}
+const wins = games.filter(g => g.won).length, losses = games.length - wins;
+
+// ---------- header + tiles ----------
+document.getElementById("recNum").textContent = wins + "–" + losses;
+document.getElementById("recSub").textContent = "WBIT finalists · " + games.length + " games";
+
+const tiles = [
+  ["Points / game", f1(team.pf / games.length), "opponents " + f1(team.pa / games.length), 0],
+  ["Field goal %", fPct(pct(team.fgm, team.fga)), team.fgm + "-" + team.fga, 0],
+  ["Three-point %", fPct(pct(team.tpm, team.tpa)), team.tpm + " made", 1],
+  ["Free throw %", fPct(pct(team.ftm, team.fta)), team.ftm + "-" + team.fta, 1],
+  ["Rebounds / game", f1(team.reb / games.length), team.ast + " total assists", 0],
+  ["Stocks / game", f1((team.stl + team.blk) / games.length), team.stl + " STL · " + team.blk + " BLK", 1],
+];
+document.getElementById("teamTiles").innerHTML = tiles.map(([l, v, d, alt]) =>
+  `<div class="tile${alt ? " alt" : ""}"><div class="v">${v}</div><div class="l">${l}</div><div class="d">${d}</div></div>`).join("");
+
+// ---------- tooltip ----------
+const tip = document.getElementById("tip");
+function showTip(html, ev) {
+  tip.innerHTML = html; tip.style.display = "block";
+  const w = tip.offsetWidth, h = tip.offsetHeight;
+  let x = ev.clientX + 14, y = ev.clientY - h - 10;
+  if (x + w > innerWidth - 8) x = ev.clientX - w - 14;
+  if (y < 8) y = ev.clientY + 16;
+  tip.style.left = x + "px"; tip.style.top = y + "px";
+}
+function hideTip() { tip.style.display = "none"; }
+
+// ---------- margin chart ----------
+(function marginChart() {
+  const svg = document.getElementById("marginChart");
+  const W = 1000, H = 300, padL = 34, padR = 8, padT = 26, padB = 24;
+  const maxM = Math.max(...games.map(g => Math.abs(g.margin)));
+  const scale = (H - padT - padB) / (2 * maxM);
+  const zero = padT + maxM * scale;
+  const bw = (W - padL - padR) / games.length;
+  const css = getComputedStyle(document.documentElement);
+  let el = "";
+
+  // gridlines every 20 pts
+  for (let v = -Math.floor(maxM / 20) * 20; v <= maxM; v += 20) {
+    const y = zero - v * scale;
+    el += `<line x1="${padL}" x2="${W - padR}" y1="${y}" y2="${y}" stroke="var(--chart-grid)" stroke-width="1"/>`;
+    el += `<text x="${padL - 6}" y="${y + 4}" text-anchor="end" font-size="11" fill="var(--muted)">${v > 0 ? "+" + v : v}</text>`;
+  }
+  // phase separators + labels
+  let lastPhase = "";
+  games.forEach((g, i) => {
+    const ph = phaseOf(g);
+    if (ph !== lastPhase) {
+      const x = padL + i * bw;
+      if (i > 0) el += `<line x1="${x}" x2="${x}" y1="${padT - 14}" y2="${H - padB}" stroke="var(--faint)" stroke-width="1" stroke-dasharray="3 4"/>`;
+      el += `<text x="${x + 3}" y="${padT - 16}" font-size="10.5" letter-spacing="1" fill="var(--muted)">${PHASE_SHORT[ph]}</text>`;
+      lastPhase = ph;
+    }
+  });
+  el += `<line x1="${padL}" x2="${W - padR}" y1="${zero}" y2="${zero}" stroke="var(--muted)" stroke-width="1.5"/>`;
+
+  games.forEach((g, i) => {
+    const x = padL + i * bw + 1.5;
+    const h = Math.max(Math.abs(g.margin) * scale, 2);
+    const y = g.won ? zero - h : zero;
+    el += `<rect data-g="${i}" x="${x}" width="${bw - 3}" y="${y}" height="${h}" rx="3"
+      fill="var(--${g.won ? "win" : "loss"})"/>`;
+  });
+  // direct labels on the extremes
+  const best = games.reduce((a, b) => b.margin > a.margin ? b : a);
+  const worst = games.reduce((a, b) => b.margin < a.margin ? b : a);
+  for (const g of [best, worst]) {
+    const i = games.indexOf(g);
+    const x = padL + i * bw + bw / 2;
+    const y = g.won ? zero - g.margin * scale - 6 : zero - g.margin * scale + 14;
+    el += `<text x="${x}" y="${y}" text-anchor="middle" font-size="11" font-weight="700" fill="var(--ink)">${g.margin > 0 ? "+" + g.margin : g.margin}</text>`;
+  }
+  svg.innerHTML = el;
+
+  svg.addEventListener("mousemove", ev => {
+    const r = ev.target.closest("rect[data-g]");
+    if (!r) { hideTip(); return; }
+    const g = games[+r.dataset.g];
+    showTip(`<b>${g.won ? "W" : "L"} ${g.teamScore}–${g.opponentScore}</b> ${g.won ? "over" : "to"} ${g.opponent}<br>
+      ${fmtDate(g.date)} · ${phaseOf(g)}<br>
+      <span style="opacity:.8">Quarters: ${g.periodScores || "—"}</span><br>
+      <span style="opacity:.8">Top: ${g.top ? g.top.name + " " + g.top.pts : "—"}</span>`, ev);
+  });
+  svg.addEventListener("mouseleave", hideTip);
+})();
+
+// ---------- leaders ----------
+(function leaders() {
+  const cats = [
+    ["Points per game", p => p.t.pts / p.t.g, f1, p => p.t.g >= 10],
+    ["Rebounds per game", p => p.t.reb / p.t.g, f1, p => p.t.g >= 10],
+    ["Assists per game", p => p.t.ast / p.t.g, f1, p => p.t.g >= 10],
+    ["Field goal % (min 100 FGA)", p => pct(p.t.fgm, p.t.fga), fPct, p => p.t.fga >= 100],
+    ["Threes made", p => p.t.tpm, v => v, p => p.t.tpm > 0],
+    ["Steals + blocks", p => p.t.stl + p.t.blk, v => v, p => true],
+  ];
+  document.getElementById("leaders").innerHTML = cats.map(([title, val, fmt, qual]) => {
+    const rows = played.filter(qual).map(p => [p, val(p)]).sort((a, b) => b[1] - a[1]).slice(0, 5);
+    const max = rows[0]?.[1] || 1;
+    return `<div class="card leader-card"><h3>${title}</h3>` + rows.map(([p, v]) =>
+      `<div class="leader-row">
+        <span class="nm">${p.name}</span>
+        <span class="bar-track"><span class="bar" style="width:${Math.max(v / max * 100, 3)}%"></span></span>
+        <span class="val">${fmt(v)}</span>
+      </div>`).join("") + `</div>`;
+  }).join("");
+})();
+
+// ---------- games table ----------
+(function gamesTable() {
+  document.querySelector("#gamesTbl tbody").innerHTML = games.map(g => `
+    <tr>
+      <td class="dim">${g.n}</td>
+      <td class="lft">${fmtDate(g.date)}</td>
+      <td class="lft"><b>${g.opponent}</b></td>
+      <td class="lft"><span class="chip ${g.won ? "W" : "L"}">${g.won ? "W" : "L"}</span></td>
+      <td><b>${g.teamScore}–${g.opponentScore}</b></td>
+      <td class="lft dim">${g.periodScores || ""}</td>
+      <td class="lft">${g.top ? g.top.name + ' <span class="dim">' + g.top.pts + ' pts</span>' : ""}</td>
+      <td class="lft"><span class="phase-lbl">${phaseOf(g)}</span></td>
+    </tr>`).join("");
+})();
+
+// ---------- roster ----------
+function sparkSVG(p, w = 200, h = 26) {
+  const pts = p.log.map(e => e.l.pts);
+  if (!pts.length) return "";
+  const max = Math.max(...pts, 1);
+  const bw = w / pts.length;
+  let el = "";
+  pts.forEach((v, i) => {
+    const bh = Math.max(v / max * (h - 2), 1.5);
+    el += `<rect x="${i * bw + .5}" width="${Math.max(bw - 1.5, 1)}" y="${h - bh}" height="${bh}" rx="1" fill="var(--blue)" opacity="${p.log[i].g.won ? 1 : .45}"/>`;
+  });
+  return `<svg class="spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true">${el}</svg>`;
+}
+
+(function roster() {
+  const host = document.getElementById("roster");
+  const sorted = [...played].sort((a, b) => b.t.pts / b.t.g - a.t.pts / a.t.g);
+  const current = sorted.filter(p => p.active);
+  const former = sorted.filter(p => !p.active);
+  const bench = [...players.values()].filter(p => p.t.g === 0 && p.active)
+    .sort((a, b) => a.name.localeCompare(b.name));
+
+  const card = (p, former) => `
+    <button class="pcard${former ? " former" : ""}" data-p="${p.name.replace(/"/g, "&quot;")}">
+      <div class="top">
+        <span class="jersey">${p.jerseyNumber || "–"}</span>
+        <span><span class="nm">${p.name}</span><br><span class="pos">${p.position || ""} · ${p.t.g} games</span></span>
+      </div>
+      <div class="mini">
+        <div>${f1(p.t.pts / p.t.g)}<span>PPG</span></div>
+        <div>${f1(p.t.reb / p.t.g)}<span>RPG</span></div>
+        <div>${f1(p.t.ast / p.t.g)}<span>APG</span></div>
+        <div>${fPct(pct(p.t.fgm, p.t.fga))}<span>FG%</span></div>
+      </div>
+      ${sparkSVG(p)}
+    </button>`;
+
+  let html = current.map(p => card(p, false)).join("");
+  if (bench.length) {
+    html += `<div class="former-head">New for 2026-27 — no 2025-26 stats</div>`;
+    html += bench.map(p => `
+      <div class="pcard" style="cursor:default">
+        <div class="top">
+          <span class="jersey">${p.jerseyNumber || "–"}</span>
+          <span><span class="nm">${p.name}</span><br><span class="pos">${p.position || ""}</span></span>
+        </div>
+      </div>`).join("");
+  }
+  if (former.length) {
+    html += `<div class="former-head">Former players — 2025-26 stats retained</div>`;
+    html += former.map(p => card(p, true)).join("");
+  }
+  host.innerHTML = html;
+  host.addEventListener("click", ev => {
+    const btn = ev.target.closest(".pcard[data-p]");
+    if (btn) openPlayer(btn.dataset.p);
+  });
+})();
+
+// ---------- player modal ----------
+const modal = document.getElementById("pmodal");
+document.getElementById("mClose").addEventListener("click", () => modal.close());
+modal.addEventListener("click", ev => { if (ev.target === modal) modal.close(); });
+
+function openPlayer(name) {
+  const p = players.get(name);
+  if (!p || !p.log.length) return;
+  const t = p.t;
+  document.getElementById("mJersey").textContent = p.jerseyNumber || "–";
+  document.getElementById("mName").textContent = p.name;
+  document.getElementById("mSub").textContent =
+    (p.position ? p.position + " · " : "") + t.g + " games (" + t.gs + " starts) · " +
+    (p.active ? "current roster" : "former player") + " · 2025-26";
+
+  const mt = [
+    ["PPG", f1(t.pts / t.g)], ["RPG", f1(t.reb / t.g)], ["APG", f1(t.ast / t.g)],
+    ["FG%", fPct(pct(t.fgm, t.fga))], ["3P%", fPct(pct(t.tpm, t.tpa))], ["FT%", fPct(pct(t.ftm, t.fta))],
+    ["PTS", t.pts], ["STL", t.stl], ["BLK", t.blk], ["MIN/G", f1(t.min / t.g)],
+  ];
+  document.getElementById("mTiles").innerHTML = mt.map(([l, v], i) =>
+    `<div class="tile${i % 2 ? " alt" : ""}"><div class="v">${v}</div><div class="l">${l}</div></div>`).join("");
+
+  // points-by-game chart
+  const svg = document.getElementById("pgChart");
+  const W = 1000, H = 190, padL = 30, padR = 8, padT = 18, padB = 22;
+  const maxP = Math.max(...p.log.map(e => e.l.pts), 4);
+  const bw = (W - padL - padR) / p.log.length;
+  const sy = v => padT + (1 - v / maxP) * (H - padT - padB);
+  let el = "";
+  for (let v = 0; v <= maxP; v += maxP > 20 ? 10 : 5) {
+    el += `<line x1="${padL}" x2="${W - padR}" y1="${sy(v)}" y2="${sy(v)}" stroke="var(--chart-grid)"/>`;
+    el += `<text x="${padL - 5}" y="${sy(v) + 4}" text-anchor="end" font-size="11" fill="var(--muted)">${v}</text>`;
+  }
+  const avg = t.pts / t.g;
+  el += `<line x1="${padL}" x2="${W - padR}" y1="${sy(avg)}" y2="${sy(avg)}" stroke="var(--gold)" stroke-width="1.5" stroke-dasharray="5 4"/>`;
+  el += `<text x="${W - padR}" y="${sy(avg) - 5}" text-anchor="end" font-size="11" font-weight="700" fill="var(--gold)">avg ${f1(avg)}</text>`;
+  p.log.forEach((e, i) => {
+    const x = padL + i * bw + 1.5;
+    const y = sy(e.l.pts);
+    el += `<rect data-i="${i}" x="${x}" width="${Math.max(bw - 3, 2)}" y="${y}" height="${H - padB - y || 1}" rx="2.5" fill="var(--${e.g.won ? "win" : "loss"})"/>`;
+  });
+  svg.innerHTML = el;
+  svg.onmousemove = ev => {
+    const r = ev.target.closest("rect[data-i]");
+    if (!r) { hideTip(); return; }
+    const e = p.log[+r.dataset.i];
+    showTip(`<b>${e.l.pts} pts</b> vs ${e.g.opponent} (${e.g.won ? "W" : "L"})<br>
+      ${fmtDate(e.g.date)} · ${e.l.fgm}-${e.l.fga} FG, ${e.l.tpm}-${e.l.tpa} 3PT, ${e.l.ftm}-${e.l.fta} FT<br>
+      <span style="opacity:.8">${e.l.reb} reb · ${e.l.ast} ast · ${e.l.stl} stl · ${e.l.blk} blk</span>`, ev);
+  };
+  svg.onmouseleave = hideTip;
+
+  // game log
+  document.querySelector("#logTbl tbody").innerHTML = [...p.log].reverse().map(e => `
+    <tr>
+      <td class="lft">${fmtDate(e.g.date)}</td>
+      <td class="lft">${e.g.opponent}</td>
+      <td class="lft"><span class="chip ${e.g.won ? "W" : "L"}">${e.g.won ? "W" : "L"}</span></td>
+      <td>${e.l.min}</td><td><b>${e.l.pts}</b></td>
+      <td>${e.l.fgm}-${e.l.fga}</td><td>${e.l.tpm}-${e.l.tpa}</td><td>${e.l.ftm}-${e.l.fta}</td>
+      <td>${e.l.reb}</td><td>${e.l.ast}</td><td>${e.l.stl}</td><td>${e.l.blk}</td><td>${e.l.to}</td><td>${e.l.pf}</td>
+    </tr>`).join("");
+
+  modal.showModal();
+  modal.querySelector(".m-body").scrollTop = 0;
+}
+</script>
