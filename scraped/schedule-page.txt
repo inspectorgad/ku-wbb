@@ -2,7 +2,6 @@
 Skip to main content
 Pause All Rotators
 University of Kansas Athletics
-Skip Ad
 Skip Scoreboard
 Scoreboard
 Coming Up
@@ -63,7 +62,7 @@ Toggle Navigation
 , Opens in new window
 , Opens in new window
 Women's Basketball
-Schedule 
+Schedule
 Roster
 Stats 
 News
@@ -86,13 +85,13 @@ Lawrence, Kan.
 
 6:30 p.m. CT
 
-91
+90
 Days
 12
 Hours
-16
+23
 Minutes
-27
+3
 Seconds
 Add To Calendar
 Text Only
@@ -314,7 +313,6 @@ Dec 16
 
 History
 Explore Lawrence
-Skip Ad
 Related Videos
 All Videos
 Hawk Talk with Brandon Schneider
