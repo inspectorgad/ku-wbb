@@ -13,8 +13,9 @@ with open(SEED_PATH) as f:
 
 data = {
     "players": seed["players"],
-    # Only completed games; upcoming fixtures have no box score to chart.
-    "games": [g for g in seed["games"] if "teamScore" in g],
+    # Every game, played or scheduled — the dashboard's season picker needs
+    # upcoming fixtures so a season can be selected before it tips off.
+    "games": seed["games"],
 }
 # Optional keys added by the Big 12 feature; older seeds simply omit them.
 for key in ("standings", "polls"):

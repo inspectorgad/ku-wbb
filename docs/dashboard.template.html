@@ -94,6 +94,20 @@
   .record .num { font-size: clamp(34px, 5vw, 52px); font-weight: 900; line-height: 1; }
   .record .sub { font-size: 12px; letter-spacing: .1em; text-transform: uppercase; opacity: .85; margin-top: 4px; }
 
+  /* ---------- season picker ---------- */
+  .season-picker { display: flex; gap: 8px; margin-top: 12px; flex-wrap: wrap; }
+  .season-picker button {
+    font: inherit; font-size: 13px; font-weight: 700; letter-spacing: .02em;
+    color: #fff; background: rgba(255, 255, 255, .14);
+    border: 1px solid rgba(255, 255, 255, .32); border-radius: 999px;
+    padding: 5px 14px; cursor: pointer;
+  }
+  .season-picker button:hover { background: rgba(255, 255, 255, .26); }
+  .season-picker button:focus-visible { outline: 2px solid var(--banner-gold); outline-offset: 2px; }
+  .season-picker button[aria-pressed="true"] {
+    background: var(--banner-gold); border-color: var(--banner-gold); color: #1A1200;
+  }
+
   /* ---------- sections ---------- */
   section { margin-top: 40px; }
   .sec-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 14px; }
@@ -244,8 +258,9 @@
 <header>
   <div class="head-in">
     <div>
-      <div class="eyebrow">2025–26 Season · NCAA Division I</div>
+      <div class="eyebrow" id="eyebrow"></div>
       <h1>KANSAS JAYHAWKS <span class="thin">Women's Basketball</span></h1>
+      <div class="season-picker" id="seasonPicker" role="group" aria-label="Select season"></div>
     </div>
     <div class="head-spacer"></div>
     <div class="record">
@@ -259,14 +274,14 @@
 
   <div class="tiles" id="teamTiles"></div>
 
-  <section>
+  <section id="chartSec">
     <div class="sec-head">
       <h2>Season, game by game</h2>
       <span class="note">margin of victory · hover any bar</span>
       <div class="rule"></div>
     </div>
     <div class="card">
-      <svg id="marginChart" viewBox="0 0 1000 300" role="img" aria-label="Bar chart of scoring margin for each of the 36 games"></svg>
+      <svg id="marginChart" viewBox="0 0 1000 300" role="img" aria-label="Bar chart of scoring margin for each game of the season"></svg>
       <div class="chart-legend">
         <span class="k"><span class="swatch" style="background:var(--win)"></span>Win</span>
         <span class="k"><span class="swatch" style="background:var(--loss)"></span>Loss</span>
@@ -275,7 +290,7 @@
     </div>
   </section>
 
-  <section>
+  <section id="leadersSec">
     <div class="sec-head">
       <h2>Team leaders</h2>
       <span class="note">season totals &amp; rates</span>
@@ -286,7 +301,7 @@
 
   <section>
     <div class="sec-head">
-      <h2>All 36 games</h2>
+      <h2 id="gamesHead">Games</h2>
       <div class="rule"></div>
     </div>
     <div class="card tbl-wrap" style="max-height:460px; overflow-y:auto;">
@@ -331,7 +346,7 @@
   <section>
     <div class="sec-head">
       <h2>Roster</h2>
-      <span class="note">click a player for their game-by-game stats</span>
+      <span class="note" id="rosterNote">click a player for their game-by-game stats</span>
       <div class="rule"></div>
     </div>
     <div class="roster-grid" id="roster"></div>
@@ -340,7 +355,7 @@
   <footer>
     Data: official NCAA box scores via the nightly
     <a href="https://github.com/inspectorgad/ku-wbb">ku-wbb</a> scrape ·
-    Player points verified against final scores in all 36 games ·
+    Player points verified against each game's final score ·
     "Former" = no longer on the current KU roster.
   </footer>
 </div>
@@ -381,18 +396,31 @@
 <script>
 const DATA = /*__DATA__*/;
 
-// ---------- derived data ----------
-const games = DATA.games.filter(g => g.teamScore != null);
-games.sort((a, b) => a.date < b.date ? -1 : 1);
+// ---------- season model ----------
+// Every game the seed carries, played or scheduled. A season with no results
+// yet (next year's schedule) is still selectable — it renders as a fixture list.
+const ALL_GAMES = [...DATA.games].sort((a, b) => a.date < b.date ? -1 : 1);
+const SEASONS = [...new Set(ALL_GAMES.map(g => g.season))].sort().reverse();
+const hasResults = s => ALL_GAMES.some(g => g.season === s && g.teamScore != null);
+// Open on the newest season that has been played; once a new season tips off
+// it becomes the default on its own.
+let season = SEASONS.find(hasResults) || SEASONS[0];
 
+// Phase boundaries are relative to the season's start year, so they keep
+// working for future seasons: non-conference until just before Christmas,
+// Big 12 play into early March, the conference tournament, then postseason.
 function phaseOf(g) {
-  if (g.date < "2025-12-21") return "Non-conference";
-  if (g.date <= "2026-02-28") return "Big 12";
-  if (g.date < "2026-03-10") return "Big 12 Tournament";
-  return "WBIT";
+  const y = Number(g.season.slice(0, 4));
+  if (g.date < `${y}-12-20`) return "Non-conference";
+  if (g.date <= `${y + 1}-03-01`) return "Big 12";
+  if (g.date < `${y + 1}-03-12`) return "Big 12 Tournament";
+  return "Postseason";
 }
 // short forms for the narrow chart segments at the end of the season
-const PHASE_SHORT = { "Non-conference": "NON-CONFERENCE", "Big 12": "BIG 12", "Big 12 Tournament": "B12T", "WBIT": "WBIT" };
+const PHASE_SHORT = {
+  "Non-conference": "NON-CONFERENCE", "Big 12": "BIG 12",
+  "Big 12 Tournament": "B12T", "Postseason": "POST"
+};
 const fmtDate = iso => {
   const [y, m, d] = iso.split("-").map(Number);
   return ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][m-1] + " " + d;
@@ -400,59 +428,100 @@ const fmtDate = iso => {
 const pct = (m, a) => a ? (m / a) : 0;
 const fPct = v => (v ? v.toFixed(3).replace(/^0/, "") : ".000");
 const f1 = v => v.toFixed(1);
+const blankTotals = () =>
+  ({ g:0, gs:0, min:0, fgm:0, fga:0, tpm:0, tpa:0, ftm:0, fta:0, oreb:0, reb:0, ast:0, to:0, stl:0, blk:0, pf:0, pts:0 });
 
-// per-player aggregation
-const players = new Map();
-for (const p of DATA.players) {
-  players.set(p.name, { ...p, log: [],
-    t: { g:0, gs:0, min:0, fgm:0, fga:0, tpm:0, tpa:0, ftm:0, fta:0, oreb:0, reb:0, ast:0, to:0, stl:0, blk:0, pf:0, pts:0 } });
-}
-games.forEach((g, gi) => {
-  g.n = gi + 1;
-  g.margin = g.teamScore - g.opponentScore;
-  g.won = g.margin > 0;
-  let top = null;
-  for (const l of g.lines || []) {
-    const p = players.get(l.player);
-    if (!p) continue;
-    p.log.push({ g, l });
-    const t = p.t;
-    t.g++; t.gs += l.gs || 0; t.min += l.min; t.fgm += l.fgm; t.fga += l.fga;
-    t.tpm += l.tpm; t.tpa += l.tpa; t.ftm += l.ftm; t.fta += l.fta;
-    t.oreb += l.oreb; t.reb += l.reb; t.ast += l.ast; t.to += l.to;
-    t.stl += l.stl; t.blk += l.blk; t.pf += l.pf; t.pts += l.pts;
-    if (!top || l.pts > top.pts) top = { name: l.player, pts: l.pts };
+// Rebuilt on every season change; the player modal reads from here.
+let games = [], upcoming = [], players = new Map(), played = [], team = null;
+
+function buildSeason(sel) {
+  const seasonGames = ALL_GAMES.filter(g => g.season === sel);
+  games = seasonGames.filter(g => g.teamScore != null);
+  upcoming = seasonGames.filter(g => g.teamScore == null);
+
+  players = new Map();
+  for (const p of DATA.players) players.set(p.name, { ...p, log: [], t: blankTotals() });
+
+  games.forEach((g, gi) => {
+    g.n = gi + 1;
+    g.margin = g.teamScore - g.opponentScore;
+    g.won = g.margin > 0;
+    let top = null;
+    for (const l of g.lines || []) {
+      const p = players.get(l.player);
+      if (!p) continue;
+      p.log.push({ g, l });
+      const t = p.t;
+      t.g++; t.gs += l.gs || 0; t.min += l.min; t.fgm += l.fgm; t.fga += l.fga;
+      t.tpm += l.tpm; t.tpa += l.tpa; t.ftm += l.ftm; t.fta += l.fta;
+      t.oreb += l.oreb; t.reb += l.reb; t.ast += l.ast; t.to += l.to;
+      t.stl += l.stl; t.blk += l.blk; t.pf += l.pf; t.pts += l.pts;
+      if (!top || l.pts > top.pts) top = { name: l.player, pts: l.pts };
+    }
+    g.top = top;
+  });
+  played = [...players.values()].filter(p => p.t.g > 0);
+
+  team = { pf: 0, pa: 0, fgm:0, fga:0, tpm:0, tpa:0, ftm:0, fta:0, reb:0, ast:0, stl:0, blk:0 };
+  for (const g of games) {
+    team.pf += g.teamScore; team.pa += g.opponentScore;
+    for (const l of g.lines || []) {
+      team.fgm += l.fgm; team.fga += l.fga; team.tpm += l.tpm; team.tpa += l.tpa;
+      team.ftm += l.ftm; team.fta += l.fta; team.reb += l.reb; team.ast += l.ast;
+      team.stl += l.stl; team.blk += l.blk;
+    }
   }
-  g.top = top;
+}
+
+// ---------- season picker ----------
+document.getElementById("seasonPicker").innerHTML = SEASONS.map(s =>
+  `<button type="button" data-s="${s}" aria-pressed="false">${s}</button>`).join("");
+document.getElementById("seasonPicker").addEventListener("click", ev => {
+  const btn = ev.target.closest("button[data-s]");
+  if (btn && btn.dataset.s !== season) render(btn.dataset.s);
 });
-const played = [...players.values()].filter(p => p.t.g > 0);
-
-// team totals
-const team = { pf: 0, pa: 0, fgm:0, fga:0, tpm:0, tpa:0, ftm:0, fta:0, reb:0, ast:0, stl:0, blk:0 };
-for (const g of games) {
-  team.pf += g.teamScore; team.pa += g.opponentScore;
-  for (const l of g.lines || []) {
-    team.fgm += l.fgm; team.fga += l.fga; team.tpm += l.tpm; team.tpa += l.tpa;
-    team.ftm += l.ftm; team.fta += l.fta; team.reb += l.reb; team.ast += l.ast;
-    team.stl += l.stl; team.blk += l.blk;
-  }
-}
-const wins = games.filter(g => g.won).length, losses = games.length - wins;
 
 // ---------- header + tiles ----------
-document.getElementById("recNum").textContent = wins + "–" + losses;
-document.getElementById("recSub").textContent = "WBIT finalists · " + games.length + " games";
+function renderHeader() {
+  const label = season.replace("-", "–");
+  document.getElementById("eyebrow").textContent = `${label} Season · NCAA Division I`;
+  for (const b of document.querySelectorAll("#seasonPicker button")) {
+    b.setAttribute("aria-pressed", String(b.dataset.s === season));
+  }
 
-const tiles = [
-  ["Points / game", f1(team.pf / games.length), "opponents " + f1(team.pa / games.length), 0],
-  ["Field goal %", fPct(pct(team.fgm, team.fga)), team.fgm + "-" + team.fga, 0],
-  ["Three-point %", fPct(pct(team.tpm, team.tpa)), team.tpm + " made", 1],
-  ["Free throw %", fPct(pct(team.ftm, team.fta)), team.ftm + "-" + team.fta, 1],
-  ["Rebounds / game", f1(team.reb / games.length), team.ast + " total assists", 0],
-  ["Stocks / game", f1((team.stl + team.blk) / games.length), team.stl + " STL · " + team.blk + " BLK", 1],
-];
-document.getElementById("teamTiles").innerHTML = tiles.map(([l, v, d, alt]) =>
-  `<div class="tile${alt ? " alt" : ""}"><div class="v">${v}</div><div class="l">${l}</div><div class="d">${d}</div></div>`).join("");
+  const wins = games.filter(g => g.won).length, losses = games.length - wins;
+  const rec = document.getElementById("recNum");
+  const sub = document.getElementById("recSub");
+  if (!games.length) {
+    rec.textContent = upcoming.length ? String(upcoming.length) : "—";
+    sub.textContent = upcoming.length ? "games scheduled" : "no games yet";
+  } else {
+    rec.textContent = wins + "–" + losses;
+    sub.textContent = games.length + " games" + (upcoming.length ? ` · ${upcoming.length} to play` : "");
+  }
+
+  const host = document.getElementById("teamTiles");
+  if (!games.length) {
+    const next = upcoming[0];
+    host.innerHTML = next
+      ? `<div class="tile"><div class="v">${fmtDate(next.date)}</div><div class="l">First game</div>
+           <div class="d">${next.opponent}</div></div>
+         <div class="tile alt"><div class="v">${upcoming.length}</div><div class="l">Scheduled so far</div>
+           <div class="d">stats appear as games are played</div></div>`
+      : "";
+    return;
+  }
+  const tiles = [
+    ["Points / game", f1(team.pf / games.length), "opponents " + f1(team.pa / games.length), 0],
+    ["Field goal %", fPct(pct(team.fgm, team.fga)), team.fgm + "-" + team.fga, 0],
+    ["Three-point %", fPct(pct(team.tpm, team.tpa)), team.tpm + " made", 1],
+    ["Free throw %", fPct(pct(team.ftm, team.fta)), team.ftm + "-" + team.fta, 1],
+    ["Rebounds / game", f1(team.reb / games.length), team.ast + " total assists", 0],
+    ["Stocks / game", f1((team.stl + team.blk) / games.length), team.stl + " STL · " + team.blk + " BLK", 1],
+  ];
+  host.innerHTML = tiles.map(([l, v, d, alt]) =>
+    `<div class="tile${alt ? " alt" : ""}"><div class="v">${v}</div><div class="l">${l}</div><div class="d">${d}</div></div>`).join("");
+}
 
 // ---------- tooltip ----------
 const tip = document.getElementById("tip");
@@ -467,7 +536,10 @@ function showTip(html, ev) {
 function hideTip() { tip.style.display = "none"; }
 
 // ---------- margin chart ----------
-(function marginChart() {
+function marginChart() {
+  // A season with no results yet has nothing to plot.
+  document.getElementById("chartSec").hidden = games.length === 0;
+  if (!games.length) return;
   const svg = document.getElementById("marginChart");
   const W = 1000, H = 300, padL = 34, padR = 8, padT = 26, padB = 24;
   const maxM = Math.max(...games.map(g => Math.abs(g.margin)));
@@ -514,7 +586,7 @@ function hideTip() { tip.style.display = "none"; }
   }
   svg.innerHTML = el;
 
-  svg.addEventListener("mousemove", ev => {
+  svg.onmousemove = ev => {
     const r = ev.target.closest("rect[data-g]");
     if (!r) { hideTip(); return; }
     const g = games[+r.dataset.g];
@@ -522,17 +594,23 @@ function hideTip() { tip.style.display = "none"; }
       ${fmtDate(g.date)} · ${phaseOf(g)}<br>
       <span style="opacity:.8">Quarters: ${g.periodScores || "—"}</span><br>
       <span style="opacity:.8">Top: ${g.top ? g.top.name + " " + g.top.pts : "—"}</span>`, ev);
-  });
-  svg.addEventListener("mouseleave", hideTip);
-})();
+  };
+  svg.onmouseleave = hideTip;
+}
 
 // ---------- leaders ----------
-(function leaders() {
+function leaders() {
+  document.getElementById("leadersSec").hidden = played.length === 0;
+  if (!played.length) return;
+  // Rate-stat minimums scale with how much of the season has been played, so
+  // the boards stay meaningful in November as well as in April.
+  const minG = Math.max(1, Math.ceil(games.length * 0.3));
+  const minFga = Math.max(5, Math.ceil(games.length * 3));
   const cats = [
-    ["Points per game", p => p.t.pts / p.t.g, f1, p => p.t.g >= 10],
-    ["Rebounds per game", p => p.t.reb / p.t.g, f1, p => p.t.g >= 10],
-    ["Assists per game", p => p.t.ast / p.t.g, f1, p => p.t.g >= 10],
-    ["Field goal % (min 100 FGA)", p => pct(p.t.fgm, p.t.fga), fPct, p => p.t.fga >= 100],
+    ["Points per game", p => p.t.pts / p.t.g, f1, p => p.t.g >= minG],
+    ["Rebounds per game", p => p.t.reb / p.t.g, f1, p => p.t.g >= minG],
+    ["Assists per game", p => p.t.ast / p.t.g, f1, p => p.t.g >= minG],
+    [`Field goal % (min ${minFga} FGA)`, p => pct(p.t.fgm, p.t.fga), fPct, p => p.t.fga >= minFga],
     ["Threes made", p => p.t.tpm, v => v, p => p.t.tpm > 0],
     ["Steals + blocks", p => p.t.stl + p.t.blk, v => v, p => true],
   ];
@@ -546,11 +624,17 @@ function hideTip() { tip.style.display = "none"; }
         <span class="val">${fmt(v)}</span>
       </div>`).join("") + `</div>`;
   }).join("");
-})();
+}
 
 // ---------- games table ----------
-(function gamesTable() {
-  document.querySelector("#gamesTbl tbody").innerHTML = games.map(g => `
+function gamesTable() {
+  const total = games.length + upcoming.length;
+  document.getElementById("gamesHead").textContent =
+    games.length && upcoming.length ? `${total} games — ${games.length} played`
+    : games.length ? `All ${games.length} games`
+    : `Schedule — ${upcoming.length} games`;
+
+  const playedRows = games.map(g => `
     <tr>
       <td class="dim">${g.n}</td>
       <td class="lft">${fmtDate(g.date)}</td>
@@ -560,8 +644,22 @@ function hideTip() { tip.style.display = "none"; }
       <td class="lft dim">${g.periodScores || ""}</td>
       <td class="lft">${g.top ? g.top.name + ' <span class="dim">' + g.top.pts + ' pts</span>' : ""}</td>
       <td class="lft"><span class="phase-lbl">${phaseOf(g)}</span></td>
-    </tr>`).join("");
-})();
+    </tr>`);
+  // Scheduled games have no box score yet — the row shows the fixture only.
+  const upcomingRows = upcoming.map((g, i) => `
+    <tr>
+      <td class="dim">${games.length + i + 1}</td>
+      <td class="lft">${fmtDate(g.date)}</td>
+      <td class="lft"><b>${g.opponent}</b></td>
+      <td class="lft"><span class="phase-lbl">Sched.</span></td>
+      <td class="dim">—</td>
+      <td class="lft"></td>
+      <td class="lft"></td>
+      <td class="lft"><span class="phase-lbl">${phaseOf(g)}</span></td>
+    </tr>`);
+  document.querySelector("#gamesTbl tbody").innerHTML =
+    playedRows.concat(upcomingRows).join("");
+}
 
 // ---------- roster ----------
 function sparkSVG(p, w = 200, h = 26) {
@@ -577,13 +675,16 @@ function sparkSVG(p, w = 200, h = 26) {
   return `<svg class="spark" viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true">${el}</svg>`;
 }
 
-(function roster() {
+function roster() {
   const host = document.getElementById("roster");
   const sorted = [...played].sort((a, b) => b.t.pts / b.t.g - a.t.pts / a.t.g);
   const current = sorted.filter(p => p.active);
   const former = sorted.filter(p => !p.active);
   const bench = [...players.values()].filter(p => p.t.g === 0 && p.active)
     .sort((a, b) => a.name.localeCompare(b.name));
+  document.getElementById("rosterNote").textContent = played.length
+    ? "click a player for their game-by-game stats"
+    : "no games played this season yet";
 
   const card = (p, former) => `
     <button class="pcard${former ? " former" : ""}" data-p="${p.name.replace(/"/g, "&quot;")}">
@@ -602,7 +703,9 @@ function sparkSVG(p, w = 200, h = 26) {
 
   let html = current.map(p => card(p, false)).join("");
   if (bench.length) {
-    html += `<div class="former-head">New for 2026-27 — no 2025-26 stats</div>`;
+    html += `<div class="former-head">${played.length
+      ? `Current roster — no ${season} stats`
+      : "Current roster"}</div>`;
     html += bench.map(p => `
       <div class="pcard" style="cursor:default">
         <div class="top">
@@ -612,27 +715,30 @@ function sparkSVG(p, w = 200, h = 26) {
       </div>`).join("");
   }
   if (former.length) {
-    html += `<div class="former-head">Former players — 2025-26 stats retained</div>`;
+    html += `<div class="former-head">Former players — ${season} stats retained</div>`;
     html += former.map(p => card(p, true)).join("");
   }
   host.innerHTML = html;
-  host.addEventListener("click", ev => {
-    const btn = ev.target.closest(".pcard[data-p]");
-    if (btn) openPlayer(btn.dataset.p);
-  });
-})();
+}
+document.getElementById("roster").addEventListener("click", ev => {
+  const btn = ev.target.closest(".pcard[data-p]");
+  if (btn) openPlayer(btn.dataset.p);
+});
 
 // ---------- Big 12 standings + national poll --------------------------------
 // Optional seed keys: an older season-data.json simply hides the section.
-(function big12() {
+function big12() {
   const standings = DATA.standings || [];
   const polls = DATA.polls || [];
-  if (!standings.length && !polls.length) return;
+  // Follows the selected season; a season with no conference results yet
+  // (next year's schedule) hides the section rather than showing stale rows.
+  const pick = season;
+  if (!standings.some(r => r.season === pick)) {
+    document.getElementById("big12Sec").hidden = true;
+    return;
+  }
   document.getElementById("big12Sec").hidden = false;
-
-  const seasons = [...new Set(standings.map(r => r.season))].sort().reverse();
-  const pick = seasons[0];
-  document.getElementById("b12Note").textContent = pick ? "season " + pick : "";
+  document.getElementById("b12Note").textContent = "season " + pick;
 
   const rows = standings.filter(r => r.season === pick)
     .sort((a, b) => {
@@ -665,7 +771,21 @@ function sparkSVG(p, w = 200, h = 26) {
       <td>${r.record || ""}</td>
       <td>${r.points || ""}</td>
     </tr>`).join("");
-})();
+}
+
+// ---------- render ----------
+function render(sel) {
+  season = sel;
+  buildSeason(season);
+  renderHeader();
+  marginChart();
+  leaders();
+  gamesTable();
+  roster();
+  big12();
+  hideTip();
+}
+render(season);
 
 // ---------- player modal ----------
 const modal = document.getElementById("pmodal");
@@ -680,7 +800,7 @@ function openPlayer(name) {
   document.getElementById("mName").textContent = p.name;
   document.getElementById("mSub").textContent =
     (p.position ? p.position + " · " : "") + t.g + " games (" + t.gs + " starts) · " +
-    (p.active ? "current roster" : "former player") + " · 2025-26";
+    (p.active ? "current roster" : "former player") + " · " + season;
 
   const mt = [
     ["PPG", f1(t.pts / t.g)], ["RPG", f1(t.reb / t.g)], ["APG", f1(t.ast / t.g)],
