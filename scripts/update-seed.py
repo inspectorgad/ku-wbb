@@ -205,13 +205,33 @@ def norm_team(name):
 
 
 index = load_json("scraped/ku-index.json", {})
+big12_games = list(index.get("big12Games", {}).values())
+
+# Conference records are regular-season only. The conference tournament is
+# identifiable by scoreboard bracket fields; its first game dates the end of
+# each season's regular season, which also fences off later postseason
+# rematches between conference members (WBIT/NIT carry no bracket fields).
+tournament_start = {}  # season label -> date of first conference-tournament game
+for game in big12_games:
+    if game.get("bracket") and game.get("conferenceGame"):
+        start = to_int(game.get("season")) or to_int(game.get("date", "")[:4])
+        season = season_label(start)
+        date = game.get("date", "")
+        if season not in tournament_start or date < tournament_start[season]:
+            tournament_start[season] = date
+
 records = {}  # (season label, key) -> record dict
-for game in index.get("big12Games", {}).values():
+for game in big12_games:
     # The sweep stores the season start year; standings use the app's
     # "2025-26" label so they line up with games.
     start = to_int(game.get("season")) or to_int(game.get("date", "")[:4])
     season = season_label(start)
-    conf_game = bool(game.get("conferenceGame"))
+    cutoff = tournament_start.get(season)
+    conf_game = (
+        bool(game.get("conferenceGame"))
+        and not game.get("bracket")
+        and (cutoff is None or game.get("date", "") < cutoff)
+    )
     for side in ("home", "away"):
         s = game.get(side) or {}
         if not s.get("inConference") or not s.get("name"):

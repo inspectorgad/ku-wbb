@@ -24,7 +24,7 @@ const TEAM_SEO = 'kansas';
 const CONFERENCE_SEO = 'big-12';
 // Bump to force a one-time full re-sweep when the sweep starts capturing
 // something new (the scannedDates cache would otherwise skip old dates).
-const INDEX_VERSION = 2;
+const INDEX_VERSION = 3;
 
 fs.mkdirSync('scraped', { recursive: true });
 
@@ -114,6 +114,11 @@ for (const season of SEASONS) {
           home: side(g.home, homeInConf),
           away: side(g.away, awayInConf),
           conferenceGame: homeInConf && awayInConf,
+          // Conference tournament and NCAA tournament games carry bracket
+          // fields on the scoreboard (WBIT games don't — update-seed.py
+          // handles those with a date cutoff). These count toward overall
+          // records but never conference records.
+          bracket: Boolean(g.bracketRound || g.bracketId),
         };
       }
 
