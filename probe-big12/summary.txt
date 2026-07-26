@@ -1,0 +1,34 @@
+GET https://ncaa-api.henrygd.me/standings/basketball-women/d1 -> 200 (62708 chars)
+  standings mentions Big 12: true
+  standings top-level keys: sport, title, updated, page, pages, data
+GET https://ncaa-api.henrygd.me/rankings/basketball-women/d1/associated-press -> 200 (2442 chars)
+  associated-press keys: sport, title, updated, page, pages, data
+  associated-press row count: 25
+  associated-press first row: {"RANK":"1","SCHOOL (1ST VOTES)":"UCLA (31)","RECORD":"37-1","POINTS":"775","PREVIOUS":"2"}
+  associated-press title: "Associated Press"
+  associated-press updated: "Through Games APR. 5, 2026"
+  associated-press page: 1
+  associated-press sport: "Women's Basketball"
+GET https://ncaa-api.henrygd.me/rankings/basketball-women/d1/ncaa-womens-basketball-net-rankings -> 200 (74166 chars)
+  ncaa-womens-basketball-net-rankings keys: sport, title, updated, page, pages, data
+  ncaa-womens-basketball-net-rankings row count: 363
+  ncaa-womens-basketball-net-rankings first row: {"Rank":"1","School":"UConn","Record":"38-1","Conf":"Big East","Road":"12-0","Neutral":"9-1","Home":"17-0","Non-Div I":"0-0","Prev":"1","Quad 1":"11-1","Quad 2":"6-0","Quad 3":"7-0","Quad 4":"14-0"}
+  ncaa-womens-basketball-net-rankings title: "NCAA Women's Basketball NET Rankings"
+  ncaa-womens-basketball-net-rankings updated: "Through Games Apr. 05 2026"
+  ncaa-womens-basketball-net-rankings page: 1
+  ncaa-womens-basketball-net-rankings sport: "Women's Basketball"
+GET https://ncaa-api.henrygd.me/rankings/basketball-women/d1/net-rankings -> 404 (32 chars)
+GET https://ncaa-api.henrygd.me/rankings/basketball-women/d1/usa-today-coaches -> 200 (138 chars)
+  usa-today-coaches keys: sport, title, updated, page, pages, data
+  usa-today-coaches row count: 0
+  usa-today-coaches title: "DI Women's Basketball Rankings - USA TODAY/WBCA Coaches"
+  usa-today-coaches updated: ""
+  usa-today-coaches page: 1
+  usa-today-coaches sport: "Women's Basketball"
+GET https://ncaa-api.henrygd.me/rankings/basketball-women/d1/wbca-coaches-poll -> 404 (32 chars)
+GET https://ncaa-api.henrygd.me/scoreboard/basketball-women/d1/2026/01/14 -> 200 (39773 chars)
+  2026-01-14: 53 games | big-12 teams tagged: 10 | big12-vs-big12: 5 | ranked entries: 5
+  2026-01-14 big-12 teams: Baylor, Cincinnati, Colorado, Iowa St., Kansas, Oklahoma St., TCU, UCF, Utah, West Virginia
+GET https://ncaa-api.henrygd.me/scoreboard/basketball-women/d1/2025/11/19 -> 200 (40456 chars)
+  2025-11-19: 54 games | big-12 teams tagged: 3 | big12-vs-big12: 0 | ranked entries: 8
+  2025-11-19 big-12 teams: BYU, Kansas, Oklahoma St.
