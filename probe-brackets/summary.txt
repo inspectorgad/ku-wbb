@@ -1,0 +1,17 @@
+2026-03-06 -> 200
+  Kansas St. at Oklahoma St. | bracketId="" bracketRound=1 title="Kansas St. Oklahoma St." url="/game/6593279"
+  BYU at TCU | bracketId="" bracketRound=1 title="BYU TCU" url="/game/6593278"
+  Arizona St. at West Virginia | bracketId="" bracketRound=1 title="Arizona St. West Virginia" url="/game/6593277"
+  Colorado at Baylor | bracketId="" bracketRound=1 title="Colorado Baylor" url="/game/6593276"
+2026-02-25 -> 200
+  TCU at Cincinnati | bracketId="" bracketRound="" title="TCU Cincinnati" url="/game/6518546"
+  West Virginia at UCF | bracketId="" bracketRound="" title="West Virginia UCF" url="/game/6517880"
+  Oklahoma St. at Iowa St. | bracketId="" bracketRound="" title="Oklahoma St. Iowa St." url="/game/6519567"
+  Texas Tech at Kansas | bracketId="" bracketRound="" title="Texas Tech Kansas" url="/game/6519790"
+  BYU at Arizona St. | bracketId="" bracketRound="" title="BYU Arizona St." url="/game/6519322"
+2026-03-22 -> 200
+  Texas Tech at LSU | bracketId=312 bracketRound=3 title="Texas Tech LSU" url="/game/6534707"
+  Baylor at Duke | bracketId=311 bracketRound=3 title="Baylor Duke" url="/game/6534706"
+  Rice at Kansas | bracketId="" bracketRound="" title="Rice Kansas" url="/game/6595201"
+  California at Kansas St. | bracketId="" bracketRound="" title="California Kansas St." url="/game/6595203"
+  Washington at TCU | bracketId=307 bracketRound=3 title="Washington TCU" url="/game/6534702"
