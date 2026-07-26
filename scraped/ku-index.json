@@ -441,7 +441,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6515255": {
    "date": "2025-11-09",
@@ -462,7 +463,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6515381": {
    "date": "2025-12-03",
@@ -483,7 +485,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6515413": {
    "date": "2025-11-05",
@@ -504,7 +507,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6515414": {
    "date": "2025-11-09",
@@ -525,7 +529,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6515415": {
    "date": "2025-11-12",
@@ -546,7 +551,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6515416": {
    "date": "2025-11-15",
@@ -567,7 +573,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6515417": {
    "date": "2025-11-19",
@@ -588,7 +595,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6515418": {
    "date": "2025-11-23",
@@ -609,7 +617,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6515419": {
    "date": "2025-11-28",
@@ -630,7 +639,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6515420": {
    "date": "2025-11-29",
@@ -651,7 +661,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6515421": {
    "date": "2025-12-03",
@@ -672,7 +683,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6515422": {
    "date": "2025-12-07",
@@ -693,7 +705,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6515423": {
    "date": "2025-12-14",
@@ -714,7 +727,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6515424": {
    "date": "2025-12-17",
@@ -735,7 +749,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6515542": {
    "date": "2025-11-03",
@@ -756,7 +771,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6515566": {
    "date": "2025-11-03",
@@ -777,7 +793,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6515594": {
    "date": "2025-11-22",
@@ -798,7 +815,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6515595": {
    "date": "2025-11-26",
@@ -819,7 +837,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6515616": {
    "date": "2025-11-10",
@@ -840,7 +859,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6515711": {
    "date": "2025-11-18",
@@ -861,7 +881,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6515841": {
    "date": "2025-12-16",
@@ -882,7 +903,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6515941": {
    "date": "2025-11-28",
@@ -903,7 +925,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516025": {
    "date": "2025-11-03",
@@ -924,7 +947,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516026": {
    "date": "2025-11-05",
@@ -945,7 +969,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516027": {
    "date": "2025-11-09",
@@ -966,7 +991,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516028": {
    "date": "2025-11-12",
@@ -987,7 +1013,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516029": {
    "date": "2025-11-16",
@@ -1008,7 +1035,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516030": {
    "date": "2025-11-20",
@@ -1029,7 +1057,8 @@
     "rank": 16,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516031": {
    "date": "2025-11-23",
@@ -1050,7 +1079,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516032": {
    "date": "2025-11-28",
@@ -1071,7 +1101,8 @@
     "rank": 10,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516034": {
    "date": "2025-12-07",
@@ -1092,7 +1123,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516035": {
    "date": "2025-12-10",
@@ -1113,7 +1145,8 @@
     "rank": 11,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516036": {
    "date": "2025-12-14",
@@ -1134,7 +1167,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516051": {
    "date": "2025-11-24",
@@ -1155,7 +1189,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516102": {
    "date": "2025-11-23",
@@ -1176,7 +1211,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516128": {
    "date": "2025-11-27",
@@ -1197,7 +1233,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516219": {
    "date": "2025-11-06",
@@ -1218,7 +1255,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516225": {
    "date": "2025-12-17",
@@ -1239,7 +1277,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516273": {
    "date": "2025-11-28",
@@ -1260,7 +1299,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516303": {
    "date": "2025-11-20",
@@ -1281,7 +1321,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516326": {
    "date": "2025-11-16",
@@ -1302,7 +1343,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516455": {
    "date": "2025-11-20",
@@ -1323,7 +1365,8 @@
     "rank": 21,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516487": {
    "date": "2025-11-03",
@@ -1344,7 +1387,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516491": {
    "date": "2025-11-08",
@@ -1365,7 +1409,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516493": {
    "date": "2025-11-13",
@@ -1386,7 +1431,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516494": {
    "date": "2025-11-16",
@@ -1407,7 +1453,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516497": {
    "date": "2025-11-22",
@@ -1428,7 +1475,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516501": {
    "date": "2025-11-27",
@@ -1449,7 +1497,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516508": {
    "date": "2025-11-29",
@@ -1470,7 +1519,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516512": {
    "date": "2025-12-07",
@@ -1491,7 +1541,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516514": {
    "date": "2025-12-10",
@@ -1512,7 +1563,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516516": {
    "date": "2025-12-14",
@@ -1533,7 +1585,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516518": {
    "date": "2025-12-20",
@@ -1554,7 +1607,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6516533": {
    "date": "2025-11-27",
@@ -1575,7 +1629,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516535": {
    "date": "2025-12-03",
@@ -1596,7 +1651,8 @@
     "rank": 24,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516578": {
    "date": "2025-11-24",
@@ -1617,7 +1673,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516580": {
    "date": "2025-12-03",
@@ -1638,7 +1695,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516609": {
    "date": "2025-12-05",
@@ -1659,7 +1717,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516623": {
    "date": "2025-12-14",
@@ -1680,7 +1739,8 @@
     "rank": 2,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516663": {
    "date": "2025-11-03",
@@ -1701,7 +1761,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516827": {
    "date": "2026-01-19",
@@ -1722,7 +1783,8 @@
     "rank": 12,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516851": {
    "date": "2025-12-14",
@@ -1743,7 +1805,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516916": {
    "date": "2025-11-19",
@@ -1764,7 +1827,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516918": {
    "date": "2025-11-29",
@@ -1785,7 +1849,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516923": {
    "date": "2025-12-16",
@@ -1806,7 +1871,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516953": {
    "date": "2025-12-03",
@@ -1827,7 +1893,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6516955": {
    "date": "2025-12-14",
@@ -1848,7 +1915,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517005": {
    "date": "2025-11-07",
@@ -1869,7 +1937,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517007": {
    "date": "2025-11-11",
@@ -1890,7 +1959,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517012": {
    "date": "2025-11-14",
@@ -1911,7 +1981,8 @@
     "rank": 15,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517013": {
    "date": "2025-11-20",
@@ -1932,7 +2003,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517017": {
    "date": "2025-12-01",
@@ -1953,7 +2025,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517018": {
    "date": "2025-12-05",
@@ -1974,7 +2047,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517019": {
    "date": "2025-12-08",
@@ -1995,7 +2069,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517020": {
    "date": "2025-12-11",
@@ -2016,7 +2091,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517021": {
    "date": "2025-12-14",
@@ -2037,7 +2113,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517058": {
    "date": "2025-11-13",
@@ -2058,7 +2135,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517162": {
    "date": "2025-11-14",
@@ -2079,7 +2157,8 @@
     "rank": 7,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517164": {
    "date": "2025-11-22",
@@ -2100,7 +2179,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517171": {
    "date": "2025-12-13",
@@ -2121,7 +2201,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517299": {
    "date": "2025-11-09",
@@ -2142,7 +2223,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517395": {
    "date": "2025-11-03",
@@ -2163,7 +2245,8 @@
     "rank": 7,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517439": {
    "date": "2025-11-25",
@@ -2184,7 +2267,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517441": {
    "date": "2025-12-18",
@@ -2205,7 +2289,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517484": {
    "date": "2025-11-27",
@@ -2226,7 +2311,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517504": {
    "date": "2025-11-21",
@@ -2247,7 +2333,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517536": {
    "date": "2025-11-05",
@@ -2268,7 +2355,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517537": {
    "date": "2025-11-08",
@@ -2289,7 +2377,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517538": {
    "date": "2025-11-13",
@@ -2310,7 +2399,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517539": {
    "date": "2025-11-15",
@@ -2331,7 +2421,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517540": {
    "date": "2025-12-03",
@@ -2352,7 +2443,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517541": {
    "date": "2025-12-06",
@@ -2373,7 +2465,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517542": {
    "date": "2025-12-11",
@@ -2394,7 +2487,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517543": {
    "date": "2025-12-13",
@@ -2415,7 +2509,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517570": {
    "date": "2025-11-11",
@@ -2436,7 +2531,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517641": {
    "date": "2025-12-02",
@@ -2457,7 +2553,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517710": {
    "date": "2025-12-31",
@@ -2478,7 +2575,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517711": {
    "date": "2026-01-04",
@@ -2499,7 +2597,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517712": {
    "date": "2026-01-07",
@@ -2520,7 +2619,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517713": {
    "date": "2026-01-10",
@@ -2541,7 +2641,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517714": {
    "date": "2026-01-17",
@@ -2562,7 +2663,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517715": {
    "date": "2026-01-21",
@@ -2583,7 +2685,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517716": {
    "date": "2026-01-25",
@@ -2604,7 +2707,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517717": {
    "date": "2026-01-29",
@@ -2625,7 +2729,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517718": {
    "date": "2026-02-01",
@@ -2646,7 +2751,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517719": {
    "date": "2026-02-04",
@@ -2667,7 +2773,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517720": {
    "date": "2026-02-07",
@@ -2688,7 +2795,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517721": {
    "date": "2026-02-10",
@@ -2709,7 +2817,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517722": {
    "date": "2026-02-15",
@@ -2730,7 +2839,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517723": {
    "date": "2026-02-18",
@@ -2751,7 +2861,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517724": {
    "date": "2026-02-21",
@@ -2772,7 +2883,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517725": {
    "date": "2026-02-23",
@@ -2793,7 +2905,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517726": {
    "date": "2026-03-01",
@@ -2814,7 +2927,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517775": {
    "date": "2025-11-26",
@@ -2835,7 +2949,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517829": {
    "date": "2025-11-07",
@@ -2856,7 +2971,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517840": {
    "date": "2025-12-09",
@@ -2877,7 +2993,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517866": {
    "date": "2025-12-21",
@@ -2898,7 +3015,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517867": {
    "date": "2026-01-01",
@@ -2919,7 +3037,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517868": {
    "date": "2026-01-07",
@@ -2940,7 +3059,8 @@
     "rank": 17,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517869": {
    "date": "2026-01-11",
@@ -2961,7 +3081,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517870": {
    "date": "2026-01-14",
@@ -2982,7 +3103,8 @@
     "rank": 10,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517871": {
    "date": "2026-01-18",
@@ -3003,7 +3125,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517872": {
    "date": "2026-01-21",
@@ -3024,7 +3147,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517873": {
    "date": "2026-01-24",
@@ -3045,7 +3169,8 @@
     "rank": 22,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517874": {
    "date": "2026-01-27",
@@ -3066,7 +3191,8 @@
     "rank": 22,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517875": {
    "date": "2026-02-01",
@@ -3087,7 +3213,8 @@
     "rank": 14,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517876": {
    "date": "2026-02-07",
@@ -3108,7 +3235,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517877": {
    "date": "2026-02-11",
@@ -3129,7 +3257,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517878": {
    "date": "2026-02-15",
@@ -3150,7 +3279,8 @@
     "rank": 19,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517879": {
    "date": "2026-02-21",
@@ -3171,7 +3301,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517880": {
    "date": "2026-02-25",
@@ -3192,7 +3323,8 @@
     "rank": 17,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517881": {
    "date": "2026-03-01",
@@ -3213,7 +3345,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6517919": {
    "date": "2025-11-27",
@@ -3234,7 +3367,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6517982": {
    "date": "2025-11-16",
@@ -3255,7 +3389,8 @@
     "rank": 17,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518038": {
    "date": "2025-12-07",
@@ -3276,7 +3411,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518088": {
    "date": "2025-11-09",
@@ -3297,7 +3433,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518220": {
    "date": "2025-11-20",
@@ -3318,7 +3455,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518231": {
    "date": "2025-12-10",
@@ -3339,7 +3477,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518232": {
    "date": "2025-11-29",
@@ -3360,7 +3499,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518256": {
    "date": "2025-11-06",
@@ -3381,7 +3521,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518259": {
    "date": "2025-11-23",
@@ -3402,7 +3543,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518261": {
    "date": "2025-11-29",
@@ -3423,7 +3565,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518262": {
    "date": "2025-12-07",
@@ -3444,7 +3587,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518263": {
    "date": "2025-12-13",
@@ -3465,7 +3609,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518518": {
    "date": "2025-11-04",
@@ -3486,7 +3631,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518519": {
    "date": "2025-11-11",
@@ -3507,7 +3653,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518520": {
    "date": "2025-11-20",
@@ -3528,7 +3675,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518522": {
    "date": "2025-11-23",
@@ -3549,7 +3697,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518528": {
    "date": "2025-12-07",
@@ -3570,7 +3719,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518531": {
    "date": "2025-12-16",
@@ -3591,7 +3741,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518532": {
    "date": "2025-12-21",
@@ -3612,7 +3763,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518533": {
    "date": "2026-01-03",
@@ -3633,7 +3785,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518534": {
    "date": "2026-01-07",
@@ -3654,7 +3807,8 @@
     "rank": 11,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518535": {
    "date": "2026-01-10",
@@ -3675,7 +3829,8 @@
     "rank": 17,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518536": {
    "date": "2026-01-14",
@@ -3696,7 +3851,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518537": {
    "date": "2026-01-21",
@@ -3717,7 +3873,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518538": {
    "date": "2026-01-24",
@@ -3738,7 +3895,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518539": {
    "date": "2026-02-01",
@@ -3759,7 +3917,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518540": {
    "date": "2026-02-04",
@@ -3780,7 +3939,8 @@
     "rank": 15,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518541": {
    "date": "2026-02-07",
@@ -3801,7 +3961,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518542": {
    "date": "2026-02-10",
@@ -3822,7 +3983,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518543": {
    "date": "2026-02-14",
@@ -3843,7 +4005,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518544": {
    "date": "2026-02-17",
@@ -3864,7 +4027,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518545": {
    "date": "2026-02-21",
@@ -3885,7 +4049,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518546": {
    "date": "2026-02-25",
@@ -3906,7 +4071,8 @@
     "rank": 11,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518547": {
    "date": "2025-11-12",
@@ -3927,7 +4093,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518548": {
    "date": "2025-11-16",
@@ -3948,7 +4115,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518549": {
    "date": "2025-11-18",
@@ -3969,7 +4137,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518550": {
    "date": "2025-11-22",
@@ -3990,7 +4159,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518551": {
    "date": "2025-11-24",
@@ -4011,7 +4181,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518552": {
    "date": "2025-11-25",
@@ -4032,7 +4203,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518553": {
    "date": "2025-11-30",
@@ -4053,7 +4225,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518554": {
    "date": "2025-12-16",
@@ -4074,7 +4247,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518555": {
    "date": "2025-12-21",
@@ -4095,7 +4269,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518556": {
    "date": "2025-12-31",
@@ -4116,7 +4291,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518557": {
    "date": "2026-01-08",
@@ -4137,7 +4313,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518558": {
    "date": "2026-01-11",
@@ -4158,7 +4335,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518559": {
    "date": "2026-01-14",
@@ -4179,7 +4357,8 @@
     "rank": 19,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518560": {
    "date": "2026-01-18",
@@ -4200,7 +4379,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518561": {
    "date": "2026-01-25",
@@ -4221,7 +4401,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518562": {
    "date": "2026-02-01",
@@ -4242,7 +4423,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518563": {
    "date": "2026-02-04",
@@ -4263,7 +4445,8 @@
     "rank": 20,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518564": {
    "date": "2026-02-08",
@@ -4284,7 +4467,8 @@
     "rank": 14,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518565": {
    "date": "2026-02-11",
@@ -4305,7 +4489,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518566": {
    "date": "2026-02-14",
@@ -4326,7 +4511,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518567": {
    "date": "2026-02-17",
@@ -4347,7 +4533,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518568": {
    "date": "2026-02-21",
@@ -4368,7 +4555,8 @@
     "rank": 20,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518569": {
    "date": "2026-02-24",
@@ -4389,7 +4577,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518570": {
    "date": "2026-02-28",
@@ -4410,7 +4599,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6518694": {
    "date": "2025-12-04",
@@ -4431,7 +4621,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518721": {
    "date": "2025-11-28",
@@ -4452,7 +4643,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518773": {
    "date": "2025-12-13",
@@ -4473,7 +4665,8 @@
     "rank": 9,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518798": {
    "date": "2025-11-17",
@@ -4494,7 +4687,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518976": {
    "date": "2025-12-06",
@@ -4515,7 +4709,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6518994": {
    "date": "2025-11-25",
@@ -4536,7 +4731,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519000": {
    "date": "2025-11-15",
@@ -4557,7 +4753,8 @@
     "rank": 24,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519014": {
    "date": "2025-11-08",
@@ -4578,7 +4775,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519017": {
    "date": "2025-11-04",
@@ -4599,7 +4797,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519018": {
    "date": "2025-11-11",
@@ -4620,7 +4819,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519019": {
    "date": "2025-12-07",
@@ -4641,7 +4841,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519021": {
    "date": "2025-12-31",
@@ -4662,7 +4863,8 @@
     "rank": 10,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519023": {
    "date": "2026-01-10",
@@ -4683,7 +4885,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519025": {
    "date": "2026-02-07",
@@ -4704,7 +4907,8 @@
     "rank": 18,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519026": {
    "date": "2026-01-17",
@@ -4725,7 +4929,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519027": {
    "date": "2026-02-24",
@@ -4746,7 +4951,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519029": {
    "date": "2026-02-18",
@@ -4767,7 +4973,8 @@
     "rank": 12,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519030": {
    "date": "2026-03-01",
@@ -4788,7 +4995,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519037": {
    "date": "2025-11-20",
@@ -4809,7 +5017,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519067": {
    "date": "2025-12-06",
@@ -4830,7 +5039,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519079": {
    "date": "2025-12-15",
@@ -4851,7 +5061,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519121": {
    "date": "2025-12-16",
@@ -4872,7 +5083,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519132": {
    "date": "2025-11-05",
@@ -4893,7 +5105,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519210": {
    "date": "2025-11-06",
@@ -4914,7 +5127,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519211": {
    "date": "2025-11-12",
@@ -4935,7 +5149,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519212": {
    "date": "2026-03-01",
@@ -4956,7 +5171,8 @@
     "rank": 18,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519213": {
    "date": "2026-02-12",
@@ -4977,7 +5193,8 @@
     "rank": 17,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519214": {
    "date": "2025-11-28",
@@ -4998,7 +5215,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519215": {
    "date": "2025-11-23",
@@ -5019,7 +5237,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519216": {
    "date": "2025-12-03",
@@ -5040,7 +5259,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519217": {
    "date": "2025-12-14",
@@ -5061,7 +5281,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519218": {
    "date": "2025-12-31",
@@ -5082,7 +5303,8 @@
     "rank": 8,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519219": {
    "date": "2026-01-03",
@@ -5103,7 +5325,8 @@
     "rank": 8,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519220": {
    "date": "2026-01-07",
@@ -5124,7 +5347,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519221": {
    "date": "2026-01-11",
@@ -5145,7 +5369,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519222": {
    "date": "2026-01-17",
@@ -5166,7 +5391,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519223": {
    "date": "2026-01-24",
@@ -5187,7 +5413,8 @@
     "rank": 9,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519224": {
    "date": "2026-01-29",
@@ -5208,7 +5435,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519225": {
    "date": "2026-02-04",
@@ -5229,7 +5457,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519226": {
    "date": "2026-02-01",
@@ -5250,7 +5479,8 @@
     "rank": 12,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519227": {
    "date": "2026-02-22",
@@ -5271,7 +5501,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519270": {
    "date": "2025-11-29",
@@ -5292,7 +5523,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519306": {
    "date": "2025-11-08",
@@ -5313,7 +5545,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519307": {
    "date": "2025-11-13",
@@ -5334,7 +5567,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519308": {
    "date": "2025-11-16",
@@ -5355,7 +5589,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519309": {
    "date": "2025-11-29",
@@ -5376,7 +5611,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519310": {
    "date": "2025-12-14",
@@ -5397,7 +5633,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519311": {
    "date": "2025-12-31",
@@ -5418,7 +5655,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519312": {
    "date": "2026-01-03",
@@ -5439,7 +5677,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519313": {
    "date": "2026-01-07",
@@ -5460,7 +5699,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519314": {
    "date": "2026-01-17",
@@ -5481,7 +5721,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519315": {
    "date": "2026-01-28",
@@ -5502,7 +5743,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519316": {
    "date": "2026-02-04",
@@ -5523,7 +5765,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519317": {
    "date": "2026-02-07",
@@ -5544,7 +5787,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519318": {
    "date": "2026-02-11",
@@ -5565,7 +5809,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519319": {
    "date": "2026-02-14",
@@ -5586,7 +5831,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519320": {
    "date": "2026-02-18",
@@ -5607,7 +5853,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519321": {
    "date": "2026-02-21",
@@ -5628,7 +5875,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519322": {
    "date": "2026-02-25",
@@ -5649,7 +5897,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519323": {
    "date": "2026-03-01",
@@ -5670,7 +5919,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519425": {
    "date": "2025-11-03",
@@ -5691,7 +5941,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519426": {
    "date": "2025-11-07",
@@ -5712,7 +5963,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519427": {
    "date": "2025-11-21",
@@ -5733,7 +5985,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519428": {
    "date": "2025-11-23",
@@ -5754,7 +6007,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519429": {
    "date": "2025-11-18",
@@ -5775,7 +6029,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519430": {
    "date": "2025-12-10",
@@ -5796,7 +6051,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519431": {
    "date": "2025-12-14",
@@ -5817,7 +6073,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519433": {
    "date": "2025-12-22",
@@ -5838,7 +6095,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519436": {
    "date": "2026-01-07",
@@ -5859,7 +6117,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519437": {
    "date": "2026-01-14",
@@ -5880,7 +6139,8 @@
     "rank": 18,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519441": {
    "date": "2026-01-24",
@@ -5901,7 +6161,8 @@
     "rank": 19,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519442": {
    "date": "2026-01-31",
@@ -5922,7 +6183,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519443": {
    "date": "2026-02-04",
@@ -5943,7 +6205,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519444": {
    "date": "2026-02-07",
@@ -5964,7 +6227,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519445": {
    "date": "2026-02-16",
@@ -5985,7 +6249,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519447": {
    "date": "2026-02-21",
@@ -6006,7 +6271,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519448": {
    "date": "2026-02-28",
@@ -6027,7 +6293,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519496": {
    "date": "2025-11-06",
@@ -6048,7 +6315,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519498": {
    "date": "2025-11-11",
@@ -6069,7 +6337,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519502": {
    "date": "2025-11-19",
@@ -6090,7 +6359,8 @@
     "rank": 20,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519511": {
    "date": "2025-11-28",
@@ -6111,7 +6381,8 @@
     "rank": 24,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519512": {
    "date": "2025-11-09",
@@ -6132,7 +6403,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519517": {
    "date": "2025-12-06",
@@ -6153,7 +6425,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519520": {
    "date": "2025-12-09",
@@ -6174,7 +6447,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519522": {
    "date": "2025-12-31",
@@ -6195,7 +6469,8 @@
     "rank": 22,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519526": {
    "date": "2026-01-03",
@@ -6216,7 +6491,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519528": {
    "date": "2026-01-14",
@@ -6237,7 +6513,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519531": {
    "date": "2026-01-18",
@@ -6258,7 +6535,8 @@
     "rank": 19,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519538": {
    "date": "2026-01-28",
@@ -6279,7 +6557,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519548": {
    "date": "2026-02-01",
@@ -6300,7 +6579,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519553": {
    "date": "2026-02-07",
@@ -6321,7 +6601,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519561": {
    "date": "2025-12-21",
@@ -6342,7 +6623,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519562": {
    "date": "2026-02-14",
@@ -6363,7 +6645,8 @@
     "rank": 16,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519565": {
    "date": "2026-01-04",
@@ -6384,7 +6667,8 @@
     "rank": 22,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519567": {
    "date": "2026-02-25",
@@ -6405,7 +6689,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519570": {
    "date": "2026-02-28",
@@ -6426,7 +6711,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519595": {
    "date": "2026-01-24",
@@ -6447,7 +6733,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519597": {
    "date": "2026-01-28",
@@ -6468,7 +6755,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519601": {
    "date": "2026-02-10",
@@ -6489,7 +6777,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519609": {
    "date": "2026-01-31",
@@ -6510,7 +6799,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519707": {
    "date": "2025-11-06",
@@ -6531,7 +6821,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519710": {
    "date": "2025-12-07",
@@ -6552,7 +6843,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519778": {
    "date": "2025-11-03",
@@ -6573,7 +6865,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519779": {
    "date": "2025-11-25",
@@ -6594,7 +6887,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519780": {
    "date": "2025-12-12",
@@ -6615,7 +6909,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519781": {
    "date": "2025-12-17",
@@ -6636,7 +6931,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519782": {
    "date": "2025-12-21",
@@ -6657,7 +6953,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519783": {
    "date": "2026-02-18",
@@ -6678,7 +6975,8 @@
     "rank": 15,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519784": {
    "date": "2025-12-31",
@@ -6699,7 +6997,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519785": {
    "date": "2026-01-03",
@@ -6720,7 +7019,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519787": {
    "date": "2026-01-13",
@@ -6741,7 +7041,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519788": {
    "date": "2026-01-21",
@@ -6762,7 +7063,8 @@
     "rank": 19,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519789": {
    "date": "2026-02-10",
@@ -6783,7 +7085,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519790": {
    "date": "2026-02-25",
@@ -6804,7 +7107,8 @@
     "rank": 20,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6519844": {
    "date": "2025-12-03",
@@ -6825,7 +7129,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519850": {
    "date": "2025-12-18",
@@ -6846,7 +7151,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519874": {
    "date": "2025-11-09",
@@ -6867,7 +7173,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519887": {
    "date": "2025-11-28",
@@ -6888,7 +7195,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519888": {
    "date": "2025-11-16",
@@ -6909,7 +7217,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6519996": {
    "date": "2025-11-22",
@@ -6930,7 +7239,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6520144": {
    "date": "2026-01-04",
@@ -6951,7 +7261,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6520145": {
    "date": "2026-01-11",
@@ -6972,7 +7283,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6520146": {
    "date": "2026-01-20",
@@ -6993,7 +7305,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6520147": {
    "date": "2026-02-14",
@@ -7014,7 +7327,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6520148": {
    "date": "2026-02-04",
@@ -7035,7 +7349,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6529281": {
    "date": "2025-12-15",
@@ -7056,7 +7371,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6529290": {
    "date": "2025-11-21",
@@ -7077,7 +7393,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6529291": {
    "date": "2025-11-24",
@@ -7098,7 +7415,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6529292": {
    "date": "2025-11-26",
@@ -7119,7 +7437,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6529293": {
    "date": "2025-11-28",
@@ -7140,7 +7459,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6529294": {
    "date": "2025-12-03",
@@ -7161,7 +7481,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6529295": {
    "date": "2025-12-07",
@@ -7182,7 +7503,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6529296": {
    "date": "2025-12-14",
@@ -7203,7 +7525,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6529297": {
    "date": "2026-02-15",
@@ -7224,7 +7547,8 @@
     "rank": 12,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6529298": {
    "date": "2025-12-20",
@@ -7245,7 +7569,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6529299": {
    "date": "2026-01-10",
@@ -7266,7 +7591,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6529300": {
    "date": "2026-01-21",
@@ -7287,7 +7613,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6530325": {
    "date": "2025-11-16",
@@ -7308,7 +7635,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6530632": {
    "date": "2025-11-09",
@@ -7329,7 +7657,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6530799": {
    "date": "2025-11-30",
@@ -7350,7 +7679,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6530800": {
    "date": "2026-01-17",
@@ -7371,7 +7701,8 @@
     "rank": 18,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6530801": {
    "date": "2026-01-27",
@@ -7392,7 +7723,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6530802": {
    "date": "2026-02-21",
@@ -7413,7 +7745,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6530883": {
    "date": "2025-11-16",
@@ -7434,7 +7767,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6533766": {
    "date": "2025-11-26",
@@ -7455,7 +7789,8 @@
     "rank": 21,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6533769": {
    "date": "2025-11-30",
@@ -7476,7 +7811,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6533774": {
    "date": "2025-11-30",
@@ -7497,7 +7833,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6533780": {
    "date": "2025-11-29",
@@ -7518,7 +7855,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6534591": {
    "date": "2026-01-06",
@@ -7539,7 +7877,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6534663": {
    "date": "2026-03-19",
@@ -7560,7 +7899,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": true
   },
   "6534665": {
    "date": "2026-03-21",
@@ -7581,7 +7921,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": true
   },
   "6534670": {
    "date": "2026-03-21",
@@ -7602,7 +7943,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": true
   },
   "6534677": {
    "date": "2026-03-20",
@@ -7623,7 +7965,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": true
   },
   "6534681": {
    "date": "2026-03-21",
@@ -7644,7 +7987,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": true
   },
   "6534684": {
    "date": "2026-03-20",
@@ -7665,7 +8009,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": true
   },
   "6534686": {
    "date": "2026-03-20",
@@ -7686,7 +8031,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": true
   },
   "6534691": {
    "date": "2026-03-21",
@@ -7707,7 +8053,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": true
   },
   "6534702": {
    "date": "2026-03-22",
@@ -7728,7 +8075,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": true
   },
   "6534704": {
    "date": "2026-03-23",
@@ -7749,7 +8097,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": true
   },
   "6534706": {
    "date": "2026-03-22",
@@ -7770,7 +8119,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": true
   },
   "6534707": {
    "date": "2026-03-22",
@@ -7791,7 +8141,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": true
   },
   "6534709": {
    "date": "2026-03-23",
@@ -7812,7 +8163,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": true
   },
   "6534715": {
    "date": "2026-03-28",
@@ -7833,7 +8185,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": true
   },
   "6534721": {
    "date": "2026-03-30",
@@ -7854,7 +8207,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": true
   },
   "6593273": {
    "date": "2026-03-08",
@@ -7875,7 +8229,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": true
   },
   "6593274": {
    "date": "2026-03-07",
@@ -7896,7 +8251,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": true
   },
   "6593275": {
    "date": "2026-03-07",
@@ -7917,7 +8273,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": true
   },
   "6593276": {
    "date": "2026-03-06",
@@ -7938,7 +8295,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": true
   },
   "6593277": {
    "date": "2026-03-06",
@@ -7959,7 +8317,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": true
   },
   "6593278": {
    "date": "2026-03-06",
@@ -7980,7 +8339,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": true
   },
   "6593279": {
    "date": "2026-03-06",
@@ -8001,7 +8361,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": true
   },
   "6593280": {
    "date": "2026-03-05",
@@ -8022,7 +8383,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": true
   },
   "6593281": {
    "date": "2026-03-05",
@@ -8043,7 +8405,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": true
   },
   "6593282": {
    "date": "2026-03-05",
@@ -8064,7 +8427,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": true
   },
   "6593283": {
    "date": "2026-03-05",
@@ -8085,7 +8449,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": true
   },
   "6593284": {
    "date": "2026-03-04",
@@ -8106,7 +8471,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": true
   },
   "6593285": {
    "date": "2026-03-04",
@@ -8127,7 +8493,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": true
   },
   "6593286": {
    "date": "2026-03-04",
@@ -8148,7 +8515,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": true
   },
   "6593287": {
    "date": "2026-03-04",
@@ -8169,7 +8537,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": true
   },
   "6595191": {
    "date": "2026-04-01",
@@ -8190,7 +8559,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6595192": {
    "date": "2026-03-30",
@@ -8211,7 +8581,8 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": true
+   "conferenceGame": true,
+   "bracket": false
   },
   "6595194": {
    "date": "2026-03-26",
@@ -8232,7 +8603,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6595195": {
    "date": "2026-03-26",
@@ -8253,7 +8625,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6595198": {
    "date": "2026-03-23",
@@ -8274,7 +8647,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6595201": {
    "date": "2026-03-22",
@@ -8295,7 +8669,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6595203": {
    "date": "2026-03-22",
@@ -8316,7 +8691,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6595206": {
    "date": "2026-03-19",
@@ -8337,7 +8713,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6595213": {
    "date": "2026-03-19",
@@ -8358,7 +8735,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6595217": {
    "date": "2026-03-19",
@@ -8379,7 +8757,8 @@
     "rank": null,
     "inConference": false
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   },
   "6595218": {
    "date": "2026-03-19",
@@ -8400,8 +8779,9 @@
     "rank": null,
     "inConference": true
    },
-   "conferenceGame": false
+   "conferenceGame": false,
+   "bracket": false
   }
  },
- "indexVersion": 2
+ "indexVersion": 3
 }
