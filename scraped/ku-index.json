@@ -420,5 +420,7988 @@
    "away": "Troy",
    "boxscored": true
   }
- }
+ },
+ "big12Games": {
+  "6515228": {
+   "date": "2025-11-03",
+   "season": "2025",
+   "home": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 67,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Coppin St.",
+    "seo": "coppin-st",
+    "score": 53,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6515255": {
+   "date": "2025-11-09",
+   "season": "2025",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 88,
+    "winner": true,
+    "rank": 17,
+    "inConference": true
+   },
+   "away": {
+    "name": "Sam Houston",
+    "seo": "sam-houston-st",
+    "score": 46,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6515381": {
+   "date": "2025-12-03",
+   "season": "2025",
+   "home": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 112,
+    "winner": true,
+    "rank": 14,
+    "inConference": true
+   },
+   "away": {
+    "name": "Southeastern La.",
+    "seo": "southeastern-la",
+    "score": 47,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6515413": {
+   "date": "2025-11-05",
+   "season": "2025",
+   "home": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 74,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Kansas City",
+    "seo": "umkc",
+    "score": 64,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6515414": {
+   "date": "2025-11-09",
+   "season": "2025",
+   "home": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 75,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Northwestern St.",
+    "seo": "northwestern-st",
+    "score": 60,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6515415": {
+   "date": "2025-11-12",
+   "season": "2025",
+   "home": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 65,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Lamar University",
+    "seo": "lamar",
+    "score": 54,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6515416": {
+   "date": "2025-11-15",
+   "season": "2025",
+   "home": {
+    "name": "Missouri",
+    "seo": "missouri",
+    "score": 77,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 82,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6515417": {
+   "date": "2025-11-19",
+   "season": "2025",
+   "home": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 63,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Minnesota",
+    "seo": "minnesota",
+    "score": 57,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6515418": {
+   "date": "2025-11-23",
+   "season": "2025",
+   "home": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 86,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Oral Roberts",
+    "seo": "oral-roberts",
+    "score": 75,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6515419": {
+   "date": "2025-11-28",
+   "season": "2025",
+   "home": {
+    "name": "Georgia",
+    "seo": "georgia",
+    "score": 68,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 62,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6515420": {
+   "date": "2025-11-29",
+   "season": "2025",
+   "home": {
+    "name": "Dayton",
+    "seo": "dayton",
+    "score": 59,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 58,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6515421": {
+   "date": "2025-12-03",
+   "season": "2025",
+   "home": {
+    "name": "Northwestern",
+    "seo": "northwestern",
+    "score": 62,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 74,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6515422": {
+   "date": "2025-12-07",
+   "season": "2025",
+   "home": {
+    "name": "Missouri St.",
+    "seo": "missouri-st",
+    "score": 70,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 73,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6515423": {
+   "date": "2025-12-14",
+   "season": "2025",
+   "home": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 77,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Denver",
+    "seo": "denver",
+    "score": 38,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6515424": {
+   "date": "2025-12-17",
+   "season": "2025",
+   "home": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 107,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Haskell",
+    "seo": "haskell",
+    "score": 39,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6515542": {
+   "date": "2025-11-03",
+   "season": "2025",
+   "home": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 109,
+    "winner": true,
+    "rank": 22,
+    "inConference": true
+   },
+   "away": {
+    "name": "LSU New Orleans ",
+    "seo": "new-orleans",
+    "score": 48,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6515566": {
+   "date": "2025-11-03",
+   "season": "2025",
+   "home": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 75,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Bethune-Cookman",
+    "seo": "bethune-cookman",
+    "score": 36,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6515594": {
+   "date": "2025-11-22",
+   "season": "2025",
+   "home": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 79,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Weber St.",
+    "seo": "weber-st",
+    "score": 62,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6515595": {
+   "date": "2025-11-26",
+   "season": "2025",
+   "home": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 65,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Weber St.",
+    "seo": "weber-st",
+    "score": 52,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6515616": {
+   "date": "2025-11-10",
+   "season": "2025",
+   "home": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 89,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Lamar University",
+    "seo": "lamar",
+    "score": 61,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6515711": {
+   "date": "2025-11-18",
+   "season": "2025",
+   "home": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 81,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Troy",
+    "seo": "troy",
+    "score": 59,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6515841": {
+   "date": "2025-12-16",
+   "season": "2025",
+   "home": {
+    "name": "Gonzaga",
+    "seo": "gonzaga",
+    "score": 66,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 68,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6515941": {
+   "date": "2025-11-28",
+   "season": "2025",
+   "home": {
+    "name": "North Carolina",
+    "seo": "north-carolina",
+    "score": 85,
+    "winner": true,
+    "rank": 12,
+    "inConference": false
+   },
+   "away": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 73,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6516025": {
+   "date": "2025-11-03",
+   "season": "2025",
+   "home": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 85,
+    "winner": true,
+    "rank": 14,
+    "inConference": true
+   },
+   "away": {
+    "name": "St. Thomas (MN)",
+    "seo": "st-thomas-mn",
+    "score": 36,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516026": {
+   "date": "2025-11-05",
+   "season": "2025",
+   "home": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 85,
+    "winner": true,
+    "rank": 14,
+    "inConference": true
+   },
+   "away": {
+    "name": "Southern U.",
+    "seo": "southern-u",
+    "score": 58,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516027": {
+   "date": "2025-11-09",
+   "season": "2025",
+   "home": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 99,
+    "winner": true,
+    "rank": 14,
+    "inConference": true
+   },
+   "away": {
+    "name": "Sacred Heart",
+    "seo": "sacred-heart",
+    "score": 34,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516028": {
+   "date": "2025-11-12",
+   "season": "2025",
+   "home": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 97,
+    "winner": true,
+    "rank": 16,
+    "inConference": true
+   },
+   "away": {
+    "name": "Valparaiso",
+    "seo": "valparaiso",
+    "score": 50,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516029": {
+   "date": "2025-11-16",
+   "season": "2025",
+   "home": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 98,
+    "winner": true,
+    "rank": 16,
+    "inConference": true
+   },
+   "away": {
+    "name": "Norfolk St.",
+    "seo": "norfolk-st",
+    "score": 52,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516030": {
+   "date": "2025-11-20",
+   "season": "2025",
+   "home": {
+    "name": "Drake",
+    "seo": "drake",
+    "score": 60,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 87,
+    "winner": true,
+    "rank": 16,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6516031": {
+   "date": "2025-11-23",
+   "season": "2025",
+   "home": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 112,
+    "winner": true,
+    "rank": 16,
+    "inConference": true
+   },
+   "away": {
+    "name": "Mercyhurst",
+    "seo": "mercyhurst",
+    "score": 62,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516032": {
+   "date": "2025-11-28",
+   "season": "2025",
+   "home": {
+    "name": "Marquette",
+    "seo": "marquette",
+    "score": 73,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 84,
+    "winner": true,
+    "rank": 10,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6516034": {
+   "date": "2025-12-07",
+   "season": "2025",
+   "home": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 105,
+    "winner": true,
+    "rank": 10,
+    "inConference": true
+   },
+   "away": {
+    "name": "NIU",
+    "seo": "northern-ill",
+    "score": 52,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516035": {
+   "date": "2025-12-10",
+   "season": "2025",
+   "home": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 74,
+    "winner": true,
+    "rank": 10,
+    "inConference": true
+   },
+   "away": {
+    "name": "Iowa",
+    "seo": "iowa",
+    "score": 69,
+    "winner": false,
+    "rank": 11,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516036": {
+   "date": "2025-12-14",
+   "season": "2025",
+   "home": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 81,
+    "winner": true,
+    "rank": 10,
+    "inConference": true
+   },
+   "away": {
+    "name": "UNI",
+    "seo": "uni",
+    "score": 53,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516051": {
+   "date": "2025-11-24",
+   "season": "2025",
+   "home": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 98,
+    "winner": true,
+    "rank": 24,
+    "inConference": true
+   },
+   "away": {
+    "name": "A&M-Corpus Christi",
+    "seo": "am-corpus-chris",
+    "score": 45,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516102": {
+   "date": "2025-11-23",
+   "season": "2025",
+   "home": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 67,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "High Point",
+    "seo": "high-point",
+    "score": 57,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516128": {
+   "date": "2025-11-27",
+   "season": "2025",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 68,
+    "winner": true,
+    "rank": 8,
+    "inConference": true
+   },
+   "away": {
+    "name": "Richmond",
+    "seo": "richmond",
+    "score": 52,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516219": {
+   "date": "2025-11-06",
+   "season": "2025",
+   "home": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 62,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "UC Riverside",
+    "seo": "uc-riverside",
+    "score": 59,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516225": {
+   "date": "2025-12-17",
+   "season": "2025",
+   "home": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 61,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "UC Riverside",
+    "seo": "uc-riverside",
+    "score": 52,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516273": {
+   "date": "2025-11-28",
+   "season": "2025",
+   "home": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 59,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Little Rock",
+    "seo": "ualr",
+    "score": 41,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516303": {
+   "date": "2025-11-20",
+   "season": "2025",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 80,
+    "winner": true,
+    "rank": 17,
+    "inConference": true
+   },
+   "away": {
+    "name": "Tarleton St.",
+    "seo": "tarleton-st",
+    "score": 32,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516326": {
+   "date": "2025-11-16",
+   "season": "2025",
+   "home": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 80,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Arkansas",
+    "seo": "arkansas",
+    "score": 68,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516455": {
+   "date": "2025-11-20",
+   "season": "2025",
+   "home": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 52,
+    "winner": false,
+    "rank": 7,
+    "inConference": true
+   },
+   "away": {
+    "name": "Iowa",
+    "seo": "iowa",
+    "score": 57,
+    "winner": true,
+    "rank": 21,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516487": {
+   "date": "2025-11-03",
+   "season": "2025",
+   "home": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 100,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Omaha",
+    "seo": "neb-omaha",
+    "score": 35,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516491": {
+   "date": "2025-11-08",
+   "season": "2025",
+   "home": {
+    "name": "SMU",
+    "seo": "smu",
+    "score": 44,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 46,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6516493": {
+   "date": "2025-11-13",
+   "season": "2025",
+   "home": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 71,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "South Dakota",
+    "seo": "south-dakota",
+    "score": 72,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516494": {
+   "date": "2025-11-16",
+   "season": "2025",
+   "home": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 72,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Texas A&M",
+    "seo": "texas-am",
+    "score": 77,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516497": {
+   "date": "2025-11-22",
+   "season": "2025",
+   "home": {
+    "name": "Green Bay",
+    "seo": "green-bay",
+    "score": 47,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 44,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6516501": {
+   "date": "2025-11-27",
+   "season": "2025",
+   "home": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 95,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Columbia",
+    "seo": "columbia",
+    "score": 92,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516508": {
+   "date": "2025-11-29",
+   "season": "2025",
+   "home": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 70,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "South Dakota St.",
+    "seo": "south-dakota-st",
+    "score": 82,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516512": {
+   "date": "2025-12-07",
+   "season": "2025",
+   "home": {
+    "name": "Ole Miss",
+    "seo": "ole-miss",
+    "score": 60,
+    "winner": false,
+    "rank": 13,
+    "inConference": false
+   },
+   "away": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 61,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6516514": {
+   "date": "2025-12-10",
+   "season": "2025",
+   "home": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 53,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "San Diego St.",
+    "seo": "san-diego-st",
+    "score": 64,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516516": {
+   "date": "2025-12-14",
+   "season": "2025",
+   "home": {
+    "name": "Creighton",
+    "seo": "creighton",
+    "score": 71,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 75,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6516518": {
+   "date": "2025-12-20",
+   "season": "2025",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 77,
+    "winner": true,
+    "rank": 9,
+    "inConference": true
+   },
+   "away": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 55,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6516533": {
+   "date": "2025-11-27",
+   "season": "2025",
+   "home": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 67,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "North Texas",
+    "seo": "north-texas",
+    "score": 47,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516535": {
+   "date": "2025-12-03",
+   "season": "2025",
+   "home": {
+    "name": "North Texas",
+    "seo": "north-texas",
+    "score": 55,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 73,
+    "winner": true,
+    "rank": 24,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6516578": {
+   "date": "2025-11-24",
+   "season": "2025",
+   "home": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 83,
+    "winner": true,
+    "rank": 21,
+    "inConference": true
+   },
+   "away": {
+    "name": "McNeese",
+    "seo": "mcneese",
+    "score": 63,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516580": {
+   "date": "2025-12-03",
+   "season": "2025",
+   "home": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 83,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Wichita St.",
+    "seo": "wichita-st",
+    "score": 43,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516609": {
+   "date": "2025-12-05",
+   "season": "2025",
+   "home": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 57,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "McNeese",
+    "seo": "mcneese",
+    "score": 47,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516623": {
+   "date": "2025-12-14",
+   "season": "2025",
+   "home": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 54,
+    "winner": false,
+    "rank": 13,
+    "inConference": true
+   },
+   "away": {
+    "name": "Texas",
+    "seo": "texas",
+    "score": 89,
+    "winner": true,
+    "rank": 2,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516663": {
+   "date": "2025-11-03",
+   "season": "2025",
+   "home": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 83,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Purdue Fort Wayne",
+    "seo": "ipfw",
+    "score": 47,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516827": {
+   "date": "2026-01-19",
+   "season": "2025",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 69,
+    "winner": false,
+    "rank": 9,
+    "inConference": true
+   },
+   "away": {
+    "name": "Ohio St.",
+    "seo": "ohio-st",
+    "score": 71,
+    "winner": true,
+    "rank": 12,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516851": {
+   "date": "2025-12-14",
+   "season": "2025",
+   "home": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 67,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Abilene Christian",
+    "seo": "abilene-christian",
+    "score": 57,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516916": {
+   "date": "2025-11-19",
+   "season": "2025",
+   "home": {
+    "name": "Montana",
+    "seo": "montana",
+    "score": 69,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 70,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6516918": {
+   "date": "2025-11-29",
+   "season": "2025",
+   "home": {
+    "name": "Montana",
+    "seo": "montana",
+    "score": 38,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 78,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6516923": {
+   "date": "2025-12-16",
+   "season": "2025",
+   "home": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 60,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Montana",
+    "seo": "montana",
+    "score": 54,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516953": {
+   "date": "2025-12-03",
+   "season": "2025",
+   "home": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 71,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Miami (OH)",
+    "seo": "miami-oh",
+    "score": 75,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6516955": {
+   "date": "2025-12-14",
+   "season": "2025",
+   "home": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 75,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Miami (OH)",
+    "seo": "miami-oh",
+    "score": 55,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6517005": {
+   "date": "2025-11-07",
+   "season": "2025",
+   "home": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 88,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Kent St.",
+    "seo": "kent-st",
+    "score": 47,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6517007": {
+   "date": "2025-11-11",
+   "season": "2025",
+   "home": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 89,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Temple",
+    "seo": "temple",
+    "score": 61,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6517012": {
+   "date": "2025-11-14",
+   "season": "2025",
+   "home": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 57,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Duke",
+    "seo": "duke",
+    "score": 49,
+    "winner": false,
+    "rank": 15,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6517013": {
+   "date": "2025-11-20",
+   "season": "2025",
+   "home": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 80,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "App State",
+    "seo": "appalachian-st",
+    "score": 51,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6517017": {
+   "date": "2025-12-01",
+   "season": "2025",
+   "home": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 59,
+    "winner": false,
+    "rank": 25,
+    "inConference": true
+   },
+   "away": {
+    "name": "Villanova",
+    "seo": "villanova",
+    "score": 81,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6517018": {
+   "date": "2025-12-05",
+   "season": "2025",
+   "home": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 97,
+    "winner": true,
+    "rank": 25,
+    "inConference": true
+   },
+   "away": {
+    "name": "Mercyhurst",
+    "seo": "mercyhurst",
+    "score": 51,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6517019": {
+   "date": "2025-12-08",
+   "season": "2025",
+   "home": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 109,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Texas Southern",
+    "seo": "texas-southern",
+    "score": 40,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6517020": {
+   "date": "2025-12-11",
+   "season": "2025",
+   "home": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 82,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Georgia Tech",
+    "seo": "georgia-tech",
+    "score": 50,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6517021": {
+   "date": "2025-12-14",
+   "season": "2025",
+   "home": {
+    "name": "Texas A&M",
+    "seo": "texas-am",
+    "score": 45,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 63,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6517058": {
+   "date": "2025-11-13",
+   "season": "2025",
+   "home": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 91,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "SMU",
+    "seo": "smu",
+    "score": 60,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6517162": {
+   "date": "2025-11-14",
+   "season": "2025",
+   "home": {
+    "name": "UNLV",
+    "seo": "unlv",
+    "score": 54,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 62,
+    "winner": true,
+    "rank": 7,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6517164": {
+   "date": "2025-11-22",
+   "season": "2025",
+   "home": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 56,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "UNLV",
+    "seo": "unlv",
+    "score": 53,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6517171": {
+   "date": "2025-12-13",
+   "season": "2025",
+   "home": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 65,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "UNLV",
+    "seo": "unlv",
+    "score": 48,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6517299": {
+   "date": "2025-11-09",
+   "season": "2025",
+   "home": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 83,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Texas St.",
+    "seo": "texas-st",
+    "score": 50,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6517395": {
+   "date": "2025-11-03",
+   "season": "2025",
+   "home": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 58,
+    "winner": true,
+    "rank": 16,
+    "inConference": true
+   },
+   "away": {
+    "name": "Duke",
+    "seo": "duke",
+    "score": 52,
+    "winner": false,
+    "rank": 7,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6517439": {
+   "date": "2025-11-25",
+   "season": "2025",
+   "home": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 81,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Utah Tech",
+    "seo": "utah-tech",
+    "score": 54,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6517441": {
+   "date": "2025-12-18",
+   "season": "2025",
+   "home": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 105,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Bellarmine",
+    "seo": "bellarmine",
+    "score": 59,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6517484": {
+   "date": "2025-11-27",
+   "season": "2025",
+   "home": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 60,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Wake Forest",
+    "seo": "wake-forest",
+    "score": 65,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6517504": {
+   "date": "2025-11-21",
+   "season": "2025",
+   "home": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 87,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Northern Ariz.",
+    "seo": "northern-ariz",
+    "score": 76,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6517536": {
+   "date": "2025-11-05",
+   "season": "2025",
+   "home": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 91,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Coastal Carolina",
+    "seo": "coastal-caro",
+    "score": 57,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6517537": {
+   "date": "2025-11-08",
+   "season": "2025",
+   "home": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 70,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "San Jose St.",
+    "seo": "san-jose-st",
+    "score": 51,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6517538": {
+   "date": "2025-11-13",
+   "season": "2025",
+   "home": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 104,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Omaha",
+    "seo": "neb-omaha",
+    "score": 47,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6517539": {
+   "date": "2025-11-15",
+   "season": "2025",
+   "home": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 63,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Fresno St.",
+    "seo": "fresno-st",
+    "score": 43,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6517540": {
+   "date": "2025-12-03",
+   "season": "2025",
+   "home": {
+    "name": "Washington St.",
+    "seo": "washington-st",
+    "score": 54,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 56,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6517541": {
+   "date": "2025-12-06",
+   "season": "2025",
+   "home": {
+    "name": "Portland",
+    "seo": "portland",
+    "score": 53,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 87,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6517542": {
+   "date": "2025-12-11",
+   "season": "2025",
+   "home": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 68,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Idaho St.",
+    "seo": "idaho-st",
+    "score": 59,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6517543": {
+   "date": "2025-12-13",
+   "season": "2025",
+   "home": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 81,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "UTEP",
+    "seo": "utep",
+    "score": 46,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6517570": {
+   "date": "2025-11-11",
+   "season": "2025",
+   "home": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 75,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Utah Valley",
+    "seo": "utah-valley",
+    "score": 52,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6517641": {
+   "date": "2025-12-02",
+   "season": "2025",
+   "home": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 66,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Col. of Charleston",
+    "seo": "col-of-charleston",
+    "score": 47,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6517710": {
+   "date": "2025-12-31",
+   "season": "2025",
+   "home": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 79,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 52,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517711": {
+   "date": "2026-01-04",
+   "season": "2025",
+   "home": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 58,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 60,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517712": {
+   "date": "2026-01-07",
+   "season": "2025",
+   "home": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 62,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 71,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517713": {
+   "date": "2026-01-10",
+   "season": "2025",
+   "home": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 73,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 80,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517714": {
+   "date": "2026-01-17",
+   "season": "2025",
+   "home": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 59,
+    "winner": false,
+    "rank": 17,
+    "inConference": true
+   },
+   "away": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 65,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517715": {
+   "date": "2026-01-21",
+   "season": "2025",
+   "home": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 69,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 65,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517716": {
+   "date": "2026-01-25",
+   "season": "2025",
+   "home": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 83,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 61,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517717": {
+   "date": "2026-01-29",
+   "season": "2025",
+   "home": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 47,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 56,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517718": {
+   "date": "2026-02-01",
+   "season": "2025",
+   "home": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 67,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 74,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517719": {
+   "date": "2026-02-04",
+   "season": "2025",
+   "home": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 72,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 62,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517720": {
+   "date": "2026-02-07",
+   "season": "2025",
+   "home": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 77,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 52,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517721": {
+   "date": "2026-02-10",
+   "season": "2025",
+   "home": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 70,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 61,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517722": {
+   "date": "2026-02-15",
+   "season": "2025",
+   "home": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 76,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 72,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517723": {
+   "date": "2026-02-18",
+   "season": "2025",
+   "home": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 67,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 93,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517724": {
+   "date": "2026-02-21",
+   "season": "2025",
+   "home": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 68,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 75,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517725": {
+   "date": "2026-02-23",
+   "season": "2025",
+   "home": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 80,
+    "winner": true,
+    "rank": 18,
+    "inConference": true
+   },
+   "away": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 54,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517726": {
+   "date": "2026-03-01",
+   "season": "2025",
+   "home": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 79,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 93,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517775": {
+   "date": "2025-11-26",
+   "season": "2025",
+   "home": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 75,
+    "winner": true,
+    "rank": 15,
+    "inConference": true
+   },
+   "away": {
+    "name": "Louisiana Tech",
+    "seo": "louisiana-tech",
+    "score": 46,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6517829": {
+   "date": "2025-11-07",
+   "season": "2025",
+   "home": {
+    "name": "Penn St.",
+    "seo": "penn-st",
+    "score": 82,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 77,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6517840": {
+   "date": "2025-12-09",
+   "season": "2025",
+   "home": {
+    "name": "Penn St.",
+    "seo": "penn-st",
+    "score": 60,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 74,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6517866": {
+   "date": "2025-12-21",
+   "season": "2025",
+   "home": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 101,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 46,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517867": {
+   "date": "2026-01-01",
+   "season": "2025",
+   "home": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 72,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 79,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517868": {
+   "date": "2026-01-07",
+   "season": "2025",
+   "home": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 66,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 71,
+    "winner": true,
+    "rank": 17,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517869": {
+   "date": "2026-01-11",
+   "season": "2025",
+   "home": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 70,
+    "winner": false,
+    "rank": 11,
+    "inConference": true
+   },
+   "away": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 83,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517870": {
+   "date": "2026-01-14",
+   "season": "2025",
+   "home": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 50,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 51,
+    "winner": true,
+    "rank": 10,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517871": {
+   "date": "2026-01-18",
+   "season": "2025",
+   "home": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 76,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 84,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517872": {
+   "date": "2026-01-21",
+   "season": "2025",
+   "home": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 53,
+    "winner": true,
+    "rank": 22,
+    "inConference": true
+   },
+   "away": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 43,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517873": {
+   "date": "2026-01-24",
+   "season": "2025",
+   "home": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 77,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 91,
+    "winner": true,
+    "rank": 22,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517874": {
+   "date": "2026-01-27",
+   "season": "2025",
+   "home": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 71,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 64,
+    "winner": false,
+    "rank": 22,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517875": {
+   "date": "2026-02-01",
+   "season": "2025",
+   "home": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 70,
+    "winner": true,
+    "rank": 22,
+    "inConference": true
+   },
+   "away": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 60,
+    "winner": false,
+    "rank": 14,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517876": {
+   "date": "2026-02-07",
+   "season": "2025",
+   "home": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 87,
+    "winner": true,
+    "rank": 20,
+    "inConference": true
+   },
+   "away": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 68,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517877": {
+   "date": "2026-02-11",
+   "season": "2025",
+   "home": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 106,
+    "winner": true,
+    "rank": 19,
+    "inConference": true
+   },
+   "away": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 56,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517878": {
+   "date": "2026-02-15",
+   "season": "2025",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 59,
+    "winner": true,
+    "rank": 17,
+    "inConference": true
+   },
+   "away": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 50,
+    "winner": false,
+    "rank": 19,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517879": {
+   "date": "2026-02-21",
+   "season": "2025",
+   "home": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 72,
+    "winner": true,
+    "rank": 19,
+    "inConference": true
+   },
+   "away": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 40,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517880": {
+   "date": "2026-02-25",
+   "season": "2025",
+   "home": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 62,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 74,
+    "winner": true,
+    "rank": 17,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517881": {
+   "date": "2026-03-01",
+   "season": "2025",
+   "home": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 118,
+    "winner": true,
+    "rank": 17,
+    "inConference": true
+   },
+   "away": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 60,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6517919": {
+   "date": "2025-11-27",
+   "season": "2025",
+   "home": {
+    "name": "Virginia Tech",
+    "seo": "virginia-tech",
+    "score": 60,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 64,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6517982": {
+   "date": "2025-11-16",
+   "season": "2025",
+   "home": {
+    "name": "NC State",
+    "seo": "north-carolina-st",
+    "score": 59,
+    "winner": false,
+    "rank": 10,
+    "inConference": false
+   },
+   "away": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 69,
+    "winner": true,
+    "rank": 17,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6518038": {
+   "date": "2025-12-07",
+   "season": "2025",
+   "home": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 58,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Wyoming",
+    "seo": "wyoming",
+    "score": 46,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6518088": {
+   "date": "2025-11-09",
+   "season": "2025",
+   "home": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 112,
+    "winner": true,
+    "rank": 22,
+    "inConference": true
+   },
+   "away": {
+    "name": "Oral Roberts",
+    "seo": "oral-roberts",
+    "score": 62,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6518220": {
+   "date": "2025-11-20",
+   "season": "2025",
+   "home": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 69,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Mississippi St.",
+    "seo": "mississippi-st",
+    "score": 62,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6518231": {
+   "date": "2025-12-10",
+   "season": "2025",
+   "home": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 87,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Eastern Ky.",
+    "seo": "eastern-ky",
+    "score": 83,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6518232": {
+   "date": "2025-11-29",
+   "season": "2025",
+   "home": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 78,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "CSU Bakersfield",
+    "seo": "bakersfield",
+    "score": 63,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6518256": {
+   "date": "2025-11-06",
+   "season": "2025",
+   "home": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 84,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "New Mexico",
+    "seo": "new-mexico",
+    "score": 59,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6518259": {
+   "date": "2025-11-23",
+   "season": "2025",
+   "home": {
+    "name": "New Mexico",
+    "seo": "new-mexico",
+    "score": 57,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 82,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6518261": {
+   "date": "2025-11-29",
+   "season": "2025",
+   "home": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 63,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "New Mexico",
+    "seo": "new-mexico",
+    "score": 60,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6518262": {
+   "date": "2025-12-07",
+   "season": "2025",
+   "home": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 69,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "New Mexico",
+    "seo": "new-mexico",
+    "score": 72,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6518263": {
+   "date": "2025-12-13",
+   "season": "2025",
+   "home": {
+    "name": "New Mexico",
+    "seo": "new-mexico",
+    "score": 63,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 41,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6518518": {
+   "date": "2025-11-04",
+   "season": "2025",
+   "home": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 85,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Lehigh",
+    "seo": "lehigh",
+    "score": 88,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6518519": {
+   "date": "2025-11-11",
+   "season": "2025",
+   "home": {
+    "name": "Saint Joseph's",
+    "seo": "saint-josephs",
+    "score": 70,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 65,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6518520": {
+   "date": "2025-11-20",
+   "season": "2025",
+   "home": {
+    "name": "Ball St.",
+    "seo": "ball-st",
+    "score": 83,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 63,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6518522": {
+   "date": "2025-11-23",
+   "season": "2025",
+   "home": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 96,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Canisius",
+    "seo": "canisius",
+    "score": 57,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6518528": {
+   "date": "2025-12-07",
+   "season": "2025",
+   "home": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 70,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Xavier",
+    "seo": "xavier",
+    "score": 77,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6518531": {
+   "date": "2025-12-16",
+   "season": "2025",
+   "home": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 64,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Howard",
+    "seo": "howard",
+    "score": 66,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6518532": {
+   "date": "2025-12-21",
+   "season": "2025",
+   "home": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 63,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 91,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518533": {
+   "date": "2026-01-03",
+   "season": "2025",
+   "home": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 79,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 68,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518534": {
+   "date": "2026-01-07",
+   "season": "2025",
+   "home": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 71,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 63,
+    "winner": false,
+    "rank": 11,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518535": {
+   "date": "2026-01-10",
+   "season": "2025",
+   "home": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 60,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 71,
+    "winner": true,
+    "rank": 17,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518536": {
+   "date": "2026-01-14",
+   "season": "2025",
+   "home": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 59,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 63,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518537": {
+   "date": "2026-01-21",
+   "season": "2025",
+   "home": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 93,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 68,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518538": {
+   "date": "2026-01-24",
+   "season": "2025",
+   "home": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 66,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 64,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518539": {
+   "date": "2026-02-01",
+   "season": "2025",
+   "home": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 72,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 70,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518540": {
+   "date": "2026-02-04",
+   "season": "2025",
+   "home": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 70,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 76,
+    "winner": true,
+    "rank": 15,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518541": {
+   "date": "2026-02-07",
+   "season": "2025",
+   "home": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 80,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 71,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518542": {
+   "date": "2026-02-10",
+   "season": "2025",
+   "home": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 77,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 61,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518543": {
+   "date": "2026-02-14",
+   "season": "2025",
+   "home": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 67,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 59,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518544": {
+   "date": "2026-02-17",
+   "season": "2025",
+   "home": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 67,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 76,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518545": {
+   "date": "2026-02-21",
+   "season": "2025",
+   "home": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 73,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 60,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518546": {
+   "date": "2026-02-25",
+   "season": "2025",
+   "home": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 70,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 83,
+    "winner": true,
+    "rank": 11,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518547": {
+   "date": "2025-11-12",
+   "season": "2025",
+   "home": {
+    "name": "Louisville",
+    "seo": "louisville",
+    "score": 74,
+    "winner": true,
+    "rank": 22,
+    "inConference": false
+   },
+   "away": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 68,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6518548": {
+   "date": "2025-11-16",
+   "season": "2025",
+   "home": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 77,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Portland St.",
+    "seo": "portland-st",
+    "score": 45,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6518549": {
+   "date": "2025-11-18",
+   "season": "2025",
+   "home": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 83,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Boise St.",
+    "seo": "boise-st",
+    "score": 53,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6518550": {
+   "date": "2025-11-22",
+   "season": "2025",
+   "home": {
+    "name": "UT Arlington",
+    "seo": "texas-arlington",
+    "score": 60,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 71,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6518551": {
+   "date": "2025-11-24",
+   "season": "2025",
+   "home": {
+    "name": "VCU",
+    "seo": "vcu",
+    "score": 58,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 69,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6518552": {
+   "date": "2025-11-25",
+   "season": "2025",
+   "home": {
+    "name": "Texas A&M",
+    "seo": "texas-am",
+    "score": 59,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 46,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6518553": {
+   "date": "2025-11-30",
+   "season": "2025",
+   "home": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 70,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Montana St.",
+    "seo": "montana-st",
+    "score": 71,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6518554": {
+   "date": "2025-12-16",
+   "season": "2025",
+   "home": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 79,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Northern Colo.",
+    "seo": "northern-colo",
+    "score": 62,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6518555": {
+   "date": "2025-12-21",
+   "season": "2025",
+   "home": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 79,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 63,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518556": {
+   "date": "2025-12-31",
+   "season": "2025",
+   "home": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 75,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 56,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518557": {
+   "date": "2026-01-08",
+   "season": "2025",
+   "home": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 56,
+    "winner": true,
+    "rank": 16,
+    "inConference": true
+   },
+   "away": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 52,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518558": {
+   "date": "2026-01-11",
+   "season": "2025",
+   "home": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 63,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 56,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518559": {
+   "date": "2026-01-14",
+   "season": "2025",
+   "home": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 68,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 62,
+    "winner": false,
+    "rank": 19,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518560": {
+   "date": "2026-01-18",
+   "season": "2025",
+   "home": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 74,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 68,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518561": {
+   "date": "2026-01-25",
+   "season": "2025",
+   "home": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 79,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 65,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518562": {
+   "date": "2026-02-01",
+   "season": "2025",
+   "home": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 66,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 69,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518563": {
+   "date": "2026-02-04",
+   "season": "2025",
+   "home": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 55,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 61,
+    "winner": true,
+    "rank": 20,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518564": {
+   "date": "2026-02-08",
+   "season": "2025",
+   "home": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 80,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 79,
+    "winner": false,
+    "rank": 14,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518565": {
+   "date": "2026-02-11",
+   "season": "2025",
+   "home": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 63,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 73,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518566": {
+   "date": "2026-02-14",
+   "season": "2025",
+   "home": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 76,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 46,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518567": {
+   "date": "2026-02-17",
+   "season": "2025",
+   "home": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 70,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 78,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518568": {
+   "date": "2026-02-21",
+   "season": "2025",
+   "home": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 75,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 68,
+    "winner": false,
+    "rank": 20,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518569": {
+   "date": "2026-02-24",
+   "season": "2025",
+   "home": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 64,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 67,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518570": {
+   "date": "2026-02-28",
+   "season": "2025",
+   "home": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 75,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 62,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6518694": {
+   "date": "2025-12-04",
+   "season": "2025",
+   "home": {
+    "name": "Colorado St.",
+    "seo": "colorado-st",
+    "score": 58,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 70,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6518721": {
+   "date": "2025-11-28",
+   "season": "2025",
+   "home": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 66,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Arkansas St.",
+    "seo": "arkansas-st",
+    "score": 83,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6518773": {
+   "date": "2025-12-13",
+   "season": "2025",
+   "home": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 70,
+    "winner": false,
+    "rank": 23,
+    "inConference": true
+   },
+   "away": {
+    "name": "Oklahoma",
+    "seo": "oklahoma",
+    "score": 92,
+    "winner": true,
+    "rank": 9,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6518798": {
+   "date": "2025-11-17",
+   "season": "2025",
+   "home": {
+    "name": "SFA",
+    "seo": "stephen-f-austin",
+    "score": 82,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 78,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6518976": {
+   "date": "2025-12-06",
+   "season": "2025",
+   "home": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 67,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "San Francisco",
+    "seo": "san-francisco",
+    "score": 44,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6518994": {
+   "date": "2025-11-25",
+   "season": "2025",
+   "home": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 84,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Northern Colo.",
+    "seo": "northern-colo",
+    "score": 58,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519000": {
+   "date": "2025-11-15",
+   "season": "2025",
+   "home": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 61,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Washington",
+    "seo": "washington",
+    "score": 72,
+    "winner": true,
+    "rank": 24,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519014": {
+   "date": "2025-11-08",
+   "season": "2025",
+   "home": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 52,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "UTSA",
+    "seo": "utsa",
+    "score": 48,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519017": {
+   "date": "2025-11-04",
+   "season": "2025",
+   "home": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 76,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "UT Arlington",
+    "seo": "texas-arlington",
+    "score": 59,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519018": {
+   "date": "2025-11-11",
+   "season": "2025",
+   "home": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 56,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Rice",
+    "seo": "rice",
+    "score": 70,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519019": {
+   "date": "2025-12-07",
+   "season": "2025",
+   "home": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 62,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Southern U.",
+    "seo": "southern-u",
+    "score": 70,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519021": {
+   "date": "2025-12-31",
+   "season": "2025",
+   "home": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 62,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 80,
+    "winner": true,
+    "rank": 10,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519023": {
+   "date": "2026-01-10",
+   "season": "2025",
+   "home": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 64,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 79,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519025": {
+   "date": "2026-02-07",
+   "season": "2025",
+   "home": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 61,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 85,
+    "winner": true,
+    "rank": 18,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519026": {
+   "date": "2026-01-17",
+   "season": "2025",
+   "home": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 61,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 71,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519027": {
+   "date": "2026-02-24",
+   "season": "2025",
+   "home": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 75,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 67,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519029": {
+   "date": "2026-02-18",
+   "season": "2025",
+   "home": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 50,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 72,
+    "winner": true,
+    "rank": 12,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519030": {
+   "date": "2026-03-01",
+   "season": "2025",
+   "home": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 62,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 72,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519037": {
+   "date": "2025-11-20",
+   "season": "2025",
+   "home": {
+    "name": "UTRGV",
+    "seo": "utrgv",
+    "score": 63,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 65,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6519067": {
+   "date": "2025-12-06",
+   "season": "2025",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 95,
+    "winner": true,
+    "rank": 8,
+    "inConference": true
+   },
+   "away": {
+    "name": "UTEP",
+    "seo": "utep",
+    "score": 40,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519079": {
+   "date": "2025-12-15",
+   "season": "2025",
+   "home": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 90,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Tulsa",
+    "seo": "tulsa",
+    "score": 58,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519121": {
+   "date": "2025-12-16",
+   "season": "2025",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 109,
+    "winner": true,
+    "rank": 9,
+    "inConference": true
+   },
+   "away": {
+    "name": "Ark.-Pine Bluff",
+    "seo": "ark-pine-bluff",
+    "score": 54,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519132": {
+   "date": "2025-11-05",
+   "season": "2025",
+   "home": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 97,
+    "winner": true,
+    "rank": 22,
+    "inConference": true
+   },
+   "away": {
+    "name": "East Texas A&M",
+    "seo": "tex-am-commerce",
+    "score": 59,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519210": {
+   "date": "2025-11-06",
+   "season": "2025",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 82,
+    "winner": true,
+    "rank": 17,
+    "inConference": true
+   },
+   "away": {
+    "name": "N.C. A&T",
+    "seo": "nc-at",
+    "score": 43,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519211": {
+   "date": "2025-11-12",
+   "season": "2025",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 122,
+    "winner": true,
+    "rank": 17,
+    "inConference": true
+   },
+   "away": {
+    "name": "Tennessee St.",
+    "seo": "tennessee-st",
+    "score": 39,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519212": {
+   "date": "2026-03-01",
+   "season": "2025",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 65,
+    "winner": true,
+    "rank": 11,
+    "inConference": true
+   },
+   "away": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 53,
+    "winner": false,
+    "rank": 18,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519213": {
+   "date": "2026-02-12",
+   "season": "2025",
+   "home": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 67,
+    "winner": false,
+    "rank": 12,
+    "inConference": true
+   },
+   "away": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 83,
+    "winner": true,
+    "rank": 17,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519214": {
+   "date": "2025-11-28",
+   "season": "2025",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 82,
+    "winner": true,
+    "rank": 8,
+    "inConference": true
+   },
+   "away": {
+    "name": "UAB",
+    "seo": "uab",
+    "score": 61,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519215": {
+   "date": "2025-11-23",
+   "season": "2025",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 93,
+    "winner": true,
+    "rank": 17,
+    "inConference": true
+   },
+   "away": {
+    "name": "UTRGV",
+    "seo": "utrgv",
+    "score": 57,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519216": {
+   "date": "2025-12-03",
+   "season": "2025",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 84,
+    "winner": true,
+    "rank": 8,
+    "inConference": true
+   },
+   "away": {
+    "name": "UIW",
+    "seo": "uiw",
+    "score": 56,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519217": {
+   "date": "2025-12-14",
+   "season": "2025",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 89,
+    "winner": true,
+    "rank": 8,
+    "inConference": true
+   },
+   "away": {
+    "name": "Jacksonville",
+    "seo": "jacksonville",
+    "score": 49,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519218": {
+   "date": "2025-12-31",
+   "season": "2025",
+   "home": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 48,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 72,
+    "winner": true,
+    "rank": 8,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519219": {
+   "date": "2026-01-03",
+   "season": "2025",
+   "home": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 87,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 77,
+    "winner": false,
+    "rank": 8,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519220": {
+   "date": "2026-01-07",
+   "season": "2025",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 69,
+    "winner": true,
+    "rank": 13,
+    "inConference": true
+   },
+   "away": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 61,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519221": {
+   "date": "2026-01-11",
+   "season": "2025",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 77,
+    "winner": true,
+    "rank": 13,
+    "inConference": true
+   },
+   "away": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 46,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519222": {
+   "date": "2026-01-17",
+   "season": "2025",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 78,
+    "winner": true,
+    "rank": 10,
+    "inConference": true
+   },
+   "away": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 62,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519223": {
+   "date": "2026-01-24",
+   "season": "2025",
+   "home": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 50,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 67,
+    "winner": true,
+    "rank": 9,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519224": {
+   "date": "2026-01-29",
+   "season": "2025",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 79,
+    "winner": true,
+    "rank": 12,
+    "inConference": true
+   },
+   "away": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 77,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519225": {
+   "date": "2026-02-04",
+   "season": "2025",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 90,
+    "winner": true,
+    "rank": 14,
+    "inConference": true
+   },
+   "away": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 45,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519226": {
+   "date": "2026-02-01",
+   "season": "2025",
+   "home": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 62,
+    "winner": true,
+    "rank": 21,
+    "inConference": true
+   },
+   "away": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 60,
+    "winner": false,
+    "rank": 12,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519227": {
+   "date": "2026-02-22",
+   "season": "2025",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 80,
+    "winner": true,
+    "rank": 12,
+    "inConference": true
+   },
+   "away": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 73,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519270": {
+   "date": "2025-11-29",
+   "season": "2025",
+   "home": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 87,
+    "winner": true,
+    "rank": 24,
+    "inConference": true
+   },
+   "away": {
+    "name": "Miami (FL)",
+    "seo": "miami-fl",
+    "score": 84,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519306": {
+   "date": "2025-11-08",
+   "season": "2025",
+   "home": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 73,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Eastern Wash.",
+    "seo": "eastern-wash",
+    "score": 58,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519307": {
+   "date": "2025-11-13",
+   "season": "2025",
+   "home": {
+    "name": "San Diego",
+    "seo": "san-diego",
+    "score": 47,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 79,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6519308": {
+   "date": "2025-11-16",
+   "season": "2025",
+   "home": {
+    "name": "Santa Clara",
+    "seo": "santa-clara",
+    "score": 77,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 82,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6519309": {
+   "date": "2025-11-29",
+   "season": "2025",
+   "home": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 85,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Southeast Mo. St.",
+    "seo": "southeast-mo-st",
+    "score": 56,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519310": {
+   "date": "2025-12-14",
+   "season": "2025",
+   "home": {
+    "name": "Oregon St.",
+    "seo": "oregon-st",
+    "score": 53,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 55,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6519311": {
+   "date": "2025-12-31",
+   "season": "2025",
+   "home": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 68,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 69,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519312": {
+   "date": "2026-01-03",
+   "season": "2025",
+   "home": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 71,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 62,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519313": {
+   "date": "2026-01-07",
+   "season": "2025",
+   "home": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 68,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 45,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519314": {
+   "date": "2026-01-17",
+   "season": "2025",
+   "home": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 67,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 51,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519315": {
+   "date": "2026-01-28",
+   "season": "2025",
+   "home": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 68,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 61,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519316": {
+   "date": "2026-02-04",
+   "season": "2025",
+   "home": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 74,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 69,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519317": {
+   "date": "2026-02-07",
+   "season": "2025",
+   "home": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 67,
+    "winner": true,
+    "rank": 15,
+    "inConference": true
+   },
+   "away": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 64,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519318": {
+   "date": "2026-02-11",
+   "season": "2025",
+   "home": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 71,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 61,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519319": {
+   "date": "2026-02-14",
+   "season": "2025",
+   "home": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 69,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 75,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519320": {
+   "date": "2026-02-18",
+   "season": "2025",
+   "home": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 90,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 64,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519321": {
+   "date": "2026-02-21",
+   "season": "2025",
+   "home": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 81,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 56,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519322": {
+   "date": "2026-02-25",
+   "season": "2025",
+   "home": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 61,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 66,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519323": {
+   "date": "2026-03-01",
+   "season": "2025",
+   "home": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 58,
+    "winner": true,
+    "rank": 20,
+    "inConference": true
+   },
+   "away": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 51,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519425": {
+   "date": "2025-11-03",
+   "season": "2025",
+   "home": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 88,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Sioux Falls",
+    "seo": "sioux-falls",
+    "score": 62,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519426": {
+   "date": "2025-11-07",
+   "season": "2025",
+   "home": {
+    "name": "Utah St.",
+    "seo": "utah-st",
+    "score": 53,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 90,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6519427": {
+   "date": "2025-11-21",
+   "season": "2025",
+   "home": {
+    "name": "Syracuse",
+    "seo": "syracuse",
+    "score": 61,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 49,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6519428": {
+   "date": "2025-11-23",
+   "season": "2025",
+   "home": {
+    "name": "UConn",
+    "seo": "uconn",
+    "score": 93,
+    "winner": true,
+    "rank": 1,
+    "inConference": false
+   },
+   "away": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 41,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6519429": {
+   "date": "2025-11-18",
+   "season": "2025",
+   "home": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 79,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "FIU",
+    "seo": "fiu",
+    "score": 61,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519430": {
+   "date": "2025-12-10",
+   "season": "2025",
+   "home": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 91,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Boise St.",
+    "seo": "boise-st",
+    "score": 58,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519431": {
+   "date": "2025-12-14",
+   "season": "2025",
+   "home": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 91,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Northwestern",
+    "seo": "northwestern",
+    "score": 66,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519433": {
+   "date": "2025-12-22",
+   "season": "2025",
+   "home": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 62,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 63,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519436": {
+   "date": "2026-01-07",
+   "season": "2025",
+   "home": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 59,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 62,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519437": {
+   "date": "2026-01-14",
+   "season": "2025",
+   "home": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 45,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 61,
+    "winner": true,
+    "rank": 18,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519441": {
+   "date": "2026-01-24",
+   "season": "2025",
+   "home": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 49,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 77,
+    "winner": true,
+    "rank": 19,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519442": {
+   "date": "2026-01-31",
+   "season": "2025",
+   "home": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 77,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 65,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519443": {
+   "date": "2026-02-04",
+   "season": "2025",
+   "home": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 57,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 67,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519444": {
+   "date": "2026-02-07",
+   "season": "2025",
+   "home": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 72,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 79,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519445": {
+   "date": "2026-02-16",
+   "season": "2025",
+   "home": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 73,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 55,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519447": {
+   "date": "2026-02-21",
+   "season": "2025",
+   "home": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 74,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 86,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519448": {
+   "date": "2026-02-28",
+   "season": "2025",
+   "home": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 81,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 67,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519496": {
+   "date": "2025-11-06",
+   "season": "2025",
+   "home": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 105,
+    "winner": true,
+    "rank": 22,
+    "inConference": true
+   },
+   "away": {
+    "name": "Langston",
+    "seo": "langston",
+    "score": 35,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519498": {
+   "date": "2025-11-11",
+   "season": "2025",
+   "home": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 105,
+    "winner": true,
+    "rank": 20,
+    "inConference": true
+   },
+   "away": {
+    "name": "Prairie View",
+    "seo": "prairie-view",
+    "score": 55,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519502": {
+   "date": "2025-11-19",
+   "season": "2025",
+   "home": {
+    "name": "St. John's (NY)",
+    "seo": "st-johns-ny",
+    "score": 74,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 67,
+    "winner": false,
+    "rank": 20,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6519511": {
+   "date": "2025-11-28",
+   "season": "2025",
+   "home": {
+    "name": "Charlotte",
+    "seo": "charlotte",
+    "score": 65,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 74,
+    "winner": true,
+    "rank": 24,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6519512": {
+   "date": "2025-11-09",
+   "season": "2025",
+   "home": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 75,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "UC Irvine",
+    "seo": "uc-irvine",
+    "score": 61,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519517": {
+   "date": "2025-12-06",
+   "season": "2025",
+   "home": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 133,
+    "winner": true,
+    "rank": 24,
+    "inConference": true
+   },
+   "away": {
+    "name": "Mississippi Val.",
+    "seo": "mississippi-val",
+    "score": 46,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519520": {
+   "date": "2025-12-09",
+   "season": "2025",
+   "home": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 90,
+    "winner": true,
+    "rank": 13,
+    "inConference": true
+   },
+   "away": {
+    "name": "Alabama St.",
+    "seo": "alabama-st",
+    "score": 36,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519522": {
+   "date": "2025-12-31",
+   "season": "2025",
+   "home": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 68,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 77,
+    "winner": true,
+    "rank": 22,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519526": {
+   "date": "2026-01-03",
+   "season": "2025",
+   "home": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 83,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 52,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519528": {
+   "date": "2026-01-14",
+   "season": "2025",
+   "home": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 76,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 85,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519531": {
+   "date": "2026-01-18",
+   "season": "2025",
+   "home": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 86,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 58,
+    "winner": false,
+    "rank": 19,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519538": {
+   "date": "2026-01-28",
+   "season": "2025",
+   "home": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 67,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 51,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519548": {
+   "date": "2026-02-01",
+   "season": "2025",
+   "home": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 69,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 88,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519553": {
+   "date": "2026-02-07",
+   "season": "2025",
+   "home": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 81,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 58,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519561": {
+   "date": "2025-12-21",
+   "season": "2025",
+   "home": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 79,
+    "winner": true,
+    "rank": 10,
+    "inConference": true
+   },
+   "away": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 76,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519562": {
+   "date": "2026-02-14",
+   "season": "2025",
+   "home": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 75,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 65,
+    "winner": false,
+    "rank": 16,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519565": {
+   "date": "2026-01-04",
+   "season": "2025",
+   "home": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 70,
+    "winner": false,
+    "rank": 10,
+    "inConference": true
+   },
+   "away": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 72,
+    "winner": true,
+    "rank": 22,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519567": {
+   "date": "2026-02-25",
+   "season": "2025",
+   "home": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 77,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 88,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519570": {
+   "date": "2026-02-28",
+   "season": "2025",
+   "home": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 70,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 56,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519595": {
+   "date": "2026-01-24",
+   "season": "2025",
+   "home": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 90,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 65,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519597": {
+   "date": "2026-01-28",
+   "season": "2025",
+   "home": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 70,
+    "winner": false,
+    "rank": 21,
+    "inConference": true
+   },
+   "away": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 84,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519601": {
+   "date": "2026-02-10",
+   "season": "2025",
+   "home": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 83,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 69,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519609": {
+   "date": "2026-01-31",
+   "season": "2025",
+   "home": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 65,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 52,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519707": {
+   "date": "2025-11-06",
+   "season": "2025",
+   "home": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 79,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "UTSA",
+    "seo": "utsa",
+    "score": 52,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519710": {
+   "date": "2025-12-07",
+   "season": "2025",
+   "home": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 73,
+    "winner": true,
+    "rank": 14,
+    "inConference": true
+   },
+   "away": {
+    "name": "UTSA",
+    "seo": "utsa",
+    "score": 55,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519778": {
+   "date": "2025-11-03",
+   "season": "2025",
+   "home": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 78,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "N.C. A&T",
+    "seo": "nc-at",
+    "score": 40,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519779": {
+   "date": "2025-11-25",
+   "season": "2025",
+   "home": {
+    "name": "Old Dominion",
+    "seo": "old-dominion",
+    "score": 42,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 67,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6519780": {
+   "date": "2025-12-12",
+   "season": "2025",
+   "home": {
+    "name": "Washington St.",
+    "seo": "washington-st",
+    "score": 51,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 82,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6519781": {
+   "date": "2025-12-17",
+   "season": "2025",
+   "home": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 76,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Jacksonville",
+    "seo": "jacksonville",
+    "score": 40,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519782": {
+   "date": "2025-12-21",
+   "season": "2025",
+   "home": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 60,
+    "winner": false,
+    "rank": 15,
+    "inConference": true
+   },
+   "away": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 61,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519783": {
+   "date": "2026-02-18",
+   "season": "2025",
+   "home": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 87,
+    "winner": true,
+    "rank": 20,
+    "inConference": true
+   },
+   "away": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 56,
+    "winner": false,
+    "rank": 15,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519784": {
+   "date": "2025-12-31",
+   "season": "2025",
+   "home": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 73,
+    "winner": true,
+    "rank": 21,
+    "inConference": true
+   },
+   "away": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 55,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519785": {
+   "date": "2026-01-03",
+   "season": "2025",
+   "home": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 80,
+    "winner": true,
+    "rank": 21,
+    "inConference": true
+   },
+   "away": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 49,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519787": {
+   "date": "2026-01-13",
+   "season": "2025",
+   "home": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 71,
+    "winner": true,
+    "rank": 17,
+    "inConference": true
+   },
+   "away": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 59,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519788": {
+   "date": "2026-01-21",
+   "season": "2025",
+   "home": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 73,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 61,
+    "winner": false,
+    "rank": 19,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519789": {
+   "date": "2026-02-10",
+   "season": "2025",
+   "home": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 70,
+    "winner": true,
+    "rank": 16,
+    "inConference": true
+   },
+   "away": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 65,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519790": {
+   "date": "2026-02-25",
+   "season": "2025",
+   "home": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 68,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 59,
+    "winner": false,
+    "rank": 20,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6519844": {
+   "date": "2025-12-03",
+   "season": "2025",
+   "home": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 57,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Southern U.",
+    "seo": "southern-u",
+    "score": 63,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519850": {
+   "date": "2025-12-18",
+   "season": "2025",
+   "home": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 77,
+    "winner": true,
+    "rank": 15,
+    "inConference": true
+   },
+   "away": {
+    "name": "Southern U.",
+    "seo": "southern-u",
+    "score": 60,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519874": {
+   "date": "2025-11-09",
+   "season": "2025",
+   "home": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 64,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Charlotte",
+    "seo": "charlotte",
+    "score": 66,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519887": {
+   "date": "2025-11-28",
+   "season": "2025",
+   "home": {
+    "name": "Alabama A&M",
+    "seo": "alabama-am",
+    "score": 49,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 72,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6519888": {
+   "date": "2025-11-16",
+   "season": "2025",
+   "home": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 100,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Georgetown (KY)",
+    "seo": "georgetown-ky",
+    "score": 61,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6519996": {
+   "date": "2025-11-22",
+   "season": "2025",
+   "home": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 74,
+    "winner": true,
+    "rank": 7,
+    "inConference": true
+   },
+   "away": {
+    "name": "Davidson",
+    "seo": "davidson",
+    "score": 72,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6520144": {
+   "date": "2026-01-04",
+   "season": "2025",
+   "home": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 68,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 83,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6520145": {
+   "date": "2026-01-11",
+   "season": "2025",
+   "home": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 79,
+    "winner": true,
+    "rank": 16,
+    "inConference": true
+   },
+   "away": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 64,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6520146": {
+   "date": "2026-01-20",
+   "season": "2025",
+   "home": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 69,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 80,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6520147": {
+   "date": "2026-02-14",
+   "season": "2025",
+   "home": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 85,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 68,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6520148": {
+   "date": "2026-02-04",
+   "season": "2025",
+   "home": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 81,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 60,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6529281": {
+   "date": "2025-12-15",
+   "season": "2025",
+   "home": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 89,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Chicago St.",
+    "seo": "chicago-st",
+    "score": 70,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6529290": {
+   "date": "2025-11-21",
+   "season": "2025",
+   "home": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 76,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Florida A&M",
+    "seo": "florida-am",
+    "score": 59,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6529291": {
+   "date": "2025-11-24",
+   "season": "2025",
+   "home": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 94,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "South Carolina St.",
+    "seo": "south-carolina-st",
+    "score": 49,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6529292": {
+   "date": "2025-11-26",
+   "season": "2025",
+   "home": {
+    "name": "East Carolina",
+    "seo": "east-carolina",
+    "score": 61,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 75,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6529293": {
+   "date": "2025-11-28",
+   "season": "2025",
+   "home": {
+    "name": "Rice",
+    "seo": "rice",
+    "score": 56,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 57,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6529294": {
+   "date": "2025-12-03",
+   "season": "2025",
+   "home": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 67,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Stetson",
+    "seo": "stetson",
+    "score": 70,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6529295": {
+   "date": "2025-12-07",
+   "season": "2025",
+   "home": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 74,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Delaware St.",
+    "seo": "delaware-st",
+    "score": 46,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6529296": {
+   "date": "2025-12-14",
+   "season": "2025",
+   "home": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 78,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Morgan St.",
+    "seo": "morgan-st",
+    "score": 56,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6529297": {
+   "date": "2026-02-15",
+   "season": "2025",
+   "home": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 63,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 93,
+    "winner": true,
+    "rank": 12,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6529298": {
+   "date": "2025-12-20",
+   "season": "2025",
+   "home": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 50,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 71,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6529299": {
+   "date": "2026-01-10",
+   "season": "2025",
+   "home": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 55,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 58,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6529300": {
+   "date": "2026-01-21",
+   "season": "2025",
+   "home": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 73,
+    "winner": true,
+    "rank": 14,
+    "inConference": true
+   },
+   "away": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 48,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6530325": {
+   "date": "2025-11-16",
+   "season": "2025",
+   "home": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 99,
+    "winner": true,
+    "rank": 7,
+    "inConference": true
+   },
+   "away": {
+    "name": "Le Moyne",
+    "seo": "le-moyne",
+    "score": 43,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6530632": {
+   "date": "2025-11-09",
+   "season": "2025",
+   "home": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 76,
+    "winner": true,
+    "rank": 16,
+    "inConference": true
+   },
+   "away": {
+    "name": "Lindenwood",
+    "seo": "lindenwood-mo",
+    "score": 63,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6530799": {
+   "date": "2025-11-30",
+   "season": "2025",
+   "home": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 76,
+    "winner": true,
+    "rank": 15,
+    "inConference": true
+   },
+   "away": {
+    "name": "Grambling",
+    "seo": "grambling",
+    "score": 35,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6530800": {
+   "date": "2026-01-17",
+   "season": "2025",
+   "home": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 58,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 69,
+    "winner": true,
+    "rank": 18,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6530801": {
+   "date": "2026-01-27",
+   "season": "2025",
+   "home": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 82,
+    "winner": true,
+    "rank": 14,
+    "inConference": true
+   },
+   "away": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 66,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6530802": {
+   "date": "2026-02-21",
+   "season": "2025",
+   "home": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 74,
+    "winner": true,
+    "rank": 15,
+    "inConference": true
+   },
+   "away": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 60,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6530883": {
+   "date": "2025-11-16",
+   "season": "2025",
+   "home": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 85,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Grambling",
+    "seo": "grambling",
+    "score": 64,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6533766": {
+   "date": "2025-11-26",
+   "season": "2025",
+   "home": {
+    "name": "Ohio St.",
+    "seo": "ohio-st",
+    "score": 83,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 81,
+    "winner": false,
+    "rank": 21,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6533769": {
+   "date": "2025-11-30",
+   "season": "2025",
+   "home": {
+    "name": "Tulsa",
+    "seo": "tulsa",
+    "score": 61,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 66,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6533774": {
+   "date": "2025-11-30",
+   "season": "2025",
+   "home": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 106,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Indiana",
+    "seo": "indiana",
+    "score": 95,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6533780": {
+   "date": "2025-11-29",
+   "season": "2025",
+   "home": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 71,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Vanderbilt",
+    "seo": "vanderbilt",
+    "score": 84,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6534591": {
+   "date": "2026-01-06",
+   "season": "2025",
+   "home": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 75,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 72,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6534663": {
+   "date": "2026-03-19",
+   "season": "2025",
+   "home": {
+    "name": "Virginia",
+    "seo": "virginia",
+    "score": 57,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 55,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6534665": {
+   "date": "2026-03-21",
+   "season": "2025",
+   "home": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 63,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Syracuse",
+    "seo": "syracuse",
+    "score": 72,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6534670": {
+   "date": "2026-03-21",
+   "season": "2025",
+   "home": {
+    "name": "Illinois",
+    "seo": "illinois",
+    "score": 66,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 57,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6534677": {
+   "date": "2026-03-20",
+   "season": "2025",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 86,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "UC San Diego",
+    "seo": "uc-san-diego",
+    "score": 40,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6534681": {
+   "date": "2026-03-21",
+   "season": "2025",
+   "home": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 82,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Princeton",
+    "seo": "princeton",
+    "score": 68,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6534684": {
+   "date": "2026-03-20",
+   "season": "2025",
+   "home": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 67,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Nebraska",
+    "seo": "nebraska",
+    "score": 62,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6534686": {
+   "date": "2026-03-20",
+   "season": "2025",
+   "home": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 57,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Villanova",
+    "seo": "villanova",
+    "score": 52,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6534691": {
+   "date": "2026-03-21",
+   "season": "2025",
+   "home": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 82,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Miami (OH)",
+    "seo": "miami-oh",
+    "score": 54,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6534702": {
+   "date": "2026-03-22",
+   "season": "2025",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 62,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Washington",
+    "seo": "washington",
+    "score": 59,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6534704": {
+   "date": "2026-03-23",
+   "season": "2025",
+   "home": {
+    "name": "UCLA",
+    "seo": "ucla",
+    "score": 87,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 68,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6534706": {
+   "date": "2026-03-22",
+   "season": "2025",
+   "home": {
+    "name": "Duke",
+    "seo": "duke",
+    "score": 69,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 46,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6534707": {
+   "date": "2026-03-22",
+   "season": "2025",
+   "home": {
+    "name": "LSU",
+    "seo": "lsu",
+    "score": 101,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 47,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6534709": {
+   "date": "2026-03-23",
+   "season": "2025",
+   "home": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 73,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Kentucky",
+    "seo": "kentucky",
+    "score": 74,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6534715": {
+   "date": "2026-03-28",
+   "season": "2025",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 79,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Virginia",
+    "seo": "virginia",
+    "score": 69,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6534721": {
+   "date": "2026-03-30",
+   "season": "2025",
+   "home": {
+    "name": "South Carolina",
+    "seo": "south-carolina",
+    "score": 78,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 52,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  },
+  "6593273": {
+   "date": "2026-03-08",
+   "season": "2025",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 53,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 62,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6593274": {
+   "date": "2026-03-07",
+   "season": "2025",
+   "home": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 48,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 47,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6593275": {
+   "date": "2026-03-07",
+   "season": "2025",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 74,
+    "winner": true,
+    "rank": 10,
+    "inConference": true
+   },
+   "away": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 62,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6593276": {
+   "date": "2026-03-06",
+   "season": "2025",
+   "home": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 53,
+    "winner": false,
+    "rank": 20,
+    "inConference": true
+   },
+   "away": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 62,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6593277": {
+   "date": "2026-03-06",
+   "season": "2025",
+   "home": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 67,
+    "winner": true,
+    "rank": 15,
+    "inConference": true
+   },
+   "away": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 54,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6593278": {
+   "date": "2026-03-06",
+   "season": "2025",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 63,
+    "winner": true,
+    "rank": 10,
+    "inConference": true
+   },
+   "away": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 46,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6593279": {
+   "date": "2026-03-06",
+   "season": "2025",
+   "home": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 73,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 74,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6593280": {
+   "date": "2026-03-05",
+   "season": "2025",
+   "home": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 55,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 48,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6593281": {
+   "date": "2026-03-05",
+   "season": "2025",
+   "home": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 68,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 77,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6593282": {
+   "date": "2026-03-05",
+   "season": "2025",
+   "home": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 52,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 70,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6593283": {
+   "date": "2026-03-05",
+   "season": "2025",
+   "home": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 51,
+    "winner": false,
+    "rank": 21,
+    "inConference": true
+   },
+   "away": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 58,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6593284": {
+   "date": "2026-03-04",
+   "season": "2025",
+   "home": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 56,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 35,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6593285": {
+   "date": "2026-03-04",
+   "season": "2025",
+   "home": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 54,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 51,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6593286": {
+   "date": "2026-03-04",
+   "season": "2025",
+   "home": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 76,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 66,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6593287": {
+   "date": "2026-03-04",
+   "season": "2025",
+   "home": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 91,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 66,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6595191": {
+   "date": "2026-04-01",
+   "season": "2025",
+   "home": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 64,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Columbia",
+    "seo": "columbia",
+    "score": 81,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6595192": {
+   "date": "2026-03-30",
+   "season": "2025",
+   "home": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 70,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 67,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": true
+  },
+  "6595194": {
+   "date": "2026-03-26",
+   "season": "2025",
+   "home": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 76,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Stanford",
+    "seo": "stanford",
+    "score": 61,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6595195": {
+   "date": "2026-03-26",
+   "season": "2025",
+   "home": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 85,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "San Diego St.",
+    "seo": "san-diego-st",
+    "score": 78,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6595198": {
+   "date": "2026-03-23",
+   "season": "2025",
+   "home": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 93,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Missouri",
+    "seo": "missouri",
+    "score": 75,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6595201": {
+   "date": "2026-03-22",
+   "season": "2025",
+   "home": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 62,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Rice",
+    "seo": "rice",
+    "score": 55,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6595203": {
+   "date": "2026-03-22",
+   "season": "2025",
+   "home": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 75,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "California",
+    "seo": "california",
+    "score": 83,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6595206": {
+   "date": "2026-03-19",
+   "season": "2025",
+   "home": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 72,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Alabama A&M",
+    "seo": "alabama-am",
+    "score": 47,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6595213": {
+   "date": "2026-03-19",
+   "season": "2025",
+   "home": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 79,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Troy",
+    "seo": "troy",
+    "score": 70,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6595217": {
+   "date": "2026-03-19",
+   "season": "2025",
+   "home": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 69,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Georgia Tech",
+    "seo": "georgia-tech",
+    "score": 65,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false
+  },
+  "6595218": {
+   "date": "2026-03-19",
+   "season": "2025",
+   "home": {
+    "name": "Eastern Ky.",
+    "seo": "eastern-ky",
+    "score": 72,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 58,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false
+  }
+ },
+ "indexVersion": 2
 }
