@@ -364,7 +364,8 @@ fun PlayerDetailScreen(
                         ) {
                             Column(modifier = Modifier.weight(1f)) {
                                 Text(
-                                    game?.let { "${it.date} vs ${it.opponent}" } ?: "Unknown game",
+                                    game?.let { "${it.date} ${siteLabel(it.home)}${it.opponent}" }
+                                        ?: "Unknown game",
                                     style = MaterialTheme.typography.bodyMedium,
                                     fontWeight = FontWeight.SemiBold
                                 )

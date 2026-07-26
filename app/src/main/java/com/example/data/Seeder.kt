@@ -87,6 +87,7 @@ object Seeder {
             val seedTeamScore = if (g.has("teamScore")) g.getInt("teamScore") else null
             val seedOppScore = if (g.has("opponentScore")) g.getInt("opponentScore") else null
             val seedPeriodScores = g.optString("periodScores").takeIf { it.isNotBlank() }
+            val seedHome = if (g.has("home")) g.getBoolean("home") else null
 
             val existing = gamesByKey[gameKey(date, opponent)]
             val gameId: Long
@@ -96,6 +97,7 @@ object Seeder {
                         date = date,
                         opponent = opponent,
                         season = g.getString("season"),
+                        home = seedHome,
                         teamScore = seedTeamScore,
                         opponentScore = seedOppScore,
                         periodScores = seedPeriodScores
@@ -103,17 +105,18 @@ object Seeder {
                 )
             } else {
                 gameId = existing.id
-                if (existing.teamScore == null && existing.opponentScore == null &&
+                val filledResult = existing.teamScore == null && existing.opponentScore == null &&
                     (seedTeamScore != null || seedOppScore != null)
-                ) {
-                    dao.updateGame(
-                        existing.copy(
-                            teamScore = seedTeamScore,
-                            opponentScore = seedOppScore,
-                            periodScores = existing.periodScores ?: seedPeriodScores
-                        )
-                    )
-                }
+                // The site is scraper-owned trivia rather than a user judgement
+                // call, so gap-fill it even on a game that already has a result.
+                val updated = existing.copy(
+                    home = existing.home ?: seedHome,
+                    teamScore = if (filledResult) seedTeamScore else existing.teamScore,
+                    opponentScore = if (filledResult) seedOppScore else existing.opponentScore,
+                    periodScores = existing.periodScores
+                        ?: (if (filledResult) seedPeriodScores else null)
+                )
+                if (updated != existing) dao.updateGame(updated)
             }
 
             if (existing != null && gameId in gamesWithLines) continue

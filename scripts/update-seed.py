@@ -102,6 +102,7 @@ for path in sorted(glob.glob("scraped/ncaa-game-*.json")):
         "date": data["date"],
         "opponent": opp.get("nameShort") or opp.get("nameFull") or "Unknown",
         "season": season_label(start_year),
+        "home": ku_home,
         "teamScore": to_int(ku.get("score")),
         "opponentScore": to_int(opp.get("score")),
         "periodScores": ", ".join(period_scores),
@@ -190,6 +191,8 @@ for entry in load_json("scraped/upcoming.json", []):
         "date": date,
         "opponent": opponent,
         "season": season_label(start_year),
+        # kuathletics writes "versus X" for home games and "at X" for away.
+        "home": bool(entry.get("home")),
     }
 
 # --- Big 12 standings, computed from the scoreboard sweep -------------------

@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-07-26T21:24:42Z",
+ "generatedAt": "2026-07-26T23:54:26Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -123,6 +123,7 @@
    "date": "2025-11-05",
    "opponent": "Kansas City",
    "season": "2025-26",
+   "home": true,
    "teamScore": 74,
    "opponentScore": 64,
    "periodScores": "8-11, 26-17, 17-16, 23-20",
@@ -361,6 +362,7 @@
    "date": "2025-11-09",
    "opponent": "Northwestern St.",
    "season": "2025-26",
+   "home": true,
    "teamScore": 75,
    "opponentScore": 60,
    "periodScores": "22-12, 17-11, 17-21, 19-16",
@@ -599,6 +601,7 @@
    "date": "2025-11-12",
    "opponent": "Lamar University",
    "season": "2025-26",
+   "home": true,
    "teamScore": 65,
    "opponentScore": 54,
    "periodScores": "14-11, 13-12, 23-9, 15-22",
@@ -818,6 +821,7 @@
    "date": "2025-11-15",
    "opponent": "Missouri",
    "season": "2025-26",
+   "home": false,
    "teamScore": 82,
    "opponentScore": 77,
    "periodScores": "21-17, 28-22, 17-23, 16-15",
@@ -999,6 +1003,7 @@
    "date": "2025-11-19",
    "opponent": "Minnesota",
    "season": "2025-26",
+   "home": true,
    "teamScore": 63,
    "opponentScore": 57,
    "periodScores": "18-8, 11-19, 20-16, 14-14",
@@ -1199,6 +1204,7 @@
    "date": "2025-11-23",
    "opponent": "Oral Roberts",
    "season": "2025-26",
+   "home": true,
    "teamScore": 86,
    "opponentScore": 75,
    "periodScores": "25-14, 17-23, 29-16, 15-22",
@@ -1418,6 +1424,7 @@
    "date": "2025-11-28",
    "opponent": "Georgia",
    "season": "2025-26",
+   "home": false,
    "teamScore": 62,
    "opponentScore": 68,
    "periodScores": "16-7, 13-25, 14-23, 19-13",
@@ -1618,6 +1625,7 @@
    "date": "2025-11-29",
    "opponent": "Dayton",
    "season": "2025-26",
+   "home": false,
    "teamScore": 58,
    "opponentScore": 59,
    "periodScores": "16-24, 14-9, 14-13, 14-13",
@@ -1837,6 +1845,7 @@
    "date": "2025-12-03",
    "opponent": "Northwestern",
    "season": "2025-26",
+   "home": false,
    "teamScore": 74,
    "opponentScore": 62,
    "periodScores": "6-16, 24-18, 26-13, 18-15",
@@ -2018,6 +2027,7 @@
    "date": "2025-12-07",
    "opponent": "Missouri St.",
    "season": "2025-26",
+   "home": false,
    "teamScore": 73,
    "opponentScore": 70,
    "periodScores": "14-14, 15-19, 16-19, 18-11, 10-7",
@@ -2199,6 +2209,7 @@
    "date": "2025-12-14",
    "opponent": "Denver",
    "season": "2025-26",
+   "home": true,
    "teamScore": 77,
    "opponentScore": 38,
    "periodScores": "11-8, 19-8, 25-7, 22-15",
@@ -2399,6 +2410,7 @@
    "date": "2025-12-17",
    "opponent": "Haskell",
    "season": "2025-26",
+   "home": true,
    "teamScore": 107,
    "opponentScore": 39,
    "periodScores": "27-10, 33-9, 20-6, 27-14",
@@ -2599,6 +2611,7 @@
    "date": "2025-12-21",
    "opponent": "Iowa St.",
    "season": "2025-26",
+   "home": false,
    "teamScore": 76,
    "opponentScore": 79,
    "periodScores": "20-14, 14-18, 21-27, 21-20",
@@ -2780,6 +2793,7 @@
    "date": "2026-01-01",
    "opponent": "West Virginia",
    "season": "2025-26",
+   "home": true,
    "teamScore": 72,
    "opponentScore": 79,
    "periodScores": "19-14, 17-21, 15-22, 21-22",
@@ -2942,6 +2956,7 @@
    "date": "2026-01-04",
    "opponent": "UCF",
    "season": "2025-26",
+   "home": false,
    "teamScore": 83,
    "opponentScore": 68,
    "periodScores": "18-16, 14-17, 24-15, 27-20",
@@ -3161,6 +3176,7 @@
    "date": "2026-01-07",
    "opponent": "Utah",
    "season": "2025-26",
+   "home": true,
    "teamScore": 59,
    "opponentScore": 62,
    "periodScores": "18-10, 10-16, 16-24, 15-12",
@@ -3361,6 +3377,7 @@
    "date": "2026-01-11",
    "opponent": "Baylor",
    "season": "2025-26",
+   "home": false,
    "teamScore": 64,
    "opponentScore": 79,
    "periodScores": "9-17, 21-27, 13-18, 21-17",
@@ -3561,6 +3578,7 @@
    "date": "2026-01-14",
    "opponent": "Oklahoma St.",
    "season": "2025-26",
+   "home": true,
    "teamScore": 76,
    "opponentScore": 85,
    "periodScores": "21-20, 19-26, 14-18, 22-21",
@@ -3723,6 +3741,7 @@
    "date": "2026-01-17",
    "opponent": "Arizona St.",
    "season": "2025-26",
+   "home": false,
    "teamScore": 51,
    "opponentScore": 67,
    "periodScores": "13-13, 16-27, 14-15, 8-12",
@@ -3942,6 +3961,7 @@
    "date": "2026-01-20",
    "opponent": "Arizona",
    "season": "2025-26",
+   "home": false,
    "teamScore": 80,
    "opponentScore": 69,
    "periodScores": "27-21, 17-11, 15-23, 21-14",
@@ -4123,6 +4143,7 @@
    "date": "2026-01-25",
    "opponent": "Kansas St.",
    "season": "2025-26",
+   "home": true,
    "teamScore": 83,
    "opponentScore": 61,
    "periodScores": "24-23, 25-11, 21-18, 13-9",
@@ -4342,6 +4363,7 @@
    "date": "2026-01-29",
    "opponent": "TCU",
    "season": "2025-26",
+   "home": false,
    "teamScore": 77,
    "opponentScore": 79,
    "periodScores": "17-30, 20-15, 19-20, 21-14",
@@ -4523,6 +4545,7 @@
    "date": "2026-02-01",
    "opponent": "Colorado",
    "season": "2025-26",
+   "home": true,
    "teamScore": 66,
    "opponentScore": 69,
    "periodScores": "4-7, 17-12, 22-20, 11-15, 12-15",
@@ -4723,6 +4746,7 @@
    "date": "2026-02-04",
    "opponent": "BYU",
    "season": "2025-26",
+   "home": true,
    "teamScore": 81,
    "opponentScore": 60,
    "periodScores": "15-13, 17-19, 25-13, 24-15",
@@ -4923,6 +4947,7 @@
    "date": "2026-02-07",
    "opponent": "Cincinnati",
    "season": "2025-26",
+   "home": true,
    "teamScore": 80,
    "opponentScore": 71,
    "periodScores": "17-21, 23-15, 24-17, 16-18",
@@ -5123,6 +5148,7 @@
    "date": "2026-02-10",
    "opponent": "Texas Tech",
    "season": "2025-26",
+   "home": false,
    "teamScore": 65,
    "opponentScore": 70,
    "periodScores": "17-11, 8-17, 15-17, 25-25",
@@ -5304,6 +5330,7 @@
    "date": "2026-02-14",
    "opponent": "Houston",
    "season": "2025-26",
+   "home": true,
    "teamScore": 85,
    "opponentScore": 68,
    "periodScores": "22-18, 19-18, 22-18, 22-14",
@@ -5504,6 +5531,7 @@
    "date": "2026-02-21",
    "opponent": "Kansas St.",
    "season": "2025-26",
+   "home": false,
    "teamScore": 75,
    "opponentScore": 68,
    "periodScores": "19-15, 14-18, 15-14, 27-21",
@@ -5704,6 +5732,7 @@
    "date": "2026-02-25",
    "opponent": "Texas Tech",
    "season": "2025-26",
+   "home": true,
    "teamScore": 68,
    "opponentScore": 59,
    "periodScores": "17-21, 12-11, 19-20, 20-7",
@@ -5904,6 +5933,7 @@
    "date": "2026-02-28",
    "opponent": "Oklahoma St.",
    "season": "2025-26",
+   "home": false,
    "teamScore": 56,
    "opponentScore": 70,
    "periodScores": "13-20, 15-20, 18-22, 10-8",
@@ -6104,6 +6134,7 @@
    "date": "2026-03-04",
    "opponent": "UCF",
    "season": "2025-26",
+   "home": true,
    "teamScore": 56,
    "opponentScore": 35,
    "periodScores": "17-10, 10-7, 12-9, 17-9",
@@ -6323,6 +6354,7 @@
    "date": "2026-03-05",
    "opponent": "Colorado",
    "season": "2025-26",
+   "home": false,
    "teamScore": 48,
    "opponentScore": 55,
    "periodScores": "11-12, 7-14, 11-12, 19-17",
@@ -6542,6 +6574,7 @@
    "date": "2026-03-19",
    "opponent": "Troy",
    "season": "2025-26",
+   "home": true,
    "teamScore": 79,
    "opponentScore": 70,
    "periodScores": "17-17, 15-20, 17-17, 30-16",
@@ -6723,6 +6756,7 @@
    "date": "2026-03-22",
    "opponent": "Rice",
    "season": "2025-26",
+   "home": true,
    "teamScore": 62,
    "opponentScore": 55,
    "periodScores": "16-12, 15-7, 18-20, 13-16",
@@ -6923,6 +6957,7 @@
    "date": "2026-03-26",
    "opponent": "San Diego St.",
    "season": "2025-26",
+   "home": true,
    "teamScore": 85,
    "opponentScore": 78,
    "periodScores": "25-15, 20-27, 18-23, 22-13",
@@ -7104,6 +7139,7 @@
    "date": "2026-03-30",
    "opponent": "BYU",
    "season": "2025-26",
+   "home": false,
    "teamScore": 67,
    "opponentScore": 70,
    "periodScores": "15-15, 16-13, 20-18, 16-24",
@@ -7284,52 +7320,62 @@
   {
    "date": "2026-10-22",
    "opponent": "Northeastern State (exh.)",
-   "season": "2026-27"
+   "season": "2026-27",
+   "home": true
   },
   {
    "date": "2026-10-29",
    "opponent": "Washburn (exh.)",
-   "season": "2026-27"
+   "season": "2026-27",
+   "home": true
   },
   {
    "date": "2026-11-03",
    "opponent": "Omaha",
-   "season": "2026-27"
+   "season": "2026-27",
+   "home": true
   },
   {
    "date": "2026-11-07",
    "opponent": "Drake",
-   "season": "2026-27"
+   "season": "2026-27",
+   "home": true
   },
   {
    "date": "2026-11-10",
    "opponent": "Oral Roberts",
-   "season": "2026-27"
+   "season": "2026-27",
+   "home": true
   },
   {
    "date": "2026-11-14",
    "opponent": "Nebraska",
-   "season": "2026-27"
+   "season": "2026-27",
+   "home": true
   },
   {
    "date": "2026-11-18",
    "opponent": "Minnesota",
-   "season": "2026-27"
+   "season": "2026-27",
+   "home": false
   },
   {
    "date": "2026-11-22",
    "opponent": "South Dakota State",
-   "season": "2026-27"
+   "season": "2026-27",
+   "home": true
   },
   {
    "date": "2026-11-26",
    "opponent": "TBD",
-   "season": "2026-27"
+   "season": "2026-27",
+   "home": true
   },
   {
    "date": "2026-11-27",
    "opponent": "TBD",
-   "season": "2026-27"
+   "season": "2026-27",
+   "home": true
   }
  ],
  "standings": [

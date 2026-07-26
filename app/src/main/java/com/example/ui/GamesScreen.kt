@@ -45,6 +45,16 @@ import com.example.data.Player
 import com.example.data.StatLine
 import com.example.stats.summarize
 
+/**
+ * "vs " for a home game, "at " for a road game, and nothing at all when the
+ * site is unknown — better a bare opponent name than a wrong one.
+ */
+fun siteLabel(home: Boolean?): String = when (home) {
+    true -> "vs "
+    false -> "at "
+    null -> ""
+}
+
 @Composable
 fun GamesScreen(
     games: List<Game>,
@@ -80,7 +90,7 @@ fun GamesScreen(
                         ) {
                             Column(modifier = Modifier.weight(1f)) {
                                 Text(
-                                    "vs ${game.opponent}",
+                                    "${siteLabel(game.home)}${game.opponent}",
                                     style = MaterialTheme.typography.titleMedium,
                                     fontWeight = FontWeight.SemiBold
                                 )
@@ -163,6 +173,9 @@ fun GameDialog(
     var teamScore by remember { mutableStateOf(game?.teamScore?.toString() ?: "") }
     var oppScore by remember { mutableStateOf(game?.opponentScore?.toString() ?: "") }
     var periodScores by remember { mutableStateOf(game?.periodScores ?: "") }
+    // A hand-added game defaults to a home game; editing an existing one keeps
+    // whatever it has (an unknown site becomes "home" only if the user saves).
+    var home by remember { mutableStateOf(game?.home ?: true) }
 
     val dateValid = Regex("""\d{4}-\d{2}-\d{2}""").matches(date)
 
@@ -214,6 +227,14 @@ fun GameDialog(
                     singleLine = true,
                     modifier = Modifier.fillMaxWidth()
                 )
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(
+                        if (home) "Home game" else "Away game",
+                        style = MaterialTheme.typography.bodyMedium,
+                        modifier = Modifier.weight(1f)
+                    )
+                    Switch(checked = home, onCheckedChange = { home = it })
+                }
             }
         },
         confirmButton = {
@@ -226,6 +247,7 @@ fun GameDialog(
                             date = date,
                             opponent = opponent.trim(),
                             season = season.trim(),
+                            home = home,
                             teamScore = teamScore.toIntOrNull(),
                             opponentScore = oppScore.toIntOrNull(),
                             periodScores = periodScores.trim().ifBlank { null }
@@ -260,7 +282,7 @@ fun GameDetailScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("vs ${game.opponent}") },
+                title = { Text("${siteLabel(game.home)}${game.opponent}") },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")

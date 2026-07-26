@@ -68,6 +68,10 @@ data class Game(
     val opponent: String,
     // Basketball seasons span two years; labeled like "2025-26".
     val season: String,
+    // Site: true = KU hosts, false = on the road. Null when unknown (seeds
+    // predating this field, or a hand-entered game) so the UI can stay silent
+    // rather than claim a site it doesn't know.
+    val home: Boolean? = null,
     // Final score. Null until played.
     val teamScore: Int? = null,
     val opponentScore: Int? = null,

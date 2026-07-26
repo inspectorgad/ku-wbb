@@ -41,7 +41,7 @@ class MergeSyncTest {
           "players": [{"name": "Ada Alpha", "jerseyNumber": "1", "position": "G"}],
           "games": [
             {"date": "2025-11-05", "opponent": "Kansas City", "season": "2025-26",
-             "teamScore": 74, "opponentScore": 64,
+             "home": true, "teamScore": 74, "opponentScore": 64,
              "periodScores": "8-11, 26-17, 17-16, 23-20",
              "lines": [{"player": "Ada Alpha", "min": 29, "fgm": 7, "fga": 15,
                         "tpm": 1, "tpa": 4, "ftm": 6, "fta": 6, "oreb": 1, "reb": 4,
@@ -65,6 +65,45 @@ class MergeSyncTest {
         assertEquals(15, line.fieldGoalsAttempted)
         assertEquals(6, line.assists)
         assertEquals(true, line.started)
+    }
+
+    @Test
+    fun `home flag comes through and gap-fills a game that lacks it`() = runTest {
+        val dao = db.dao()
+        Seeder.merge(seedJson(), dao)
+        assertEquals(true, dao.gamesOnce().single().home)
+
+        // A game stored before the flag existed (or hand-entered) picks the
+        // site up on the next sync, even though it already has a result.
+        val other = com.example.data.Game(
+            date = "2025-11-15", opponent = "Missouri", season = "2025-26",
+            teamScore = 82, opponentScore = 77
+        )
+        dao.insertGame(other)
+        Seeder.merge(
+            JSONObject(
+                """{"players":[],"games":[{"date":"2025-11-15","opponent":"Missouri",
+                    "season":"2025-26","home":false,"teamScore":82,"opponentScore":77}]}"""
+            ),
+            dao
+        )
+        val missouri = dao.gamesOnce().single { it.opponent == "Missouri" }
+        assertEquals(false, missouri.home)
+        assertEquals(82, missouri.teamScore)
+    }
+
+    @Test
+    fun `a seed without the home flag leaves an existing site alone`() = runTest {
+        val dao = db.dao()
+        Seeder.merge(seedJson(), dao)
+        Seeder.merge(
+            JSONObject(
+                """{"players":[],"games":[{"date":"2025-11-05","opponent":"Kansas City",
+                    "season":"2025-26"}]}"""
+            ),
+            dao
+        )
+        assertEquals(true, dao.gamesOnce().single().home)
     }
 
     @Test

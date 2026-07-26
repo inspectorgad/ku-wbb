@@ -10,7 +10,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 @Database(
     entities = [Player::class, Game::class, StatLine::class,
         ConferenceStanding::class, PollEntry::class],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 abstract class JayhawksDatabase : RoomDatabase() {
@@ -42,13 +42,21 @@ abstract class JayhawksDatabase : RoomDatabase() {
             }
         }
 
+        // v2 -> v3: games gained the home/away flag (nullable: unknown for
+        // rows that predate it, which the UI renders as no site label).
+        private val MIGRATION_2_3 = object : Migration(2, 3) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE games ADD COLUMN home INTEGER")
+            }
+        }
+
         fun get(context: Context): JayhawksDatabase =
             instance ?: synchronized(this) {
                 instance ?: Room.databaseBuilder(
                     context.applicationContext,
                     JayhawksDatabase::class.java,
                     "ku_wbb.db"
-                ).addMigrations(MIGRATION_1_2).build().also { instance = it }
+                ).addMigrations(MIGRATION_1_2, MIGRATION_2_3).build().also { instance = it }
             }
     }
 }

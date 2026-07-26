@@ -181,6 +181,15 @@
   .chip.L { color: var(--loss); background: var(--loss-bg); }
   .dim { color: var(--muted); }
   .phase-lbl { font-size: 10.5px; letter-spacing: .1em; color: var(--muted); text-transform: uppercase; }
+  /* Home/away: filled chip for home, outlined for away, so the two differ in
+     shape as well as color. */
+  .site {
+    display: inline-block; min-width: 26px; text-align: center;
+    font-size: 11px; font-weight: 800; letter-spacing: .04em;
+    border-radius: 4px; padding: 1px 6px; border: 1px solid transparent;
+  }
+  .site.home { background: var(--win-bg); color: var(--win); }
+  .site.away { border-color: var(--faint); color: var(--muted); }
 
   /* ---------- big 12 ---------- */
   .b12-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 12px; align-items: start; }
@@ -307,8 +316,9 @@
     <div class="card tbl-wrap" style="max-height:460px; overflow-y:auto;">
       <table id="gamesTbl">
         <thead>
-          <tr><th class="lft">#</th><th class="lft">Date</th><th class="lft">Opponent</th><th class="lft"></th>
-              <th>Score</th><th class="lft">Quarters</th><th class="lft">Top scorer</th><th class="lft"></th></tr>
+          <tr><th class="lft">#</th><th class="lft">Date</th><th class="lft">Site</th><th class="lft">Opponent</th>
+              <th class="lft"></th><th>Score</th><th class="lft">Quarters</th><th class="lft">Top scorer</th>
+              <th class="lft"></th></tr>
         </thead>
         <tbody></tbody>
       </table>
@@ -428,6 +438,17 @@ const fmtDate = iso => {
 const pct = (m, a) => a ? (m / a) : 0;
 const fPct = v => (v ? v.toFixed(3).replace(/^0/, "") : ".000");
 const f1 = v => v.toFixed(1);
+// Home/away. Seeds predating this field leave `home` undefined — say nothing
+// rather than guessing, since a wrong "at" reads as fact.
+const siteOf = g => (g.home === true ? "home" : g.home === false ? "away" : null);
+const siteChip = g => {
+  const s = siteOf(g);
+  return s ? `<span class="site ${s}">${s === "home" ? "vs" : "at"}</span>` : "";
+};
+const vsAt = g => {
+  const s = siteOf(g);
+  return s === "home" ? "vs " : s === "away" ? "at " : "";
+};
 const blankTotals = () =>
   ({ g:0, gs:0, min:0, fgm:0, fga:0, tpm:0, tpa:0, ftm:0, fta:0, oreb:0, reb:0, ast:0, to:0, stl:0, blk:0, pf:0, pts:0 });
 
@@ -505,7 +526,7 @@ function renderHeader() {
     const next = upcoming[0];
     host.innerHTML = next
       ? `<div class="tile"><div class="v">${fmtDate(next.date)}</div><div class="l">First game</div>
-           <div class="d">${next.opponent}</div></div>
+           <div class="d">${vsAt(next)}${next.opponent}</div></div>
          <div class="tile alt"><div class="v">${upcoming.length}</div><div class="l">Scheduled so far</div>
            <div class="d">stats appear as games are played</div></div>`
       : "";
@@ -590,7 +611,7 @@ function marginChart() {
     const r = ev.target.closest("rect[data-g]");
     if (!r) { hideTip(); return; }
     const g = games[+r.dataset.g];
-    showTip(`<b>${g.won ? "W" : "L"} ${g.teamScore}–${g.opponentScore}</b> ${g.won ? "over" : "to"} ${g.opponent}<br>
+    showTip(`<b>${g.won ? "W" : "L"} ${g.teamScore}–${g.opponentScore}</b> ${g.won ? "over" : "to"} ${g.opponent} (${siteOf(g) || "site n/a"})<br>
       ${fmtDate(g.date)} · ${phaseOf(g)}<br>
       <span style="opacity:.8">Quarters: ${g.periodScores || "—"}</span><br>
       <span style="opacity:.8">Top: ${g.top ? g.top.name + " " + g.top.pts : "—"}</span>`, ev);
@@ -638,6 +659,7 @@ function gamesTable() {
     <tr>
       <td class="dim">${g.n}</td>
       <td class="lft">${fmtDate(g.date)}</td>
+      <td class="lft">${siteChip(g)}</td>
       <td class="lft"><b>${g.opponent}</b></td>
       <td class="lft"><span class="chip ${g.won ? "W" : "L"}">${g.won ? "W" : "L"}</span></td>
       <td><b>${g.teamScore}–${g.opponentScore}</b></td>
@@ -650,6 +672,7 @@ function gamesTable() {
     <tr>
       <td class="dim">${games.length + i + 1}</td>
       <td class="lft">${fmtDate(g.date)}</td>
+      <td class="lft">${siteChip(g)}</td>
       <td class="lft"><b>${g.opponent}</b></td>
       <td class="lft"><span class="phase-lbl">Sched.</span></td>
       <td class="dim">—</td>
@@ -834,7 +857,7 @@ function openPlayer(name) {
     const r = ev.target.closest("rect[data-i]");
     if (!r) { hideTip(); return; }
     const e = p.log[+r.dataset.i];
-    showTip(`<b>${e.l.pts} pts</b> vs ${e.g.opponent} (${e.g.won ? "W" : "L"})<br>
+    showTip(`<b>${e.l.pts} pts</b> ${vsAt(e.g) || "vs "}${e.g.opponent} (${e.g.won ? "W" : "L"})<br>
       ${fmtDate(e.g.date)} · ${e.l.fgm}-${e.l.fga} FG, ${e.l.tpm}-${e.l.tpa} 3PT, ${e.l.ftm}-${e.l.fta} FT<br>
       <span style="opacity:.8">${e.l.reb} reb · ${e.l.ast} ast · ${e.l.stl} stl · ${e.l.blk} blk</span>`, ev);
   };
@@ -844,7 +867,7 @@ function openPlayer(name) {
   document.querySelector("#logTbl tbody").innerHTML = [...p.log].reverse().map(e => `
     <tr>
       <td class="lft">${fmtDate(e.g.date)}</td>
-      <td class="lft">${e.g.opponent}</td>
+      <td class="lft">${siteChip(e.g)} ${e.g.opponent}</td>
       <td class="lft"><span class="chip ${e.g.won ? "W" : "L"}">${e.g.won ? "W" : "L"}</span></td>
       <td>${e.l.min}</td><td><b>${e.l.pts}</b></td>
       <td>${e.l.fgm}-${e.l.fga}</td><td>${e.l.tpm}-${e.l.tpa}</td><td>${e.l.ftm}-${e.l.fta}</td>
