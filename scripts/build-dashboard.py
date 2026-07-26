@@ -16,6 +16,10 @@ data = {
     # Only completed games; upcoming fixtures have no box score to chart.
     "games": [g for g in seed["games"] if "teamScore" in g],
 }
+# Optional keys added by the Big 12 feature; older seeds simply omit them.
+for key in ("standings", "polls"):
+    if key in seed:
+        data[key] = seed[key]
 
 with open(TEMPLATE_PATH) as f:
     template = f.read()

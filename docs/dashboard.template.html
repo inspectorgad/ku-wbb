@@ -168,6 +168,17 @@
   .dim { color: var(--muted); }
   .phase-lbl { font-size: 10.5px; letter-spacing: .1em; color: var(--muted); text-transform: uppercase; }
 
+  /* ---------- big 12 ---------- */
+  .b12-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 12px; align-items: start; }
+  .tblcap { margin: 0 0 2px; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .fine { color: var(--muted); font-size: 11.5px; margin: 8px 0 0; }
+  tbody tr.ku td { background: var(--win-bg); font-weight: 700; }
+  .b12chip {
+    display: inline-block; font-size: 10px; font-weight: 800; border-radius: 4px;
+    padding: 1px 6px; background: var(--win-bg); color: var(--win); margin-left: 6px;
+    vertical-align: 1px;
+  }
+
   /* ---------- players ---------- */
   .roster-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; }
   .pcard {
@@ -286,6 +297,34 @@
         </thead>
         <tbody></tbody>
       </table>
+    </div>
+  </section>
+
+  <section id="big12Sec" hidden>
+    <div class="sec-head">
+      <h2>Big 12</h2>
+      <span class="note" id="b12Note"></span>
+      <div class="rule"></div>
+    </div>
+    <div class="b12-grid">
+      <div class="card tbl-wrap">
+        <h3 class="tblcap">Conference standings</h3>
+        <table id="standingsTbl">
+          <thead><tr><th class="lft"></th><th class="lft">Team</th><th>Conf</th><th>PCT</th>
+            <th>Overall</th><th>AP</th><th>NET</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <p class="fine">Ordered by conference win percentage — not official Big 12
+          tiebreakers, which use head-to-head results.</p>
+      </div>
+      <div class="card tbl-wrap">
+        <h3 class="tblcap" id="pollTitle">National poll</h3>
+        <div class="dim" id="pollMeta" style="font-size:12px"></div>
+        <table id="pollTbl">
+          <thead><tr><th class="lft">#</th><th class="lft">Team</th><th>Record</th><th>Pts</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </div>
   </section>
 
@@ -581,6 +620,51 @@ function sparkSVG(p, w = 200, h = 26) {
     const btn = ev.target.closest(".pcard[data-p]");
     if (btn) openPlayer(btn.dataset.p);
   });
+})();
+
+// ---------- Big 12 standings + national poll --------------------------------
+// Optional seed keys: an older season-data.json simply hides the section.
+(function big12() {
+  const standings = DATA.standings || [];
+  const polls = DATA.polls || [];
+  if (!standings.length && !polls.length) return;
+  document.getElementById("big12Sec").hidden = false;
+
+  const seasons = [...new Set(standings.map(r => r.season))].sort().reverse();
+  const pick = seasons[0];
+  document.getElementById("b12Note").textContent = pick ? "season " + pick : "";
+
+  const rows = standings.filter(r => r.season === pick)
+    .sort((a, b) => {
+      const pa = (a.confW + a.confL) ? a.confW / (a.confW + a.confL) : 0;
+      const pb = (b.confW + b.confL) ? b.confW / (b.confW + b.confL) : 0;
+      return pb - pa || b.confW - a.confW || a.team.localeCompare(b.team);
+    });
+  document.querySelector("#standingsTbl tbody").innerHTML = rows.map((r, i) => {
+    const cg = r.confW + r.confL;
+    return `<tr${r.seo === "kansas" ? ' class="ku"' : ""}>
+      <td class="dim">${i + 1}</td>
+      <td class="lft">${r.team}</td>
+      <td>${r.confW}-${r.confL}</td>
+      <td>${cg ? fPct(r.confW / cg) : "—"}</td>
+      <td>${r.overallW}-${r.overallL}</td>
+      <td>${r.nationalRank ? "#" + r.nationalRank : "—"}</td>
+      <td>${r.netRank ? "#" + r.netRank : "—"}</td>
+    </tr>`;
+  }).join("");
+
+  const poll = polls.find(p => p.season === pick) || polls[0];
+  if (!poll) return;
+  document.getElementById("pollTitle").textContent = poll.name || "National poll";
+  document.getElementById("pollMeta").textContent =
+    `${poll.updated} · ${poll.rows.filter(r => r.big12).length} of ${poll.rows.length} from the Big 12`;
+  document.querySelector("#pollTbl tbody").innerHTML = poll.rows.map(r => `
+    <tr${r.big12 ? ' class="ku"' : ""}>
+      <td class="lft dim">${r.rankLabel || r.rank}</td>
+      <td class="lft">${r.team}${r.firstPlaceVotes ? " (" + r.firstPlaceVotes + ")" : ""}${r.big12 ? '<span class="b12chip">Big 12</span>' : ""}</td>
+      <td>${r.record || ""}</td>
+      <td>${r.points || ""}</td>
+    </tr>`).join("");
 })();
 
 // ---------- player modal ----------
