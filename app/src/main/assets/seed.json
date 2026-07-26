@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-07-17T23:32:23Z",
+ "generatedAt": "2026-07-26T21:18:10Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -7330,6 +7330,443 @@
    "date": "2026-11-27",
    "opponent": "TBD",
    "season": "2026-27"
+  }
+ ],
+ "standings": [
+  {
+   "season": "2025-26",
+   "team": "TCU",
+   "seo": "tcu",
+   "confW": 17,
+   "confL": 4,
+   "overallW": 32,
+   "overallL": 6,
+   "nationalRank": 6,
+   "netRank": 10
+  },
+  {
+   "season": "2025-26",
+   "team": "West Virginia",
+   "seo": "west-virginia",
+   "confW": 17,
+   "confL": 4,
+   "overallW": 28,
+   "overallL": 7,
+   "nationalRank": 18,
+   "netRank": 17
+  },
+  {
+   "season": "2025-26",
+   "team": "Baylor",
+   "seo": "baylor",
+   "confW": 13,
+   "confL": 6,
+   "overallW": 25,
+   "overallL": 9,
+   "nationalRank": 23,
+   "netRank": 31
+  },
+  {
+   "season": "2025-26",
+   "team": "Texas Tech",
+   "seo": "texas-tech",
+   "confW": 12,
+   "confL": 7,
+   "overallW": 26,
+   "overallL": 8,
+   "nationalRank": null,
+   "netRank": 32
+  },
+  {
+   "season": "2025-26",
+   "team": "Oklahoma St.",
+   "seo": "oklahoma-st",
+   "confW": 12,
+   "confL": 7,
+   "overallW": 24,
+   "overallL": 10,
+   "nationalRank": null,
+   "netRank": 29
+  },
+  {
+   "season": "2025-26",
+   "team": "Colorado",
+   "seo": "colorado",
+   "confW": 13,
+   "confL": 8,
+   "overallW": 22,
+   "overallL": 12,
+   "nationalRank": null,
+   "netRank": 47
+  },
+  {
+   "season": "2025-26",
+   "team": "BYU",
+   "seo": "byu",
+   "confW": 12,
+   "confL": 10,
+   "overallW": 26,
+   "overallL": 12,
+   "nationalRank": null,
+   "netRank": 54
+  },
+  {
+   "season": "2025-26",
+   "team": "Iowa St.",
+   "seo": "iowa-st",
+   "confW": 10,
+   "confL": 9,
+   "overallW": 22,
+   "overallL": 10,
+   "nationalRank": null,
+   "netRank": 33
+  },
+  {
+   "season": "2025-26",
+   "team": "Utah",
+   "seo": "utah",
+   "confW": 10,
+   "confL": 9,
+   "overallW": 19,
+   "overallL": 13,
+   "nationalRank": null,
+   "netRank": 60
+  },
+  {
+   "season": "2025-26",
+   "team": "Arizona St.",
+   "seo": "arizona-st",
+   "confW": 11,
+   "confL": 10,
+   "overallW": 24,
+   "overallL": 11,
+   "nationalRank": null,
+   "netRank": 52
+  },
+  {
+   "season": "2025-26",
+   "team": "Kansas St.",
+   "seo": "kansas-st",
+   "confW": 11,
+   "confL": 11,
+   "overallW": 19,
+   "overallL": 18,
+   "nationalRank": null,
+   "netRank": 58
+  },
+  {
+   "season": "2025-26",
+   "team": "Kansas",
+   "seo": "kansas",
+   "confW": 9,
+   "confL": 12,
+   "overallW": 22,
+   "overallL": 14,
+   "nationalRank": null,
+   "netRank": 50
+  },
+  {
+   "season": "2025-26",
+   "team": "Cincinnati",
+   "seo": "cincinnati",
+   "confW": 6,
+   "confL": 13,
+   "overallW": 11,
+   "overallL": 20,
+   "nationalRank": null,
+   "netRank": 111
+  },
+  {
+   "season": "2025-26",
+   "team": "Arizona",
+   "seo": "arizona",
+   "confW": 3,
+   "confL": 16,
+   "overallW": 12,
+   "overallL": 18,
+   "nationalRank": null,
+   "netRank": 123
+  },
+  {
+   "season": "2025-26",
+   "team": "UCF",
+   "seo": "ucf",
+   "confW": 3,
+   "confL": 16,
+   "overallW": 11,
+   "overallL": 19,
+   "nationalRank": null,
+   "netRank": 149
+  },
+  {
+   "season": "2025-26",
+   "team": "Houston",
+   "seo": "houston",
+   "confW": 1,
+   "confL": 18,
+   "overallW": 7,
+   "overallL": 23,
+   "nationalRank": null,
+   "netRank": 179
+  }
+ ],
+ "polls": [
+  {
+   "season": "2025-26",
+   "name": "AP Top 25",
+   "updated": "Through Games APR. 5, 2026",
+   "rows": [
+    {
+     "rank": 1,
+     "rankLabel": "1",
+     "team": "UCLA",
+     "record": "37-1",
+     "points": "775",
+     "previous": "2",
+     "firstPlaceVotes": 31,
+     "big12": false
+    },
+    {
+     "rank": 2,
+     "rankLabel": "2",
+     "team": "South Carolina",
+     "record": "36-4",
+     "points": "739",
+     "previous": "4",
+     "firstPlaceVotes": 0,
+     "big12": false
+    },
+    {
+     "rank": 3,
+     "rankLabel": "3",
+     "team": "UConn",
+     "record": "38-1",
+     "points": "704",
+     "previous": "1",
+     "firstPlaceVotes": 0,
+     "big12": false
+    },
+    {
+     "rank": 4,
+     "rankLabel": "4",
+     "team": "Texas",
+     "record": "35-4",
+     "points": "696",
+     "previous": "3",
+     "firstPlaceVotes": 0,
+     "big12": false
+    },
+    {
+     "rank": 5,
+     "rankLabel": "5",
+     "team": "Duke",
+     "record": "27-9",
+     "points": "641",
+     "previous": "8",
+     "firstPlaceVotes": 0,
+     "big12": false
+    },
+    {
+     "rank": 6,
+     "rankLabel": "6",
+     "team": "TCU",
+     "record": "32-6",
+     "points": "582",
+     "previous": "14",
+     "firstPlaceVotes": 0,
+     "big12": true
+    },
+    {
+     "rank": 7,
+     "rankLabel": "7",
+     "team": "Michigan",
+     "record": "28-7",
+     "points": "578",
+     "previous": "9",
+     "firstPlaceVotes": 0,
+     "big12": false
+    },
+    {
+     "rank": 8,
+     "rankLabel": "8",
+     "team": "LSU",
+     "record": "29-6",
+     "points": "540",
+     "previous": "5",
+     "firstPlaceVotes": 0,
+     "big12": false
+    },
+    {
+     "rank": 9,
+     "rankLabel": "9",
+     "team": "Notre Dame",
+     "record": "25-11",
+     "points": "524",
+     "previous": "22",
+     "firstPlaceVotes": 0,
+     "big12": false
+    },
+    {
+     "rank": 10,
+     "rankLabel": "10",
+     "team": "Vanderbilt",
+     "record": "29-5",
+     "points": "518",
+     "previous": "6",
+     "firstPlaceVotes": 0,
+     "big12": false
+    },
+    {
+     "rank": 11,
+     "rankLabel": "11",
+     "team": "Louisville",
+     "record": "29-8",
+     "points": "438",
+     "previous": "13",
+     "firstPlaceVotes": 0,
+     "big12": false
+    },
+    {
+     "rank": 12,
+     "rankLabel": "12",
+     "team": "Oklahoma",
+     "record": "26-8",
+     "points": "425",
+     "previous": "10",
+     "firstPlaceVotes": 0,
+     "big12": false
+    },
+    {
+     "rank": 13,
+     "rankLabel": "13",
+     "team": "North Carolina",
+     "record": "28-8",
+     "points": "382",
+     "previous": "15",
+     "firstPlaceVotes": 0,
+     "big12": false
+    },
+    {
+     "rank": 14,
+     "rankLabel": "14",
+     "team": "Kentucky",
+     "record": "25-11",
+     "points": "360",
+     "previous": "16",
+     "firstPlaceVotes": 0,
+     "big12": false
+    },
+    {
+     "rank": 15,
+     "rankLabel": "15",
+     "team": "Minnesota",
+     "record": "24-9",
+     "points": "346",
+     "previous": "18",
+     "firstPlaceVotes": 0,
+     "big12": false
+    },
+    {
+     "rank": 16,
+     "rankLabel": "16",
+     "team": "Iowa",
+     "record": "27-7",
+     "points": "279",
+     "previous": "7",
+     "firstPlaceVotes": 0,
+     "big12": false
+    },
+    {
+     "rank": 17,
+     "rankLabel": "17",
+     "team": "Ohio State",
+     "record": "27-8",
+     "points": "253",
+     "previous": "12",
+     "firstPlaceVotes": 0,
+     "big12": false
+    },
+    {
+     "rank": 18,
+     "rankLabel": "18",
+     "team": "West Virginia",
+     "record": "28-7",
+     "points": "246",
+     "previous": "11",
+     "firstPlaceVotes": 0,
+     "big12": true
+    },
+    {
+     "rank": 19,
+     "rankLabel": "19",
+     "team": "Virginia",
+     "record": "22-12",
+     "points": "208",
+     "previous": "NR",
+     "firstPlaceVotes": 0,
+     "big12": false
+    },
+    {
+     "rank": 20,
+     "rankLabel": "20",
+     "team": "Maryland",
+     "record": "24-9",
+     "points": "204",
+     "previous": "17",
+     "firstPlaceVotes": 0,
+     "big12": false
+    },
+    {
+     "rank": 21,
+     "rankLabel": "21",
+     "team": "Ole Miss",
+     "record": "24-12",
+     "points": "193",
+     "previous": "19",
+     "firstPlaceVotes": 0,
+     "big12": false
+    },
+    {
+     "rank": 22,
+     "rankLabel": "22",
+     "team": "Michigan State",
+     "record": "23-9",
+     "points": "145",
+     "previous": "20",
+     "firstPlaceVotes": 0,
+     "big12": false
+    },
+    {
+     "rank": 23,
+     "rankLabel": "23",
+     "team": "Baylor",
+     "record": "25-9",
+     "points": "88",
+     "previous": "21",
+     "firstPlaceVotes": 0,
+     "big12": true
+    },
+    {
+     "rank": 24,
+     "rankLabel": "24",
+     "team": "Alabama",
+     "record": "24-11",
+     "points": "80",
+     "previous": "NR",
+     "firstPlaceVotes": 0,
+     "big12": false
+    },
+    {
+     "rank": 25,
+     "rankLabel": "25",
+     "team": "Washington",
+     "record": "22-11",
+     "points": "48",
+     "previous": "NR",
+     "firstPlaceVotes": 0,
+     "big12": false
+    }
+   ]
   }
  ]
 }
