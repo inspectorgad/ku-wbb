@@ -87,11 +87,11 @@ Lawrence, Kan.
 
 87
 Days
-23
+11
 Hours
-31
+2
 Minutes
-49
+41
 Seconds
 Add To Calendar
 Text Only
@@ -313,6 +313,7 @@ Dec 16
 
 History
 Explore Lawrence
+Skip Ad
 Related Videos
 All Videos
 Hawk Talk with Brandon Schneider
