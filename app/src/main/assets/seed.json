@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-07-26T23:54:26Z",
+ "generatedAt": "2026-07-30T11:10:12Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -7367,13 +7367,13 @@
   },
   {
    "date": "2026-11-26",
-   "opponent": "TBD",
+   "opponent": "Washington State",
    "season": "2026-27",
    "home": true
   },
   {
    "date": "2026-11-27",
-   "opponent": "TBD",
+   "opponent": "Miami (OH)",
    "season": "2026-27",
    "home": true
   }
