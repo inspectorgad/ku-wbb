@@ -89,13 +89,13 @@ Lawrence, Kan.
 
 6:30 p.m. CT
 
-77
+76
 Days
-12
-Hours
-4
-Minutes
 13
+Hours
+26
+Minutes
+11
 Seconds
 Add To Calendar
 Text Only
@@ -322,6 +322,7 @@ Dec 16
 
 History
 Explore Lawrence
+Skip Ad
 Related Videos
 All Videos
 Hawk Talk with Brandon Schneider
