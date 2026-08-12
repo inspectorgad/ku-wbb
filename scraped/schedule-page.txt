@@ -2,7 +2,6 @@
 Skip to main content
 Pause All Rotators
 University of Kansas Athletics
-Skip Ad
 Skip Scoreboard
 Scoreboard
 Coming Up
@@ -46,8 +45,10 @@ Upcoming Event: Women's Basketball at Minnesota on November 18, 2026
 Wed. 11/18/26
 Women's Basketball
 at Minnesota
-Upcoming Event: Women's Basketball versus South Dakota State on November 22, 2026
+Upcoming Event: Women's Basketball versus South Dakota State on November 22, 2026 at 1:30 p.m. CT
 Sun. 11/22/26
+-
+1:30 p.m. CT
 Women's Basketball
 vs South Dakota State
 Upcoming Event: Women's Basketball versus Washington State on November 26, 2026 at 3 p.m. CT
@@ -90,13 +91,13 @@ Lawrence, Kan.
 
 6:30 p.m. CT
 
-72
+71
 Days
 13
 Hours
-27
+20
 Minutes
-24
+38
 Seconds
 Add To Calendar
 Text Only
@@ -151,6 +152,7 @@ Oct 22
 
 History
 Explore Lawrence
+Late Night in the Phog
 vs
 Washburn (exh.)
 
@@ -233,6 +235,8 @@ Kansas City, Mo.
 
 Nov 22
 (Sun)
+
+1:30 p.m. CT
 
 History
 Cancun Challenge
@@ -323,7 +327,6 @@ Dec 16
 
 History
 Explore Lawrence
-Skip Ad
 Related Videos
 All Videos
 Hawk Talk with Brandon Schneider
