@@ -92,13 +92,13 @@ Lawrence, Kan.
 
 6:30 p.m. CT
 
-65
+63
 Days
 13
 Hours
-53
+52
 Minutes
-5
+22
 Seconds
 Add To Calendar
 Text Only
@@ -166,6 +166,9 @@ Oct 29
 6:30 p.m. CT
 
 History
+
+Sponsored by:
+
 Explore Lawrence
 vs
 Omaha
