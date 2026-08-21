@@ -92,13 +92,13 @@ Lawrence, Kan.
 
 6:30 p.m. CT
 
-63
+62
 Days
 13
 Hours
-52
+50
 Minutes
-22
+33
 Seconds
 Add To Calendar
 Text Only
@@ -208,6 +208,7 @@ History
 Explore Lawrence
 Skip Ad
 MarketBeat Invitational
+vs
 Nebraska
 
 Sanford Pentagon
@@ -232,6 +233,7 @@ Nov 18
 
 History
 28.5 Hoops Invitational
+vs
 South Dakota State
 
 T-Mobile Center
@@ -244,6 +246,7 @@ Nov 22
 
 History
 Cancun Challenge
+vs
 Washington State
 
 Hard Rock Hotel Rivera Maya
@@ -255,6 +258,7 @@ Nov 26
 3 p.m. CT
 
 History
+vs
 Miami (OH)
 
 Hard Rock Hotel Rivera Maya
