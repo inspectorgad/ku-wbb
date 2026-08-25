@@ -26,8 +26,10 @@ Tue. 11/03/26
 6:30 p.m. CT
 Women's Basketball
 vs Omaha
-Upcoming Event: Women's Basketball versus Drake on November 7, 2026
-Sat. 11/07/26
+Upcoming Event: Women's Basketball versus Drake on November 6, 2026 at 11 a.m. CT
+Fri. 11/06/26
+-
+11 a.m. CT
 Women's Basketball
 vs Drake
 Upcoming Event: Women's Basketball versus Oral Roberts on November 10, 2026 at 6:30 p.m. CT
@@ -92,13 +94,13 @@ Lawrence, Kan.
 
 6:30 p.m. CT
 
-59
+58
 Days
 13
 Hours
-38
+51
 Minutes
-41
+22
 Seconds
 Add To Calendar
 Text Only
@@ -188,8 +190,10 @@ Drake
 Allen Fieldhouse
 Lawrence, Kan.
 
-Nov 7
-(Sat)
+Nov 6
+(Fri)
+
+11 a.m. CT
 
 History
 Explore Lawrence
