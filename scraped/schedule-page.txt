@@ -94,13 +94,13 @@ Lawrence, Kan.
 
 6:30 p.m. CT
 
-34
+33
 Days
 10
 Hours
-0
+31
 Minutes
-1
+31
 Seconds
 Add To Calendar
 Text Only
@@ -350,6 +350,7 @@ Dec 20
 (Sun)
 
 History
+Explore Lawrence
 at
 West Virginia
 
@@ -380,6 +381,7 @@ Jan 6
 (Wed)
 
 History
+Explore Lawrence
 vs
 Baylor
 
@@ -390,6 +392,7 @@ Jan 9
 (Sat)
 
 History
+Explore Lawrence
 at
 Oklahoma State
 
@@ -420,6 +423,7 @@ Jan 20
 (Wed)
 
 History
+Explore Lawrence
 at
 Colorado
 
@@ -440,6 +444,7 @@ Jan 27
 (Wed)
 
 History
+Explore Lawrence
 Skip Ad
 vs
 Kansas State
@@ -451,6 +456,7 @@ Jan 31
 (Sun)
 
 History
+Explore Lawrence
 at
 BYU
 
@@ -471,6 +477,7 @@ Feb 10
 (Wed)
 
 History
+Explore Lawrence
 at
 Houston
 
@@ -491,6 +498,7 @@ Feb 16
 (Tue)
 
 History
+Explore Lawrence
 at
 Kansas State
 
@@ -521,6 +529,7 @@ Feb 28
 (Sun)
 
 History
+Explore Lawrence
 Big 12 Women's Basketball Tournament
 vs
 Big 12 Tournament
