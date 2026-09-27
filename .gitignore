@@ -16,3 +16,8 @@
 local.properties
 .env
 debug.keystore
+
+# Python bytecode from the pipeline scripts; two of these were committed by
+# accident and every new module adds another.
+__pycache__/
+*.pyc
