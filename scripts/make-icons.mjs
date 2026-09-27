@@ -4,51 +4,14 @@
 // raster webp for API 24-25 (minSdk is 24, below adaptive icons).
 // Rasterizing goes through Chromium's canvas, which can encode webp, so the
 // existing .webp filenames stay put and no resource renames are needed.
+//
+// The mark itself lives in icon-art.mjs, shared with make-web-icons.mjs.
 import { chromium } from 'playwright';
 import fs from 'fs';
 import path from 'path';
+import { svgIcon, SEAMS, circlePath, KU_BLUE, BALL, SEAM, R, SW } from './icon-art.mjs';
 
 const RES = process.argv[2] || '/home/user/ku-wbb/app/src/main/res';
-const KU_BLUE = '#0051BA';
-const BALL = '#E8792B';   // classic basketball leather orange
-const SEAM = '#3B2413';   // dark brown, softer than pure black at small sizes
-
-// --- Geometry ---------------------------------------------------------------
-// A basketball has four seams: a vertical and a horizontal diameter, plus a
-// curved seam on each side bowing toward the center.
-const C = 54, R = 34, SW = 3.4;
-// Endpoints pull in by half the stroke so round caps land exactly on the rim
-// instead of poking out as nubs.
-const RIM = (R - SW / 2) / R;
-const rad = (d) => (d * Math.PI) / 180;
-const pt = (a) => [
-  (C + R * RIM * Math.cos(rad(a))).toFixed(2),
-  (C + R * RIM * Math.sin(rad(a))).toFixed(2),
-];
-
-const rimR = (R * RIM).toFixed(2);
-const vSeam = `M${C},${(C - R * RIM).toFixed(2)} L${C},${(C + R * RIM).toFixed(2)}`;
-const hSeam = `M${(C - R * RIM).toFixed(2)},${C} L${(C + R * RIM).toFixed(2)},${C}`;
-// Side seams: meridian-style (the emoji look) — each runs from near the top
-// of the ball to near the bottom, entering the rim 15° to the side of the
-// vertical seam, and bows outward. Arc radius tuned so the seam's waist sits
-// about R*0.5 from center.
-const POLE_OFF = 15, AR = (R * 1.15).toFixed(2);
-function sideSeam(mirror) {
-  // screen coords: 270° is the top of the ball, 90° the bottom.
-  const a1 = mirror ? 270 - POLE_OFF : 270 + POLE_OFF;
-  const a2 = mirror ? 90 + POLE_OFF : 90 - POLE_OFF;
-  const [sx, sy] = pt(a1);
-  const [ex, ey] = pt(a2);
-  // sweep flags differ so both bow away from the center of the ball
-  const sweep = mirror ? 0 : 1;
-  return `M${sx},${sy} A${AR},${AR} 0 0,${sweep} ${ex},${ey}`;
-}
-const SEAMS = [vSeam, hSeam, sideSeam(true), sideSeam(false)];
-
-// Circle as two arcs, for VectorDrawable fills/clips.
-const circlePath = (r) =>
-  `M${C},${C - r} A${r},${r} 0 1,0 ${C},${C + r} A${r},${r} 0 1,0 ${C},${C - r}Z`;
 
 // --- Vector drawables -------------------------------------------------------
 const seamPaths = (color) => SEAMS.map((d) =>
@@ -98,17 +61,7 @@ fs.writeFileSync(path.join(RES, 'drawable/ic_launcher_monochrome.xml'), monochro
 console.log('wrote 3 vector drawables');
 
 // --- Legacy raster ----------------------------------------------------------
-const svg = (shape) => {
-  const clip = shape === 'round'
-    ? `<circle cx="54" cy="54" r="54"/>`
-    : `<rect x="0" y="0" width="108" height="108" rx="20" ry="20"/>`;
-  const seams = SEAMS.map((d) =>
-    `<path d="${d}" fill="none" stroke="${SEAM}" stroke-width="${SW}" stroke-linecap="round"/>`).join('');
-  return `<svg xmlns="http://www.w3.org/2000/svg" width="108" height="108" viewBox="0 0 108 108">
-    <defs><clipPath id="m">${clip}</clipPath></defs>
-    <g clip-path="url(#m)"><rect width="108" height="108" fill="${KU_BLUE}"/></g>
-    <circle cx="54" cy="54" r="${R}" fill="${BALL}"/>${seams}</svg>`;
-};
+const svg = (shape) => svgIcon(shape);
 
 const DENSITIES = { mdpi: 48, hdpi: 72, xhdpi: 96, xxhdpi: 144, xxxhdpi: 192 };
 const browser = await chromium.launch({ executablePath: '/opt/pw-browsers/chromium' });
