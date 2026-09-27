@@ -1,5 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Without the doctype the page rendered in quirks mode, and without the
+     charset an em dash or a ¢ was at the mercy of whatever the server said. -->
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KU Women's Basketball 2025-26</title>
+<title>KU Women's Basketball</title>
+<meta name="description" content="Kansas Jayhawks women's basketball — season stats, splits, Big 12 standings and the AP poll.">
+<!-- Add to Home Screen. iOS reads apple-mobile-web-app-* and the touch icon
+     rather than the manifest, so both sets are here on purpose. -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0051BA">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="KU WBB">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <style>
   :root {
     --ground: #F5F6F9;
@@ -173,6 +190,8 @@
   }
   tbody tr { border-bottom: 1px solid var(--chart-grid); }
   tbody tr:hover { background: var(--surface2); }
+  /* A played game opens its box score; a scheduled one has none to open. */
+  tbody tr.rowlink { cursor: pointer; }
   .chip {
     display: inline-block; min-width: 20px; text-align: center;
     font-weight: 800; font-size: 12px; border-radius: 5px; padding: 2px 7px;
@@ -232,14 +251,14 @@
   .spark { margin-top: 10px; display: block; width: 100%; height: 26px; }
   .former-head { grid-column: 1 / -1; font-size: 12px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-top: 10px; }
 
-  /* ---------- player modal ---------- */
-  dialog#pmodal {
+  /* ---------- detail modals (player and game share this shell) ---------- */
+  dialog.sheet {
     border: none; border-radius: 14px; padding: 0;
     width: min(880px, calc(100vw - 32px));
     max-height: calc(100vh - 48px);
     background: var(--surface); color: var(--ink); box-shadow: var(--shadow);
   }
-  dialog#pmodal::backdrop { background: rgba(8, 12, 22, .55); }
+  dialog.sheet::backdrop { background: rgba(8, 12, 22, .55); }
   .m-head {
     background: linear-gradient(120deg, #0051BA, #003A85);
     color: #fff; padding: 20px 24px; border-bottom: 4px solid var(--banner-gold);
@@ -303,6 +322,8 @@
     .pcard { transition: none; }
   }
 </style>
+</head>
+<body>
 
 <header>
   <div class="head-in">
@@ -404,6 +425,28 @@
     <div class="b12-grid" id="seasonCards"></div>
   </section>
 
+  <section id="oppSec" hidden>
+    <div class="sec-head">
+      <h2>Opponents</h2>
+      <span class="note">against Kansas only — not each opponent's own season</span>
+      <div class="rule"></div>
+    </div>
+    <div class="card">
+      <div class="tbl-wrap">
+        <table id="oppTbl">
+          <thead><tr>
+            <th class="lft">Opponent</th><th>Met</th><th class="lft">vs KU</th>
+            <th>Scored</th><th>Allowed</th><th>eFG%</th><th>TS%</th>
+            <th class="lft">Leading scorer</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="fineprint">Records are stated from the opponent's side, so "1-1 vs KU" means they
+        won one of the two. Shooting comes from their official team totals in those games.</p>
+    </div>
+  </section>
+
   <section id="big12Sec" hidden>
     <div class="sec-head">
       <h2>Big 12</h2>
@@ -456,7 +499,7 @@
 
 <div id="tip"></div>
 
-<dialog id="pmodal" aria-label="Player detail">
+<dialog class="sheet" id="pmodal" aria-label="Player detail">
   <div class="m-head">
     <div class="jersey" id="mJersey"></div>
     <div>
@@ -483,6 +526,34 @@
           <tbody></tbody>
         </table>
       </div>
+    </div>
+  </div>
+</dialog>
+
+<dialog class="sheet" id="gmodal" aria-label="Game detail">
+  <div class="m-head">
+    <div>
+      <h3 id="gTitle"></h3>
+      <div class="sub" id="gSub"></div>
+    </div>
+    <button class="m-close" id="gClose" aria-label="Close">✕</button>
+  </div>
+  <div class="m-body">
+    <div class="m-sec">
+      <h4>By quarter</h4>
+      <div class="tbl-wrap"><table id="gQtrTbl"><thead></thead><tbody></tbody></table></div>
+    </div>
+    <div class="m-sec">
+      <h4>Team totals <span style="text-transform:none; letter-spacing:0; font-weight:400">· official, not the sum of the lines below</span></h4>
+      <div class="tbl-wrap"><table id="gTeamTbl"><thead></thead><tbody></tbody></table></div>
+    </div>
+    <div class="m-sec">
+      <h4 id="gKuHead">Kansas</h4>
+      <div class="tbl-wrap"><table id="gKuTbl"><thead></thead><tbody></tbody></table></div>
+    </div>
+    <div class="m-sec" id="gOppSec">
+      <h4 id="gOppHead">Opponent</h4>
+      <div class="tbl-wrap"><table id="gOppTbl"><thead></thead><tbody></tbody></table></div>
     </div>
   </div>
 </dialog>
@@ -787,7 +858,7 @@ function gamesTable() {
          <th class="lft">Venue</th><th class="lft"></th></tr>`;
 
   const playedRows = games.map(g => `
-    <tr>
+    <tr data-g="${g.n}" class="rowlink" title="Box score">
       <td class="dim">${g.n}</td>
       <td class="lft">${fmtDate(g.date)}</td>
       <td class="lft">${siteChip(g)}</td>
@@ -1046,6 +1117,160 @@ function big12() {
 }
 
 // ---------- render ----------
+// ---------- opponents ----------
+// The same rule the seeder keys games with and the app groups meetings with
+// (scripts/update-seed.py, data/TeamNames.kt). "(exh.)" is deliberately left
+// alone: an exhibition counts for nothing and must not join a record.
+const normTeam = n => (n || "")
+  .replace(/\s*\(\d+\)\s*$/, "").toLowerCase().replace(/\./g, "")
+  .replace(/\bstate\b/g, "st").replace(/\buniversity\b/g, "")
+  .replace(/\s+/g, " ").trim();
+
+const eFG = t => pct(t.fgm + 0.5 * t.tpm, t.fga);
+const TS = t => t.fga + 0.44 * t.fta ? t.pts / (2 * (t.fga + 0.44 * t.fta)) : 0;
+
+function opponents() {
+  const sec = document.getElementById("oppSec");
+  if (!games.length) { sec.hidden = true; return; }
+  sec.hidden = false;
+
+  const byTeam = new Map();
+  for (const g of games) {
+    const key = normTeam(g.opponent);
+    if (!byTeam.has(key)) byTeam.set(key, []);
+    byTeam.get(key).push(g);
+  }
+
+  const rows = [...byTeam.values()].map(gs => {
+    // Titled with the most recent spelling: the schedule and the box score
+    // disagree ("South Dakota State" / "South Dakota St.").
+    const name = gs.reduce((a, b) => (a.date > b.date ? a : b)).opponent;
+    // Stated from their side, so the row reads as their record against us.
+    const w = gs.filter(g => g.opponentScore > g.teamScore).length;
+    const scored = gs.reduce((s, g) => s + g.opponentScore, 0);
+    const allowed = gs.reduce((s, g) => s + g.teamScore, 0);
+    // Their official team totals, not the sum of their box lines.
+    const tot = gs.map(g => g.opponentStats).filter(Boolean).reduce((a, s) => {
+      for (const k of Object.keys(a)) a[k] += s[k] || 0;
+      return a;
+    }, blankTotals());
+    // Who hurt us most across the meetings.
+    const scorers = new Map();
+    for (const g of gs) {
+      for (const l of g.opponentLines || []) {
+        scorers.set(l.player, (scorers.get(l.player) || 0) + (l.pts || 0));
+      }
+    }
+    const top = [...scorers.entries()].sort((a, b) => b[1] - a[1])[0];
+    return { name, n: gs.length, w, l: gs.length - w, scored, allowed, tot, top,
+             shot: tot.fga > 0, nonD1: gs.some(g => g.nonD1) };
+  }).sort((a, b) => a.name.localeCompare(b.name));
+
+  document.querySelector("#oppTbl tbody").innerHTML = rows.map(r => `
+    <tr>
+      <td class="lft"><b>${r.name}</b>${r.nonD1
+        ? ' <span class="dim" title="Not Division I — the NCAA leaves this game out of its records">non-D1</span>' : ""}</td>
+      <td>${r.n}</td>
+      <!-- Their record, but coloured by KU's result: blue is a Kansas win
+           everywhere else on this page, and flipping that here would read as
+           a different statistic rather than the same one from the other side. -->
+      <td class="lft"><span class="chip ${r.w > r.l ? "L" : r.w < r.l ? "W" : ""}"
+        title="${r.name} went ${r.w}-${r.l} against Kansas">${r.w}-${r.l}</span></td>
+      <td>${f1(r.scored / r.n)}</td>
+      <td>${f1(r.allowed / r.n)}</td>
+      <td>${r.shot ? fPct(eFG(r.tot)) : '<span class="dim">—</span>'}</td>
+      <td>${r.shot ? fPct(TS(r.tot)) : '<span class="dim">—</span>'}</td>
+      <td class="lft">${r.top ? `${r.top[0]} <span class="dim">${r.top[1]} pts</span>` : ""}</td>
+    </tr>`).join("");
+}
+
+// ---------- game modal ----------
+const gmodal = document.getElementById("gmodal");
+document.getElementById("gClose").addEventListener("click", () => gmodal.close());
+gmodal.addEventListener("click", ev => { if (ev.target === gmodal) gmodal.close(); });
+
+// A played row carries its game number; the scheduled rows below have no box
+// score to open, so they carry none and this does nothing for them.
+document.getElementById("gamesTbl").addEventListener("click", ev => {
+  const n = ev.target.closest("tr[data-g]")?.dataset.g;
+  if (n) openGame(+n);
+});
+
+const BOX_COLS = [
+  ["MIN", l => l.min], ["PTS", l => l.pts],
+  ["FG", l => `${l.fgm}-${l.fga}`], ["3PT", l => `${l.tpm}-${l.tpa}`], ["FT", l => `${l.ftm}-${l.fta}`],
+  ["OR", l => l.oreb], ["REB", l => l.reb], ["AST", l => l.ast],
+  ["STL", l => l.stl], ["BLK", l => l.blk], ["TO", l => l.to], ["PF", l => l.pf],
+];
+
+function boxTable(table, lines, nameOf) {
+  table.querySelector("thead").innerHTML =
+    `<tr><th class="lft">Player</th>${BOX_COLS.map(([h]) => `<th>${h}</th>`).join("")}</tr>`;
+  table.querySelector("tbody").innerHTML = [...lines]
+    .sort((a, b) => (b.pts || 0) - (a.pts || 0))
+    .map(l => `<tr><td class="lft">${l.gs ? "<b>" + nameOf(l) + "</b>" : nameOf(l)}</td>` +
+      BOX_COLS.map(([, f]) => `<td>${f(l) ?? 0}</td>`).join("") + "</tr>").join("");
+}
+
+function openGame(n) {
+  const g = games[n - 1];
+  if (!g) return;
+  document.getElementById("gTitle").textContent =
+    `${vsAt(g)}${g.opponent} · ${g.teamScore}–${g.opponentScore}`;
+  document.getElementById("gSub").textContent = [
+    fmtDate(g.date), g.won ? "Win" : "Loss",
+    g.venue, g.city, g.event,
+    g.overtime ? (g.overtime > 1 ? `${g.overtime}OT` : "OT") : null,
+    g.opponentRank ? `opponent ranked #${g.opponentRank}` : null,
+    g.opponentRecord ? `they came in ${g.opponentRecord}` : null,
+  ].filter(Boolean).join(" · ");
+
+  // By quarter, from the period scores. Anything past the fourth is overtime.
+  const parts = (g.periodScores || "").split(",")
+    .map(s => s.trim().split("-").map(Number)).filter(p => p.length === 2 && p.every(Number.isFinite));
+  const qtr = document.getElementById("gQtrTbl");
+  qtr.closest(".m-sec").hidden = parts.length === 0;
+  if (parts.length) {
+    const labels = parts.map((_, i) => (i < 4 ? `Q${i + 1}` : `OT${i - 3}`));
+    qtr.querySelector("thead").innerHTML =
+      `<tr><th class="lft"></th>${labels.map(l => `<th>${l}</th>`).join("")}<th>Final</th></tr>`;
+    const line = (label, pick, total) =>
+      `<tr><td class="lft"><b>${label}</b></td>${parts.map(p => `<td>${pick(p)}</td>`).join("")}<td><b>${total}</b></td></tr>`;
+    qtr.querySelector("tbody").innerHTML =
+      line("Kansas", p => p[0], g.teamScore) + line(g.opponent, p => p[1], g.opponentScore);
+  }
+
+  // Official team totals for both sides, side by side.
+  const teamTbl = document.getElementById("gTeamTbl");
+  const sides = [["Kansas", g.teamStats], [g.opponent, g.opponentStats]].filter(s => s[1]);
+  teamTbl.closest(".m-sec").hidden = sides.length === 0;
+  if (sides.length) {
+    const COLS = [
+      ["PTS", t => t.pts], ["FG", t => `${t.fgm}-${t.fga}`], ["3PT", t => `${t.tpm}-${t.tpa}`],
+      ["FT", t => `${t.ftm}-${t.fta}`], ["eFG%", t => fPct(eFG(t))], ["TS%", t => fPct(TS(t))],
+      ["OR", t => t.oreb], ["REB", t => t.reb], ["AST", t => t.ast],
+      ["TO", t => t.to], ["STL", t => t.stl], ["BLK", t => t.blk], ["PF", t => t.pf],
+    ];
+    teamTbl.querySelector("thead").innerHTML =
+      `<tr><th class="lft"></th>${COLS.map(([h]) => `<th>${h}</th>`).join("")}</tr>`;
+    teamTbl.querySelector("tbody").innerHTML = sides.map(([label, t]) =>
+      `<tr><td class="lft"><b>${label}</b></td>${COLS.map(([, f]) => `<td>${f(t)}</td>`).join("")}</tr>`).join("");
+  }
+
+  document.getElementById("gKuHead").textContent = `Kansas — starters in bold`;
+  boxTable(document.getElementById("gKuTbl"), g.lines || [], l => l.player);
+  const oppSec = document.getElementById("gOppSec");
+  oppSec.hidden = !(g.opponentLines || []).length;
+  if (!oppSec.hidden) {
+    document.getElementById("gOppHead").textContent = `${g.opponent} — starters in bold`;
+    boxTable(document.getElementById("gOppTbl"), g.opponentLines,
+      l => `${l.number ? l.number + " " : ""}${l.player}`);
+  }
+
+  gmodal.showModal();
+  gmodal.querySelector(".m-body").scrollTop = 0;
+}
+
 function render(sel) {
   season = sel;
   buildSeason(season);
@@ -1054,6 +1279,7 @@ function render(sel) {
   leaders();
   gamesTable();
   seasonInsights();
+  opponents();
   roster();
   big12();
   hideTip();
@@ -1137,3 +1363,17 @@ function openPlayer(name) {
      own Anthropic API key; nothing above depends on it, so a browser that
      cannot load the module simply shows the rest of the page. -->
 <script type="module" src="ask.js"></script>
+
+<!-- Add to Home Screen: the worker is what lets this open on a phone with no
+     signal, and what keeps it from showing yesterday's numbers to a phone that
+     has one. Registration is deliberately last and failure-tolerant — a
+     browser without service workers gets the page exactly as before. -->
+<script>
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("sw.js").catch(() => { /* not fatal */ });
+    });
+  }
+</script>
+</body>
+</html>
