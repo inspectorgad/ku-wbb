@@ -31,12 +31,7 @@ on:
     - cron: '37 21 * * *'
   push:
     branches:
-      # Both names on purpose: `main` does not exist yet, and the repository's
-      # default branch is the claude/... one below. Listing both means renaming
-      # the default branch never silently stops CI — the old entry can be
-      # dropped once the rename has happened.
       - main
-      - claude/ku-wbb-data-validation-qapzd1
     paths:
       - 'scrape-trigger.txt'
       - 'scripts/scrape-ku-wbb.mjs'

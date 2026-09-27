@@ -3,12 +3,7 @@ name: Build debug APK
 on:
   push:
     branches:
-      # Both names on purpose: `main` does not exist yet, and the repository's
-      # default branch is the claude/... one below. Listing both means renaming
-      # the default branch never silently stops CI — the old entry can be
-      # dropped once the rename has happened.
       - main
-      - claude/ku-wbb-data-validation-qapzd1
     paths-ignore:
       - 'probe/**'
       - 'docs/**'
