@@ -39,6 +39,41 @@ class MigrationTest {
         helper?.close()
     }
 
+    /** A v4 `games` table exactly as the first released APK created it. */
+    private fun openV4(): SupportSQLiteDatabase {
+        val db = openV3()
+        JayhawksDatabase.migrations().single { it.startVersion == 3 }.migrate(db)
+        return db
+    }
+
+    @Test
+    fun `a v4 database from the shipped APK upgrades to v5`() {
+        // v4 shipped in a release build before tipTime/tv/event existed. Adding
+        // them to v4 rather than to a new version would leave every phone that
+        // installed that build unable to open its own database.
+        val db = openV4()
+        db.execSQL(
+            """INSERT INTO games (id, date, opponent, season, home, site, venue)
+               VALUES (1, '2026-11-14', 'Nebraska', '2026-27', 0, 'neutral', 'Sanford Pentagon')"""
+        )
+        JayhawksDatabase.migrations().single { it.startVersion == 4 }.migrate(db)
+
+        db.query("SELECT site, venue, tipTime, tv, event FROM games").use { c ->
+            c.moveToFirst()
+            // The v4 data survives, and the v5 columns arrive empty.
+            assertEquals("neutral", c.getString(0))
+            assertEquals("Sanford Pentagon", c.getString(1))
+            assertTrue(c.isNull(2))
+            assertTrue(c.isNull(3))
+            assertTrue(c.isNull(4))
+        }
+        db.execSQL("UPDATE games SET tipTime = '15:30', tv = 'BTN+' WHERE id = 1")
+        db.query("SELECT tipTime FROM games").use { c ->
+            c.moveToFirst()
+            assertEquals("15:30", c.getString(0))
+        }
+    }
+
     /** The v3 `games` table exactly as shipped, before site/venue/city existed. */
     private fun openV3(): SupportSQLiteDatabase {
         val context = ApplicationProvider.getApplicationContext<Context>()
@@ -107,7 +142,27 @@ class MigrationTest {
     }
 
     @Test
-    fun `the v4 entities round-trip through a real Room database`() = runTest {
+    fun `a v3 database walks the whole chain to the current version`() {
+        val db = openV3()
+        db.execSQL(
+            """INSERT INTO games (id, date, opponent, season, home)
+               VALUES (1, '2025-11-05', 'Kansas City', '2025-26', 1)"""
+        )
+        // Every migration from 3 up, in order — the path a phone that has not
+        // synced since the first release actually takes.
+        for (m in JayhawksDatabase.migrations().filter { it.startVersion >= 3 }
+            .sortedBy { it.startVersion }) {
+            m.migrate(db)
+        }
+        db.query("SELECT site, tipTime FROM games").use { c ->
+            c.moveToFirst()
+            assertEquals("home", c.getString(0))
+            assertTrue(c.isNull(1))
+        }
+    }
+
+    @Test
+    fun `the current entities round-trip through a real Room database`() = runTest {
         // Catches an entity/migration mismatch from the other direction: Room
         // builds the v4 schema itself here, so a column the migration adds but
         // the entity lacks (or vice versa) shows up as a failure to read back.
@@ -120,7 +175,8 @@ class MigrationTest {
             com.example.data.Game(
                 date = "2026-03-04", opponent = "UCF", season = "2025-26",
                 home = false, site = "neutral", venue = "T-Mobile Center",
-                city = "Kansas City, MO", teamScore = 70, opponentScore = 66
+                city = "Kansas City, MO", tipTime = "15:30", tv = "ESPN+",
+                event = "Big 12 Tournament", teamScore = 70, opponentScore = 66
             )
         )
         dao.insertTeamStats(
@@ -133,6 +189,8 @@ class MigrationTest {
         assertEquals("neutral", game.site)
         assertEquals("neutral", game.siteOrLegacy)
         assertEquals("T-Mobile Center", game.venue)
+        assertEquals("15:30", game.tipTime)
+        assertEquals("ESPN+", game.tv)
         val rows = dao.teamStatsOnce()
         assertEquals(2, rows.size)
         assertEquals(36, rows.single { !it.opponent }.reb)

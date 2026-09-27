@@ -10,7 +10,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 @Database(
     entities = [Player::class, Game::class, StatLine::class,
         ConferenceStanding::class, PollEntry::class, GameTeamStats::class],
-    version = 4,
+    version = 5,
     exportSchema = false
 )
 abstract class JayhawksDatabase : RoomDatabase() {
@@ -57,9 +57,6 @@ abstract class JayhawksDatabase : RoomDatabase() {
                 db.execSQL("ALTER TABLE games ADD COLUMN site TEXT")
                 db.execSQL("ALTER TABLE games ADD COLUMN venue TEXT")
                 db.execSQL("ALTER TABLE games ADD COLUMN city TEXT")
-                db.execSQL("ALTER TABLE games ADD COLUMN tipTime TEXT")
-                db.execSQL("ALTER TABLE games ADD COLUMN tv TEXT")
-                db.execSQL("ALTER TABLE games ADD COLUMN event TEXT")
                 db.execSQL(
                     """CREATE TABLE IF NOT EXISTS game_team_stats (
                         gameId INTEGER NOT NULL, opponent INTEGER NOT NULL,
@@ -81,9 +78,26 @@ abstract class JayhawksDatabase : RoomDatabase() {
             }
         }
 
+        // v4 -> v5: schedule detail — tip time, broadcaster, and the event a
+        // game belongs to.
+        //
+        // These were very nearly folded into MIGRATION_3_4 instead. They could
+        // not be: v4 had already shipped in a release APK without them, so
+        // redefining v4 would have left anyone who installed that build with a
+        // database Room validates against a newer v4 and refuses to open —
+        // a crash on launch, not a missed column. A version that has shipped
+        // is frozen; new columns get a new version.
+        private val MIGRATION_4_5 = object : Migration(4, 5) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE games ADD COLUMN tipTime TEXT")
+                db.execSQL("ALTER TABLE games ADD COLUMN tv TEXT")
+                db.execSQL("ALTER TABLE games ADD COLUMN event TEXT")
+            }
+        }
+
         /** Every migration, in order. Exposed so tests exercise the real set. */
         fun migrations(): Array<Migration> =
-            arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
+            arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5)
 
         fun get(context: Context): JayhawksDatabase =
             instance ?: synchronized(this) {
