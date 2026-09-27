@@ -27,11 +27,15 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.data.Game
 import com.example.data.GameTeamStats
+import com.example.data.Player
+import com.example.data.StatLine
 import com.example.stats.QuarterSplit
 import com.example.stats.Split
 import com.example.stats.conferenceSplits
+import com.example.stats.cumulativeEfficiency
 import com.example.stats.cumulativeQuarterMargin
 import com.example.stats.efficiency
+import com.example.stats.seasonHighlights
 import com.example.stats.formatPct
 import com.example.stats.formatPerGame
 import com.example.stats.halftimeSplits
@@ -52,6 +56,9 @@ import com.example.stats.siteSplits
 fun SeasonScreen(
     games: List<Game>,
     teamStats: List<GameTeamStats>,
+    // For the season's high marks, which need to name who set them.
+    statLines: List<StatLine> = emptyList(),
+    players: List<Player> = emptyList(),
     modifier: Modifier = Modifier
 ) {
     val seasons = games.map { it.season }.distinct().sortedDescending()
@@ -148,12 +155,69 @@ fun SeasonScreen(
                             us.assistToTurnover?.let { formatPerGame(it) } ?: "—",
                             them?.assistToTurnover?.let { formatPerGame(it) }
                         )
+                        // Where the season settled. A running figure barely
+                        // moves for one cold night, which is the point: it
+                        // says whether the shooting drifted or held.
+                        val running = cumulativeEfficiency(
+                            finished.sortedBy { it.date }.mapNotNull { g ->
+                                ourStats.firstOrNull { it.gameId == g.id }
+                            }
+                        )
+                        if (running.size >= 10) {
+                            val marks = listOf(5, running.size / 2, running.size)
+                                .distinct().filter { it in 1..running.size }
+                            Spacer(modifier = Modifier.height(6.dp))
+                            Text(
+                                "eFG% as it settled: " + marks.joinToString(" → ") { n ->
+                                    "${formatPct(running[n - 1].effectiveFieldGoalPct)} after $n"
+                                },
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
                         Spacer(modifier = Modifier.height(6.dp))
                         Text(
                             "Press and hold a label for what it means.",
                             style = MaterialTheme.typography.labelSmall,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
+                    }
+                }
+            }
+
+            // The season's high marks, and who set them.
+            val seasonLines = statLines.filter { it.gameId in gameIds }
+            val highs = seasonHighlights(
+                finished, seasonLines, players.associate { it.id to it.name }
+            )
+            if (highs.isNotEmpty()) {
+                item {
+                    SectionCard("Season highs") {
+                        highs.forEach { h ->
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(vertical = 2.dp),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                Text(
+                                    h.label,
+                                    modifier = Modifier.weight(1f),
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                                Text(
+                                    h.value,
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    fontWeight = FontWeight.Bold
+                                )
+                                Text(
+                                    " ${h.detail}",
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                        }
                     }
                 }
             }

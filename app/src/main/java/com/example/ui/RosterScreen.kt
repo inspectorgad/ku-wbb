@@ -48,8 +48,11 @@ import com.example.data.Game
 import com.example.data.Player
 import com.example.data.StatLine
 import com.example.stats.aggregate
+import com.example.stats.bestGames
 import com.example.stats.playerMilestones
 import com.example.stats.playerForm
+import com.example.stats.playerSiteSplits
+import com.example.stats.formatPct
 import com.example.stats.formatPerGame
 import com.example.stats.summarize
 
@@ -397,6 +400,53 @@ fun PlayerDetailScreen(
                                     style = MaterialTheme.typography.bodySmall,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Her best nights, and how she played by where the game was. Both
+            // are whole games already played, not projections.
+            val best = bestGames(playerLines, gamesById)
+            val sites = playerSiteSplits(playerLines, gamesById)
+            if (best.isNotEmpty() || sites.size > 1) {
+                item {
+                    Card(modifier = Modifier.fillMaxWidth()) {
+                        Column(modifier = Modifier.padding(12.dp)) {
+                            Text(
+                                "Best games",
+                                style = MaterialTheme.typography.titleSmall,
+                                fontWeight = FontWeight.Bold
+                            )
+                            best.forEach { (game, line) ->
+                                Text(
+                                    "${line.points} pts — " +
+                                        (if (game.siteOrLegacy == "away") "at " else "vs ") +
+                                        "${game.opponent} · ${game.date}",
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                            // Only worth showing when there is something to
+                            // compare: one venue is not a split.
+                            if (sites.size > 1) {
+                                Spacer(modifier = Modifier.height(8.dp))
+                                Text(
+                                    "By site",
+                                    style = MaterialTheme.typography.labelMedium,
+                                    fontWeight = FontWeight.Bold
+                                )
+                                sites.forEach { (label, totals) ->
+                                    Text(
+                                        "$label — ${formatPerGame(totals.pointsPerGame)} pts, " +
+                                            "${formatPerGame(totals.reboundsPerGame)} reb, " +
+                                            "${formatPct(totals.fieldGoalPercentage)} FG " +
+                                            "(${totals.games} games)",
+                                        style = MaterialTheme.typography.bodySmall,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                }
                             }
                         }
                     }

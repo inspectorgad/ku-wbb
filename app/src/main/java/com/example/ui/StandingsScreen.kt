@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.sp
 import com.example.data.ConferenceStanding
 import com.example.data.PollEntry
 import com.example.stats.formatPct
+import com.example.stats.pollMovement
 
 private const val KU_SEO = "kansas"
 
@@ -250,6 +251,27 @@ private fun PollRow(entry: PollEntry) {
             modifier = Modifier.width(42.dp),
             style = MaterialTheme.typography.bodySmall,
             color = MaterialTheme.colorScheme.onSurfaceVariant,
+            maxLines = 1
+        )
+        // How far it moved since the last poll. A team that was unranked gets
+        // nothing rather than a made-up climb: "NR" and a blank are both
+        // common and neither is a number.
+        val move = pollMovement(entry)
+        Text(
+            text = when {
+                move == null -> ""
+                move > 0 -> "▲$move"
+                move < 0 -> "▼${-move}"
+                else -> "–"
+            },
+            modifier = Modifier.width(34.dp),
+            style = MaterialTheme.typography.labelSmall,
+            fontWeight = FontWeight.Bold,
+            color = when {
+                move == null || move == 0 -> MaterialTheme.colorScheme.onSurfaceVariant
+                move > 0 -> MaterialTheme.colorScheme.primary
+                else -> MaterialTheme.colorScheme.error
+            },
             maxLines = 1
         )
         Text(

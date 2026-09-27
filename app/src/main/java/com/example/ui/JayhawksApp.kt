@@ -177,7 +177,9 @@ fun JayhawksApp(viewModel: JayhawksViewModel = viewModel()) {
 
                     Tab.Season -> SeasonScreen(
                         games = games,
-                        teamStats = teamStats
+                        teamStats = teamStats,
+                        statLines = statLines,
+                        players = players
                     )
 
                     Tab.Opponents -> OpponentsScreen(
