@@ -13,6 +13,7 @@ NCAA box scores; nothing is recomputed or estimated.
 """
 
 import json
+import re
 
 # The box score, in the order the NCAA publishes it. Player lines carry `min`
 # and `gs` on top of these; the official team totals carry only these.
@@ -222,6 +223,23 @@ def build_pack(seed):
     return pack
 
 
+def _without_timestamp(pack):
+    """The pack with every trace of when it was built removed.
+
+    Dropping the `generated_at` key is not enough: the same timestamp is
+    written into the system prompt, so a pack whose data had not changed at all
+    still compared as different, and the file was rewritten on every scrape.
+    That is a commit, an APK rebuild and a Pages deploy, six times a day, for
+    nothing.
+    """
+    out = {k: v for k, v in (pack or {}).items() if k != "generated_at"}
+    if isinstance(out.get("system_prompt"), str):
+        out["system_prompt"] = re.sub(
+            r"^Data generated .*$", "Data generated <when>.",
+            out["system_prompt"], flags=re.M)
+    return out
+
+
 def write_pack(seed, path):
     """Writes the pack; returns False when only the timestamp would change."""
     pack = build_pack(seed)
@@ -230,8 +248,7 @@ def write_pack(seed, path):
             old = json.load(f)
     except (OSError, ValueError):
         old = None
-    strip = lambda p: {k: v for k, v in (p or {}).items() if k != "generated_at"}
-    if old is not None and strip(old) == strip(pack):
+    if old is not None and _without_timestamp(old) == _without_timestamp(pack):
         return False
     with open(path, "w") as f:
         json.dump(pack, f, separators=(",", ":"))

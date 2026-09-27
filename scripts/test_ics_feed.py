@@ -116,6 +116,48 @@ class StampComparisonTest(unittest.TestCase):
     def test_a_missing_file_counts_as_a_change(self):
         self.assertFalse(same_apart_from_stamp(None, build_ics(GAMES, STAMP)))
 
+    def test_a_second_run_over_the_same_data_rewrites_nothing(self):
+        """The one that matters, and the one that was missing.
+
+        Comparing two feeds held in memory always worked, which is all the
+        tests above do — so the guard looked fine while being entirely broken.
+        What main() actually does is compare a feed against the file it wrote
+        last time, and read in text mode Python turned that file's CRLF endings
+        into LF; every line then came back different and the feed was rewritten
+        on every single scrape. A rewrite is a commit, an APK rebuild and a
+        Pages deploy, six times a day.
+
+        So this drives main() itself, twice, and watches what it decides.
+        """
+        import contextlib
+        import io
+        import json
+        import os
+        import tempfile
+        import ics_feed
+
+        with tempfile.TemporaryDirectory() as d:
+            os.makedirs(os.path.join(d, "app/src/main/assets"))
+            os.makedirs(os.path.join(d, "docs"))
+            with open(os.path.join(d, "app/src/main/assets/seed.json"), "w") as f:
+                json.dump({"games": GAMES}, f)
+            here = os.getcwd()
+            try:
+                os.chdir(d)
+                first, second = io.StringIO(), io.StringIO()
+                with contextlib.redirect_stdout(first):
+                    ics_feed.main()
+                written = open("docs/ku-wbb.ics", newline="").read()
+                with contextlib.redirect_stdout(second):
+                    ics_feed.main()
+            finally:
+                os.chdir(here)
+
+        self.assertIn("written", first.getvalue())
+        self.assertIn("unchanged", second.getvalue())
+        # And it really is the first run's bytes still sitting there.
+        self.assertIn("\r\n", written)
+
 
 if __name__ == "__main__":
     unittest.main()

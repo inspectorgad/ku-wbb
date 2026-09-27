@@ -162,7 +162,11 @@ def main():
     feed = build_ics(games, datetime.now(timezone.utc))
     existing = None
     if os.path.exists(out):
-        with open(out) as f:
+        # newline="" or Python translates the feed's CRLF line endings to LF on
+        # the way in, and the comparison below then finds every line different
+        # from the CRLF feed it is checked against — which defeated the guard
+        # entirely and rewrote the file on every single scrape.
+        with open(out, newline="") as f:
             existing = f.read()
     # Rewriting only the timestamp would churn a commit on every scrape.
     if same_apart_from_stamp(existing, feed):

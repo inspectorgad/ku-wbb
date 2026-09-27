@@ -1,8 +1,9 @@
+import json
 import os
 import re
 import unittest
 
-from ask_pack import build_pack
+from ask_pack import build_pack, write_pack
 
 REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -107,6 +108,44 @@ class AskPackTest(unittest.TestCase):
         self.assertIn("2026-27 is the current season", t)
         # A season with nothing played must not be answered from an older one.
         self.assertIn("it has not been played yet", t)
+
+
+class QuietRunTest(unittest.TestCase):
+    """A scrape that finds nothing new must not rewrite the file.
+
+    It is not cosmetic: the workflow treats any change to docs/ask-data.json as
+    a real one, commits it, and dispatches an APK rebuild and a Pages deploy.
+    The first version of this guard dropped the `generated_at` key and missed
+    the copy of the same timestamp inside the system prompt, so every run for
+    six runs a day did all of that for a changed date string.
+    """
+
+    def _write(self, tmp, at):
+        return write_pack({**SEED, "generatedAt": at}, tmp)
+
+    def test_only_the_timestamp_moving_is_not_a_change(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as d:
+            path = os.path.join(d, "ask-data.json")
+            self.assertTrue(self._write(path, "2026-09-26T00:00:00Z"), "first write")
+            self.assertFalse(self._write(path, "2026-09-27T04:37:00Z"), "timestamp only")
+            # The file kept on disk is still the first one, timestamp and all.
+            with open(path) as f:
+                self.assertEqual(json.load(f)["generated_at"], "2026-09-26T00:00:00Z")
+
+    def test_real_data_still_counts_as_a_change(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as d:
+            path = os.path.join(d, "ask-data.json")
+            self._write(path, "2026-09-26T00:00:00Z")
+            moved = json.loads(json.dumps(SEED))
+            moved["games"][0]["teamScore"] = 99
+            self.assertTrue(write_pack({**moved, "generatedAt": "2026-09-26T00:00:00Z"}, path))
+
+    def test_a_missing_file_counts_as_a_change(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as d:
+            self.assertTrue(write_pack(SEED, os.path.join(d, "nothing-here.json")))
 
 
 class TableNamesAgreeTest(unittest.TestCase):
