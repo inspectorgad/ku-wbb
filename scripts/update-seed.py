@@ -93,18 +93,24 @@ games = {}  # (date, opponent.lower()) -> game dict
 
 # Sources capitalize names inconsistently (e.g. "McCarthy" vs "Mccarthy"),
 # so players are keyed case-insensitively; the roster's spelling wins.
-def add_player(name, jersey, position, prefer=False):
+def add_player(name, jersey, position, prefer=False, bio=None):
     if not name:
         return
     existing = players.get(name.lower())
     if existing is None:
         players[name.lower()] = {"name": name, "jerseyNumber": jersey, "position": position}
+        existing = players[name.lower()]
     elif prefer:
         existing["name"] = name
         if jersey:
             existing["jerseyNumber"] = jersey
         if position:
             existing["position"] = position
+    # Height, class, hometown and previous school come only from kuathletics;
+    # a former player keeps whatever was last known rather than losing it.
+    for key, value in (bio or {}).items():
+        if value:
+            existing[key] = value
 
 
 def canonical_name(name):
@@ -156,6 +162,14 @@ for path in sorted(glob.glob("scraped/ncaa-game-*.json")):
         "periodScores": ", ".join(period_scores),
         "lines": [],
     }
+    # Overtime, from the linescore period labels ("OT", "2OT") or the final
+    # message. Four quarters is regulation; anything beyond it is not.
+    ot_periods = [
+        str(ls.get("period") or "") for ls in (contest.get("linescores") or [])
+        if "OT" in str(ls.get("period") or "").upper()
+    ]
+    if ot_periods or "OT" in str(contest.get("currentPeriod") or "").upper():
+        game["overtime"] = len(ot_periods) or 1
 
     ku_team_id = to_int(ku.get("teamId"))
     for tb in (data.get("box") or {}).get("teamBoxscore") or []:
@@ -184,6 +198,32 @@ for path in sorted(glob.glob("scraped/ncaa-game-*.json")):
                 "pts": to_int(stats.get("points")),
             }
         if not is_ku:
+            # The other side's box score, already downloaded and until now
+            # discarded. Stored flat rather than through the player table:
+            # these are not KU players and must never join the roster.
+            game["opponentLines"] = [{
+                "player": f"{fix_mojibake((p.get('firstName') or '').strip())} "
+                          f"{fix_mojibake((p.get('lastName') or '').strip())}".strip(),
+                "number": str(p.get("number") or ""),
+                "position": (p.get("position") or "").strip(),
+                "min": to_minutes(p.get("minutesPlayed")),
+                "fgm": to_int(p.get("fieldGoalsMade")),
+                "fga": to_int(p.get("fieldGoalsAttempted")),
+                "tpm": to_int(p.get("threePointsMade")),
+                "tpa": to_int(p.get("threePointsAttempted")),
+                "ftm": to_int(p.get("freeThrowsMade")),
+                "fta": to_int(p.get("freeThrowsAttempted")),
+                "oreb": to_int(p.get("offensiveRebounds")),
+                "reb": to_int(p.get("totalRebounds")),
+                "ast": to_int(p.get("assists")),
+                "to": to_int(p.get("turnovers")),
+                "stl": to_int(p.get("steals")),
+                "blk": to_int(p.get("blockedShots")),
+                "pf": to_int(p.get("personalFouls")),
+                "pts": to_int(p.get("points")),
+                "gs": 1 if p.get("starter") else 0,
+            } for p in (tb.get("playerStats") or [])
+                if (p.get("firstName") or p.get("lastName"))]
             continue
         for p in tb.get("playerStats") or []:
             first = fix_mojibake((p.get("firstName") or "").strip())
@@ -222,6 +262,12 @@ for entry in load_json("scraped/roster.json", []):
         str(entry.get("jerseyNumber") or ""),
         (entry.get("position") or "").strip(),
         prefer=True,
+        bio={
+            "height": (entry.get("height") or "").strip(),
+            "academicYear": (entry.get("academicYear") or "").strip(),
+            "hometown": (entry.get("hometown") or "").strip(),
+            "lastSchool": (entry.get("lastSchool") or "").strip(),
+        },
     )
 
 # active = on the current scraped roster. A failed/empty roster scrape must
@@ -396,6 +442,40 @@ for game in big12_games:
             rec["_rankDate"] = game["date"]
             rec["nationalRank"] = s["rank"]
 
+# --- Conference games ---------------------------------------------------------
+# A KU game counts toward the Big 12 record when the opponent is a member that
+# season, the game is regular season, and it falls before the conference
+# tournament. Membership is read from the sweep's own conference tags, never a
+# hardcoded list. Getting any of the three wrong inflates the record: a naive
+# membership lookup alone gives 21 games and 9-12 where the official figure is
+# 18 and 8-10.
+big12_members = {}
+for (season, key) in records:
+    big12_members.setdefault(season, set()).add(key)
+
+# KU's own games as the sweep saw them, so the bracket flag carries over.
+ku_bracket = set()
+for g in big12_games:
+    sides = [g.get("home") or {}, g.get("away") or {}]
+    if any((s.get("seo") or "") == TEAM_SEO for s in sides) and g.get("bracket"):
+        other = next((s for s in sides if (s.get("seo") or "") != TEAM_SEO), {})
+        ku_bracket.add((g.get("date", ""), norm_team(other.get("name", ""))))
+
+conference_counts = {}
+for game in games.values():
+    season = game["season"]
+    key = norm_team(game["opponent"])
+    cutoff = tournament_start.get(season)
+    game["conference"] = bool(
+        key in big12_members.get(season, ())
+        and (game["date"], key) not in ku_bracket
+        and (cutoff is None or game["date"] < cutoff)
+    )
+    if game["conference"]:
+        conference_counts[season] = conference_counts.get(season, 0) + 1
+for season, count in sorted(conference_counts.items()):
+    print(f"conference games {season}: {count}")
+
 # --- Rankings snapshots (AP poll + NCAA NET) ---------------------------------
 # Both endpoints serve only the current snapshot, so each is keyed by the
 # season in its "Through Games APR. 5, 2026" label (Aug-Dec dates belong to the
@@ -427,6 +507,25 @@ ap = load_json("scraped/rankings-ap.json", {})
 net = load_json("scraped/rankings-net.json", {})
 
 net_season = snapshot_season(net)
+
+# The NET table lists every Division I team, so an opponent absent from it is
+# not Division I. That matters because the NCAA's own record and site splits
+# exclude such games: KU's 22-14 is 21-14 to the NET because of Haskell.
+d1_teams = {
+    norm_team(row_value(row, "school", "team") or "")
+    for row in net.get("data", [])
+}
+if d1_teams and net_season:
+    non_d1 = set()
+    for game in games.values():
+        if game["season"] != net_season or game.get("teamScore") is None:
+            continue
+        if norm_team(game["opponent"]) not in d1_teams:
+            game["nonD1"] = True
+            non_d1.add(game["opponent"])
+    if non_d1:
+        print(f"non-D1 opponents {net_season}: {', '.join(sorted(non_d1))}")
+
 net_by_team = {}
 for row in net.get("data", []):
     if (row_value(row, "conf", "conference") or "") == "Big 12":

@@ -11,6 +11,7 @@ import org.json.JSONObject
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
+import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -66,6 +67,107 @@ class MergeSyncTest {
         assertEquals(15, line.fieldGoalsAttempted)
         assertEquals(6, line.assists)
         assertEquals(true, line.started)
+    }
+
+    @Test
+    fun `opponent lines merge, replace per game, and never reach the roster`() = runTest {
+        val dao = db.dao()
+        Seeder.merge(
+            JSONObject(
+                """{"players":[],"games":[{"date":"2025-11-05","opponent":"Kansas City",
+                    "season":"2025-26","site":"home","teamScore":74,"opponentScore":64,
+                    "opponentLines":[
+                      {"player":"Funmi Amode","number":"3","position":"F","min":15,
+                       "pts":4,"reb":3,"ast":1,"gs":0},
+                      {"player":"Tierra Trotter","number":"5","min":30,"pts":18,
+                       "reb":6,"ast":2,"gs":1}]}]}"""
+            ),
+            dao
+        )
+        val rows = dao.opponentLinesOnce()
+        assertEquals(2, rows.size)
+        assertEquals(18, rows.single { it.playerName == "Tierra Trotter" }.points)
+        assertTrue(rows.single { it.playerName == "Tierra Trotter" }.started)
+        // They are the other team: nothing about them belongs on the roster.
+        assertTrue(dao.playersOnce().none { it.name == "Tierra Trotter" })
+
+        // A corrected box score replaces the game's rows rather than adding to
+        // them, so a player removed upstream does not linger.
+        Seeder.merge(
+            JSONObject(
+                """{"players":[],"games":[{"date":"2025-11-05","opponent":"Kansas City",
+                    "season":"2025-26","site":"home","teamScore":74,"opponentScore":64,
+                    "opponentLines":[{"player":"Tierra Trotter","min":31,"pts":20}]}]}"""
+            ),
+            dao
+        )
+        val after = dao.opponentLinesOnce()
+        assertEquals(1, after.size)
+        assertEquals(20, after.single().points)
+    }
+
+    @Test
+    fun `conference, overtime and non-D1 flags come through and can be corrected`() = runTest {
+        val dao = db.dao()
+        Seeder.merge(
+            JSONObject(
+                """{"players":[],"games":[{"date":"2025-12-17","opponent":"Haskell",
+                    "season":"2025-26","site":"home","teamScore":107,"opponentScore":39,
+                    "nonD1":true},
+                   {"date":"2025-12-07","opponent":"Missouri St.","season":"2025-26",
+                    "site":"away","teamScore":73,"opponentScore":70,"overtime":1},
+                   {"date":"2026-01-14","opponent":"Oklahoma St.","season":"2025-26",
+                    "site":"home","teamScore":76,"opponentScore":85,"conference":true}]}"""
+            ),
+            dao
+        )
+        val byOpponent = dao.gamesOnce().associateBy { it.opponent }
+        assertTrue(byOpponent.getValue("Haskell").nonD1)
+        assertEquals(1, byOpponent.getValue("Missouri St.").overtime)
+        assertTrue(byOpponent.getValue("Oklahoma St.").conference)
+        assertTrue(!byOpponent.getValue("Haskell").conference)
+
+        // Classification is derived, never typed in, so a recomputation must be
+        // able to clear a flag as well as set one.
+        Seeder.merge(
+            JSONObject(
+                """{"players":[],"games":[{"date":"2026-01-14","opponent":"Oklahoma St.",
+                    "season":"2025-26","site":"home","teamScore":76,"opponentScore":85,
+                    "conference":false}]}"""
+            ),
+            dao
+        )
+        assertTrue(!dao.gamesOnce().single { it.opponent == "Oklahoma St." }.conference)
+    }
+
+    @Test
+    fun `player bios merge and survive a player leaving the roster`() = runTest {
+        val dao = db.dao()
+        Seeder.merge(
+            JSONObject(
+                """{"players":[{"name":"S'Mya Nichols","jerseyNumber":"12","position":"G",
+                    "height":"6-0","academicYear":"Sr.","hometown":"Overland Park, Kan.",
+                    "lastSchool":"Shawnee Mission West HS","active":true}],"games":[]}"""
+            ),
+            dao
+        )
+        val p = dao.playersOnce().single()
+        assertEquals("6-0", p.height)
+        assertEquals("Overland Park, Kan.", p.hometown)
+
+        // Once she is off the roster the scrape stops sending a bio; the app
+        // should still know who she was.
+        Seeder.merge(
+            JSONObject(
+                """{"players":[{"name":"S'Mya Nichols","jerseyNumber":"12",
+                    "position":"G","active":false}],"games":[]}"""
+            ),
+            dao
+        )
+        val former = dao.playersOnce().single()
+        assertEquals("6-0", former.height)
+        assertEquals("Shawnee Mission West HS", former.lastSchool)
+        assertTrue(!former.active)
     }
 
     @Test

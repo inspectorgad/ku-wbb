@@ -54,6 +54,14 @@ data class Player(
     val name: String,
     val jerseyNumber: String = "",
     val position: String = "",
+    // Bio, from kuathletics — the NCAA feed carries none of it. A former
+    // player keeps whatever was last known rather than losing it.
+    val height: String? = null,
+    val academicYear: String? = null,
+    val hometown: String? = null,
+    // The schools before this one, most recent last: "Andover Central HS /
+    // Creighton". A transfer path, not a single school.
+    val lastSchool: String? = null,
     // On the current roster. Maintained by the nightly roster scrape; former
     // players keep their stats but are shown in a separate roster section.
     val active: Boolean = true
@@ -86,6 +94,15 @@ data class Game(
     val tv: String? = null,
     // Tournament or showcase this game belongs to, e.g. "Cancun Challenge".
     val event: String? = null,
+    // Counts toward the Big 12 record: a regular-season game against a member,
+    // before the conference tournament. All three conditions matter — without
+    // them the 18-game, 8-10 conference record reads as 21 games and 9-12.
+    val conference: Boolean = false,
+    // Overtime periods played, null in regulation.
+    val overtime: Int? = null,
+    // The opponent is not Division I, so the NCAA's own record and site splits
+    // exclude this game. KU's 22-14 is 21-14 to the NET because of one of these.
+    val nonD1: Boolean = false,
     // Final score. Null until played.
     val teamScore: Int? = null,
     val opponentScore: Int? = null,
@@ -100,6 +117,48 @@ data class Game(
             null -> null
         }
 }
+
+/**
+ * A single opponent player's line in one game.
+ *
+ * Deliberately not stored through the player table: these are not KU players
+ * and must never reach the roster. Scraper-owned, so a sync replaces a game's
+ * rows outright.
+ */
+@Entity(
+    tableName = "opponent_stat_lines",
+    primaryKeys = ["gameId", "playerName"],
+    foreignKeys = [
+        ForeignKey(
+            entity = Game::class,
+            parentColumns = ["id"],
+            childColumns = ["gameId"],
+            onDelete = ForeignKey.CASCADE
+        )
+    ]
+)
+data class OpponentStatLine(
+    val gameId: Long,
+    val playerName: String,
+    val jerseyNumber: String = "",
+    val position: String = "",
+    val minutes: Int = 0,
+    val fieldGoalsMade: Int = 0,
+    val fieldGoalsAttempted: Int = 0,
+    val threePointsMade: Int = 0,
+    val threePointsAttempted: Int = 0,
+    val freeThrowsMade: Int = 0,
+    val freeThrowsAttempted: Int = 0,
+    val offensiveRebounds: Int = 0,
+    val rebounds: Int = 0,
+    val assists: Int = 0,
+    val turnovers: Int = 0,
+    val steals: Int = 0,
+    val blocks: Int = 0,
+    val fouls: Int = 0,
+    val points: Int = 0,
+    val started: Boolean = false
+)
 
 /**
  * Official team totals for one side of one game, straight from the box score.

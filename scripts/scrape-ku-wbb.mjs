@@ -17,6 +17,7 @@
 import { chromium } from 'playwright';
 import fs from 'fs';
 import { parseSchedule, siteOf } from './schedule-parser.mjs';
+import { parseRoster } from './roster-parser.mjs';
 
 const API = 'https://ncaa-api.henrygd.me';
 // Season start years: "2025" means the 2025-26 season.
@@ -221,23 +222,19 @@ try {
     return text;
   }
 
-  // Roster: lines run "Jersey Number\n<num>\n<name>\nPosition\n<pos>\n..."
+  // Roster, with bios. Parsing lives in roster-parser.mjs so it can be tested
+  // against a frozen page; the NCAA feed cannot supply height, class, hometown
+  // or previous school (its year/elig fields are empty on every row), so this
+  // page is the only source for them.
   const rosterText = await pageText('https://kuathletics.com/sports/womens-basketball/roster');
   fs.writeFileSync('scraped/roster-page.txt', rosterText);
-  const rosterLines = rosterText.split('\n').map((l) => l.trim());
-  const roster = [];
-  for (let i = 0; i < rosterLines.length; i++) {
-    if (rosterLines[i] !== 'Jersey Number') continue;
-    const number = rosterLines[i + 1] || '';
-    const name = rosterLines[i + 2] || '';
-    let position = '';
-    if (rosterLines[i + 3] === 'Position') position = (rosterLines[i + 4] || '').trim();
-    if (/^\d{1,2}$/.test(number) && /^[A-Za-z'.-]+( [A-Za-z'.-]+)+$/.test(name)) {
-      roster.push({ name, jerseyNumber: number, position: position.replace(/\s+$/, '') });
-    }
-  }
+  const roster = parseRoster(rosterText);
   fs.writeFileSync('scraped/roster.json', JSON.stringify(roster, null, 1));
-  console.log(`roster: ${roster.length} players`);
+  const withBio = roster.filter((p) => p.height && p.hometown).length;
+  console.log(`roster: ${roster.length} players (${withBio} with a full bio)`);
+  if (roster.length < 8) {
+    console.log('  WARNING: implausibly small roster — did the page layout change?');
+  }
 
   // The whole season's fixtures, with venue, city, tip time and broadcast.
   // Parsing lives in schedule-parser.mjs so it can be tested against a frozen

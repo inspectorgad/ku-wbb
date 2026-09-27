@@ -91,6 +91,14 @@ class MigrationTest {
                                 teamScore INTEGER, opponentScore INTEGER,
                                 periodScores TEXT)"""
                         )
+                        // Later migrations alter this too, so the v3 fixture
+                        // has to carry it or they fail on a missing table.
+                        db.execSQL(
+                            """CREATE TABLE players (
+                                id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
+                                name TEXT NOT NULL, jerseyNumber TEXT NOT NULL,
+                                position TEXT NOT NULL, active INTEGER NOT NULL)"""
+                        )
                     }
 
                     override fun onUpgrade(db: SupportSQLiteDatabase, old: Int, new: Int) = Unit
@@ -154,11 +162,32 @@ class MigrationTest {
             .sortedBy { it.startVersion }) {
             m.migrate(db)
         }
-        db.query("SELECT site, tipTime FROM games").use { c ->
+        db.query("SELECT site, tipTime, conference, nonD1, overtime FROM games").use { c ->
             c.moveToFirst()
             assertEquals("home", c.getString(0))
             assertTrue(c.isNull(1))
+            // The NOT NULL DEFAULT 0 flags must land as 0, not null, or Room
+            // refuses to open the database it just migrated.
+            assertEquals(0, c.getInt(2))
+            assertEquals(0, c.getInt(3))
+            assertTrue(c.isNull(4))
         }
+        // The tables added along the way accept rows.
+        db.execSQL(
+            """INSERT INTO opponent_stat_lines
+                 (gameId, playerName, jerseyNumber, position, minutes,
+                  fieldGoalsMade, fieldGoalsAttempted, threePointsMade,
+                  threePointsAttempted, freeThrowsMade, freeThrowsAttempted,
+                  offensiveRebounds, rebounds, assists, turnovers, steals,
+                  blocks, fouls, points, started)
+               VALUES (1, 'Tierra Trotter', '5', 'G', 30, 7, 14, 2, 5, 2, 2,
+                       1, 6, 2, 3, 1, 0, 2, 18, 1)"""
+        )
+        db.query("SELECT points FROM opponent_stat_lines").use { c ->
+            c.moveToFirst()
+            assertEquals(18, c.getInt(0))
+        }
+        db.query("SELECT height FROM players").use { c -> assertEquals(0, c.count) }
     }
 
     @Test

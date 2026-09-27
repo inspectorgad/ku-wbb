@@ -67,6 +67,10 @@ object Seeder {
                 val jersey = p.optString("jerseyNumber", "")
                 val position = p.optString("position", "")
                 val active = p.optBoolean("active", true)
+                val height = p.optString("height").takeIf { it.isNotBlank() }
+                val academicYear = p.optString("academicYear").takeIf { it.isNotBlank() }
+                val hometown = p.optString("hometown").takeIf { it.isNotBlank() }
+                val lastSchool = p.optString("lastSchool").takeIf { it.isNotBlank() }
                 val existing = existingByName[name]
                 if (existing == null) {
                     playerIdsByName[name] = dao.insertPlayer(
@@ -74,6 +78,10 @@ object Seeder {
                             name = name,
                             jerseyNumber = jersey,
                             position = position,
+                            height = height,
+                            academicYear = academicYear,
+                            hometown = hometown,
+                            lastSchool = lastSchool,
                             active = active
                         )
                     )
@@ -84,6 +92,12 @@ object Seeder {
                     val updated = existing.copy(
                         jerseyNumber = jersey.ifBlank { existing.jerseyNumber },
                         position = position.ifBlank { existing.position },
+                        // Bio fields only ever arrive for a current player, so
+                        // a departed one keeps what was last known of her.
+                        height = height ?: existing.height,
+                        academicYear = academicYear ?: existing.academicYear,
+                        hometown = hometown ?: existing.hometown,
+                        lastSchool = lastSchool ?: existing.lastSchool,
                         active = active
                     )
                     if (updated != existing) dao.updatePlayer(updated)
@@ -111,6 +125,9 @@ object Seeder {
             val seedTip = g.optString("time").takeIf { it.isNotBlank() }
             val seedTv = g.optString("tv").takeIf { it.isNotBlank() }
             val seedEvent = g.optString("event").takeIf { it.isNotBlank() }
+            val seedConference = g.optBoolean("conference", false)
+            val seedOvertime = g.optInt("overtime").takeIf { it > 0 }
+            val seedNonD1 = g.optBoolean("nonD1", false)
 
             val existing = gamesByKey[gameKey(date, opponent)]
             val gameId: Long
@@ -127,6 +144,9 @@ object Seeder {
                         tipTime = seedTip,
                         tv = seedTv,
                         event = seedEvent,
+                        conference = seedConference,
+                        overtime = seedOvertime,
+                        nonD1 = seedNonD1,
                         teamScore = seedTeamScore,
                         opponentScore = seedOppScore,
                         periodScores = seedPeriodScores
@@ -150,6 +170,11 @@ object Seeder {
                     tipTime = if (seedTeamScore != null) null else seedTip ?: existing.tipTime,
                     tv = seedTv ?: existing.tv,
                     event = seedEvent ?: existing.event,
+                    // Classification is feed-owned: it is derived, never typed
+                    // in, and a recomputation must be able to correct it.
+                    conference = seedConference,
+                    overtime = seedOvertime ?: existing.overtime,
+                    nonD1 = seedNonD1,
                     teamScore = if (filledResult) seedTeamScore else existing.teamScore,
                     opponentScore = if (filledResult) seedOppScore else existing.opponentScore,
                     periodScores = existing.periodScores
@@ -166,6 +191,40 @@ object Seeder {
             g.optJSONObject("teamStats")?.let { teamRows += teamStats(gameId, false, it) }
             g.optJSONObject("opponentStats")?.let { teamRows += teamStats(gameId, true, it) }
             if (teamRows.isNotEmpty()) dao.insertTeamStats(teamRows)
+
+            // Same reasoning for the opponent's box score: replaced per game,
+            // and merged before the stat-line early return below.
+            g.optJSONArray("opponentLines")?.let { arr ->
+                val rows = (0 until arr.length()).mapNotNull { j ->
+                    val l = arr.getJSONObject(j)
+                    val name = l.optString("player").takeIf { it.isNotBlank() }
+                        ?: return@mapNotNull null
+                    OpponentStatLine(
+                        gameId = gameId,
+                        playerName = name,
+                        jerseyNumber = l.optString("number"),
+                        position = l.optString("position"),
+                        minutes = l.optInt("min"),
+                        fieldGoalsMade = l.optInt("fgm"),
+                        fieldGoalsAttempted = l.optInt("fga"),
+                        threePointsMade = l.optInt("tpm"),
+                        threePointsAttempted = l.optInt("tpa"),
+                        freeThrowsMade = l.optInt("ftm"),
+                        freeThrowsAttempted = l.optInt("fta"),
+                        offensiveRebounds = l.optInt("oreb"),
+                        rebounds = l.optInt("reb"),
+                        assists = l.optInt("ast"),
+                        turnovers = l.optInt("to"),
+                        steals = l.optInt("stl"),
+                        blocks = l.optInt("blk"),
+                        fouls = l.optInt("pf"),
+                        points = l.optInt("pts"),
+                        started = l.optInt("gs") == 1
+                    )
+                }
+                dao.deleteOpponentLinesFor(gameId)
+                if (rows.isNotEmpty()) dao.insertOpponentLines(rows)
+            }
 
             if (existing != null && gameId in gamesWithLines) continue
             val lines = g.optJSONArray("lines") ?: continue

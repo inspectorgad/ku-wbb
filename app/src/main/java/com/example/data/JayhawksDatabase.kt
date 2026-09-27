@@ -9,8 +9,9 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 
 @Database(
     entities = [Player::class, Game::class, StatLine::class,
-        ConferenceStanding::class, PollEntry::class, GameTeamStats::class],
-    version = 5,
+        ConferenceStanding::class, PollEntry::class, GameTeamStats::class,
+        OpponentStatLine::class],
+    version = 6,
     exportSchema = false
 )
 abstract class JayhawksDatabase : RoomDatabase() {
@@ -95,9 +96,39 @@ abstract class JayhawksDatabase : RoomDatabase() {
             }
         }
 
+        // v5 -> v6: roster bios, the opponent's own box score lines, and the
+        // three game flags the NCAA's record and splits depend on.
+        private val MIGRATION_5_6 = object : Migration(5, 6) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE players ADD COLUMN height TEXT")
+                db.execSQL("ALTER TABLE players ADD COLUMN academicYear TEXT")
+                db.execSQL("ALTER TABLE players ADD COLUMN hometown TEXT")
+                db.execSQL("ALTER TABLE players ADD COLUMN lastSchool TEXT")
+                db.execSQL("ALTER TABLE games ADD COLUMN conference INTEGER NOT NULL DEFAULT 0")
+                db.execSQL("ALTER TABLE games ADD COLUMN overtime INTEGER")
+                db.execSQL("ALTER TABLE games ADD COLUMN nonD1 INTEGER NOT NULL DEFAULT 0")
+                db.execSQL(
+                    """CREATE TABLE IF NOT EXISTS opponent_stat_lines (
+                        gameId INTEGER NOT NULL, playerName TEXT NOT NULL,
+                        jerseyNumber TEXT NOT NULL, position TEXT NOT NULL,
+                        minutes INTEGER NOT NULL,
+                        fieldGoalsMade INTEGER NOT NULL, fieldGoalsAttempted INTEGER NOT NULL,
+                        threePointsMade INTEGER NOT NULL, threePointsAttempted INTEGER NOT NULL,
+                        freeThrowsMade INTEGER NOT NULL, freeThrowsAttempted INTEGER NOT NULL,
+                        offensiveRebounds INTEGER NOT NULL, rebounds INTEGER NOT NULL,
+                        assists INTEGER NOT NULL, turnovers INTEGER NOT NULL,
+                        steals INTEGER NOT NULL, blocks INTEGER NOT NULL,
+                        fouls INTEGER NOT NULL, points INTEGER NOT NULL,
+                        started INTEGER NOT NULL,
+                        PRIMARY KEY(gameId, playerName),
+                        FOREIGN KEY(gameId) REFERENCES games(id) ON DELETE CASCADE)"""
+                )
+            }
+        }
+
         /** Every migration, in order. Exposed so tests exercise the real set. */
         fun migrations(): Array<Migration> =
-            arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5)
+            arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6)
 
         fun get(context: Context): JayhawksDatabase =
             instance ?: synchronized(this) {

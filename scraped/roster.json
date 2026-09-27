@@ -2,66 +2,118 @@
  {
   "name": "Anna Gooden",
   "jerseyNumber": "0",
-  "position": "G"
+  "position": "G",
+  "academicYear": "So.",
+  "height": "6-0",
+  "hometown": "Fort Smith, Ark.",
+  "lastSchool": "Northside HS / Colorado"
  },
  {
   "name": "Mariyah Noel",
   "jerseyNumber": "1",
-  "position": "G"
+  "position": "G",
+  "academicYear": "Sr.",
+  "height": "5-11",
+  "hometown": "Kansas City, Kan.",
+  "lastSchool": "Bonner Springs HS / Ole Miss / Xavier"
  },
  {
   "name": "Tyara Davis",
   "jerseyNumber": "7",
-  "position": "G"
+  "position": "G",
+  "academicYear": "Jr.",
+  "height": "6-0",
+  "hometown": "Overland Park, Kan.",
+  "lastSchool": "Blue Valley North HS / Harris-Stowe"
  },
  {
   "name": "Mykayla Cunningham",
   "jerseyNumber": "8",
-  "position": "G"
+  "position": "G",
+  "academicYear": "Sr.",
+  "height": "5-10",
+  "hometown": "Salina, Kan.",
+  "lastSchool": "SPIRE Academy / Lindenwood / Southern"
  },
  {
   "name": "Cydnee Bryant",
   "jerseyNumber": "11",
-  "position": "C"
+  "position": "C",
+  "academicYear": "Fr.",
+  "height": "6-4",
+  "hometown": "Riverside, Calif.",
+  "lastSchool": "Centennial HS"
  },
  {
   "name": "S'Mya Nichols",
   "jerseyNumber": "12",
-  "position": "G"
+  "position": "G",
+  "academicYear": "Sr.",
+  "height": "6-0",
+  "hometown": "Overland Park, Kan.",
+  "lastSchool": "Shawnee Mission West HS"
  },
  {
   "name": "Libby Fandel",
   "jerseyNumber": "13",
-  "position": "G"
+  "position": "G",
+  "academicYear": "So.",
+  "height": "6-1",
+  "hometown": "Cedar Rapids, Iowa",
+  "lastSchool": "Xavier HS"
  },
  {
   "name": "Brooklynn Renn",
   "jerseyNumber": "14",
-  "position": "F"
+  "position": "F",
+  "academicYear": "Fr.",
+  "height": "6-3",
+  "hometown": "Sellersburg, Ind.",
+  "lastSchool": "Silver Creek HS"
  },
  {
   "name": "Tatyonna Brown",
   "jerseyNumber": "15",
-  "position": "F"
+  "position": "F",
+  "academicYear": "So.",
+  "height": "6-2",
+  "hometown": "Colorado Springs, Colo.",
+  "lastSchool": "Air Academy HS"
  },
  {
   "name": "Brittany Harshaw",
   "jerseyNumber": "23",
-  "position": "G"
+  "position": "G",
+  "academicYear": "Sr.",
+  "height": "6-1",
+  "hometown": "Andover, Kan.",
+  "lastSchool": "Andover Central HS / Creighton"
  },
  {
   "name": "Regan Williams",
   "jerseyNumber": "24",
-  "position": "F"
+  "position": "F",
+  "academicYear": "Jr.",
+  "height": "6-3",
+  "hometown": "Kansas City, Mo.",
+  "lastSchool": "Park Hill South HS"
  },
  {
   "name": "Jaliya Davis",
   "jerseyNumber": "25",
-  "position": "F"
+  "position": "F",
+  "academicYear": "So.",
+  "height": "6-2",
+  "hometown": "Overland Park, Kan.",
+  "lastSchool": "Blue Valley North HS"
  },
  {
   "name": "Mollie Ernstes",
   "jerseyNumber": "31",
-  "position": "G"
+  "position": "G",
+  "academicYear": "Fr.",
+  "height": "6-0",
+  "hometown": "North Vernon, Ind.",
+  "lastSchool": "Jennings County HS"
  }
 ]

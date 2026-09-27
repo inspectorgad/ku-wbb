@@ -7,6 +7,8 @@ import com.example.data.ConferenceStanding
 import com.example.data.Game
 import com.example.data.JayhawksDatabase
 import com.example.data.Player
+import com.example.data.GameTeamStats
+import com.example.data.OpponentStatLine
 import com.example.data.PollEntry
 import com.example.data.SeasonSync
 import com.example.data.Seeder
@@ -80,6 +82,12 @@ class JayhawksViewModel(app: Application) : AndroidViewModel(app) {
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
     val pollEntries: StateFlow<List<PollEntry>> = dao.observePollEntries()
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    val opponentLines: StateFlow<List<OpponentStatLine>> = dao.observeOpponentLines()
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
+
+    val teamStats: StateFlow<List<GameTeamStats>> = dao.observeTeamStats()
         .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5_000), emptyList())
 
     fun savePlayer(player: Player) = viewModelScope.launch {

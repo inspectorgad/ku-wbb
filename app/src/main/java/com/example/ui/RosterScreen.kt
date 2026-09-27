@@ -320,6 +320,40 @@ fun PlayerDetailScreen(
             contentPadding = ListContentPadding,
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
+            // Bio, when kuathletics has given one up. Omitted entirely rather
+            // than shown as a card of dashes for a player it knows nothing of.
+            val bio = listOfNotNull(
+                player.position.takeIf { it.isNotBlank() },
+                player.height,
+                player.academicYear,
+            ).joinToString(" · ")
+            if (bio.isNotBlank() || player.hometown != null || player.lastSchool != null) {
+                item {
+                    Card(modifier = Modifier.fillMaxWidth()) {
+                        Column(modifier = Modifier.padding(12.dp)) {
+                            if (bio.isNotBlank()) {
+                                Text(bio, style = MaterialTheme.typography.titleSmall,
+                                    fontWeight = FontWeight.Bold)
+                            }
+                            player.hometown?.let {
+                                Text(
+                                    it,
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                            player.lastSchool?.let {
+                                Text(
+                                    it,
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+
             item {
                 Card(modifier = Modifier.fillMaxWidth()) {
                     Column(modifier = Modifier.padding(12.dp)) {

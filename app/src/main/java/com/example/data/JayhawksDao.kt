@@ -93,4 +93,21 @@ interface JayhawksDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertTeamStats(rows: List<GameTeamStats>)
+
+    // The opponent's own box score lines. Scraper-owned; a sync replaces a
+    // game's rows so a corrected box score cannot leave stale players behind.
+    @Query("SELECT * FROM opponent_stat_lines")
+    fun observeOpponentLines(): Flow<List<OpponentStatLine>>
+
+    @Query("SELECT * FROM opponent_stat_lines WHERE gameId = :gameId ORDER BY points DESC")
+    fun observeOpponentLinesFor(gameId: Long): Flow<List<OpponentStatLine>>
+
+    @Query("SELECT * FROM opponent_stat_lines")
+    suspend fun opponentLinesOnce(): List<OpponentStatLine>
+
+    @Query("DELETE FROM opponent_stat_lines WHERE gameId = :gameId")
+    suspend fun deleteOpponentLinesFor(gameId: Long)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertOpponentLines(rows: List<OpponentStatLine>)
 }

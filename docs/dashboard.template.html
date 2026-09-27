@@ -870,9 +870,13 @@ function openPlayer(name) {
   const t = p.t;
   document.getElementById("mJersey").textContent = p.jerseyNumber || "–";
   document.getElementById("mName").textContent = p.name;
-  document.getElementById("mSub").textContent =
-    (p.position ? p.position + " · " : "") + t.g + " games (" + t.gs + " starts) · " +
-    (p.active ? "current roster" : "former player") + " · " + season;
+  // Bio first where kuathletics has one, then the season's service record.
+  document.getElementById("mSub").textContent = [
+    [p.position, p.height, p.academicYear].filter(Boolean).join(" · "),
+    p.hometown,
+    `${t.g} games (${t.gs} starts) · ${p.active ? "current roster" : "former player"} · ${season}`,
+    p.lastSchool,
+  ].filter(Boolean).join(" — ");
 
   const mt = [
     ["PPG", f1(t.pts / t.g)], ["RPG", f1(t.reb / t.g)], ["APG", f1(t.ast / t.g)],

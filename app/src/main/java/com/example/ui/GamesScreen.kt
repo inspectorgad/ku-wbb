@@ -4,6 +4,8 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -22,6 +24,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -39,10 +42,14 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.data.Game
+import com.example.data.GameTeamStats
+import com.example.data.OpponentStatLine
 import com.example.data.Player
 import com.example.data.StatLine
+import com.example.stats.formatPct
 import com.example.stats.summarize
 
 /**
@@ -306,6 +313,8 @@ fun GameDetailScreen(
     game: Game,
     players: List<Player>,
     statLines: List<StatLine>,
+    opponentLines: List<OpponentStatLine> = emptyList(),
+    teamStats: List<GameTeamStats> = emptyList(),
     onSaveGame: (Game) -> Unit,
     onDeleteGame: (Game) -> Unit,
     onSaveStatLine: (StatLine) -> Unit,
@@ -318,6 +327,9 @@ fun GameDetailScreen(
 
     val gameLines = statLines.filter { it.gameId == game.id }
     val linesByPlayer = gameLines.associateBy { it.playerId }
+    val oppLines = opponentLines.filter { it.gameId == game.id }.sortedByDescending { it.points }
+    val ourTotals = teamStats.firstOrNull { it.gameId == game.id && !it.opponent }
+    val theirTotals = teamStats.firstOrNull { it.gameId == game.id && it.opponent }
 
     Scaffold(
         topBar = {
@@ -359,7 +371,21 @@ fun GameDetailScreen(
                             )
                             game.periodScores?.let {
                                 Text(
-                                    "Quarters: $it",
+                                    "Quarters: $it" +
+                                        (game.overtime?.let { n ->
+                                            " · ${if (n > 1) "${n}OT" else "OT"}"
+                                        } ?: ""),
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                            listOfNotNull(
+                                game.venue,
+                                game.city,
+                                if (game.conference) "Big 12" else null,
+                            ).takeIf { it.isNotEmpty() }?.let {
+                                Text(
+                                    it.joinToString(" · "),
                                     style = MaterialTheme.typography.bodySmall,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
@@ -371,6 +397,44 @@ fun GameDetailScreen(
                             )
                         }
                         ResultText(game)
+                    }
+                }
+            }
+
+            // Official team totals for both sides. Not the sum of the player
+            // lines: team rebounds and team turnovers belong to no individual.
+            if (ourTotals != null && theirTotals != null) {
+                item {
+                    Card(modifier = Modifier.fillMaxWidth()) {
+                        Column(modifier = Modifier.padding(12.dp)) {
+                            Text(
+                                "Team Stats",
+                                style = MaterialTheme.typography.titleSmall,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Spacer(modifier = Modifier.height(6.dp))
+                            TeamStatsComparison(
+                                ours = ourTotals,
+                                theirs = theirTotals,
+                                opponent = game.opponent
+                            )
+                        }
+                    }
+                }
+            }
+
+            if (oppLines.isNotEmpty()) {
+                item {
+                    Card(modifier = Modifier.fillMaxWidth()) {
+                        Column(modifier = Modifier.padding(12.dp)) {
+                            Text(
+                                "${game.opponent} box score",
+                                style = MaterialTheme.typography.titleSmall,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Spacer(modifier = Modifier.height(6.dp))
+                            OpponentBoxScore(oppLines)
+                        }
                     }
                 }
             }
@@ -607,4 +671,108 @@ private fun StatFieldRow(
             )
         }
     }
+}
+
+/** Kansas against the opponent, official totals side by side. */
+@Composable
+private fun TeamStatsComparison(
+    ours: GameTeamStats,
+    theirs: GameTeamStats,
+    opponent: String
+) {
+    val shooting = { m: Int, a: Int ->
+        if (a == 0) "0-0" else "$m-$a (${formatPct(m.toDouble() / a)})"
+    }
+    val rows = listOf(
+        "FG" to (shooting(ours.fgm, ours.fga) to shooting(theirs.fgm, theirs.fga)),
+        "3PT" to (shooting(ours.tpm, ours.tpa) to shooting(theirs.tpm, theirs.tpa)),
+        "FT" to (shooting(ours.ftm, ours.fta) to shooting(theirs.ftm, theirs.fta)),
+        "Rebounds" to ("${ours.reb} (${ours.oreb} off)" to "${theirs.reb} (${theirs.oreb} off)"),
+        "Assists" to ("${ours.ast}" to "${theirs.ast}"),
+        "Turnovers" to ("${ours.to}" to "${theirs.to}"),
+        "Steals" to ("${ours.stl}" to "${theirs.stl}"),
+        "Blocks" to ("${ours.blk}" to "${theirs.blk}"),
+        "Fouls" to ("${ours.pf}" to "${theirs.pf}"),
+    )
+    Row {
+        Text(
+            "", modifier = Modifier.weight(1.1f),
+            style = MaterialTheme.typography.labelSmall
+        )
+        Text(
+            "Kansas", modifier = Modifier.weight(1f),
+            style = MaterialTheme.typography.labelSmall,
+            fontWeight = FontWeight.Bold,
+            textAlign = TextAlign.End
+        )
+        Text(
+            opponent.take(12), modifier = Modifier.weight(1f),
+            style = MaterialTheme.typography.labelSmall,
+            textAlign = TextAlign.End
+        )
+    }
+    HorizontalDivider()
+    rows.forEach { (label, values) ->
+        Row(modifier = Modifier.padding(vertical = 3.dp)) {
+            Text(
+                label, modifier = Modifier.weight(1.1f),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Text(
+                values.first, modifier = Modifier.weight(1f),
+                style = MaterialTheme.typography.bodySmall,
+                fontWeight = FontWeight.SemiBold,
+                textAlign = TextAlign.End
+            )
+            Text(
+                values.second, modifier = Modifier.weight(1f),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant,
+                textAlign = TextAlign.End
+            )
+        }
+    }
+}
+
+/** The opponent's players, best scorer first. Read-only: not our roster. */
+@Composable
+private fun OpponentBoxScore(lines: List<OpponentStatLine>) {
+    Row {
+        Text(
+            "Player", modifier = Modifier.weight(2f),
+            style = MaterialTheme.typography.labelSmall, fontWeight = FontWeight.Bold
+        )
+        for (h in listOf("MIN", "PTS", "REB", "AST")) {
+            Text(
+                h, modifier = Modifier.weight(0.7f),
+                style = MaterialTheme.typography.labelSmall,
+                fontWeight = FontWeight.Bold, textAlign = TextAlign.End
+            )
+        }
+    }
+    HorizontalDivider()
+    lines.forEach { l ->
+        Row(modifier = Modifier.padding(vertical = 3.dp)) {
+            Text(
+                (if (l.started) "• " else "") + l.playerName,
+                modifier = Modifier.weight(2f),
+                style = MaterialTheme.typography.bodySmall,
+                maxLines = 1
+            )
+            for (v in listOf(l.minutes, l.points, l.rebounds, l.assists)) {
+                Text(
+                    "$v", modifier = Modifier.weight(0.7f),
+                    style = MaterialTheme.typography.bodySmall,
+                    textAlign = TextAlign.End
+                )
+            }
+        }
+    }
+    Text(
+        "• started",
+        style = MaterialTheme.typography.labelSmall,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+        modifier = Modifier.padding(top = 4.dp)
+    )
 }
