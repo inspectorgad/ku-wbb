@@ -662,7 +662,9 @@ function marginChart() {
     showTip(`<b>${g.won ? "W" : "L"} ${g.teamScore}–${g.opponentScore}</b> ${g.won ? "over" : "to"} ${g.opponent} (${siteOf(g) || "site n/a"})<br>
       ${fmtDate(g.date)} · ${phaseOf(g)}<br>
       <span style="opacity:.8">Quarters: ${g.periodScores || "—"}</span><br>
-      <span style="opacity:.8">Top: ${g.top ? g.top.name + " " + g.top.pts : "—"}</span>`, ev);
+      <span style="opacity:.8">Top: ${g.top ? g.top.name + " " + g.top.pts : "—"}</span>` +
+      (g.opponentRank ? `<br><span style="opacity:.8">They came in #${g.opponentRank}${g.opponentRecord ? " (" + g.opponentRecord + ")" : ""}</span>` : "") +
+      (g.overtime ? `<br><span style="opacity:.8">${g.overtime > 1 ? g.overtime + "OT" : "OT"}</span>` : ""), ev);
   };
   svg.onmouseleave = hideTip;
 }
@@ -720,7 +722,7 @@ function gamesTable() {
       <td class="dim">${g.n}</td>
       <td class="lft">${fmtDate(g.date)}</td>
       <td class="lft">${siteChip(g)}</td>
-      <td class="lft"><b>${g.opponent}</b></td>
+      <td class="lft">${g.opponentRank ? `<span class="dim">#${g.opponentRank}</span> ` : ""}<b>${g.opponent}</b></td>
       <td class="lft"><span class="chip ${g.won ? "W" : "L"}">${g.won ? "W" : "L"}</span></td>
       <td><b>${g.teamScore}–${g.opponentScore}</b></td>
       <td class="lft dim">${g.periodScores || ""}</td>

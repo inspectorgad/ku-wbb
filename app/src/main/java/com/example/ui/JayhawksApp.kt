@@ -86,6 +86,7 @@ fun JayhawksApp(viewModel: JayhawksViewModel = viewModel()) {
             statLines = statLines,
             opponentLines = opponentLines,
             teamStats = teamStats,
+            allGames = games,
             onSaveGame = { viewModel.saveGame(it) },
             onDeleteGame = {
                 viewModel.deleteGame(it)

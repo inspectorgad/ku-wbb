@@ -11,7 +11,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
     entities = [Player::class, Game::class, StatLine::class,
         ConferenceStanding::class, PollEntry::class, GameTeamStats::class,
         OpponentStatLine::class],
-    version = 6,
+    version = 7,
     exportSchema = false
 )
 abstract class JayhawksDatabase : RoomDatabase() {
@@ -126,9 +126,19 @@ abstract class JayhawksDatabase : RoomDatabase() {
             }
         }
 
+        // v6 -> v7: what the opponent brought into the game.
+        private val MIGRATION_6_7 = object : Migration(6, 7) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE games ADD COLUMN opponentRank INTEGER")
+                db.execSQL("ALTER TABLE games ADD COLUMN opponentSeed INTEGER")
+                db.execSQL("ALTER TABLE games ADD COLUMN opponentRecord TEXT")
+            }
+        }
+
         /** Every migration, in order. Exposed so tests exercise the real set. */
         fun migrations(): Array<Migration> =
-            arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5, MIGRATION_5_6)
+            arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5,
+                MIGRATION_5_6, MIGRATION_6_7)
 
         fun get(context: Context): JayhawksDatabase =
             instance ?: synchronized(this) {

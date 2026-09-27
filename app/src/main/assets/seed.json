@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-09-27T18:11:24Z",
+ "generatedAt": "2026-09-27T18:38:25Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -1449,6 +1449,7 @@
      "gs": 1
     }
    ],
+   "opponentRecord": "0-2",
    "teamStats": {
     "fgm": 20,
     "fga": 45,
@@ -1879,6 +1880,7 @@
      "gs": 1
     }
    ],
+   "opponentRecord": "3-0",
    "opponentStats": {
     "fgm": 29,
     "fga": 55,
@@ -2328,6 +2330,7 @@
      "gs": 1
     }
    ],
+   "opponentRecord": "4-0",
    "teamStats": {
     "fgm": 21,
     "fga": 44,
@@ -2775,6 +2778,7 @@
      "gs": 0
     }
    ],
+   "opponentRecord": "2-4",
    "teamStats": {
     "fgm": 31,
     "fga": 62,
@@ -3266,6 +3270,7 @@
      "gs": 1
     }
    ],
+   "opponentRecord": "7-0",
    "opponentStats": {
     "fgm": 22,
     "fga": 57,
@@ -3755,6 +3760,7 @@
      "gs": 1
     }
    ],
+   "opponentRecord": "3-3",
    "opponentStats": {
     "fgm": 19,
     "fga": 51,
@@ -4185,6 +4191,7 @@
      "gs": 1
     }
    ],
+   "opponentRecord": "6-1",
    "opponentStats": {
     "fgm": 25,
     "fga": 65,
@@ -4615,6 +4622,7 @@
      "gs": 1
     }
    ],
+   "opponentRecord": "7-2",
    "overtime": 1,
    "opponentStats": {
     "fgm": 22,
@@ -5044,6 +5052,7 @@
      "gs": 1
     }
    ],
+   "opponentRecord": "4-6",
    "teamStats": {
     "fgm": 29,
     "fga": 56,
@@ -6092,6 +6101,8 @@
      "gs": 1
     }
    ],
+   "opponentRank": 10,
+   "opponentRecord": "12-0",
    "opponentStats": {
     "fgm": 33,
     "fga": 60,
@@ -6461,6 +6472,7 @@
      "gs": 1
     }
    ],
+   "opponentRecord": "11-2",
    "teamStats": {
     "fgm": 25,
     "fga": 49,
@@ -6929,6 +6941,7 @@
      "gs": 0
     }
    ],
+   "opponentRecord": "8-5",
    "opponentStats": {
     "fgm": 24,
     "fga": 56,
@@ -7357,6 +7370,7 @@
      "gs": 1
     }
    ],
+   "opponentRecord": "11-4",
    "teamStats": {
     "fgm": 23,
     "fga": 56,
@@ -7806,6 +7820,8 @@
      "gs": 1
     }
    ],
+   "opponentRank": 16,
+   "opponentRecord": "14-3",
    "opponentStats": {
     "fgm": 28,
     "fga": 68,
@@ -8196,6 +8212,7 @@
      "gs": 1
     }
    ],
+   "opponentRecord": "14-4",
    "teamStats": {
     "fgm": 27,
     "fga": 52,
@@ -8622,6 +8639,7 @@
      "gs": 0
     }
    ],
+   "opponentRecord": "16-2",
    "opponentStats": {
     "fgm": 22,
     "fga": 52,
@@ -9031,6 +9049,7 @@
      "gs": 0
     }
    ],
+   "opponentRecord": "10-7",
    "opponentStats": {
     "fgm": 26,
     "fga": 60,
@@ -9478,6 +9497,7 @@
      "gs": 0
     }
    ],
+   "opponentRecord": "11-9",
    "teamStats": {
     "fgm": 28,
     "fga": 52,
@@ -9950,6 +9970,8 @@
      "gs": 1
     }
    ],
+   "opponentRank": 12,
+   "opponentRecord": "19-2",
    "opponentStats": {
     "fgm": 28,
     "fga": 56,
@@ -10378,6 +10400,7 @@
      "gs": 1
     }
    ],
+   "opponentRecord": "14-7",
    "overtime": 1,
    "teamStats": {
     "fgm": 19,
@@ -10828,6 +10851,7 @@
      "gs": 1
     }
    ],
+   "opponentRecord": "16-6",
    "teamStats": {
     "fgm": 27,
     "fga": 56,
@@ -11277,6 +11301,7 @@
      "gs": 1
     }
    ],
+   "opponentRecord": "8-15",
    "teamStats": {
     "fgm": 27,
     "fga": 49,
@@ -11728,6 +11753,8 @@
      "gs": 0
     }
    ],
+   "opponentRank": 16,
+   "opponentRecord": "22-3",
    "opponentStats": {
     "fgm": 21,
     "fga": 60,
@@ -12156,6 +12183,7 @@
      "gs": 0
     }
    ],
+   "opponentRecord": "7-17",
    "teamStats": {
     "fgm": 33,
     "fga": 58,
@@ -12605,6 +12633,7 @@
      "gs": 1
     }
    ],
+   "opponentRecord": "15-13",
    "opponentStats": {
     "fgm": 24,
     "fga": 56,
@@ -13012,6 +13041,8 @@
      "gs": 0
     }
    ],
+   "opponentRank": 20,
+   "opponentRecord": "24-5",
    "teamStats": {
     "fgm": 20,
     "fga": 41,
@@ -13440,6 +13471,7 @@
      "gs": 0
     }
    ],
+   "opponentRecord": "22-8",
    "opponentStats": {
     "fgm": 30,
     "fga": 62,
@@ -13908,6 +13940,8 @@
      "gs": 0
     }
    ],
+   "opponentSeed": 14,
+   "opponentRecord": "11-18",
    "teamStats": {
     "fgm": 20,
     "fga": 56,
@@ -14439,6 +14473,8 @@
      "gs": 0
     }
    ],
+   "opponentSeed": 6,
+   "opponentRecord": "20-10",
    "opponentStats": {
     "fgm": 18,
     "fga": 46,
@@ -14932,6 +14968,7 @@
      "gs": 0
     }
    ],
+   "opponentRecord": "25-7",
    "teamStats": {
     "fgm": 24,
     "fga": 56,
@@ -15381,6 +15418,7 @@
      "gs": 1
     }
    ],
+   "opponentRecord": "29-5",
    "teamStats": {
     "fgm": 18,
     "fga": 48,
@@ -15790,6 +15828,7 @@
      "gs": 0
     }
    ],
+   "opponentRecord": "27-5",
    "opponentStats": {
     "fgm": 30,
     "fga": 55,
@@ -16199,6 +16238,7 @@
      "gs": 0
     }
    ],
+   "opponentRecord": "25-11",
    "teamStats": {
     "fgm": 21,
     "fga": 56,

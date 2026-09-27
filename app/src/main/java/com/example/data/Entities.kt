@@ -103,6 +103,12 @@ data class Game(
     // The opponent is not Division I, so the NCAA's own record and site splits
     // exclude this game. KU's 22-14 is 21-14 to the NET because of one of these.
     val nonD1: Boolean = false,
+    // What the opponent brought into the game — their national rank if they
+    // had one, their tournament seed, and their record to that point. A final
+    // score alone never says who the other team was at the time.
+    val opponentRank: Int? = null,
+    val opponentSeed: Int? = null,
+    val opponentRecord: String? = null,
     // Final score. Null until played.
     val teamScore: Int? = null,
     val opponentScore: Int? = null,

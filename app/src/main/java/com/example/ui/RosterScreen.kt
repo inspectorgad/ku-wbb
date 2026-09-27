@@ -48,6 +48,8 @@ import com.example.data.Game
 import com.example.data.Player
 import com.example.data.StatLine
 import com.example.stats.aggregate
+import com.example.stats.playerMilestones
+import com.example.stats.playerForm
 import com.example.stats.formatPerGame
 import com.example.stats.summarize
 
@@ -345,6 +347,53 @@ fun PlayerDetailScreen(
                             player.lastSchool?.let {
                                 Text(
                                     it,
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Recent form against her own season, and what she has reached.
+            // Both stay quiet rather than guess: form needs enough games, and
+            // a milestone is only a threshold already crossed.
+            val form = playerForm(playerLines, gamesById)
+            val milestones = playerMilestones(aggregate(playerLines), playerLines)
+            if (form != null || milestones.isNotEmpty()) {
+                item {
+                    Card(modifier = Modifier.fillMaxWidth()) {
+                        Column(modifier = Modifier.padding(12.dp)) {
+                            Text(
+                                "Form",
+                                style = MaterialTheme.typography.titleSmall,
+                                fontWeight = FontWeight.Bold
+                            )
+                            form?.let { f ->
+                                val arrow = when (f.trend) {
+                                    "up" -> "▲"; "down" -> "▼"; else -> "•"
+                                }
+                                Text(
+                                    "$arrow Last ${f.window}: " +
+                                        "${formatPerGame(f.recent.pointsPerGame)} pts, " +
+                                        "${formatPerGame(f.recent.reboundsPerGame)} reb, " +
+                                        "${formatPerGame(f.recent.assistsPerGame)} ast",
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                                Text(
+                                    "Season: ${formatPerGame(f.season.pointsPerGame)} pts " +
+                                        "(${if (f.pointsDelta >= 0) "+" else ""}" +
+                                        "${formatPerGame(f.pointsDelta)} lately)",
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                            if (milestones.isNotEmpty()) {
+                                Spacer(modifier = Modifier.height(4.dp))
+                                Text(
+                                    milestones.joinToString(" · "),
                                     style = MaterialTheme.typography.bodySmall,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )

@@ -162,6 +162,20 @@ for path in sorted(glob.glob("scraped/ncaa-game-*.json")):
         "periodScores": ", ".join(period_scores),
         "lines": [],
     }
+    # What the opponent brought into the game: their national rank if they had
+    # one, their tournament seed, and their record to that point. All three are
+    # context the box score carries and the seed has been dropping.
+    opp_rank = to_int(opp.get("teamRank") or opp.get("gameRank"))
+    if opp_rank:
+        game["opponentRank"] = opp_rank
+    opp_seed = to_int(opp.get("seed"))
+    if opp_seed:
+        game["opponentSeed"] = opp_seed
+    # Written "(19-2)" by the feed; the parentheses are presentation.
+    opp_record = (opp.get("record") or "").strip().strip("()")
+    if opp_record and opp_record != "0-0":
+        game["opponentRecord"] = opp_record
+
     # Overtime, from the linescore period labels ("OT", "2OT") or the final
     # message. Four quarters is regulation; anything beyond it is not.
     ot_periods = [

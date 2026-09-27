@@ -66,6 +66,7 @@ class MigrationTest {
             assertTrue(c.isNull(2))
             assertTrue(c.isNull(3))
             assertTrue(c.isNull(4))
+            assertTrue(c.isNull(5))
         }
         db.execSQL("UPDATE games SET tipTime = '15:30', tv = 'BTN+' WHERE id = 1")
         db.query("SELECT tipTime FROM games").use { c ->
@@ -162,7 +163,9 @@ class MigrationTest {
             .sortedBy { it.startVersion }) {
             m.migrate(db)
         }
-        db.query("SELECT site, tipTime, conference, nonD1, overtime FROM games").use { c ->
+        db.query(
+            "SELECT site, tipTime, conference, nonD1, overtime, opponentRank FROM games"
+        ).use { c ->
             c.moveToFirst()
             assertEquals("home", c.getString(0))
             assertTrue(c.isNull(1))
@@ -171,6 +174,7 @@ class MigrationTest {
             assertEquals(0, c.getInt(2))
             assertEquals(0, c.getInt(3))
             assertTrue(c.isNull(4))
+            assertTrue(c.isNull(5))
         }
         // The tables added along the way accept rows.
         db.execSQL(

@@ -128,6 +128,9 @@ object Seeder {
             val seedConference = g.optBoolean("conference", false)
             val seedOvertime = g.optInt("overtime").takeIf { it > 0 }
             val seedNonD1 = g.optBoolean("nonD1", false)
+            val seedOppRank = g.optInt("opponentRank").takeIf { it > 0 }
+            val seedOppSeed = g.optInt("opponentSeed").takeIf { it > 0 }
+            val seedOppRecord = g.optString("opponentRecord").takeIf { it.isNotBlank() }
 
             val existing = gamesByKey[gameKey(date, opponent)]
             val gameId: Long
@@ -147,6 +150,12 @@ object Seeder {
                         conference = seedConference,
                         overtime = seedOvertime,
                         nonD1 = seedNonD1,
+                    opponentRank = seedOppRank ?: existing.opponentRank,
+                    opponentSeed = seedOppSeed ?: existing.opponentSeed,
+                    opponentRecord = seedOppRecord ?: existing.opponentRecord,
+                        opponentRank = seedOppRank,
+                        opponentSeed = seedOppSeed,
+                        opponentRecord = seedOppRecord,
                         teamScore = seedTeamScore,
                         opponentScore = seedOppScore,
                         periodScores = seedPeriodScores
@@ -175,6 +184,9 @@ object Seeder {
                     conference = seedConference,
                     overtime = seedOvertime ?: existing.overtime,
                     nonD1 = seedNonD1,
+                    opponentRank = seedOppRank ?: existing.opponentRank,
+                    opponentSeed = seedOppSeed ?: existing.opponentSeed,
+                    opponentRecord = seedOppRecord ?: existing.opponentRecord,
                     teamScore = if (filledResult) seedTeamScore else existing.teamScore,
                     opponentScore = if (filledResult) seedOppScore else existing.opponentScore,
                     periodScores = existing.periodScores

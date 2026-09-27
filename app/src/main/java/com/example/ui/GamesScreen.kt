@@ -50,6 +50,7 @@ import com.example.data.OpponentStatLine
 import com.example.data.Player
 import com.example.data.StatLine
 import com.example.stats.formatPct
+import com.example.stats.gameFacts
 import com.example.stats.summarize
 
 /**
@@ -315,6 +316,8 @@ fun GameDetailScreen(
     statLines: List<StatLine>,
     opponentLines: List<OpponentStatLine> = emptyList(),
     teamStats: List<GameTeamStats> = emptyList(),
+    // Every game of the season, so a streak can be counted up to this one.
+    allGames: List<Game> = listOf(game),
     onSaveGame: (Game) -> Unit,
     onDeleteGame: (Game) -> Unit,
     onSaveStatLine: (StatLine) -> Unit,
@@ -397,6 +400,31 @@ fun GameDetailScreen(
                             )
                         }
                         ResultText(game)
+                    }
+                }
+            }
+
+            // What a final score does not say: who the opponent was at the
+            // time, which quarter decided it, who had a night.
+            val facts = gameFacts(game, allGames, statLines, players.associate { it.id to it.name })
+            if (facts.isNotEmpty()) {
+                item {
+                    Card(modifier = Modifier.fillMaxWidth()) {
+                        Column(modifier = Modifier.padding(12.dp)) {
+                            Text(
+                                "Notable",
+                                style = MaterialTheme.typography.titleSmall,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Spacer(modifier = Modifier.height(4.dp))
+                            facts.forEach {
+                                Text(
+                                    "• $it",
+                                    style = MaterialTheme.typography.bodySmall,
+                                    modifier = Modifier.padding(vertical = 1.dp)
+                                )
+                            }
+                        }
                     }
                 }
             }
