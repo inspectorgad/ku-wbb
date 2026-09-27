@@ -9,6 +9,7 @@ import androidx.compose.material.icons.filled.EmojiEvents
 import androidx.compose.material.icons.filled.Groups
 import androidx.compose.material.icons.filled.Leaderboard
 import androidx.compose.material.icons.filled.QueryStats
+import androidx.compose.material.icons.filled.Shield
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -32,7 +33,7 @@ import com.example.JayhawksViewModel
 
 enum class Tab(val label: String) {
     Roster("Roster"), Games("Games"), Leaders("Leaders"),
-    Season("Season"), Big12("Big 12")
+    Season("Season"), Opponents("Opponents"), Big12("Big 12")
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -42,6 +43,9 @@ fun JayhawksApp(viewModel: JayhawksViewModel = viewModel()) {
     // Detail overlays: at most one is open at a time; back closes it.
     var openPlayerId by rememberSaveable { mutableStateOf<Long?>(null) }
     var openGameId by rememberSaveable { mutableStateOf<Long?>(null) }
+    // Held by name, not id: an opponent is a group of games, and the name is
+    // what identifies it across the spellings the sources use.
+    var openOpponent by rememberSaveable { mutableStateOf<String?>(null) }
     var askOpen by rememberSaveable { mutableStateOf(false) }
 
     val players by viewModel.players.collectAsStateWithLifecycle()
@@ -59,10 +63,12 @@ fun JayhawksApp(viewModel: JayhawksViewModel = viewModel()) {
         viewModel.syncMessages.collect { snackbarHostState.showSnackbar(it) }
     }
 
-    val showingDetail = openPlayerId != null || openGameId != null || askOpen
+    val showingDetail =
+        openPlayerId != null || openGameId != null || openOpponent != null || askOpen
     BackHandler(enabled = showingDetail) {
         openPlayerId = null
         openGameId = null
+        openOpponent = null
         askOpen = false
     }
 
@@ -74,6 +80,14 @@ fun JayhawksApp(viewModel: JayhawksViewModel = viewModel()) {
         // finds the conversation — and any answer still being worked on —
         // where it was.
         askOpen -> AskScreen(onBack = { askOpen = false })
+
+        openOpponent != null -> OpponentDetailScreen(
+            opponentName = openOpponent!!,
+            games = games,
+            opponentLines = opponentLines,
+            teamStats = teamStats,
+            onBack = { openOpponent = null }
+        )
 
         openPlayer != null -> PlayerDetailScreen(
             player = openPlayer,
@@ -119,6 +133,7 @@ fun JayhawksApp(viewModel: JayhawksViewModel = viewModel()) {
                                         Tab.Games -> Icons.AutoMirrored.Filled.List
                                         Tab.Leaders -> Icons.Default.EmojiEvents
                                         Tab.Season -> Icons.Default.QueryStats
+                                        Tab.Opponents -> Icons.Default.Shield
                                         Tab.Big12 -> Icons.Default.Leaderboard
                                     },
                                     contentDescription = tab.label
@@ -163,6 +178,12 @@ fun JayhawksApp(viewModel: JayhawksViewModel = viewModel()) {
                     Tab.Season -> SeasonScreen(
                         games = games,
                         teamStats = teamStats
+                    )
+
+                    Tab.Opponents -> OpponentsScreen(
+                        games = games,
+                        teamStats = teamStats,
+                        onOpenOpponent = { openOpponent = it }
                     )
 
                     Tab.Big12 -> StandingsScreen(

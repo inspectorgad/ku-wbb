@@ -5,11 +5,14 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.Card
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
@@ -128,6 +131,57 @@ fun NumberField(
         textStyle = TextStyle(fontSize = 14.sp, textAlign = TextAlign.Center),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
     )
+}
+
+/** A titled card. The section unit shared by the Season and Opponents tabs. */
+@Composable
+fun SectionCard(title: String, content: @Composable () -> Unit) {
+    Card(modifier = Modifier.fillMaxWidth()) {
+        Column(modifier = Modifier.padding(12.dp)) {
+            Text(title, style = MaterialTheme.typography.titleSmall, fontWeight = FontWeight.Bold)
+            Spacer(modifier = Modifier.height(6.dp))
+            content()
+        }
+    }
+}
+
+/**
+ * One efficiency figure and the other side's, press-and-hold explained.
+ *
+ * [theirsLabel] names whoever the second figure belongs to, because which side
+ * leads depends on the screen: the Season tab reads from Kansas' side, the
+ * Opponents tab from the opponent's.
+ */
+@Composable
+fun EfficiencyRow(label: String, ours: String, theirs: String?, theirsLabel: String = "opp") {
+    Explainable(label, modifier = Modifier.fillMaxWidth()) {
+        Row(
+            modifier = Modifier.padding(vertical = 3.dp),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                label,
+                modifier = Modifier.width(64.dp),
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            Text(
+                ours,
+                modifier = Modifier.weight(1f),
+                style = MaterialTheme.typography.bodyMedium,
+                fontWeight = FontWeight.SemiBold
+            )
+            if (theirs != null) {
+                Text(
+                    "$theirsLabel $theirs",
+                    modifier = Modifier.weight(1f),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    textAlign = TextAlign.End
+                )
+            }
+        }
+    }
 }
 
 /** The plain-words note under a card: what its numbers are and how to read them. */

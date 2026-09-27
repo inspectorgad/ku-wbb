@@ -45,14 +45,13 @@ object Seeder {
      */
     internal fun gameKey(date: String, opponent: String) = "$date|${normalizeTeam(opponent)}"
 
-    internal fun normalizeTeam(name: String): String = name
-        .replace(Regex("""\s*\(\d+\)\s*$"""), "")   // strip poll votes
-        .lowercase()
-        .replace(".", "")
-        .replace(Regex("""\bstate\b"""), "st")
-        .replace(Regex("""\buniversity\b"""), "")
-        .replace(Regex("""\s+"""), " ")
-        .trim()
+    /**
+     * The rule now lives in [normTeam], so the screens that group meetings with
+     * one opponent match names exactly the way the seeder keyed them. Kept as
+     * an alias rather than replaced at every call site, since a change to what
+     * this means would silently re-key every game in the database.
+     */
+    internal fun normalizeTeam(name: String): String = normTeam(name)
 
     /** Also used by [SeasonSync] for network-fetched season data. */
     suspend fun merge(root: JSONObject, dao: JayhawksDao) {
