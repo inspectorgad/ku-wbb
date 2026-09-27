@@ -180,6 +180,9 @@
   .chip.W { color: var(--win); background: var(--win-bg); }
   .chip.L { color: var(--loss); background: var(--loss-bg); }
   .dim { color: var(--muted); }
+  /* The venue line is the longest cell in the schedule table; letting it wrap
+     keeps the table inside the card instead of pushing the phase off the edge. */
+  td.wrapcell { white-space: normal; min-width: 190px; }
   .phase-lbl { font-size: 10.5px; letter-spacing: .1em; color: var(--muted); text-transform: uppercase; }
   /* Home/away: filled chip for home, outlined for away, so the two differ in
      shape as well as color. */
@@ -316,11 +319,7 @@
     </div>
     <div class="card tbl-wrap" style="max-height:460px; overflow-y:auto;">
       <table id="gamesTbl">
-        <thead>
-          <tr><th class="lft">#</th><th class="lft">Date</th><th class="lft">Site</th><th class="lft">Opponent</th>
-              <th class="lft"></th><th>Score</th><th class="lft">Quarters</th><th class="lft">Top scorer</th>
-              <th class="lft"></th></tr>
-        </thead>
+        <thead></thead>
         <tbody></tbody>
       </table>
     </div>
@@ -432,6 +431,11 @@ const PHASE_SHORT = {
   "Non-conference": "NON-CONFERENCE", "Big 12": "BIG 12",
   "Big 12 Tournament": "B12T", "Postseason": "POST"
 };
+// Narrower still, for the schedule table, where the venue column is wide.
+const PHASE_TINY = {
+  "Non-conference": "NON-CONF", "Big 12": "BIG 12",
+  "Big 12 Tournament": "B12T", "Postseason": "POST"
+};
 const fmtDate = iso => {
   const [y, m, d] = iso.split("-").map(Number);
   return ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"][m-1] + " " + d;
@@ -443,6 +447,13 @@ const f1 = v => v.toFixed(1);
 // rather than guessing, since a wrong "at" reads as fact.
 // Three states. `site` is derived from the venue; `home` is the older boolean
 // kept for seeds built before neutral sites were understood.
+// "18:30" -> "6:30 pm". The seed stores 24-hour so it sorts and compares.
+const fmtTime = hhmm => {
+  const m = /^(\d{1,2}):(\d{2})$/.exec(hhmm || "");
+  if (!m) return "";
+  const h = +m[1];
+  return `${h % 12 || 12}:${m[2]} ${h < 12 ? "am" : "pm"}`;
+};
 const siteOf = g => g.site || (g.home === true ? "home" : g.home === false ? "away" : null);
 const SITE_LABEL = { home: "vs", away: "at", neutral: "N" };
 const siteChip = g => {
@@ -542,11 +553,12 @@ function renderHeader() {
   const host = document.getElementById("teamTiles");
   if (!games.length) {
     const next = upcoming[0];
+    const withTime = upcoming.filter(g => g.time).length;
     host.innerHTML = next
       ? `<div class="tile"><div class="v">${fmtDate(next.date)}</div><div class="l">First game</div>
-           <div class="d">${vsAt(next)}${next.opponent}</div></div>
-         <div class="tile alt"><div class="v">${upcoming.length}</div><div class="l">Scheduled so far</div>
-           <div class="d">stats appear as games are played</div></div>`
+           <div class="d">${vsAt(next)}${next.opponent}${next.time ? " · " + fmtTime(next.time) : ""}</div></div>
+         <div class="tile alt"><div class="v">${upcoming.length}</div><div class="l">Games scheduled</div>
+           <div class="d">${withTime} with a tip time set</div></div>`
       : "";
     return;
   }
@@ -676,6 +688,18 @@ function gamesTable() {
     : games.length ? `All ${games.length} games`
     : `Schedule — ${upcoming.length} games`;
 
+  // A season still to be played has no scores to head, and no need for the
+  // result columns at all: showing them would both label a venue "Quarters"
+  // and push the phase off the right edge.
+  const hasResults = games.length > 0;
+  document.querySelector("#gamesTbl thead").innerHTML = hasResults
+    ? `<tr><th class="lft">#</th><th class="lft">Date</th><th class="lft">Site</th>
+         <th class="lft">Opponent</th><th class="lft"></th><th>Score</th>
+         <th class="lft">Quarters</th><th class="lft">Top scorer</th><th class="lft"></th></tr>`
+    : `<tr><th class="lft">#</th><th class="lft">Date</th><th class="lft">Site</th>
+         <th class="lft">Opponent</th><th class="lft">Tip</th>
+         <th class="lft">Venue</th><th class="lft"></th></tr>`;
+
   const playedRows = games.map(g => `
     <tr>
       <td class="dim">${g.n}</td>
@@ -688,18 +712,22 @@ function gamesTable() {
       <td class="lft">${g.top ? g.top.name + ' <span class="dim">' + g.top.pts + ' pts</span>' : ""}</td>
       <td class="lft"><span class="phase-lbl">${phaseOf(g)}</span></td>
     </tr>`);
-  // Scheduled games have no box score yet — the row shows the fixture only.
+  // Scheduled games have no box score yet — the row carries the fixture
+  // details instead: tip time where the conference has set one, then the
+  // venue, broadcaster and event.
+  const where = g =>
+    `${g.venue || ""}${g.city ? ` · ${g.city}` : ""}${g.tv ? ` · TV ${g.tv}` : ""}`;
   const upcomingRows = upcoming.map((g, i) => `
     <tr>
       <td class="dim">${games.length + i + 1}</td>
       <td class="lft">${fmtDate(g.date)}</td>
       <td class="lft">${siteChip(g)}</td>
-      <td class="lft"><b>${g.opponent}</b></td>
-      <td class="lft"><span class="phase-lbl">Sched.</span></td>
-      <td class="dim">—</td>
-      <td class="lft"></td>
-      <td class="lft"></td>
-      <td class="lft"><span class="phase-lbl">${phaseOf(g)}</span></td>
+      <td class="lft"><b>${g.opponent}</b>${g.event ? ` <span class="dim">${g.event}</span>` : ""}</td>
+      <td class="lft"><span class="phase-lbl">${fmtTime(g.time) || "TBD"}</span></td>
+      ${hasResults ? `<td class="dim">—</td>
+      <td class="lft dim" colspan="2">${where(g)}</td>`
+      : `<td class="lft dim wrapcell">${where(g)}</td>`}
+      <td class="lft"><span class="phase-lbl">${PHASE_TINY[phaseOf(g)]}</span></td>
     </tr>`);
   document.querySelector("#gamesTbl tbody").innerHTML =
     playedRows.concat(upcomingRows).join("");

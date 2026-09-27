@@ -2,51 +2,375 @@
  {
   "date": "2026-10-22",
   "opponent": "Northeastern State (exh.)",
-  "home": true
+  "site": "home",
+  "home": true,
+  "venue": "Allen Fieldhouse",
+  "city": "Lawrence, KS",
+  "time": "18:30",
+  "tv": null,
+  "event": null
  },
  {
   "date": "2026-10-29",
   "opponent": "Washburn (exh.)",
-  "home": true
+  "site": "home",
+  "home": true,
+  "venue": "Allen Fieldhouse",
+  "city": "Lawrence, KS",
+  "time": "18:30",
+  "tv": null,
+  "event": "Late Night in the Phog"
  },
  {
   "date": "2026-11-03",
   "opponent": "Omaha",
-  "home": true
+  "site": "home",
+  "home": true,
+  "venue": "Allen Fieldhouse",
+  "city": "Lawrence, KS",
+  "time": "18:30",
+  "tv": null,
+  "event": null
  },
  {
   "date": "2026-11-06",
   "opponent": "Drake",
-  "home": true
+  "site": "home",
+  "home": true,
+  "venue": "Allen Fieldhouse",
+  "city": "Lawrence, KS",
+  "time": "11:00",
+  "tv": null,
+  "event": null
  },
  {
   "date": "2026-11-10",
   "opponent": "Oral Roberts",
-  "home": true
+  "site": "home",
+  "home": true,
+  "venue": "Allen Fieldhouse",
+  "city": "Lawrence, KS",
+  "time": "18:30",
+  "tv": null,
+  "event": null
  },
  {
   "date": "2026-11-14",
   "opponent": "Nebraska",
-  "home": true
+  "site": "neutral",
+  "home": false,
+  "venue": "Sanford Pentagon",
+  "city": "Sioux Falls, SD",
+  "time": "15:30",
+  "tv": "BTN+",
+  "event": "MarketBeat Invitational"
  },
  {
   "date": "2026-11-18",
   "opponent": "Minnesota",
-  "home": false
+  "site": "away",
+  "home": false,
+  "venue": "The Barn",
+  "city": "Minneapolis, MN",
+  "time": null,
+  "tv": null,
+  "event": null
  },
  {
   "date": "2026-11-22",
   "opponent": "South Dakota State",
-  "home": true
+  "site": "neutral",
+  "home": false,
+  "venue": "T-Mobile Center",
+  "city": "Kansas City, MO",
+  "time": "13:30",
+  "tv": null,
+  "event": "28.5 Hoops Invitational"
  },
  {
   "date": "2026-11-26",
   "opponent": "Washington State",
-  "home": true
+  "site": "neutral",
+  "home": false,
+  "venue": "Hard Rock Hotel Rivera Maya",
+  "city": "Cancun, Mexico",
+  "time": "15:00",
+  "tv": null,
+  "event": "Cancun Challenge"
  },
  {
   "date": "2026-11-27",
   "opponent": "Miami (OH)",
-  "home": true
+  "site": "neutral",
+  "home": false,
+  "venue": "Hard Rock Hotel Rivera Maya",
+  "city": "Cancun, Mexico",
+  "time": "17:30",
+  "tv": null,
+  "event": null
+ },
+ {
+  "date": "2026-12-03",
+  "opponent": "Missouri State",
+  "site": "home",
+  "home": true,
+  "venue": "Allen Fieldhouse",
+  "city": "Lawrence, KS",
+  "time": "18:30",
+  "tv": null,
+  "event": null
+ },
+ {
+  "date": "2026-12-06",
+  "opponent": "Kansas City",
+  "site": "home",
+  "home": true,
+  "venue": "Allen Fieldhouse",
+  "city": "Lawrence, KS",
+  "time": "14:00",
+  "tv": null,
+  "event": null
+ },
+ {
+  "date": "2026-12-10",
+  "opponent": "North Dakota State",
+  "site": "home",
+  "home": true,
+  "venue": "Allen Fieldhouse",
+  "city": "Lawrence, KS",
+  "time": "18:30",
+  "tv": null,
+  "event": null
+ },
+ {
+  "date": "2026-12-13",
+  "opponent": "Northwestern",
+  "site": "home",
+  "home": true,
+  "venue": "Allen Fieldhouse",
+  "city": "Lawrence, KS",
+  "time": "14:00",
+  "tv": null,
+  "event": null
+ },
+ {
+  "date": "2026-12-16",
+  "opponent": "Lindenwood",
+  "site": "home",
+  "home": true,
+  "venue": "Allen Fieldhouse",
+  "city": "Lawrence, KS",
+  "time": "18:30",
+  "tv": null,
+  "event": null
+ },
+ {
+  "date": "2026-12-20",
+  "opponent": "Oklahoma State",
+  "site": "home",
+  "home": true,
+  "venue": "Allen Fieldhouse",
+  "city": "Lawrence, KS",
+  "time": null,
+  "tv": null,
+  "event": null
+ },
+ {
+  "date": "2026-12-30",
+  "opponent": "West Virginia",
+  "site": "away",
+  "home": false,
+  "venue": "WVU Coliseum",
+  "city": "Morgantown, WV",
+  "time": null,
+  "tv": null,
+  "event": null
+ },
+ {
+  "date": "2027-01-02",
+  "opponent": "Cincinnati",
+  "site": "away",
+  "home": false,
+  "venue": "Fifth Third Arena",
+  "city": "Cincinnati, OH",
+  "time": null,
+  "tv": null,
+  "event": null
+ },
+ {
+  "date": "2027-01-06",
+  "opponent": "Arizona",
+  "site": "home",
+  "home": true,
+  "venue": "Allen Fieldhouse",
+  "city": "Lawrence, KS",
+  "time": null,
+  "tv": null,
+  "event": null
+ },
+ {
+  "date": "2027-01-09",
+  "opponent": "Baylor",
+  "site": "home",
+  "home": true,
+  "venue": "Allen Fieldhouse",
+  "city": "Lawrence, KS",
+  "time": null,
+  "tv": null,
+  "event": null
+ },
+ {
+  "date": "2027-01-13",
+  "opponent": "Oklahoma State",
+  "site": "away",
+  "home": false,
+  "venue": "Gallagher-Iba Arena",
+  "city": "Stillwater, OK",
+  "time": null,
+  "tv": null,
+  "event": null
+ },
+ {
+  "date": "2027-01-16",
+  "opponent": "Utah",
+  "site": "away",
+  "home": false,
+  "venue": "Jon M. Huntsman Center",
+  "city": "Salt Lake City, UT",
+  "time": null,
+  "tv": null,
+  "event": null
+ },
+ {
+  "date": "2027-01-20",
+  "opponent": "Iowa State",
+  "site": "home",
+  "home": true,
+  "venue": "Allen Fieldhouse",
+  "city": "Lawrence, KS",
+  "time": null,
+  "tv": null,
+  "event": null
+ },
+ {
+  "date": "2027-01-24",
+  "opponent": "Colorado",
+  "site": "away",
+  "home": false,
+  "venue": "CU Events Center",
+  "city": "Boulder, CO",
+  "time": null,
+  "tv": null,
+  "event": null
+ },
+ {
+  "date": "2027-01-27",
+  "opponent": "Arizona State",
+  "site": "home",
+  "home": true,
+  "venue": "Allen Fieldhouse",
+  "city": "Lawrence, KS",
+  "time": null,
+  "tv": null,
+  "event": null
+ },
+ {
+  "date": "2027-01-31",
+  "opponent": "Kansas State",
+  "site": "home",
+  "home": true,
+  "venue": "Allen Fieldhouse",
+  "city": "Lawrence, KS",
+  "time": null,
+  "tv": null,
+  "event": null
+ },
+ {
+  "date": "2027-02-06",
+  "opponent": "BYU",
+  "site": "away",
+  "home": false,
+  "venue": "Marriott Center",
+  "city": "Provo, UT",
+  "time": null,
+  "tv": null,
+  "event": null
+ },
+ {
+  "date": "2027-02-10",
+  "opponent": "TCU",
+  "site": "home",
+  "home": true,
+  "venue": "Allen Fieldhouse",
+  "city": "Lawrence, KS",
+  "time": null,
+  "tv": null,
+  "event": null
+ },
+ {
+  "date": "2027-02-13",
+  "opponent": "Houston",
+  "site": "away",
+  "home": false,
+  "venue": "Fertitta Center",
+  "city": "Houston, TX",
+  "time": null,
+  "tv": null,
+  "event": null
+ },
+ {
+  "date": "2027-02-16",
+  "opponent": "UCF",
+  "site": "home",
+  "home": true,
+  "venue": "Allen Fieldhouse",
+  "city": "Lawrence, KS",
+  "time": null,
+  "tv": null,
+  "event": null
+ },
+ {
+  "date": "2027-02-20",
+  "opponent": "Kansas State",
+  "site": "away",
+  "home": false,
+  "venue": "Bramlage Coliseum",
+  "city": "Manhattan, KS",
+  "time": null,
+  "tv": null,
+  "event": null
+ },
+ {
+  "date": "2027-02-24",
+  "opponent": "Iowa State",
+  "site": "away",
+  "home": false,
+  "venue": "Hilton Coliseum",
+  "city": "Ames, IA",
+  "time": null,
+  "tv": null,
+  "event": null
+ },
+ {
+  "date": "2027-02-28",
+  "opponent": "Texas Tech",
+  "site": "home",
+  "home": true,
+  "venue": "Allen Fieldhouse",
+  "city": "Lawrence, KS",
+  "time": null,
+  "tv": null,
+  "event": null
+ },
+ {
+  "date": "2027-03-03",
+  "opponent": "Big 12 Tournament",
+  "site": "neutral",
+  "home": false,
+  "venue": "T-Mobile Center",
+  "city": "Kansas City, MO",
+  "time": null,
+  "tv": null,
+  "event": "Big 12 Women's Basketball Tournament"
  }
 ]

@@ -79,6 +79,13 @@ data class Game(
     val site: String? = null,
     val venue: String? = null,
     val city: String? = null,
+    // Tip-off local to the venue, "18:30". Null until the conference sets the
+    // TV windows, which for most Big 12 games is well into the season.
+    val tipTime: String? = null,
+    // Broadcaster, when the schedule names one — it usually does not.
+    val tv: String? = null,
+    // Tournament or showcase this game belongs to, e.g. "Cancun Challenge".
+    val event: String? = null,
     // Final score. Null until played.
     val teamScore: Int? = null,
     val opponentScore: Int? = null,

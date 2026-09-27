@@ -57,6 +57,9 @@ abstract class JayhawksDatabase : RoomDatabase() {
                 db.execSQL("ALTER TABLE games ADD COLUMN site TEXT")
                 db.execSQL("ALTER TABLE games ADD COLUMN venue TEXT")
                 db.execSQL("ALTER TABLE games ADD COLUMN city TEXT")
+                db.execSQL("ALTER TABLE games ADD COLUMN tipTime TEXT")
+                db.execSQL("ALTER TABLE games ADD COLUMN tv TEXT")
+                db.execSQL("ALTER TABLE games ADD COLUMN event TEXT")
                 db.execSQL(
                     """CREATE TABLE IF NOT EXISTS game_team_stats (
                         gameId INTEGER NOT NULL, opponent INTEGER NOT NULL,

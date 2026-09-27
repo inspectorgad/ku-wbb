@@ -68,6 +68,42 @@ class MergeSyncTest {
     }
 
     @Test
+    fun `a fixture carries its tip time, venue and event, and drops the tip once played`() = runTest {
+        val dao = db.dao()
+        Seeder.merge(
+            JSONObject(
+                """{"players":[],"games":[{"date":"2026-11-14","opponent":"Nebraska",
+                    "season":"2026-27","site":"neutral","venue":"Sanford Pentagon",
+                    "city":"Sioux Falls, SD","time":"15:30","tv":"BTN+",
+                    "event":"MarketBeat Invitational"}]}"""
+            ),
+            dao
+        )
+        val fixture = dao.gamesOnce().single()
+        assertEquals("15:30", fixture.tipTime)
+        assertEquals("BTN+", fixture.tv)
+        assertEquals("MarketBeat Invitational", fixture.event)
+        assertEquals("neutral", fixture.siteOrLegacy)
+        assertEquals("Sanford Pentagon", fixture.venue)
+
+        // Once it is played the feed stops sending a tip time; keeping the old
+        // one would leave a finished game advertising a start time.
+        Seeder.merge(
+            JSONObject(
+                """{"players":[],"games":[{"date":"2026-11-14","opponent":"Nebraska",
+                    "season":"2026-27","site":"neutral","venue":"Sanford Pentagon",
+                    "teamScore":71,"opponentScore":64}]}"""
+            ),
+            dao
+        )
+        val played = dao.gamesOnce().single()
+        assertNull(played.tipTime)
+        assertEquals(71, played.teamScore)
+        // Broadcast and event are not re-sent by the box score, and survive.
+        assertEquals("BTN+", played.tv)
+    }
+
+    @Test
     fun `a fixture and its box score spelled differently are one game`() = runTest {
         val dao = db.dao()
         // kuathletics spells it out; the NCAA box score abbreviates. Keying on

@@ -61,6 +61,17 @@ fun neutralNote(game: Game): String =
     if (game.siteOrLegacy != "neutral") ""
     else " (neutral" + (game.venue?.let { " · $it" } ?: "") + ")"
 
+/**
+ * The second line for a game that has not been played: tip time, broadcaster
+ * and the event it belongs to, whichever of those the schedule has given up so
+ * far. Empty when it knows none of them, so the row simply omits the line.
+ */
+fun fixtureNote(game: Game): String = listOfNotNull(
+    game.tipTime?.let { "$it${if (game.tv != null || game.event != null) "" else " tip"}" },
+    game.tv?.let { "TV $it" },
+    game.event,
+).joinToString(" · ")
+
 @Composable
 fun GamesScreen(
     games: List<Game>,
@@ -108,6 +119,15 @@ fun GamesScreen(
                                     color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
                                 game.periodScores?.let {
+                                    Text(
+                                        it,
+                                        style = MaterialTheme.typography.bodySmall,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                }
+                                // Upcoming games carry a tip time instead of a
+                                // line score; once played the tip is dropped.
+                                fixtureNote(game).takeIf { it.isNotBlank() }?.let {
                                     Text(
                                         it,
                                         style = MaterialTheme.typography.bodySmall,

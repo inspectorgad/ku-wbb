@@ -108,6 +108,9 @@ object Seeder {
             val seedSite = g.optString("site").takeIf { it.isNotBlank() }
             val seedVenue = g.optString("venue").takeIf { it.isNotBlank() }
             val seedCity = g.optString("city").takeIf { it.isNotBlank() }
+            val seedTip = g.optString("time").takeIf { it.isNotBlank() }
+            val seedTv = g.optString("tv").takeIf { it.isNotBlank() }
+            val seedEvent = g.optString("event").takeIf { it.isNotBlank() }
 
             val existing = gamesByKey[gameKey(date, opponent)]
             val gameId: Long
@@ -121,6 +124,9 @@ object Seeder {
                         site = seedSite,
                         venue = seedVenue,
                         city = seedCity,
+                        tipTime = seedTip,
+                        tv = seedTv,
+                        event = seedEvent,
                         teamScore = seedTeamScore,
                         opponentScore = seedOppScore,
                         periodScores = seedPeriodScores
@@ -139,6 +145,11 @@ object Seeder {
                     site = seedSite ?: existing.site,
                     venue = seedVenue ?: existing.venue,
                     city = seedCity ?: existing.city,
+                    // Tip time is feed-owned and can move; a game that has been
+                    // played drops it, and that is correct rather than a loss.
+                    tipTime = if (seedTeamScore != null) null else seedTip ?: existing.tipTime,
+                    tv = seedTv ?: existing.tv,
+                    event = seedEvent ?: existing.event,
                     teamScore = if (filledResult) seedTeamScore else existing.teamScore,
                     opponentScore = if (filledResult) seedOppScore else existing.opponentScore,
                     periodScores = existing.periodScores

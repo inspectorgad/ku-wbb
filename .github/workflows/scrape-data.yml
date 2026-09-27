@@ -12,6 +12,7 @@ on:
     paths:
       - 'scrape-trigger.txt'
       - 'scripts/scrape-ku-wbb.mjs'
+      - 'scripts/schedule-parser.mjs'
       - 'scripts/update-seed.py'
       - '.github/workflows/scrape-data.yml'
 
@@ -34,6 +35,11 @@ jobs:
           npm init -y > /dev/null
           npm install playwright@1.49.0 > /dev/null
           npx playwright install --with-deps chromium
+
+      # The parsers run before the scrape, not after: a layout change that
+      # breaks one should fail here rather than quietly write a thinner seed.
+      - name: Test the page parsers
+        run: node --test scripts/*.test.mjs
 
       - name: Scrape NCAA + kuathletics data
         env:

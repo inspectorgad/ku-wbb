@@ -16,6 +16,7 @@
 // nightly runs only touch new dates.
 import { chromium } from 'playwright';
 import fs from 'fs';
+import { parseSchedule, siteOf } from './schedule-parser.mjs';
 
 const API = 'https://ncaa-api.henrygd.me';
 // Season start years: "2025" means the 2025-26 season.
@@ -238,30 +239,34 @@ try {
   fs.writeFileSync('scraped/roster.json', JSON.stringify(roster, null, 1));
   console.log(`roster: ${roster.length} players`);
 
-  // Upcoming games from the site-wide scoreboard rotator:
-  // "Upcoming Event: Women's Basketball versus X on November 4, 2026 at 7 p.m. CT"
+  // The whole season's fixtures, with venue, city, tip time and broadcast.
+  // Parsing lives in schedule-parser.mjs so it can be tested against a frozen
+  // page; reading only the rotator (as this did) found a quarter of the season
+  // and could not tell a neutral floor from a home game.
   const schedText = await pageText('https://kuathletics.com/sports/womens-basketball/schedule');
   fs.writeFileSync('scraped/schedule-page.txt', schedText);
-  const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
-    'August', 'September', 'October', 'November', 'December'];
-  const upcoming = [];
-  const re = /Upcoming Event: Women's Basketball (versus|at) (.+?) on ([A-Z][a-z]+) (\d{1,2}), (\d{4})/g;
-  for (const m of schedText.matchAll(re)) {
-    const month = months.indexOf(m[3]) + 1;
-    if (month === 0) continue;
-    const date = `${m[5]}-${String(month).padStart(2, '0')}-${String(m[4]).padStart(2, '0')}`;
-    upcoming.push({ date, opponent: m[2].trim(), home: m[1] === 'versus' });
+  const fixtures = parseSchedule(schedText).map((f) => ({
+    date: f.date,
+    opponent: f.opponent,
+    site: siteOf(f),
+    // Kept so an older seed builder, which knows only this field, still places
+    // the game on the right side of a home/away split.
+    home: siteOf(f) === 'home',
+    venue: f.venue,
+    city: f.city,
+    time: f.time,
+    tv: f.tv,
+    event: f.event,
+  }));
+  fs.writeFileSync('scraped/upcoming.json', JSON.stringify(fixtures, null, 1));
+  const withTime = fixtures.filter((f) => f.time).length;
+  const neutral = fixtures.filter((f) => f.site === 'neutral').length;
+  console.log(
+    `upcoming: ${fixtures.length} games (${withTime} with a tip time, ${neutral} neutral)`
+  );
+  if (fixtures.length < 10) {
+    console.log('  WARNING: far fewer fixtures than a full season — did the page layout change?');
   }
-  // De-dup (the rotator repeats on every page view)
-  const seen = new Set();
-  const uniqueUpcoming = upcoming.filter((u) => {
-    const k = `${u.date}|${u.opponent}`;
-    if (seen.has(k)) return false;
-    seen.add(k);
-    return true;
-  });
-  fs.writeFileSync('scraped/upcoming.json', JSON.stringify(uniqueUpcoming, null, 1));
-  console.log(`upcoming: ${uniqueUpcoming.length} games`);
 
   await browser.close();
 } catch (e) {

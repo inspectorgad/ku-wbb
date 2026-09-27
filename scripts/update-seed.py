@@ -260,15 +260,26 @@ for entry in load_json("scraped/upcoming.json", []):
     # A game in Jan-Apr belongs to the season that started the year before.
     year, month = int(date[:4]), int(date[5:7])
     start_year = year if month >= 8 else year - 1
-    games[key] = {
+    fixture = {
         "date": date,
         "opponent": opponent,
         "season": season_label(start_year),
-        # kuathletics writes "versus X" for home games and "at X" for away. It
-        # says nothing about neutral sites, so a fixture's site is provisional
-        # until the box score arrives with a venue.
+        # The schedule page names the venue, so a fixture already knows whether
+        # it is home, away or on a neutral floor — no need to wait for the box
+        # score. `scheduleSite` is trusted directly by the site derivation.
+        "scheduleSite": (entry.get("site") or "").strip() or None,
         "nominalHome": bool(entry.get("home")),
     }
+    for key_name in ("venue", "city", "tv", "event"):
+        value = (entry.get(key_name) or "").strip()
+        if value:
+            fixture[key_name] = value
+    # Tip-off, local to the venue, as "18:30". Absent until the conference sets
+    # the TV windows, so it stays out of the seed rather than being guessed.
+    tip = (entry.get("time") or "").strip()
+    if tip:
+        fixture["time"] = tip
+    games[key] = fixture
 
 # --- Home / away / neutral ---------------------------------------------------
 # Derived from the venue, never from the feed's isHome: at a neutral site that
@@ -293,8 +304,13 @@ site_counts = {"home": 0, "away": 0, "neutral": 0}
 for key, game in games.items():
     venue = game.get("venue")
     marker = f"{game['date']}|{norm_team(game['opponent'])}"
+    played = game.get("teamScore") is not None
     if marker in neutral_games:
         site = "neutral"
+    elif not played and game.get("scheduleSite"):
+        # An unplayed fixture: the schedule page states the side AND the venue,
+        # which together settle it — "vs" at anyone else's building is neutral.
+        site = game["scheduleSite"]
     elif venue == HOME_VENUE:
         site = "home"
     elif venue and (
@@ -305,14 +321,15 @@ for key, game in games.items():
     elif venue:
         site = "away"
     else:
-        # No box score yet: fall back to the schedule page's vs/at, which
-        # cannot express neutral. Corrected once the game is played.
+        # Nothing to go on but the schedule page's vs/at, which alone cannot
+        # express neutral. Corrected once the game is played.
         site = "home" if game.get("nominalHome") else "away"
     game["site"] = site
     # Kept so an older installed APK, which knows only this field, still
     # renders something sane for a neutral game rather than nothing.
     game["home"] = site == "home"
     game.pop("nominalHome", None)
+    game.pop("scheduleSite", None)
     site_counts[site] += 1
 
 print(
