@@ -68,7 +68,11 @@ fun StatsTable(
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             TableCell("", width = labelWidth.dp, header = true)
-            STAT_COLUMNS.forEach { (label, w) -> TableCell(label, width = w.dp, header = true) }
+            // Press and hold a column heading for what it means — this table
+            // is otherwise nineteen columns of initials.
+            STAT_COLUMNS.forEach { (label, w) ->
+                Explainable(label) { TableCell(label, width = w.dp, header = true) }
+            }
         }
         HorizontalDivider()
         rows.forEach { (label, totals) ->

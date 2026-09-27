@@ -8,6 +8,7 @@ import androidx.compose.material.icons.automirrored.filled.List
 import androidx.compose.material.icons.filled.EmojiEvents
 import androidx.compose.material.icons.filled.Groups
 import androidx.compose.material.icons.filled.Leaderboard
+import androidx.compose.material.icons.filled.QueryStats
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -30,7 +31,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.JayhawksViewModel
 
 enum class Tab(val label: String) {
-    Roster("Roster"), Games("Games"), Leaders("Leaders"), Big12("Big 12")
+    Roster("Roster"), Games("Games"), Leaders("Leaders"),
+    Season("Season"), Big12("Big 12")
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -108,6 +110,7 @@ fun JayhawksApp(viewModel: JayhawksViewModel = viewModel()) {
                                         Tab.Roster -> Icons.Default.Groups
                                         Tab.Games -> Icons.AutoMirrored.Filled.List
                                         Tab.Leaders -> Icons.Default.EmojiEvents
+                                        Tab.Season -> Icons.Default.QueryStats
                                         Tab.Big12 -> Icons.Default.Leaderboard
                                     },
                                     contentDescription = tab.label
@@ -146,6 +149,11 @@ fun JayhawksApp(viewModel: JayhawksViewModel = viewModel()) {
                         games = games,
                         statLines = statLines,
                         dataUpdatedAt = dataUpdatedAt
+                    )
+
+                    Tab.Season -> SeasonScreen(
+                        games = games,
+                        teamStats = teamStats
                     )
 
                     Tab.Big12 -> StandingsScreen(

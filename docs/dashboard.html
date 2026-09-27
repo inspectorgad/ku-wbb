@@ -199,6 +199,7 @@
   .b12-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 12px; align-items: start; }
   .tblcap { margin: 0 0 2px; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
   .fine { color: var(--muted); font-size: 11.5px; margin: 8px 0 0; }
+  abbr[title] { text-decoration: underline dotted; cursor: help; }
   tbody tr.ku td { background: var(--win-bg); font-weight: 700; }
   .b12chip {
     display: inline-block; font-size: 10px; font-weight: 800; border-radius: 4px;
@@ -323,6 +324,15 @@
         <tbody></tbody>
       </table>
     </div>
+  </section>
+
+  <section id="seasonSec" hidden>
+    <div class="sec-head">
+      <h2>How the season went</h2>
+      <span class="note">shooting efficiency, splits, and the quarter that decided games</span>
+      <div class="rule"></div>
+    </div>
+    <div class="b12-grid" id="seasonCards"></div>
   </section>
 
   <section id="big12Sec" hidden>
@@ -802,6 +812,120 @@ document.getElementById("roster").addEventListener("click", ev => {
   if (btn) openPlayer(btn.dataset.p);
 });
 
+// ---------- season insights --------------------------------------------------
+// Mirrors the app's Season tab. The arithmetic is deliberately the same shape
+// as stats/Efficiency.kt and stats/Splits.kt so the two cannot drift.
+const EXPLAIN = {
+  "eFG%": "Effective field goal percentage: a three counts for the extra half a basket it is worth — (FGM + 0.5×3PM) / FGA.",
+  "TS%": "True shooting percentage: points per scoring attempt, counting free throws — PTS / (2 × (FGA + 0.44×FTA)).",
+  "3PAr": "Three-point attempt rate: what share of shots come from behind the arc.",
+  "FTr": "Free throw rate: free throw attempts per field goal attempt.",
+  "A/TO": "Assists per turnover. Above 1.0 means more possessions created than lost.",
+};
+
+function efficiencyOf(rows) {
+  const s = k => rows.reduce((n, r) => n + (r[k] || 0), 0);
+  const fga = s("fga"), fta = s("fta"), attempts = fga + 0.44 * fta;
+  return {
+    "eFG%": fga ? (s("fgm") + 0.5 * s("tpm")) / fga : 0,
+    "TS%": attempts ? s("pts") / (2 * attempts) : 0,
+    "3PAr": fga ? s("tpa") / fga : 0,
+    "FTr": fga ? fta / fga : 0,
+    "A/TO": s("to") ? s("ast") / s("to") : null,
+  };
+}
+
+const recordOf = list => {
+  const w = list.filter(g => g.teamScore > g.opponentScore).length;
+  const pf = list.reduce((n, g) => n + g.teamScore, 0);
+  const pa = list.reduce((n, g) => n + g.opponentScore, 0);
+  return { w, l: list.length - w, n: list.length, pf, pa };
+};
+
+// "8-11, 26-17, …" -> [[8,11], …]; nothing at all if any period is malformed,
+// since half a quarter table skews every total built on it.
+function parsePeriods(text) {
+  if (!text) return [];
+  const out = [];
+  for (const part of text.split(",")) {
+    const m = /^\s*(\d+)\s*-\s*(\d+)\s*$/.exec(part);
+    if (!m) return [];
+    out.push([+m[1], +m[2]]);
+  }
+  return out;
+}
+
+function seasonInsights() {
+  const sec = document.getElementById("seasonSec");
+  if (!games.length) { sec.hidden = true; return; }
+  sec.hidden = false;
+
+  const card = (title, body, note) =>
+    `<div class="card"><h3 class="tblcap">${title}</h3>${body}` +
+    (note ? `<p class="fine">${note}</p>` : "") + `</div>`;
+  const splitRows = splits => `<table><tbody>` + splits.map(([label, list]) => {
+    const r = recordOf(list);
+    return `<tr><td class="lft">${label}</td><td><b>${r.w}-${r.l}</b></td>
+      <td class="dim">${f1(r.pf / r.n)}–${f1(r.pa / r.n)}</td></tr>`;
+  }).join("") + `</tbody></table>`;
+
+  const cards = [];
+
+  if (team.official) {
+    const us = efficiencyOf(games.map(g => g.teamStats));
+    const them = opponentTeam.official ? efficiencyOf(games.map(g => g.opponentStats)) : null;
+    cards.push(card("Shooting",
+      `<table><tbody>` + Object.keys(us).map(k => {
+        const fmt = v => v == null ? "—" : (k === "A/TO" ? f1(v) : fPct(v));
+        return `<tr><td class="lft" title="${EXPLAIN[k]}"><abbr>${k}</abbr></td>
+          <td><b>${fmt(us[k])}</b></td>
+          <td class="dim">${them ? "opp " + fmt(them[k]) : ""}</td></tr>`;
+      }).join("") + `</tbody></table>`,
+      "Hover a label for what it means."));
+  }
+
+  const bySite = ["home", "away", "neutral"]
+    .map(s => [{ home: "Home", away: "Road", neutral: "Neutral" }[s], games.filter(g => siteOf(g) === s)])
+    .filter(([, list]) => list.length);
+  cards.push(card("Where they played", splitRows(bySite)));
+
+  const conf = games.filter(g => g.conference);
+  if (conf.length) {
+    cards.push(card("Conference and outside it", splitRows([
+      ["Big 12", conf], ["Non-conference", games.filter(g => !g.conference)],
+    ].filter(([, l]) => l.length))));
+  }
+
+  const margin = g => Math.abs(g.teamScore - g.opponentScore);
+  cards.push(card("How close they were", splitRows([
+    ["Within 5", games.filter(g => margin(g) <= 5)],
+    ["By 6-15", games.filter(g => margin(g) >= 6 && margin(g) <= 15)],
+    ["By 16+", games.filter(g => margin(g) >= 16)],
+  ].filter(([, l]) => l.length))));
+
+  // Quarters, with overtime kept separate from regulation.
+  const quarters = [];
+  for (const g of games) {
+    parsePeriods(g.periodScores).forEach(([ours, theirs], i) => {
+      const q = quarters[i] || (quarters[i] = { label: i < 4 ? `Q${i + 1}` : "OT", f: 0, a: 0, w: 0, l: 0, t: 0, n: 0 });
+      q.f += ours; q.a += theirs; q.n++;
+      if (ours > theirs) q.w++; else if (ours < theirs) q.l++; else q.t++;
+    });
+  }
+  if (quarters.length) {
+    let running = 0;
+    const walk = quarters.map(q => { running += q.f - q.a; return `${q.label} ${running >= 0 ? "+" : ""}${running}`; });
+    cards.push(card("By quarter",
+      `<table><thead><tr><th class="lft"></th><th>For</th><th>Opp</th><th>W-L-T</th></tr></thead><tbody>` +
+      quarters.map(q => `<tr><td class="lft"><b>${q.label}</b></td><td>${f1(q.f / q.n)}</td>
+        <td class="dim">${f1(q.a / q.n)}</td><td>${q.w}-${q.l}${q.t ? "-" + q.t : ""}</td></tr>`).join("") +
+      `</tbody></table>`,
+      "Running margin: " + walk.join(" · ")));
+  }
+
+  document.getElementById("seasonCards").innerHTML = cards.join("");
+}
+
 // ---------- Big 12 standings + national poll --------------------------------
 // Optional seed keys: an older season-data.json simply hides the section.
 function big12() {
@@ -858,6 +982,7 @@ function render(sel) {
   marginChart();
   leaders();
   gamesTable();
+  seasonInsights();
   roster();
   big12();
   hideTip();
