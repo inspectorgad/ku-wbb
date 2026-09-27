@@ -265,13 +265,17 @@ class AskEngine(
         )
 
         /**
-         * The dashboard's copy first, the repository's as a fallback. The raw
-         * URL names the repository's default branch, which is this one — the
-         * repository has no `main`.
+         * The dashboard's copy first, the rolling release's as a fallback.
+         *
+         * The fallback used to be a raw.githubusercontent URL, which has to
+         * name a branch — so renaming the repository's default branch would
+         * have silently broken this for every installed APK. The release asset
+         * names no branch, and is the same route [SeasonSync] already takes
+         * for the season data.
          */
         val PACK_URLS = listOf(
             "https://inspectorgad.github.io/ku-wbb/ask-data.json",
-            "https://raw.githubusercontent.com/inspectorgad/ku-wbb/claude/ku-wbb-data-validation-qapzd1/docs/ask-data.json",
+            "https://github.com/inspectorgad/ku-wbb/releases/latest/download/ask-data.json",
         )
 
         val defaultClient: OkHttpClient by lazy {

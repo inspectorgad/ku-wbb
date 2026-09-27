@@ -120,8 +120,14 @@ export function kuGame(scoreboard) {
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, Math.max(0, ms)));
 const stamp = () => new Date().toISOString().slice(11, 16) + 'Z';
-/** The branch this run is on — the repo's default branch is not called main. */
-const ref = () => process.env.GITHUB_REF_NAME || 'main';
+/**
+ * The branch this run is on. Actions always sets GITHUB_REF_NAME; the fallback
+ * is for running this by hand, and asks git rather than guessing a name — the
+ * old default here was 'main', which this repository does not have, so a
+ * hand-run dispatch would have failed on a branch that does not exist.
+ */
+const ref = () => process.env.GITHUB_REF_NAME
+  || execFileSync('git', ['rev-parse', '--abbrev-ref', 'HEAD'], { encoding: 'utf8' }).trim();
 
 function loadGames() {
   return JSON.parse(readFileSync('app/src/main/assets/seed.json', 'utf8')).games ?? [];
