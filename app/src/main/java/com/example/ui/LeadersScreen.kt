@@ -1,5 +1,6 @@
 package com.example.ui
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -44,7 +45,9 @@ fun LeadersScreen(
     games: List<Game>,
     statLines: List<StatLine>,
     modifier: Modifier = Modifier,
-    dataUpdatedAt: String? = null
+    dataUpdatedAt: String? = null,
+    // Opens "Ask about the team". Null in previews and screenshot tests.
+    onOpenAsk: (() -> Unit)? = null
 ) {
     // Seasons ordered most recent first; default selection is the current (latest) season.
     val seasons = games.sortedByDescending { it.date }.map { it.season }.distinct()
@@ -128,6 +131,30 @@ fun LeadersScreen(
                                 "Data updated ${it.take(16).replace('T', ' ')} UTC · pull down to refresh",
                                 style = MaterialTheme.typography.labelSmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                    }
+                }
+            }
+
+            onOpenAsk?.let { open ->
+                item {
+                    Card(modifier = Modifier.fillMaxWidth().clickable(onClick = open)) {
+                        Column(modifier = Modifier.padding(12.dp)) {
+                            Text(
+                                "Ask about the team ›",
+                                style = MaterialTheme.typography.titleSmall,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Text(
+                                "Type a question — \"how do we rebound on the road?\" — and get an " +
+                                    "answer worked out from the season data.",
+                                style = MaterialTheme.typography.bodyMedium
+                            )
+                            Explanation(
+                                "Answered by Claude, Anthropic's AI, using your own Anthropic API " +
+                                    "key. Each question usually costs a few cents on your Anthropic " +
+                                    "account."
                             )
                         }
                     }

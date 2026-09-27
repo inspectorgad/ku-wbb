@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-   Sample data extraction rules file; uncomment and customize as necessary.
+   Backup and device-transfer rules for API 31 and above.
    See https://developer.android.com/about/versions/12/backup-restore#xml-changes
-   for details.
 -->
 <data-extraction-rules>
     <cloud-backup>
-        <!-- TODO: Use <include> and <exclude> to control what is backed up.
-        <include .../>
-        <exclude .../>
-        -->
+        <!-- The encrypted Anthropic API key: the keystore key that decrypts it
+             never leaves this phone, so a restored copy would be unreadable
+             anyway — and a secret has no business in a cloud backup. -->
+        <exclude domain="sharedpref" path="ask_key.xml"/>
     </cloud-backup>
-    <!--
     <device-transfer>
-        <include .../>
-        <exclude .../>
+        <!-- Same on a phone-to-phone transfer: the new phone has a different
+             keystore, so the reader enters the key again rather than carrying
+             an undecryptable blob around. -->
+        <exclude domain="sharedpref" path="ask_key.xml"/>
     </device-transfer>
-    -->
 </data-extraction-rules>

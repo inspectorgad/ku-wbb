@@ -42,6 +42,7 @@ fun JayhawksApp(viewModel: JayhawksViewModel = viewModel()) {
     // Detail overlays: at most one is open at a time; back closes it.
     var openPlayerId by rememberSaveable { mutableStateOf<Long?>(null) }
     var openGameId by rememberSaveable { mutableStateOf<Long?>(null) }
+    var askOpen by rememberSaveable { mutableStateOf(false) }
 
     val players by viewModel.players.collectAsStateWithLifecycle()
     val games by viewModel.games.collectAsStateWithLifecycle()
@@ -58,16 +59,22 @@ fun JayhawksApp(viewModel: JayhawksViewModel = viewModel()) {
         viewModel.syncMessages.collect { snackbarHostState.showSnackbar(it) }
     }
 
-    val showingDetail = openPlayerId != null || openGameId != null
+    val showingDetail = openPlayerId != null || openGameId != null || askOpen
     BackHandler(enabled = showingDetail) {
         openPlayerId = null
         openGameId = null
+        askOpen = false
     }
 
     val openPlayer = openPlayerId?.let { id -> players.firstOrNull { it.id == id } }
     val openGame = openGameId?.let { id -> games.firstOrNull { it.id == id } }
 
     when {
+        // Ask keeps its thread in AskSession, so closing it and coming back
+        // finds the conversation — and any answer still being worked on —
+        // where it was.
+        askOpen -> AskScreen(onBack = { askOpen = false })
+
         openPlayer != null -> PlayerDetailScreen(
             player = openPlayer,
             games = games,
@@ -149,7 +156,8 @@ fun JayhawksApp(viewModel: JayhawksViewModel = viewModel()) {
                         players = players,
                         games = games,
                         statLines = statLines,
-                        dataUpdatedAt = dataUpdatedAt
+                        dataUpdatedAt = dataUpdatedAt,
+                        onOpenAsk = { askOpen = true }
                     )
 
                     Tab.Season -> SeasonScreen(

@@ -261,6 +261,41 @@
   .m-sec h4 { margin: 0 0 8px; font-size: 12px; letter-spacing: .09em; text-transform: uppercase; color: var(--muted); }
   #pgChart { display: block; width: 100%; height: auto; }
 
+  /* ---------- ask about the team ---------- */
+  #ask-wrap { margin-top: 24px; }
+  #ask-wrap h2 { margin: 0 0 4px; }
+  .ask-label { font-size: 13px; color: var(--muted); }
+  .ask-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin: 6px 0; }
+  .ask-check { font-size: 12px; color: var(--muted); display: flex; gap: 6px; align-items: center; }
+  #ask-key, #ask-q, #ask-model { font: inherit; color: var(--ink); background: var(--surface);
+    border: 1px solid var(--faint); border-radius: 8px; padding: 7px 10px; }
+  #ask-key { flex: 1 1 220px; min-width: 0; }
+  #ask-model { flex: 1 1 200px; min-width: 0; max-width: 100%; text-overflow: ellipsis; }
+  #ask-q { flex: 1 1 260px; min-width: 0; resize: vertical; }
+  .ask-btn { font: inherit; font-size: 13px; cursor: pointer; color: var(--ink);
+    background: var(--surface2); border: 1px solid var(--faint); border-radius: 8px; padding: 6px 12px; }
+  .ask-btn:hover { border-color: var(--blue); }
+  .ask-go { background: var(--blue); border-color: var(--blue); color: #fff; font-weight: 700; }
+  .ask-go:disabled { opacity: .5; cursor: default; }
+  .ask-status { font-size: 12px; color: var(--muted); flex: 1; }
+  .ask-examples { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 8px; }
+  .ask-example { font-size: 12px; padding: 4px 10px; text-align: left; }
+  .ask-turn { border-top: 1px solid var(--chart-grid); padding: 10px 0; }
+  .ask-q { font-weight: 700; margin-bottom: 6px; }
+  .ask-a { font-size: 14px; overflow-wrap: anywhere; }
+  .ask-a p, .ask-a ul, .ask-a ol { margin: 0 0 8px; }
+  .ask-a ul, .ask-a ol { padding-left: 20px; }
+  .ask-a h3 { font-size: 14px; margin: 8px 0 4px; }
+  .ask-a pre, .ask-code pre { background: var(--surface2); border-radius: 6px; padding: 8px;
+    overflow-x: auto; font-size: 12px; white-space: pre; }
+  .ask-a code { background: var(--surface2); border-radius: 4px; padding: 0 4px; }
+  .ask-table { overflow-x: auto; margin: 0 0 8px; }
+  .ask-table th, .ask-table td { white-space: nowrap; }
+  .ask-note { font-size: 11px; color: var(--muted); margin: 4px 0 0; }
+  .ask-error { color: var(--loss); }
+  .ask-code summary { font-size: 12px; color: var(--muted); cursor: pointer; margin-top: 6px; }
+  .fineprint { font-size: 11.5px; color: var(--muted); margin: 10px 0 0; line-height: 1.5; }
+
   footer { margin-top: 48px; color: var(--muted); font-size: 12.5px; }
   footer a { color: var(--blue); }
 
@@ -287,6 +322,40 @@
 <div class="wrap">
 
   <div class="tiles" id="teamTiles"></div>
+
+  <section class="card" id="ask-wrap">
+    <h2>Ask about the team <span class="note">— questions answered by Claude from this season's data</span></h2>
+    <div id="ask-key-form">
+      <label for="ask-key" class="ask-label">Your Anthropic API key</label>
+      <div class="ask-row">
+        <input id="ask-key" type="password" autocomplete="off" spellcheck="false" placeholder="sk-ant-…">
+        <button class="ask-btn" id="ask-key-save">Save key</button>
+      </div>
+      <label class="ask-check"><input type="checkbox" id="ask-remember" checked> Remember on this device</label>
+    </div>
+    <div id="ask-key-set" class="ask-row" hidden>
+      <span class="ask-label">API key saved in this browser.</span>
+      <button class="ask-btn" id="ask-key-forget">Forget key</button>
+      <select id="ask-model" aria-label="Model"></select>
+    </div>
+    <div id="ask-thread" aria-live="polite"></div>
+    <div class="ask-row">
+      <textarea id="ask-q" rows="2" placeholder="e.g. How do we rebound on the road compared with at home?"></textarea>
+      <button class="ask-btn ask-go" id="ask-go">Ask</button>
+      <button class="ask-btn" id="ask-stop" hidden>Stop</button>
+    </div>
+    <div class="ask-row"><span id="ask-status" class="ask-status" role="status"></span>
+      <button class="ask-btn" id="ask-new" hidden>New conversation</button></div>
+    <div class="ask-examples" id="ask-examples"></div>
+    <p class="fineprint">You bring your own Anthropic API key (console.anthropic.com). It is kept
+      only in this browser and sent only to Anthropic, never to this site, and the questions are
+      billed to your account: usually a few cents to about 15¢ each with Claude Opus 5.5 (the
+      default), less with Sonnet 5, and follow-ups within a few minutes cost less because the season
+      data is cached. Claude works from the same validated box scores this page is built from, and
+      computes every figure by running Python on them rather than from memory — "Show the code"
+      under an answer lists exactly what it ran. It knows nothing about injuries, practice or
+      line-ups.</p>
+  </section>
 
   <section id="chartSec">
     <div class="sec-head">
@@ -1063,3 +1132,8 @@ function openPlayer(name) {
   modal.querySelector(".m-body").scrollTop = 0;
 }
 </script>
+
+<!-- "Ask about the team" runs in the reader's own browser with the reader's
+     own Anthropic API key; nothing above depends on it, so a browser that
+     cannot load the module simply shows the rest of the page. -->
+<script type="module" src="ask.js"></script>

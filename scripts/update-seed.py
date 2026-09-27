@@ -658,3 +658,16 @@ else:
         f"{len(seed['games'])} games "
         f"({sum(1 for g in seed['games'] if 'teamScore' in g)} with results)"
     )
+
+# Flat tables Claude can load and compute on, for "Ask about the team"
+# (scripts/ask_pack.py). Written from the seed that was just validated, and
+# only when something other than the timestamp changed.
+import sys  # noqa: E402
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from ask_pack import write_pack  # noqa: E402
+
+if write_pack(seed, "docs/ask-data.json"):
+    print("ask data written: docs/ask-data.json")
+else:
+    print("ask data unchanged (ignoring timestamp); not rewriting")

@@ -33,6 +33,11 @@ jobs:
       - name: Rebuild dashboard from seed
         run: python3 scripts/build-dashboard.py
 
+      # Same reason: "Ask about the team" reads ask-data.json from this site,
+      # and an answer worked out from stale tables is worse than no answer.
+      - name: Rebuild the ask data from seed
+        run: python3 scripts/ask_pack.py
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
         with:

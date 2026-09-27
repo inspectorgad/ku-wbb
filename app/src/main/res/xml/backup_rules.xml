@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?><!--
-   Sample backup rules file; uncomment and customize as necessary.
-   See https://developer.android.com/guide/topics/data/autobackup
-   for details.
-   Note: This file is ignored for devices older than API 31
-   See https://developer.android.com/about/versions/12/backup-restore
+   Auto Backup rules. See https://developer.android.com/guide/topics/data/autobackup
+   Note: this file is ignored on devices older than API 31, which use
+   data_extraction_rules.xml instead.
 -->
 <full-backup-content>
-    <!--
-   <include domain="sharedpref" path="."/>
-   <exclude domain="sharedpref" path="device.xml"/>
--->
+    <!-- The encrypted Anthropic API key: the keystore key that decrypts it
+         never leaves this phone, so a restored copy would be unreadable
+         anyway — and a secret has no business in a cloud backup. -->
+    <exclude domain="sharedpref" path="ask_key.xml"/>
 </full-backup-content>

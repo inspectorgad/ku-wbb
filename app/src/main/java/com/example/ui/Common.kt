@@ -18,6 +18,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
@@ -126,6 +127,18 @@ fun NumberField(
         singleLine = true,
         textStyle = TextStyle(fontSize = 14.sp, textAlign = TextAlign.Center),
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number)
+    )
+}
+
+/** The plain-words note under a card: what its numbers are and how to read them. */
+@Composable
+fun Explanation(text: String) {
+    Text(
+        text,
+        style = MaterialTheme.typography.labelSmall,
+        fontStyle = FontStyle.Italic,
+        color = MaterialTheme.colorScheme.onSurfaceVariant,
+        modifier = Modifier.padding(top = 6.dp)
     )
 }
 
