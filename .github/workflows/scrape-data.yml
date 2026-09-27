@@ -2,9 +2,33 @@ name: Scrape KU WBB data
 
 on:
   workflow_dispatch:
-  # Nightly at 09:00 UTC (4 AM Central) — after even late games are final.
+  # Every four hours, on the :37.
+  #
+  # Coverage. One nightly run at 09:00 UTC only ever looked at the morning. A
+  # 6:30 p.m. Central tip finishes around 02:00 UTC, so its result sat
+  # uncollected for seven hours; a Saturday afternoon game waited longer still.
+  # Games finish anywhere from 19:00 UTC (weekend afternoons) to 04:00
+  # (weeknight evenings in Central time), which no single fixed time covers.
+  #
+  # Delivery. GitHub's scheduler is best-effort: it drops and queues runs under
+  # load, and the top of the hour is the most congested minute there is, since
+  # it is what nearly every cron in the world asks for. These sit at :37, so a
+  # dropped or slow entry costs four hours instead of a day.
+  #
+  # Six runs a day is affordable: a run takes a couple of minutes, Actions is
+  # free on public repositories, the scrape is idempotent, the seed is only
+  # rewritten when the data actually differs, and the APK rebuild is dispatched
+  # only on a real change. A quiet run costs one scraped-data commit.
+  #
+  # The cadence is still blind to when a game ends, which is what
+  # game-night.yml exists for; these are the backstop.
   schedule:
-    - cron: '0 9 * * *'
+    - cron: '37 1 * * *'
+    - cron: '37 5 * * *'
+    - cron: '37 9 * * *'
+    - cron: '37 13 * * *'
+    - cron: '37 17 * * *'
+    - cron: '37 21 * * *'
   push:
     branches:
       - main
@@ -13,6 +37,9 @@ on:
       - 'scrape-trigger.txt'
       - 'scripts/scrape-ku-wbb.mjs'
       - 'scripts/schedule-parser.mjs'
+      - 'scripts/roster-parser.mjs'
+      - 'scripts/game-night-watch.mjs'
+      - 'scripts/ics_feed.py'
       - 'scripts/update-seed.py'
       - '.github/workflows/scrape-data.yml'
 
@@ -20,9 +47,17 @@ permissions:
   contents: write
   actions: write
 
+# Two scrapes pushing to the same branch race each other. The one already
+# running has the fresher data, so a later one waits rather than cancelling it.
+concurrency:
+  group: scrape-data
+  cancel-in-progress: false
+
 jobs:
   scrape:
     runs-on: ubuntu-latest
+    # A hung page load should not hold a runner for six hours.
+    timeout-minutes: 30
     steps:
       - uses: actions/checkout@v4
 
@@ -38,8 +73,10 @@ jobs:
 
       # The parsers run before the scrape, not after: a layout change that
       # breaks one should fail here rather than quietly write a thinner seed.
-      - name: Test the page parsers
-        run: node --test scripts/*.test.mjs
+      - name: Test the parsers and the calendar feed
+        run: |
+          node --test scripts/*.test.mjs
+          python3 -m unittest discover -s scripts -p 'test_*.py'
 
       - name: Scrape NCAA + kuathletics data
         env:
@@ -53,6 +90,9 @@ jobs:
       - name: Rebuild dashboard from seed
         run: python3 scripts/build-dashboard.py
 
+      - name: Rebuild the calendar feed
+        run: python3 scripts/ics_feed.py
+
       - name: Commit scraped data and seed update
         id: commit
         run: |
@@ -60,14 +100,37 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -f scraped/
           git diff --cached --quiet || git commit -m "Update scraped KU WBB data [skip ci]"
-          git add app/src/main/assets/seed.json docs/dashboard.html
+          git add app/src/main/assets/seed.json docs/dashboard.html docs/ku-wbb.ics
           if git diff --cached --quiet; then
             echo "seed_changed=false" >> "$GITHUB_OUTPUT"
           else
             git commit -m "Update season data from nightly scrape [skip ci]"
             echo "seed_changed=true" >> "$GITHUB_OUTPUT"
           fi
-          git push
+          # Another run (or a game-night dispatch) can land between our fetch
+          # and our push; rebase and retry rather than losing the scrape.
+          for attempt in 1 2 3; do
+            if git push; then break; fi
+            echo "push rejected; rebasing and retrying ($attempt/3)"
+            git pull --rebase origin "$GITHUB_REF_NAME"
+            sleep $((attempt * 5))
+          done
+
+      # A game tipping off in the next few hours gets a watcher, so its result
+      # lands the same night rather than waiting for the next scheduled run.
+      - name: Plan a game-night watch
+        id: gamenight
+        run: node scripts/game-night-watch.mjs plan
+
+      - name: Start the game-night watcher
+        if: steps.gamenight.outputs.watch == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run game-night.yml \
+            --repo "$GITHUB_REPOSITORY" \
+            --ref "$GITHUB_REF_NAME" \
+            -f date=${{ steps.gamenight.outputs.date }}
 
       # Pushes made with GITHUB_TOKEN never trigger push workflows (GitHub's
       # recursion guard), so the APK rebuild and Pages deploy must be
