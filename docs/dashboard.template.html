@@ -190,6 +190,7 @@
   }
   .site.home { background: var(--win-bg); color: var(--win); }
   .site.away { border-color: var(--faint); color: var(--muted); }
+  .site.neutral { background: var(--surface2); color: var(--ink); border-color: var(--faint); }
 
   /* ---------- big 12 ---------- */
   .b12-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 12px; align-items: start; }
@@ -440,20 +441,25 @@ const fPct = v => (v ? v.toFixed(3).replace(/^0/, "") : ".000");
 const f1 = v => v.toFixed(1);
 // Home/away. Seeds predating this field leave `home` undefined — say nothing
 // rather than guessing, since a wrong "at" reads as fact.
-const siteOf = g => (g.home === true ? "home" : g.home === false ? "away" : null);
+// Three states. `site` is derived from the venue; `home` is the older boolean
+// kept for seeds built before neutral sites were understood.
+const siteOf = g => g.site || (g.home === true ? "home" : g.home === false ? "away" : null);
+const SITE_LABEL = { home: "vs", away: "at", neutral: "N" };
 const siteChip = g => {
   const s = siteOf(g);
-  return s ? `<span class="site ${s}">${s === "home" ? "vs" : "at"}</span>` : "";
+  if (!s) return "";
+  const title = s === "neutral" ? ` title="neutral site${g.venue ? ": " + g.venue : ""}"` : "";
+  return `<span class="site ${s}"${title}>${SITE_LABEL[s]}</span>`;
 };
 const vsAt = g => {
   const s = siteOf(g);
-  return s === "home" ? "vs " : s === "away" ? "at " : "";
+  return s === "home" ? "vs " : s === "away" ? "at " : s === "neutral" ? "vs " : "";
 };
 const blankTotals = () =>
   ({ g:0, gs:0, min:0, fgm:0, fga:0, tpm:0, tpa:0, ftm:0, fta:0, oreb:0, reb:0, ast:0, to:0, stl:0, blk:0, pf:0, pts:0 });
 
 // Rebuilt on every season change; the player modal reads from here.
-let games = [], upcoming = [], players = new Map(), played = [], team = null;
+let games = [], upcoming = [], players = new Map(), played = [], team = null, opponentTeam = null;
 
 function buildSeason(sel) {
   const seasonGames = ALL_GAMES.filter(g => g.season === sel);
@@ -483,14 +489,26 @@ function buildSeason(sel) {
   });
   played = [...players.values()].filter(p => p.t.g > 0);
 
-  team = { pf: 0, pa: 0, fgm:0, fga:0, tpm:0, tpa:0, ftm:0, fta:0, reb:0, ast:0, stl:0, blk:0 };
+  // Team totals come from the official box score, NOT from summing the player
+  // lines: team rebounds (deadballs) and team turnovers belong to no player, so
+  // summing understates them — KU's rebounding is 35.0/game officially against
+  // 30.8 summed. Older seeds carry no teamStats, so fall back to the sum and
+  // say so rather than silently reporting a different number.
+  // NB: `pf` is personal fouls here, as in the box score — points scored are
+  // `scoreFor`/`scoreAgainst`, taken from the final scores, which are always
+  // present even on a seed with no team totals.
+  const KEYS = ["fgm","fga","tpm","tpa","ftm","fta","oreb","reb","ast","to","stl","blk","pf","pts"];
+  team = { scoreFor: 0, scoreAgainst: 0, official: games.length > 0 && games.every(g => g.teamStats) };
+  opponentTeam = { official: games.length > 0 && games.every(g => g.opponentStats) };
+  for (const k of KEYS) { team[k] = 0; opponentTeam[k] = 0; }
   for (const g of games) {
-    team.pf += g.teamScore; team.pa += g.opponentScore;
-    for (const l of g.lines || []) {
-      team.fgm += l.fgm; team.fga += l.fga; team.tpm += l.tpm; team.tpa += l.tpa;
-      team.ftm += l.ftm; team.fta += l.fta; team.reb += l.reb; team.ast += l.ast;
-      team.stl += l.stl; team.blk += l.blk;
+    team.scoreFor += g.teamScore; team.scoreAgainst += g.opponentScore;
+    if (team.official) {
+      for (const k of KEYS) team[k] += g.teamStats[k];
+    } else {
+      for (const l of g.lines || []) for (const k of KEYS) team[k] += l[k] ?? 0;
     }
+    if (opponentTeam.official) for (const k of KEYS) opponentTeam[k] += g.opponentStats[k];
   }
 }
 
@@ -533,12 +551,15 @@ function renderHeader() {
     return;
   }
   const tiles = [
-    ["Points / game", f1(team.pf / games.length), "opponents " + f1(team.pa / games.length), 0],
+    ["Points / game", f1(team.scoreFor / games.length), "opponents " + f1(team.scoreAgainst / games.length), 0],
     ["Field goal %", fPct(pct(team.fgm, team.fga)), team.fgm + "-" + team.fga, 0],
     ["Three-point %", fPct(pct(team.tpm, team.tpa)), team.tpm + " made", 1],
     ["Free throw %", fPct(pct(team.ftm, team.fta)), team.ftm + "-" + team.fta, 1],
-    ["Rebounds / game", f1(team.reb / games.length), team.ast + " total assists", 0],
-    ["Stocks / game", f1((team.stl + team.blk) / games.length), team.stl + " STL · " + team.blk + " BLK", 1],
+    ["Rebounds / game", f1(team.reb / games.length),
+      opponentTeam.official ? "opponents " + f1(opponentTeam.reb / games.length)
+        : team.ast + " total assists", 0],
+    ["Assists / game", f1(team.ast / games.length), team.to + " turnovers", 1],
+    ["Stocks / game", f1((team.stl + team.blk) / games.length), team.stl + " STL · " + team.blk + " BLK", 0],
   ];
   host.innerHTML = tiles.map(([l, v, d, alt]) =>
     `<div class="tile${alt ? " alt" : ""}"><div class="v">${v}</div><div class="l">${l}</div><div class="d">${d}</div></div>`).join("");

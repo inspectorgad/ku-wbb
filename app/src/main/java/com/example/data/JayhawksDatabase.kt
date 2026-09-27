@@ -9,8 +9,8 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 
 @Database(
     entities = [Player::class, Game::class, StatLine::class,
-        ConferenceStanding::class, PollEntry::class],
-    version = 3,
+        ConferenceStanding::class, PollEntry::class, GameTeamStats::class],
+    version = 4,
     exportSchema = false
 )
 abstract class JayhawksDatabase : RoomDatabase() {
@@ -50,13 +50,46 @@ abstract class JayhawksDatabase : RoomDatabase() {
             }
         }
 
+        // v3 -> v4: three-state site (home/away/neutral) plus venue, and
+        // official per-game team totals for both sides.
+        private val MIGRATION_3_4 = object : Migration(3, 4) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL("ALTER TABLE games ADD COLUMN site TEXT")
+                db.execSQL("ALTER TABLE games ADD COLUMN venue TEXT")
+                db.execSQL("ALTER TABLE games ADD COLUMN city TEXT")
+                db.execSQL(
+                    """CREATE TABLE IF NOT EXISTS game_team_stats (
+                        gameId INTEGER NOT NULL, opponent INTEGER NOT NULL,
+                        fgm INTEGER NOT NULL, fga INTEGER NOT NULL,
+                        tpm INTEGER NOT NULL, tpa INTEGER NOT NULL,
+                        ftm INTEGER NOT NULL, fta INTEGER NOT NULL,
+                        oreb INTEGER NOT NULL, reb INTEGER NOT NULL,
+                        ast INTEGER NOT NULL, "to" INTEGER NOT NULL,
+                        stl INTEGER NOT NULL, blk INTEGER NOT NULL,
+                        pf INTEGER NOT NULL, pts INTEGER NOT NULL,
+                        PRIMARY KEY(gameId, opponent),
+                        FOREIGN KEY(gameId) REFERENCES games(id) ON DELETE CASCADE)"""
+                )
+                // Back-fill the new column from the old boolean so a phone that
+                // upgrades before its next sync still shows a site.
+                db.execSQL(
+                    "UPDATE games SET site = CASE home WHEN 1 THEN 'home' WHEN 0 THEN 'away' END"
+                )
+            }
+        }
+
+        /** Every migration, in order. Exposed so tests exercise the real set. */
+        fun migrations(): Array<Migration> =
+            arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4)
+
         fun get(context: Context): JayhawksDatabase =
             instance ?: synchronized(this) {
                 instance ?: Room.databaseBuilder(
                     context.applicationContext,
                     JayhawksDatabase::class.java,
                     "ku_wbb.db"
-                ).addMigrations(MIGRATION_1_2, MIGRATION_2_3).build().also { instance = it }
+                ).addMigrations(*migrations())
+                    .build().also { instance = it }
             }
     }
 }

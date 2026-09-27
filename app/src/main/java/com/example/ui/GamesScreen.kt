@@ -46,14 +46,20 @@ import com.example.data.StatLine
 import com.example.stats.summarize
 
 /**
- * "vs " for a home game, "at " for a road game, and nothing at all when the
- * site is unknown — better a bare opponent name than a wrong one.
+ * "vs " at home, "at " on the road, "vs " for a neutral floor (the opponent is
+ * not hosting either), and nothing at all when the site is unknown — better a
+ * bare opponent name than a wrong one.
  */
-fun siteLabel(home: Boolean?): String = when (home) {
-    true -> "vs "
-    false -> "at "
-    null -> ""
+fun siteLabel(site: String?): String = when (site) {
+    "home", "neutral" -> "vs "
+    "away" -> "at "
+    else -> ""
 }
+
+/** Short suffix naming a neutral floor, e.g. " (neutral · T-Mobile Center)". */
+fun neutralNote(game: Game): String =
+    if (game.siteOrLegacy != "neutral") ""
+    else " (neutral" + (game.venue?.let { " · $it" } ?: "") + ")"
 
 @Composable
 fun GamesScreen(
@@ -90,12 +96,13 @@ fun GamesScreen(
                         ) {
                             Column(modifier = Modifier.weight(1f)) {
                                 Text(
-                                    "${siteLabel(game.home)}${game.opponent}",
+                                    "${siteLabel(game.siteOrLegacy)}${game.opponent}",
                                     style = MaterialTheme.typography.titleMedium,
                                     fontWeight = FontWeight.SemiBold
                                 )
                                 Text(
                                     "${game.date} · ${game.season}" +
+                                        neutralNote(game) +
                                         if (lineCount > 0) " · $lineCount player${if (lineCount == 1) "" else "s"}" else "",
                                     style = MaterialTheme.typography.bodySmall,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -175,7 +182,10 @@ fun GameDialog(
     var periodScores by remember { mutableStateOf(game?.periodScores ?: "") }
     // A hand-added game defaults to a home game; editing an existing one keeps
     // whatever it has (an unknown site becomes "home" only if the user saves).
-    var home by remember { mutableStateOf(game?.home ?: true) }
+    // Neutral is scraper-derived from the venue and not offered here, so
+    // editing a neutral game keeps it neutral unless the switch is touched.
+    var site by remember { mutableStateOf(game?.siteOrLegacy ?: "home") }
+    val home = site == "home"
 
     val dateValid = Regex("""\d{4}-\d{2}-\d{2}""").matches(date)
 
@@ -229,11 +239,18 @@ fun GameDialog(
                 )
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
-                        if (home) "Home game" else "Away game",
+                        when (site) {
+                            "home" -> "Home game"
+                            "neutral" -> "Neutral site"
+                            else -> "Away game"
+                        },
                         style = MaterialTheme.typography.bodyMedium,
                         modifier = Modifier.weight(1f)
                     )
-                    Switch(checked = home, onCheckedChange = { home = it })
+                    Switch(
+                        checked = home,
+                        onCheckedChange = { site = if (it) "home" else "away" }
+                    )
                 }
             }
         },
@@ -248,6 +265,9 @@ fun GameDialog(
                             opponent = opponent.trim(),
                             season = season.trim(),
                             home = home,
+                            site = site,
+                            venue = game?.venue,
+                            city = game?.city,
                             teamScore = teamScore.toIntOrNull(),
                             opponentScore = oppScore.toIntOrNull(),
                             periodScores = periodScores.trim().ifBlank { null }
@@ -282,7 +302,7 @@ fun GameDetailScreen(
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("${siteLabel(game.home)}${game.opponent}") },
+                title = { Text("${siteLabel(game.siteOrLegacy)}${game.opponent}") },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")

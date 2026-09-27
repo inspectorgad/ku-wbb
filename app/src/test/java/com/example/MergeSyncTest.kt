@@ -68,6 +68,84 @@ class MergeSyncTest {
     }
 
     @Test
+    fun `a fixture and its box score spelled differently are one game`() = runTest {
+        val dao = db.dao()
+        // kuathletics spells it out; the NCAA box score abbreviates. Keying on
+        // the raw name would leave the season showing two games.
+        Seeder.merge(
+            JSONObject(
+                """{"players":[],"games":[{"date":"2026-11-22","opponent":"South Dakota State",
+                    "season":"2026-27","site":"home"}]}"""
+            ),
+            dao
+        )
+        Seeder.merge(
+            JSONObject(
+                """{"players":[],"games":[{"date":"2026-11-22","opponent":"South Dakota St.",
+                    "season":"2026-27","site":"home","teamScore":80,"opponentScore":61}]}"""
+            ),
+            dao
+        )
+        val games = dao.gamesOnce()
+        assertEquals(1, games.size)
+        assertEquals(80, games.single().teamScore)
+    }
+
+    @Test
+    fun `a corrected site reaches a game that already has a result`() = runTest {
+        val dao = db.dao()
+        // The schedule page cannot express a neutral site, so a fixture is
+        // stored home/away and only the box score's venue settles it. Gap-
+        // filling would strand the wrong value on every synced phone.
+        Seeder.merge(
+            JSONObject(
+                """{"players":[],"games":[{"date":"2026-03-04","opponent":"UCF",
+                    "season":"2025-26","home":true,"site":"home",
+                    "teamScore":70,"opponentScore":66}]}"""
+            ),
+            dao
+        )
+        assertEquals("home", dao.gamesOnce().single().siteOrLegacy)
+        Seeder.merge(
+            JSONObject(
+                """{"players":[],"games":[{"date":"2026-03-04","opponent":"UCF",
+                    "season":"2025-26","home":false,"site":"neutral",
+                    "venue":"T-Mobile Center","city":"Kansas City, MO",
+                    "teamScore":70,"opponentScore":66}]}"""
+            ),
+            dao
+        )
+        val game = dao.gamesOnce().single()
+        assertEquals("neutral", game.siteOrLegacy)
+        assertEquals("T-Mobile Center", game.venue)
+    }
+
+    @Test
+    fun `team totals merge onto a game that already has player lines`() = runTest {
+        val dao = db.dao()
+        // Regression: team stats used to be skipped by the early return that
+        // protects existing stat lines, so they landed only on a fresh install.
+        Seeder.merge(seedJson(), dao)
+        assertEquals(1, dao.statLinesOnce().size)
+        Seeder.merge(
+            JSONObject(
+                """{"players":[],"games":[{"date":"2025-11-05","opponent":"Kansas City",
+                    "season":"2025-26","home":true,"site":"home",
+                    "teamScore":74,"opponentScore":64,
+                    "teamStats":{"reb":36,"pts":74,"ast":20,"to":18},
+                    "opponentStats":{"reb":29,"pts":64,"ast":11,"to":21}}]}"""
+            ),
+            dao
+        )
+        val rows = dao.teamStatsOnce()
+        assertEquals(2, rows.size)
+        val ku = rows.single { !it.opponent }
+        // 36 team rebounds, not the 9 the one seeded player line carries.
+        assertEquals(36, ku.reb)
+        assertEquals(29, rows.single { it.opponent }.reb)
+    }
+
+    @Test
     fun `home flag comes through and gap-fills a game that lacks it`() = runTest {
         val dao = db.dao()
         Seeder.merge(seedJson(), dao)

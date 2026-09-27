@@ -82,4 +82,15 @@ interface JayhawksDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertPollEntries(rows: List<PollEntry>)
+
+    // Official per-game team totals. Scraper-owned, so a sync replaces a
+    // game's rows outright rather than gap-filling.
+    @Query("SELECT * FROM game_team_stats")
+    fun observeTeamStats(): Flow<List<GameTeamStats>>
+
+    @Query("SELECT * FROM game_team_stats")
+    suspend fun teamStatsOnce(): List<GameTeamStats>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertTeamStats(rows: List<GameTeamStats>)
 }

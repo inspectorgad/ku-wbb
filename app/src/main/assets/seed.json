@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-08-25T09:38:38Z",
+ "generatedAt": "2026-09-27T17:38:13Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -123,7 +123,8 @@
    "date": "2025-11-05",
    "opponent": "Kansas City",
    "season": "2025-26",
-   "home": true,
+   "venue": "Allen Fieldhouse",
+   "city": "Lawrence, KS",
    "teamScore": 74,
    "opponentScore": 64,
    "periodScores": "8-11, 26-17, 17-16, 23-20",
@@ -356,13 +357,48 @@
      "pts": 10,
      "gs": 1
     }
-   ]
+   ],
+   "teamStats": {
+    "fgm": 28,
+    "fga": 49,
+    "tpm": 9,
+    "tpa": 21,
+    "ftm": 9,
+    "fta": 21,
+    "oreb": 6,
+    "reb": 36,
+    "ast": 20,
+    "to": 18,
+    "stl": 6,
+    "blk": 3,
+    "pf": 19,
+    "pts": 74
+   },
+   "opponentStats": {
+    "fgm": 23,
+    "fga": 61,
+    "tpm": 9,
+    "tpa": 23,
+    "ftm": 9,
+    "fta": 16,
+    "oreb": 12,
+    "reb": 36,
+    "ast": 13,
+    "to": 15,
+    "stl": 9,
+    "blk": 2,
+    "pf": 21,
+    "pts": 64
+   },
+   "site": "home",
+   "home": true
   },
   {
    "date": "2025-11-09",
    "opponent": "Northwestern St.",
    "season": "2025-26",
-   "home": true,
+   "venue": "Allen Fieldhouse",
+   "city": "Lawrence, KS",
    "teamScore": 75,
    "opponentScore": 60,
    "periodScores": "22-12, 17-11, 17-21, 19-16",
@@ -595,13 +631,48 @@
      "pts": 28,
      "gs": 1
     }
-   ]
+   ],
+   "teamStats": {
+    "fgm": 27,
+    "fga": 54,
+    "tpm": 2,
+    "tpa": 14,
+    "ftm": 19,
+    "fta": 24,
+    "oreb": 8,
+    "reb": 38,
+    "ast": 10,
+    "to": 17,
+    "stl": 3,
+    "blk": 2,
+    "pf": 19,
+    "pts": 75
+   },
+   "opponentStats": {
+    "fgm": 19,
+    "fga": 60,
+    "tpm": 6,
+    "tpa": 23,
+    "ftm": 16,
+    "fta": 18,
+    "oreb": 12,
+    "reb": 33,
+    "ast": 10,
+    "to": 18,
+    "stl": 6,
+    "blk": 1,
+    "pf": 25,
+    "pts": 60
+   },
+   "site": "home",
+   "home": true
   },
   {
    "date": "2025-11-12",
    "opponent": "Lamar University",
    "season": "2025-26",
-   "home": true,
+   "venue": "Allen Fieldhouse",
+   "city": "Lawrence, KS",
    "teamScore": 65,
    "opponentScore": 54,
    "periodScores": "14-11, 13-12, 23-9, 15-22",
@@ -815,13 +886,48 @@
      "pts": 11,
      "gs": 1
     }
-   ]
+   ],
+   "teamStats": {
+    "fgm": 20,
+    "fga": 45,
+    "tpm": 4,
+    "tpa": 15,
+    "ftm": 21,
+    "fta": 28,
+    "oreb": 9,
+    "reb": 36,
+    "ast": 14,
+    "to": 22,
+    "stl": 9,
+    "blk": 5,
+    "pf": 19,
+    "pts": 65
+   },
+   "opponentStats": {
+    "fgm": 17,
+    "fga": 55,
+    "tpm": 3,
+    "tpa": 13,
+    "ftm": 17,
+    "fta": 25,
+    "oreb": 14,
+    "reb": 33,
+    "ast": 7,
+    "to": 17,
+    "stl": 6,
+    "blk": 2,
+    "pf": 29,
+    "pts": 54
+   },
+   "site": "home",
+   "home": true
   },
   {
    "date": "2025-11-15",
    "opponent": "Missouri",
    "season": "2025-26",
-   "home": false,
+   "venue": "T-Mobile Center",
+   "city": "Kansas City, MO",
    "teamScore": 82,
    "opponentScore": 77,
    "periodScores": "21-17, 28-22, 17-23, 16-15",
@@ -997,13 +1103,48 @@
      "pts": 15,
      "gs": 1
     }
-   ]
+   ],
+   "opponentStats": {
+    "fgm": 29,
+    "fga": 55,
+    "tpm": 8,
+    "tpa": 21,
+    "ftm": 11,
+    "fta": 20,
+    "oreb": 6,
+    "reb": 29,
+    "ast": 10,
+    "to": 15,
+    "stl": 7,
+    "blk": 3,
+    "pf": 19,
+    "pts": 77
+   },
+   "teamStats": {
+    "fgm": 32,
+    "fga": 59,
+    "tpm": 6,
+    "tpa": 12,
+    "ftm": 12,
+    "fta": 15,
+    "oreb": 6,
+    "reb": 31,
+    "ast": 22,
+    "to": 10,
+    "stl": 6,
+    "blk": 3,
+    "pf": 17,
+    "pts": 82
+   },
+   "site": "neutral",
+   "home": false
   },
   {
    "date": "2025-11-19",
    "opponent": "Minnesota",
    "season": "2025-26",
-   "home": true,
+   "venue": "Allen Fieldhouse",
+   "city": "Lawrence, KS",
    "teamScore": 63,
    "opponentScore": 57,
    "periodScores": "18-8, 11-19, 20-16, 14-14",
@@ -1198,13 +1339,48 @@
      "pts": 8,
      "gs": 1
     }
-   ]
+   ],
+   "teamStats": {
+    "fgm": 21,
+    "fga": 44,
+    "tpm": 7,
+    "tpa": 17,
+    "ftm": 14,
+    "fta": 17,
+    "oreb": 5,
+    "reb": 33,
+    "ast": 12,
+    "to": 19,
+    "stl": 4,
+    "blk": 3,
+    "pf": 16,
+    "pts": 63
+   },
+   "opponentStats": {
+    "fgm": 22,
+    "fga": 64,
+    "tpm": 5,
+    "tpa": 23,
+    "ftm": 8,
+    "fta": 10,
+    "oreb": 13,
+    "reb": 33,
+    "ast": 12,
+    "to": 11,
+    "stl": 9,
+    "blk": 1,
+    "pf": 16,
+    "pts": 57
+   },
+   "site": "home",
+   "home": true
   },
   {
    "date": "2025-11-23",
    "opponent": "Oral Roberts",
    "season": "2025-26",
-   "home": true,
+   "venue": "Allen Fieldhouse",
+   "city": "Lawrence, KS",
    "teamScore": 86,
    "opponentScore": 75,
    "periodScores": "25-14, 17-23, 29-16, 15-22",
@@ -1418,13 +1594,48 @@
      "pts": 11,
      "gs": 0
     }
-   ]
+   ],
+   "teamStats": {
+    "fgm": 31,
+    "fga": 62,
+    "tpm": 10,
+    "tpa": 25,
+    "ftm": 14,
+    "fta": 19,
+    "oreb": 12,
+    "reb": 40,
+    "ast": 17,
+    "to": 19,
+    "stl": 8,
+    "blk": 5,
+    "pf": 20,
+    "pts": 86
+   },
+   "opponentStats": {
+    "fgm": 27,
+    "fga": 63,
+    "tpm": 8,
+    "tpa": 24,
+    "ftm": 13,
+    "fta": 17,
+    "oreb": 10,
+    "reb": 32,
+    "ast": 11,
+    "to": 17,
+    "stl": 8,
+    "blk": 6,
+    "pf": 20,
+    "pts": 75
+   },
+   "site": "home",
+   "home": true
   },
   {
    "date": "2025-11-28",
    "opponent": "Georgia",
    "season": "2025-26",
-   "home": false,
+   "venue": "Suncoast Credit Union Arena",
+   "city": "Fort Myers, FL",
    "teamScore": 62,
    "opponentScore": 68,
    "periodScores": "16-7, 13-25, 14-23, 19-13",
@@ -1619,13 +1830,48 @@
      "pts": 3,
      "gs": 1
     }
-   ]
+   ],
+   "opponentStats": {
+    "fgm": 22,
+    "fga": 57,
+    "tpm": 7,
+    "tpa": 21,
+    "ftm": 17,
+    "fta": 28,
+    "oreb": 11,
+    "reb": 40,
+    "ast": 11,
+    "to": 14,
+    "stl": 8,
+    "blk": 8,
+    "pf": 27,
+    "pts": 68
+   },
+   "teamStats": {
+    "fgm": 20,
+    "fga": 54,
+    "tpm": 5,
+    "tpa": 21,
+    "ftm": 17,
+    "fta": 26,
+    "oreb": 10,
+    "reb": 38,
+    "ast": 5,
+    "to": 16,
+    "stl": 7,
+    "blk": 2,
+    "pf": 25,
+    "pts": 62
+   },
+   "site": "neutral",
+   "home": false
   },
   {
    "date": "2025-11-29",
    "opponent": "Dayton",
    "season": "2025-26",
-   "home": false,
+   "venue": "Suncoast Credit Union Arena",
+   "city": "Fort Myers, FL",
    "teamScore": 58,
    "opponentScore": 59,
    "periodScores": "16-24, 14-9, 14-13, 14-13",
@@ -1839,13 +2085,48 @@
      "pts": 5,
      "gs": 1
     }
-   ]
+   ],
+   "opponentStats": {
+    "fgm": 19,
+    "fga": 51,
+    "tpm": 7,
+    "tpa": 20,
+    "ftm": 14,
+    "fta": 18,
+    "oreb": 15,
+    "reb": 46,
+    "ast": 9,
+    "to": 24,
+    "stl": 4,
+    "blk": 3,
+    "pf": 17,
+    "pts": 59
+   },
+   "teamStats": {
+    "fgm": 23,
+    "fga": 58,
+    "tpm": 6,
+    "tpa": 23,
+    "ftm": 6,
+    "fta": 6,
+    "oreb": 4,
+    "reb": 23,
+    "ast": 12,
+    "to": 10,
+    "stl": 11,
+    "blk": 8,
+    "pf": 18,
+    "pts": 58
+   },
+   "site": "neutral",
+   "home": false
   },
   {
    "date": "2025-12-03",
    "opponent": "Northwestern",
    "season": "2025-26",
-   "home": false,
+   "venue": "Welsh-Ryan Arena",
+   "city": "Evanston, IL",
    "teamScore": 74,
    "opponentScore": 62,
    "periodScores": "6-16, 24-18, 26-13, 18-15",
@@ -2021,13 +2302,48 @@
      "pts": 22,
      "gs": 1
     }
-   ]
+   ],
+   "opponentStats": {
+    "fgm": 25,
+    "fga": 65,
+    "tpm": 4,
+    "tpa": 22,
+    "ftm": 8,
+    "fta": 15,
+    "oreb": 15,
+    "reb": 33,
+    "ast": 16,
+    "to": 14,
+    "stl": 5,
+    "blk": 2,
+    "pf": 10,
+    "pts": 62
+   },
+   "teamStats": {
+    "fgm": 32,
+    "fga": 59,
+    "tpm": 5,
+    "tpa": 12,
+    "ftm": 5,
+    "fta": 7,
+    "oreb": 8,
+    "reb": 32,
+    "ast": 21,
+    "to": 13,
+    "stl": 8,
+    "blk": 2,
+    "pf": 21,
+    "pts": 74
+   },
+   "site": "away",
+   "home": false
   },
   {
    "date": "2025-12-07",
    "opponent": "Missouri St.",
    "season": "2025-26",
-   "home": false,
+   "venue": "Great Southern Bank Arena",
+   "city": "Springfield, MO",
    "teamScore": 73,
    "opponentScore": 70,
    "periodScores": "14-14, 15-19, 16-19, 18-11, 10-7",
@@ -2203,13 +2519,48 @@
      "pts": 11,
      "gs": 1
     }
-   ]
+   ],
+   "opponentStats": {
+    "fgm": 22,
+    "fga": 58,
+    "tpm": 7,
+    "tpa": 16,
+    "ftm": 19,
+    "fta": 26,
+    "oreb": 14,
+    "reb": 45,
+    "ast": 10,
+    "to": 18,
+    "stl": 4,
+    "blk": 4,
+    "pf": 26,
+    "pts": 70
+   },
+   "teamStats": {
+    "fgm": 23,
+    "fga": 62,
+    "tpm": 7,
+    "tpa": 19,
+    "ftm": 20,
+    "fta": 28,
+    "oreb": 11,
+    "reb": 35,
+    "ast": 14,
+    "to": 14,
+    "stl": 9,
+    "blk": 2,
+    "pf": 25,
+    "pts": 73
+   },
+   "site": "away",
+   "home": false
   },
   {
    "date": "2025-12-14",
    "opponent": "Denver",
    "season": "2025-26",
-   "home": true,
+   "venue": "Allen Fieldhouse",
+   "city": "Lawrence, KS",
    "teamScore": 77,
    "opponentScore": 38,
    "periodScores": "11-8, 19-8, 25-7, 22-15",
@@ -2404,13 +2755,48 @@
      "pts": 5,
      "gs": 1
     }
-   ]
+   ],
+   "teamStats": {
+    "fgm": 29,
+    "fga": 56,
+    "tpm": 9,
+    "tpa": 23,
+    "ftm": 10,
+    "fta": 17,
+    "oreb": 10,
+    "reb": 35,
+    "ast": 12,
+    "to": 11,
+    "stl": 11,
+    "blk": 4,
+    "pf": 14,
+    "pts": 77
+   },
+   "opponentStats": {
+    "fgm": 12,
+    "fga": 48,
+    "tpm": 7,
+    "tpa": 31,
+    "ftm": 7,
+    "fta": 8,
+    "oreb": 9,
+    "reb": 30,
+    "ast": 11,
+    "to": 24,
+    "stl": 3,
+    "blk": 2,
+    "pf": 17,
+    "pts": 38
+   },
+   "site": "home",
+   "home": true
   },
   {
    "date": "2025-12-17",
    "opponent": "Haskell",
    "season": "2025-26",
-   "home": true,
+   "venue": "Allen Fieldhouse",
+   "city": "Lawrence, KS",
    "teamScore": 107,
    "opponentScore": 39,
    "periodScores": "27-10, 33-9, 20-6, 27-14",
@@ -2605,13 +2991,48 @@
      "pts": 26,
      "gs": 0
     }
-   ]
+   ],
+   "teamStats": {
+    "fgm": 38,
+    "fga": 74,
+    "tpm": 11,
+    "tpa": 30,
+    "ftm": 20,
+    "fta": 26,
+    "oreb": 22,
+    "reb": 53,
+    "ast": 20,
+    "to": 9,
+    "stl": 15,
+    "blk": 4,
+    "pf": 8,
+    "pts": 107
+   },
+   "opponentStats": {
+    "fgm": 14,
+    "fga": 50,
+    "tpm": 7,
+    "tpa": 21,
+    "ftm": 4,
+    "fta": 6,
+    "oreb": 7,
+    "reb": 24,
+    "ast": 6,
+    "to": 24,
+    "stl": 6,
+    "blk": 4,
+    "pf": 21,
+    "pts": 39
+   },
+   "site": "home",
+   "home": true
   },
   {
    "date": "2025-12-21",
    "opponent": "Iowa St.",
    "season": "2025-26",
-   "home": false,
+   "venue": "James H. Hilton Coliseum",
+   "city": "Ames, IA",
    "teamScore": 76,
    "opponentScore": 79,
    "periodScores": "20-14, 14-18, 21-27, 21-20",
@@ -2787,13 +3208,48 @@
      "pts": 9,
      "gs": 1
     }
-   ]
+   ],
+   "opponentStats": {
+    "fgm": 33,
+    "fga": 60,
+    "tpm": 2,
+    "tpa": 8,
+    "ftm": 11,
+    "fta": 12,
+    "oreb": 3,
+    "reb": 29,
+    "ast": 24,
+    "to": 9,
+    "stl": 6,
+    "blk": 1,
+    "pf": 9,
+    "pts": 79
+   },
+   "teamStats": {
+    "fgm": 27,
+    "fga": 55,
+    "tpm": 12,
+    "tpa": 21,
+    "ftm": 10,
+    "fta": 13,
+    "oreb": 2,
+    "reb": 26,
+    "ast": 17,
+    "to": 11,
+    "stl": 3,
+    "blk": 2,
+    "pf": 11,
+    "pts": 76
+   },
+   "site": "away",
+   "home": false
   },
   {
    "date": "2026-01-01",
    "opponent": "West Virginia",
    "season": "2025-26",
-   "home": true,
+   "venue": "Allen Fieldhouse",
+   "city": "Lawrence, KS",
    "teamScore": 72,
    "opponentScore": 79,
    "periodScores": "19-14, 17-21, 15-22, 21-22",
@@ -2950,13 +3406,48 @@
      "pts": 3,
      "gs": 1
     }
-   ]
+   ],
+   "teamStats": {
+    "fgm": 25,
+    "fga": 49,
+    "tpm": 7,
+    "tpa": 14,
+    "ftm": 15,
+    "fta": 18,
+    "oreb": 9,
+    "reb": 27,
+    "ast": 15,
+    "to": 22,
+    "stl": 8,
+    "blk": 1,
+    "pf": 16,
+    "pts": 72
+   },
+   "opponentStats": {
+    "fgm": 27,
+    "fga": 54,
+    "tpm": 13,
+    "tpa": 27,
+    "ftm": 12,
+    "fta": 15,
+    "oreb": 9,
+    "reb": 26,
+    "ast": 16,
+    "to": 17,
+    "stl": 13,
+    "blk": 7,
+    "pf": 18,
+    "pts": 79
+   },
+   "site": "home",
+   "home": true
   },
   {
    "date": "2026-01-04",
    "opponent": "UCF",
    "season": "2025-26",
-   "home": false,
+   "venue": "Addition Financial Arena",
+   "city": "Orlando, FL",
    "teamScore": 83,
    "opponentScore": 68,
    "periodScores": "18-16, 14-17, 24-15, 27-20",
@@ -3170,13 +3661,48 @@
      "pts": 3,
      "gs": 0
     }
-   ]
+   ],
+   "opponentStats": {
+    "fgm": 24,
+    "fga": 56,
+    "tpm": 5,
+    "tpa": 13,
+    "ftm": 15,
+    "fta": 19,
+    "oreb": 7,
+    "reb": 29,
+    "ast": 8,
+    "to": 15,
+    "stl": 5,
+    "blk": 3,
+    "pf": 20,
+    "pts": 68
+   },
+   "teamStats": {
+    "fgm": 31,
+    "fga": 54,
+    "tpm": 5,
+    "tpa": 16,
+    "ftm": 16,
+    "fta": 21,
+    "oreb": 6,
+    "reb": 33,
+    "ast": 18,
+    "to": 14,
+    "stl": 7,
+    "blk": 2,
+    "pf": 15,
+    "pts": 83
+   },
+   "site": "away",
+   "home": false
   },
   {
    "date": "2026-01-07",
    "opponent": "Utah",
    "season": "2025-26",
-   "home": true,
+   "venue": "Allen Fieldhouse",
+   "city": "Lawrence, KS",
    "teamScore": 59,
    "opponentScore": 62,
    "periodScores": "18-10, 10-16, 16-24, 15-12",
@@ -3371,13 +3897,48 @@
      "pts": 20,
      "gs": 1
     }
-   ]
+   ],
+   "teamStats": {
+    "fgm": 23,
+    "fga": 56,
+    "tpm": 3,
+    "tpa": 16,
+    "ftm": 10,
+    "fta": 14,
+    "oreb": 4,
+    "reb": 30,
+    "ast": 13,
+    "to": 9,
+    "stl": 12,
+    "blk": 4,
+    "pf": 17,
+    "pts": 59
+   },
+   "opponentStats": {
+    "fgm": 24,
+    "fga": 58,
+    "tpm": 9,
+    "tpa": 28,
+    "ftm": 5,
+    "fta": 10,
+    "oreb": 11,
+    "reb": 42,
+    "ast": 17,
+    "to": 17,
+    "stl": 6,
+    "blk": 4,
+    "pf": 17,
+    "pts": 62
+   },
+   "site": "home",
+   "home": true
   },
   {
    "date": "2026-01-11",
    "opponent": "Baylor",
    "season": "2025-26",
-   "home": false,
+   "venue": "Foster Pavilion",
+   "city": "Waco, TX",
    "teamScore": 64,
    "opponentScore": 79,
    "periodScores": "9-17, 21-27, 13-18, 21-17",
@@ -3572,13 +4133,48 @@
      "pts": 5,
      "gs": 1
     }
-   ]
+   ],
+   "opponentStats": {
+    "fgm": 28,
+    "fga": 68,
+    "tpm": 7,
+    "tpa": 31,
+    "ftm": 16,
+    "fta": 19,
+    "oreb": 16,
+    "reb": 39,
+    "ast": 17,
+    "to": 12,
+    "stl": 10,
+    "blk": 6,
+    "pf": 17,
+    "pts": 79
+   },
+   "teamStats": {
+    "fgm": 24,
+    "fga": 53,
+    "tpm": 6,
+    "tpa": 21,
+    "ftm": 10,
+    "fta": 13,
+    "oreb": 8,
+    "reb": 33,
+    "ast": 17,
+    "to": 20,
+    "stl": 5,
+    "blk": 2,
+    "pf": 21,
+    "pts": 64
+   },
+   "site": "away",
+   "home": false
   },
   {
    "date": "2026-01-14",
    "opponent": "Oklahoma St.",
    "season": "2025-26",
-   "home": true,
+   "venue": "Allen Fieldhouse",
+   "city": "Lawrence, KS",
    "teamScore": 76,
    "opponentScore": 85,
    "periodScores": "21-20, 19-26, 14-18, 22-21",
@@ -3735,13 +4331,48 @@
      "pts": 30,
      "gs": 1
     }
-   ]
+   ],
+   "teamStats": {
+    "fgm": 27,
+    "fga": 52,
+    "tpm": 5,
+    "tpa": 10,
+    "ftm": 17,
+    "fta": 24,
+    "oreb": 9,
+    "reb": 34,
+    "ast": 15,
+    "to": 15,
+    "stl": 4,
+    "blk": 2,
+    "pf": 21,
+    "pts": 76
+   },
+   "opponentStats": {
+    "fgm": 28,
+    "fga": 59,
+    "tpm": 9,
+    "tpa": 26,
+    "ftm": 20,
+    "fta": 22,
+    "oreb": 6,
+    "reb": 26,
+    "ast": 14,
+    "to": 8,
+    "stl": 6,
+    "blk": 7,
+    "pf": 19,
+    "pts": 85
+   },
+   "site": "home",
+   "home": true
   },
   {
    "date": "2026-01-17",
    "opponent": "Arizona St.",
    "season": "2025-26",
-   "home": false,
+   "venue": "Desert Financial Arena",
+   "city": "Tempe, AZ",
    "teamScore": 51,
    "opponentScore": 67,
    "periodScores": "13-13, 16-27, 14-15, 8-12",
@@ -3955,13 +4586,48 @@
      "pts": 0,
      "gs": 0
     }
-   ]
+   ],
+   "opponentStats": {
+    "fgm": 22,
+    "fga": 52,
+    "tpm": 2,
+    "tpa": 17,
+    "ftm": 21,
+    "fta": 25,
+    "oreb": 17,
+    "reb": 37,
+    "ast": 13,
+    "to": 19,
+    "stl": 12,
+    "blk": 8,
+    "pf": 16,
+    "pts": 67
+   },
+   "teamStats": {
+    "fgm": 19,
+    "fga": 50,
+    "tpm": 4,
+    "tpa": 20,
+    "ftm": 9,
+    "fta": 9,
+    "oreb": 11,
+    "reb": 27,
+    "ast": 10,
+    "to": 24,
+    "stl": 7,
+    "blk": 6,
+    "pf": 23,
+    "pts": 51
+   },
+   "site": "away",
+   "home": false
   },
   {
    "date": "2026-01-20",
    "opponent": "Arizona",
    "season": "2025-26",
-   "home": false,
+   "venue": "McKale Center",
+   "city": "Tucson, AZ",
    "teamScore": 80,
    "opponentScore": 69,
    "periodScores": "27-21, 17-11, 15-23, 21-14",
@@ -4137,13 +4803,48 @@
      "pts": 7,
      "gs": 0
     }
-   ]
+   ],
+   "opponentStats": {
+    "fgm": 26,
+    "fga": 60,
+    "tpm": 6,
+    "tpa": 16,
+    "ftm": 11,
+    "fta": 13,
+    "oreb": 7,
+    "reb": 23,
+    "ast": 17,
+    "to": 13,
+    "stl": 12,
+    "blk": 1,
+    "pf": 29,
+    "pts": 69
+   },
+   "teamStats": {
+    "fgm": 27,
+    "fga": 49,
+    "tpm": 8,
+    "tpa": 17,
+    "ftm": 18,
+    "fta": 25,
+    "oreb": 10,
+    "reb": 39,
+    "ast": 22,
+    "to": 20,
+    "stl": 3,
+    "blk": 4,
+    "pf": 15,
+    "pts": 80
+   },
+   "site": "away",
+   "home": false
   },
   {
    "date": "2026-01-25",
    "opponent": "Kansas St.",
    "season": "2025-26",
-   "home": true,
+   "venue": "Allen Fieldhouse",
+   "city": "Lawrence, KS",
    "teamScore": 83,
    "opponentScore": 61,
    "periodScores": "24-23, 25-11, 21-18, 13-9",
@@ -4357,13 +5058,48 @@
      "pts": 0,
      "gs": 0
     }
-   ]
+   ],
+   "teamStats": {
+    "fgm": 28,
+    "fga": 52,
+    "tpm": 8,
+    "tpa": 13,
+    "ftm": 19,
+    "fta": 24,
+    "oreb": 9,
+    "reb": 38,
+    "ast": 17,
+    "to": 18,
+    "stl": 6,
+    "blk": 5,
+    "pf": 8,
+    "pts": 83
+   },
+   "opponentStats": {
+    "fgm": 20,
+    "fga": 62,
+    "tpm": 10,
+    "tpa": 31,
+    "ftm": 11,
+    "fta": 12,
+    "oreb": 14,
+    "reb": 31,
+    "ast": 11,
+    "to": 15,
+    "stl": 9,
+    "blk": 4,
+    "pf": 22,
+    "pts": 61
+   },
+   "site": "home",
+   "home": true
   },
   {
    "date": "2026-01-29",
    "opponent": "TCU",
    "season": "2025-26",
-   "home": false,
+   "venue": "Ed and Rae Schollmaier Arena",
+   "city": "Fort Worth, TX",
    "teamScore": 77,
    "opponentScore": 79,
    "periodScores": "17-30, 20-15, 19-20, 21-14",
@@ -4539,13 +5275,48 @@
      "pts": 29,
      "gs": 1
     }
-   ]
+   ],
+   "opponentStats": {
+    "fgm": 28,
+    "fga": 56,
+    "tpm": 10,
+    "tpa": 20,
+    "ftm": 13,
+    "fta": 19,
+    "oreb": 7,
+    "reb": 26,
+    "ast": 17,
+    "to": 15,
+    "stl": 8,
+    "blk": 4,
+    "pf": 26,
+    "pts": 79
+   },
+   "teamStats": {
+    "fgm": 28,
+    "fga": 56,
+    "tpm": 2,
+    "tpa": 12,
+    "ftm": 19,
+    "fta": 24,
+    "oreb": 11,
+    "reb": 33,
+    "ast": 14,
+    "to": 15,
+    "stl": 4,
+    "blk": 1,
+    "pf": 18,
+    "pts": 77
+   },
+   "site": "away",
+   "home": false
   },
   {
    "date": "2026-02-01",
    "opponent": "Colorado",
    "season": "2025-26",
-   "home": true,
+   "venue": "Allen Fieldhouse",
+   "city": "Lawrence, KS",
    "teamScore": 66,
    "opponentScore": 69,
    "periodScores": "4-7, 17-12, 22-20, 11-15, 12-15",
@@ -4740,13 +5511,48 @@
      "pts": 14,
      "gs": 1
     }
-   ]
+   ],
+   "teamStats": {
+    "fgm": 19,
+    "fga": 53,
+    "tpm": 2,
+    "tpa": 16,
+    "ftm": 26,
+    "fta": 31,
+    "oreb": 10,
+    "reb": 39,
+    "ast": 7,
+    "to": 25,
+    "stl": 11,
+    "blk": 4,
+    "pf": 26,
+    "pts": 66
+   },
+   "opponentStats": {
+    "fgm": 20,
+    "fga": 54,
+    "tpm": 2,
+    "tpa": 10,
+    "ftm": 27,
+    "fta": 39,
+    "oreb": 11,
+    "reb": 37,
+    "ast": 6,
+    "to": 22,
+    "stl": 11,
+    "blk": 6,
+    "pf": 28,
+    "pts": 69
+   },
+   "site": "home",
+   "home": true
   },
   {
    "date": "2026-02-04",
    "opponent": "BYU",
    "season": "2025-26",
-   "home": true,
+   "venue": "Allen Fieldhouse",
+   "city": "Lawrence, KS",
    "teamScore": 81,
    "opponentScore": 60,
    "periodScores": "15-13, 17-19, 25-13, 24-15",
@@ -4941,13 +5747,48 @@
      "pts": 28,
      "gs": 1
     }
-   ]
+   ],
+   "teamStats": {
+    "fgm": 27,
+    "fga": 56,
+    "tpm": 4,
+    "tpa": 13,
+    "ftm": 23,
+    "fta": 30,
+    "oreb": 11,
+    "reb": 49,
+    "ast": 17,
+    "to": 17,
+    "stl": 6,
+    "blk": 3,
+    "pf": 17,
+    "pts": 81
+   },
+   "opponentStats": {
+    "fgm": 19,
+    "fga": 63,
+    "tpm": 8,
+    "tpa": 27,
+    "ftm": 14,
+    "fta": 18,
+    "oreb": 9,
+    "reb": 31,
+    "ast": 12,
+    "to": 13,
+    "stl": 9,
+    "blk": 2,
+    "pf": 26,
+    "pts": 60
+   },
+   "site": "home",
+   "home": true
   },
   {
    "date": "2026-02-07",
    "opponent": "Cincinnati",
    "season": "2025-26",
-   "home": true,
+   "venue": "Allen Fieldhouse",
+   "city": "Lawrence, KS",
    "teamScore": 80,
    "opponentScore": 71,
    "periodScores": "17-21, 23-15, 24-17, 16-18",
@@ -5142,13 +5983,48 @@
      "pts": 28,
      "gs": 1
     }
-   ]
+   ],
+   "teamStats": {
+    "fgm": 27,
+    "fga": 49,
+    "tpm": 8,
+    "tpa": 17,
+    "ftm": 18,
+    "fta": 21,
+    "oreb": 7,
+    "reb": 30,
+    "ast": 18,
+    "to": 11,
+    "stl": 3,
+    "blk": 8,
+    "pf": 17,
+    "pts": 80
+   },
+   "opponentStats": {
+    "fgm": 25,
+    "fga": 67,
+    "tpm": 6,
+    "tpa": 21,
+    "ftm": 15,
+    "fta": 23,
+    "oreb": 22,
+    "reb": 38,
+    "ast": 12,
+    "to": 8,
+    "stl": 6,
+    "blk": 0,
+    "pf": 21,
+    "pts": 71
+   },
+   "site": "home",
+   "home": true
   },
   {
    "date": "2026-02-10",
    "opponent": "Texas Tech",
    "season": "2025-26",
-   "home": false,
+   "venue": "United Supermarkets Arena",
+   "city": "Lubbock, TX",
    "teamScore": 65,
    "opponentScore": 70,
    "periodScores": "17-11, 8-17, 15-17, 25-25",
@@ -5324,13 +6200,48 @@
      "pts": 2,
      "gs": 0
     }
-   ]
+   ],
+   "opponentStats": {
+    "fgm": 21,
+    "fga": 60,
+    "tpm": 6,
+    "tpa": 27,
+    "ftm": 22,
+    "fta": 27,
+    "oreb": 11,
+    "reb": 34,
+    "ast": 14,
+    "to": 13,
+    "stl": 12,
+    "blk": 5,
+    "pf": 25,
+    "pts": 70
+   },
+   "teamStats": {
+    "fgm": 20,
+    "fga": 44,
+    "tpm": 4,
+    "tpa": 11,
+    "ftm": 21,
+    "fta": 25,
+    "oreb": 3,
+    "reb": 32,
+    "ast": 9,
+    "to": 20,
+    "stl": 4,
+    "blk": 4,
+    "pf": 25,
+    "pts": 65
+   },
+   "site": "away",
+   "home": false
   },
   {
    "date": "2026-02-14",
    "opponent": "Houston",
    "season": "2025-26",
-   "home": true,
+   "venue": "Allen Fieldhouse",
+   "city": "Lawrence, KS",
    "teamScore": 85,
    "opponentScore": 68,
    "periodScores": "22-18, 19-18, 22-18, 22-14",
@@ -5525,13 +6436,48 @@
      "pts": 3,
      "gs": 0
     }
-   ]
+   ],
+   "teamStats": {
+    "fgm": 33,
+    "fga": 58,
+    "tpm": 6,
+    "tpa": 13,
+    "ftm": 13,
+    "fta": 15,
+    "oreb": 12,
+    "reb": 37,
+    "ast": 22,
+    "to": 18,
+    "stl": 4,
+    "blk": 2,
+    "pf": 14,
+    "pts": 85
+   },
+   "opponentStats": {
+    "fgm": 25,
+    "fga": 59,
+    "tpm": 8,
+    "tpa": 13,
+    "ftm": 10,
+    "fta": 12,
+    "oreb": 8,
+    "reb": 23,
+    "ast": 12,
+    "to": 14,
+    "stl": 9,
+    "blk": 3,
+    "pf": 18,
+    "pts": 68
+   },
+   "site": "home",
+   "home": true
   },
   {
    "date": "2026-02-21",
    "opponent": "Kansas St.",
    "season": "2025-26",
-   "home": false,
+   "venue": "Bramlage Coliseum",
+   "city": "Manhattan, KS",
    "teamScore": 75,
    "opponentScore": 68,
    "periodScores": "19-15, 14-18, 15-14, 27-21",
@@ -5726,13 +6672,48 @@
      "pts": 16,
      "gs": 1
     }
-   ]
+   ],
+   "opponentStats": {
+    "fgm": 24,
+    "fga": 56,
+    "tpm": 4,
+    "tpa": 19,
+    "ftm": 16,
+    "fta": 22,
+    "oreb": 5,
+    "reb": 19,
+    "ast": 14,
+    "to": 6,
+    "stl": 9,
+    "blk": 2,
+    "pf": 18,
+    "pts": 68
+   },
+   "teamStats": {
+    "fgm": 25,
+    "fga": 46,
+    "tpm": 5,
+    "tpa": 15,
+    "ftm": 20,
+    "fta": 25,
+    "oreb": 8,
+    "reb": 38,
+    "ast": 16,
+    "to": 17,
+    "stl": 5,
+    "blk": 1,
+    "pf": 17,
+    "pts": 75
+   },
+   "site": "away",
+   "home": false
   },
   {
    "date": "2026-02-25",
    "opponent": "Texas Tech",
    "season": "2025-26",
-   "home": true,
+   "venue": "Allen Fieldhouse",
+   "city": "Lawrence, KS",
    "teamScore": 68,
    "opponentScore": 59,
    "periodScores": "17-21, 12-11, 19-20, 20-7",
@@ -5927,13 +6908,48 @@
      "pts": 7,
      "gs": 0
     }
-   ]
+   ],
+   "teamStats": {
+    "fgm": 20,
+    "fga": 41,
+    "tpm": 4,
+    "tpa": 10,
+    "ftm": 24,
+    "fta": 27,
+    "oreb": 6,
+    "reb": 31,
+    "ast": 11,
+    "to": 17,
+    "stl": 4,
+    "blk": 4,
+    "pf": 16,
+    "pts": 68
+   },
+   "opponentStats": {
+    "fgm": 25,
+    "fga": 58,
+    "tpm": 4,
+    "tpa": 20,
+    "ftm": 5,
+    "fta": 9,
+    "oreb": 11,
+    "reb": 27,
+    "ast": 13,
+    "to": 14,
+    "stl": 9,
+    "blk": 7,
+    "pf": 27,
+    "pts": 59
+   },
+   "site": "home",
+   "home": true
   },
   {
    "date": "2026-02-28",
    "opponent": "Oklahoma St.",
    "season": "2025-26",
-   "home": false,
+   "venue": "Gallagher-Iba Arena",
+   "city": "Stillwater, OK",
    "teamScore": 56,
    "opponentScore": 70,
    "periodScores": "13-20, 15-20, 18-22, 10-8",
@@ -6128,13 +7144,48 @@
      "pts": 1,
      "gs": 0
     }
-   ]
+   ],
+   "opponentStats": {
+    "fgm": 30,
+    "fga": 62,
+    "tpm": 7,
+    "tpa": 29,
+    "ftm": 3,
+    "fta": 5,
+    "oreb": 8,
+    "reb": 30,
+    "ast": 16,
+    "to": 10,
+    "stl": 11,
+    "blk": 2,
+    "pf": 13,
+    "pts": 70
+   },
+   "teamStats": {
+    "fgm": 24,
+    "fga": 50,
+    "tpm": 2,
+    "tpa": 16,
+    "ftm": 6,
+    "fta": 9,
+    "oreb": 5,
+    "reb": 30,
+    "ast": 16,
+    "to": 17,
+    "stl": 6,
+    "blk": 2,
+    "pf": 10,
+    "pts": 56
+   },
+   "site": "away",
+   "home": false
   },
   {
    "date": "2026-03-04",
    "opponent": "UCF",
    "season": "2025-26",
-   "home": true,
+   "venue": "T-Mobile Center",
+   "city": "Kansas City, MO",
    "teamScore": 56,
    "opponentScore": 35,
    "periodScores": "17-10, 10-7, 12-9, 17-9",
@@ -6348,13 +7399,48 @@
      "pts": 0,
      "gs": 0
     }
-   ]
+   ],
+   "teamStats": {
+    "fgm": 20,
+    "fga": 56,
+    "tpm": 6,
+    "tpa": 19,
+    "ftm": 10,
+    "fta": 14,
+    "oreb": 14,
+    "reb": 48,
+    "ast": 14,
+    "to": 16,
+    "stl": 6,
+    "blk": 2,
+    "pf": 11,
+    "pts": 56
+   },
+   "opponentStats": {
+    "fgm": 14,
+    "fga": 57,
+    "tpm": 2,
+    "tpa": 19,
+    "ftm": 5,
+    "fta": 6,
+    "oreb": 5,
+    "reb": 27,
+    "ast": 5,
+    "to": 13,
+    "stl": 6,
+    "blk": 9,
+    "pf": 13,
+    "pts": 35
+   },
+   "site": "neutral",
+   "home": false
   },
   {
    "date": "2026-03-05",
    "opponent": "Colorado",
    "season": "2025-26",
-   "home": false,
+   "venue": "T-Mobile Center",
+   "city": "Kansas City, MO",
    "teamScore": 48,
    "opponentScore": 55,
    "periodScores": "11-12, 7-14, 11-12, 19-17",
@@ -6568,13 +7654,48 @@
      "pts": 0,
      "gs": 0
     }
-   ]
+   ],
+   "opponentStats": {
+    "fgm": 18,
+    "fga": 46,
+    "tpm": 6,
+    "tpa": 14,
+    "ftm": 13,
+    "fta": 20,
+    "oreb": 15,
+    "reb": 39,
+    "ast": 11,
+    "to": 20,
+    "stl": 3,
+    "blk": 6,
+    "pf": 21,
+    "pts": 55
+   },
+   "teamStats": {
+    "fgm": 19,
+    "fga": 53,
+    "tpm": 2,
+    "tpa": 13,
+    "ftm": 8,
+    "fta": 13,
+    "oreb": 10,
+    "reb": 25,
+    "ast": 8,
+    "to": 15,
+    "stl": 10,
+    "blk": 3,
+    "pf": 22,
+    "pts": 48
+   },
+   "site": "neutral",
+   "home": false
   },
   {
    "date": "2026-03-19",
    "opponent": "Troy",
    "season": "2025-26",
-   "home": true,
+   "venue": "Allen Fieldhouse",
+   "city": "Lawrence, KS",
    "teamScore": 79,
    "opponentScore": 70,
    "periodScores": "17-17, 15-20, 17-17, 30-16",
@@ -6750,13 +7871,48 @@
      "pts": 4,
      "gs": 0
     }
-   ]
+   ],
+   "teamStats": {
+    "fgm": 24,
+    "fga": 56,
+    "tpm": 7,
+    "tpa": 22,
+    "ftm": 24,
+    "fta": 34,
+    "oreb": 6,
+    "reb": 44,
+    "ast": 16,
+    "to": 20,
+    "stl": 8,
+    "blk": 2,
+    "pf": 18,
+    "pts": 79
+   },
+   "opponentStats": {
+    "fgm": 25,
+    "fga": 69,
+    "tpm": 6,
+    "tpa": 27,
+    "ftm": 14,
+    "fta": 19,
+    "oreb": 8,
+    "reb": 38,
+    "ast": 11,
+    "to": 15,
+    "stl": 14,
+    "blk": 3,
+    "pf": 29,
+    "pts": 70
+   },
+   "site": "home",
+   "home": true
   },
   {
    "date": "2026-03-22",
    "opponent": "Rice",
    "season": "2025-26",
-   "home": true,
+   "venue": "Allen Fieldhouse",
+   "city": "Lawrence, KS",
    "teamScore": 62,
    "opponentScore": 55,
    "periodScores": "16-12, 15-7, 18-20, 13-16",
@@ -6951,13 +8107,48 @@
      "pts": 13,
      "gs": 1
     }
-   ]
+   ],
+   "teamStats": {
+    "fgm": 18,
+    "fga": 48,
+    "tpm": 5,
+    "tpa": 12,
+    "ftm": 21,
+    "fta": 30,
+    "oreb": 8,
+    "reb": 46,
+    "ast": 11,
+    "to": 20,
+    "stl": 5,
+    "blk": 1,
+    "pf": 13,
+    "pts": 62
+   },
+   "opponentStats": {
+    "fgm": 19,
+    "fga": 61,
+    "tpm": 6,
+    "tpa": 30,
+    "ftm": 11,
+    "fta": 12,
+    "oreb": 4,
+    "reb": 30,
+    "ast": 6,
+    "to": 13,
+    "stl": 10,
+    "blk": 8,
+    "pf": 25,
+    "pts": 55
+   },
+   "site": "home",
+   "home": true
   },
   {
    "date": "2026-03-26",
    "opponent": "San Diego St.",
    "season": "2025-26",
-   "home": true,
+   "venue": "Allen Fieldhouse",
+   "city": "Lawrence, KS",
    "teamScore": 85,
    "opponentScore": 78,
    "periodScores": "25-15, 20-27, 18-23, 22-13",
@@ -7133,13 +8324,48 @@
      "pts": 4,
      "gs": 0
     }
-   ]
+   ],
+   "opponentStats": {
+    "fgm": 30,
+    "fga": 55,
+    "tpm": 11,
+    "tpa": 26,
+    "ftm": 7,
+    "fta": 8,
+    "oreb": 2,
+    "reb": 21,
+    "ast": 12,
+    "to": 11,
+    "stl": 5,
+    "blk": 3,
+    "pf": 19,
+    "pts": 78
+   },
+   "teamStats": {
+    "fgm": 32,
+    "fga": 53,
+    "tpm": 6,
+    "tpa": 8,
+    "ftm": 15,
+    "fta": 20,
+    "oreb": 6,
+    "reb": 29,
+    "ast": 12,
+    "to": 11,
+    "stl": 7,
+    "blk": 0,
+    "pf": 8,
+    "pts": 85
+   },
+   "site": "home",
+   "home": true
   },
   {
    "date": "2026-03-30",
    "opponent": "BYU",
    "season": "2025-26",
-   "home": false,
+   "venue": "Charles Koch Arena",
+   "city": "Wichita, KS",
    "teamScore": 67,
    "opponentScore": 70,
    "periodScores": "15-15, 16-13, 20-18, 16-24",
@@ -7315,66 +8541,110 @@
      "pts": 6,
      "gs": 0
     }
-   ]
+   ],
+   "teamStats": {
+    "fgm": 21,
+    "fga": 56,
+    "tpm": 4,
+    "tpa": 16,
+    "ftm": 21,
+    "fta": 26,
+    "oreb": 8,
+    "reb": 33,
+    "ast": 9,
+    "to": 13,
+    "stl": 8,
+    "blk": 3,
+    "pf": 13,
+    "pts": 67
+   },
+   "opponentStats": {
+    "fgm": 25,
+    "fga": 58,
+    "tpm": 9,
+    "tpa": 27,
+    "ftm": 11,
+    "fta": 16,
+    "oreb": 8,
+    "reb": 37,
+    "ast": 12,
+    "to": 14,
+    "stl": 7,
+    "blk": 7,
+    "pf": 20,
+    "pts": 70
+   },
+   "site": "neutral",
+   "home": false
   },
   {
    "date": "2026-10-22",
    "opponent": "Northeastern State (exh.)",
    "season": "2026-27",
+   "site": "home",
    "home": true
   },
   {
    "date": "2026-10-29",
    "opponent": "Washburn (exh.)",
    "season": "2026-27",
+   "site": "home",
    "home": true
   },
   {
    "date": "2026-11-03",
    "opponent": "Omaha",
    "season": "2026-27",
+   "site": "home",
    "home": true
   },
   {
    "date": "2026-11-06",
    "opponent": "Drake",
    "season": "2026-27",
+   "site": "home",
    "home": true
   },
   {
    "date": "2026-11-10",
    "opponent": "Oral Roberts",
    "season": "2026-27",
+   "site": "home",
    "home": true
   },
   {
    "date": "2026-11-14",
    "opponent": "Nebraska",
    "season": "2026-27",
+   "site": "home",
    "home": true
   },
   {
    "date": "2026-11-18",
    "opponent": "Minnesota",
    "season": "2026-27",
+   "site": "away",
    "home": false
   },
   {
    "date": "2026-11-22",
    "opponent": "South Dakota State",
    "season": "2026-27",
+   "site": "home",
    "home": true
   },
   {
    "date": "2026-11-26",
    "opponent": "Washington State",
    "season": "2026-27",
+   "site": "home",
    "home": true
   },
   {
    "date": "2026-11-27",
    "opponent": "Miami (OH)",
    "season": "2026-27",
+   "site": "home",
    "home": true
   }
  ],

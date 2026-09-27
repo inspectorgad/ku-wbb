@@ -1,0 +1,24 @@
+{
+  "_comment": [
+    "Neutral-site games. The NCAA feed carries no neutral flag — its isHome",
+    "only marks the nominal home side, which at a neutral site is whoever the",
+    "bracket seeded higher. So a game at Allen Fieldhouse is home, everything",
+    "else defaults to away, and the exceptions live here.",
+    "",
+    "update-seed.py also auto-detects a neutral site when KU plays two or more",
+    "different opponents at the same non-Allen venue in one season (a holiday",
+    "tournament or a conference tournament), so those need no entry. List a",
+    "venue here only when a single visit is neutral — typically a postseason",
+    "game at somebody else's arena.",
+    "",
+    "Keys are 'date|normalized opponent'; run scripts/update-seed.py to see the",
+    "site it derived for every game."
+  ],
+  "games": {
+    "2026-03-30|byu": "WBIT championship at Charles Koch Arena, Wichita — a neutral floor, not BYU's"
+  },
+  "venues": {
+    "T-Mobile Center": "Kansas City showcase and Big 12 Tournament games",
+    "Suncoast Credit Union Arena": "Fort Myers Tip-Off"
+  }
+}

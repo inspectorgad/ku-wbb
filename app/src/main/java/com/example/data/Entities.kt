@@ -70,13 +70,68 @@ data class Game(
     val season: String,
     // Site: true = KU hosts, false = on the road. Null when unknown (seeds
     // predating this field, or a hand-entered game) so the UI can stay silent
-    // rather than claim a site it doesn't know.
+    // rather than claim a site it doesn't know. Kept for rows written before
+    // `site` existed; `siteOrLegacy` is what the UI should read.
     val home: Boolean? = null,
+    // "home" | "away" | "neutral", derived by the scraper from the venue. The
+    // feed's own isHome only marks the nominal home side, which at a neutral
+    // site is whoever was seeded higher, so it cannot be trusted for this.
+    val site: String? = null,
+    val venue: String? = null,
+    val city: String? = null,
     // Final score. Null until played.
     val teamScore: Int? = null,
     val opponentScore: Int? = null,
     // Per-quarter (and OT) points from KU's perspective, e.g. "8-11, 26-17, 17-16, 23-20"
     val periodScores: String? = null
+) {
+    /** Site for display, falling back to the older boolean on legacy rows. */
+    val siteOrLegacy: String?
+        get() = site ?: when (home) {
+            true -> "home"
+            false -> "away"
+            null -> null
+        }
+}
+
+/**
+ * Official team totals for one side of one game, straight from the box score.
+ *
+ * These are deliberately NOT the sum of the player lines: team rebounds
+ * (deadballs) and team turnovers belong to no individual, so summing the box
+ * understates them — KU's 2025-26 rebounding is 35.0/game officially against
+ * 30.8 summed. Team-level figures must come from here.
+ */
+@Entity(
+    tableName = "game_team_stats",
+    primaryKeys = ["gameId", "opponent"],
+    foreignKeys = [
+        ForeignKey(
+            entity = Game::class,
+            parentColumns = ["id"],
+            childColumns = ["gameId"],
+            onDelete = ForeignKey.CASCADE
+        )
+    ]
+)
+data class GameTeamStats(
+    val gameId: Long,
+    // false = Kansas' totals, true = the opponent's.
+    val opponent: Boolean,
+    val fgm: Int = 0,
+    val fga: Int = 0,
+    val tpm: Int = 0,
+    val tpa: Int = 0,
+    val ftm: Int = 0,
+    val fta: Int = 0,
+    val oreb: Int = 0,
+    val reb: Int = 0,
+    val ast: Int = 0,
+    val to: Int = 0,
+    val stl: Int = 0,
+    val blk: Int = 0,
+    val pf: Int = 0,
+    val pts: Int = 0
 )
 
 @Entity(

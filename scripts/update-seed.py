@@ -17,6 +17,27 @@ from datetime import datetime, timezone
 
 TEAM_SEO = "kansas"
 SEED_PATH = "app/src/main/assets/seed.json"
+# KU's home floor. A game played anywhere else is not a home game, whatever the
+# feed's isHome flag says — it marks a nominal home side even at neutral sites.
+HOME_VENUE = "Allen Fieldhouse"
+NEUTRAL_SITES_PATH = "scripts/neutral-sites.json"
+
+
+def fix_mojibake(text):
+    """Repair UTF-8 read as Latin-1 ("AnaÃ«lle" -> "Anaëlle").
+
+    The NCAA feed is inconsistent between games, so the same player can arrive
+    corrupted in one box score and clean in another; without this they become
+    two different players in every cross-game aggregation.
+    """
+    if not text or not any(c in text for c in "ÃÂÅ"):
+        return text
+    try:
+        repaired = text.encode("latin-1").decode("utf-8")
+    except (UnicodeEncodeError, UnicodeDecodeError):
+        return text
+    # Only accept a repair that removes the tell-tale sequences.
+    return repaired if "Ã" not in repaired else text
 
 
 def load_json(path, default):
@@ -45,6 +66,25 @@ def to_minutes(value):
 def season_label(start_year):
     """2025 -> "2025-26"."""
     return f"{start_year}-{str(start_year + 1)[-2:]}"
+
+
+def norm_team(name):
+    """Canonical key for cross-source name matching ('Iowa State'/'Iowa St.').
+
+    kuathletics writes a schedule opponent as "South Dakota State" while the
+    NCAA box score for the same game says "South Dakota St." — without this the
+    fixture and its result key differently and the season shows two games.
+    """
+    n = re.sub(r"\s*\(\d+\)\s*$", "", name or "").lower()  # strip poll votes
+    n = n.replace(".", "")
+    n = re.sub(r"\bstate\b", "st", n)
+    n = re.sub(r"\buniversity\b", "", n)
+    return re.sub(r"\s+", " ", n).strip()
+
+
+def game_key(date, opponent):
+    """Games are identified by date + normalized opponent, never raw casing."""
+    return (date, norm_team(opponent))
 
 
 players = {}  # name.lower() -> {name, jerseyNumber, position}
@@ -88,21 +128,29 @@ for path in sorted(glob.glob("scraped/ncaa-game-*.json")):
     if contest.get("gameState") != "F":
         continue
 
-    ku_home = bool(ku.get("isHome"))
+    # isHome marks the nominal home side, which at a neutral site is whoever the
+    # bracket seeded higher — so it decides scoring order but never the venue.
+    ku_nominal_home = bool(ku.get("isHome"))
     period_scores = []
     for ls in contest.get("linescores") or []:
         home, visit = to_int(ls.get("home")), to_int(ls.get("visit"))
-        ours, theirs = (home, visit) if ku_home else (visit, home)
+        ours, theirs = (home, visit) if ku_nominal_home else (visit, home)
         period_scores.append(f"{ours}-{theirs}")
 
     # seasonYear is the season's start year (2025 for 2025-26). Games after
     # New Year fall in start_year+1, so the date alone can't be used.
     start_year = to_int(contest.get("seasonYear")) or int(data["date"][:4])
+    location = contest.get("location") or {}
     game = {
         "date": data["date"],
         "opponent": opp.get("nameShort") or opp.get("nameFull") or "Unknown",
         "season": season_label(start_year),
-        "home": ku_home,
+        "venue": (location.get("venue") or "").strip(),
+        "city": ", ".join(p for p in [
+            (location.get("city") or "").strip(),
+            (location.get("stateUsps") or "").strip(),
+        ] if p),
+        "nominalHome": ku_nominal_home,
         "teamScore": to_int(ku.get("score")),
         "opponentScore": to_int(opp.get("score")),
         "periodScores": ", ".join(period_scores),
@@ -112,10 +160,35 @@ for path in sorted(glob.glob("scraped/ncaa-game-*.json")):
     ku_team_id = to_int(ku.get("teamId"))
     for tb in (data.get("box") or {}).get("teamBoxscore") or []:
         # teamBoxscore teamIds are numbers while teams[] carries strings.
-        if to_int(tb.get("teamId")) != ku_team_id:
+        is_ku = to_int(tb.get("teamId")) == ku_team_id
+        # Official team totals for BOTH sides. These are not the sum of the
+        # player lines: team rebounds (deadballs) and team turnovers belong to
+        # no player, so summing box lines understates them — KU's 2025-26
+        # rebounding is 35.0/game officially against 30.8 summed.
+        stats = tb.get("teamStats") or {}
+        if stats:
+            game["teamStats" if is_ku else "opponentStats"] = {
+                "fgm": to_int(stats.get("fieldGoalsMade")),
+                "fga": to_int(stats.get("fieldGoalsAttempted")),
+                "tpm": to_int(stats.get("threePointsMade")),
+                "tpa": to_int(stats.get("threePointsAttempted")),
+                "ftm": to_int(stats.get("freeThrowsMade")),
+                "fta": to_int(stats.get("freeThrowsAttempted")),
+                "oreb": to_int(stats.get("offensiveRebounds")),
+                "reb": to_int(stats.get("totalRebounds")),
+                "ast": to_int(stats.get("assists")),
+                "to": to_int(stats.get("turnovers")),
+                "stl": to_int(stats.get("steals")),
+                "blk": to_int(stats.get("blockedShots")),
+                "pf": to_int(stats.get("personalFouls")),
+                "pts": to_int(stats.get("points")),
+            }
+        if not is_ku:
             continue
         for p in tb.get("playerStats") or []:
-            name = f"{p.get('firstName', '').strip()} {p.get('lastName', '').strip()}".strip()
+            first = fix_mojibake((p.get("firstName") or "").strip())
+            last = fix_mojibake((p.get("lastName") or "").strip())
+            name = f"{first} {last}".strip()
             add_player(name, str(p.get("number") or ""), p.get("position") or "")
             game["lines"].append({
                 "player": name,
@@ -137,7 +210,7 @@ for path in sorted(glob.glob("scraped/ncaa-game-*.json")):
                 "gs": 1 if p.get("starter") else 0,
             })
 
-    games[(game["date"], game["opponent"].lower())] = game
+    games[game_key(game["date"], game["opponent"])] = game
 
 # --- Current roster (preferred source for number/position) ------------------
 roster_names = set()
@@ -181,7 +254,7 @@ for entry in load_json("scraped/upcoming.json", []):
     opponent = (entry.get("opponent") or "").strip()
     if not date or not opponent or date < today:
         continue
-    key = (date, opponent.lower())
+    key = game_key(date, opponent)
     if key in games:
         continue
     # A game in Jan-Apr belongs to the season that started the year before.
@@ -191,22 +264,70 @@ for entry in load_json("scraped/upcoming.json", []):
         "date": date,
         "opponent": opponent,
         "season": season_label(start_year),
-        # kuathletics writes "versus X" for home games and "at X" for away.
-        "home": bool(entry.get("home")),
+        # kuathletics writes "versus X" for home games and "at X" for away. It
+        # says nothing about neutral sites, so a fixture's site is provisional
+        # until the box score arrives with a venue.
+        "nominalHome": bool(entry.get("home")),
     }
+
+# --- Home / away / neutral ---------------------------------------------------
+# Derived from the venue, never from the feed's isHome: at a neutral site that
+# flag marks the higher seed, so it called the Big 12 Tournament game against
+# UCF a home game and five genuinely neutral games road games.
+neutral_cfg = load_json(NEUTRAL_SITES_PATH, {})
+neutral_games = set(neutral_cfg.get("games", {}))
+neutral_venues = set(neutral_cfg.get("venues", {}))
+
+# A non-Allen venue hosting KU against two or more different opponents in one
+# season is a tournament floor — detected rather than configured, so holiday
+# and conference tournaments need no upkeep.
+venue_opponents = {}
+for game in games.values():
+    venue = game.get("venue")
+    if venue and venue != HOME_VENUE:
+        venue_opponents.setdefault((game["season"], venue), set()).add(
+            norm_team(game["opponent"])
+        )
+
+site_counts = {"home": 0, "away": 0, "neutral": 0}
+for key, game in games.items():
+    venue = game.get("venue")
+    marker = f"{game['date']}|{norm_team(game['opponent'])}"
+    if marker in neutral_games:
+        site = "neutral"
+    elif venue == HOME_VENUE:
+        site = "home"
+    elif venue and (
+        venue in neutral_venues
+        or len(venue_opponents.get((game["season"], venue), ())) > 1
+    ):
+        site = "neutral"
+    elif venue:
+        site = "away"
+    else:
+        # No box score yet: fall back to the schedule page's vs/at, which
+        # cannot express neutral. Corrected once the game is played.
+        site = "home" if game.get("nominalHome") else "away"
+    game["site"] = site
+    # Kept so an older installed APK, which knows only this field, still
+    # renders something sane for a neutral game rather than nothing.
+    game["home"] = site == "home"
+    game.pop("nominalHome", None)
+    site_counts[site] += 1
+
+print(
+    "sites: "
+    + ", ".join(f"{n} {s}" for s, n in site_counts.items())
+    + f" (home venue {HOME_VENUE})"
+)
+for game in sorted(games.values(), key=lambda g: g["date"]):
+    if game["site"] == "neutral":
+        print(f"  neutral: {game['date']} vs {game['opponent']} at {game.get('venue') or '?'}")
 
 # --- Big 12 standings, computed from the scoreboard sweep -------------------
 # Conference records are derived from the Big 12 games the sweep collects
 # (every scoreboard team carries a conference tag). This also means any season
 # can be rebuilt retroactively, which a live standings endpoint could not do.
-def norm_team(name):
-    """Canonical key for cross-source name matching ('Iowa State'/'Iowa St.')."""
-    n = re.sub(r"\s*\(\d+\)\s*$", "", name or "").lower()  # strip poll votes
-    n = n.replace(".", "")
-    n = re.sub(r"\bstate\b", "st", n)
-    return re.sub(r"\s+", " ", n).strip()
-
-
 index = load_json("scraped/ku-index.json", {})
 big12_games = list(index.get("big12Games", {}).values())
 

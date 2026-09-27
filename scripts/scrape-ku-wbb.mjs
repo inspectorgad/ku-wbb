@@ -141,17 +141,38 @@ for (const season of SEASONS) {
 console.log(`big12 games captured: ${Object.keys(index.big12Games).length}`);
 
 // --- 1b. Rankings snapshots (best effort; never fail the run) ---------------
-// Both endpoints serve only the CURRENT poll/ranking — no per-season history —
-// so each run overwrites its snapshot and update-seed.py keys it by the season
-// in the "Through Games ..." label.
+// Both endpoints serve only the CURRENT poll/ranking — no per-season history.
+// The unstamped file is the live snapshot; a season-stamped copy is also kept
+// so a completed season's final table survives the rollover to the next one.
+// Without the archive, the day the first 2026-27 NET publishes the final
+// 2025-26 table (all 363 teams) would be gone for good.
+const MONTHS = 'JAN FEB MAR APR MAY JUN JUL AUG SEP OCT NOV DEC'.split(' ');
+
+/** "Through Games APR. 5, 2026" -> "2025-26" (Aug-Dec belongs to that year). */
+function snapshotSeason(updated) {
+  const m = /\b([A-Z]{3})[A-Z]*\.?\s+\d{1,2},?\s+(20\d{2})/i.exec(updated || '');
+  if (!m) return null;
+  const month = MONTHS.indexOf(m[1].toUpperCase()) + 1;
+  if (month === 0) return null;
+  const year = Number(m[2]);
+  const start = month >= 8 ? year : year - 1;
+  return `${start}-${String(start + 1).slice(-2)}`;
+}
+
 for (const [name, path] of [
   ['ap', 'rankings/basketball-women/d1/associated-press'],
   ['net', 'rankings/basketball-women/d1/ncaa-womens-basketball-net-rankings'],
 ]) {
   try {
     const data = await getJson(`${API}/${path}`);
-    fs.writeFileSync(`scraped/rankings-${name}.json`, JSON.stringify(data, null, 1));
-    console.log(`rankings ${name}: ${data.data?.length ?? 0} rows (${data.updated ?? 'no date'})`);
+    const body = JSON.stringify(data, null, 1);
+    fs.writeFileSync(`scraped/rankings-${name}.json`, body);
+    const season = snapshotSeason(data.updated);
+    if (season) fs.writeFileSync(`scraped/rankings-${name}-${season}.json`, body);
+    console.log(
+      `rankings ${name}: ${data.data?.length ?? 0} rows (${data.updated ?? 'no date'})` +
+      `${season ? ` archived as ${season}` : ' — season unparsed, not archived'}`
+    );
   } catch (e) {
     console.log(`rankings ${name} failed (non-fatal): ${e.message}`);
   }

@@ -35,7 +35,24 @@ object Seeder {
         runCatching { merge(JSONObject(json), dao) }
     }
 
-    private fun gameKey(date: String, opponent: String) = "$date|${opponent.lowercase()}"
+    /**
+     * Games are identified by date plus a normalized opponent name.
+     *
+     * The schedule page and the box score disagree on spelling — kuathletics
+     * writes "South Dakota State" where the NCAA writes "South Dakota St." —
+     * so keying on the raw name makes the fixture and its own result look like
+     * two different games, permanently.
+     */
+    internal fun gameKey(date: String, opponent: String) = "$date|${normalizeTeam(opponent)}"
+
+    internal fun normalizeTeam(name: String): String = name
+        .replace(Regex("""\s*\(\d+\)\s*$"""), "")   // strip poll votes
+        .lowercase()
+        .replace(".", "")
+        .replace(Regex("""\bstate\b"""), "st")
+        .replace(Regex("""\buniversity\b"""), "")
+        .replace(Regex("""\s+"""), " ")
+        .trim()
 
     /** Also used by [SeasonSync] for network-fetched season data. */
     suspend fun merge(root: JSONObject, dao: JayhawksDao) {
@@ -88,6 +105,9 @@ object Seeder {
             val seedOppScore = if (g.has("opponentScore")) g.getInt("opponentScore") else null
             val seedPeriodScores = g.optString("periodScores").takeIf { it.isNotBlank() }
             val seedHome = if (g.has("home")) g.getBoolean("home") else null
+            val seedSite = g.optString("site").takeIf { it.isNotBlank() }
+            val seedVenue = g.optString("venue").takeIf { it.isNotBlank() }
+            val seedCity = g.optString("city").takeIf { it.isNotBlank() }
 
             val existing = gamesByKey[gameKey(date, opponent)]
             val gameId: Long
@@ -98,6 +118,9 @@ object Seeder {
                         opponent = opponent,
                         season = g.getString("season"),
                         home = seedHome,
+                        site = seedSite,
+                        venue = seedVenue,
+                        city = seedCity,
                         teamScore = seedTeamScore,
                         opponentScore = seedOppScore,
                         periodScores = seedPeriodScores
@@ -107,10 +130,15 @@ object Seeder {
                 gameId = existing.id
                 val filledResult = existing.teamScore == null && existing.opponentScore == null &&
                     (seedTeamScore != null || seedOppScore != null)
-                // The site is scraper-owned trivia rather than a user judgement
-                // call, so gap-fill it even on a game that already has a result.
+                // The site is feed-owned, not gap-filled: a fixture is stored
+                // from the schedule page, which cannot express a neutral site,
+                // and only the box score's venue settles it. Gap-filling would
+                // mean a correction never reached an already-synced phone.
                 val updated = existing.copy(
-                    home = existing.home ?: seedHome,
+                    home = seedHome ?: existing.home,
+                    site = seedSite ?: existing.site,
+                    venue = seedVenue ?: existing.venue,
+                    city = seedCity ?: existing.city,
                     teamScore = if (filledResult) seedTeamScore else existing.teamScore,
                     opponentScore = if (filledResult) seedOppScore else existing.opponentScore,
                     periodScores = existing.periodScores
@@ -118,6 +146,15 @@ object Seeder {
                 )
                 if (updated != existing) dao.updateGame(updated)
             }
+
+            // Team totals are replaced wholesale per game, and must be merged
+            // BEFORE the stat-line early return below — otherwise they would
+            // land only on a fresh install and never on a phone that already
+            // has this game's player lines.
+            val teamRows = mutableListOf<GameTeamStats>()
+            g.optJSONObject("teamStats")?.let { teamRows += teamStats(gameId, false, it) }
+            g.optJSONObject("opponentStats")?.let { teamRows += teamStats(gameId, true, it) }
+            if (teamRows.isNotEmpty()) dao.insertTeamStats(teamRows)
 
             if (existing != null && gameId in gamesWithLines) continue
             val lines = g.optJSONArray("lines") ?: continue
@@ -151,6 +188,18 @@ object Seeder {
 
         mergeStandings(root, dao)
     }
+
+    private fun teamStats(gameId: Long, isOpponent: Boolean, o: JSONObject) = GameTeamStats(
+        gameId = gameId,
+        opponent = isOpponent,
+        fgm = o.optInt("fgm"), fga = o.optInt("fga"),
+        tpm = o.optInt("tpm"), tpa = o.optInt("tpa"),
+        ftm = o.optInt("ftm"), fta = o.optInt("fta"),
+        oreb = o.optInt("oreb"), reb = o.optInt("reb"),
+        ast = o.optInt("ast"), to = o.optInt("to"),
+        stl = o.optInt("stl"), blk = o.optInt("blk"),
+        pf = o.optInt("pf"), pts = o.optInt("pts")
+    )
 
     /**
      * Big 12 standings and poll snapshots are scraper-derived and change after
