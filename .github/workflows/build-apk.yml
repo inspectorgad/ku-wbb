@@ -3,6 +3,10 @@ name: Build debug APK
 on:
   push:
     branches:
+      # Both names on purpose: `main` does not exist yet, and the repository's
+      # default branch is the claude/... one below. Listing both means renaming
+      # the default branch never silently stops CI — the old entry can be
+      # dropped once the rename has happened.
       - main
       - claude/ku-wbb-data-validation-qapzd1
     paths-ignore:
@@ -65,6 +69,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
+          set -euo pipefail
+
           gh release view latest-apk --repo "$GITHUB_REPOSITORY" > /dev/null 2>&1 || \
             gh release create latest-apk \
               --repo "$GITHUB_REPOSITORY" \
@@ -72,14 +78,54 @@ jobs:
               --title "KU WBB - latest build" \
               --notes "Rolling release: always carries the newest APK with current season data. Download app-debug.apk below and install it on your Android device." \
               --latest
-          gh release upload latest-apk app/build/outputs/apk/debug/app-debug.apk \
-            --repo "$GITHUB_REPOSITORY" --clobber
+
+          asset_id() {
+            gh api "repos/$GITHUB_REPOSITORY/releases/tags/latest-apk" \
+              --jq ".assets[] | select(.name == \"$1\") | .id" | head -n 1
+          }
+
+          # Upload first, swap second.
+          #
+          # `gh release upload --clobber` deletes the live asset and only then
+          # starts putting the new one back, so the download link 404s for as
+          # long as the transfer takes — tens of seconds for the APK and the
+          # bundle. Anyone tapping the link mid-build got an error, and so did
+          # an installed app reaching for season-data.json.
+          #
+          # So each file goes up under a staging name nothing links to, and is
+          # then renamed onto the real one. GitHub will not hold two assets
+          # under one name, so the live copy still has to be deleted first —
+          # but the gap is now a delete and a rename, two API calls, instead of
+          # a 25 MB upload.
+          swap_in() {
+            local path="$1" name staged live
+            name="$(basename "$path")"
+            staged="$RUNNER_TEMP/$name.incoming"
+            cp "$path" "$staged"
+            # --clobber covers a staging asset left behind by a run that died
+            # between the upload and the rename.
+            gh release upload latest-apk "$staged" --repo "$GITHUB_REPOSITORY" --clobber
+            live="$(asset_id "$name")"
+            if [ -n "$live" ]; then
+              gh api -X DELETE "repos/$GITHUB_REPOSITORY/releases/assets/$live" --silent
+            fi
+            gh api -X PATCH \
+              "repos/$GITHUB_REPOSITORY/releases/assets/$(asset_id "$name.incoming")" \
+              -f name="$name" --silent
+            rm -f "$staged"
+            echo "swapped in $name"
+          }
+
+          swap_in app/build/outputs/apk/debug/app-debug.apk
           # The parsed season data rides along so the app can sync itself
           # without an APK reinstall.
           cp app/src/main/assets/seed.json season-data.json
-          gh release upload latest-apk season-data.json \
-            --repo "$GITHUB_REPOSITORY" --clobber
+          swap_in season-data.json
+          # And the tables behind "Ask about the team", so the app can reach
+          # them without naming a branch in a raw.githubusercontent URL.
+          python3 scripts/ask_pack.py
+          cp docs/ask-data.json ask-data.json
+          swap_in ask-data.json
           # Play Store bundle: download this and upload it to the Play
           # Console (internal testing) whenever the app code changes.
-          gh release upload latest-apk app/build/outputs/bundle/release/app-release.aab \
-            --repo "$GITHUB_REPOSITORY" --clobber
+          swap_in app/build/outputs/bundle/release/app-release.aab
