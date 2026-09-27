@@ -1,0 +1,26 @@
+name: Probe NCAA API endpoints (WBB)
+
+# One-off investigation run: interactive sessions cannot reach the NCAA API,
+# so the probe runs here and the job log is the evidence.
+on:
+  push:
+    branches:
+      - probe-endpoints
+  workflow_dispatch:
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Probe endpoints
+        run: node scripts/probe-wbb-endpoints.mjs
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: endpoint-probe
+          path: probe/endpoint-probe.json
