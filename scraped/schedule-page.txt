@@ -96,11 +96,11 @@ Lawrence, Kan.
 
 24
 Days
-3
+0
 Hours
-15
+51
 Minutes
-41
+14
 Seconds
 Add To Calendar
 Text Only
@@ -445,6 +445,7 @@ Jan 27
 
 History
 Explore Lawrence
+Skip Ad
 vs
 Kansas State
 
