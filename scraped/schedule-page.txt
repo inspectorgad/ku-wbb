@@ -2,7 +2,6 @@
 Skip to main content
 Pause All Rotators
 University of Kansas Athletics
-Skip Ad
 Skip Scoreboard
 Scoreboard
 Coming Up
@@ -94,13 +93,13 @@ Lawrence, Kan.
 
 6:30 p.m. CT
 
-21
+20
 Days
-1
+22
 Hours
-31
+24
 Minutes
-3
+57
 Seconds
 Add To Calendar
 Text Only
@@ -445,7 +444,6 @@ Jan 27
 
 History
 Explore Lawrence
-Skip Ad
 vs
 Kansas State
 
