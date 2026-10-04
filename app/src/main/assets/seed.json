@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-09-27T18:38:25Z",
+ "generatedAt": "2026-10-04T14:58:36Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -16597,7 +16597,6 @@
    "season": "2026-27",
    "venue": "Allen Fieldhouse",
    "city": "Lawrence, KS",
-   "time": "14:00",
    "site": "home",
    "home": true,
    "conference": false
