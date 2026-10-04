@@ -96,11 +96,11 @@ Lawrence, Kan.
 
 18
 Days
-12
+8
 Hours
-13
+31
 Minutes
-47
+24
 Seconds
 Add To Calendar
 Text Only
@@ -295,8 +295,6 @@ Lawrence, Kan.
 
 Dec 6
 (Sun)
-
-2 p.m. CT
 
 History
 Explore Lawrence

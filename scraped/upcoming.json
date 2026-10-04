@@ -127,7 +127,7 @@
   "home": true,
   "venue": "Allen Fieldhouse",
   "city": "Lawrence, KS",
-  "time": "14:00",
+  "time": null,
   "tv": null,
   "event": null
  },
