@@ -96,11 +96,11 @@ Lawrence, Kan.
 
 17
 Days
-10
+4
 Hours
-55
+41
 Minutes
-30
+25
 Seconds
 Add To Calendar
 Text Only
@@ -262,6 +262,9 @@ Nov 26
 3 p.m. CT
 
 History
+
+Sponsored by:
+
 vs
 Miami (OH)
 
@@ -274,6 +277,9 @@ Nov 27
 5:30 p.m. CT
 
 History
+
+Sponsored by:
+
 vs
 Missouri State
 
