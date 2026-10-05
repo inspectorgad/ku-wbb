@@ -297,6 +297,13 @@
   #pgChart { display: block; width: 100%; height: auto; }
 
   /* ---------- ask about the team ---------- */
+  /* .ask-row below sets display:flex, which outranks the browser's own
+     [hidden] { display: none } — so #ask-key-set, the "API key saved in this
+     browser" row, was visible from page load alongside the key form it is
+     meant to replace. Only that row is affected: the Stop and New
+     conversation buttons are hidden correctly, because .ask-btn sets no
+     display of its own. */
+  [hidden] { display: none !important; }
   #ask-wrap { margin-top: 24px; }
   #ask-wrap h2 { margin: 0 0 4px; }
   .ask-label { font-size: 13px; color: var(--muted); }
