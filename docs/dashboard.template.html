@@ -208,6 +208,13 @@
   .milestones { margin: 0 0 8px; display: flex; flex-wrap: wrap; gap: 6px; }
   .pill { font-size: 11.5px; font-weight: 700; padding: 3px 9px; border-radius: 999px;
     background: var(--surface2); color: var(--ink); }
+  .sitesplit { font-size: 12.5px; margin-top: 4px; }
+  .sitesplit td { padding: 2px 8px 2px 0; text-align: left; white-space: normal; }
+  /* "Regan Williams vs Lamar University" against the global td nowrap was
+     enough to push the whole grid — and with it the page — 111px wide on a
+     phone. The name column wraps instead. */
+  .highs { table-layout: fixed; width: 100%; }
+  .highs td.detail { white-space: normal; }
   .chip {
     display: inline-block; min-width: 20px; text-align: center;
     font-weight: 800; font-size: 12px; border-radius: 5px; padding: 2px 7px;
@@ -1100,6 +1107,21 @@ function seasonInsights() {
   if (team.official) {
     const us = efficiencyOf(games.map(g => g.teamStats));
     const them = opponentTeam.official ? efficiencyOf(games.map(g => g.opponentStats)) : null;
+    // Where the season settled (mirrors stats/Efficiency.kt's
+    // cumulativeEfficiency, and the same three marks the app picks). A running
+    // figure barely moves for one cold night, which is the point: it says
+    // whether the shooting drifted or held.
+    const ordered = games.slice().sort((a, b) => a.date < b.date ? -1 : 1)
+      .map(g => g.teamStats).filter(Boolean);
+    let settled = "";
+    if (ordered.length >= 10) {
+      const marks = [...new Set([5, Math.floor(ordered.length / 2), ordered.length])]
+        .filter(n => n >= 1 && n <= ordered.length);
+      settled = "eFG% as it settled: " + marks
+        .map(n => `${fPct(efficiencyOf(ordered.slice(0, n))["eFG%"])} after ${n}`)
+        .join(" → ");
+    }
+
     cards.push(card("Shooting",
       `<table><tbody>` + Object.keys(us).map(k => {
         const fmt = v => v == null ? "—" : (k === "A/TO" ? f1(v) : fPct(v));
@@ -1107,8 +1129,36 @@ function seasonInsights() {
           <td><b>${fmt(us[k])}</b></td>
           <td class="dim">${them ? "opp " + fmt(them[k]) : ""}</td></tr>`;
       }).join("") + `</tbody></table>`,
-      "Hover a label for what it means."));
+      [settled, "Hover a label for what it means."].filter(Boolean).join("<br>")));
   }
+
+  // The season's high marks and who set them (mirrors stats/GameFacts.kt's
+  // seasonHighlights, including that it does not exclude non-Division-I
+  // opponents — so for 2025-26 both team marks are the Haskell game).
+  const highs = [];
+  const byPoints = games.reduce((a, b) => b.teamScore > a.teamScore ? b : a);
+  highs.push(["Most points", byPoints.teamScore, `vs ${byPoints.opponent}`]);
+  const byMargin = games.reduce((a, b) => b.margin > a.margin ? b : a);
+  if (byMargin.margin > 0) highs.push(["Biggest win", `+${byMargin.margin}`, `vs ${byMargin.opponent}`]);
+  const allLines = games.flatMap(g => (g.lines || []).map(l => ({ g, l })));
+  const topBy = k => allLines.reduce((a, b) => (b.l[k] > a.l[k] ? b : a), allLines[0]);
+  if (allLines.length) {
+    const sc = topBy("pts");
+    if (sc.l.pts > 0) highs.push(["Most points, player", sc.l.pts, `${sc.l.player} vs ${sc.g.opponent}`]);
+    const rb = topBy("reb");
+    if (rb.l.reb > 0) highs.push(["Most rebounds", rb.l.reb, `${rb.l.player} vs ${rb.g.opponent}`]);
+  }
+  const dd = allLines.filter(e => e.l.pts >= 10 && e.l.reb >= 10).length;
+  if (dd) highs.push(["Double-doubles", dd, "points and rebounds"]);
+  let run = 0, longest = 0;
+  for (const g of games.slice().sort((a, b) => a.date < b.date ? -1 : 1)) {
+    run = g.won ? run + 1 : 0;
+    if (run > longest) longest = run;
+  }
+  if (longest >= 2) highs.push(["Longest win streak", longest, "games"]);
+  cards.push(card("Season highs", `<table class="highs"><tbody>` + highs.map(([l, v, d]) =>
+    `<tr><td class="lft">${l}</td><td><b>${v}</b></td><td class="lft dim detail">${d}</td></tr>`)
+    .join("") + `</tbody></table>`));
 
   const bySite = ["home", "away", "neutral"]
     .map(s => [{ home: "Home", away: "Road", neutral: "Neutral" }[s], games.filter(g => siteOf(g) === s)])
@@ -1569,6 +1619,21 @@ function openPlayer(name) {
     bits.push(`<p class="fine">Best games: ` + best.map(e =>
       `<b>${e.l.pts}</b> ${vsAt(e.g)}${e.g.opponent} <span class="dim">${fmtDate(e.g.date)}</span>`)
       .join(" · ") + `</p>`);
+  }
+  // How she played by where the game was (mirrors stats/PlayerForm.kt's
+  // playerSiteSplits). Only worth showing when there is more than one venue to
+  // compare, because one venue is not a split.
+  const sites = [["home", "Home"], ["away", "Road"], ["neutral", "Neutral"]]
+    .map(([key, label]) => [label, p.log.filter(e => siteOf(e.g) === key)])
+    .filter(([, rows]) => rows.length);
+  if (sites.length > 1) {
+    bits.push(`<table class="sitesplit"><tbody>` + sites.map(([label, rows]) => {
+      const t = totalsOf(rows.map(e => e.l));
+      return `<tr><td class="lft">${label}</td>
+        <td><b>${f1(t.pts / t.g)}</b> pts</td><td>${f1(t.reb / t.g)} reb</td>
+        <td>${fPct(pct(t.fgm, t.fga))} FG</td>
+        <td class="dim">${t.g} game${t.g === 1 ? "" : "s"}</td></tr>`;
+    }).join("") + `</tbody></table>`);
   }
   document.getElementById("mFormSec").hidden = bits.length === 0;
   document.getElementById("mForm").innerHTML = bits.join("");
