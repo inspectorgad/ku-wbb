@@ -1,0 +1,1268 @@
+{
+ "arizona st": {
+  "url": "https://thesundevils.com/sports/womens-basketball/roster",
+  "fetchedAt": "2026-10-07T00:49:20.656Z",
+  "players": [
+   {
+    "name": "Madison Morson",
+    "jerseyNumber": "0",
+    "position": "G",
+    "height": "5-8"
+   },
+   {
+    "name": "Amaya Williams",
+    "jerseyNumber": "1",
+    "position": "G",
+    "height": "5-8"
+   },
+   {
+    "name": "Ruby Whitehorn",
+    "jerseyNumber": "2",
+    "position": "G",
+    "height": "6-0"
+   },
+   {
+    "name": "Rashunda Jones",
+    "jerseyNumber": "4",
+    "position": "G",
+    "height": "5-8"
+   },
+   {
+    "name": "Quin’Nya Gray De Sanders",
+    "jerseyNumber": "5",
+    "position": "G",
+    "height": "5-8"
+   },
+   {
+    "name": "Martina Fantini",
+    "jerseyNumber": "7",
+    "position": "C",
+    "height": "6-3"
+   },
+   {
+    "name": "Londyn Parker",
+    "jerseyNumber": "8",
+    "position": "G",
+    "height": "5-9"
+   },
+   {
+    "name": "Averie Lower",
+    "jerseyNumber": "10",
+    "position": "G",
+    "height": "6-0"
+   },
+   {
+    "name": "Heloisa Carrera",
+    "jerseyNumber": "14",
+    "position": "F",
+    "height": "6-2"
+   },
+   {
+    "name": "McKinna Brackens",
+    "jerseyNumber": "21",
+    "position": "F",
+    "height": "6-1"
+   },
+   {
+    "name": "Ella Ryan",
+    "jerseyNumber": "22",
+    "position": "G",
+    "height": "5-8"
+   },
+   {
+    "name": "Deborah Davenport",
+    "jerseyNumber": "24",
+    "position": "G/F",
+    "height": "6-2"
+   },
+   {
+    "name": "Ayanna-Sarai Darrington",
+    "jerseyNumber": "25",
+    "position": "F",
+    "height": "6-2"
+   }
+  ]
+ },
+ "arizona": {
+  "url": "https://arizonawildcats.com/sports/womens-basketball/roster",
+  "fetchedAt": "2026-10-07T00:49:30.228Z",
+  "players": [
+   {
+    "name": "Arynn Finley",
+    "jerseyNumber": "2",
+    "position": "G",
+    "height": "5-10"
+   },
+   {
+    "name": "Sumayah Sugapong",
+    "jerseyNumber": "3",
+    "position": "G",
+    "height": "5-7"
+   },
+   {
+    "name": "Molly Ladwig",
+    "jerseyNumber": "5",
+    "position": "G",
+    "height": "5-9"
+   },
+   {
+    "name": "Gerda Raulusaityte",
+    "jerseyNumber": "8",
+    "position": "F",
+    "height": "6-3"
+   },
+   {
+    "name": "Callie Hinder",
+    "jerseyNumber": "10",
+    "position": "F",
+    "height": "6-6"
+   },
+   {
+    "name": "Makayla Presser-Palmer",
+    "jerseyNumber": "12",
+    "position": "G/F",
+    "height": "6-1"
+   },
+   {
+    "name": "Karolina Ulan",
+    "jerseyNumber": "13",
+    "position": "G/F",
+    "height": "6-1"
+   },
+   {
+    "name": "Priyanka Ponnam",
+    "jerseyNumber": "24",
+    "position": "G",
+    "height": "6-2"
+   },
+   {
+    "name": "Anastasiia Semenova",
+    "jerseyNumber": "31",
+    "position": "F",
+    "height": "6-2"
+   },
+   {
+    "name": "Jasleen Green",
+    "jerseyNumber": "34",
+    "position": "G",
+    "height": "5-8"
+   },
+   {
+    "name": "Breanna Williams",
+    "jerseyNumber": "40",
+    "position": "F",
+    "height": "6-2"
+   }
+  ]
+ },
+ "baylor": {
+  "url": "https://baylorbears.com/sports/womens-basketball/roster",
+  "fetchedAt": "2026-10-07T00:49:39.610Z",
+  "players": [
+   {
+    "name": "Taliah Scott",
+    "jerseyNumber": "0",
+    "position": "G",
+    "height": "5-9"
+   },
+   {
+    "name": "Ines Goryanova",
+    "jerseyNumber": "1",
+    "position": "G",
+    "height": "5-8"
+   },
+   {
+    "name": "Ella Brow",
+    "jerseyNumber": "3",
+    "position": "G",
+    "height": "5-8"
+   },
+   {
+    "name": "Skylar Jones",
+    "jerseyNumber": "4",
+    "position": "G",
+    "height": "6-0"
+   },
+   {
+    "name": "Kayla Nelms",
+    "jerseyNumber": "8",
+    "position": "F",
+    "height": "6-1"
+   },
+   {
+    "name": "Lorena Awou",
+    "jerseyNumber": "11",
+    "position": "C",
+    "height": "6-5"
+   },
+   {
+    "name": "Kyla Abraham",
+    "jerseyNumber": "12",
+    "position": "F",
+    "height": "6-3"
+   },
+   {
+    "name": "Kate Koval",
+    "jerseyNumber": "13",
+    "position": "F",
+    "height": "6-5"
+   },
+   {
+    "name": "Reese Ross",
+    "jerseyNumber": "20",
+    "position": "F",
+    "height": "6-1"
+   },
+   {
+    "name": "Marcayla Johnson",
+    "jerseyNumber": "21",
+    "position": "G",
+    "height": "6-0"
+   },
+   {
+    "name": "Tianna Thompson",
+    "jerseyNumber": "35",
+    "position": "G",
+    "height": "5-10"
+   },
+   {
+    "name": "Trinity Turner",
+    "jerseyNumber": "55",
+    "position": "G",
+    "height": "5-7"
+   }
+  ]
+ },
+ "byu": {
+  "url": "https://byucougars.com/sports/womens-basketball/roster",
+  "fetchedAt": "2026-10-07T00:49:49.356Z",
+  "players": [
+   {
+    "name": "Sydney Benally",
+    "jerseyNumber": "2",
+    "position": "GUARD",
+    "height": "5-8"
+   },
+   {
+    "name": "Bolanle Yussuf",
+    "jerseyNumber": "3",
+    "position": "FORWARD",
+    "height": "6-5"
+   },
+   {
+    "name": "Vahayliah Seumanutafa",
+    "jerseyNumber": "6",
+    "position": "GUARD",
+    "height": "5-11"
+   },
+   {
+    "name": "Olivia Hamlin",
+    "jerseyNumber": "7",
+    "position": "GUARD",
+    "height": "5-9"
+   },
+   {
+    "name": "Kailey Woolston",
+    "jerseyNumber": "10",
+    "position": "GUARD",
+    "height": "6-0"
+   },
+   {
+    "name": "Delaney Gibb",
+    "jerseyNumber": "11",
+    "position": "GUARD",
+    "height": "5-11"
+   },
+   {
+    "name": "Stella Sakalas",
+    "jerseyNumber": "12",
+    "position": "GUARD",
+    "height": "6-0"
+   },
+   {
+    "name": "Mariam Traore",
+    "jerseyNumber": "30",
+    "position": "FORWARD",
+    "height": "6-3"
+   }
+  ]
+ },
+ "cincinnati": {
+  "url": "https://gobearcats.com/sports/womens-basketball/roster",
+  "fetchedAt": "2026-10-07T00:49:58.371Z",
+  "players": [
+   {
+    "name": "Yar Tong",
+    "jerseyNumber": "1",
+    "position": "Forward",
+    "height": "6-3"
+   },
+   {
+    "name": "Paige Whitted",
+    "jerseyNumber": "2",
+    "position": "Guard",
+    "height": "5-9"
+   },
+   {
+    "name": "Reagan Jackson",
+    "jerseyNumber": "3",
+    "position": "Guard",
+    "height": "5-8"
+   },
+   {
+    "name": "Caliyah Devillasee",
+    "jerseyNumber": "4",
+    "position": "Guard",
+    "height": "5-8"
+   },
+   {
+    "name": "Joya Crawford",
+    "jerseyNumber": "8",
+    "position": "Guard",
+    "height": "5-8"
+   },
+   {
+    "name": "Dee Alexander",
+    "jerseyNumber": "9",
+    "position": "Forward",
+    "height": "6-2"
+   },
+   {
+    "name": "Jaidyn Gunter",
+    "jerseyNumber": "10",
+    "position": "Guard",
+    "height": "5-7"
+   },
+   {
+    "name": "Zou Garba",
+    "jerseyNumber": "12",
+    "position": "Center",
+    "height": "6-7"
+   },
+   {
+    "name": "Marta Fernández",
+    "jerseyNumber": "13",
+    "position": "Guard",
+    "height": "5-4"
+   },
+   {
+    "name": "Jade Jones",
+    "jerseyNumber": "14",
+    "position": "Guard",
+    "height": "5-10"
+   },
+   {
+    "name": "Amber Bullard",
+    "jerseyNumber": "16",
+    "position": "Center",
+    "height": "6-4"
+   },
+   {
+    "name": "Kali Barrett",
+    "jerseyNumber": "21",
+    "position": "Forward",
+    "height": "6-2"
+   },
+   {
+    "name": "Naomi Benson",
+    "jerseyNumber": "22",
+    "position": "Forward",
+    "height": "6-2"
+   },
+   {
+    "name": "Mary Carden",
+    "jerseyNumber": "42",
+    "position": "Center",
+    "height": "6-6"
+   }
+  ]
+ },
+ "colorado": {
+  "url": "https://cubuffs.com/sports/womens-basketball/roster",
+  "fetchedAt": "2026-10-07T00:50:07.896Z",
+  "players": [
+   {
+    "name": "Brooke Walker",
+    "jerseyNumber": "0",
+    "position": "G",
+    "height": "5-8"
+   },
+   {
+    "name": "Zyanna Walker",
+    "jerseyNumber": "1",
+    "position": "G",
+    "height": "5-11"
+   },
+   {
+    "name": "Kennedy Sanders",
+    "jerseyNumber": "2",
+    "position": "G",
+    "height": "5-8"
+   },
+   {
+    "name": "Cail Jahnke",
+    "jerseyNumber": "3",
+    "position": "G",
+    "height": "6-2"
+   },
+   {
+    "name": "Lauren Harris",
+    "jerseyNumber": "5",
+    "position": "G",
+    "height": "5-11"
+   },
+   {
+    "name": "Mecailin Marshall",
+    "jerseyNumber": "6",
+    "position": "G",
+    "height": "5-10"
+   },
+   {
+    "name": "Claire O'Connor",
+    "jerseyNumber": "7",
+    "position": "G",
+    "height": "6-0"
+   },
+   {
+    "name": "Jade Crook",
+    "jerseyNumber": "8",
+    "position": "C",
+    "height": "6-4"
+   },
+   {
+    "name": "Logyn Greer",
+    "jerseyNumber": "11",
+    "position": "F",
+    "height": "6-4"
+   },
+   {
+    "name": "Maeve McErlane",
+    "jerseyNumber": "13",
+    "position": "G",
+    "height": "5-10"
+   },
+   {
+    "name": "Anete Adler",
+    "jerseyNumber": "20",
+    "position": "C",
+    "height": "6-5"
+   },
+   {
+    "name": "Kira Reynolds",
+    "jerseyNumber": "21",
+    "position": "F",
+    "height": "6-2"
+   },
+   {
+    "name": "Sophie Zadel",
+    "jerseyNumber": "22",
+    "position": "F",
+    "height": "6-4"
+   },
+   {
+    "name": "Aniya' Foy",
+    "jerseyNumber": "23",
+    "position": "G",
+    "height": "5-11"
+   }
+  ]
+ },
+ "houston": {
+  "url": "https://uhcougars.com/sports/womens-basketball/roster",
+  "fetchedAt": "2026-10-07T00:50:17.704Z",
+  "players": [
+   {
+    "name": "Esmeralda Enriquez",
+    "jerseyNumber": "0",
+    "position": "G",
+    "height": "5-8"
+   },
+   {
+    "name": "Alyvia McCorkle",
+    "jerseyNumber": "2",
+    "position": "G",
+    "height": "5-7"
+   },
+   {
+    "name": "Madison Carlton",
+    "jerseyNumber": "4",
+    "position": "F",
+    "height": "6-1"
+   },
+   {
+    "name": "Kayla King",
+    "jerseyNumber": "5",
+    "position": "G",
+    "height": "5-10"
+   },
+   {
+    "name": "Jemma Hunter",
+    "jerseyNumber": "7",
+    "position": "F",
+    "height": "6-5"
+   },
+   {
+    "name": "Justice Carlton",
+    "jerseyNumber": "11",
+    "position": "F",
+    "height": "6-1"
+   },
+   {
+    "name": "Kaelyn Hamilton",
+    "jerseyNumber": "12",
+    "position": "G",
+    "height": "5-9"
+   },
+   {
+    "name": "Marta Llompart",
+    "jerseyNumber": "14",
+    "position": "G",
+    "height": "5-8"
+   },
+   {
+    "name": "Tamia King",
+    "jerseyNumber": "15",
+    "position": "F",
+    "height": "6-1"
+   },
+   {
+    "name": "Raegan McCowan",
+    "jerseyNumber": "21",
+    "position": "G",
+    "height": "6-0"
+   },
+   {
+    "name": "Janiyah Williams",
+    "jerseyNumber": "22",
+    "position": "G",
+    "height": "5-9"
+   },
+   {
+    "name": "Jorynn Ross",
+    "jerseyNumber": "26",
+    "position": "F",
+    "height": "6-3"
+   },
+   {
+    "name": "Elodie Lutbert",
+    "jerseyNumber": "27",
+    "position": "C",
+    "height": "6-6"
+   }
+  ]
+ },
+ "iowa st": {
+  "url": "https://cyclones.com/sports/womens-basketball/roster",
+  "fetchedAt": "2026-10-07T00:50:27.229Z",
+  "players": [
+   {
+    "name": "Sienna Harvey",
+    "jerseyNumber": "1",
+    "position": "G",
+    "height": "5-10"
+   },
+   {
+    "name": "Arianna Jackson",
+    "jerseyNumber": "2",
+    "position": "G",
+    "height": "5-9"
+   },
+   {
+    "name": "Mya Babbitt",
+    "jerseyNumber": "3",
+    "position": "G",
+    "height": "5-8"
+   },
+   {
+    "name": "Evangelia Paulk",
+    "jerseyNumber": "5",
+    "position": "G",
+    "height": "6-0"
+   },
+   {
+    "name": "Freya Jensen",
+    "jerseyNumber": "7",
+    "position": "G",
+    "height": "5-10"
+   },
+   {
+    "name": "Emilija Dakic",
+    "jerseyNumber": "8",
+    "position": "G",
+    "height": "5-10"
+   },
+   {
+    "name": "Alex-Anne Bessette",
+    "jerseyNumber": "10",
+    "position": "G/F",
+    "height": "6-2"
+   },
+   {
+    "name": "Ashleigh Connor",
+    "jerseyNumber": "15",
+    "position": "G",
+    "height": "5-11"
+   },
+   {
+    "name": "Gift Ezekiel",
+    "jerseyNumber": "21",
+    "position": "F",
+    "height": "6-2"
+   },
+   {
+    "name": "Reggi Spotts",
+    "jerseyNumber": "22",
+    "position": "G",
+    "height": "5-8"
+   },
+   {
+    "name": "Macy Comito",
+    "jerseyNumber": "23",
+    "position": "G",
+    "height": "5-9"
+   },
+   {
+    "name": "Xiao Zhang",
+    "jerseyNumber": "24",
+    "position": "C",
+    "height": "6-7"
+   },
+   {
+    "name": "Tjaša Turnšek",
+    "jerseyNumber": "46",
+    "position": "F",
+    "height": "6-3"
+   }
+  ]
+ },
+ "kansas st": {
+  "url": "https://kstatesports.com/sports/womens-basketball/roster",
+  "fetchedAt": "2026-10-07T00:50:36.943Z",
+  "players": [
+   {
+    "name": "Brandie Harrod",
+    "jerseyNumber": "3",
+    "position": "G",
+    "height": "6-1"
+   },
+   {
+    "name": "Nastja Claessens",
+    "jerseyNumber": "4",
+    "position": "F",
+    "height": "6-1"
+   },
+   {
+    "name": "Gina Garcia",
+    "jerseyNumber": "6",
+    "position": "G",
+    "height": "5-10"
+   },
+   {
+    "name": "Cristina Osazuwa",
+    "jerseyNumber": "7",
+    "position": "F",
+    "height": "6-4"
+   },
+   {
+    "name": "Mikayla Parks",
+    "jerseyNumber": "10",
+    "position": "G",
+    "height": "5-9"
+   },
+   {
+    "name": "Taryn Sides",
+    "jerseyNumber": "11",
+    "position": "G",
+    "height": "5-7"
+   },
+   {
+    "name": "Shaila Nde",
+    "jerseyNumber": "14",
+    "position": "F",
+    "height": "6-2"
+   },
+   {
+    "name": "Ramiya White",
+    "jerseyNumber": "22",
+    "position": "C",
+    "height": "6-4"
+   },
+   {
+    "name": "Sage Henry",
+    "jerseyNumber": "24",
+    "position": "G",
+    "height": "5-10"
+   },
+   {
+    "name": "Téa Cléante",
+    "jerseyNumber": "25",
+    "position": "G",
+    "height": "5-10"
+   },
+   {
+    "name": "Tzoana Tampakou",
+    "jerseyNumber": "27",
+    "position": "C",
+    "height": "6-5"
+   },
+   {
+    "name": "Ivona Šćekić",
+    "jerseyNumber": "99",
+    "position": "C",
+    "height": "6-4"
+   }
+  ]
+ },
+ "oklahoma st": {
+  "url": "https://okstate.com/sports/womens-basketball/roster",
+  "fetchedAt": "2026-10-07T00:50:46.868Z",
+  "players": [
+   {
+    "name": "LA Sneed",
+    "jerseyNumber": "2",
+    "position": "Guard",
+    "height": "5-6"
+   },
+   {
+    "name": "Mojca Jelenc",
+    "jerseyNumber": "3",
+    "position": "Center",
+    "height": "6-7"
+   },
+   {
+    "name": "Ellie Brueggemann",
+    "jerseyNumber": "4",
+    "position": "Guard",
+    "height": "5-11"
+   },
+   {
+    "name": "Yuting Deng",
+    "jerseyNumber": "9",
+    "position": "Guard",
+    "height": "6-2"
+   },
+   {
+    "name": "Nene Ndiaye",
+    "jerseyNumber": "10",
+    "position": "Guard",
+    "height": "6-1"
+   },
+   {
+    "name": "Callin Hake",
+    "jerseyNumber": "14",
+    "position": "Guard",
+    "height": "5-8"
+   },
+   {
+    "name": "Zoe Canfield",
+    "jerseyNumber": "15",
+    "position": "Guard",
+    "height": "5-11"
+   },
+   {
+    "name": "Talexa Weeter",
+    "jerseyNumber": "22",
+    "position": "Guard",
+    "height": "6-0"
+   },
+   {
+    "name": "Liv McGill",
+    "jerseyNumber": "23",
+    "position": "Guard",
+    "height": "5-9"
+   },
+   {
+    "name": "Addisyn Bollinger",
+    "jerseyNumber": "24",
+    "position": "Guard",
+    "height": "5-11"
+   },
+   {
+    "name": "Stailee Heard",
+    "jerseyNumber": "32",
+    "position": "Guard",
+    "height": "5-11"
+   },
+   {
+    "name": "Audi Crooks",
+    "jerseyNumber": "55",
+    "position": "Center",
+    "height": "6-3"
+   }
+  ]
+ },
+ "south dakota st": {
+  "url": "https://gojacks.com/sports/womens-basketball/roster",
+  "fetchedAt": "2026-10-07T00:50:56.570Z",
+  "players": [
+   {
+    "name": "Audrey Shindelar",
+    "jerseyNumber": "1",
+    "position": "G",
+    "height": "5-10"
+   },
+   {
+    "name": "Emilee Fox",
+    "jerseyNumber": "4",
+    "position": "G",
+    "height": "5-8"
+   },
+   {
+    "name": "Hilary Behrens",
+    "jerseyNumber": "10",
+    "position": "W",
+    "height": "6-0"
+   },
+   {
+    "name": "Hadley Thul",
+    "jerseyNumber": "11",
+    "position": "G",
+    "height": "6-2"
+   },
+   {
+    "name": "Mahli Abdouch",
+    "jerseyNumber": "15",
+    "position": "G",
+    "height": "5-7"
+   },
+   {
+    "name": "Katie Vasecka",
+    "jerseyNumber": "23",
+    "position": "G",
+    "height": "6-2"
+   },
+   {
+    "name": "Maggie Hartwig",
+    "jerseyNumber": "24",
+    "position": "F",
+    "height": "6-1"
+   },
+   {
+    "name": "Abby Hoselton",
+    "jerseyNumber": "25",
+    "position": "W",
+    "height": "5-11"
+   },
+   {
+    "name": "Claire Sheppard",
+    "jerseyNumber": "32",
+    "position": "W",
+    "height": "6-1"
+   },
+   {
+    "name": "Trishelle Miller",
+    "jerseyNumber": "33",
+    "position": "G",
+    "height": "5-8"
+   },
+   {
+    "name": "Brooklynn Felchle",
+    "jerseyNumber": "34",
+    "position": "F",
+    "height": "6-3"
+   },
+   {
+    "name": "Jaidyn Dunn",
+    "jerseyNumber": "45",
+    "position": "F",
+    "height": "6-1"
+   }
+  ]
+ },
+ "tcu": {
+  "url": "https://gofrogs.com/sports/womens-basketball/roster",
+  "fetchedAt": "2026-10-07T00:51:06.014Z",
+  "players": [
+   {
+    "name": "Camille Williams",
+    "jerseyNumber": "0",
+    "position": "G",
+    "height": "5-11"
+   },
+   {
+    "name": "Avery Hjelmstad",
+    "jerseyNumber": "1",
+    "position": "G",
+    "height": "6-1"
+   },
+   {
+    "name": "Bella Hines",
+    "jerseyNumber": "3",
+    "position": "G",
+    "height": "5-10"
+   },
+   {
+    "name": "Jadyn Wooten",
+    "jerseyNumber": "6",
+    "position": "G",
+    "height": "5-6"
+   },
+   {
+    "name": "Jessie-May Hall",
+    "jerseyNumber": "7",
+    "position": "G",
+    "height": "5-8"
+   },
+   {
+    "name": "Lanie Grant",
+    "jerseyNumber": "11",
+    "position": "G",
+    "height": "5-9"
+   },
+   {
+    "name": "Lara Somfai",
+    "jerseyNumber": "12",
+    "position": "F",
+    "height": "6-3"
+   },
+   {
+    "name": "Sarah Portlock",
+    "jerseyNumber": "15",
+    "position": "C",
+    "height": "6-8"
+   },
+   {
+    "name": "Clara Bielefeld",
+    "jerseyNumber": "16",
+    "position": "G",
+    "height": "6-4"
+   },
+   {
+    "name": "Clara Silva",
+    "jerseyNumber": "17",
+    "position": "C",
+    "height": "6-7"
+   },
+   {
+    "name": "Laura Vilcinskas",
+    "jerseyNumber": "18",
+    "position": "C",
+    "height": "6-5"
+   },
+   {
+    "name": "Claudia Contell",
+    "jerseyNumber": "23",
+    "position": "G",
+    "height": "5-10"
+   }
+  ]
+ },
+ "texas tech": {
+  "url": "https://texastech.com/sports/womens-basketball/roster",
+  "fetchedAt": "2026-10-07T00:51:15.794Z",
+  "players": [
+   {
+    "name": "Jalynn Bristow",
+    "jerseyNumber": "1",
+    "position": "G/F",
+    "height": "6-2"
+   },
+   {
+    "name": "Destinee Hooks",
+    "jerseyNumber": "3",
+    "position": "G",
+    "height": "5-9"
+   },
+   {
+    "name": "Natalia Jordan",
+    "jerseyNumber": "4",
+    "position": "G",
+    "height": "5-8"
+   },
+   {
+    "name": "Jayda Kearney",
+    "jerseyNumber": "5",
+    "position": "C",
+    "height": "6-5"
+   },
+   {
+    "name": "Mya Petticord",
+    "jerseyNumber": "7",
+    "position": "G",
+    "height": "5-9"
+   },
+   {
+    "name": "Jalayah Ingram",
+    "jerseyNumber": "10",
+    "position": "G",
+    "height": "5-9"
+   },
+   {
+    "name": "Moriyah Douglass",
+    "jerseyNumber": "12",
+    "position": "F",
+    "height": "6-4"
+   },
+   {
+    "name": "Kiki Smith",
+    "jerseyNumber": "23",
+    "position": "G",
+    "height": "5-7"
+   },
+   {
+    "name": "Stephanie Okechukwu",
+    "jerseyNumber": "24",
+    "position": "C",
+    "height": "7-1"
+   },
+   {
+    "name": "Tahys Da Silva",
+    "jerseyNumber": "25",
+    "position": "G",
+    "height": "6-0"
+   },
+   {
+    "name": "Rhema Collins",
+    "jerseyNumber": "35",
+    "position": "F",
+    "height": "6-2"
+   }
+  ]
+ },
+ "ucf": {
+  "url": "https://ucfknights.com/sports/womens-basketball/roster",
+  "fetchedAt": "2026-10-07T00:51:24.677Z",
+  "players": [
+   {
+    "name": "Key Roseby",
+    "jerseyNumber": "0",
+    "position": "Guard",
+    "height": "6-0"
+   },
+   {
+    "name": "Salomé Boyomo Keedi",
+    "jerseyNumber": "1",
+    "position": "Forward",
+    "height": "6-2"
+   },
+   {
+    "name": "Kya Hurt",
+    "jerseyNumber": "2",
+    "position": "Guard",
+    "height": "5-8"
+   },
+   {
+    "name": "Candace Kpetikou",
+    "jerseyNumber": "3",
+    "position": "Center",
+    "height": "6-3"
+   },
+   {
+    "name": "Caitlyn Jones",
+    "jerseyNumber": "5",
+    "position": "Guard",
+    "height": "5-8"
+   },
+   {
+    "name": "Felicia Schölander",
+    "jerseyNumber": "7",
+    "position": "Guard",
+    "height": "5-9"
+   },
+   {
+    "name": "Nyla McFadden",
+    "jerseyNumber": "8",
+    "position": "Guard",
+    "height": "6-0"
+   },
+   {
+    "name": "Vittoria Blasigh",
+    "jerseyNumber": "10",
+    "position": "Guard",
+    "height": "5-9"
+   },
+   {
+    "name": "Jabria Lindsey",
+    "jerseyNumber": "12",
+    "position": "Guard",
+    "height": "5-9"
+   },
+   {
+    "name": "Mikayla Johnson",
+    "jerseyNumber": "23",
+    "position": "Guard",
+    "height": "6-1"
+   },
+   {
+    "name": "Jasmynne Gibson",
+    "jerseyNumber": "24",
+    "position": "Forward",
+    "height": "6-1"
+   },
+   {
+    "name": "Mahogany Chandler-Roberts",
+    "jerseyNumber": "33",
+    "position": "Forward",
+    "height": "6-2"
+   },
+   {
+    "name": "Maria Cintas",
+    "jerseyNumber": "55",
+    "position": "Guard",
+    "height": "5-4"
+   }
+  ]
+ },
+ "utah": {
+  "url": "https://utahutes.com/sports/womens-basketball/roster",
+  "fetchedAt": "2026-10-07T00:51:33.995Z",
+  "players": [
+   {
+    "name": "Lena Girardi",
+    "jerseyNumber": "2",
+    "position": "G",
+    "height": "5-11"
+   },
+   {
+    "name": "Olivia Bradley",
+    "jerseyNumber": "3",
+    "position": "F",
+    "height": "6-1"
+   },
+   {
+    "name": "Filipa Barros",
+    "jerseyNumber": "5",
+    "position": "G",
+    "height": "5-9"
+   },
+   {
+    "name": "Evelina Otto",
+    "jerseyNumber": "6",
+    "position": "F",
+    "height": "6-2"
+   },
+   {
+    "name": "Laia Conesa",
+    "jerseyNumber": "7",
+    "position": "G",
+    "height": "5-11"
+   },
+   {
+    "name": "Peyton Jones",
+    "jerseyNumber": "8",
+    "position": "G",
+    "height": "6-0"
+   },
+   {
+    "name": "Milika Satuala",
+    "jerseyNumber": "11",
+    "position": "G/F",
+    "height": "5-10"
+   },
+   {
+    "name": "Chyra Evans",
+    "jerseyNumber": "12",
+    "position": "F",
+    "height": "6-3"
+   },
+   {
+    "name": "Kamryn Mafua",
+    "jerseyNumber": "14",
+    "position": "F",
+    "height": "6-1"
+   },
+   {
+    "name": "Emma Petrie",
+    "jerseyNumber": "17",
+    "position": "F",
+    "height": "6-2"
+   },
+   {
+    "name": "Ella Todd",
+    "jerseyNumber": "22",
+    "position": "G",
+    "height": "6-0"
+   },
+   {
+    "name": "Elise Livingston",
+    "jerseyNumber": "23",
+    "position": "G",
+    "height": "5-9"
+   },
+   {
+    "name": "Rylee Little",
+    "jerseyNumber": "24",
+    "position": "F",
+    "height": "6-5"
+   }
+  ]
+ },
+ "west virginia": {
+  "url": "https://wvusports.com/sports/womens-basketball/roster",
+  "fetchedAt": "2026-10-07T00:51:43.467Z",
+  "players": [
+   {
+    "name": "Nylah Wilson",
+    "jerseyNumber": "1",
+    "position": "G",
+    "height": "5-9"
+   },
+   {
+    "name": "Kennedy Harris",
+    "jerseyNumber": "2",
+    "position": "G",
+    "height": "5-7"
+   },
+   {
+    "name": "Gia Cooke",
+    "jerseyNumber": "3",
+    "position": "G",
+    "height": "5-8"
+   },
+   {
+    "name": "Madison Parrish",
+    "jerseyNumber": "4",
+    "position": "G",
+    "height": "5-11"
+   },
+   {
+    "name": "Chanté Murray",
+    "jerseyNumber": "5",
+    "position": "F",
+    "height": "6-1"
+   },
+   {
+    "name": "Hawa Doumbouya",
+    "jerseyNumber": "7",
+    "position": "F/C",
+    "height": "6-7"
+   },
+   {
+    "name": "Khyala Ngodu",
+    "jerseyNumber": "8",
+    "position": "C",
+    "height": "6-3"
+   },
+   {
+    "name": "Skylar Forbes",
+    "jerseyNumber": "11",
+    "position": "F",
+    "height": "6-3"
+   },
+   {
+    "name": "Marya Hudgins",
+    "jerseyNumber": "23",
+    "position": "G",
+    "height": "6-0"
+   },
+   {
+    "name": "Divine Tumba",
+    "jerseyNumber": "24",
+    "position": "F",
+    "height": "6-2"
+   },
+   {
+    "name": "Alexis Bordas",
+    "jerseyNumber": "30",
+    "position": "G",
+    "height": "5-8"
+   },
+   {
+    "name": "Zahirah Walton",
+    "jerseyNumber": "35",
+    "position": "G/F",
+    "height": "6-0"
+   }
+  ]
+ }
+}
