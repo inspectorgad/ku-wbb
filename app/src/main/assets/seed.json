@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-10-04T14:58:36Z",
+ "generatedAt": "2026-10-07T00:51:43Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -6181,7 +6181,8 @@
      "blk": 0,
      "pf": 4,
      "pts": 0,
-     "gs": 1
+     "gs": 1,
+     "height": "5-9"
     },
     {
      "player": "Mackenzie Hare",
@@ -6609,7 +6610,8 @@
      "blk": 0,
      "pf": 1,
      "pts": 24,
-     "gs": 1
+     "gs": 1,
+     "height": "5-8"
     },
     {
      "player": "Sydney Woodley",
@@ -6999,7 +7001,8 @@
      "blk": 0,
      "pf": 4,
      "pts": 2,
-     "gs": 0
+     "gs": 0,
+     "height": "6-1"
     },
     {
      "player": "Kayanna Cox",
@@ -7083,7 +7086,8 @@
      "blk": 1,
      "pf": 2,
      "pts": 14,
-     "gs": 1
+     "gs": 1,
+     "height": "6-2"
     },
     {
      "player": "Jacorriah Bracey",
@@ -7444,7 +7448,8 @@
      "blk": 2,
      "pf": 2,
      "pts": 10,
-     "gs": 1
+     "gs": 1,
+     "height": "6-3"
     },
     {
      "player": "Evelina Otto",
@@ -7465,7 +7470,8 @@
      "blk": 0,
      "pf": 1,
      "pts": 2,
-     "gs": 0
+     "gs": 0,
+     "height": "6-2"
     },
     {
      "player": "LA Sneed",
@@ -7879,7 +7885,8 @@
      "blk": 0,
      "pf": 2,
      "pts": 2,
-     "gs": 0
+     "gs": 0,
+     "height": "6-0"
     },
     {
      "player": "Kyla Abraham",
@@ -7900,7 +7907,8 @@
      "blk": 3,
      "pf": 3,
      "pts": 2,
-     "gs": 0
+     "gs": 0,
+     "height": "6-3"
     },
     {
      "player": "Darianna Littlepage-Buggs",
@@ -7942,7 +7950,8 @@
      "blk": 0,
      "pf": 1,
      "pts": 6,
-     "gs": 0
+     "gs": 0,
+     "height": "6-1"
     },
     {
      "player": "Yuting Deng",
@@ -7984,7 +7993,8 @@
      "blk": 1,
      "pf": 1,
      "pts": 24,
-     "gs": 1
+     "gs": 1,
+     "height": "5-9"
     },
     {
      "player": "Kiersten Johnson",
@@ -8370,7 +8380,8 @@
      "blk": 1,
      "pf": 0,
      "pts": 21,
-     "gs": 1
+     "gs": 1,
+     "height": "5-11"
     },
     {
      "player": "Achol Akot",
@@ -8697,7 +8708,8 @@
      "blk": 1,
      "pf": 3,
      "pts": 3,
-     "gs": 1
+     "gs": 1,
+     "height": "6-1"
     },
     {
      "player": "Jyah LoVett",
@@ -8739,7 +8751,8 @@
      "blk": 2,
      "pf": 1,
      "pts": 22,
-     "gs": 1
+     "gs": 1,
+     "height": "6-2"
     },
     {
      "player": "Last-Tear Poa",
@@ -8781,7 +8794,8 @@
      "blk": 0,
      "pf": 0,
      "pts": 0,
-     "gs": 0
+     "gs": 0,
+     "height": "6-3"
     },
     {
      "player": "Deborah Davenport",
@@ -8802,7 +8816,8 @@
      "blk": 2,
      "pf": 0,
      "pts": 9,
-     "gs": 0
+     "gs": 0,
+     "height": "6-2"
     },
     {
      "player": "Amaya Williams",
@@ -8823,7 +8838,8 @@
      "blk": 0,
      "pf": 1,
      "pts": 7,
-     "gs": 0
+     "gs": 0,
+     "height": "5-8"
     },
     {
      "player": "Gabby Elliott",
@@ -9107,7 +9123,8 @@
      "blk": 0,
      "pf": 5,
      "pts": 17,
-     "gs": 1
+     "gs": 1,
+     "height": "5-7"
     },
     {
      "player": "Noelani Cornfield",
@@ -9550,7 +9567,8 @@
      "blk": 0,
      "pf": 2,
      "pts": 26,
-     "gs": 1
+     "gs": 1,
+     "height": "5-7"
     },
     {
      "player": "Ramiya White",
@@ -9571,7 +9589,8 @@
      "blk": 0,
      "pf": 1,
      "pts": 2,
-     "gs": 0
+     "gs": 0,
+     "height": "6-4"
     },
     {
      "player": "Ivona Scekic",
@@ -9592,7 +9611,8 @@
      "blk": 0,
      "pf": 1,
      "pts": 0,
-     "gs": 0
+     "gs": 0,
+     "height": "6-4"
     },
     {
      "player": "Mikayla Parks",
@@ -9613,7 +9633,8 @@
      "blk": 0,
      "pf": 0,
      "pts": 0,
-     "gs": 0
+     "gs": 0,
+     "height": "5-9"
     },
     {
      "player": "Jenessa Cotton",
@@ -9718,7 +9739,8 @@
      "blk": 1,
      "pf": 4,
      "pts": 6,
-     "gs": 1
+     "gs": 1,
+     "height": "6-1"
     },
     {
      "player": "Nastja Claessens",
@@ -9739,7 +9761,8 @@
      "blk": 0,
      "pf": 3,
      "pts": 5,
-     "gs": 1
+     "gs": 1,
+     "height": "6-1"
     },
     {
      "player": "Aniya' Foy",
@@ -9781,7 +9804,8 @@
      "blk": 0,
      "pf": 1,
      "pts": 2,
-     "gs": 1
+     "gs": 1,
+     "height": "5-10"
     }
    ],
    "site": "home",
@@ -10008,7 +10032,8 @@
      "blk": 1,
      "pf": 5,
      "pts": 9,
-     "gs": 1
+     "gs": 1,
+     "height": "6-7"
     },
     {
      "player": "Clara Bielefeld",
@@ -10029,7 +10054,8 @@
      "blk": 0,
      "pf": 1,
      "pts": 9,
-     "gs": 0
+     "gs": 0,
+     "height": "6-4"
     },
     {
      "player": "Natalie Mazurek",
@@ -10475,7 +10501,8 @@
      "blk": 1,
      "pf": 5,
      "pts": 0,
-     "gs": 0
+     "gs": 0,
+     "height": "6-4"
     },
     {
      "player": "Maeve McErlane",
@@ -10496,7 +10523,8 @@
      "blk": 0,
      "pf": 1,
      "pts": 0,
-     "gs": 1
+     "gs": 1,
+     "height": "5-10"
     },
     {
      "player": "Jade Masogayo",
@@ -10559,7 +10587,8 @@
      "blk": 2,
      "pf": 4,
      "pts": 24,
-     "gs": 1
+     "gs": 1,
+     "height": "5-11"
     },
     {
      "player": "Erianna Gooden",
@@ -10643,7 +10672,8 @@
      "blk": 1,
      "pf": 2,
      "pts": 0,
-     "gs": 0
+     "gs": 0,
+     "height": "6-4"
     }
    ],
    "site": "home",
@@ -10946,7 +10976,8 @@
      "blk": 1,
      "pf": 5,
      "pts": 10,
-     "gs": 0
+     "gs": 0,
+     "height": "6-5"
     },
     {
      "player": "Sydney Benally",
@@ -10967,7 +10998,8 @@
      "blk": 0,
      "pf": 2,
      "pts": 11,
-     "gs": 1
+     "gs": 1,
+     "height": "5-8"
     },
     {
      "player": "Kambree Barber",
@@ -11009,7 +11041,8 @@
      "blk": 0,
      "pf": 3,
      "pts": 4,
-     "gs": 0
+     "gs": 0,
+     "height": "5-9"
     },
     {
      "player": "Arielle Mackey-Williams",
@@ -11051,7 +11084,8 @@
      "blk": 0,
      "pf": 3,
      "pts": 10,
-     "gs": 1
+     "gs": 1,
+     "height": "5-11"
     },
     {
      "player": "Hattie Ogden",
@@ -11375,7 +11409,8 @@
      "blk": 0,
      "pf": 3,
      "pts": 5,
-     "gs": 0
+     "gs": 0,
+     "height": "6-6"
     },
     {
      "player": "Delaney Snyder",
@@ -11438,7 +11473,8 @@
      "blk": 0,
      "pf": 4,
      "pts": 4,
-     "gs": 0
+     "gs": 0,
+     "height": "5-8"
     },
     {
      "player": "Kylie Torrence",
@@ -11501,7 +11537,8 @@
      "blk": 0,
      "pf": 1,
      "pts": 7,
-     "gs": 1
+     "gs": 1,
+     "height": "5-8"
     },
     {
      "player": "Paige Whitted",
@@ -11522,7 +11559,8 @@
      "blk": 0,
      "pf": 0,
      "pts": 0,
-     "gs": 0
+     "gs": 0,
+     "height": "5-9"
     },
     {
      "player": "Mya Perry",
@@ -11564,7 +11602,8 @@
      "blk": 0,
      "pf": 0,
      "pts": 18,
-     "gs": 1
+     "gs": 1,
+     "height": "5-8"
     }
    ],
    "site": "home",
@@ -11875,7 +11914,8 @@
      "blk": 2,
      "pf": 5,
      "pts": 4,
-     "gs": 1
+     "gs": 1,
+     "height": "6-2"
     },
     {
      "player": "Jada Malone",
@@ -12257,7 +12297,8 @@
      "blk": 0,
      "pf": 1,
      "pts": 0,
-     "gs": 0
+     "gs": 0,
+     "height": "5-10"
     },
     {
      "player": "Jade Jones",
@@ -12299,7 +12340,8 @@
      "blk": 0,
      "pf": 5,
      "pts": 8,
-     "gs": 1
+     "gs": 1,
+     "height": "6-3"
     },
     {
      "player": "Amirah Abdur-Rahim",
@@ -12670,7 +12712,8 @@
      "blk": 0,
      "pf": 2,
      "pts": 6,
-     "gs": 1
+     "gs": 1,
+     "height": "5-7"
     },
     {
      "player": "Tess Heal",
@@ -12712,7 +12755,8 @@
      "blk": 1,
      "pf": 4,
      "pts": 13,
-     "gs": 1
+     "gs": 1,
+     "height": "6-1"
     },
     {
      "player": "Nastja Claessens",
@@ -12733,7 +12777,8 @@
      "blk": 0,
      "pf": 2,
      "pts": 13,
-     "gs": 1
+     "gs": 1,
+     "height": "6-1"
     },
     {
      "player": "Aniya' Foy",
@@ -12775,7 +12820,8 @@
      "blk": 0,
      "pf": 0,
      "pts": 2,
-     "gs": 1
+     "gs": 1,
+     "height": "5-10"
     },
     {
      "player": "Ramiya White",
@@ -12796,7 +12842,8 @@
      "blk": 0,
      "pf": 4,
      "pts": 2,
-     "gs": 0
+     "gs": 0,
+     "height": "6-4"
     },
     {
      "player": "Jordan Speiser",
@@ -13179,7 +13226,8 @@
      "blk": 1,
      "pf": 5,
      "pts": 7,
-     "gs": 1
+     "gs": 1,
+     "height": "6-2"
     },
     {
      "player": "Jada Malone",
@@ -13592,7 +13640,8 @@
      "blk": 1,
      "pf": 2,
      "pts": 16,
-     "gs": 1
+     "gs": 1,
+     "height": "5-11"
     },
     {
      "player": "Achol Akot",
@@ -14036,7 +14085,8 @@
      "blk": 1,
      "pf": 2,
      "pts": 2,
-     "gs": 0
+     "gs": 0,
+     "height": "6-1"
     },
     {
      "player": "Kayanna Cox",
@@ -14120,7 +14170,8 @@
      "blk": 3,
      "pf": 4,
      "pts": 2,
-     "gs": 1
+     "gs": 1,
+     "height": "6-2"
     },
     {
      "player": "Logan Reed",
@@ -14532,7 +14583,8 @@
      "blk": 0,
      "pf": 3,
      "pts": 6,
-     "gs": 1
+     "gs": 1,
+     "height": "5-11"
     },
     {
      "player": "Erianna Gooden",
@@ -14637,7 +14689,8 @@
      "blk": 4,
      "pf": 3,
      "pts": 10,
-     "gs": 0
+     "gs": 0,
+     "height": "6-4"
     },
     {
      "player": "Sophie Zadel",
@@ -14658,7 +14711,8 @@
      "blk": 0,
      "pf": 0,
      "pts": 0,
-     "gs": 0
+     "gs": 0,
+     "height": "6-4"
     },
     {
      "player": "Maeve McErlane",
@@ -14679,7 +14733,8 @@
      "blk": 0,
      "pf": 2,
      "pts": 5,
-     "gs": 1
+     "gs": 1,
+     "height": "5-10"
     },
     {
      "player": "Jade Masogayo",
@@ -14721,7 +14776,8 @@
      "blk": 0,
      "pf": 1,
      "pts": 2,
-     "gs": 0
+     "gs": 0,
+     "height": "6-4"
     },
     {
      "player": "Ana\u00eblle Dutat",
@@ -14763,7 +14819,8 @@
      "blk": 0,
      "pf": 0,
      "pts": 0,
-     "gs": 0
+     "gs": 0,
+     "height": "6-0"
     }
    ],
    "teamStats": {
@@ -16312,7 +16369,8 @@
      "blk": 1,
      "pf": 2,
      "pts": 23,
-     "gs": 0
+     "gs": 0,
+     "height": "5-9"
     },
     {
      "player": "Arielle Mackey-Williams",
@@ -16375,7 +16433,8 @@
      "blk": 0,
      "pf": 2,
      "pts": 12,
-     "gs": 1
+     "gs": 1,
+     "height": "5-11"
     },
     {
      "player": "Lara Rohkohl",
@@ -16438,7 +16497,8 @@
      "blk": 0,
      "pf": 4,
      "pts": 6,
-     "gs": 0
+     "gs": 0,
+     "height": "6-5"
     },
     {
      "player": "Sydney Benally",
@@ -16459,7 +16519,8 @@
      "blk": 0,
      "pf": 2,
      "pts": 15,
-     "gs": 1
+     "gs": 1,
+     "height": "5-8"
     }
    ],
    "site": "neutral",
