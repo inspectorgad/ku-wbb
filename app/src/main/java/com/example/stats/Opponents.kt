@@ -73,6 +73,8 @@ data class OpponentPlayer(
     val name: String,
     val jerseyNumber: String,
     val position: String,
+    /** From her school's roster page; empty when that roster was unreachable. */
+    val height: String,
     val games: Int,
     val started: Int,
     val totals: BasketballTotals
@@ -111,6 +113,9 @@ fun opponentPlayers(lines: Collection<OpponentStatLine>): List<OpponentPlayer> =
             name = name,
             jerseyNumber = latest.lastOrNull { it.jerseyNumber.isNotBlank() }?.jerseyNumber.orEmpty(),
             position = latest.lastOrNull { it.position.isNotBlank() }?.position.orEmpty(),
+            // Same rule as the two above: a roster scrape that failed on one
+            // game must not blank a height another game supplied.
+            height = latest.lastOrNull { it.height.isNotBlank() }?.height.orEmpty(),
             games = rows.size,
             started = rows.count { it.started },
             totals = aggregateOpponentLines(rows)

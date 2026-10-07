@@ -187,11 +187,57 @@ class MigrationTest {
                VALUES (1, 'Tierra Trotter', '5', 'G', 30, 7, 14, 2, 5, 2, 2,
                        1, 6, 2, 3, 1, 0, 2, 18, 1)"""
         )
-        db.query("SELECT points FROM opponent_stat_lines").use { c ->
+        db.query("SELECT points, height FROM opponent_stat_lines").use { c ->
             c.moveToFirst()
             assertEquals(18, c.getInt(0))
+            // v8's column arrives empty, not null: every row that already
+            // existed has no height, and it is read as "" throughout.
+            assertEquals("", c.getString(1))
         }
         db.query("SELECT height FROM players").use { c -> assertEquals(0, c.count) }
+    }
+
+    @Test
+    fun `a v7 database with opponent lines already in it upgrades to v8`() {
+        // The chain test above inserts its opponent row after migrating, so it
+        // proves the column's default on a fresh insert and nothing about the
+        // rows a phone is already holding. This is that case: a season's worth
+        // of opposing box scores, then the upgrade.
+        val db = openV3()
+        for (m in JayhawksDatabase.migrations()
+            .filter { it.startVersion in 3..6 }.sortedBy { it.startVersion }) {
+            m.migrate(db)
+        }
+        db.execSQL(
+            """INSERT INTO games (id, date, opponent, season) VALUES (1, '2026-01-11', 'Baylor', '2025-26')"""
+        )
+        db.execSQL(
+            """INSERT INTO opponent_stat_lines
+                 (gameId, playerName, jerseyNumber, position, minutes,
+                  fieldGoalsMade, fieldGoalsAttempted, threePointsMade,
+                  threePointsAttempted, freeThrowsMade, freeThrowsAttempted,
+                  offensiveRebounds, rebounds, assists, turnovers, steals,
+                  blocks, fouls, points, started)
+               VALUES (1, 'Bella Fontleroy', '22', 'F', 28, 6, 11, 0, 1, 3, 4,
+                       2, 9, 1, 2, 0, 1, 3, 15, 1)"""
+        )
+
+        JayhawksDatabase.migrations().single { it.startVersion == 7 }.migrate(db)
+
+        db.query("SELECT playerName, points, height FROM opponent_stat_lines").use { c ->
+            c.moveToFirst()
+            // The line survives intact and gains an empty height, not a null
+            // one — Room refuses to open a NOT NULL column holding null.
+            assertEquals("Bella Fontleroy", c.getString(0))
+            assertEquals(15, c.getInt(1))
+            assertEquals("", c.getString(2))
+        }
+        // And the column takes a height once a roster scrape supplies one.
+        db.execSQL("UPDATE opponent_stat_lines SET height = '6-2' WHERE playerName = 'Bella Fontleroy'")
+        db.query("SELECT height FROM opponent_stat_lines").use { c ->
+            c.moveToFirst()
+            assertEquals("6-2", c.getString(0))
+        }
     }
 
     @Test

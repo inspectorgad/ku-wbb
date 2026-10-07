@@ -316,7 +316,10 @@ fun OpponentDetailScreen(
                                     .padding(start = 12.dp)
                             ) {
                                 Text(
-                                    listOf(player.name, player.position)
+                                    // Height comes from that school's own
+                                    // roster page and is often missing; it is
+                                    // dropped rather than shown blank.
+                                    listOf(player.name, player.position, player.height)
                                         .filter { it.isNotBlank() }.joinToString(" · "),
                                     style = MaterialTheme.typography.bodyLarge,
                                     fontWeight = FontWeight.SemiBold

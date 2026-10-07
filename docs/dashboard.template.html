@@ -1559,8 +1559,11 @@ function openGame(n) {
   oppSec.hidden = !(g.opponentLines || []).length;
   if (!oppSec.hidden) {
     document.getElementById("gOppHead").textContent = `${g.opponent} — starters in bold`;
+    // Height comes from that school's own roster page and is often missing,
+    // so it is appended only when known rather than shown as a blank column.
     boxTable(document.getElementById("gOppTbl"), g.opponentLines,
-      l => `${l.number ? l.number + " " : ""}${l.player}`);
+      l => `${l.number ? l.number + " " : ""}${l.player}` +
+        (l.height ? ` <span class="dim">${l.height}</span>` : ""));
   }
 
   markGlossary();

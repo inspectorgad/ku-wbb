@@ -212,6 +212,7 @@ object Seeder {
                         playerName = name,
                         jerseyNumber = l.optString("number"),
                         position = l.optString("position"),
+                        height = l.optString("height"),
                         minutes = l.optInt("min"),
                         fieldGoalsMade = l.optInt("fgm"),
                         fieldGoalsAttempted = l.optInt("fga"),

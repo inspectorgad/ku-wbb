@@ -29,6 +29,9 @@ DEFINITIONS = {
     "ast": "assists", "to": "turnovers", "stl": "steals", "blk": "blocked shots",
     "pf": "personal fouls", "pts": "points",
     "started": "in the starting five for that game",
+    "height": "an opposing player's listed height, from her own school's roster page; null "
+              "where that roster could not be read, which is most of them — a box score "
+              "carries no height for anyone but Kansas",
     "efg_pct": "effective field goal percentage, (fgm + 0.5 * tpm) / fga — a three counts "
                "for the extra half a basket it is worth",
     "ts_pct": "true shooting percentage, pts / (2 * (fga + 0.44 * fta)) — points per scoring "
@@ -190,7 +193,8 @@ def build_pack(seed):
                                     **{c: g[key].get(c, 0) for c in STAT_COLS}})
         for l in g.get("opponentLines", []):
             opp_lines.append({**base, "player": l["player"], "jersey": l.get("number"),
-                              "position": l.get("position"), "started": bool(l.get("gs")),
+                              "position": l.get("position"), "height": l.get("height") or None,
+                              "started": bool(l.get("gs")),
                               "min": l.get("min", 0), **{c: l.get(c, 0) for c in STAT_COLS}})
 
     polls = seed.get("polls") or []

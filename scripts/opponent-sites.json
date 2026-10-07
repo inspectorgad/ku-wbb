@@ -1,0 +1,38 @@
+{
+ "_comment": [
+  "Roster page per school, keyed by the same normalized team name",
+  "update-seed.py's norm_team() produces: lower-cased, dots removed,",
+  "'state' shortened to 'st'. There is no pattern to athletics domains",
+  "(kuathletics.com, goshockers.com, hailstate.com), so this map is written",
+  "by hand and confirmed by the scrape log rather than guessed at runtime.",
+  "",
+  "A team missing from this map is skipped, never an error. The scrape is a",
+  "bonus pass for opposing players' heights; nothing downstream requires it.",
+  "",
+  "Every entry starts in 'unverified' and moves up once a run logs it",
+  "parsing. These domains came from the volleyball app's own verified map,",
+  "where they were confirmed for /sports/womens-volleyball/roster \u2014 the",
+  "domain is the hard-won part \u2014 but the basketball path is an assumption",
+  "until a run proves it. Nothing here has been fetched: this session's",
+  "egress proxy refuses athletics sites, so CI is the first real test."
+ ],
+ "verified": {},
+ "unverified": {
+  "arizona": "https://arizonawildcats.com/sports/womens-basketball/roster",
+  "arizona st": "https://thesundevils.com/sports/womens-basketball/roster",
+  "baylor": "https://baylorbears.com/sports/womens-basketball/roster",
+  "byu": "https://byucougars.com/sports/womens-basketball/roster",
+  "cincinnati": "https://gobearcats.com/sports/womens-basketball/roster",
+  "colorado": "https://cubuffs.com/sports/womens-basketball/roster",
+  "houston": "https://uhcougars.com/sports/womens-basketball/roster",
+  "iowa st": "https://cyclones.com/sports/womens-basketball/roster",
+  "kansas st": "https://kstatesports.com/sports/womens-basketball/roster",
+  "oklahoma st": "https://okstate.com/sports/womens-basketball/roster",
+  "south dakota st": "https://gojacks.com/sports/womens-basketball/roster",
+  "tcu": "https://gofrogs.com/sports/womens-basketball/roster",
+  "texas tech": "https://texastech.com/sports/womens-basketball/roster",
+  "ucf": "https://ucfknights.com/sports/womens-basketball/roster",
+  "utah": "https://utahutes.com/sports/womens-basketball/roster",
+  "west virginia": "https://wvusports.com/sports/womens-basketball/roster"
+ }
+}

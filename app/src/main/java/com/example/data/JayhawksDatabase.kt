@@ -11,7 +11,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase
     entities = [Player::class, Game::class, StatLine::class,
         ConferenceStanding::class, PollEntry::class, GameTeamStats::class,
         OpponentStatLine::class],
-    version = 7,
+    version = 8,
     exportSchema = false
 )
 abstract class JayhawksDatabase : RoomDatabase() {
@@ -136,9 +136,21 @@ abstract class JayhawksDatabase : RoomDatabase() {
         }
 
         /** Every migration, in order. Exposed so tests exercise the real set. */
+        // v7 -> v8: an opposing player's height, which the box score has no
+        // field for. NOT NULL with a default, because every row that already
+        // exists has no height and the column is read as "" rather than null
+        // throughout.
+        private val MIGRATION_7_8 = object : Migration(7, 8) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
+                    "ALTER TABLE opponent_stat_lines ADD COLUMN height TEXT NOT NULL DEFAULT ''"
+                )
+            }
+        }
+
         fun migrations(): Array<Migration> =
             arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5,
-                MIGRATION_5_6, MIGRATION_6_7)
+                MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8)
 
         fun get(context: Context): JayhawksDatabase =
             instance ?: synchronized(this) {

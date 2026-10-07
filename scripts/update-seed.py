@@ -13,6 +13,7 @@ import glob
 import json
 import os
 import re
+import unicodedata
 from datetime import datetime, timezone
 
 TEAM_SEO = "kansas"
@@ -66,6 +67,20 @@ def to_minutes(value):
 def season_label(start_year):
     """2025 -> "2025-26"."""
     return f"{start_year}-{str(start_year + 1)[-2:]}"
+
+
+def norm_name(name):
+    """Canonical key for matching one player across two sources.
+
+    A roster page and a box score rarely agree on punctuation or case —
+    "Anaëlle Dutat" against "ANAELLE DUTAT", "D'Shara Booker" against
+    "DShara Booker" — so accents are folded, everything but letters dropped,
+    and the result lower-cased. Deliberately not fuzzy beyond that: a near
+    match would attach one player's height to another.
+    """
+    folded = unicodedata.normalize("NFKD", name or "")
+    folded = "".join(c for c in folded if not unicodedata.combining(c))
+    return re.sub(r"[^a-z]", "", folded.lower())
 
 
 def norm_team(name):
@@ -265,6 +280,37 @@ for path in sorted(glob.glob("scraped/ncaa-game-*.json")):
             })
 
     games[game_key(game["date"], game["opponent"])] = game
+
+# --- Opposing players' heights ----------------------------------------------
+# The NCAA box score gives an opponent a name, a number and a position and
+# nothing else, so height comes from each school's own roster page
+# (scripts/opponent-sites.json -> scraped/opponent-rosters.json).
+#
+# Matched on the normalized name, and on nothing else. The jersey number looks
+# like a better key and is not: a roster number is this season's, while a box
+# score from an earlier season carries the number she wore then, so matching on
+# it silently files last year's lines under whoever inherited the shirt.
+opponent_rosters = load_json("scraped/opponent-rosters.json", {})
+heights = {}
+for team_key, stored in opponent_rosters.items():
+    for entry in stored.get("players", []):
+        if entry.get("height"):
+            heights[(team_key, norm_name(entry.get("name", "")))] = entry["height"]
+
+matched = unmatched = 0
+for game in games.values():
+    team_key = norm_team(game["opponent"])
+    for line in game.get("opponentLines", []):
+        height = heights.get((team_key, norm_name(line["player"])))
+        if height:
+            line["height"] = height
+            matched += 1
+        else:
+            unmatched += 1
+
+if heights:
+    print(f"opponent heights: {matched} box-score lines matched, {unmatched} without "
+          f"(from {len(opponent_rosters)} rosters, {len(heights)} players)")
 
 # --- Current roster (preferred source for number/position) ------------------
 roster_names = set()

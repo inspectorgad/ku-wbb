@@ -37,6 +37,8 @@ on:
       - 'scripts/scrape-ku-wbb.mjs'
       - 'scripts/schedule-parser.mjs'
       - 'scripts/roster-parser.mjs'
+      - 'scripts/opponent-roster-parser.mjs'
+      - 'scripts/opponent-sites.json'
       - 'scripts/game-night-watch.mjs'
       - 'scripts/ics_feed.py'
       - 'scripts/update-seed.py'

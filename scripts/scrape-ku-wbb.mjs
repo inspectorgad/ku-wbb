@@ -18,6 +18,8 @@ import { chromium } from 'playwright';
 import fs from 'fs';
 import { parseSchedule, siteOf } from './schedule-parser.mjs';
 import { parseRoster } from './roster-parser.mjs';
+import { parseRoster as parseOpponentRoster, playersFromJson }
+  from './opponent-roster-parser.mjs';
 
 const API = 'https://ncaa-api.henrygd.me';
 // Season start years: "2025" means the 2025-26 season.
@@ -263,6 +265,77 @@ try {
   );
   if (fixtures.length < 10) {
     console.log('  WARNING: far fewer fixtures than a full season — did the page layout change?');
+  }
+
+  // Opposing players' heights, from each school's own roster page. The NCAA box
+  // scores give an opponent a name, a number and a position and nothing else,
+  // so this is the only source. Everything here is best-effort: a team with no
+  // URL mapped, a page that will not load, or a page that parses to too few
+  // players is skipped and logged, never an error. Nothing downstream requires
+  // a roster, and a partial one is worse than none — a missing height reads as
+  // "not known", a wrong one reads as fact.
+  try {
+    const sites = JSON.parse(fs.readFileSync('scripts/opponent-sites.json', 'utf8'));
+    const siteMap = { ...sites.verified, ...sites.unverified };
+    const ROSTERS = 'scraped/opponent-rosters.json';
+    const previous = fs.existsSync(ROSTERS)
+      ? JSON.parse(fs.readFileSync(ROSTERS, 'utf8'))
+      : {};
+    // Rosters change about twice a year. Refetching every four hours would be
+    // thousands of requests to other people's servers for a page that has not
+    // moved, so a stored roster is left alone for a week.
+    const weekAgo = new Date(Date.now() - 7 * 86_400_000).toISOString();
+    const rosters = { ...previous };
+    let fetched = 0;
+    const failed = [];
+    for (const [key, url] of Object.entries(siteMap).sort()) {
+      if (previous[key]?.fetchedAt > weekAgo && previous[key]?.players?.length) continue;
+      const page = await context.newPage();
+      // Some rosters arrive as JSON after the shell renders, with no text to
+      // read, so whatever the page fetches is kept as a fallback.
+      const payloads = [];
+      page.on('response', async (r) => {
+        if (!/json/i.test(r.headers()['content-type'] || '')) return;
+        try { payloads.push(await r.json()); } catch { /* not ours to parse */ }
+      });
+      try {
+        await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 45_000 });
+        await page.waitForTimeout(5_000);
+        for (let i = 0; i < 8; i++) {
+          await page.evaluate(() => window.scrollBy(0, 1500));
+          await page.waitForTimeout(400);
+        }
+        const text = await page.evaluate(() => (document.body ? document.body.innerText : ''));
+        let players = parseOpponentRoster(text);
+        if (players.length < 8) {
+          const fromJson = playersFromJson(payloads);
+          if (fromJson.length > players.length) players = fromJson;
+        }
+        // A women's basketball roster runs 12-18. Below this we have matched
+        // page furniture rather than the roster, and the page is kept so the
+        // shape can be read off it rather than guessed at.
+        const MIN_ROSTER = 8;
+        if (players.length < MIN_ROSTER) {
+          fs.writeFileSync(`scraped/roster-miss-${key.replace(/[^a-z0-9]+/g, '-')}.txt`, text);
+          failed.push(`${key} (parsed ${players.length}, below the ${MIN_ROSTER} floor; page saved)`);
+        } else {
+          rosters[key] = { url, fetchedAt: new Date().toISOString(), players };
+          fetched++;
+          fs.rmSync(`scraped/roster-miss-${key.replace(/[^a-z0-9]+/g, '-')}.txt`, { force: true });
+          console.log(`  roster ${key}: ${players.length} players ` +
+            `(${players.filter((p) => p.height).length} with a height)`);
+        }
+      } catch (e) {
+        failed.push(`${key} (${e.message.split('\n')[0]})`);
+      }
+      await page.close();
+    }
+    fs.writeFileSync(ROSTERS, JSON.stringify(rosters, null, 1));
+    console.log(`opponent rosters: ${Object.keys(rosters).length} teams stored, ` +
+      `${fetched} refreshed this run, ${Object.keys(siteMap).length} mapped`);
+    if (failed.length) console.log(`  did not parse: ${failed.join('; ')}`);
+  } catch (e) {
+    console.log(`opponent roster scrape failed (non-fatal): ${e.message}`);
   }
 
   await browser.close();

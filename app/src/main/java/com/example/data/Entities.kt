@@ -148,6 +148,10 @@ data class OpponentStatLine(
     val playerName: String,
     val jerseyNumber: String = "",
     val position: String = "",
+    // From the opposing school's own roster page, matched on the name. A box
+    // score has no field for it, so this is empty whenever that team's roster
+    // was not reachable — which the UI reads as "not known" and says nothing.
+    val height: String = "",
     val minutes: Int = 0,
     val fieldGoalsMade: Int = 0,
     val fieldGoalsAttempted: Int = 0,
