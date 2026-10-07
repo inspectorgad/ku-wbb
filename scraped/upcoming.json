@@ -72,8 +72,8 @@
   "home": false,
   "venue": "The Barn",
   "city": "Minneapolis, MN",
-  "time": null,
-  "tv": null,
+  "time": "19:00",
+  "tv": "Peacock",
   "event": null
  },
  {
