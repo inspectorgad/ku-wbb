@@ -268,6 +268,10 @@
   .pcard.former .jersey { background: var(--surface2); color: var(--muted); }
   .pcard .nm { font-weight: 700; line-height: 1.2; }
   .pcard .pos { font-size: 12px; color: var(--muted); }
+  /* "Bonner Springs HS / Ole Miss / Xavier" is wider than a card, so it is
+     clipped on one line rather than allowed to set the card's height. */
+  .pcard .school { font-size: 11px; color: var(--muted); display: block;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .pcard .mini { display: flex; gap: 14px; margin-top: 10px; font-variant-numeric: tabular-nums; }
   .pcard .mini div { font-size: 15px; font-weight: 800; }
   .pcard .mini span { display: block; font-size: 10px; font-weight: 700; color: var(--muted); letter-spacing: .08em; }
@@ -957,7 +961,15 @@ function roster() {
     <button class="pcard${former ? " former" : ""}" data-p="${p.name.replace(/"/g, "&quot;")}">
       <div class="top">
         <span class="jersey">${p.jerseyNumber || "–"}</span>
-        <span><span class="nm">${p.name}</span><br><span class="pos">${p.position || ""} · ${p.t.g} games</span></span>
+        <span><span class="nm">${p.name}</span><br><span class="pos">${
+          // Each part dropped rather than shown blank: a former player who
+          // predates the bio scrape has no class, hometown or school.
+          [p.position, p.academicYear, `${p.t.g} games`].filter(Boolean).join(" · ")
+        }</span>${p.hometown ? `<br><span class="pos">${p.hometown}</span>` : ""}${
+          // The schools before this one, most recent last. It runs long, so it
+          // gets its own line and is clipped rather than wrapped.
+          p.lastSchool ? `<br><span class="school">${p.lastSchool}</span>` : ""
+        }</span>
       </div>
       <div class="mini">
         <div>${f1(p.t.pts / p.t.g)}<span>PPG</span></div>
@@ -977,7 +989,11 @@ function roster() {
       <div class="pcard" style="cursor:default">
         <div class="top">
           <span class="jersey">${p.jerseyNumber || "–"}</span>
-          <span><span class="nm">${p.name}</span><br><span class="pos">${p.position || ""}</span></span>
+          <span><span class="nm">${p.name}</span><br><span class="pos">${
+            [p.position, p.academicYear].filter(Boolean).join(" · ")
+          }</span>${p.hometown ? `<br><span class="pos">${p.hometown}</span>` : ""}${
+            p.lastSchool ? `<br><span class="school">${p.lastSchool}</span>` : ""
+          }</span>
         </div>
       </div>`).join("");
   }

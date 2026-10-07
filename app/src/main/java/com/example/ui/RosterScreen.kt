@@ -42,6 +42,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.data.Game
@@ -159,11 +160,29 @@ private fun PlayerCard(
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.SemiBold
                 )
-                if (player.position.isNotBlank()) {
+                // Position, class and where she is from, on one line — each
+                // dropped rather than shown blank, since a former player who
+                // predates the bio scrape has none of it.
+                listOf(player.position, player.academicYear, player.hometown)
+                    .filter { !it.isNullOrBlank() }
+                    .takeIf { it.isNotEmpty() }
+                    ?.let { parts ->
+                        Text(
+                            parts.joinToString(" · "),
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                // The schools before this one, most recent last. It runs long
+                // — "Bonner Springs HS / Ole Miss / Xavier" — so it gets its
+                // own line and is allowed to end in an ellipsis.
+                player.lastSchool?.takeIf { it.isNotBlank() }?.let {
                     Text(
-                        player.position,
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                        it,
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
                     )
                 }
             }
