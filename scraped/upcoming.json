@@ -7,7 +7,7 @@
   "venue": "Allen Fieldhouse",
   "city": "Lawrence, KS",
   "time": "18:30",
-  "tv": null,
+  "tv": "ESPN+",
   "event": null
  },
  {
@@ -18,7 +18,7 @@
   "venue": "Allen Fieldhouse",
   "city": "Lawrence, KS",
   "time": "18:30",
-  "tv": null,
+  "tv": "ESPN+",
   "event": "Late Night in the Phog"
  },
  {
@@ -29,7 +29,7 @@
   "venue": "Allen Fieldhouse",
   "city": "Lawrence, KS",
   "time": "18:30",
-  "tv": null,
+  "tv": "ESPN+",
   "event": null
  },
  {
@@ -40,7 +40,7 @@
   "venue": "Allen Fieldhouse",
   "city": "Lawrence, KS",
   "time": "11:00",
-  "tv": null,
+  "tv": "ESPN+",
   "event": null
  },
  {
@@ -51,7 +51,7 @@
   "venue": "Allen Fieldhouse",
   "city": "Lawrence, KS",
   "time": "18:30",
-  "tv": null,
+  "tv": "ESPN+",
   "event": null
  },
  {
@@ -84,7 +84,7 @@
   "venue": "T-Mobile Center",
   "city": "Kansas City, MO",
   "time": "13:30",
-  "tv": null,
+  "tv": "ESPN+",
   "event": "28.5 Hoops Invitational"
  },
  {
@@ -95,7 +95,7 @@
   "venue": "Hard Rock Hotel Rivera Maya",
   "city": "Cancun, Mexico",
   "time": "15:00",
-  "tv": null,
+  "tv": "FloSports",
   "event": "Cancun Challenge"
  },
  {
@@ -106,7 +106,7 @@
   "venue": "Hard Rock Hotel Rivera Maya",
   "city": "Cancun, Mexico",
   "time": "17:30",
-  "tv": null,
+  "tv": "FloSports",
   "event": null
  },
  {
@@ -117,7 +117,7 @@
   "venue": "Allen Fieldhouse",
   "city": "Lawrence, KS",
   "time": "18:30",
-  "tv": null,
+  "tv": "ESPN+",
   "event": null
  },
  {
@@ -127,8 +127,8 @@
   "home": true,
   "venue": "Allen Fieldhouse",
   "city": "Lawrence, KS",
-  "time": null,
-  "tv": null,
+  "time": "12:00",
+  "tv": "ESPN+",
   "event": null
  },
  {
@@ -139,7 +139,7 @@
   "venue": "Allen Fieldhouse",
   "city": "Lawrence, KS",
   "time": "18:30",
-  "tv": null,
+  "tv": "ESPN+",
   "event": null
  },
  {
@@ -150,7 +150,7 @@
   "venue": "Allen Fieldhouse",
   "city": "Lawrence, KS",
   "time": "14:00",
-  "tv": null,
+  "tv": "ESPN+",
   "event": null
  },
  {
@@ -161,7 +161,7 @@
   "venue": "Allen Fieldhouse",
   "city": "Lawrence, KS",
   "time": "18:30",
-  "tv": null,
+  "tv": "ESPN+",
   "event": null
  },
  {
