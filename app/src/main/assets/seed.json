@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-10-09T16:31:48Z",
+ "generatedAt": "2026-10-13T17:07:24Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -16717,6 +16717,8 @@
    "season": "2026-27",
    "venue": "Allen Fieldhouse",
    "city": "Lawrence, KS",
+   "tv": "ESPN+",
+   "time": "14:00",
    "site": "home",
    "home": true,
    "conference": false
@@ -16727,6 +16729,8 @@
    "season": "2026-27",
    "venue": "WVU Coliseum",
    "city": "Morgantown, WV",
+   "tv": "ESPN+",
+   "time": "18:00",
    "site": "away",
    "home": false,
    "conference": false
@@ -16737,6 +16741,8 @@
    "season": "2026-27",
    "venue": "Fifth Third Arena",
    "city": "Cincinnati, OH",
+   "tv": "ESPN+",
+   "time": "17:30",
    "site": "away",
    "home": false,
    "conference": false
@@ -16747,6 +16753,8 @@
    "season": "2026-27",
    "venue": "Allen Fieldhouse",
    "city": "Lawrence, KS",
+   "tv": "ESPN+",
+   "time": "18:30",
    "site": "home",
    "home": true,
    "conference": false
@@ -16757,6 +16765,8 @@
    "season": "2026-27",
    "venue": "Allen Fieldhouse",
    "city": "Lawrence, KS",
+   "tv": "CBS Sports Network",
+   "time": "19:30",
    "site": "home",
    "home": true,
    "conference": false
@@ -16767,6 +16777,8 @@
    "season": "2026-27",
    "venue": "Gallagher-Iba Arena",
    "city": "Stillwater, OK",
+   "tv": "ESPN+",
+   "time": "18:30",
    "site": "away",
    "home": false,
    "conference": false
@@ -16777,6 +16789,8 @@
    "season": "2026-27",
    "venue": "Jon M. Huntsman Center",
    "city": "Salt Lake City, UT",
+   "tv": "ESPN+",
+   "time": "18:00",
    "site": "away",
    "home": false,
    "conference": false
@@ -16787,6 +16801,8 @@
    "season": "2026-27",
    "venue": "Allen Fieldhouse",
    "city": "Lawrence, KS",
+   "tv": "ESPN+",
+   "time": "18:30",
    "site": "home",
    "home": true,
    "conference": false
@@ -16797,6 +16813,8 @@
    "season": "2026-27",
    "venue": "CU Events Center",
    "city": "Boulder, CO",
+   "tv": "ESPN+",
+   "time": "14:00",
    "site": "away",
    "home": false,
    "conference": false
@@ -16807,6 +16825,8 @@
    "season": "2026-27",
    "venue": "Allen Fieldhouse",
    "city": "Lawrence, KS",
+   "tv": "ESPN+",
+   "time": "18:30",
    "site": "home",
    "home": true,
    "conference": false
@@ -16817,6 +16837,8 @@
    "season": "2026-27",
    "venue": "Allen Fieldhouse",
    "city": "Lawrence, KS",
+   "tv": "ESPN+",
+   "time": "14:00",
    "site": "home",
    "home": true,
    "conference": false
@@ -16827,6 +16849,7 @@
    "season": "2026-27",
    "venue": "Marriott Center",
    "city": "Provo, UT",
+   "tv": "ESPN+",
    "site": "away",
    "home": false,
    "conference": false
@@ -16837,6 +16860,8 @@
    "season": "2026-27",
    "venue": "Allen Fieldhouse",
    "city": "Lawrence, KS",
+   "tv": "CBS Sports Network",
+   "time": "20:00",
    "site": "home",
    "home": true,
    "conference": false
@@ -16847,6 +16872,7 @@
    "season": "2026-27",
    "venue": "Fertitta Center",
    "city": "Houston, TX",
+   "tv": "ESPN+",
    "site": "away",
    "home": false,
    "conference": false
@@ -16857,6 +16883,8 @@
    "season": "2026-27",
    "venue": "Allen Fieldhouse",
    "city": "Lawrence, KS",
+   "tv": "ESPN+",
+   "time": "18:30",
    "site": "home",
    "home": true,
    "conference": false
@@ -16867,6 +16895,8 @@
    "season": "2026-27",
    "venue": "Bramlage Coliseum",
    "city": "Manhattan, KS",
+   "tv": "CBS Sports Network",
+   "time": "17:00",
    "site": "away",
    "home": false,
    "conference": false
@@ -16877,6 +16907,8 @@
    "season": "2026-27",
    "venue": "Hilton Coliseum",
    "city": "Ames, IA",
+   "tv": "ESPN+",
+   "time": "18:30",
    "site": "away",
    "home": false,
    "conference": false
@@ -16887,6 +16919,8 @@
    "season": "2026-27",
    "venue": "Allen Fieldhouse",
    "city": "Lawrence, KS",
+   "tv": "ESPN+",
+   "time": "14:00",
    "site": "home",
    "home": true,
    "conference": false
