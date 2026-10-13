@@ -2,6 +2,7 @@
 Skip to main content
 Pause All Rotators
 University of Kansas Athletics
+Skip Ad
 Skip Scoreboard
 Scoreboard
 Coming Up
@@ -97,11 +98,11 @@ Lawrence, Kan.
 
 9
 Days
-3
+1
 Hours
 32
 Minutes
-8
+26
 Seconds
 Add To Calendar
 Text Only
@@ -600,8 +601,8 @@ Manhattan, Kan.
 
 TV: CBS Sports Network
 
-Feb 20
-(Sat)
+Feb 21
+(Sun)
 
 5 p.m. CT
 
