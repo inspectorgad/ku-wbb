@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-10-13T17:07:24Z",
+ "generatedAt": "2026-10-13T21:57:34Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -16890,7 +16890,7 @@
    "conference": false
   },
   {
-   "date": "2027-02-20",
+   "date": "2027-02-21",
    "opponent": "Kansas State",
    "season": "2026-27",
    "venue": "Bramlage Coliseum",
