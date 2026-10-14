@@ -1,7 +1,7 @@
 {
  "arizona st": {
   "url": "https://thesundevils.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-07T00:49:20.656Z",
+  "fetchedAt": "2026-10-14T06:40:00.858Z",
   "players": [
    {
     "name": "Madison Morson",
@@ -85,7 +85,7 @@
  },
  "arizona": {
   "url": "https://arizonawildcats.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-07T00:49:30.228Z",
+  "fetchedAt": "2026-10-14T06:40:10.575Z",
   "players": [
    {
     "name": "Arynn Finley",
@@ -157,7 +157,7 @@
  },
  "baylor": {
   "url": "https://baylorbears.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-07T00:49:39.610Z",
+  "fetchedAt": "2026-10-14T06:40:20.149Z",
   "players": [
    {
     "name": "Taliah Scott",
@@ -235,7 +235,7 @@
  },
  "byu": {
   "url": "https://byucougars.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-07T00:49:49.356Z",
+  "fetchedAt": "2026-10-14T06:40:29.995Z",
   "players": [
    {
     "name": "Sydney Benally",
@@ -289,7 +289,7 @@
  },
  "cincinnati": {
   "url": "https://gobearcats.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-07T00:49:58.371Z",
+  "fetchedAt": "2026-10-14T06:40:39.194Z",
   "players": [
    {
     "name": "Yar Tong",
@@ -379,7 +379,7 @@
  },
  "colorado": {
   "url": "https://cubuffs.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-07T00:50:07.896Z",
+  "fetchedAt": "2026-10-14T06:40:48.688Z",
   "players": [
    {
     "name": "Brooke Walker",
@@ -469,7 +469,7 @@
  },
  "houston": {
   "url": "https://uhcougars.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-07T00:50:17.704Z",
+  "fetchedAt": "2026-10-14T06:40:58.233Z",
   "players": [
    {
     "name": "Esmeralda Enriquez",
@@ -553,7 +553,7 @@
  },
  "iowa st": {
   "url": "https://cyclones.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-07T00:50:27.229Z",
+  "fetchedAt": "2026-10-14T06:41:07.696Z",
   "players": [
    {
     "name": "Sienna Harvey",
@@ -715,7 +715,7 @@
  },
  "oklahoma st": {
   "url": "https://okstate.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-07T00:50:46.868Z",
+  "fetchedAt": "2026-10-14T06:41:27.700Z",
   "players": [
    {
     "name": "LA Sneed",
@@ -793,7 +793,7 @@
  },
  "south dakota st": {
   "url": "https://gojacks.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-07T00:50:56.570Z",
+  "fetchedAt": "2026-10-14T06:41:36.772Z",
   "players": [
    {
     "name": "Audrey Shindelar",
@@ -871,7 +871,7 @@
  },
  "tcu": {
   "url": "https://gofrogs.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-07T00:51:06.014Z",
+  "fetchedAt": "2026-10-14T06:41:46.417Z",
   "players": [
    {
     "name": "Camille Williams",
@@ -949,7 +949,7 @@
  },
  "texas tech": {
   "url": "https://texastech.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-07T00:51:15.794Z",
+  "fetchedAt": "2026-10-14T06:41:55.537Z",
   "players": [
    {
     "name": "Jalynn Bristow",
@@ -980,6 +980,12 @@
     "jerseyNumber": "7",
     "position": "G",
     "height": "5-9"
+   },
+   {
+    "name": "Martina Anyango",
+    "jerseyNumber": "8",
+    "position": "F",
+    "height": "6-4"
    },
    {
     "name": "Jalayah Ingram",
@@ -1021,91 +1027,91 @@
  },
  "ucf": {
   "url": "https://ucfknights.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-07T00:51:24.677Z",
+  "fetchedAt": "2026-10-14T06:42:04.568Z",
   "players": [
    {
     "name": "Key Roseby",
     "jerseyNumber": "0",
-    "position": "Guard",
+    "position": "G",
     "height": "6-0"
    },
    {
     "name": "Salomé Boyomo Keedi",
     "jerseyNumber": "1",
-    "position": "Forward",
+    "position": "F",
     "height": "6-2"
    },
    {
     "name": "Kya Hurt",
     "jerseyNumber": "2",
-    "position": "Guard",
+    "position": "G",
     "height": "5-8"
    },
    {
     "name": "Candace Kpetikou",
     "jerseyNumber": "3",
-    "position": "Center",
+    "position": "C",
     "height": "6-3"
    },
    {
     "name": "Caitlyn Jones",
     "jerseyNumber": "5",
-    "position": "Guard",
+    "position": "G",
     "height": "5-8"
    },
    {
     "name": "Felicia Schölander",
     "jerseyNumber": "7",
-    "position": "Guard",
+    "position": "G",
     "height": "5-9"
    },
    {
     "name": "Nyla McFadden",
     "jerseyNumber": "8",
-    "position": "Guard",
+    "position": "G",
     "height": "6-0"
    },
    {
     "name": "Vittoria Blasigh",
     "jerseyNumber": "10",
-    "position": "Guard",
+    "position": "G",
     "height": "5-9"
    },
    {
     "name": "Jabria Lindsey",
     "jerseyNumber": "12",
-    "position": "Guard",
+    "position": "G",
     "height": "5-9"
    },
    {
     "name": "Mikayla Johnson",
     "jerseyNumber": "23",
-    "position": "Guard",
+    "position": "G",
     "height": "6-1"
    },
    {
     "name": "Jasmynne Gibson",
     "jerseyNumber": "24",
-    "position": "Forward",
+    "position": "F",
     "height": "6-1"
    },
    {
     "name": "Mahogany Chandler-Roberts",
     "jerseyNumber": "33",
-    "position": "Forward",
+    "position": "F",
     "height": "6-2"
    },
    {
     "name": "Maria Cintas",
     "jerseyNumber": "55",
-    "position": "Guard",
+    "position": "G",
     "height": "5-4"
    }
   ]
  },
  "utah": {
   "url": "https://utahutes.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-07T00:51:33.995Z",
+  "fetchedAt": "2026-10-14T06:42:13.923Z",
   "players": [
    {
     "name": "Lena Girardi",
@@ -1189,7 +1195,7 @@
  },
  "west virginia": {
   "url": "https://wvusports.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-07T00:51:43.467Z",
+  "fetchedAt": "2026-10-14T06:42:23.591Z",
   "players": [
    {
     "name": "Nylah Wilson",
