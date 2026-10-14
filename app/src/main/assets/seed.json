@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-10-13T21:57:34Z",
+ "generatedAt": "2026-10-14T20:56:07Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -16850,6 +16850,7 @@
    "venue": "Marriott Center",
    "city": "Provo, UT",
    "tv": "ESPN+",
+   "time": "15:00",
    "site": "away",
    "home": false,
    "conference": false
