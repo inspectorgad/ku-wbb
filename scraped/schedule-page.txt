@@ -119,11 +119,11 @@ Lawrence, Kan.
 
 3
 Days
-4
-Hours
 1
+Hours
+46
 Minutes
-15
+14
 Seconds
 Add To Calendar
 Text Only
@@ -739,6 +739,7 @@ Mar 3
 Mar 8
 (Mon)
 
+Listen
 History
 Related Videos
 All Videos
