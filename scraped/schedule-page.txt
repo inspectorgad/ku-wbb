@@ -94,7 +94,7 @@ Toggle Navigation
 , Opens in new window
 , Opens in new window
 Women's Basketball
-Schedule
+Schedule 
 Roster
 Stats 
 News
@@ -117,13 +117,13 @@ Lawrence, Kan.
 
 6:30 p.m. CT
 
-3
+2
 Days
-1
+22
 Hours
-46
+51
 Minutes
-14
+6
 Seconds
 Add To Calendar
 Text Only
@@ -656,6 +656,8 @@ TV: ESPN+
 
 Feb 13
 (Sat)
+
+7:30 p.m. CT
 
 Listen
 Live Stats
