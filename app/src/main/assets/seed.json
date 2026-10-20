@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-10-14T20:56:07Z",
+ "generatedAt": "2026-10-20T00:38:54Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -16874,6 +16874,7 @@
    "venue": "Fertitta Center",
    "city": "Houston, TX",
    "tv": "ESPN+",
+   "time": "19:30",
    "site": "away",
    "home": false,
    "conference": false
