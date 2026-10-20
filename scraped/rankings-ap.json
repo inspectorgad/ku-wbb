@@ -1,184 +1,134 @@
 {
  "sport": "Women's Basketball",
  "title": "DI Women's Basketball: Associated Press",
- "updated": "Through Games APR. 5, 2026",
+ "updated": "Through Games OCT. 20, 2026",
  "page": 1,
  "pages": 1,
  "data": [
   {
    "RANK": "1",
-   "SCHOOL (1ST VOTES)": "UCLA (31)",
-   "RECORD": "37-1",
-   "POINTS": "775",
-   "PREVIOUS": "2"
+   "SCHOOL (1ST VOTES)": "South Carolina (23)",
+   "POINTS": "764"
   },
   {
    "RANK": "2",
-   "SCHOOL (1ST VOTES)": "South Carolina",
-   "RECORD": "36-4",
-   "POINTS": "739",
-   "PREVIOUS": "4"
+   "SCHOOL (1ST VOTES)": "UConn (6)",
+   "POINTS": "746"
   },
   {
    "RANK": "3",
-   "SCHOOL (1ST VOTES)": "UConn",
-   "RECORD": "38-1",
-   "POINTS": "704",
-   "PREVIOUS": "1"
+   "SCHOOL (1ST VOTES)": "Southern Cal (2)",
+   "POINTS": "668"
   },
   {
    "RANK": "4",
-   "SCHOOL (1ST VOTES)": "Texas",
-   "RECORD": "35-4",
-   "POINTS": "696",
-   "PREVIOUS": "3"
+   "SCHOOL (1ST VOTES)": "Duke",
+   "POINTS": "647"
   },
   {
    "RANK": "5",
-   "SCHOOL (1ST VOTES)": "Duke",
-   "RECORD": "27-9",
-   "POINTS": "641",
-   "PREVIOUS": "8"
+   "SCHOOL (1ST VOTES)": "Michigan",
+   "POINTS": "644"
   },
   {
    "RANK": "6",
-   "SCHOOL (1ST VOTES)": "TCU",
-   "RECORD": "32-6",
-   "POINTS": "582",
-   "PREVIOUS": "14"
+   "SCHOOL (1ST VOTES)": "Texas",
+   "POINTS": "618"
   },
   {
    "RANK": "7",
-   "SCHOOL (1ST VOTES)": "Michigan",
-   "RECORD": "28-7",
-   "POINTS": "578",
-   "PREVIOUS": "9"
+   "SCHOOL (1ST VOTES)": "Louisville",
+   "POINTS": "557"
   },
   {
    "RANK": "8",
-   "SCHOOL (1ST VOTES)": "LSU",
-   "RECORD": "29-6",
-   "POINTS": "540",
-   "PREVIOUS": "5"
+   "SCHOOL (1ST VOTES)": "Vanderbilt",
+   "POINTS": "536"
   },
   {
    "RANK": "9",
-   "SCHOOL (1ST VOTES)": "Notre Dame",
-   "RECORD": "25-11",
-   "POINTS": "524",
-   "PREVIOUS": "22"
+   "SCHOOL (1ST VOTES)": "LSU",
+   "POINTS": "512"
   },
   {
    "RANK": "10",
-   "SCHOOL (1ST VOTES)": "Vanderbilt",
-   "RECORD": "29-5",
-   "POINTS": "518",
-   "PREVIOUS": "6"
+   "SCHOOL (1ST VOTES)": "Iowa",
+   "POINTS": "492"
   },
   {
    "RANK": "11",
-   "SCHOOL (1ST VOTES)": "Louisville",
-   "RECORD": "29-8",
-   "POINTS": "438",
-   "PREVIOUS": "13"
+   "SCHOOL (1ST VOTES)": "UCLA",
+   "POINTS": "442"
   },
   {
    "RANK": "12",
-   "SCHOOL (1ST VOTES)": "Oklahoma",
-   "RECORD": "26-8",
-   "POINTS": "425",
-   "PREVIOUS": "10"
+   "SCHOOL (1ST VOTES)": "North Carolina",
+   "POINTS": "396"
   },
   {
    "RANK": "13",
-   "SCHOOL (1ST VOTES)": "North Carolina",
-   "RECORD": "28-8",
-   "POINTS": "382",
-   "PREVIOUS": "15"
+   "SCHOOL (1ST VOTES)": "Notre Dame",
+   "POINTS": "368"
   },
   {
    "RANK": "14",
    "SCHOOL (1ST VOTES)": "Kentucky",
-   "RECORD": "25-11",
-   "POINTS": "360",
-   "PREVIOUS": "16"
+   "POINTS": "325"
   },
   {
    "RANK": "15",
-   "SCHOOL (1ST VOTES)": "Minnesota",
-   "RECORD": "24-9",
-   "POINTS": "346",
-   "PREVIOUS": "18"
+   "SCHOOL (1ST VOTES)": "TCU",
+   "POINTS": "301"
   },
   {
    "RANK": "16",
-   "SCHOOL (1ST VOTES)": "Iowa",
-   "RECORD": "27-7",
-   "POINTS": "279",
-   "PREVIOUS": "7"
+   "SCHOOL (1ST VOTES)": "Washington",
+   "POINTS": "272"
   },
   {
    "RANK": "17",
-   "SCHOOL (1ST VOTES)": "Ohio State",
-   "RECORD": "27-8",
-   "POINTS": "253",
-   "PREVIOUS": "12"
+   "SCHOOL (1ST VOTES)": "Minnesota",
+   "POINTS": "238"
   },
   {
    "RANK": "18",
-   "SCHOOL (1ST VOTES)": "West Virginia",
-   "RECORD": "28-7",
-   "POINTS": "246",
-   "PREVIOUS": "11"
+   "SCHOOL (1ST VOTES)": "Ohio State",
+   "POINTS": "234"
   },
   {
    "RANK": "19",
-   "SCHOOL (1ST VOTES)": "Virginia",
-   "RECORD": "22-12",
-   "POINTS": "208",
-   "PREVIOUS": "NR"
+   "SCHOOL (1ST VOTES)": "Ole Miss",
+   "POINTS": "223"
   },
   {
    "RANK": "20",
    "SCHOOL (1ST VOTES)": "Maryland",
-   "RECORD": "24-9",
-   "POINTS": "204",
-   "PREVIOUS": "17"
+   "POINTS": "222"
   },
   {
    "RANK": "21",
-   "SCHOOL (1ST VOTES)": "Ole Miss",
-   "RECORD": "24-12",
-   "POINTS": "193",
-   "PREVIOUS": "19"
+   "SCHOOL (1ST VOTES)": "Oklahoma",
+   "POINTS": "206"
   },
   {
    "RANK": "22",
-   "SCHOOL (1ST VOTES)": "Michigan State",
-   "RECORD": "23-9",
-   "POINTS": "145",
-   "PREVIOUS": "20"
+   "SCHOOL (1ST VOTES)": "Oklahoma State",
+   "POINTS": "202"
   },
   {
    "RANK": "23",
-   "SCHOOL (1ST VOTES)": "Baylor",
-   "RECORD": "25-9",
-   "POINTS": "88",
-   "PREVIOUS": "21"
+   "SCHOOL (1ST VOTES)": "Illinois",
+   "POINTS": "128"
   },
   {
    "RANK": "24",
-   "SCHOOL (1ST VOTES)": "Alabama",
-   "RECORD": "24-11",
-   "POINTS": "80",
-   "PREVIOUS": "NR"
+   "SCHOOL (1ST VOTES)": "West Virginia",
+   "POINTS": "73"
   },
   {
    "RANK": "25",
-   "SCHOOL (1ST VOTES)": "Washington",
-   "RECORD": "22-11",
-   "POINTS": "48",
-   "PREVIOUS": "NR"
+   "SCHOOL (1ST VOTES)": "NC State",
+   "POINTS": "51"
   }
  ]
 }
