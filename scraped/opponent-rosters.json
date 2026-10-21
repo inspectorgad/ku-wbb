@@ -1,7 +1,7 @@
 {
  "arizona st": {
   "url": "https://thesundevils.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-14T06:40:00.858Z",
+  "fetchedAt": "2026-10-21T10:32:00.177Z",
   "players": [
    {
     "name": "Madison Morson",
@@ -157,7 +157,7 @@
  },
  "baylor": {
   "url": "https://baylorbears.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-14T06:40:20.149Z",
+  "fetchedAt": "2026-10-21T10:32:19.651Z",
   "players": [
    {
     "name": "Taliah Scott",
@@ -235,7 +235,7 @@
  },
  "byu": {
   "url": "https://byucougars.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-14T06:40:29.995Z",
+  "fetchedAt": "2026-10-21T10:32:28.971Z",
   "players": [
    {
     "name": "Sydney Benally",
@@ -289,7 +289,7 @@
  },
  "cincinnati": {
   "url": "https://gobearcats.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-14T06:40:39.194Z",
+  "fetchedAt": "2026-10-21T10:32:38.066Z",
   "players": [
    {
     "name": "Yar Tong",
@@ -379,7 +379,7 @@
  },
  "colorado": {
   "url": "https://cubuffs.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-14T06:40:48.688Z",
+  "fetchedAt": "2026-10-21T10:32:48.097Z",
   "players": [
    {
     "name": "Brooke Walker",
@@ -469,7 +469,7 @@
  },
  "houston": {
   "url": "https://uhcougars.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-14T06:40:58.233Z",
+  "fetchedAt": "2026-10-21T10:32:57.950Z",
   "players": [
    {
     "name": "Esmeralda Enriquez",
@@ -553,7 +553,7 @@
  },
  "iowa st": {
   "url": "https://cyclones.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-14T06:41:07.696Z",
+  "fetchedAt": "2026-10-21T10:33:07.467Z",
   "players": [
    {
     "name": "Sienna Harvey",
@@ -715,7 +715,7 @@
  },
  "oklahoma st": {
   "url": "https://okstate.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-14T06:41:27.700Z",
+  "fetchedAt": "2026-10-21T10:33:17.037Z",
   "players": [
    {
     "name": "LA Sneed",
@@ -793,7 +793,7 @@
  },
  "south dakota st": {
   "url": "https://gojacks.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-14T06:41:36.772Z",
+  "fetchedAt": "2026-10-21T10:33:26.583Z",
   "players": [
    {
     "name": "Audrey Shindelar",
@@ -871,7 +871,7 @@
  },
  "tcu": {
   "url": "https://gofrogs.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-14T06:41:46.417Z",
+  "fetchedAt": "2026-10-21T10:33:36.235Z",
   "players": [
    {
     "name": "Camille Williams",
@@ -949,7 +949,7 @@
  },
  "texas tech": {
   "url": "https://texastech.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-14T06:41:55.537Z",
+  "fetchedAt": "2026-10-21T10:33:45.998Z",
   "players": [
    {
     "name": "Jalynn Bristow",
@@ -1027,7 +1027,7 @@
  },
  "ucf": {
   "url": "https://ucfknights.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-14T06:42:04.568Z",
+  "fetchedAt": "2026-10-21T10:33:54.980Z",
   "players": [
    {
     "name": "Key Roseby",
@@ -1111,7 +1111,7 @@
  },
  "utah": {
   "url": "https://utahutes.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-14T06:42:13.923Z",
+  "fetchedAt": "2026-10-21T10:34:04.628Z",
   "players": [
    {
     "name": "Lena Girardi",
@@ -1195,7 +1195,7 @@
  },
  "west virginia": {
   "url": "https://wvusports.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-14T06:42:23.591Z",
+  "fetchedAt": "2026-10-21T10:34:14.658Z",
   "players": [
    {
     "name": "Nylah Wilson",
