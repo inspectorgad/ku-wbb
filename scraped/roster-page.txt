@@ -112,6 +112,7 @@ Type:
 List View
 Card View not selected
 Table View not selected
+Players
 Jersey Number
 0
 Anna Gooden
