@@ -34,8 +34,25 @@ export function normalizeHeight(raw) {
 // Letters, not just A-Z: Arizona St. field Una Vajagić and Živa Labinjan, and
 // an ASCII-only name test skipped both — reading their roster as empty rather
 // than as eighteen players with two missing.
-const NAME = /^[\p{L}'.’-]+(?: [\p{L}'.’-]+)+$/u;
+//
+// Quote marks are in the class because schools print nicknames inline —
+// Arizona lists Arynn "Simba" Finley and Aliyahna "Puff" Morris — and a name
+// test that rejected them dropped two players from an otherwise sound page.
+const NAME = /^[\p{L}'.’"“”-]+(?: [\p{L}'.’"“”-]+)+$/u;
 const isName = (s) => NAME.test((s || '').trim());
+
+/**
+ * Drops an inline nickname: `Arynn "Simba" Finley` -> `Arynn Finley`.
+ *
+ * The nickname is kept out of the stored name deliberately. Every other source
+ * this app joins against — the NCAA box scores above all — writes the plain
+ * name, and heights are matched on the name alone, so carrying the nickname
+ * would read nicely on a roster card and silently fail to match the same
+ * player's box score line.
+ */
+function stripNickname(s) {
+  return (s || '').replace(/["“][^"”]*["”]/g, ' ').replace(/\s+/g, ' ').trim();
+}
 // UCF prints "#1" rather than "1"; the hash is decoration, not part of the number.
 const isNumber = (s) => /^#?\d{1,2}$/.test((s || '').trim());
 const numberOf = (s) => (s || '').trim().replace(/^#/, '');
@@ -52,27 +69,87 @@ function tidyName(s) {
   return s.replace(/\S+/g, (w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase());
 }
 
+/** A name as it should be stored: nickname removed, shouting folded away. */
+const cleanName = (s) => tidyName(stripNickname(s));
+
+/**
+ * The labels a Sidearm block can carry, lower-cased.
+ *
+ * Two things turn on this set. A block whose line two below "Jersey Number"
+ * holds one of these has its name *above* the label rather than below it —
+ * Arizona redesigned into that shape in October 2026 — and the field scan then
+ * has to start at that label rather than one line further on.
+ */
+const LABELS = new Set([
+  'position', 'height', 'academic year', 'class', 'year', 'hometown',
+  'last school', 'previous school', 'high school', 'weight', 'experience',
+  'major', 'jersey number',
+]);
+
+/**
+ * One roster entry, in the shape every shape returns.
+ *
+ * The three bio fields are filled only by the labelled layout and by JSON —
+ * the others print nothing but the measurements — so they default to empty
+ * rather than being absent, and a caller can read `.hometown` off any entry
+ * without checking which layout produced it.
+ */
+function entry({ name, number, position, height, academicYear, hometown, lastSchool }) {
+  return {
+    name: cleanName(name).trim(),
+    jerseyNumber: numberOf(number),
+    position: (position || '').trim(),
+    height: height || '',
+    academicYear: (academicYear || '').trim(),
+    hometown: (hometown || '').trim(),
+    lastSchool: (lastSchool || '').trim(),
+  };
+}
+
+/** The labels worth keeping a value from, as opposed to merely recognising. */
+const WANTED = new Set([
+  'position', 'height', 'academic year', 'class', 'year', 'hometown',
+  'last school', 'previous school',
+]);
+
 /** Sidearm's labelled blocks: scan each player's block for the labels we want. */
 function parseLabelled(lines) {
   const roster = [];
   for (let i = 0; i < lines.length; i++) {
     if (lines[i].toLowerCase() !== 'jersey number') continue;
     const number = lines[i + 1] || '';
-    const name = lines[i + 2] || '';
-    if (!isNumber(number) || !isName(name)) continue;
+    if (!isNumber(number)) continue;
+    // Sidearm's default prints the name two lines below the label; Arizona
+    // prints it on the line above, so what sits at i+2 there is "Position".
+    // The two are told apart by whether a *label* occupies the name's place.
+    // Gating on that, rather than on "the line below does not look like a
+    // name", is what keeps the fallback safe: a real name the test rejects
+    // would otherwise send us to the line above, which on an ordinary page is
+    // "Full Bio" — the link closing the previous player's block, and a string
+    // that reads as a name.
+    const below = lines[i + 2] || '';
+    const nameAbove = LABELS.has(below.trim().toLowerCase());
+    const name = nameAbove ? (lines[i - 1] || '') : below;
+    if (!isName(name)) continue;
     const fields = {};
-    for (let j = i + 3; j < lines.length && lines[j].toLowerCase() !== 'jersey number'; j++) {
+    for (let j = nameAbove ? i + 2 : i + 3;
+      j < lines.length && lines[j].toLowerCase() !== 'jersey number'; j++) {
       const label = lines[j].toLowerCase();
-      if (label === 'position' || label === 'height') {
-        fields[label] = (lines[j + 1] || '').trim();
-      }
+      if (WANTED.has(label)) fields[label] = (lines[j + 1] || '').trim();
     }
-    roster.push({
-      name: name.trim(),
-      jerseyNumber: numberOf(number),
-      position: (fields.position || '').trim(),
+    roster.push(entry({
+      name,
+      number,
+      position: fields.position,
       height: normalizeHeight(fields.height),
-    });
+      academicYear: fields['academic year'] || fields.class || fields.year,
+      hometown: fields.hometown,
+      // "Last School" is Sidearm's own label. Where a page carries only
+      // "Previous School", its value repeats the label back at you —
+      // "Previous School: UC San Diego" — so that prefix comes off.
+      lastSchool: fields['last school']
+        || (fields['previous school'] || '').replace(/^previous school:\s*/i, ''),
+    }));
   }
   return roster;
 }
@@ -103,12 +180,7 @@ function parseCards(lines) {
     const height = window.filter((l) => l !== name && l !== position)
       .map(normalizeHeight).find(Boolean);
     if (!name || !position || !height) continue;
-    roster.push({
-      name: tidyName(name),
-      jerseyNumber: numberOf(lines[i]),
-      position: position.trim(),
-      height,
-    });
+    roster.push(entry({ name, number: lines[i], position, height }));
   }
   return roster;
 }
@@ -131,12 +203,7 @@ function parseHeader(lines) {
     // A blank line or two can sit between the number and the name.
     const name = [lines[i + 2], lines[i + 3], lines[i + 4]].find(isName);
     if (!name) continue;
-    roster.push({
-      name: name.trim(),
-      jerseyNumber: numberOf(lines[i + 1]),
-      position,
-      height,
-    });
+    roster.push(entry({ name, number: lines[i + 1], position, height }));
   }
   return roster;
 }
@@ -160,12 +227,9 @@ function parseTable(lines) {
     if (!heightCell) continue;
     const position = cells[cells.indexOf(heightCell) - 1] ?? '';
     if (!position) continue;
-    roster.push({
-      name: name.trim(),
-      jerseyNumber: numberOf(lines[i].replace(/\t+$/, '')),
-      position,
-      height: heightCell,
-    });
+    roster.push(entry({
+      name, number: lines[i].replace(/\t+$/, ''), position, height: heightCell,
+    }));
   }
   return roster;
 }
@@ -193,12 +257,7 @@ function parseRows(lines) {
     const height = cells.filter((c) => c !== name && c !== position)
       .map(normalizeHeight).find(Boolean);
     if (!height) continue;
-    roster.push({
-      name: tidyName(name),
-      jerseyNumber: numberOf(cells[0]),
-      position,
-      height,
-    });
+    roster.push(entry({ name, number: cells[0], position, height }));
   }
   return roster;
 }
@@ -220,6 +279,9 @@ const FIELDS = {
   number: ['jerseynumber', 'jersey', 'uniformnumber', 'uniform', 'number'],
   position: ['positionshort', 'position', 'pos'],
   height: ['height', 'heightformatted'],
+  academicYear: ['academicyear', 'classyear', 'class', 'yearformatted', 'eligibility'],
+  hometown: ['hometown', 'hometownformatted'],
+  lastSchool: ['lastschool', 'previousschool', 'highschool'],
 };
 
 function pick(obj, aliases) {
@@ -244,12 +306,15 @@ function playerFromObject(o) {
   const name = pick(o, FIELDS.name)
     || `${pick(o, FIELDS.first)} ${pick(o, FIELDS.last)}`.trim();
   if (!isName(name)) return null;
-  return {
-    name: tidyName(name.trim()),
-    jerseyNumber: numberOf(pick(o, FIELDS.number)),
-    position: pick(o, FIELDS.position).trim(),
+  return entry({
+    name,
+    number: pick(o, FIELDS.number),
+    position: pick(o, FIELDS.position),
     height,
-  };
+    academicYear: pick(o, FIELDS.academicYear),
+    hometown: pick(o, FIELDS.hometown),
+    lastSchool: pick(o, FIELDS.lastSchool),
+  });
 }
 
 /**

@@ -4,9 +4,15 @@
 // version of a layout the volleyball app met on a real school's site.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 import {
   parseRoster, playersFromJson, normalizeHeight,
 } from './opponent-roster-parser.mjs';
+
+/** The four measurement fields, for tests that do not care about the bios. */
+const core = (p) => ({
+  name: p.name, jerseyNumber: p.jerseyNumber, position: p.position, height: p.height,
+});
 
 test('heights are read however the school punctuates them', () => {
   assert.equal(normalizeHeight("6' 3''"), '6-3');
@@ -29,10 +35,34 @@ test('Sidearm labelled blocks', () => {
     'Position', 'F/C', 'Academic Year', 'Sr.', 'Height', "6' 4''",
     'Full Bio',
   ].join('\n');
-  assert.deepEqual(parseRoster(page), [
+  assert.deepEqual(parseRoster(page).map(core), [
     { name: 'Jane Doe', jerseyNumber: '12', position: 'G', height: '5-9' },
     { name: 'Mary Roe', jerseyNumber: '33', position: 'F/C', height: '6-4' },
   ]);
+});
+
+test('the labelled shape keeps the bio fields it walks past', () => {
+  // These sit between Position and Height on the same page, and were being
+  // stepped over. They are what makes an opponent card read like KU's.
+  const page = [
+    'Jersey Number', '12', 'Jane Doe',
+    'Position', 'G', 'Academic Year', 'Jr.', 'Height', "5' 9''",
+    'Hometown', 'Austin, Texas', 'Last School', 'Westlake HS', 'Full Bio',
+  ].join('\n');
+  assert.deepEqual(parseRoster(page), [{
+    name: 'Jane Doe', jerseyNumber: '12', position: 'G', height: '5-9',
+    academicYear: 'Jr.', hometown: 'Austin, Texas', lastSchool: 'Westlake HS',
+  }]);
+});
+
+test('a shape that carries no bios still returns the fields, empty', () => {
+  // A caller reads .hometown off any entry without asking which layout made it.
+  const page = ['1', 'G', 'SARAH HICKMAN', '5\'7"Senior', 'Houston, Texas'].join('\n');
+  const [p] = parseRoster(page);
+  assert.deepEqual(
+    { academicYear: p.academicYear, hometown: p.hometown, lastSchool: p.lastSchool },
+    { academicYear: '', hometown: '', lastSchool: '' }
+  );
 });
 
 test('unlabelled cards, with the name shouted', () => {
@@ -52,7 +82,7 @@ test('position and height on the line above the number', () => {
     'Forward 6\'0"', '1', '', 'Jane Doe', 'Sophomore Columbia, Mo.',
     'Guard 5\'6"', '4', '', 'Mary Roe', 'Freshman Topeka, Kan.',
   ].join('\n');
-  assert.deepEqual(parseRoster(page), [
+  assert.deepEqual(parseRoster(page).map(core), [
     { name: 'Jane Doe', jerseyNumber: '1', position: 'Forward', height: '6-0' },
     { name: 'Mary Roe', jerseyNumber: '4', position: 'Guard', height: '5-6' },
   ]);
@@ -113,10 +143,92 @@ test('a roster fetched as JSON is read from whatever the page pulled down', () =
       },
     },
   ];
-  assert.deepEqual(playersFromJson(payloads), [
+  assert.deepEqual(playersFromJson(payloads).map(core), [
     { name: 'Jane Doe', jerseyNumber: '12', position: 'G', height: '5-9' },
     { name: 'Mary Roe', jerseyNumber: '33', position: 'F', height: '6-4' },
   ]);
+});
+
+test('a JSON roster carries the bio fields too, under whatever key', () => {
+  const payloads = [{ roster: [
+    { fullName: 'Jane Doe', jersey: '12', pos: 'G', height: "5'9\"",
+      classYear: 'Jr.', hometown: 'Austin, Texas', lastSchool: 'Westlake HS' },
+  ] }];
+  assert.deepEqual(playersFromJson(payloads), [{
+    name: 'Jane Doe', jerseyNumber: '12', position: 'G', height: '5-9',
+    academicYear: 'Jr.', hometown: 'Austin, Texas', lastSchool: 'Westlake HS',
+  }]);
+});
+
+test('a page that prints the name above the label, not below it', () => {
+  // Arizona redesigned into this shape in October 2026 and the roster went to
+  // zero players: the line where the name used to be now holds "Position".
+  const page = [
+    'Players',
+    'Jane Doe', 'Jersey Number', '2',
+    'Position', 'G', 'Academic Year', 'Fr.', 'Height', "5' 10''",
+    'Hometown', 'Rancho Cucamonga, Calif.', 'Last School', 'Etiwanda High School',
+    'Mary Roe', 'Jersey Number', '3',
+    'Position', 'F', 'Academic Year', 'Sr.', 'Height', "6' 1''",
+    'Hometown', 'Warsaw, Poland',
+  ].join('\n');
+  assert.deepEqual(parseRoster(page), [
+    { name: 'Jane Doe', jerseyNumber: '2', position: 'G', height: '5-10',
+      academicYear: 'Fr.', hometown: 'Rancho Cucamonga, Calif.',
+      lastSchool: 'Etiwanda High School' },
+    { name: 'Mary Roe', jerseyNumber: '3', position: 'F', height: '6-1',
+      academicYear: 'Sr.', hometown: 'Warsaw, Poland', lastSchool: '' },
+  ]);
+});
+
+test('an inline nickname is dropped from the stored name', () => {
+  // The box scores this height is matched against write the plain name, so a
+  // nickname kept here would read nicely and never join to anything.
+  const page = [
+    'Jersey Number', '2', 'Arynn "Simba" Finley', 'Position', 'G', 'Height', "5' 10''",
+  ].join('\n');
+  assert.equal(parseRoster(page)[0].name, 'Arynn Finley');
+});
+
+test('the line above a block is never mistaken for a player', () => {
+  // The trap in reading the name from above whenever the line below fails the
+  // name test: on an ordinary page the line above is "Full Bio", which reads
+  // as a name. Only a label in the name's place may send us upwards — and here
+  // the line below is a real (quoted) name, so it must be used as-is.
+  const page = [
+    'Jersey Number', '12', 'Jane Doe', 'Position', 'G', 'Height', "5' 9''",
+    'Full Bio',
+    'Jersey Number', '33', 'Mary "Mo" Roe', 'Position', 'F/C', 'Height', "6' 4''",
+    'Full Bio',
+  ].join('\n');
+  const got = parseRoster(page);
+  assert.deepEqual(got.map((p) => p.name), ['Jane Doe', 'Mary Roe']);
+  assert.equal(got.some((p) => /full bio/i.test(p.name)), false);
+});
+
+test('the real Arizona page parses to its whole roster', () => {
+  // A frozen copy of the page that broke: scraped/roster-miss-arizona.txt is
+  // deleted the moment the site parses again, so the evidence is kept here.
+  const page = fs.readFileSync(
+    new URL('./fixtures/arizona-roster-2026-10-21.txt', import.meta.url), 'utf8'
+  );
+  const got = parseRoster(page);
+  assert.equal(got.length, 12);
+  // Every player, with a height — a partial roster is worse than none.
+  assert.equal(got.filter((p) => p.height).length, 12);
+  assert.equal(got.filter((p) => p.position).length, 12);
+  // Both nicknamed players survive, under their plain names.
+  assert.ok(got.some((p) => p.name === 'Arynn Finley'));
+  assert.ok(got.some((p) => p.name === 'Aliyahna Morris'));
+  // The bios the page carries come with them.
+  const finley = got.find((p) => p.name === 'Arynn Finley');
+  assert.equal(finley.hometown, 'Rancho Cucamonga, Calif.');
+  assert.equal(finley.lastSchool, 'Etiwanda High School');
+  assert.equal(finley.academicYear, 'Fr.');
+  // "Previous School: UC San Diego" has its own label stripped back off.
+  assert.equal(got.find((p) => p.name === 'Sumayah Sugapong').lastSchool,
+    'La Jolla Country Day');
+  assert.equal(got.some((p) => /full bio|^position$/i.test(p.name)), false);
 });
 
 test('staff and other people on the page are not mistaken for players', () => {
