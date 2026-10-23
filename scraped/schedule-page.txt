@@ -8,14 +8,15 @@ Scoreboard
 Coming Up
 View Calendar 
 Skip Ad
-Upcoming Event: Women's Basketball versus Northeastern State (exh.) on October 22, 2026 at 6:30 p.m. CT
-Thu. 10/22/26
--
-6:30 p.m. CT
+Completed Event: Women's Basketball versus Northeastern State (exh.) on October 22, 2026 , Win , 90, to, 43
+Final
+Oct 22
 Women's Basketball
+90
 vs Northeastern State (exh.)
-Audio
-Stats
+43
+Story Recap
+Boxscore
 Upcoming Event: Women's Basketball versus Washburn (exh.) on October 29, 2026 at 6:30 p.m. CT
 Thu. 10/29/26
 -
@@ -109,21 +110,21 @@ University of Kansas
 
 vs
 
-Northeastern State (exh.)
+Washburn (exh.)
 
-Thursday, October 22
+Thursday, October 29
 
 Lawrence, Kan.
 
 6:30 p.m. CT
 
-0
+6
 Days
 2
 Hours
-34
+52
 Minutes
-3
+16
 Seconds
 Add To Calendar
 Text Only
@@ -173,17 +174,18 @@ Lawrence, Kan.
 
 TV: ESPN+
 
-Oct 22
-(Thu)
+W, 90-43
 
+Oct 22(Thu)
 6:30 p.m. CT
 
 Game Center
-Listen
-Live Stats
-Preview
+Box Score
+Recap
+Photos
 History
 Explore Lawrence
+Game Info
 Late Night in the Phog
 vs
 Washburn (exh.)
@@ -780,25 +782,25 @@ Listen
 History
 Related Videos
 All Videos
+Women's Basketball Postgame Press Conference vs Northeastern State
+Friday, October 23
+Women's Basketball Highlights vs Northeastern State
+Friday, October 23
 Hawk Talk with Brandon Schneider
 Tuesday, June 23
 Elle Evans State Farm 3-Point Championships
 Monday, April 06
-WBIT Semifinals Media Availability
-Sunday, March 29
-Women's Basketball Postgame Press Conference vs. San Diego State
-Friday, March 27
 All Videos
 Related News
 All News
+Kansas Rolls to Exhibition Win over Northeastern State
+Thursday, October 22
 Jayhawks Open Exhibition Play Thursday vs. Northeastern State
 Wednesday, October 21
 Nichols, Davis and Williams to Represent Kansas at Big 12 Media Day
 Wednesday, October 14
 Kansas Set for Three Televised Big 12 Games, Four Total in 2026-27
 Tuesday, October 13
-Jayhawks Have Two Named to Big 12 Preseason Team; KU Picked to Finish Fifth
-Thursday, October 08
 All News
 Footer
 Home of the Kansas Jayhawks | © 2026 Kansas Athletics, Inc.
