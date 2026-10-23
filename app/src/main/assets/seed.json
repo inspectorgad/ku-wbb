@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-10-20T18:07:04Z",
+ "generatedAt": "2026-10-23T00:13:16Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -16525,18 +16525,6 @@
    ],
    "site": "neutral",
    "home": false,
-   "conference": false
-  },
-  {
-   "date": "2026-10-22",
-   "opponent": "Northeastern State (exh.)",
-   "season": "2026-27",
-   "venue": "Allen Fieldhouse",
-   "city": "Lawrence, KS",
-   "tv": "ESPN+",
-   "time": "18:30",
-   "site": "home",
-   "home": true,
    "conference": false
   },
   {
