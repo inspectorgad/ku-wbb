@@ -15,6 +15,8 @@ NCAA box scores; nothing is recomputed or estimated.
 import json
 import re
 
+from seed_text import norm_team
+
 # The box score, in the order the NCAA publishes it. Player lines carry `min`
 # and `gs` on top of these; the official team totals carry only these.
 STAT_COLS = ["fgm", "fga", "tpm", "tpa", "ftm", "fta", "oreb", "reb",
@@ -55,6 +57,11 @@ DEFINITIONS = {
     "period_scores": "points by quarter from KU's side, e.g. '25-14, 17-23, 29-16, 15-22'; "
                      "the periods table has the same thing one row per quarter",
     "exhibition": "an exhibition game: it counts for nothing and is not in any record",
+    "team_key": "the opponent_roster table's canonical school key, with 'State' folded to 'st' "
+                "and punctuation dropped. Its opponent column matches the upcoming table exactly "
+                "— which is the table that roster is for — but a school is printed differently "
+                "between seasons ('Iowa State' upcoming, 'Iowa St.' in last season's games), so "
+                "join on team_key when crossing seasons",
 }
 
 
@@ -63,7 +70,7 @@ DEFINITIONS = {
 # Claude's own code through the get_table tool; this only says how.
 SYSTEM_RULES = """You are the analyst behind the Kansas Jayhawks women's basketball app and dashboard. You answer questions from coaches and fans about the team, using only the season data you are given.
 
-The complete data is available to your Python code through the get_table tool: tables games, periods (one row per quarter, with each side's points), ku_lines (KU player box score lines per game), team_totals (the official team totals for both sides), opponent_lines, opponent_roster (opposing squads as their schools list them today, which is the right source for a game not yet played and the wrong one for a season already played), upcoming, standings, poll, roster, and definitions. Call it from inside code execution, for example: import json, pandas as pd; lines = pd.DataFrame(json.loads(await get_table({'table': 'ku_lines'}))). Join tables on (season, date, opponent). A summary of the smaller tables is below for orientation.
+The complete data is available to your Python code through the get_table tool: tables games, periods (one row per quarter, with each side's points), ku_lines (KU player box score lines per game), team_totals (the official team totals for both sides), opponent_lines, opponent_roster (opposing squads as their schools list them today — the right source for a game not yet played, and the wrong one for a season already played, where it only reaches the players who have not left since), upcoming, standings, poll, roster, and definitions. Call it from inside code execution, for example: import json, pandas as pd; lines = pd.DataFrame(json.loads(await get_table({'table': 'ku_lines'}))). Join tables on (season, date, opponent). A summary of the smaller tables is below for orientation.
 
 How to answer:
 - Compute every number with code from the tables. Do not estimate, recall, or do arithmetic in your head, even for a simple total.
@@ -200,6 +207,13 @@ def build_pack(seed):
                               "started": bool(l.get("gs")),
                               "min": l.get("min", 0), **{c: l.get(c, 0) for c in STAT_COLS}})
 
+    # Normalized roster key -> the school as the schedule prints it, taken
+    # from the most recent fixture so the spelling matches the other tables.
+    # A school on no schedule keeps its key, which is better than no name.
+    opponent_display = {}
+    for g in sorted(seed.get("games", []), key=lambda x: x.get("date") or ""):
+        opponent_display[norm_team(g.get("opponent", ""))] = g.get("opponent", "")
+
     polls = seed.get("polls") or []
     current_poll = polls[-1] if polls else None
     pack = {
@@ -228,8 +242,16 @@ def build_pack(seed):
         # Opposing squads as their own schools list them today. Flattened to
         # one row per player with the school on it, so it joins to the other
         # tables the same way everything else here does.
+        #
+        # The school is carried twice on purpose. The seed stores a roster
+        # under its normalized key ("arizona st"), which is what makes the
+        # schedule and the box scores agree on a school — but every other
+        # table in this pack names an opponent as it is printed ("Arizona
+        # St."), and the instructions say to join on opponent. Shipping only
+        # the key would mean a join that silently matched nothing at all.
         "opponent_roster": [
-            {"team": t["team"], "read": t.get("fetchedAt"),
+            {"opponent": opponent_display.get(t["team"], t["team"]),
+             "team_key": t["team"], "read": t.get("fetchedAt"),
              **{k: (p.get(k) or None) for k in ("name", "jerseyNumber", "position", "height",
                                                 "academicYear", "hometown", "lastSchool")}}
             for t in seed.get("opponentRosters", []) for p in t.get("players", [])

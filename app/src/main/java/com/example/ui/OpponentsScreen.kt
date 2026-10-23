@@ -373,13 +373,18 @@ fun OpponentDetailScreen(
                 }
             }
 
-            item {
-                Text(
-                    "Results",
-                    style = MaterialTheme.typography.titleSmall,
-                    fontWeight = FontWeight.Bold,
-                    modifier = Modifier.padding(top = 8.dp)
-                )
+            // Gated like every other section here. Before this screen could be
+            // opened for a team Kansas has not played, theirGames was never
+            // empty and the header always had rows under it.
+            if (theirGames.isNotEmpty()) {
+                item {
+                    Text(
+                        "Results",
+                        style = MaterialTheme.typography.titleSmall,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.padding(top = 8.dp)
+                    )
+                }
             }
             items(theirGames, key = { it.id }) { game ->
                 Card(modifier = Modifier.fillMaxWidth()) {

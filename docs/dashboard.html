@@ -1716,10 +1716,15 @@ function openOpponentRoster(key) {
   document.getElementById("oSub").textContent =
     `${t.players.length} players · read ${t.fetchedAt}`;
 
-  // Jersey order, the way the school's own page prints it.
+  // Jersey order, the way the school's own page prints it. Number 0 is a real
+  // jersey and a common one, so the unnumbered fallback cannot be written as
+  // `parseInt(...) || 999` — zero is falsy, and she would sort to the bottom.
+  const jersey = (p) => {
+    const n = parseInt(p.jerseyNumber, 10);
+    return Number.isNaN(n) ? 999 : n;
+  };
   const rows = [...t.players].sort((a, b) =>
-    (parseInt(a.jerseyNumber, 10) || 999) - (parseInt(b.jerseyNumber, 10) || 999)
-    || a.name.localeCompare(b.name));
+    jersey(a) - jersey(b) || a.name.localeCompare(b.name));
   const dim = v => v ? v : '<span class="dim">—</span>';
   document.querySelector("#oRosterTbl tbody").innerHTML = rows.map(p => `
     <tr>

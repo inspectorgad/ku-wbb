@@ -50,11 +50,20 @@ export function normalizeHeight(raw) {
 // an ASCII-only name test skipped both — reading their roster as empty rather
 // than as eighteen players with two missing.
 //
-// Quote marks are in the class because schools print nicknames inline —
-// Arizona lists Arynn "Simba" Finley and Aliyahna "Puff" Morris — and a name
-// test that rejected them dropped two players from an otherwise sound page.
-const NAME = /^[\p{L}'.’"“”-]+(?: [\p{L}'.’"“”-]+)+$/u;
-const isName = (s) => NAME.test((s || '').trim());
+const NAME = /^[\p{L}'.’-]+(?: [\p{L}'.’-]+)+$/u;
+
+/**
+ * Whether this line is a player's name — judged on the name as it would be
+ * STORED, not as it is printed.
+ *
+ * The two differ because schools print nicknames inline (Arizona lists Arynn
+ * "Simba" Finley) and [stripNickname] takes them out. Testing the raw line
+ * instead lets through anything the quotes made look name-shaped: a quoted
+ * pull-quote on the page reduces to an empty string once cleaned, and would
+ * be stored as a player with no name at all — worse than being skipped, since
+ * it displaces the real name the surrounding shapes would otherwise find.
+ */
+const isName = (s) => NAME.test(cleanName(s));
 
 /**
  * Drops an inline nickname: `Arynn "Simba" Finley` -> `Arynn Finley`.
@@ -68,6 +77,18 @@ const isName = (s) => NAME.test((s || '').trim());
 function stripNickname(s) {
   return (s || '').replace(/["“][^"”]*["”]/g, ' ').replace(/\s+/g, ' ').trim();
 }
+
+/**
+ * Link text and headings that sit between players on a roster page and read
+ * as names. "Full Bio" is the one that matters — it closes a player's block on
+ * Sidearm's default layout, which puts it directly above the next player's
+ * "Jersey Number" label, exactly where [parseLabelled] looks for a name when
+ * the page prints names above.
+ */
+const FURNITURE = new Set([
+  'full bio', 'view bio', 'view profile', 'read more', 'player bio',
+  'full profile', 'season stats', 'career stats',
+]);
 // UCF prints "#1" rather than "1"; the hash is decoration, not part of the number.
 const isNumber = (s) => /^#?\d{1,2}$/.test((s || '').trim());
 const numberOf = (s) => (s || '').trim().replace(/^#/, '');
@@ -121,6 +142,31 @@ function entry({ name, number, position, height, academicYear, hometown, lastSch
   };
 }
 
+/**
+ * Whether the line above a block can be the player's name.
+ *
+ * Reading a name from above is only ever a guess, and a wrong guess here is
+ * expensive: a dozen fake players clear the scraper's minimum-roster floor, so
+ * the page records as a success and the junk reaches the screen. Three things
+ * rule the candidate out.
+ *
+ * @param above    the line directly above the "Jersey Number" label
+ * @param twoAbove the line above that
+ * @param counts   how many blocks each line sits above, from [parseLabelled]
+ */
+function plausibleNameAbove(above, twoAbove, counts) {
+  const key = above.trim().toLowerCase();
+  // A link or heading between players, named outright.
+  if (FURNITURE.has(key)) return false;
+  // A label immediately above it means the candidate is that label's VALUE —
+  // the previous block's last field, not a name. This is what a page whose
+  // names sit below looks like when one block happens to have no name line.
+  if (LABELS.has(twoAbove.trim().toLowerCase())) return false;
+  // And whatever it is, a name belongs to one player. Anything standing above
+  // more than one block is part of the page, not part of the team.
+  return (counts.get(key) || 0) <= 1;
+}
+
 /** The labels worth keeping a value from, as opposed to merely recognising. */
 const WANTED = new Set([
   'position', 'height', 'academic year', 'class', 'year', 'hometown',
@@ -130,6 +176,16 @@ const WANTED = new Set([
 /** Sidearm's labelled blocks: scan each player's block for the labels we want. */
 function parseLabelled(lines) {
   const roster = [];
+  // How often each line sits directly above a block. A player's name is there
+  // once; a link or heading repeated between every player is there many times,
+  // and that count is what tells the two apart on a page whose furniture this
+  // file has never seen.
+  const aboveCount = new Map();
+  for (let i = 1; i < lines.length; i++) {
+    if (lines[i].toLowerCase() !== 'jersey number') continue;
+    const key = lines[i - 1].trim().toLowerCase();
+    aboveCount.set(key, (aboveCount.get(key) || 0) + 1);
+  }
   for (let i = 0; i < lines.length; i++) {
     if (lines[i].toLowerCase() !== 'jersey number') continue;
     const number = lines[i + 1] || '';
@@ -144,7 +200,9 @@ function parseLabelled(lines) {
     // that reads as a name.
     const below = lines[i + 2] || '';
     const nameAbove = LABELS.has(below.trim().toLowerCase());
-    const name = nameAbove ? (lines[i - 1] || '') : below;
+    const above = lines[i - 1] || '';
+    if (nameAbove && !plausibleNameAbove(above, lines[i - 2] || '', aboveCount)) continue;
+    const name = nameAbove ? above : below;
     if (!isName(name)) continue;
     const fields = {};
     for (let j = nameAbove ? i + 2 : i + 3;

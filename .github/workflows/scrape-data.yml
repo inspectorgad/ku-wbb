@@ -38,10 +38,12 @@ on:
       - 'scripts/schedule-parser.mjs'
       - 'scripts/roster-parser.mjs'
       - 'scripts/opponent-roster-parser.mjs'
+      - 'scripts/roster-cache.mjs'
       - 'scripts/opponent-sites.json'
       - 'scripts/game-night-watch.mjs'
       - 'scripts/ics_feed.py'
       - 'scripts/update-seed.py'
+      - 'scripts/seed_text.py'
       - 'scripts/ask_pack.py'
       - '.github/workflows/scrape-data.yml'
 

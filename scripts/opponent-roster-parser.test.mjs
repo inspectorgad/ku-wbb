@@ -206,6 +206,54 @@ test('the line above a block is never mistaken for a player', () => {
   assert.equal(got.some((p) => /full bio/i.test(p.name)), false);
 });
 
+test('page furniture above a block is never read as the player', () => {
+  // The hole the label gate alone left open: when the name really is above,
+  // nothing checked that the line up there was a person. A page that closes
+  // each player with a bio link puts "Full Bio" exactly where the name would
+  // be, and a dozen of those clear the scraper's minimum-roster floor — so the
+  // page records as a success and the junk reaches the screen.
+  const page = [
+    'Jane Doe', 'Full Bio', 'Jersey Number', '12', 'Position', 'G', 'Height', "5' 9''",
+    'Mary Roe', 'Full Bio', 'Jersey Number', '33', 'Position', 'F', 'Height', "6' 4''",
+    'Sue Poe', 'Full Bio', 'Jersey Number', '44', 'Position', 'C', 'Height', "6' 6''",
+  ].join('\n');
+  assert.deepEqual(parseRoster(page), []);
+});
+
+test('a block with no name does not borrow the line above it', () => {
+  // On a names-below page, the line above a block is the previous player's
+  // last field value. Here that is "Westlake High School", which reads as a
+  // name; the label two above it is what gives it away.
+  const page = [
+    'Jersey Number', '12', 'Jane Doe', 'Position', 'G', 'Height', "5' 9''",
+    'Hometown', 'Austin, Texas', 'Last School', 'Westlake High School',
+    'Jersey Number', '33', 'Position', 'F', 'Height', "6' 4''",
+  ].join('\n');
+  assert.deepEqual(parseRoster(page).map((p) => p.name), ['Jane Doe']);
+});
+
+test('a quoted line is not a name, and does not displace one', () => {
+  // Admitting quotes so nicknames survive also made a pull-quote look
+  // name-shaped. Cleaning empties it, so it would have been stored as a player
+  // with no name — and taken the real name's place in the window.
+  assert.deepEqual(
+    parseRoster(['Guard 5\'6"', '4', '"Hard work pays off"', 'Mary Roe'].join('\n'))
+      .map((p) => p.name),
+    ['Mary Roe']
+  );
+  assert.deepEqual(
+    parseRoster('0\t"Bear Down Cats"\tFaith Jordan\tG\t5\' 11\'\'\tFr.').map((p) => p.name),
+    ['Faith Jordan']
+  );
+});
+
+test('a stray unbalanced quote is not a name', () => {
+  // stripNickname needs both marks, so this survives cleaning — and a name
+  // carrying a quote would never match the same player's box score line.
+  const page = ['Jersey Number', '12', 'Mary "Mo Roe', 'Position', 'G', 'Height', "5' 9''"];
+  assert.deepEqual(parseRoster(page.join('\n')), []);
+});
+
 test('the real Arizona page parses to its whole roster', () => {
   // A frozen copy of the page that broke: scraped/roster-miss-arizona.txt is
   // deleted the moment the site parses again, so the evidence is kept here.

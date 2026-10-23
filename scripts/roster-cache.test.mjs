@@ -107,6 +107,24 @@ test('the parser version does not override the failure backoff', () => {
   assert.equal(fetchDecision(failed, NOW, 2).reason, 'held');
 });
 
+test('a fresh roster the new parser cannot read is held, not retried hourly', () => {
+  // The case the test above missed by using a roster already a week old: while
+  // the stored copy is still FRESH, the parser-version bust is the reason we
+  // want the page, and it sat in front of the backoff. Six runs a day, each
+  // failing, for as long as the page stayed unreadable.
+  let e = { ...roster(1), parserVersion: 1 };
+  const fetches = [];
+  for (let run = 1; run <= 6; run++) {
+    const at = NOW + run * 4 * 3_600_000;
+    const d = fetchDecision(e, at, 2);
+    fetches.push(d.reason);
+    if (d.fetch) e = noteFailure(e, 'u', at);
+  }
+  // One attempt, then held for the rest of the day.
+  assert.deepEqual(fetches, ['stale-parser', 'held', 'held', 'held', 'held', 'held']);
+  assert.equal(e.failures, 1);
+});
+
 test('a corrupt timestamp does not wedge a site shut', () => {
   // Better to fetch once too often than to never look at a site again.
   assert.equal(retryAt({ failedAt: 'not a date', failures: 2 }), 0);

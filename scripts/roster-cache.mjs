@@ -45,20 +45,31 @@ export function retryAt(entry) {
  *   due    go and fetch it
  */
 export function fetchDecision(entry, now, parserVersion) {
+  // The backoff is checked FIRST, before any reason to want the page. A
+  // failure means the last attempt did not work, and that is true whatever
+  // made us ask — so every other branch below is downstream of it.
+  //
+  // This was the other way round at first, and the parser-version bust below
+  // then sat in front of the backoff: a site whose stored roster was still
+  // fresh but unreadable by the new parser was fetched on every run, failing
+  // each time, which is precisely the loop this file exists to stop. The
+  // ordering is the whole fix, so it is tested directly.
+  const until = retryAt(entry);
+  if (until > now) return { fetch: false, reason: 'held', until };
+
   const fetchedAt = Date.parse(entry && entry.fetchedAt);
   if (entry && entry.players && entry.players.length
       && fetchedAt > now - FRESH_DAYS * DAY) {
-    // ...unless the parser has since learned to read more off the page. The
-    // page has not changed, so nothing in the timestamp says the stored
-    // players are now missing fields that could be had, and without this a fix
-    // to the parser would take a week to reach the data it fixes.
+    // A fresh roster is reused, unless the parser has since learned to read
+    // more off the page. The page has not changed, so nothing in the timestamp
+    // says the stored players are now missing fields that could be had, and
+    // without this a fix to the parser waits out the week before reaching the
+    // data it fixes.
     if (parserVersion !== undefined && (entry.parserVersion || 1) < parserVersion) {
       return { fetch: true, reason: 'stale-parser' };
     }
     return { fetch: false, reason: 'fresh' };
   }
-  const until = retryAt(entry);
-  if (until > now) return { fetch: false, reason: 'held', until };
   return { fetch: true, reason: 'due' };
 }
 
