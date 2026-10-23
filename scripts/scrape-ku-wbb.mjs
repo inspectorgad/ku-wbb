@@ -20,6 +20,7 @@ import { parseSchedule, siteOf } from './schedule-parser.mjs';
 import { parseRoster } from './roster-parser.mjs';
 import { parseRoster as parseOpponentRoster, playersFromJson }
   from './opponent-roster-parser.mjs';
+import { fetchDecision, noteFailure } from './roster-cache.mjs';
 
 const API = 'https://ncaa-api.henrygd.me';
 // Season start years: "2025" means the 2025-26 season.
@@ -281,15 +282,28 @@ try {
     const previous = fs.existsSync(ROSTERS)
       ? JSON.parse(fs.readFileSync(ROSTERS, 'utf8'))
       : {};
-    // Rosters change about twice a year. Refetching every four hours would be
-    // thousands of requests to other people's servers for a page that has not
-    // moved, so a stored roster is left alone for a week.
-    const weekAgo = new Date(Date.now() - 7 * 86_400_000).toISOString();
+    // Whether to go out to a site at all is decided in scripts/roster-cache.mjs
+    // — a stored roster is reused for a week, and a site that failed is held
+    // off for a doubling interval rather than retried on all six daily runs.
+    const now = Date.now();
     const rosters = { ...previous };
     let fetched = 0;
     const failed = [];
+    const held = [];
     for (const [key, url] of Object.entries(siteMap).sort()) {
-      if (previous[key]?.fetchedAt > weekAgo && previous[key]?.players?.length) continue;
+      const was = previous[key];
+      const decision = fetchDecision(was, now);
+      if (!decision.fetch) {
+        if (decision.reason === 'held') {
+          held.push(`${key} (${was.failures} failed, next after ` +
+            `${new Date(decision.until).toISOString().slice(0, 16)}Z)`);
+        }
+        continue;
+      }
+      const note = (reason) => {
+        failed.push(`${key} (${reason})`);
+        rosters[key] = noteFailure(was, url, Date.now());
+      };
       const page = await context.newPage();
       // Some rosters arrive as JSON after the shell renders, with no text to
       // read, so whatever the page fetches is kept as a fallback.
@@ -317,8 +331,9 @@ try {
         const MIN_ROSTER = 8;
         if (players.length < MIN_ROSTER) {
           fs.writeFileSync(`scraped/roster-miss-${key.replace(/[^a-z0-9]+/g, '-')}.txt`, text);
-          failed.push(`${key} (parsed ${players.length}, below the ${MIN_ROSTER} floor; page saved)`);
+          note(`parsed ${players.length}, below the ${MIN_ROSTER} floor; page saved`);
         } else {
+          // A success clears the backoff: no failedAt, no failures counter.
           rosters[key] = { url, fetchedAt: new Date().toISOString(), players };
           fetched++;
           fs.rmSync(`scraped/roster-miss-${key.replace(/[^a-z0-9]+/g, '-')}.txt`, { force: true });
@@ -326,14 +341,16 @@ try {
             `(${players.filter((p) => p.height).length} with a height)`);
         }
       } catch (e) {
-        failed.push(`${key} (${e.message.split('\n')[0]})`);
+        note(e.message.split('\n')[0]);
       }
       await page.close();
     }
     fs.writeFileSync(ROSTERS, JSON.stringify(rosters, null, 1));
-    console.log(`opponent rosters: ${Object.keys(rosters).length} teams stored, ` +
+    const stored = Object.values(rosters).filter((r) => r.players?.length).length;
+    console.log(`opponent rosters: ${stored} teams stored, ` +
       `${fetched} refreshed this run, ${Object.keys(siteMap).length} mapped`);
     if (failed.length) console.log(`  did not parse: ${failed.join('; ')}`);
+    if (held.length) console.log(`  held off after earlier failures: ${held.join('; ')}`);
   } catch (e) {
     console.log(`opponent roster scrape failed (non-fatal): ${e.message}`);
   }
