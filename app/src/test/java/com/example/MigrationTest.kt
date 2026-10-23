@@ -195,6 +195,84 @@ class MigrationTest {
             assertEquals("", c.getString(1))
         }
         db.query("SELECT height FROM players").use { c -> assertEquals(0, c.count) }
+
+        // v9's table arrives empty and takes a roster row. No foreign key: a
+        // roster belongs to a school, not to a fixture, and is stored whether
+        // or not that school has been played.
+        db.execSQL(
+            """INSERT INTO opponent_roster
+                 (team, name, jerseyNumber, position, height, academicYear,
+                  hometown, lastSchool, fetchedAt)
+               VALUES ('arizona', 'Arynn Finley', '2', 'G', '5-10', 'Fr.',
+                       'Rancho Cucamonga, Calif.', 'Etiwanda High School',
+                       '2026-10-21')"""
+        )
+        db.query("SELECT name, hometown, fetchedAt FROM opponent_roster").use { c ->
+            c.moveToFirst()
+            assertEquals("Arynn Finley", c.getString(0))
+            assertEquals("Rancho Cucamonga, Calif.", c.getString(1))
+            assertEquals("2026-10-21", c.getString(2))
+        }
+    }
+
+    @Test
+    fun `a v8 database gains the opponent roster table at v9`() {
+        // The chain test above proves the table exists at the end of the walk.
+        // This is the upgrade a phone holding a season of data actually takes:
+        // everything it already has must survive, and the new table must not
+        // collide with the opponent box scores it sits beside.
+        val db = openV3()
+        for (m in JayhawksDatabase.migrations()
+            .filter { it.startVersion in 3..7 }.sortedBy { it.startVersion }) {
+            m.migrate(db)
+        }
+        db.execSQL(
+            """INSERT INTO games (id, date, opponent, season) VALUES (1, '2026-01-11', 'Baylor', '2025-26')"""
+        )
+        db.execSQL(
+            """INSERT INTO opponent_stat_lines
+                 (gameId, playerName, jerseyNumber, position, height, minutes,
+                  fieldGoalsMade, fieldGoalsAttempted, threePointsMade,
+                  threePointsAttempted, freeThrowsMade, freeThrowsAttempted,
+                  offensiveRebounds, rebounds, assists, turnovers, steals,
+                  blocks, fouls, points, started)
+               VALUES (1, 'Bella Fontleroy', '22', 'F', '6-2', 28, 6, 11, 0, 1,
+                       3, 4, 2, 9, 1, 2, 0, 1, 3, 15, 1)"""
+        )
+
+        JayhawksDatabase.migrations().single { it.startVersion == 8 }.migrate(db)
+
+        // The box score is untouched by the new table.
+        db.query("SELECT playerName, height FROM opponent_stat_lines").use { c ->
+            c.moveToFirst()
+            assertEquals("Bella Fontleroy", c.getString(0))
+            assertEquals("6-2", c.getString(1))
+        }
+        db.query("SELECT * FROM opponent_roster").use { c -> assertEquals(0, c.count) }
+
+        // The same player can be on both: one row is what she did against KU,
+        // the other is that she is on the team. They are keyed differently and
+        // must not be confused for duplicates.
+        db.execSQL(
+            """INSERT INTO opponent_roster (team, name, fetchedAt)
+               VALUES ('baylor', 'Bella Fontleroy', '2026-10-21')"""
+        )
+        // The columns omitted above default to empty, never null — Room
+        // refuses to open a NOT NULL column holding null.
+        db.query("SELECT position, hometown FROM opponent_roster").use { c ->
+            c.moveToFirst()
+            assertEquals("", c.getString(0))
+            assertEquals("", c.getString(1))
+        }
+        // Keyed on (team, name): the same player at two schools is two rows.
+        db.execSQL(
+            """INSERT INTO opponent_roster (team, name, fetchedAt)
+               VALUES ('tcu', 'Bella Fontleroy', '2026-10-21')"""
+        )
+        db.query("SELECT COUNT(*) FROM opponent_roster").use { c ->
+            c.moveToFirst()
+            assertEquals(2, c.getInt(0))
+        }
     }
 
     @Test

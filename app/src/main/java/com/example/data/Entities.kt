@@ -171,6 +171,53 @@ data class OpponentStatLine(
 )
 
 /**
+ * One player on an opposing school's *current* roster.
+ *
+ * Not a box score and not derived from one. [OpponentStatLine] above holds the
+ * opponents who have played Kansas; this holds everyone on the team, read from
+ * the school's own roster page, and carries the bio fields a box score has no
+ * field for at all.
+ *
+ * The two are useful for opposite halves of the calendar, and the difference
+ * matters. A roster is whoever is on the team *now*, so against a season that
+ * has already been played it matches only the players who stayed — about three
+ * in ten. Against a season not yet played it is exactly right, which is the
+ * only reason it is worth storing: it is what can be known about an opponent
+ * before the first tip.
+ *
+ * [fetchedAt] rides along on every row so a screen can say how old the roster
+ * is rather than implying it is live.
+ *
+ * Scraper-owned, so a sync replaces a team's rows outright.
+ */
+@Entity(tableName = "opponent_roster", primaryKeys = ["team", "name"])
+data class OpponentRosterPlayer(
+    /**
+     * The opponent's normalized name — [normTeam] — because that is what both
+     * the schedule and the box scores are keyed on, and the three spell a
+     * school differently often enough to matter.
+     */
+    val team: String,
+    /**
+     * Two players of the same name on one roster would collide here. It has not
+     * happened across the sixteen stored rosters, and a sync clears the team
+     * before inserting, so the risk is a missing row and never a stale one.
+     */
+    val name: String,
+    val jerseyNumber: String = "",
+    val position: String = "",
+    val height: String = "",
+    // Only the labelled roster layouts and the JSON ones carry these; the
+    // others print nothing but the measurements, so empty means "this page did
+    // not say", not "she does not have one".
+    val academicYear: String = "",
+    val hometown: String = "",
+    val lastSchool: String = "",
+    /** When the school's page was last read, ISO-8601. */
+    val fetchedAt: String = ""
+)
+
+/**
  * Official team totals for one side of one game, straight from the box score.
  *
  * These are deliberately NOT the sum of the player lines: team rebounds

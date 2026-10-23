@@ -437,4 +437,115 @@ class MergeSyncTest {
         assertEquals(0, db.dao().statLinesOnce().size)
         assertEquals(1, db.dao().gamesOnce().size)
     }
+
+    private fun withRoster(vararg teams: String): JSONObject = seedJson().apply {
+        put("opponentRosters", org.json.JSONArray(teams.joinToString(",", "[", "]")))
+    }
+
+    @Test
+    fun `opponent rosters are stored with their bios`() = runTest {
+        val json = withRoster(
+            """{"team": "arizona", "fetchedAt": "2026-10-21", "players": [
+                 {"name": "Arynn Finley", "jerseyNumber": "2", "position": "G",
+                  "height": "5-10", "academicYear": "Fr.",
+                  "hometown": "Rancho Cucamonga, Calif.",
+                  "lastSchool": "Etiwanda High School"}]}"""
+        )
+        Seeder.merge(json, db.dao())
+        val row = db.dao().opponentRosterOnce().single()
+        assertEquals("arizona", row.team)
+        assertEquals("Arynn Finley", row.name)
+        assertEquals("5-10", row.height)
+        assertEquals("Rancho Cucamonga, Calif.", row.hometown)
+        assertEquals("Etiwanda High School", row.lastSchool)
+        // The fetch date rides on every row so a screen can say how old it is.
+        assertEquals("2026-10-21", row.fetchedAt)
+    }
+
+    @Test
+    fun `a resync replaces a team's roster rather than adding to it`() = runTest {
+        // A player who has left must not linger: these rows are scraper-owned
+        // and nothing about them is ever user-entered.
+        Seeder.merge(
+            withRoster(
+                """{"team": "byu", "fetchedAt": "2026-10-14", "players": [
+                     {"name": "Gone Away", "jerseyNumber": "3"},
+                     {"name": "Still Here", "jerseyNumber": "4"}]}"""
+            ),
+            db.dao()
+        )
+        Seeder.merge(
+            withRoster(
+                """{"team": "byu", "fetchedAt": "2026-10-21", "players": [
+                     {"name": "Still Here", "jerseyNumber": "4"},
+                     {"name": "Just Arrived", "jerseyNumber": "5"}]}"""
+            ),
+            db.dao()
+        )
+        assertEquals(
+            listOf("Just Arrived", "Still Here"),
+            db.dao().opponentRosterOnce().map { it.name }.sorted()
+        )
+    }
+
+    @Test
+    fun `one school failing to parse leaves the others alone`() = runTest {
+        Seeder.merge(
+            withRoster(
+                """{"team": "byu", "fetchedAt": "2026-10-14", "players": [{"name": "Still Here"}]}""",
+                """{"team": "utah", "fetchedAt": "2026-10-14", "players": [{"name": "Also Here"}]}"""
+            ),
+            db.dao()
+        )
+        // An empty list means the page could not be read this week, not that
+        // the school has no players — a stale roster beats none.
+        Seeder.merge(
+            withRoster("""{"team": "byu", "fetchedAt": "2026-10-21", "players": []}"""),
+            db.dao()
+        )
+        assertEquals(
+            listOf("Also Here", "Still Here"),
+            db.dao().opponentRosterOnce().map { it.name }.sorted()
+        )
+    }
+
+    @Test
+    fun `a seed with no rosters leaves stored ones untouched`() = runTest {
+        // Older payloads predate the key entirely and must not clear the table.
+        Seeder.merge(
+            withRoster("""{"team": "tcu", "fetchedAt": "2026-10-21", "players": [{"name": "Still Here"}]}"""),
+            db.dao()
+        )
+        Seeder.merge(seedJson(), db.dao())
+        assertEquals(1, db.dao().opponentRosterOnce().size)
+    }
+
+    @Test
+    fun `an opponent can be on a roster and in a box score at once`() = runTest {
+        // Two rows about the same person answering different questions: what
+        // she did against Kansas, and that she is on the team now.
+        val json = withRoster(
+            """{"team": "kansas city", "fetchedAt": "2026-10-21",
+                "players": [{"name": "Opp One", "height": "6-0"}]}"""
+        )
+        json.getJSONArray("games").getJSONObject(0).put(
+            "opponentLines",
+            org.json.JSONArray("""[{"player": "Opp One", "pts": 12, "number": "7"}]""")
+        )
+        Seeder.merge(json, db.dao())
+        assertEquals("6-0", db.dao().opponentRosterOnce().single().height)
+        assertEquals(12, db.dao().opponentLinesOnce().single().points)
+    }
+
+    @Test
+    fun `a roster entry without a name is skipped without error`() = runTest {
+        Seeder.merge(
+            withRoster(
+                """{"team": "utah", "fetchedAt": "2026-10-21", "players": [
+                     {"name": "", "height": "6-0"}, {"name": "Real Player"}]}"""
+            ),
+            db.dao()
+        )
+        assertEquals(listOf("Real Player"), db.dao().opponentRosterOnce().map { it.name })
+    }
 }

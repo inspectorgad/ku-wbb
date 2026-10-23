@@ -84,6 +84,29 @@ test('a success clears the backoff', () => {
   assert.equal(fetchDecision(fresh, NOW).reason, 'fresh');
 });
 
+test('a fresh roster is re-read when the parser has learned more', () => {
+  // Otherwise a fix to the parser takes a week to reach the data it fixes:
+  // the page has not changed, so the timestamp alone says nothing is wrong.
+  const entry = { ...roster(1), parserVersion: 1 };
+  assert.deepEqual(fetchDecision(entry, NOW, 2), { fetch: true, reason: 'stale-parser' });
+  // An entry stored before the field existed counts as version 1.
+  assert.equal(fetchDecision(roster(1), NOW, 2).reason, 'stale-parser');
+});
+
+test('a roster already read by the current parser stays fresh', () => {
+  const entry = { ...roster(1), parserVersion: 2 };
+  assert.equal(fetchDecision(entry, NOW, 2).reason, 'fresh');
+  // A caller that does not care about the parser is unaffected.
+  assert.equal(fetchDecision(roster(1), NOW).reason, 'fresh');
+});
+
+test('the parser version does not override the failure backoff', () => {
+  // A site that cannot be parsed at all must not be retried every run just
+  // because the parser moved — that is the loop this all exists to stop.
+  const failed = noteFailure({ ...roster(8), parserVersion: 1 }, 'u', NOW);
+  assert.equal(fetchDecision(failed, NOW, 2).reason, 'held');
+});
+
 test('a corrupt timestamp does not wedge a site shut', () => {
   // Better to fetch once too often than to never look at a site again.
   assert.equal(retryAt({ failedAt: 'not a date', failures: 2 }), 0);

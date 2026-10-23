@@ -18,7 +18,7 @@ import { chromium } from 'playwright';
 import fs from 'fs';
 import { parseSchedule, siteOf } from './schedule-parser.mjs';
 import { parseRoster } from './roster-parser.mjs';
-import { parseRoster as parseOpponentRoster, playersFromJson }
+import { parseRoster as parseOpponentRoster, playersFromJson, PARSER_VERSION }
   from './opponent-roster-parser.mjs';
 import { fetchDecision, noteFailure } from './roster-cache.mjs';
 
@@ -292,7 +292,7 @@ try {
     const held = [];
     for (const [key, url] of Object.entries(siteMap).sort()) {
       const was = previous[key];
-      const decision = fetchDecision(was, now);
+      const decision = fetchDecision(was, now, PARSER_VERSION);
       if (!decision.fetch) {
         if (decision.reason === 'held') {
           held.push(`${key} (${was.failures} failed, next after ` +
@@ -334,7 +334,9 @@ try {
           note(`parsed ${players.length}, below the ${MIN_ROSTER} floor; page saved`);
         } else {
           // A success clears the backoff: no failedAt, no failures counter.
-          rosters[key] = { url, fetchedAt: new Date().toISOString(), players };
+          rosters[key] = {
+            url, fetchedAt: new Date().toISOString(), parserVersion: PARSER_VERSION, players,
+          };
           fetched++;
           fs.rmSync(`scraped/roster-miss-${key.replace(/[^a-z0-9]+/g, '-')}.txt`, { force: true });
           console.log(`  roster ${key}: ${players.length} players ` +

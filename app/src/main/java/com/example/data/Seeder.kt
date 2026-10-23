@@ -266,6 +266,48 @@ object Seeder {
         }
 
         mergeStandings(root, dao)
+        mergeOpponentRosters(root, dao)
+    }
+
+    /**
+     * Opposing schools' current rosters, replaced per team.
+     *
+     * Same reasoning as [mergeStandings]: scraper-derived, no user-entered
+     * field, and a player who has left the team must not linger. Replaced per
+     * team rather than wholesale so a week where one school's page would not
+     * parse leaves the other fifteen alone.
+     *
+     * A team whose roster came back empty is skipped rather than cleared. An
+     * empty list means the page could not be read this week, not that the
+     * school has no players, and a stale roster beats none.
+     */
+    private suspend fun mergeOpponentRosters(root: JSONObject, dao: JayhawksDao) {
+        val teams = root.optJSONArray("opponentRosters") ?: return
+        for (i in 0 until teams.length()) {
+            val t = teams.getJSONObject(i)
+            val team = t.optString("team").takeIf { it.isNotBlank() } ?: continue
+            val fetchedAt = t.optString("fetchedAt")
+            val players = t.optJSONArray("players") ?: continue
+            val rows = (0 until players.length()).mapNotNull { j ->
+                val p = players.getJSONObject(j)
+                val name = p.optString("name").takeIf { it.isNotBlank() }
+                    ?: return@mapNotNull null
+                OpponentRosterPlayer(
+                    team = team,
+                    name = name,
+                    jerseyNumber = p.optString("jerseyNumber"),
+                    position = p.optString("position"),
+                    height = p.optString("height"),
+                    academicYear = p.optString("academicYear"),
+                    hometown = p.optString("hometown"),
+                    lastSchool = p.optString("lastSchool"),
+                    fetchedAt = fetchedAt
+                )
+            }
+            if (rows.isEmpty()) continue
+            dao.deleteOpponentRosterFor(team)
+            dao.insertOpponentRoster(rows)
+        }
     }
 
     private fun teamStats(gameId: Long, isOpponent: Boolean, o: JSONObject) = GameTeamStats(

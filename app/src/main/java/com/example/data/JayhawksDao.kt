@@ -110,4 +110,18 @@ interface JayhawksDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertOpponentLines(rows: List<OpponentStatLine>)
+
+    // Opposing schools' current rosters. Scraper-owned; a sync replaces a
+    // team's rows so a player who has left does not linger on it.
+    @Query("SELECT * FROM opponent_roster ORDER BY team, CAST(jerseyNumber AS INTEGER), name")
+    fun observeOpponentRoster(): Flow<List<OpponentRosterPlayer>>
+
+    @Query("SELECT * FROM opponent_roster")
+    suspend fun opponentRosterOnce(): List<OpponentRosterPlayer>
+
+    @Query("DELETE FROM opponent_roster WHERE team = :team")
+    suspend fun deleteOpponentRosterFor(team: String)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertOpponentRoster(rows: List<OpponentRosterPlayer>)
 }

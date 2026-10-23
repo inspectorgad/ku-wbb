@@ -44,10 +44,17 @@ export function retryAt(entry) {
  *   held   the last attempt failed and the backoff has not elapsed
  *   due    go and fetch it
  */
-export function fetchDecision(entry, now) {
+export function fetchDecision(entry, now, parserVersion) {
   const fetchedAt = Date.parse(entry && entry.fetchedAt);
   if (entry && entry.players && entry.players.length
       && fetchedAt > now - FRESH_DAYS * DAY) {
+    // ...unless the parser has since learned to read more off the page. The
+    // page has not changed, so nothing in the timestamp says the stored
+    // players are now missing fields that could be had, and without this a fix
+    // to the parser would take a week to reach the data it fixes.
+    if (parserVersion !== undefined && (entry.parserVersion || 1) < parserVersion) {
+      return { fetch: true, reason: 'stale-parser' };
+    }
     return { fetch: false, reason: 'fresh' };
   }
   const until = retryAt(entry);

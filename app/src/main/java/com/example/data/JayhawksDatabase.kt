@@ -10,8 +10,8 @@ import androidx.sqlite.db.SupportSQLiteDatabase
 @Database(
     entities = [Player::class, Game::class, StatLine::class,
         ConferenceStanding::class, PollEntry::class, GameTeamStats::class,
-        OpponentStatLine::class],
-    version = 8,
+        OpponentStatLine::class, OpponentRosterPlayer::class],
+    version = 9,
     exportSchema = false
 )
 abstract class JayhawksDatabase : RoomDatabase() {
@@ -135,7 +135,6 @@ abstract class JayhawksDatabase : RoomDatabase() {
             }
         }
 
-        /** Every migration, in order. Exposed so tests exercise the real set. */
         // v7 -> v8: an opposing player's height, which the box score has no
         // field for. NOT NULL with a default, because every row that already
         // exists has no height and the column is read as "" rather than null
@@ -148,9 +147,35 @@ abstract class JayhawksDatabase : RoomDatabase() {
             }
         }
 
+        // v8 -> v9: opposing schools' current rosters — every player on the
+        // team rather than only those who have played Kansas, and the only
+        // thing that can be known about an opponent before the first tip.
+        //
+        // No foreign key to games: a roster belongs to a school, not to a
+        // fixture, and it is stored whether or not that school has been played.
+        // Every column is NOT NULL with an empty default, matching how the rest
+        // of the opponent data reads a missing value as "" rather than null.
+        private val MIGRATION_8_9 = object : Migration(8, 9) {
+            override fun migrate(db: SupportSQLiteDatabase) {
+                db.execSQL(
+                    """CREATE TABLE IF NOT EXISTS opponent_roster (
+                        team TEXT NOT NULL, name TEXT NOT NULL,
+                        jerseyNumber TEXT NOT NULL DEFAULT '',
+                        position TEXT NOT NULL DEFAULT '',
+                        height TEXT NOT NULL DEFAULT '',
+                        academicYear TEXT NOT NULL DEFAULT '',
+                        hometown TEXT NOT NULL DEFAULT '',
+                        lastSchool TEXT NOT NULL DEFAULT '',
+                        fetchedAt TEXT NOT NULL DEFAULT '',
+                        PRIMARY KEY(team, name))"""
+                )
+            }
+        }
+
+        /** Every migration, in order. Exposed so tests exercise the real set. */
         fun migrations(): Array<Migration> =
             arrayOf(MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5,
-                MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8)
+                MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8, MIGRATION_8_9)
 
         fun get(context: Context): JayhawksDatabase =
             instance ?: synchronized(this) {

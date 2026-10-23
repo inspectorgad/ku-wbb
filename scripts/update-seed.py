@@ -13,8 +13,9 @@ import glob
 import json
 import os
 import re
-import unicodedata
 from datetime import datetime, timezone
+
+from seed_text import fix_mojibake, norm_name, norm_team
 
 TEAM_SEO = "kansas"
 SEED_PATH = "app/src/main/assets/seed.json"
@@ -22,23 +23,6 @@ SEED_PATH = "app/src/main/assets/seed.json"
 # feed's isHome flag says — it marks a nominal home side even at neutral sites.
 HOME_VENUE = "Allen Fieldhouse"
 NEUTRAL_SITES_PATH = "scripts/neutral-sites.json"
-
-
-def fix_mojibake(text):
-    """Repair UTF-8 read as Latin-1 ("AnaÃ«lle" -> "Anaëlle").
-
-    The NCAA feed is inconsistent between games, so the same player can arrive
-    corrupted in one box score and clean in another; without this they become
-    two different players in every cross-game aggregation.
-    """
-    if not text or not any(c in text for c in "ÃÂÅ"):
-        return text
-    try:
-        repaired = text.encode("latin-1").decode("utf-8")
-    except (UnicodeEncodeError, UnicodeDecodeError):
-        return text
-    # Only accept a repair that removes the tell-tale sequences.
-    return repaired if "Ã" not in repaired else text
 
 
 def load_json(path, default):
@@ -67,34 +51,6 @@ def to_minutes(value):
 def season_label(start_year):
     """2025 -> "2025-26"."""
     return f"{start_year}-{str(start_year + 1)[-2:]}"
-
-
-def norm_name(name):
-    """Canonical key for matching one player across two sources.
-
-    A roster page and a box score rarely agree on punctuation or case —
-    "Anaëlle Dutat" against "ANAELLE DUTAT", "D'Shara Booker" against
-    "DShara Booker" — so accents are folded, everything but letters dropped,
-    and the result lower-cased. Deliberately not fuzzy beyond that: a near
-    match would attach one player's height to another.
-    """
-    folded = unicodedata.normalize("NFKD", name or "")
-    folded = "".join(c for c in folded if not unicodedata.combining(c))
-    return re.sub(r"[^a-z]", "", folded.lower())
-
-
-def norm_team(name):
-    """Canonical key for cross-source name matching ('Iowa State'/'Iowa St.').
-
-    kuathletics writes a schedule opponent as "South Dakota State" while the
-    NCAA box score for the same game says "South Dakota St." — without this the
-    fixture and its result key differently and the season shows two games.
-    """
-    n = re.sub(r"\s*\(\d+\)\s*$", "", name or "").lower()  # strip poll votes
-    n = n.replace(".", "")
-    n = re.sub(r"\bstate\b", "st", n)
-    n = re.sub(r"\buniversity\b", "", n)
-    return re.sub(r"\s+", " ", n).strip()
 
 
 def game_key(date, opponent):
@@ -291,11 +247,25 @@ for path in sorted(glob.glob("scraped/ncaa-game-*.json")):
 # score from an earlier season carries the number she wore then, so matching on
 # it silently files last year's lines under whoever inherited the shirt.
 opponent_rosters = load_json("scraped/opponent-rosters.json", {})
+
+# Names are repaired on both sides. The box-score side was already being
+# repaired when the lines were read; doing it here too closes the asymmetry —
+# a roster name that arrived mangled would otherwise fail to match a clean box
+# score, which looks exactly like a player who left the team.
+opponent_roster_players = {
+    team_key: [
+        dict(entry, name=fix_mojibake((entry.get("name") or "").strip()))
+        for entry in stored.get("players", [])
+        if (entry.get("name") or "").strip()
+    ]
+    for team_key, stored in opponent_rosters.items()
+}
+
 heights = {}
-for team_key, stored in opponent_rosters.items():
-    for entry in stored.get("players", []):
+for team_key, entries in opponent_roster_players.items():
+    for entry in entries:
         if entry.get("height"):
-            heights[(team_key, norm_name(entry.get("name", "")))] = entry["height"]
+            heights[(team_key, norm_name(entry["name"]))] = entry["height"]
 
 matched = unmatched = 0
 for game in games.values():
@@ -311,6 +281,45 @@ for game in games.values():
 if heights:
     print(f"opponent heights: {matched} box-score lines matched, {unmatched} without "
           f"(from {len(opponent_rosters)} rosters, {len(heights)} players)")
+
+# --- Opposing schools' rosters ----------------------------------------------
+# The same scraped pages, carried into the seed whole rather than mined for a
+# single field.
+#
+# The heights above are capped at about three players in ten, and the reason is
+# the calendar: a roster is whoever is on the team *now*, matched against box
+# scores from a season already played, so it only ever reaches the players who
+# stayed. Pointed at a season not yet played the same data is exactly right. It
+# is the only thing this app can say about an opponent before the first tip,
+# and until now it never left the scraped/ directory.
+opponent_roster_seed = []
+for team_key in sorted(opponent_roster_players):
+    entries = opponent_roster_players[team_key]
+    if not entries:
+        continue
+    opponent_roster_seed.append({
+        "team": team_key,
+        # The date alone. The scrape stamps a full timestamp, and carrying the
+        # seconds would rewrite the seed — and so rebuild the APK — every time
+        # a page was re-read, whether or not the roster on it had changed.
+        "fetchedAt": (opponent_rosters[team_key].get("fetchedAt") or "")[:10],
+        "players": [
+            {
+                "name": e["name"],
+                "jerseyNumber": (e.get("jerseyNumber") or "").strip(),
+                "position": (e.get("position") or "").strip(),
+                "height": (e.get("height") or "").strip(),
+                "academicYear": (e.get("academicYear") or "").strip(),
+                "hometown": (e.get("hometown") or "").strip(),
+                "lastSchool": (e.get("lastSchool") or "").strip(),
+            }
+            for e in entries
+        ],
+    })
+
+if opponent_roster_seed:
+    total = sum(len(t["players"]) for t in opponent_roster_seed)
+    print(f"opponent rosters: {len(opponent_roster_seed)} teams, {total} players")
 
 # --- Current roster (preferred source for number/position) ------------------
 roster_names = set()
@@ -685,6 +694,8 @@ if standings:
     seed["standings"] = standings
 if polls:
     seed["polls"] = polls
+if opponent_roster_seed:
+    seed["opponentRosters"] = opponent_roster_seed
 
 os.makedirs(os.path.dirname(SEED_PATH), exist_ok=True)
 

@@ -19,6 +19,21 @@
 //               0 / Faith Jordan / G / 5' 11'' / Fr. / Joliet, Illinois
 // Heights appear as 6' 3'', 6'3", or 6′3″ — straight quotes, doubled
 // apostrophes, and Unicode primes all mean the same thing.
+/**
+ * Bumped whenever this file learns to read something it could not read before.
+ *
+ * A stored roster is reused for a week, which is right while the parser is
+ * fixed but wrong the moment it improves: the page has not changed, so nothing
+ * in the timestamp says the stored players are now missing fields that could
+ * be had. The cache carries this number and refetches when it moves, so a fix
+ * here reaches the data on the next run rather than over the following week.
+ *
+ *   1  heights only
+ *   2  the Arizona layout (name above the label), inline nicknames, and the
+ *      hometown / academic year / last school the labelled shape walked past
+ */
+export const PARSER_VERSION = 2;
+
 const HEIGHT = /(\d)\s*['‘’′]\s*(\d{1,2})?\s*(?:''|"|”|″)?/;
 // Some sites drop the quote marks entirely and write 6-4. Anchored, so a year
 // range like 2025-26 is not mistaken for a height.
