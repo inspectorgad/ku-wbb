@@ -55,6 +55,7 @@ fun JayhawksApp(viewModel: JayhawksViewModel = viewModel()) {
     val pollEntries by viewModel.pollEntries.collectAsStateWithLifecycle()
     val opponentLines by viewModel.opponentLines.collectAsStateWithLifecycle()
     val teamStats by viewModel.teamStats.collectAsStateWithLifecycle()
+    val opponentRoster by viewModel.opponentRoster.collectAsStateWithLifecycle()
     val isSyncing by viewModel.isSyncing.collectAsStateWithLifecycle()
     val dataUpdatedAt by viewModel.dataUpdatedAt.collectAsStateWithLifecycle()
 
@@ -86,6 +87,7 @@ fun JayhawksApp(viewModel: JayhawksViewModel = viewModel()) {
             games = games,
             opponentLines = opponentLines,
             teamStats = teamStats,
+            roster = opponentRoster,
             onBack = { openOpponent = null }
         )
 
@@ -185,6 +187,7 @@ fun JayhawksApp(viewModel: JayhawksViewModel = viewModel()) {
                     Tab.Opponents -> OpponentsScreen(
                         games = games,
                         teamStats = teamStats,
+                        roster = opponentRoster,
                         onOpenOpponent = { openOpponent = it }
                     )
 

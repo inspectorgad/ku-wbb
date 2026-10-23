@@ -157,8 +157,8 @@ class TableNamesAgreeTest(unittest.TestCase):
     lists are checked against each other rather than trusted.
     """
 
-    EXPECTED = ["games", "periods", "ku_lines", "team_totals", "opponent_lines", "upcoming",
-                "standings", "poll", "roster", "definitions"]
+    EXPECTED = ["games", "periods", "ku_lines", "team_totals", "opponent_lines",
+                "opponent_roster", "upcoming", "standings", "poll", "roster", "definitions"]
 
     def test_the_pack_holds_exactly_those_tables(self):
         pack = build_pack(SEED)

@@ -148,9 +148,16 @@ data class OpponentStatLine(
     val playerName: String,
     val jerseyNumber: String = "",
     val position: String = "",
-    // From the opposing school's own roster page, matched on the name. A box
-    // score has no field for it, so this is empty whenever that team's roster
-    // was not reachable — which the UI reads as "not known" and says nothing.
+    // From the opposing school's own roster page, matched on the name — a box
+    // score has no field for it.
+    //
+    // Empty for about five lines in six, and the reason is the calendar rather
+    // than a failed scrape. A roster page lists whoever is on the team *now*,
+    // so matched against a season already played it only ever reaches the
+    // players who stayed: roughly three in ten of the schools that are mapped,
+    // and none at all for the schools that are not. See [OpponentRosterPlayer],
+    // which is the same data pointed at a season not yet played, where it is
+    // exactly right.
     val height: String = "",
     val minutes: Int = 0,
     val fieldGoalsMade: Int = 0,

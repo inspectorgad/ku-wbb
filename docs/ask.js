@@ -34,8 +34,8 @@ const MODELS = {
 const DEFAULT_MODEL = "claude-opus-5-5";
 // Round trips per question: pause_turn resumptions plus get_table answers.
 const MAX_HOPS = 16;
-const TABLES = ["games", "periods", "ku_lines", "team_totals", "opponent_lines", "upcoming",
-  "standings", "poll", "roster", "definitions"];
+const TABLES = ["games", "periods", "ku_lines", "team_totals", "opponent_lines",
+  "opponent_roster", "upcoming", "standings", "poll", "roster", "definitions"];
 const TOOLS = [
   { type: "code_execution_20260120", name: "code_execution" },
   {

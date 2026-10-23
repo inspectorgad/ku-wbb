@@ -462,10 +462,10 @@
   <section id="oppSec" hidden>
     <div class="sec-head">
       <h2>Opponents</h2>
-      <span class="note">against Kansas only — not each opponent's own season</span>
+      <span class="note" id="oppNote">against Kansas only — not each opponent's own season</span>
       <div class="rule"></div>
     </div>
-    <div class="card">
+    <div class="card" id="oppPlayedCard">
       <div class="tbl-wrap">
         <table id="oppTbl">
           <thead><tr>
@@ -477,7 +477,27 @@
         </table>
       </div>
       <p class="fineprint">Records are stated from the opponent's side, so "1-1 vs KU" means they
-        won one of the two. Shooting comes from their official team totals in those games.</p>
+        won one of the two. Shooting comes from their official team totals in those games.
+        Click a row for that school's current roster.</p>
+    </div>
+    <!-- The other half of the calendar. A box score can say nothing about a
+         game not yet played, but a roster can, so a season that has not
+         started is a list of squads rather than an empty page. -->
+    <div class="card" id="oppUpCard" hidden>
+      <h3 class="tblcap" id="oppUpHead">Still to play</h3>
+      <div class="tbl-wrap">
+        <table id="oppUpTbl">
+          <thead><tr>
+            <th class="lft">Opponent</th><th class="lft">First meeting</th>
+            <th class="lft">Site</th><th>Players</th><th class="lft">Roster read</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="fineprint">Rosters are each school's own page, as it lists the team today — right
+        for a game not yet played, and silent about who was on the floor in an earlier season.
+        A dash means no roster page is mapped for that school, not that it has no players.
+        Click a row for the squad.</p>
     </div>
   </section>
 
@@ -596,6 +616,35 @@
     <div class="m-sec" id="gOppSec">
       <h4 id="gOppHead">Opponent</h4>
       <div class="tbl-wrap"><table id="gOppTbl"><thead></thead><tbody></tbody></table></div>
+      <p class="fineprint" id="gOppFine"></p>
+    </div>
+  </div>
+</dialog>
+
+<!-- Opposing school's roster. Until now an opponent row was the one dead end
+     on this page: a KU player opens a card and a played game opens its box
+     score, but the team itself opened nothing. -->
+<dialog class="sheet" id="omodal" aria-label="Opponent roster">
+  <div class="m-head">
+    <div>
+      <h3 id="oName"></h3>
+      <div class="sub" id="oSub"></div>
+    </div>
+    <button class="m-close" id="oClose" aria-label="Close">✕</button>
+  </div>
+  <div class="m-body">
+    <div class="m-sec">
+      <h4>Current roster</h4>
+      <div class="tbl-wrap">
+        <table id="oRosterTbl">
+          <thead><tr>
+            <th>No.</th><th class="lft">Name</th><th class="lft">Pos</th><th class="lft">Ht</th>
+            <th class="lft">Yr</th><th class="lft">Hometown</th><th class="lft">Last school</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <p class="fineprint" id="oFine"></p>
     </div>
   </div>
 </dialog>
@@ -1304,10 +1353,56 @@ const normTeam = n => (n || "")
 const eFG = t => pct(t.fgm + 0.5 * t.tpm, t.fga);
 const TS = t => t.fga + 0.44 * t.fta ? t.pts / (2 * (t.fga + 0.44 * t.fta)) : 0;
 
+// Opposing schools' current rosters, under the key the seed stores them by —
+// the normalized school name, which the schedule, the box scores and the
+// roster pages all reduce to despite spelling it three different ways.
+const ROSTERS = new Map((DATA.opponentRosters || []).map(t => [t.team, t]));
+const rosterOf = name => ROSTERS.get(normTeam(name));
+
 function opponents() {
   const sec = document.getElementById("oppSec");
-  if (!games.length) { sec.hidden = true; return; }
+
+  // The other half of the calendar: everyone on this season's schedule who has
+  // not been played, soonest first. A box score can say nothing about them, so
+  // without this a season that has not started renders as no section at all.
+  const upByTeam = new Map();
+  for (const g of upcoming) {
+    const key = normTeam(g.opponent);
+    if (!upByTeam.has(key)) upByTeam.set(key, []);
+    upByTeam.get(key).push(g);
+  }
+  const upRows = [...upByTeam.values()].map(gs => {
+    const first = gs.reduce((a, b) => (a.date < b.date ? a : b));
+    return { name: first.opponent, first, n: gs.length, roster: rosterOf(first.opponent) };
+  }).sort((a, b) => (a.first.date < b.first.date ? -1 : 1));
+
+  if (!games.length && !upRows.length) { sec.hidden = true; return; }
   sec.hidden = false;
+  document.getElementById("oppPlayedCard").hidden = !games.length;
+  document.getElementById("oppNote").textContent = games.length
+    ? "against Kansas only — not each opponent's own season"
+    : "nothing played yet — who is coming, and who they are bringing";
+
+  const upCard = document.getElementById("oppUpCard");
+  upCard.hidden = !upRows.length;
+  if (upRows.length) {
+    document.getElementById("oppUpHead").textContent =
+      games.length ? "Still to play" : "On the schedule";
+    // Keyed on the normalized name rather than the printed one: it is the
+    // roster's own key, and it cannot carry a quote into the attribute.
+    document.querySelector("#oppUpTbl tbody").innerHTML = upRows.map(r => `
+      <tr${r.roster ? ` data-opp="${normTeam(r.name)}" class="rowlink" title="Roster"` : ""}>
+        <td class="lft"><b>${r.name}</b></td>
+        <td class="lft">${r.first.date}${r.n > 1
+          ? ` <span class="dim">+${r.n - 1} more</span>` : ""}</td>
+        <td class="lft">${siteChip(r.first)} ${r.first.venue || ""}</td>
+        <td>${r.roster ? r.roster.players.length : '<span class="dim">—</span>'}</td>
+        <td class="lft"><span class="dim">${r.roster
+          ? r.roster.fetchedAt : "no roster page mapped"}</span></td>
+      </tr>`).join("");
+  }
+
+  if (!games.length) return;
 
   const byTeam = new Map();
   for (const g of games) {
@@ -1338,11 +1433,12 @@ function opponents() {
     }
     const top = [...scorers.entries()].sort((a, b) => b[1] - a[1])[0];
     return { name, n: gs.length, w, l: gs.length - w, scored, allowed, tot, top,
-             shot: tot.fga > 0, nonD1: gs.some(g => g.nonD1) };
+             shot: tot.fga > 0, nonD1: gs.some(g => g.nonD1),
+             roster: rosterOf(name) };
   }).sort((a, b) => a.name.localeCompare(b.name));
 
   document.querySelector("#oppTbl tbody").innerHTML = rows.map(r => `
-    <tr>
+    <tr${r.roster ? ` data-opp="${normTeam(r.name)}" class="rowlink" title="Current roster"` : ""}>
       <td class="lft"><b>${r.name}</b>${r.nonD1
         ? ' <span class="dim" title="Not Division I — the NCAA leaves this game out of its records">non-D1</span>' : ""}</td>
       <td>${r.n}</td>
@@ -1559,11 +1655,23 @@ function openGame(n) {
   oppSec.hidden = !(g.opponentLines || []).length;
   if (!oppSec.hidden) {
     document.getElementById("gOppHead").textContent = `${g.opponent} — starters in bold`;
-    // Height comes from that school's own roster page and is often missing,
-    // so it is appended only when known rather than shown as a blank column.
+    // Height comes from that school's own roster page and is appended only
+    // when known, rather than shown as a blank column.
     boxTable(document.getElementById("gOppTbl"), g.opponentLines,
       l => `${l.number ? l.number + " " : ""}${l.player}` +
         (l.height ? ` <span class="dim">${l.height}</span>` : ""));
+    // ...but say how many are known, because a box score with no heights on it
+    // at all otherwise reads as "this page does not carry opponent heights"
+    // rather than "this school's roster has moved on since this game".
+    const known = g.opponentLines.filter(l => l.height).length;
+    const mapped = !!rosterOf(g.opponent);
+    document.getElementById("gOppFine").textContent =
+      known === g.opponentLines.length ? ""
+      : !mapped
+        ? `No heights here: no roster page is mapped for ${g.opponent}, and a box score ` +
+          `carries none for anyone but Kansas.`
+        : `Heights shown for ${known} of ${g.opponentLines.length}. They come from the ` +
+          `current ${g.opponent} roster, so they reach only the players still on that team.`;
   }
 
   markGlossary();
@@ -1586,6 +1694,52 @@ function render(sel) {
   markGlossary();
 }
 render(season);
+
+// ---------- opponent roster modal ----------
+const omodal = document.getElementById("omodal");
+document.getElementById("oClose").addEventListener("click", () => omodal.close());
+omodal.addEventListener("click", ev => { if (ev.target === omodal) omodal.close(); });
+
+// Both opponent tables, played and still-to-play, open the same card.
+document.getElementById("oppSec").addEventListener("click", ev => {
+  const row = ev.target.closest("tr[data-opp]");
+  if (row) openOpponentRoster(row.dataset.opp);
+});
+
+function openOpponentRoster(key) {
+  const t = ROSTERS.get(key);
+  if (!t) return;
+  // Titled with the schedule's spelling where there is one; the stored key is
+  // normalized ("iowa st") and would read as a typo.
+  const named = ALL_GAMES.find(g => normTeam(g.opponent) === key);
+  document.getElementById("oName").textContent = named ? named.opponent : key;
+  document.getElementById("oSub").textContent =
+    `${t.players.length} players · read ${t.fetchedAt}`;
+
+  // Jersey order, the way the school's own page prints it.
+  const rows = [...t.players].sort((a, b) =>
+    (parseInt(a.jerseyNumber, 10) || 999) - (parseInt(b.jerseyNumber, 10) || 999)
+    || a.name.localeCompare(b.name));
+  const dim = v => v ? v : '<span class="dim">—</span>';
+  document.querySelector("#oRosterTbl tbody").innerHTML = rows.map(p => `
+    <tr>
+      <td>${p.jerseyNumber || ""}</td>
+      <td class="lft"><b>${p.name}</b></td>
+      <td class="lft">${dim(p.position)}</td>
+      <td class="lft">${dim(p.height)}</td>
+      <td class="lft">${dim(p.academicYear)}</td>
+      <td class="lft">${dim(p.hometown)}</td>
+      <td class="lft">${dim(p.lastSchool)}</td>
+    </tr>`).join("");
+
+  // Said plainly, because the same page shows box scores from a season that
+  // has already been played and the two must not be read as one thing.
+  document.getElementById("oFine").textContent =
+    "This is the squad that school lists today, not the team that played " +
+    "Kansas in an earlier season — most of those players have since left. " +
+    "A dash is a field that school's page does not print.";
+  omodal.showModal();
+}
 
 // ---------- player modal ----------
 const modal = document.getElementById("pmodal");

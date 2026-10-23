@@ -2,6 +2,7 @@ package com.example.stats
 
 import com.example.data.Game
 import com.example.data.GameTeamStats
+import com.example.data.OpponentRosterPlayer
 import com.example.data.OpponentStatLine
 import com.example.data.normTeam
 
@@ -61,6 +62,67 @@ fun summarizeOpponents(
     }.sortedBy { it.name }
 }
 
+/** Jersey order, the way a roster page prints it; unnumbered players last. */
+internal val rosterOrder = compareBy<OpponentRosterPlayer>(
+    { it.jerseyNumber.toIntOrNull() ?: Int.MAX_VALUE }, { it.name }
+)
+
+/** That school's current roster, or an empty list if none is held. */
+fun rosterFor(
+    roster: List<OpponentRosterPlayer>,
+    opponentName: String
+): List<OpponentRosterPlayer> =
+    roster.filter { it.team == normTeam(opponentName) }.sortedWith(rosterOrder)
+
+/**
+ * A team on the schedule that Kansas has not played yet, with whatever can be
+ * known about it beforehand.
+ *
+ * [summarizeOpponents] above needs a box score and so has nothing to say until
+ * a game is over. This is the other half of the calendar: before the first tip
+ * there is a fixture and, for the schools whose roster page is mapped, a
+ * squad list. [fetchedAt] is carried so a screen can say how old that list is
+ * rather than implying it is live.
+ */
+data class ScheduledOpponent(
+    val name: String,
+    val games: List<Game>,
+    val roster: List<OpponentRosterPlayer>,
+    val fetchedAt: String
+) {
+    val firstMeeting: String get() = games.minOf { it.date }
+}
+
+/**
+ * Every opponent on [season]'s schedule that has not been played, soonest
+ * first, each with its current roster where one is stored.
+ *
+ * Grouped on the normalized name for the same reason [summarizeOpponents] is:
+ * the schedule page, the box scores and the roster pages spell a school three
+ * different ways, and the roster is keyed on the normalized form.
+ */
+fun scheduledOpponents(
+    games: List<Game>,
+    roster: List<OpponentRosterPlayer>,
+    season: String? = null
+): List<ScheduledOpponent> {
+    val byTeam = roster.groupBy { it.team }
+    return games
+        .filter { it.teamScore == null && (season == null || it.season == season) }
+        .groupBy { normTeam(it.opponent) }
+        .map { (key, theirGames) ->
+            val players = byTeam[key].orEmpty()
+            ScheduledOpponent(
+                // The earliest fixture's spelling, matching the order shown.
+                name = theirGames.minBy { it.date }.opponent,
+                games = theirGames.sortedBy { it.date },
+                roster = players.sortedWith(rosterOrder),
+                fetchedAt = players.firstOrNull()?.fetchedAt.orEmpty()
+            )
+        }
+        .sortedBy { it.firstMeeting }
+}
+
 /**
  * One opposing player's line summed across every meeting with Kansas.
  *
@@ -73,7 +135,11 @@ data class OpponentPlayer(
     val name: String,
     val jerseyNumber: String,
     val position: String,
-    /** From her school's roster page; empty when that roster was unreachable. */
+    /**
+     * From her school's roster page, which lists whoever is on the team now —
+     * so this is empty for most lines in a season already played, because most
+     * of those players have since left. See [OpponentStatLine.height].
+     */
     val height: String,
     val games: Int,
     val started: Int,

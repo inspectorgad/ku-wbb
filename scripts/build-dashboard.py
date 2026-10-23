@@ -17,8 +17,10 @@ data = {
     # upcoming fixtures so a season can be selected before it tips off.
     "games": seed["games"],
 }
-# Optional keys added by the Big 12 feature; older seeds simply omit them.
-for key in ("standings", "polls"):
+# Optional keys; older seeds simply omit them. standings and polls arrived
+# with the Big 12 section, opponentRosters with the opponent cards — the page
+# reads each defensively, so a seed without one renders without that part.
+for key in ("standings", "polls", "opponentRosters"):
     if key in seed:
         data[key] = seed[key]
 

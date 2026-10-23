@@ -29,9 +29,12 @@ DEFINITIONS = {
     "ast": "assists", "to": "turnovers", "stl": "steals", "blk": "blocked shots",
     "pf": "personal fouls", "pts": "points",
     "started": "in the starting five for that game",
-    "height": "an opposing player's listed height, from her own school's roster page; null "
-              "where that roster could not be read, which is most of them — a box score "
-              "carries no height for anyone but Kansas",
+    "height": "an opposing player's listed height, from her own school's roster page — a box "
+              "score carries no height for anyone but Kansas. Null for about five lines in six, "
+              "and the reason is the calendar, not a failed scrape: a roster page lists whoever "
+              "is on the team now, so matched against a season already played it only reaches "
+              "the players who stayed. About half the misses are schools with no roster page "
+              "mapped at all; the rest are players who have since graduated or transferred",
     "efg_pct": "effective field goal percentage, (fgm + 0.5 * tpm) / fga — a three counts "
                "for the extra half a basket it is worth",
     "ts_pct": "true shooting percentage, pts / (2 * (fga + 0.44 * fta)) — points per scoring "
@@ -60,7 +63,7 @@ DEFINITIONS = {
 # Claude's own code through the get_table tool; this only says how.
 SYSTEM_RULES = """You are the analyst behind the Kansas Jayhawks women's basketball app and dashboard. You answer questions from coaches and fans about the team, using only the season data you are given.
 
-The complete data is available to your Python code through the get_table tool: tables games, periods (one row per quarter, with each side's points), ku_lines (KU player box score lines per game), team_totals (the official team totals for both sides), opponent_lines, upcoming, standings, poll, roster, and definitions. Call it from inside code execution, for example: import json, pandas as pd; lines = pd.DataFrame(json.loads(await get_table({'table': 'ku_lines'}))). Join tables on (season, date, opponent). A summary of the smaller tables is below for orientation.
+The complete data is available to your Python code through the get_table tool: tables games, periods (one row per quarter, with each side's points), ku_lines (KU player box score lines per game), team_totals (the official team totals for both sides), opponent_lines, opponent_roster (opposing squads as their schools list them today, which is the right source for a game not yet played and the wrong one for a season already played), upcoming, standings, poll, roster, and definitions. Call it from inside code execution, for example: import json, pandas as pd; lines = pd.DataFrame(json.loads(await get_table({'table': 'ku_lines'}))). Join tables on (season, date, opponent). A summary of the smaller tables is below for orientation.
 
 How to answer:
 - Compute every number with code from the tables. Do not estimate, recall, or do arithmetic in your head, even for a simple total.
@@ -222,6 +225,15 @@ def build_pack(seed):
         "roster": [{k: p.get(k) for k in ("name", "jerseyNumber", "position", "height",
                                           "academicYear", "hometown", "lastSchool", "active")}
                    for p in seed.get("players", [])],
+        # Opposing squads as their own schools list them today. Flattened to
+        # one row per player with the school on it, so it joins to the other
+        # tables the same way everything else here does.
+        "opponent_roster": [
+            {"team": t["team"], "read": t.get("fetchedAt"),
+             **{k: (p.get(k) or None) for k in ("name", "jerseyNumber", "position", "height",
+                                                "academicYear", "hometown", "lastSchool")}}
+            for t in seed.get("opponentRosters", []) for p in t.get("players", [])
+        ],
     }
     pack["system_prompt"] = system_prompt(pack)
     return pack

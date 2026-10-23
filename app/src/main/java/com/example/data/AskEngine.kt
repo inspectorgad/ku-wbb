@@ -260,8 +260,8 @@ class AskEngine(
         const val MAX_HOPS = 16
         const val FALLBACK_BETA = "server-side-fallback-2026-07-01"
         val TABLES = listOf(
-            "games", "periods", "ku_lines", "team_totals", "opponent_lines", "upcoming",
-            "standings", "poll", "roster", "definitions"
+            "games", "periods", "ku_lines", "team_totals", "opponent_lines",
+            "opponent_roster", "upcoming", "standings", "poll", "roster", "definitions"
         )
 
         /**

@@ -34,9 +34,11 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import com.example.data.Game
 import com.example.data.GameTeamStats
+import com.example.data.OpponentRosterPlayer
 import com.example.data.OpponentStatLine
 import com.example.data.sameTeam
 import com.example.stats.efficiency
@@ -44,37 +46,55 @@ import com.example.stats.formatPct
 import com.example.stats.formatPerGame
 import com.example.stats.formatShots
 import com.example.stats.opponentPlayers
+import com.example.stats.rosterFor
+import com.example.stats.scheduledOpponents
 import com.example.stats.summarizeOpponents
 
 /**
- * Who Kansas played, and what they did in the meeting.
+ * Who Kansas played, and what they did in the meeting — and, below that, who
+ * is still to come.
  *
- * Everything on this tab is scoped to games against Kansas — those are the only
- * box scores the app holds — and every figure is stated from the opponent's
- * side, so a row reads as their record against us. The caption says so
- * outright, because "Baylor 1-1" could otherwise be mistaken for their season.
+ * Everything in the played half is scoped to games against Kansas — those are
+ * the only box scores the app holds — and every figure is stated from the
+ * opponent's side, so a row reads as their record against us. The caption says
+ * so outright, because "Baylor 1-1" could otherwise be mistaken for their
+ * season.
+ *
+ * The seasons offered include ones with nothing played yet. Before a season
+ * tips off a box score can say nothing at all, but a current roster can, and
+ * for the schools whose page is mapped one is held — so a season that has not
+ * started is a list of squads rather than an empty screen. The default stays
+ * on the newest season that has been played; a new one takes over on its own
+ * once it has a result.
  */
 @Composable
 fun OpponentsScreen(
     games: List<Game>,
     teamStats: List<GameTeamStats>,
+    roster: List<OpponentRosterPlayer>,
     onOpenOpponent: (String) -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val seasons = games.filter { it.teamScore != null }
+    val played = games.filter { it.teamScore != null }
         .map { it.season }.distinct().sortedDescending()
+    val seasons = games.map { it.season }.distinct().sortedDescending()
     var selectedSeason by rememberSaveable { mutableStateOf<String?>(null) }
-    val season = selectedSeason?.takeIf { it in seasons } ?: seasons.firstOrNull()
+    val season = selectedSeason?.takeIf { it in seasons }
+        ?: played.firstOrNull() ?: seasons.firstOrNull()
 
     val summaries = remember(games, teamStats, season) {
         summarizeOpponents(games, teamStats, season)
     }
+    val upcoming = remember(games, roster, season) {
+        scheduledOpponents(games, roster, season)
+    }
 
     Box(modifier = modifier.fillMaxSize()) {
-        if (summaries.isEmpty()) {
+        if (summaries.isEmpty() && upcoming.isEmpty()) {
             EmptyState(
                 title = "No opponents yet",
-                subtitle = "Each team Kansas has played appears here once a game has been played.",
+                subtitle = "Each team Kansas plays appears here, before the game as a roster " +
+                    "and after it as a result.",
                 modifier = Modifier.align(Alignment.Center)
             )
             return@Box
@@ -99,13 +119,15 @@ fun OpponentsScreen(
                     }
                 }
             }
-            item(key = "caption") {
-                Text(
-                    "Records and figures below are against Kansas only, not each opponent's " +
-                        "own season, and are stated from their side.",
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.onSurfaceVariant
-                )
+            if (summaries.isNotEmpty()) {
+                item(key = "caption") {
+                    Text(
+                        "Records and figures below are against Kansas only, not each opponent's " +
+                            "own season, and are stated from their side.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
             }
             items(summaries, key = { it.name }) { opponent ->
                 Card(
@@ -147,6 +169,80 @@ fun OpponentsScreen(
                     }
                 }
             }
+
+            if (upcoming.isNotEmpty()) {
+                item(key = "upcoming-header") {
+                    Text(
+                        if (summaries.isEmpty()) "On the schedule" else "Still to play",
+                        style = MaterialTheme.typography.titleSmall,
+                        fontWeight = FontWeight.Bold,
+                        modifier = Modifier.padding(top = 8.dp)
+                    )
+                }
+                item(key = "upcoming-caption") {
+                    Text(
+                        "Rosters are each school's own, as it lists the team today — so they " +
+                            "are right for a game not yet played, and say nothing about who " +
+                            "was on the floor in an earlier season.",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+                items(upcoming, key = { "up-" + it.name }) { opponent ->
+                    Card(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .clickable { onOpenOpponent(opponent.name) }
+                    ) {
+                        Row(
+                            modifier = Modifier.padding(12.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            Column(modifier = Modifier.weight(1f)) {
+                                Text(
+                                    opponent.name,
+                                    style = MaterialTheme.typography.titleMedium,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                                val first = opponent.games.first()
+                                Text(
+                                    listOfNotNull(
+                                        first.date,
+                                        when (first.siteOrLegacy) {
+                                            "home" -> "at Kansas"
+                                            "away" -> "at home"
+                                            "neutral" -> "neutral site"
+                                            else -> null
+                                        },
+                                        if (opponent.games.size > 1) {
+                                            "${opponent.games.size} meetings"
+                                        } else null
+                                    ).joinToString(" · "),
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                            Column(horizontalAlignment = Alignment.End) {
+                                Text(
+                                    if (opponent.roster.isEmpty()) "—"
+                                    else opponent.roster.size.toString(),
+                                    style = MaterialTheme.typography.bodyMedium,
+                                    fontWeight = FontWeight.Bold
+                                )
+                                Text(
+                                    // Saying which it is matters: a school with
+                                    // no roster here is one nobody has mapped a
+                                    // page for, not one with no players.
+                                    if (opponent.roster.isEmpty()) "no roster"
+                                    else "players · ${opponent.fetchedAt}",
+                                    style = MaterialTheme.typography.bodySmall,
+                                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                                )
+                            }
+                        }
+                    }
+                }
+            }
         }
     }
 }
@@ -158,11 +254,16 @@ fun OpponentDetailScreen(
     games: List<Game>,
     opponentLines: List<OpponentStatLine>,
     teamStats: List<GameTeamStats>,
+    roster: List<OpponentRosterPlayer>,
     onBack: () -> Unit
 ) {
     val theirGames = games
         .filter { sameTeam(it.opponent, opponentName) && it.teamScore != null }
         .sortedByDescending { it.date }
+    val scheduled = games
+        .filter { sameTeam(it.opponent, opponentName) && it.teamScore == null }
+        .sortedBy { it.date }
+    val theirRoster = remember(roster, opponentName) { rosterFor(roster, opponentName) }
     val ids = theirGames.map { it.id }.toSet()
     val players = remember(opponentLines, ids) {
         opponentPlayers(opponentLines.filter { it.gameId in ids })
@@ -193,22 +294,50 @@ fun OpponentDetailScreen(
             contentPadding = ListContentPadding,
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
-            item {
-                SectionCard("Against Kansas") {
-                    Text(
-                        "$wins-$losses in ${theirGames.size} " +
-                            (if (theirGames.size == 1) "meeting" else "meetings"),
-                        style = MaterialTheme.typography.bodyMedium,
-                        fontWeight = FontWeight.SemiBold
-                    )
-                    val meetings = theirGames.size.coerceAtLeast(1)
-                    val scored = theirGames.sumOf { it.opponentScore ?: 0 }.toDouble() / meetings
-                    val allowed = theirGames.sumOf { it.teamScore ?: 0 }.toDouble() / meetings
-                    Text(
-                        "${formatPerGame(scored)} scored, ${formatPerGame(allowed)} allowed per game",
-                        style = MaterialTheme.typography.bodySmall,
-                        color = MaterialTheme.colorScheme.onSurfaceVariant
-                    )
+            if (theirGames.isNotEmpty()) {
+                item {
+                    SectionCard("Against Kansas") {
+                        Text(
+                            "$wins-$losses in ${theirGames.size} " +
+                                (if (theirGames.size == 1) "meeting" else "meetings"),
+                            style = MaterialTheme.typography.bodyMedium,
+                            fontWeight = FontWeight.SemiBold
+                        )
+                        val meetings = theirGames.size.coerceAtLeast(1)
+                        val scored = theirGames.sumOf { it.opponentScore ?: 0 }.toDouble() / meetings
+                        val allowed = theirGames.sumOf { it.teamScore ?: 0 }.toDouble() / meetings
+                        Text(
+                            "${formatPerGame(scored)} scored, ${formatPerGame(allowed)} allowed per game",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
+            }
+
+            if (scheduled.isNotEmpty()) {
+                item {
+                    SectionCard(if (scheduled.size == 1) "Scheduled" else "Scheduled meetings") {
+                        scheduled.forEach { game ->
+                            Text(
+                                listOfNotNull(
+                                    game.date,
+                                    // The site is KU's, so it reads inverted.
+                                    when (game.siteOrLegacy) {
+                                        "home" -> "at Kansas"
+                                        "away" -> "at home"
+                                        "neutral" -> "neutral site"
+                                        else -> null
+                                    },
+                                    game.venue,
+                                    game.tipTime,
+                                    game.tv
+                                ).joinToString(" · "),
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                    }
                 }
             }
 
@@ -296,12 +425,33 @@ fun OpponentDetailScreen(
 
             if (players.isNotEmpty()) {
                 item {
-                    Text(
-                        "Players vs Kansas",
-                        style = MaterialTheme.typography.titleSmall,
-                        fontWeight = FontWeight.Bold,
-                        modifier = Modifier.padding(top = 8.dp)
-                    )
+                    Column(modifier = Modifier.padding(top = 8.dp)) {
+                        Text(
+                            "Players vs Kansas",
+                            style = MaterialTheme.typography.titleSmall,
+                            fontWeight = FontWeight.Bold
+                        )
+                        // Say how many heights are known. A list with none on
+                        // it otherwise reads as "this app does not carry
+                        // opponent heights" rather than "this school's roster
+                        // has moved on since these games".
+                        val known = players.count { it.height.isNotBlank() }
+                        if (known < players.size) {
+                            Text(
+                                if (theirRoster.isEmpty()) {
+                                    "No heights here: no roster page is mapped for " +
+                                        "$opponentName, and a box score carries none for " +
+                                        "anyone but Kansas."
+                                } else {
+                                    "Heights for $known of ${players.size} — they come from " +
+                                        "the current $opponentName roster, so they reach only " +
+                                        "the players still on that team."
+                                },
+                                style = MaterialTheme.typography.bodySmall,
+                                color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                    }
                 }
                 items(players, key = { it.name }) { player ->
                     Card(modifier = Modifier.fillMaxWidth()) {
@@ -316,9 +466,9 @@ fun OpponentDetailScreen(
                                     .padding(start = 12.dp)
                             ) {
                                 Text(
-                                    // Height comes from that school's own
-                                    // roster page and is often missing; it is
-                                    // dropped rather than shown blank.
+                                    // A height that is not known is dropped
+                                    // rather than shown blank; the caption
+                                    // above says how many are missing and why.
                                     listOf(player.name, player.position, player.height)
                                         .filter { it.isNotBlank() }.joinToString(" · "),
                                     style = MaterialTheme.typography.bodyLarge,
@@ -340,6 +490,78 @@ fun OpponentDetailScreen(
                                     style = MaterialTheme.typography.labelSmall,
                                     color = MaterialTheme.colorScheme.onSurfaceVariant
                                 )
+                            }
+                        }
+                    }
+                }
+            }
+
+            // Last, because for a team Kansas has played the results above are
+            // what is wanted first. For one it has not, everything above is
+            // empty and this is the screen.
+            if (theirRoster.isNotEmpty()) {
+                item(key = "roster-header") {
+                    Column(modifier = Modifier.padding(top = 8.dp)) {
+                        Text(
+                            "Current roster",
+                            style = MaterialTheme.typography.titleSmall,
+                            fontWeight = FontWeight.Bold
+                        )
+                        Text(
+                            "${theirRoster.size} players, from $opponentName's own page" +
+                                theirRoster.first().fetchedAt
+                                    .takeIf { it.isNotBlank() }
+                                    ?.let { ", read $it" }.orEmpty() +
+                                // The distinction the box scores above cannot
+                                // make for themselves: this is the team now,
+                                // not the team that played those games.
+                                ". This is the squad today, not the one that " +
+                                "played in an earlier season.",
+                            style = MaterialTheme.typography.bodySmall,
+                            color = MaterialTheme.colorScheme.onSurfaceVariant
+                        )
+                    }
+                }
+                items(theirRoster, key = { "r-" + it.name }) { player ->
+                    Card(modifier = Modifier.fillMaxWidth()) {
+                        Row(
+                            modifier = Modifier.padding(12.dp),
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            JerseyBadge(player.jerseyNumber)
+                            Column(
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .padding(start = 12.dp)
+                            ) {
+                                Text(
+                                    player.name,
+                                    style = MaterialTheme.typography.bodyLarge,
+                                    fontWeight = FontWeight.SemiBold
+                                )
+                                // Only the labelled roster layouts carry the
+                                // bios, so a blank one means that page did not
+                                // print it — not that she has none.
+                                val line = listOf(
+                                    player.position, player.height, player.academicYear,
+                                    player.hometown
+                                ).filter { it.isNotBlank() }
+                                if (line.isNotEmpty()) {
+                                    Text(
+                                        line.joinToString(" · "),
+                                        style = MaterialTheme.typography.bodySmall,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                                    )
+                                }
+                                if (player.lastSchool.isNotBlank()) {
+                                    Text(
+                                        player.lastSchool,
+                                        style = MaterialTheme.typography.labelSmall,
+                                        color = MaterialTheme.colorScheme.onSurfaceVariant,
+                                        maxLines = 1,
+                                        overflow = TextOverflow.Ellipsis
+                                    )
+                                }
                             }
                         }
                     }
