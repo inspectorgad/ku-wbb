@@ -35,7 +35,11 @@ with the complete 2025-26 season — 36 games, WBIT finalists — plus the 34-ga
 - **Opponents** — every team Kansas played, their record and production
   *against Kansas* — the only box scores this app holds — with each meeting,
   their shooting against KU's, and every opposing player summed across the
-  meetings.
+  meetings. Also every team Kansas is *about* to play, with that school's
+  current roster where one can be read: before a season tips off a box score
+  can say nothing, and a roster is right for exactly those games. The same
+  roster matched against a season already played reaches only the players who
+  stayed, which is why most opposing heights there are blank.
 - **Big 12** — conference standings with NET and national rank, and the
   latest AP top 25 with the Big 12 teams marked.
 
@@ -81,7 +85,11 @@ refreshes itself as tip times and broadcasts are set.
    finished game's official box score for both teams, and pulls the roster and
    schedule from kuathletics.com. It runs six times a day, on the :37 — the
    top of the hour is the most contended minute there is — and the roster
-   scrape is what flags departed players as former.
+   scrape is what flags departed players as former. It also reads the roster
+   page of each opposing school in `scripts/opponent-sites.json`, which is
+   where an opposing player's height comes from: a box score carries none for
+   anyone but Kansas. Those pages are read at most once a week, and a school
+   whose page will not parse is backed off rather than retried on every run.
 2. **`scripts/update-seed.py`** rebuilds `app/src/main/assets/seed.json`:
    games keyed on date plus a normalized opponent name, since the schedule
    says "South Dakota State" where the box score says "South Dakota St.";
@@ -136,7 +144,7 @@ fine — it's only needed while installing.
 ## Tech
 
 - Kotlin + Jetpack Compose (Material 3), KU crimson and blue
-- Room for persistence, currently schema v7. The schema is not exported, so
+- Room for persistence, currently schema v9. The schema is not exported, so
   the migration tests are the only guard that an upgrade on a phone holding
   data survives; they walk a v3 database the whole chain.
 - A pure-Kotlin stats engine in `app/src/main/java/com/example/stats/` —
