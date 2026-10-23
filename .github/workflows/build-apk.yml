@@ -63,7 +63,16 @@ jobs:
       # Publish the APK to a rolling "latest-apk" release for one-tap phone
       # download:
       # https://github.com/inspectorgad/ku-wbb/releases/latest/download/app-debug.apk
+      #
+      # Trunk only. The push trigger above is already limited to main, but
+      # workflow_dispatch is not, and the release this writes to is the one a
+      # phone downloads from — so a dispatch against a branch would hand out
+      # unreviewed code under the same link. Guarding it here rather than
+      # relying on the trigger means a branch can be dispatched to compile it
+      # and run its tests, which is otherwise impossible: this is the only
+      # workflow that builds the app at all.
       - name: Publish APK to rolling release
+        if: github.ref == 'refs/heads/main'
         env:
           GH_TOKEN: ${{ github.token }}
         run: |
