@@ -141,9 +141,15 @@ class AskEngineTest {
     fun `the offered tables are the ones the pipeline writes`() {
         // The enum in the tool schema and the table names in ask_pack.py have
         // to agree, or Claude's code asks for something that does not exist.
+        //
+        // The list is written in three places — ask_pack.py, docs/ask.js and
+        // AskEngine.kt — and pinned in two: here, and in
+        // scripts/test_ask_pack.py, which is the one that actually checks the
+        // three files against each other. Adding a table means touching all
+        // five; this assertion is the backstop that catches forgetting.
         assertEquals(
-            listOf("games", "periods", "ku_lines", "team_totals", "opponent_lines", "upcoming",
-                "standings", "poll", "roster", "definitions"),
+            listOf("games", "periods", "ku_lines", "team_totals", "opponent_lines",
+                "opponent_roster", "upcoming", "standings", "poll", "roster", "definitions"),
             AskEngine.TABLES
         )
         // Volleyball's tables must not have come along with the port.
