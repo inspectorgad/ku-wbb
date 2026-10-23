@@ -2,11 +2,14 @@ package com.example
 
 import com.example.data.Game
 import com.example.data.GameTeamStats
+import com.example.data.OpponentRosterPlayer
 import com.example.data.OpponentStatLine
 import com.example.data.normTeam
 import com.example.data.sameTeam
 import com.example.stats.aggregateOpponentLines
 import com.example.stats.opponentPlayers
+import com.example.stats.rosterFor
+import com.example.stats.scheduledOpponents
 import com.example.stats.summarizeOpponents
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -151,5 +154,92 @@ class OpponentsTest {
         assertTrue(sameTeam("South Dakota St.", "South Dakota State"))
         assertTrue(sameTeam("Baylor (3)", "Baylor"))
         assertEquals("kansas st", normTeam("Kansas State"))
+    }
+
+    // --- Before the first tip -----------------------------------------------
+    // summarizeOpponents needs a box score and so has nothing to say about a
+    // season that has not started. These cover the other half of the calendar.
+
+    private fun rosterRow(team: String, name: String, jersey: String = "", height: String = "") =
+        OpponentRosterPlayer(
+            team = team, name = name, jerseyNumber = jersey, height = height,
+            fetchedAt = "2026-10-21"
+        )
+
+    @Test
+    fun `a scheduled opponent carries its roster and its first meeting`() {
+        val games = listOf(
+            game("2026-11-14", "Nebraska", null, null, season = "2026-27"),
+            game("2026-12-02", "Iowa State", null, null, season = "2026-27")
+        )
+        val roster = listOf(
+            rosterRow("iowa st", "Audi Crooks", "55", "6-3"),
+            rosterRow("iowa st", "Addy Brown", "24", "6-1")
+        )
+        val got = scheduledOpponents(games, roster, "2026-27")
+        // Soonest first, whatever order the schedule arrived in.
+        assertEquals(listOf("Nebraska", "Iowa State"), got.map { it.name })
+        // The roster is keyed on the normalized name, which is the only way
+        // "Iowa State" on the schedule reaches "iowa st" on the roster page.
+        assertEquals(0, got[0].roster.size)
+        assertEquals(2, got[1].roster.size)
+        assertEquals("2026-10-21", got[1].fetchedAt)
+        // Jersey order, the way the school's own page prints it.
+        assertEquals(listOf("Addy Brown", "Audi Crooks"), got[1].roster.map { it.name })
+    }
+
+    @Test
+    fun `a game already played is not a scheduled opponent`() {
+        val games = listOf(
+            game("2025-11-05", "Kansas City", 74, 64),
+            game("2026-11-14", "Nebraska", null, null, season = "2026-27")
+        )
+        assertEquals(emptyList<String>(), scheduledOpponents(games, emptyList(), "2025-26").map { it.name })
+        assertEquals(listOf("Nebraska"), scheduledOpponents(games, emptyList(), "2026-27").map { it.name })
+    }
+
+    @Test
+    fun `two meetings with one school are one row`() {
+        val games = listOf(
+            game("2027-01-10", "Kansas St.", null, null, season = "2026-27"),
+            game("2027-02-20", "Kansas State", null, null, season = "2026-27")
+        )
+        val got = scheduledOpponents(games, emptyList(), "2026-27").single()
+        assertEquals(2, got.games.size)
+        // Titled and dated from the earliest fixture, which is the one shown.
+        assertEquals("Kansas St.", got.name)
+        assertEquals("2027-01-10", got.firstMeeting)
+    }
+
+    @Test
+    fun `a school with no roster page mapped comes back empty, not missing`() {
+        // The row still has to appear: the game is on the schedule either way,
+        // and a school that is simply unmapped must not look like one with no
+        // players.
+        val games = listOf(game("2026-11-09", "Omaha", null, null, season = "2026-27"))
+        val got = scheduledOpponents(games, listOf(rosterRow("byu", "Someone Else")), "2026-27")
+        assertEquals(1, got.size)
+        assertTrue(got.single().roster.isEmpty())
+        assertEquals("", got.single().fetchedAt)
+    }
+
+    @Test
+    fun `a roster is found by the schedule's spelling, not the stored key`() {
+        val roster = listOf(rosterRow("south dakota st", "Brooklyn Meyer", "45", "6-3"))
+        assertEquals(1, rosterFor(roster, "South Dakota State").size)
+        assertEquals(1, rosterFor(roster, "South Dakota St.").size)
+        assertTrue(rosterFor(roster, "North Dakota State").isEmpty())
+    }
+
+    @Test
+    fun `unnumbered players sort last rather than first`() {
+        // "".toIntOrNull() is null, and sorting those to the front would put
+        // the players the page knows least about at the top of the roster.
+        val roster = listOf(
+            rosterRow("utah", "No Number"),
+            rosterRow("utah", "Ten", "10"),
+            rosterRow("utah", "Two", "2")
+        )
+        assertEquals(listOf("Two", "Ten", "No Number"), rosterFor(roster, "Utah").map { it.name })
     }
 }
