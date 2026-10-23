@@ -8,14 +8,15 @@ Scoreboard
 Coming Up
 View Calendar 
 Skip Ad
-Upcoming Event: Women's Basketball versus Northeastern State (exh.) on October 22, 2026 at 6:30 p.m. CT
-Thu. 10/22/26
--
-6:30 p.m. CT
+Completed Event: Women's Basketball versus Northeastern State (exh.) on October 22, 2026 , Win , 90, to, 43
+Final
+Oct 22
 Women's Basketball
+90
 vs Northeastern State (exh.)
-Audio
-Stats
+43
+Story Recap
+Boxscore
 Upcoming Event: Women's Basketball versus Washburn (exh.) on October 29, 2026 at 6:30 p.m. CT
 Thu. 10/29/26
 -
@@ -380,12 +381,12 @@ chuck.holl@ku.edu
 Full Bio 
 for Chuck Hollwedel
 Related News
+Kansas Rolls to Exhibition Win over Northeastern State
+Thursday, October 22
 Jayhawks Open Exhibition Play Thursday vs. Northeastern State
 Wednesday, October 21
 Nichols, Davis and Williams to Represent Kansas at Big 12 Media Day
 Wednesday, October 14
-Kansas Set for Three Televised Big 12 Games, Four Total in 2026-27
-Tuesday, October 13
 All News
 Related Videos
 Hawk Talk with Brandon Schneider
