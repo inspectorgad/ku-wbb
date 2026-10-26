@@ -68,14 +68,18 @@ and Android codegen becoming multiplatform codegen. A schema that comes out
 different is a crash on launch for anyone upgrading, and without a golden there
 is no way to notice before they do.
 
-- [ ] Set `exportSchema = true` in `data/JayhawksDatabase.kt` and point KSP at a
+- [x] Set `exportSchema = true` in `data/JayhawksDatabase.kt` and point KSP at a
       directory: `ksp { arg("room.schemaLocation", "$projectDir/schemas") }` in
       `app/build.gradle.kts`.
-- [ ] Build on the **current** toolchain and commit the generated
+- [x] Build on the **current** toolchain and commit the generated
       `app/schemas/com.example.data.JayhawksDatabase/9.json`.
-- [ ] Add a CI step that regenerates the schema and fails if it differs from
+- [x] Add a CI step that regenerates the schema and fails if it differs from
       the committed copy. This is the actual protection; the golden on its own
       only helps someone who remembers to look.
+
+**The number that matters: `identityHash` is `2c20466365b2a25ef4beb786cf1e9928`.**
+That is what Room compares when it opens the database on a phone. If a later
+step changes it, every installed app crashes on launch instead of migrating.
 
 After every step below that touches Gradle or Room, that check must stay green.
 

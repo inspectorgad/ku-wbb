@@ -65,19 +65,19 @@ jobs:
             echo "Room generated no schema — is exportSchema still true?" >&2
             exit 1
           fi
-          echo "::group::$schema"
-          cat "$schema"
-          echo "::endgroup::"
-          # Also on one line, because the pretty-printed form above is a
-          # thousand lines of log once each is stamped with a timestamp, and
-          # the artifact itself is served from a host the tooling here cannot
-          # reach. This is how the committed copy was first obtained.
-          echo "schema-base64: $(base64 -w0 "$schema")"
           if ! git diff --exit-code -- app/schemas; then
             echo >&2
             echo "The generated schema differs from the committed one. Either a" >&2
             echo "migration changed it on purpose — commit the new file — or the" >&2
             echo "toolchain changed it by accident, which breaks every upgrade." >&2
+            # The new schema, so it can be read and committed from the log.
+            # The artifact above is served from a host some tooling cannot
+            # reach, and the pretty-printed file is a thousand lines once each
+            # carries a timestamp. Only printed on failure, which is the only
+            # time anyone needs it.
+            echo "::group::$schema (base64)"
+            base64 -w0 "$schema"
+            echo "::endgroup::"
             exit 1
           fi
 
