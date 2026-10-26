@@ -144,29 +144,70 @@ download and no device to register.
 
 ## Phase 3 — The shared module
 
-- [ ] `include(":app", ":shared")` in `settings.gradle.kts`; add the three
-      `apply false` plugin aliases to the root build file.
-- [ ] Create `shared/build.gradle.kts` as a copy of volleyball's, changing
-      **one line**: `namespace = "io.github.inspectorgad.kuwbb.shared"`.
-      Keep `baseName = "Shared"` verbatim so the Xcode search paths and the
-      Swift `import Shared` copy across unchanged.
-- [ ] Copy the platform layer in **before** moving any of this app's code:
-      `commonMain/platform/{Device,Http}.kt`, `commonMain/json/Json.kt`,
-      `commonMain/text/{Numbers,Dates,Sha256}.kt`, and the matching
-      `androidMain`/`iosMain` actuals. Copy their tests with them.
-- [ ] Change `AndroidDevice`'s alias to `ku_wbb_ask_api_key` and `IosDevice`'s
-      Keychain service to `io.github.inspectorgad.kuwbb`.
+Done in increments, each with its own CI build, rather than one commit that
+either works or does not. Two of them departed from this plan on purpose, and
+both departures were about keeping one risk per build; see the notes below.
+
+**3a — the module and the platform boundary** ✅
+- [x] `include(":app", ":shared")`; the `apply false` plugin aliases in the
+      root build file.
+- [x] `shared/build.gradle.kts` from volleyball's, changing **one line**:
+      `namespace = "io.github.inspectorgad.kuwbb.shared"`. `baseName = "Shared"`
+      stays verbatim so the Xcode search paths and `import Shared` copy across.
+- [x] The platform layer, copied in before any of this app's code:
+      `platform/Http.kt` with its OkHttp and NSURLSession actuals,
+      `json/Json.kt`, `text/{Numbers,Dates,Sha256}.kt`.
+- [x] The cross-platform agreement suite, **digests included**. The earlier
+      reading that Golden had to be re-recorded here was wrong: the samples
+      hold no sport-specific content, every input is seeded or fixed, and the
+      code under test is identical. It passed first run.
+
+*Deviation: no Compose and no Room in `:shared` yet.* The app still resolves
+Compose through the BOM, and Compose Multiplatform alongside it is a version
+clash with nothing to arbitrate it. Each arrives with the code that needs it.
+
+**3b — the entities, the DAO and the stats engine** ✅
+- [x] `data/{Entities,JayhawksDao,TeamNames}.kt` and the whole `stats/`
+      package, moved unchanged. Room's annotations are available in
+      `commonMain` via `api(libs.androidx.room.runtime)`.
+- [x] `stats/BasketballStats.kt`: `java.util.Locale` and two `String.format`
+      calls replaced by `fixed()`. Proven, not guessed — 3a's suite compares
+      `fixed()` against Java's `%.Nf` over tens of thousands of values.
+
+*Deviation: the database did not move with the entities.* Room's KSP writes
+the exported schema, so moving the compiler moves the schema's path and the
+check guarding it, in the same change that moves the entities the schema
+describes. Two independent ways to break a database already on phones; worth
+separating.
+
+**3c — the database split** (next, and the riskiest remaining)
+- [ ] `@Database` + `@ConstructedBy` + a bare `companion object` to
+      `commonMain`; `expect object JayhawksDatabaseConstructor`.
+- [ ] Migrations, `instance`, and `get(context)` to `androidMain`.
+      `migrations()` must stay **public** there — `MigrationTest` lives in
+      `:app`'s test source set, so `internal` would not reach it. This is the
+      one place to deviate from volleyball, which has no migration test.
+- [ ] `createDatabase()` in `iosMain`, bundled SQLite driver.
+- [ ] Room's compiler moves to `:shared` as `kspAndroid`, `kspIosArm64`,
+      `kspIosSimulatorArm64`. **The schema's path moves with it**, so the
+      phase 0 check and the committed `9.json` both have to follow, and the
+      identity hash must still read `2c20466365b2a25ef4beb786cf1e9928`.
+
+**3d — the platform-touching files**
+- [ ] `platform/Device.kt` and its two actuals. Keep this app's keystore alias
+      `ku_wbb_ask_api_key`; `IosDevice`'s Keychain service becomes
+      `io.github.inspectorgad.kuwbb`.
+- [ ] Rewrite the boundary in `Seeder.kt`, `SeasonSync.kt`, `AskEngine.kt`:
+      `Context` → `Device`, `org.json` → `com.example.json`, OkHttp →
+      `platform/Http`. Gut `AskKeyStore.kt` to the `Device`-based version.
+
+**3e — the UI, and Compose Multiplatform**
 - [ ] Add the `QueryStats` icon to `AppIcons.kt` — the Season tab uses it and
-      volleyball's hand-drawn icon set does not have it. The Material icons
+      volleyball's hand-drawn set does not have it. The Material icons
       libraries stopped at 1.7.3 and have no iOS build, which is why that file
       exists. Take the 24dp path from google/material-design-icons.
-- [ ] Move `data/{Entities,JayhawksDao,TeamNames}.kt` and the whole `stats/`
-      package unchanged.
-- [ ] `stats/BasketballStats.kt`: drop `java.util.Locale`, rewrite the two
-      `String.format` calls against `text/Numbers.kt`.
-- [ ] Split `data/JayhawksDatabase.kt` three ways — `@Database` plus
-      `@ConstructedBy` in `commonMain`, the migrations and `get(context)` in
-      `androidMain`, a `createDatabase()` in `iosMain`.
+- [ ] Delete the Compose BOM, add Compose Multiplatform 1.12.2 and material3
+      1.12.0-alpha03 to `:shared`. This is the step the BOM was waiting for.
 - [ ] Rewrite the boundary in `Seeder.kt`, `SeasonSync.kt`, `AskEngine.kt`:
       `Context` → `Device`, `org.json` → `com.example.json`, OkHttp →
       `platform/Http`.
