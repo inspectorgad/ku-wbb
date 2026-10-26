@@ -7,12 +7,29 @@ import androidx.room.RoomDatabase
 import androidx.room.migration.Migration
 import androidx.sqlite.db.SupportSQLiteDatabase
 
+/**
+ * The schema is exported to app/schemas and committed.
+ *
+ * It was not, for eight versions, and the migration tests were the only thing
+ * standing behind an upgrade on a phone that already held data. That was
+ * tolerable while the only thing that could change the schema was a migration
+ * written here on purpose. It stops being tolerable with the move to a shared
+ * Android/iPhone module: the Room version, the KSP version and the code
+ * generator itself all change at once, and all three feed the schema hash Room
+ * checks on open. A hash that comes out different is a crash on launch for
+ * everyone upgrading, not a warning — and with nothing written down there is
+ * no way to see it coming.
+ *
+ * So the schema as it stands at v9, built on the toolchain that produced the
+ * installed app, is recorded first and diffed after every move. See
+ * PORT-PLAN.md, phase 0.
+ */
 @Database(
     entities = [Player::class, Game::class, StatLine::class,
         ConferenceStanding::class, PollEntry::class, GameTeamStats::class,
         OpponentStatLine::class, OpponentRosterPlayer::class],
     version = 9,
-    exportSchema = false
+    exportSchema = true
 )
 abstract class JayhawksDatabase : RoomDatabase() {
     abstract fun dao(): JayhawksDao

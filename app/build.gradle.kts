@@ -66,6 +66,13 @@ android {
   testOptions { unitTests { isIncludeAndroidResources = true } }
 }
 
+// Where Room writes the schema it generates. The file is committed and
+// checked in CI; see the comment on @Database in data/JayhawksDatabase.kt for
+// why that matters more than it used to.
+ksp {
+  arg("room.schemaLocation", "$projectDir/schemas")
+}
+
 // Configure the Secrets Gradle Plugin to use .env and .env.example files
 // to match the convention used in Web projects.
 secrets {

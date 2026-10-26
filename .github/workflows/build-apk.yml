@@ -48,6 +48,17 @@ jobs:
           VERSION_CODE: ${{ github.run_number }}
         run: gradle :app:assembleDebug :app:bundleRelease
 
+      # Room's generated schema, so a change to it can be seen rather than
+      # inferred. The toolchain move to a shared Android/iPhone module changes
+      # the Room version, the KSP version and the generator at once, and a
+      # schema that comes out different crashes every phone that upgrades.
+      - name: Upload Room schema
+        uses: actions/upload-artifact@v4
+        with:
+          name: ku-wbb-room-schema
+          path: app/schemas/
+          if-no-files-found: error
+
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
