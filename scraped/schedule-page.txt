@@ -120,9 +120,9 @@ Lawrence, Kan.
 
 3
 Days
-16
+12
 Hours
-36
+1
 Minutes
 5
 Seconds
