@@ -97,23 +97,31 @@ same log.
 | KSP | 2.3.5 | **2.3.12** |
 | Room | 2.7.0 | **2.8.5** |
 | compileSdk | 36.1 | **37** |
-| Compose BOM 2024.09.00 | | **deleted** |
-
-The Compose BOM goes away entirely: Compose Multiplatform **1.12.2** replaces
-it, which brings Jetpack Compose 1.12.1 on Android. Pin
-`composeMultiplatformMaterial3` to **1.12.0-alpha03**. It is a prerelease, and
-it is the combination that has been through an App Store upload — do not try to
-improve on it. The comments in volleyball's version catalog are a record of
-what was already tried and rejected.
-
 `compileSdk` drops the minor-API qualifier: `release(37)`, not
-`release(36) { minorApiLevel = 1 }`.
+`release(36) { minorApiLevel = 1 }`. `targetSdk` stays at 36, as in volleyball.
 
-- [ ] Bump the version catalog.
-- [ ] Delete the seven `[libraries]` entries that existed only to be versioned
-      by the BOM or to supply Material icons.
-- [ ] `gradle :app:testDebugUnitTest :app:assembleDebug` green.
-- [ ] Phase 0's schema check still green.
+- [x] Bump the version catalog.
+- [x] `gradle :app:testDebugUnitTest :app:assembleDebug` green.
+- [x] Phase 0's schema check still green.
+
+**Compose does not move in this phase.** An earlier draft of this plan had the
+Compose BOM deleted here, on the reasoning that Compose Multiplatform 1.12.2
+replaces it. It does — but not until phase 3, and deleting it early means
+choosing an androidx `material3` version by guesswork: material3 is versioned
+independently of `compose-ui`, the BOM is the thing that aligns them, and
+volleyball is no help because its material3 comes from `org.jetbrains` on
+different numbering. Left alone, BOM 2024.09.00 compiles cleanly under Kotlin
+2.4.21, which settles the only real question. It goes in phase 3, where
+`composeMultiplatform` 1.12.2 and `composeMultiplatformMaterial3`
+1.12.0-alpha03 replace it as a set — a prerelease, and the set that has been
+through an App Store upload, so do not try to improve on it.
+
+**Room 2.7.0 → 2.8.5 did not change the schema.** The identity hash is still
+`2c20466365b2a25ef4beb786cf1e9928` and the phase 0 check passed on the first
+build. This was the single biggest risk in the whole port — a changed hash is
+a crash on launch for every phone already holding data — and it is now a
+measured fact rather than a hope. Volleyball made the same jump with no way to
+check it.
 
 ## Phase 2 — Apple, in parallel
 
