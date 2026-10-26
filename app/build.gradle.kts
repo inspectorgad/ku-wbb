@@ -81,6 +81,8 @@ secrets {
 }
 
 dependencies {
+  // The code shared with the iPhone app.
+  implementation(project(":shared"))
   implementation(platform(libs.androidx.compose.bom))
   implementation(libs.androidx.activity.compose)
   implementation(libs.androidx.compose.material.icons.core)

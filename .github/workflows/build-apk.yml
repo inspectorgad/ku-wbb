@@ -38,10 +38,15 @@ jobs:
           base64 -d debug.keystore.base64 > debug.keystore
           base64 -d upload.keystore.base64 > upload.keystore
 
+      # testAndroidHostTest runs the shared module's commonTest on the JVM.
+      # Those are the cross-platform agreement checks: the iPhone has no
+      # String.format, SimpleDateFormat, org.json or MessageDigest, so the
+      # replacements are checked here against answers recorded on the JVM, and
+      # again on a simulator once the iPhone build exists.
       - name: Run unit tests
         env:
           VERSION_CODE: ${{ github.run_number }}
-        run: gradle :app:testDebugUnitTest
+        run: gradle :app:testDebugUnitTest :shared:testAndroidHostTest
 
       - name: Build debug APK and Play release bundle
         env:
