@@ -48,10 +48,34 @@ jobs:
           VERSION_CODE: ${{ github.run_number }}
         run: gradle :app:assembleDebug :app:bundleRelease
 
-      # Room's generated schema, so a change to it can be seen rather than
-      # inferred. The toolchain move to a shared Android/iPhone module changes
-      # the Room version, the KSP version and the generator at once, and a
-      # schema that comes out different crashes every phone that upgrades.
+      # Room's generated schema, so a change to it is seen rather than
+      # inferred. The move to a shared Android/iPhone module changes the Room
+      # version, the KSP version and the code generator at once, and all three
+      # feed the hash Room checks when it opens the database — a hash that
+      # comes out different is a crash on launch for everyone upgrading.
+      #
+      # The diff is the guard. While the schema is untracked it reports
+      # nothing and this passes, which is what seeds the committed copy; once
+      # the file is committed, a regeneration that differs fails the build.
+      - name: Check the Room schema
+        run: |
+          set -euo pipefail
+          schema="$(find app/schemas -name '*.json' | sort | tail -1)"
+          if [ -z "$schema" ]; then
+            echo "Room generated no schema — is exportSchema still true?" >&2
+            exit 1
+          fi
+          echo "::group::$schema"
+          cat "$schema"
+          echo "::endgroup::"
+          if ! git diff --exit-code -- app/schemas; then
+            echo >&2
+            echo "The generated schema differs from the committed one. Either a" >&2
+            echo "migration changed it on purpose — commit the new file — or the" >&2
+            echo "toolchain changed it by accident, which breaks every upgrade." >&2
+            exit 1
+          fi
+
       - name: Upload Room schema
         uses: actions/upload-artifact@v4
         with:
