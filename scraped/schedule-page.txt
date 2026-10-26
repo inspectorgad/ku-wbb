@@ -120,11 +120,11 @@ Lawrence, Kan.
 
 3
 Days
-23
+16
 Hours
-57
+36
 Minutes
-47
+5
 Seconds
 Add To Calendar
 Text Only
@@ -623,6 +623,7 @@ Listen
 Live Stats
 History
 Explore Lawrence
+Skip Ad
 vs
 Kansas State
 
