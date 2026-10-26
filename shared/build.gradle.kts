@@ -40,6 +40,9 @@ kotlin {
 
   sourceSets {
     commonMain.dependencies {
+      // api, not implementation: the entities and the DAO are part of this
+      // module's surface, and the app builds the database from them.
+      api(libs.androidx.room.runtime)
       implementation(libs.kotlinx.coroutines.core)
       implementation(libs.kotlinx.datetime)
       implementation(libs.kotlinx.serialization.json)

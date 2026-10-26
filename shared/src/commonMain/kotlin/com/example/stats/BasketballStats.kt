@@ -1,7 +1,7 @@
 package com.example.stats
 
 import com.example.data.StatLine
-import java.util.Locale
+import com.example.text.fixed
 
 /**
  * Aggregated basketball totals for any collection of stat lines
@@ -70,14 +70,14 @@ fun aggregate(lines: Collection<StatLine>): BasketballTotals = BasketballTotals(
 
 /** Formats a shooting percentage basketball-style: .452, .000, 1.000 */
 fun formatPct(value: Double): String {
-    val formatted = String.format(Locale.US, "%.3f", value)
+    val formatted = fixed(value, 3)
     return formatted
         .replace("0.", ".")
         .let { if (it == "-.000") ".000" else it }
 }
 
 /** Formats a per-game rate: 17.4, 0.4 */
-fun formatPerGame(value: Double): String = String.format(Locale.US, "%.1f", value)
+fun formatPerGame(value: Double): String = fixed(value, 1)
 
 /** "12-25" made-attempted pair, the usual box-score shot notation. */
 fun formatShots(made: Int, attempted: Int): String = "$made-$attempted"
