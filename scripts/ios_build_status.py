@@ -152,16 +152,28 @@ print()
 if state == "PROCESSING":
     print("Newest build is still processing. This is normal for up to about half")
     print("an hour after an upload; nothing to do but wait.")
-elif state == "VALID" and internal == "READY_FOR_BETA_TESTING":
-    print("Newest build is ready. It should be in the TestFlight app now - pull")
-    print("to refresh if it is not showing yet.")
-elif state == "VALID":
-    print(f"Newest build processed, but internal testing says {internal}.")
-    if internal == "MISSING_EXPORT_COMPLIANCE":
-        print("The encryption question is unanswered. ITSAppUsesNonExemptEncryption")
-        print("in ios/project.yml is meant to answer it; check it reached Info.plist.")
-    else:
-        print("In App Store Connect, open TestFlight and see what the build asks for.")
-else:
+elif state != "VALID":
     print(f"Newest build is {state}. Apple rejected it; App Store Connect's")
     print("TestFlight tab shows why, and the upload email will say too.")
+elif internal == "IN_BETA_TESTING":
+    print("Newest build is out with testers. It should be in the TestFlight app;")
+    print("pull to refresh if it is not showing yet.")
+elif internal == "READY_FOR_BETA_TESTING":
+    # Apple's own wording for this state is "Your build can be tested by
+    # external and internal testers, but you haven't added any testers yet."
+    # It reads like success and is not: IN_BETA_TESTING is the one that means
+    # somebody can install it.
+    print("Newest build processed, but no tester has it yet - that is what")
+    print("READY_FOR_BETA_TESTING means, however much it reads like success.")
+    print("Add it to an internal group (or turn on automatic distribution so")
+    print("every future build goes out by itself).")
+elif internal == "MISSING_EXPORT_COMPLIANCE":
+    print("The encryption question is unanswered. ITSAppUsesNonExemptEncryption")
+    print("in ios/project.yml is meant to answer it; check it reached Info.plist.")
+elif internal == "IN_EXPORT_COMPLIANCE_REVIEW":
+    print("Apple is reviewing the encryption declaration; this clears itself.")
+elif internal == "EXPIRED":
+    print("This build has expired - internal builds last 90 days. Push a new one.")
+else:
+    print(f"Newest build processed; internal testing says {internal}.")
+    print("In App Store Connect, open TestFlight and see what the build asks for.")

@@ -402,6 +402,37 @@ build failed" into "the Key ID and Team ID are swapped".
 
 ---
 
+## Part 6 — The one step after the first build
+
+The first build will upload, process, and then sit there reaching nobody,
+because **internal testing goes through a group and a new app has none**.
+Owning the account does not make you a tester, and the TestFlight app on your
+phone shows an empty list without saying why.
+
+Apple's own name for that state says so, if you know to read it: a build
+marked **"Ready to Test"** means *"Your build can be tested by external and
+internal testers, but you haven't added any testers yet."*
+
+Once, in App Store Connect:
+
+1. Your app → the **TestFlight** tab
+2. In the sidebar, the **+** next to **Internal Testing**
+3. Name the group — `Internal` will do — and **tick "Enable automatic
+   distribution"**
+4. **Invite Testers** → tick yourself → **Add**
+
+> **Tick that checkbox.** Without it, Apple's words are: *"you must manually
+> add all builds to the group"* — every build, forever. With it, each one
+> reaches your phone on its own.
+
+You can only invite people who are already in **Users and Access**; internal
+testers are App Store Connect users, up to 100 of them, and builds last 90
+days.
+
+The **iOS build status** workflow in the Actions tab reports all of this —
+the groups, who is in them, and whether the newest build has actually
+reached anybody.
+
 ## What you do *not* have to do
 
 Most guides to shipping an iPhone app are mostly these. We skip every one:
