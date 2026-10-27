@@ -1,0 +1,36 @@
+name: iOS build status
+
+# Asks App Store Connect where the latest TestFlight builds have got to.
+# An upload is not an installable build - Apple processes it afterwards, and
+# it can fail there - so when something has not appeared in the TestFlight
+# app, this says whether to keep waiting or to go and look at why.
+#
+# Linux, a few seconds, and it prints no secrets. Run it by hand from the
+# Actions tab whenever a build seems slow.
+#
+# The script lives in scripts/ rather than ios/ on purpose: anything under
+# ios/ starts a fresh TestFlight build and would upload another copy.
+on:
+  workflow_dispatch:
+  push:
+    branches-ignore:
+      - main
+    paths:
+      - '.github/workflows/ios-build-status.yml'
+      - 'scripts/ios_build_status.py'
+
+jobs:
+  status:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install a JWT library
+        run: python3 -m pip install --quiet "pyjwt[crypto]==2.10.1"
+
+      - name: Ask App Store Connect
+        env:
+          ASC_ISSUER_ID: ${{ secrets.ASC_ISSUER_ID }}
+          ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
+          ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}
+        run: python3 scripts/ios_build_status.py
