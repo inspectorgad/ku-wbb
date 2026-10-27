@@ -1,14 +1,17 @@
 package com.example.data
 
-import android.content.Context
-import android.content.SharedPreferences
+import com.example.json.JSONObject
+import com.example.platform.Device
+import com.example.platform.Http
+import com.example.platform.HttpException
+import com.example.platform.newHttp
+import com.example.text.currentTimeMs
+import com.example.text.hex2
+import com.example.text.sha256
+import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.IO
 import kotlinx.coroutines.withContext
-import okhttp3.OkHttpClient
-import okhttp3.Request
-import org.json.JSONObject
-import java.security.MessageDigest
-import java.util.concurrent.TimeUnit
 
 sealed interface SyncResult {
     data class Updated(val generatedAt: String?) : SyncResult
@@ -31,30 +34,29 @@ object SeasonSync {
     private const val KEY_GENERATED_AT = "last_generated_at"
     private const val AUTO_SYNC_INTERVAL_MS = 6L * 60 * 60 * 1000
 
-    private val client by lazy {
-        OkHttpClient.Builder()
-            .connectTimeout(10, TimeUnit.SECONDS)
-            .readTimeout(20, TimeUnit.SECONDS)
-            .build()
-    }
+    private val defaultHttp by lazy { newHttp(connectSeconds = 10, readSeconds = 20) }
 
-    fun lastGeneratedAt(context: Context): String? =
-        prefs(context).getString(KEY_GENERATED_AT, null)
+    fun lastGeneratedAt(device: Device): String? = prefs(device).string(KEY_GENERATED_AT)
 
-    fun shouldAutoSync(context: Context): Boolean =
-        System.currentTimeMillis() - prefs(context).getLong(KEY_SUCCESS_MS, 0) >
-            AUTO_SYNC_INTERVAL_MS
+    fun shouldAutoSync(device: Device): Boolean =
+        currentTimeMs() - prefs(device).long(KEY_SUCCESS_MS) > AUTO_SYNC_INTERVAL_MS
 
-    suspend fun sync(context: Context, dao: JayhawksDao): SyncResult =
+    suspend fun sync(device: Device, dao: JayhawksDao, http: Http = defaultHttp): SyncResult =
         withContext(Dispatchers.IO) {
             val body = try {
-                client.newCall(Request.Builder().url(DATA_URL).build()).execute().use { resp ->
-                    if (!resp.isSuccessful) {
-                        return@withContext SyncResult.Failed("server returned ${resp.code}")
-                    }
-                    resp.body?.bytes()
-                        ?: return@withContext SyncResult.Failed("empty response")
+                val resp = http.get(DATA_URL)
+                if (!resp.isSuccessful) {
+                    return@withContext SyncResult.Failed("server returned ${resp.code}")
                 }
+                resp.body
+            } catch (e: CancellationException) {
+                // Giving up on a refresh is not a network error, and the catch
+                // below would read it as one. withContext would re-raise it
+                // either way, so this changes no behaviour today - it keeps
+                // the distinction true for whatever reads the result later.
+                throw e
+            } catch (e: HttpException) {
+                return@withContext SyncResult.Failed(e.reason ?: e.message ?: "network error")
             } catch (e: Exception) {
                 return@withContext SyncResult.Failed(e.message ?: "network error")
             }
@@ -62,11 +64,10 @@ object SeasonSync {
             val root = SeasonDataValidator.parse(body)
                 ?: return@withContext SyncResult.Failed("downloaded data failed validation")
 
-            val hash = MessageDigest.getInstance("SHA-256").digest(body)
-                .joinToString("") { "%02x".format(it) }
-            val p = prefs(context)
-            if (hash == p.getString(KEY_HASH, null)) {
-                p.edit().putLong(KEY_SUCCESS_MS, System.currentTimeMillis()).apply()
+            val hash = sha256(body).joinToString("") { hex2(it) }
+            val p = prefs(device)
+            if (hash == p.string(KEY_HASH)) {
+                p.edit { putLong(KEY_SUCCESS_MS, currentTimeMs()) }
                 return@withContext SyncResult.NoChange
             }
 
@@ -77,16 +78,15 @@ object SeasonSync {
             }
 
             val generatedAt = root.optString("generatedAt").takeIf { it.isNotBlank() }
-            p.edit()
-                .putString(KEY_HASH, hash)
-                .putLong(KEY_SUCCESS_MS, System.currentTimeMillis())
-                .putString(KEY_GENERATED_AT, generatedAt)
-                .apply()
+            p.edit {
+                putString(KEY_HASH, hash)
+                putLong(KEY_SUCCESS_MS, currentTimeMs())
+                putString(KEY_GENERATED_AT, generatedAt)
+            }
             SyncResult.Updated(generatedAt)
         }
 
-    private fun prefs(context: Context): SharedPreferences =
-        context.getSharedPreferences(PREFS, Context.MODE_PRIVATE)
+    private fun prefs(device: Device) = device.settings(PREFS)
 }
 
 /**
@@ -99,7 +99,7 @@ object SeasonDataValidator {
     const val MIN_GAMES = 20
 
     fun parse(bytes: ByteArray): JSONObject? = try {
-        val root = JSONObject(String(bytes, Charsets.UTF_8))
+        val root = JSONObject(bytes.decodeToString())
         val valid = root.optInt("formatVersion", 1) <= SUPPORTED_FORMAT &&
             (root.optJSONArray("players")?.length() ?: 0) >= MIN_PLAYERS &&
             (root.optJSONArray("games")?.length() ?: 0) >= MIN_GAMES

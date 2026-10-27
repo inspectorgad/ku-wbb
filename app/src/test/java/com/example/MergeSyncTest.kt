@@ -7,7 +7,7 @@ import com.example.data.JayhawksDatabase
 import com.example.data.Seeder
 import com.example.data.StatLine
 import kotlinx.coroutines.test.runTest
-import org.json.JSONObject
+import com.example.json.JSONObject
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNull
@@ -439,7 +439,7 @@ class MergeSyncTest {
     }
 
     private fun withRoster(vararg teams: String): JSONObject = seedJson().apply {
-        put("opponentRosters", org.json.JSONArray(teams.joinToString(",", "[", "]")))
+        put("opponentRosters", com.example.json.JSONArray(teams.joinToString(",", "[", "]")))
     }
 
     @Test
@@ -530,7 +530,7 @@ class MergeSyncTest {
         )
         json.getJSONArray("games").getJSONObject(0).put(
             "opponentLines",
-            org.json.JSONArray("""[{"player": "Opp One", "pts": 12, "number": "7"}]""")
+            com.example.json.JSONArray("""[{"player": "Opp One", "pts": 12, "number": "7"}]""")
         )
         Seeder.merge(json, db.dao())
         assertEquals("6-0", db.dao().opponentRosterOnce().single().height)

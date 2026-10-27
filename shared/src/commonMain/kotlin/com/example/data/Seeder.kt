@@ -1,7 +1,7 @@
 package com.example.data
 
-import android.content.Context
-import org.json.JSONObject
+import com.example.json.JSONObject
+import com.example.platform.Device
 
 /**
  * Syncs the bundled assets/seed.json into the database on every launch,
@@ -27,11 +27,8 @@ import org.json.JSONObject
  */
 object Seeder {
 
-    suspend fun sync(context: Context, dao: JayhawksDao) {
-        val json = runCatching {
-            context.assets.open("seed.json").bufferedReader().use { it.readText() }
-        }.getOrNull() ?: return
-
+    suspend fun sync(device: Device, dao: JayhawksDao) {
+        val json = device.readAsset("seed.json") ?: return
         runCatching { merge(JSONObject(json), dao) }
     }
 
