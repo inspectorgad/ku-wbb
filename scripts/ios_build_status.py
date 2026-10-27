@@ -96,6 +96,52 @@ for b in builds:
     print(f"{a.get('version', '?'):>8}  {(a.get('uploadedDate') or '?')[:19]:<20} "
           f"{a.get('processingState', '?'):<12} {d.get('internalBuildState', '-')}")
 
+def attr(d, key):
+    """A named attribute, or the whole set when the name is not what we expect.
+
+    Apple renames fields occasionally, and a script that silently prints
+    nothing is worse than one that prints the wrong shape loudly.
+    """
+    a = d.get("attributes") or {}
+    return a[key] if key in a else f"<no '{key}'; has {sorted(a)}>"
+
+
+# A build can be perfectly VALID and still reach nobody, because internal
+# testing goes through a group and a new app has none. This is far and away
+# the commonest reason a first build never appears on a phone.
+print()
+status, body = get(tok, f"apps/{app_id}/betaGroups", {"limit": "20"})
+if status != 200:
+    print(f"(could not read beta groups: HTTP {status})")
+else:
+    groups = body.get("data", [])
+    internal = [g for g in groups if (g.get("attributes") or {}).get("isInternalGroup")]
+    if not groups:
+        print("TESTER GROUPS: none at all.")
+    else:
+        print(f"TESTER GROUPS: {len(groups)} ({len(internal)} internal)")
+    for g in groups:
+        a = g.get("attributes") or {}
+        kind = "internal" if a.get("isInternalGroup") else "external"
+        auto = "every build automatically" if a.get("hasAccessToAllBuilds") else "builds added by hand"
+        print(f"  - {attr(g, 'name')}  [{kind}, {auto}]")
+        st, tb = get(tok, f"betaGroups/{g['id']}/betaTesters", {"limit": "50"})
+        testers = tb.get("data", []) if st == 200 else []
+        if not testers:
+            print(f"      no testers{'' if st == 200 else f' (HTTP {st})'}")
+        for t in testers:
+            ta = t.get("attributes") or {}
+            who = " ".join(x for x in (ta.get("firstName"), ta.get("lastName")) if x) or "(no name)"
+            print(f"      {who} <{ta.get('email', '?')}> {ta.get('state', '')}".rstrip())
+
+    if not internal:
+        print()
+        print("  >> No internal group exists, so the build has nobody to go to.")
+        print("     In App Store Connect: your app > TestFlight > Internal Testing,")
+        print("     create a group, add yourself, and add build 1.1 to it (or turn")
+        print("     on automatic distribution). Owning the account does not make")
+        print("     you a tester.")
+
 newest = builds[0].get("attributes", {})
 state = newest.get("processingState")
 internal = details.get(
