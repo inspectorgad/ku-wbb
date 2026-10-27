@@ -265,9 +265,24 @@ wrapping it in.
 **`:app` is now one file.** `MainActivity.kt`, 30 lines: build the device,
 build the view model, provide the one, hand over the other.
 
-**3f — the iPhone entry point**
-- [ ] Add `iosMain/MainViewController.kt`, without the alerts wiring. This is
-      all that is left of the original 3f.
+**3f — the iPhone entry point, and the first iPhone compile**
+- [x] Added `iosMain/MainViewController.kt`, without the alerts wiring. It is
+      the iPhone's `MainActivity` and does the same three things: build the
+      device, build the view model, provide one and pass the other.
+- [x] Added `.github/workflows/ios-shared.yml`, brought forward from phase 4.
+
+The workflow is the point of this step, more than the file is. Everything
+iPhone-only written since 3a — the Keychain storage, the NSURLSession HTTP,
+the bundled-SQLite database, the back handler, now the entry point — had been
+carried on the strength of being volleyball's working code, because nothing
+here runs on a Mac and Kotlin/Native cannot cross-compile for iOS from Linux.
+
+It compiles `iosArm64`, links the simulator framework, and runs the agreement
+suite on a simulator. That last part matters most: those tests exist to prove
+the pure-Kotlin replacements for `String.format`, `SimpleDateFormat`,
+`org.json` and `MessageDigest` give the same answers as the JVM, and until
+now they had only ever run on the JVM — which is to say, they had only ever
+checked the side that was never in doubt.
 
 ## Phase 4 — The iPhone app
 
