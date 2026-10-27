@@ -322,7 +322,16 @@ checked on both, not assumed from one.
 - [x] `ios-testflight.yml`. `branch-ci.yml` was not needed: `build-apk.yml`
       already covers Android on a branch by hand, and the iPhone half landed
       in 3f as `ios-shared.yml`.
-- [ ] Watch the run, open TestFlight on the phone.
+- [x] Watched the run. Build 1.1 uploaded first time: `Upload succeeded`,
+      `** EXPORT SUCCEEDED **`.
+- [ ] Open TestFlight on the phone — the only step left, and not mine.
+
+Cloud signing worked with the key carried over from the volleyball app,
+which is the part that could not be rehearsed. That also leaves the Admin
+question open rather than settled: the export succeeded, so that key can use
+the team's cloud-managed certificate, but whether it is Admin or whether App
+Manager would have done is still unknown, because nothing here reads the
+role back. `APPLE-SETUP.md` says Admin, which is the safe advice either way.
 
 The icon needed more than a resize. App Store Connect rejects an icon with an
 alpha channel at all, transparent or not, and a canvas only ever produces
