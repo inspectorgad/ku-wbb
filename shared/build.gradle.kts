@@ -18,6 +18,17 @@ plugins {
   // AGP 9's Android target for multiplatform modules; the older
   // com.android.library cannot be combined with Kotlin Multiplatform.
   alias(libs.plugins.android.kotlin.multiplatform.library)
+  // Room's compiler, run once per platform (see dependencies below), and
+  // Room's own plugin, which is what knows where to put the exported schema
+  // when there is more than one target writing one.
+  alias(libs.plugins.google.devtools.ksp)
+  alias(libs.plugins.androidx.room)
+}
+
+// The exported schema, committed and checked in CI. It moved here with Room's
+// compiler: the schema is written by KSP, so it is written wherever KSP runs.
+room {
+  schemaDirectory("$projectDir/schemas")
 }
 
 kotlin {
@@ -50,6 +61,11 @@ kotlin {
     androidMain.dependencies {
       implementation(libs.okhttp)
     }
+    iosMain.dependencies {
+      // The SQLite Room talks to on iPhone, compiled into the app so every
+      // install has the same engine.
+      implementation(libs.androidx.sqlite.bundled)
+    }
     commonTest.dependencies {
       implementation(kotlin("test"))
     }
@@ -77,4 +93,11 @@ tasks.withType<AbstractTestTask>().configureEach {
 // The app compiles for Java 11; code inlined into it must not be newer.
 tasks.withType<KotlinJvmCompile>().configureEach {
   compilerOptions.jvmTarget.set(JvmTarget.JVM_11)
+}
+
+// Room generates the database and DAO code separately for each platform.
+dependencies {
+  add("kspAndroid", libs.androidx.room.compiler)
+  add("kspIosArm64", libs.androidx.room.compiler)
+  add("kspIosSimulatorArm64", libs.androidx.room.compiler)
 }

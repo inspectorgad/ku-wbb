@@ -65,12 +65,23 @@ jobs:
       - name: Check the Room schema
         run: |
           set -euo pipefail
-          schema="$(find app/schemas -name '*.json' | sort | tail -1)"
+          schema="$(find app shared -type d -name schemas -exec find {} -name '*.json' \; 2>/dev/null | sort | tail -1)"
           if [ -z "$schema" ]; then
             echo "Room generated no schema — is exportSchema still true?" >&2
             exit 1
           fi
-          if ! git diff --exit-code -- app/schemas; then
+          # A schema at a path git does not know about means the layout moved,
+          # which an unchanged committed copy would otherwise hide: the old
+          # file still matches itself while nothing regenerates it. Room's
+          # output path moves with Room's compiler, so this has to be caught.
+          untracked="$(git ls-files --others --exclude-standard -- '*schemas*')"
+          if [ -n "$untracked" ]; then
+            echo "Room wrote a schema where none is committed:" >&2
+            echo "$untracked" >&2
+            echo "If the path moved on purpose, commit it there and delete the old one." >&2
+            exit 1
+          fi
+          if ! git diff --exit-code -- app/schemas shared/schemas; then
             echo >&2
             echo "The generated schema differs from the committed one. Either a" >&2
             echo "migration changed it on purpose — commit the new file — or the" >&2
