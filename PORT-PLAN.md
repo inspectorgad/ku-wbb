@@ -284,6 +284,16 @@ the pure-Kotlin replacements for `String.format`, `SimpleDateFormat`,
 now they had only ever run on the JVM — which is to say, they had only ever
 checked the side that was never in doubt.
 
+**It failed on the first run, which is the point.** Two JVM-only APIs had
+been sitting in `commonMain` since 3b and 3e, compiling perfectly on Android:
+
+- `stats/Splits.kt` — `sortedMapOf`, which is `java.util.SortedMap`
+- `ui/AskScreen.kt` — `e.javaClass.simpleName` on an exception
+
+Neither is an import, which is why the sweeps for `^import java.` after every
+move came back clean. Nothing short of a real iOS compile would have found
+them, and in phase 4 they would have surfaced an hour into a signing build.
+
 ## Phase 4 — The iPhone app
 
 - [ ] `ios/project.yml` from volleyball's: name `KUWBB`, bundle id

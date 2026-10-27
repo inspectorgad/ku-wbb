@@ -132,7 +132,7 @@ object AskSession {
             } catch (e: CancellationException) {
                 turn.notes = listOf("Stopped.")
             } catch (e: Exception) {
-                turn.error = "Something went wrong: ${e.message ?: e.javaClass.simpleName}"
+                turn.error = "Something went wrong: ${e.message ?: e::class.simpleName}"
             } finally {
                 turn.status = ""
                 running = null

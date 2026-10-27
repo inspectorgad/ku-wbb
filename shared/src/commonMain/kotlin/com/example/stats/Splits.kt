@@ -139,7 +139,9 @@ private fun quarterLabel(index: Int, total: Int): String = when {
  * needed five.
  */
 fun quarterSplits(games: Collection<Game>): List<QuarterSplit> {
-    val byIndex = sortedMapOf<Int, QuarterSplit>()
+    // Plain map, sorted on the way out: sortedMapOf is java.util.SortedMap
+    // and the iPhone has no such thing.
+    val byIndex = mutableMapOf<Int, QuarterSplit>()
     for (g in played(games)) {
         val periods = parsePeriods(g.periodScores)
         periods.forEachIndexed { i, (ours, theirs) ->
@@ -157,7 +159,7 @@ fun quarterSplits(games: Collection<Game>): List<QuarterSplit> {
             )
         }
     }
-    return byIndex.values.toList()
+    return byIndex.keys.sorted().map { byIndex.getValue(it) }
 }
 
 /**
