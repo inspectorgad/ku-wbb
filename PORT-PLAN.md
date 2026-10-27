@@ -311,17 +311,32 @@ checked on both, not assumed from one.
 
 ## Phase 4 — The iPhone app
 
-- [ ] `ios/project.yml` from volleyball's: name `KUWBB`, bundle id
+- [x] `ios/project.yml` from volleyball's: name `KUWBB`, bundle id
       `io.github.inspectorgad.kuwbb`, display name "KU WBB",
       `MARKETING_VERSION "0.1.0"`, entitlements block deleted.
-- [ ] `ios/App/KUWBBApp.swift` — SwiftUI shell over `MainViewController`, no
+- [x] `ios/App/KUWBBApp.swift` — SwiftUI shell over `MainViewController`, no
       AppDelegate.
-- [ ] `ios/App/Assets.xcassets` plus a 1024×1024 icon. Extend
-      `scripts/make-web-icons.mjs` with a 1024 target and flatten the alpha, so
-      the iPhone icon, the Android launcher icon and the PWA icon stay the same
-      artwork.
-- [ ] `ios-testflight.yml` and `branch-ci.yml`, adapted.
-- [ ] Push to a branch, watch the run, open TestFlight on the phone.
+- [x] `ios/App/Assets.xcassets` plus a 1024×1024 icon, from
+      `scripts/make-web-icons.mjs`, so the iPhone icon, the Android launcher
+      icon and the PWA icon stay the same artwork.
+- [x] `ios-testflight.yml`. `branch-ci.yml` was not needed: `build-apk.yml`
+      already covers Android on a branch by hand, and the iPhone half landed
+      in 3f as `ios-shared.yml`.
+- [ ] Watch the run, open TestFlight on the phone.
+
+The icon needed more than a resize. App Store Connect rejects an icon with an
+alpha channel at all, transparent or not, and a canvas only ever produces
+RGBA — so the generator now re-encodes that one target as 8-bit RGB. The art
+is a filled square, so nothing is composited; it refuses rather than guesses
+if the art ever gains a transparent pixel, since flattening one against a
+colour chosen in the script would be inventing artwork. The four `docs/`
+icons come out byte-identical to before, which is how we know the change was
+confined to the new target.
+
+Three workflows now stand in front of a TestFlight build, cheapest first:
+the keys check (Linux, ~30s) rules out the credentials, `ios-shared.yml`
+(Mac, ~15m) rules out the Kotlin, and this one (~40m) is left to answer only
+whether it signs and packages.
 
 The `.xcodeproj` is never committed. `ios/project.yml` is an XcodeGen spec and
 CI generates the project from it; on a Mac, `brew install xcodegen` and
