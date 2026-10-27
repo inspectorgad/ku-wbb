@@ -2,14 +2,15 @@
 
 The App Store Connect key (ASC_ISSUER_ID, ASC_KEY_ID, ASC_KEY_P8) is used to
 look the app up by its bundle ID, which needs a working key, an app record
-created with that ID, and the identifier registered. APPLE_TEAM_ID is checked
-against the App ID's prefix where that is conclusive (see team_id_matches).
+created with that ID, and the identifier registered. APPLE_TEAM_ID is read
+back off a signing certificate (see check_team_id).
 
 Only pass/fail lines and non-secret facts (the app's name, the App ID's
 capabilities) are printed, so the log is safe to read and safe to share.
 
 Run by the "Apple keys check" workflow; needs pyjwt[crypto].
 """
+import base64
 import json
 import os
 import re
@@ -20,6 +21,8 @@ import urllib.parse
 import urllib.request
 
 import jwt
+from cryptography import x509
+from cryptography.x509.oid import NameOID
 
 BUNDLE_ID = "io.github.inspectorgad.kuwbb"
 ASC = "https://api.appstoreconnect.apple.com/v1"
@@ -106,7 +109,6 @@ def check_app_store_connect(issuer, key_id, p8, team):
                else f"{BUNDLE_ID} is not in Certificates, Identifiers & Profiles - that is Thing 1")
         return
 
-    identifier = body["data"][0]
     caps = sorted({c["attributes"].get("capabilityType", "?") for c in body.get("included", [])
                    if c.get("type") == "bundleIdCapabilities"})
     report(True, "the App ID is registered")
@@ -115,30 +117,53 @@ def check_app_store_connect(issuer, key_id, p8, team):
     # here means nothing is wrong.
     note("capabilities", ", ".join(caps) or "none, which is what this app expects")
 
-    team_id_matches(team, identifier)
+    check_team_id(token, team)
 
 
-def team_id_matches(team, identifier):
-    """Compare APPLE_TEAM_ID with the App ID's prefix, when that is conclusive.
+def subject_ou(content):
+    """The Organisational Unit of a base64 DER certificate, or None."""
+    try:
+        cert = x509.load_der_x509_certificate(base64.b64decode(content))
+        ous = cert.subject.get_attributes_for_oid(NameOID.ORGANIZATIONAL_UNIT_NAME)
+        return ous[0].value if ous else None
+    except Exception:
+        return None
 
-    An App ID carries a prefix (seedId), which for an identifier registered by
-    a modern account is the Team ID. It is not guaranteed to be: Apple let
-    older accounts choose a prefix, so a legacy App ID can carry one that is
-    not the team's. A mismatch is therefore reported as something to look at
-    rather than a failure - a check that fails on a legitimate difference
-    sends someone hunting for a problem that is not there.
+
+def check_team_id(token, team):
+    """Read the Team ID off a signing certificate and compare APPLE_TEAM_ID.
+
+    There is no endpoint that answers "which team am I": the App Store Connect
+    API has no account resource, and /v1/users returns team *member* ids,
+    which are also ten characters and are not the Team ID.
+
+    The App ID's prefix is not it either, however much it looks like it.
+    Apple's QA1879 says the prefix "is sometimes equal to the Team ID, but it
+    isn't always the case", and a team granted a unique prefix before 2011 can
+    still put that prefix on an App ID registered today. Comparing the two
+    would fail setups that are correct.
+
+    A certificate does carry it. Apple sets a signing certificate's subject
+    Organisational Unit to the Team ID, so any certificate this key can see
+    settles the question. A team that has none yet is not a failure - with
+    cloud signing the first one is created during the first upload.
     """
-    seed = (identifier.get("attributes") or {}).get("seedId")
-    if not seed:
+    status, body = asc_get(token, "certificates", {"limit": "20"})
+    if status != 200:
+        note("APPLE_TEAM_ID could not be cross-checked", f"HTTP {status} {asc_error(body)}")
+        return
+    teams = {ou for ou in (subject_ou((c.get("attributes") or {}).get("certificateContent") or "")
+                           for c in body.get("data", [])) if ou}
+    if not teams:
         note("APPLE_TEAM_ID could not be cross-checked",
-             "the App ID carries no prefix to compare it against")
-    elif seed == team:
-        report(True, "APPLE_TEAM_ID matches the App ID's prefix")
+             "this team has no signing certificate yet, which is normal before the first "
+             "upload - cloud signing creates one then")
+    elif team in teams:
+        report(True, "APPLE_TEAM_ID is the team that owns the signing certificates")
     else:
-        note("LOOK: APPLE_TEAM_ID is not the App ID's prefix",
-             "usually they are the same, so check APPLE_TEAM_ID is the Team ID from "
-             "Membership details and not the Key ID. An App ID registered years ago "
-             "can legitimately differ, which is why this is not a failure")
+        report(False, "APPLE_TEAM_ID is the team that owns the signing certificates",
+               "the certificates on this account belong to another team - check APPLE_TEAM_ID "
+               "is the Team ID from Membership details and not the Key ID")
 
 
 team = secret("APPLE_TEAM_ID")
