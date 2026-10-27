@@ -294,6 +294,21 @@ Neither is an import, which is why the sweeps for `^import java.` after every
 move came back clean. Nothing short of a real iOS compile would have found
 them, and in phase 4 they would have surfaced an hour into a signing build.
 
+With those two fixed it is green, and the agreement suite ran where it was
+always meant to:
+
+```
+PlatformAgreementTest.sha256_matches_the_standard_vectors[iosSimulatorArm64] PASSED
+PlatformAgreementTest.numbers_are_written_as_on_android[iosSimulatorArm64]   PASSED
+PlatformAgreementTest.json_reads_and_writes_as_on_android[iosSimulatorArm64] PASSED
+PlatformAgreementTest.dates_read_and_write_as_on_android[iosSimulatorArm64]  PASSED
+```
+
+**Phase 3 is done.** The same Kotlin compiles for both phones, and the
+replacements for `MessageDigest`, `String.format`, `org.json` and
+`SimpleDateFormat` give Kotlin/Native the same answers they give the JVM —
+checked on both, not assumed from one.
+
 ## Phase 4 — The iPhone app
 
 - [ ] `ios/project.yml` from volleyball's: name `KUWBB`, bundle id
