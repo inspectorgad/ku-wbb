@@ -205,12 +205,35 @@ remaining can be fixed by editing code; this was the one step that could have
 broken a database already on a phone.
 
 **3d — the platform-touching files**
-- [ ] `platform/Device.kt` and its two actuals. Keep this app's keystore alias
-      `ku_wbb_ask_api_key`; `IosDevice`'s Keychain service becomes
+- [x] `platform/Device.kt` and its two actuals. This app's keystore alias
+      stays `ku_wbb_ask_api_key`; `IosDevice`'s Keychain service is
       `io.github.inspectorgad.kuwbb`.
-- [ ] Rewrite the boundary in `Seeder.kt`, `SeasonSync.kt`, `AskEngine.kt`:
+- [x] Rewrote the boundary in `Seeder.kt`, `SeasonSync.kt`, `AskEngine.kt`:
       `Context` → `Device`, `org.json` → `com.example.json`, OkHttp →
-      `platform/Http`. Gut `AskKeyStore.kt` to the `Device`-based version.
+      `platform/Http`. `AskKeyStore.kt` is the `Device`-based version.
+
+Done in three commits rather than one, because the files are coupled and a
+single build could not say which move broke what: the platform boundary and
+the key store; then the seeder and the sync, which share a JSON type and so
+had to move together; then the engine. `AskModel` and the model list came out
+of `AskEngine` into `AskModels.kt` so the key store could move before the
+engine — the volleyball app keeps them inside `AskEngine`.
+
+`app/src/main/java/com/example/data/` is now empty. Every byte of the data
+layer is shared, and what is left in `:app` is the UI, the view model and
+`MainActivity`.
+
+Nothing a phone already holds moved: the same SharedPreferences files and
+keys (`ask_key`/`api_key`, `ask_prefs`/`model`, `season_sync`/`last_hash` and
+its siblings), the same Keystore alias, the same AES/GCM scheme. An installed
+app finds its API key, its chosen model, and its last sync state where it
+left them.
+
+**Not yet compiled: `IosDevice`.** No workflow here builds for iPhone until
+phase 4 adds a Mac runner, so that file rests on being volleyball's working
+code rather than on a green build. Same for `DarwinHttp`, `NSDataBytes` and
+the iOS database. The first iOS compile in phase 4 should be expected to turn
+up something.
 
 **3e — the UI, and Compose Multiplatform**
 - [ ] Add the `QueryStats` icon to `AppIcons.kt` — the Season tab uses it and

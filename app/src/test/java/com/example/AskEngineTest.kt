@@ -9,11 +9,11 @@ import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.async
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
-import okhttp3.OkHttpClient
+import com.example.platform.newHttp
 import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
-import org.json.JSONArray
-import org.json.JSONObject
+import com.example.json.JSONArray
+import com.example.json.JSONObject
 import org.junit.After
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertFalse
@@ -59,7 +59,7 @@ class AskEngineTest {
     }
 
     private fun engine() = AskEngine(
-        client = OkHttpClient(),
+        http = newHttp(connectSeconds = 10, readSeconds = 30),
         baseUrl = server.url("/").toString().trimEnd('/'),
         loadPack = { pack }
     )
