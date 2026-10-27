@@ -3,13 +3,6 @@ package com.example.ui
 import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.List
-import androidx.compose.material.icons.filled.EmojiEvents
-import androidx.compose.material.icons.filled.Groups
-import androidx.compose.material.icons.filled.Leaderboard
-import androidx.compose.material.icons.filled.QueryStats
-import androidx.compose.material.icons.filled.Shield
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
@@ -131,12 +124,12 @@ fun JayhawksApp(viewModel: JayhawksViewModel = viewModel()) {
                             icon = {
                                 Icon(
                                     imageVector = when (tab) {
-                                        Tab.Roster -> Icons.Default.Groups
-                                        Tab.Games -> Icons.AutoMirrored.Filled.List
-                                        Tab.Leaders -> Icons.Default.EmojiEvents
-                                        Tab.Season -> Icons.Default.QueryStats
-                                        Tab.Opponents -> Icons.Default.Shield
-                                        Tab.Big12 -> Icons.Default.Leaderboard
+                                        Tab.Roster -> AppIcons.Groups
+                                        Tab.Games -> AppIcons.List
+                                        Tab.Leaders -> AppIcons.EmojiEvents
+                                        Tab.Season -> AppIcons.QueryStats
+                                        Tab.Opponents -> AppIcons.Shield
+                                        Tab.Big12 -> AppIcons.Leaderboard
                                     },
                                     contentDescription = tab.label
                                 )

@@ -14,11 +14,6 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.filled.ArrowBack
-import androidx.compose.material.icons.filled.Add
-import androidx.compose.material.icons.filled.Delete
-import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
@@ -156,7 +151,7 @@ fun GamesScreen(
                 .align(Alignment.BottomEnd)
                 .padding(16.dp)
         ) {
-            Icon(Icons.Default.Add, contentDescription = "Add game")
+            Icon(AppIcons.Add, contentDescription = "Add game")
         }
     }
 
@@ -340,15 +335,15 @@ fun GameDetailScreen(
                 title = { Text("${siteLabel(game.siteOrLegacy)}${game.opponent}") },
                 navigationIcon = {
                     IconButton(onClick = onBack) {
-                        Icon(Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Back")
+                        Icon(AppIcons.ArrowBack, contentDescription = "Back")
                     }
                 },
                 actions = {
                     IconButton(onClick = { showEditDialog = true }) {
-                        Icon(Icons.Default.Edit, contentDescription = "Edit game")
+                        Icon(AppIcons.Edit, contentDescription = "Edit game")
                     }
                     IconButton(onClick = { showDeleteConfirm = true }) {
-                        Icon(Icons.Default.Delete, contentDescription = "Delete game")
+                        Icon(AppIcons.Delete, contentDescription = "Delete game")
                     }
                 }
             )
@@ -509,7 +504,7 @@ fun GameDetailScreen(
                             if (line != null) {
                                 IconButton(onClick = { onDeleteStatLine(line) }) {
                                     Icon(
-                                        Icons.Default.Delete,
+                                        AppIcons.Delete,
                                         contentDescription = "Remove stat line",
                                         tint = MaterialTheme.colorScheme.onSurfaceVariant
                                     )
