@@ -180,18 +180,29 @@ check guarding it, in the same change that moves the entities the schema
 describes. Two independent ways to break a database already on phones; worth
 separating.
 
-**3c — the database split** (next, and the riskiest remaining)
-- [ ] `@Database` + `@ConstructedBy` + a bare `companion object` to
+**3c — the database split** ✅
+- [x] `@Database` + `@ConstructedBy` + a bare `companion object` to
       `commonMain`; `expect object JayhawksDatabaseConstructor`.
-- [ ] Migrations, `instance`, and `get(context)` to `androidMain`.
-      `migrations()` must stay **public** there — `MigrationTest` lives in
-      `:app`'s test source set, so `internal` would not reach it. This is the
-      one place to deviate from volleyball, which has no migration test.
-- [ ] `createDatabase()` in `iosMain`, bundled SQLite driver.
-- [ ] Room's compiler moves to `:shared` as `kspAndroid`, `kspIosArm64`,
-      `kspIosSimulatorArm64`. **The schema's path moves with it**, so the
-      phase 0 check and the committed `9.json` both have to follow, and the
-      identity hash must still read `2c20466365b2a25ef4beb786cf1e9928`.
+- [x] Migrations, `instance`, and `get(context)` to `androidMain`.
+      `migrations()` is **public**, as a companion extension — `MigrationTest`
+      lives in `:app`'s test source set, so `internal` would not reach it.
+      The one deliberate deviation from volleyball, which has no migration
+      test and keeps its migrations private.
+- [x] `createDatabase()` in `iosMain`, bundled SQLite driver.
+- [x] Room's compiler moved to `:shared` as `kspAndroid`, `kspIosArm64`,
+      `kspIosSimulatorArm64`, with Room's Gradle plugin placing the schema —
+      one file at `shared/schemas/`, not one per target.
+
+**The schema survived the move byte for byte.** The pre-split file was
+restored at the new path rather than the generated one being committed, which
+makes the check an assertion instead of a recording: it passes only if moving
+`@Database` to `commonMain` and running Room's compiler per platform produced
+an identical schema. It did. `identityHash` is still
+`2c20466365b2a25ef4beb786cf1e9928`.
+
+That was the largest risk in the port, and it is now spent. Everything
+remaining can be fixed by editing code; this was the one step that could have
+broken a database already on a phone.
 
 **3d — the platform-touching files**
 - [ ] `platform/Device.kt` and its two actuals. Keep this app's keystore alias
