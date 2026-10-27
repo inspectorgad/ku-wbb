@@ -23,6 +23,10 @@ plugins {
   // when there is more than one target writing one.
   alias(libs.plugins.google.devtools.ksp)
   alias(libs.plugins.androidx.room)
+  // The screens: Compose Multiplatform, and the Compose compiler (same
+  // version as Kotlin).
+  alias(libs.plugins.compose.multiplatform)
+  alias(libs.plugins.kotlin.compose)
 }
 
 // The exported schema, committed and checked in CI. It moved here with Room's
@@ -52,14 +56,23 @@ kotlin {
   sourceSets {
     commonMain.dependencies {
       // api, not implementation: the entities and the DAO are part of this
-      // module's surface, and the app builds the database from them.
+      // module's surface, the app builds the database from them, and it
+      // hosts the screens with the same Compose this module draws them in.
       api(libs.androidx.room.runtime)
+      api(libs.compose.runtime)
+      api(libs.compose.foundation)
+      api(libs.compose.ui)
+      api(libs.compose.material3)
+      api(libs.jetbrains.lifecycle.viewmodel)
+      implementation(libs.jetbrains.lifecycle.runtime.compose)
       implementation(libs.kotlinx.coroutines.core)
       implementation(libs.kotlinx.datetime)
       implementation(libs.kotlinx.serialization.json)
     }
     androidMain.dependencies {
       implementation(libs.okhttp)
+      // Android's back button (SystemBackHandler).
+      implementation(libs.androidx.activity.compose)
     }
     iosMain.dependencies {
       // The SQLite Room talks to on iPhone, compiled into the app so every

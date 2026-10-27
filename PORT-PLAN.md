@@ -240,25 +240,34 @@ up something.
       volleyball's hand-drawn set does not have it. The Material icons
       libraries stopped at 1.7.3 and have no iOS build, which is why that file
       exists. Take the 24dp path from google/material-design-icons.
-- [ ] Delete the Compose BOM, add Compose Multiplatform 1.12.2 and material3
-      1.12.0-alpha03 to `:shared`. This is the step the BOM was waiting for.
-- [ ] Rewrite the boundary in `Seeder.kt`, `SeasonSync.kt`, `AskEngine.kt`:
-      `Context` → `Device`, `org.json` → `com.example.json`, OkHttp →
-      `platform/Http`.
-- [ ] Gut `AskKeyStore.kt` down to volleyball's `Device`-based version, keeping
-      this app's `SECRET` and `MODEL_PREFS` key names.
-- [ ] Move the whole `ui/` package. A diff of every `material3` and `foundation`
-      import in this app against volleyball's `commonMain` comes back empty, so
-      this is mechanical.
-- [ ] `JayhawksViewModel`: `AndroidViewModel(app)` → constructor-injected
-      `(dao, device)`. There is no `Upkeep` to carry over — that exists in
-      volleyball for its widget and alerts, neither of which this app has.
-- [ ] Rewrite `MainActivity.kt` on volleyball's model.
-- [ ] Add `iosMain/MainViewController.kt`, without the alerts wiring.
-- [ ] Fix imports in the thirteen test files; none of them move.
-- [ ] Add `shared/src/commonTest/` with the agreement suite. Its digests have
-      to be recorded from a real JVM run — take them from CI output, they are
-      not transferable from volleyball.
+- [x] Deleted the Compose BOM, added Compose Multiplatform 1.12.2 and
+      material3 1.12.0-alpha03 to `:shared`. This is the step the BOM was
+      waiting for: a BOM versions `androidx.compose`, and these screens are
+      `org.jetbrains.compose`.
+- [x] Moved the whole `ui/` package. It was as mechanical as the import diff
+      promised — the only Android API anywhere in it was `BackHandler`, now
+      `SystemBackHandler` with an expect/actual, and a `SimpleDateFormat` call
+      for today's date, now `todayIso()`.
+- [x] `JayhawksViewModel`: `AndroidViewModel(app)` → constructor-injected
+      `(dao, device)`. No `Upkeep` to carry over — that exists in volleyball
+      for its widget and alerts, neither of which this app has.
+- [x] Rewrote `MainActivity.kt` on volleyball's model.
+
+The view model came forward from 3f, not by choice: `JayhawksApp` takes one,
+and a `commonMain` screen cannot reference a class in `:app`. Once it moved,
+`MainActivity` had to build it, which is the rest of that 3f item.
+
+`LocalDevice` replaces volleyball's `LocalPhone`. Volleyball's `Phone`
+carries match alerts and the share sheet as well as the device; this app has
+neither, so what is left is the device and there is no interface worth
+wrapping it in.
+
+**`:app` is now one file.** `MainActivity.kt`, 30 lines: build the device,
+build the view model, provide the one, hand over the other.
+
+**3f — the iPhone entry point**
+- [ ] Add `iosMain/MainViewController.kt`, without the alerts wiring. This is
+      all that is left of the original 3f.
 
 ## Phase 4 — The iPhone app
 

@@ -1,12 +1,10 @@
 package com.example
 
-import android.app.Application
-import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.data.ConferenceStanding
 import com.example.data.Game
-import com.example.data.JayhawksDatabase
-import com.example.data.get
+import com.example.data.JayhawksDao
 import com.example.data.Player
 import com.example.data.GameTeamStats
 import com.example.data.OpponentRosterPlayer
@@ -16,7 +14,7 @@ import com.example.data.SeasonSync
 import com.example.data.Seeder
 import com.example.data.StatLine
 import com.example.data.SyncResult
-import com.example.platform.AndroidDevice
+import com.example.platform.Device
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharedFlow
@@ -27,13 +25,15 @@ import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
-class JayhawksViewModel(app: Application) : AndroidViewModel(app) {
-
-    private val dao = JayhawksDatabase.get(app).dao()
-
-    // The phone underneath the shared code: its settings, files and assets.
-    // Built from the Application here; phase 3f hands it in instead.
-    private val device = AndroidDevice(app)
+/**
+ * The screens' data and actions. It is handed the database and the phone's
+ * storage rather than taking them from Android, so the same class can serve
+ * the iPhone app.
+ */
+class JayhawksViewModel(
+    private val dao: JayhawksDao,
+    private val device: Device
+) : ViewModel() {
 
     private val _isSyncing = MutableStateFlow(false)
     val isSyncing: StateFlow<Boolean> = _isSyncing.asStateFlow()

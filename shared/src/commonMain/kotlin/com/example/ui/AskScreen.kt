@@ -45,7 +45,6 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -55,7 +54,6 @@ import com.example.data.ASK_MODELS
 import com.example.data.AskEngine
 import com.example.data.AskKeyStore
 import com.example.data.AskModel
-import com.example.platform.AndroidDevice
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart
@@ -64,9 +62,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.cancelAndJoin
 import kotlinx.coroutines.launch
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
+import com.example.text.todayIso
 
 const val EXPLAIN_ASK =
     "Type a question about the team and Claude, Anthropic's AI, answers it from the season data: " +
@@ -116,7 +112,7 @@ object AskSession {
     fun ask(question: String, key: String, model: AskModel) {
         if (running != null) return
         val turn = AskTurn(question).also { turns += it }
-        val today = SimpleDateFormat("yyyy-MM-dd", Locale.US).format(Date())
+        val today = todayIso()
         // Off the main thread: the requests carry the season's tables, and
         // building them is too slow for the UI thread. Snapshot state may be
         // written from here; the screen redraws with each change.
@@ -164,10 +160,7 @@ object AskSession {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AskScreen(onBack: () -> Unit) {
-    // Built here for now. Once the screens move to Compose Multiplatform the
-    // device comes down the tree instead, and this line goes with LocalContext.
-    val context = LocalContext.current.applicationContext
-    val device = remember(context) { AndroidDevice(context) }
+    val device = LocalDevice.current
     var savedKey by remember { mutableStateOf(AskSession.sessionKey ?: AskKeyStore.load(device)) }
     var model by remember { mutableStateOf(AskKeyStore.model(device)) }
     var question by rememberSaveable { mutableStateOf("") }
