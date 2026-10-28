@@ -147,7 +147,7 @@ fine — it's only needed while installing.
 - Room for persistence, currently schema v9. The schema is not exported, so
   the migration tests are the only guard that an upgrade on a phone holding
   data survives; they walk a v3 database the whole chain.
-- A pure-Kotlin stats engine in `app/src/main/java/com/example/stats/` —
+- A pure-Kotlin stats engine in `shared/src/commonMain/kotlin/com/example/stats/` —
   aggregates, efficiency, splits, game facts, player form, opponents — kept
   free of Compose so it can be tested as plain functions.
 - Tests run in CI before anything is built or published: Kotlin unit and

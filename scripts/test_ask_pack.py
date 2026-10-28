@@ -174,7 +174,7 @@ class TableNamesAgreeTest(unittest.TestCase):
     def test_the_dashboard_and_the_app_offer_the_same_tables(self):
         self.assertEqual(self._listed("docs/ask.js", r"const TABLES = \[(.*?)\];"), self.EXPECTED)
         self.assertEqual(
-            self._listed("app/src/main/java/com/example/data/AskEngine.kt",
+            self._listed("shared/src/commonMain/kotlin/com/example/data/AskEngine.kt",
                          r"val TABLES = listOf\((.*?)\)\n"),
             self.EXPECTED)
 

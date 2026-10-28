@@ -48,6 +48,19 @@ jobs:
           VERSION_CODE: ${{ github.run_number }}
         run: gradle :app:testDebugUnitTest :shared:testAndroidHostTest
 
+      # The scrape's parsers, the seed builder, the calendar feed and the Ask
+      # pack. These used to run only inside scrape-data.yml, on a schedule,
+      # against main - so nothing that could be dispatched on a branch ever
+      # ran them, and the shared-module port moved a file one of them opens
+      # by path without a single build noticing. Four scrapes failed before
+      # anyone saw it. They belong in front of a merge, not after one.
+      #
+      # docs/sim.test.mjs is here because it was running nowhere at all.
+      - name: Run the script tests
+        run: |
+          node --test scripts/*.test.mjs docs/sim.test.mjs
+          python3 -m unittest discover -s scripts -p 'test_*.py'
+
       - name: Build debug APK and Play release bundle
         env:
           VERSION_CODE: ${{ github.run_number }}
