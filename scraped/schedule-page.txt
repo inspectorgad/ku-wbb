@@ -17,14 +17,15 @@ vs Northeastern State (exh.)
 43
 Story Recap
 Boxscore
-Upcoming Event: Women's Basketball versus Washburn (exh.) on October 29, 2026 at 6:30 p.m. CT
-Live
+Completed Event: Women's Basketball versus Washburn (exh.) on October 29, 2026 , Win , 68, to, 50
+Final
+Oct 29
 Women's Basketball
-58
+68
 vs Washburn (exh.)
-33
-Audio
-Stats
+50
+Story Recap
+Boxscore
 Upcoming Event: Women's Basketball versus Omaha on November 3, 2026 at 6:30 p.m. CT
 Tue. 11/03/26
 -
@@ -120,11 +121,11 @@ Lawrence, Kan.
 
 4
 Days
-23
+16
 Hours
-9
+47
 Minutes
-7
+30
 Seconds
 Add To Calendar
 Text Only
@@ -195,20 +196,21 @@ Lawrence, Kan.
 
 TV: ESPN+
 
-Oct 29
-(Thu)
+W, 68-50
 
+Oct 29(Thu)
 6:30 p.m. CT
 
 Game Center
-Listen
-Live Stats
-Preview
+Box Score
+Recap
+Photos
 History
 
 Sponsored by:
 
 Explore Lawrence
+Game Info
 vs
 Omaha
 
@@ -794,14 +796,14 @@ Monday, April 06
 All Videos
 Related News
 All News
+Kansas Defeats Washburn for Late Night in the Phog
+Thursday, October 29
 Jaliya Davis Named to McClain Award Watch List
 Thursday, October 29
 S’Mya Nichols Earns Third Naismith Watch List Selection
 Thursday, October 29
 Kansas to Face Washburn Thursday for Late Night in the Phog
 Wednesday, October 28
-S’Mya Nichols Among Preseason Candidates for Lieberman Award
-Monday, October 26
 All News
 Footer
 Home of the Kansas Jayhawks | © 2026 Kansas Athletics, Inc.

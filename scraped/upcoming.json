@@ -1,16 +1,5 @@
 [
  {
-  "date": "2026-10-29",
-  "opponent": "Washburn (exh.)",
-  "site": "home",
-  "home": true,
-  "venue": "Allen Fieldhouse",
-  "city": "Lawrence, KS",
-  "time": "18:30",
-  "tv": "ESPN+",
-  "event": "Late Night in the Phog"
- },
- {
   "date": "2026-11-03",
   "opponent": "Omaha",
   "site": "home",
@@ -19,7 +8,7 @@
   "city": "Lawrence, KS",
   "time": "18:30",
   "tv": "ESPN+",
-  "event": null
+  "event": "Game Info"
  },
  {
   "date": "2026-11-06",
