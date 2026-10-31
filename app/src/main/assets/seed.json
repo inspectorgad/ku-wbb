@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-10-30T07:42:30Z",
+ "generatedAt": "2026-10-31T01:04:49Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -17355,7 +17355,7 @@
  "opponentRosters": [
   {
    "team": "arizona",
-   "fetchedAt": "2026-10-24",
+   "fetchedAt": "2026-10-31",
    "players": [
     {
      "name": "Arynn Finley",
@@ -17478,7 +17478,7 @@
   },
   {
    "team": "arizona st",
-   "fetchedAt": "2026-10-24",
+   "fetchedAt": "2026-10-31",
    "players": [
     {
      "name": "Madison Morson",
@@ -17601,7 +17601,7 @@
   },
   {
    "team": "baylor",
-   "fetchedAt": "2026-10-24",
+   "fetchedAt": "2026-10-31",
    "players": [
     {
      "name": "Taliah Scott",
@@ -17715,7 +17715,7 @@
   },
   {
    "team": "byu",
-   "fetchedAt": "2026-10-24",
+   "fetchedAt": "2026-10-31",
    "players": [
     {
      "name": "Sydney Benally",
@@ -17793,7 +17793,7 @@
   },
   {
    "team": "cincinnati",
-   "fetchedAt": "2026-10-24",
+   "fetchedAt": "2026-10-31",
    "players": [
     {
      "name": "Yar Tong",
@@ -17925,7 +17925,7 @@
   },
   {
    "team": "colorado",
-   "fetchedAt": "2026-10-24",
+   "fetchedAt": "2026-10-31",
    "players": [
     {
      "name": "Brooke Walker",
@@ -18057,7 +18057,7 @@
   },
   {
    "team": "houston",
-   "fetchedAt": "2026-10-24",
+   "fetchedAt": "2026-10-31",
    "players": [
     {
      "name": "Esmeralda Enriquez",
@@ -18129,7 +18129,7 @@
      "height": "5-8",
      "academicYear": "Fr.",
      "hometown": "Mallorca, Spain",
-     "lastSchool": ""
+     "lastSchool": "Valencia"
     },
     {
      "name": "Tamia King",
@@ -18180,7 +18180,7 @@
   },
   {
    "team": "iowa st",
-   "fetchedAt": "2026-10-24",
+   "fetchedAt": "2026-10-31",
    "players": [
     {
      "name": "Sienna Harvey",
@@ -18303,7 +18303,7 @@
   },
   {
    "team": "kansas st",
-   "fetchedAt": "2026-10-24",
+   "fetchedAt": "2026-10-31",
    "players": [
     {
      "name": "Brandie Harrod",
@@ -18405,7 +18405,7 @@
      "lastSchool": ""
     },
     {
-     "name": "Ivona \u0160\u0107eki\u0107",
+     "name": "Ivona Scekic",
      "jerseyNumber": "99",
      "position": "C",
      "height": "6-4",
@@ -18417,7 +18417,7 @@
   },
   {
    "team": "oklahoma st",
-   "fetchedAt": "2026-10-24",
+   "fetchedAt": "2026-10-31",
    "players": [
     {
      "name": "LA Sneed",
@@ -18531,7 +18531,7 @@
   },
   {
    "team": "south dakota st",
-   "fetchedAt": "2026-10-24",
+   "fetchedAt": "2026-10-31",
    "players": [
     {
      "name": "Audrey Shindelar",
@@ -18606,6 +18606,15 @@
      "lastSchool": "St. Michael-Albertville H.S."
     },
     {
+     "name": "Brooklyn Meyer",
+     "jerseyNumber": "31",
+     "position": "F",
+     "height": "6-2",
+     "academicYear": "5th",
+     "hometown": "Larchwood, Iowa",
+     "lastSchool": "West Lyon Community School"
+    },
+    {
      "name": "Claire Sheppard",
      "jerseyNumber": "32",
      "position": "W",
@@ -18645,7 +18654,7 @@
   },
   {
    "team": "tcu",
-   "fetchedAt": "2026-10-24",
+   "fetchedAt": "2026-10-31",
    "players": [
     {
      "name": "Camille Williams",
@@ -18759,7 +18768,7 @@
   },
   {
    "team": "texas tech",
-   "fetchedAt": "2026-10-24",
+   "fetchedAt": "2026-10-31",
    "players": [
     {
      "name": "Milania Jordan",
@@ -18793,7 +18802,7 @@
      "jerseyNumber": "3",
      "position": "G",
      "height": "5-9",
-     "academicYear": "Sr.",
+     "academicYear": "5th",
      "hometown": "Indianapolis, Ind.",
      "lastSchool": "North Central HS"
     },
@@ -18829,7 +18838,7 @@
      "jerseyNumber": "8",
      "position": "F",
      "height": "6-4",
-     "academicYear": "So.",
+     "academicYear": "Sr.",
      "hometown": "Soroti, Uganda",
      "lastSchool": "Uganda Christian University"
     },
@@ -18900,7 +18909,7 @@
   },
   {
    "team": "ucf",
-   "fetchedAt": "2026-10-24",
+   "fetchedAt": "2026-10-31",
    "players": [
     {
      "name": "Key Roseby",
@@ -19023,7 +19032,7 @@
   },
   {
    "team": "utah",
-   "fetchedAt": "2026-10-24",
+   "fetchedAt": "2026-10-31",
    "players": [
     {
      "name": "Lena Girardi",
@@ -19146,7 +19155,7 @@
   },
   {
    "team": "west virginia",
-   "fetchedAt": "2026-10-24",
+   "fetchedAt": "2026-10-31",
    "players": [
     {
      "name": "Nylah Wilson",
