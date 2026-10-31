@@ -1,7 +1,7 @@
 {
  "arizona st": {
   "url": "https://thesundevils.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-24T00:03:59.085Z",
+  "fetchedAt": "2026-10-31T01:02:27.861Z",
   "parserVersion": 2,
   "players": [
    {
@@ -125,7 +125,7 @@
  },
  "arizona": {
   "url": "https://arizonawildcats.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-24T00:04:08.148Z",
+  "fetchedAt": "2026-10-31T01:02:37.112Z",
   "parserVersion": 2,
   "players": [
    {
@@ -249,7 +249,7 @@
  },
  "baylor": {
   "url": "https://baylorbears.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-24T00:04:17.732Z",
+  "fetchedAt": "2026-10-31T01:02:46.700Z",
   "parserVersion": 2,
   "players": [
    {
@@ -364,7 +364,7 @@
  },
  "byu": {
   "url": "https://byucougars.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-24T00:04:26.969Z",
+  "fetchedAt": "2026-10-31T01:02:56.259Z",
   "parserVersion": 2,
   "players": [
    {
@@ -443,7 +443,7 @@
  },
  "cincinnati": {
   "url": "https://gobearcats.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-24T00:04:36.104Z",
+  "fetchedAt": "2026-10-31T01:03:05.562Z",
   "parserVersion": 2,
   "players": [
    {
@@ -576,7 +576,7 @@
  },
  "colorado": {
   "url": "https://cubuffs.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-24T00:04:45.357Z",
+  "fetchedAt": "2026-10-31T01:03:14.587Z",
   "parserVersion": 2,
   "players": [
    {
@@ -709,7 +709,7 @@
  },
  "houston": {
   "url": "https://uhcougars.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-24T00:04:54.982Z",
+  "fetchedAt": "2026-10-31T01:03:23.973Z",
   "parserVersion": 2,
   "players": [
    {
@@ -782,7 +782,7 @@
     "height": "5-8",
     "academicYear": "Fr.",
     "hometown": "Mallorca, Spain",
-    "lastSchool": ""
+    "lastSchool": "Valencia"
    },
    {
     "name": "Tamia King",
@@ -833,7 +833,7 @@
  },
  "iowa st": {
   "url": "https://cyclones.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-24T00:05:03.917Z",
+  "fetchedAt": "2026-10-31T01:03:33.626Z",
   "parserVersion": 2,
   "players": [
    {
@@ -957,7 +957,7 @@
  },
  "kansas st": {
   "url": "https://kstatesports.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-24T00:05:13.789Z",
+  "fetchedAt": "2026-10-31T01:03:43.088Z",
   "parserVersion": 2,
   "players": [
    {
@@ -1060,7 +1060,7 @@
     "lastSchool": ""
    },
    {
-    "name": "Ivona Šćekić",
+    "name": "Ivona Scekic",
     "jerseyNumber": "99",
     "position": "C",
     "height": "6-4",
@@ -1072,7 +1072,7 @@
  },
  "oklahoma st": {
   "url": "https://okstate.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-24T00:05:22.927Z",
+  "fetchedAt": "2026-10-31T01:03:52.621Z",
   "parserVersion": 2,
   "players": [
    {
@@ -1187,7 +1187,7 @@
  },
  "south dakota st": {
   "url": "https://gojacks.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-24T00:05:32.405Z",
+  "fetchedAt": "2026-10-31T01:04:01.963Z",
   "parserVersion": 2,
   "players": [
    {
@@ -1263,6 +1263,15 @@
     "lastSchool": "St. Michael-Albertville H.S."
    },
    {
+    "name": "Brooklyn Meyer",
+    "jerseyNumber": "31",
+    "position": "F",
+    "height": "6-2",
+    "academicYear": "5th",
+    "hometown": "Larchwood, Iowa",
+    "lastSchool": "West Lyon Community School"
+   },
+   {
     "name": "Claire Sheppard",
     "jerseyNumber": "32",
     "position": "W",
@@ -1302,7 +1311,7 @@
  },
  "tcu": {
   "url": "https://gofrogs.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-24T00:05:41.978Z",
+  "fetchedAt": "2026-10-31T01:04:11.612Z",
   "parserVersion": 2,
   "players": [
    {
@@ -1417,7 +1426,7 @@
  },
  "texas tech": {
   "url": "https://texastech.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-24T00:05:51.385Z",
+  "fetchedAt": "2026-10-31T01:04:21.116Z",
   "parserVersion": 2,
   "players": [
    {
@@ -1452,7 +1461,7 @@
     "jerseyNumber": "3",
     "position": "G",
     "height": "5-9",
-    "academicYear": "Sr.",
+    "academicYear": "5th",
     "hometown": "Indianapolis, Ind.",
     "lastSchool": "North Central HS"
    },
@@ -1488,7 +1497,7 @@
     "jerseyNumber": "8",
     "position": "F",
     "height": "6-4",
-    "academicYear": "So.",
+    "academicYear": "Sr.",
     "hometown": "Soroti, Uganda",
     "lastSchool": "Uganda Christian University"
    },
@@ -1559,7 +1568,7 @@
  },
  "ucf": {
   "url": "https://ucfknights.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-24T00:06:00.750Z",
+  "fetchedAt": "2026-10-31T01:04:30.175Z",
   "parserVersion": 2,
   "players": [
    {
@@ -1683,7 +1692,7 @@
  },
  "utah": {
   "url": "https://utahutes.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-24T00:06:10.222Z",
+  "fetchedAt": "2026-10-31T01:04:39.842Z",
   "parserVersion": 2,
   "players": [
    {
@@ -1807,7 +1816,7 @@
  },
  "west virginia": {
   "url": "https://wvusports.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-24T00:06:19.596Z",
+  "fetchedAt": "2026-10-31T01:04:49.482Z",
   "parserVersion": 2,
   "players": [
    {
