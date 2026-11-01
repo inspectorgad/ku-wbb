@@ -1,5 +1,7 @@
 package com.example.ui
 
+import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -12,6 +14,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.AlertDialog
@@ -36,6 +39,8 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -57,6 +62,55 @@ fun siteLabel(site: String?): String = when (site) {
     "home", "neutral" -> "vs "
     "away" -> "at "
     else -> ""
+}
+
+/**
+ * HOME, AWAY or NEUTRAL beside a game, or nothing when the site is unknown.
+ *
+ * The "vs "/"at " prefix on its own was too quiet to see — easy to read past,
+ * and "vs" covers home and neutral alike, so the first line of a row could
+ * not tell those two apart at all. This says the word.
+ *
+ * Home is filled and away is outlined, so the two differ in shape as well as
+ * colour and the distinction survives a screenshot in greyscale or an eye
+ * that does not separate the hues. The dashboard's chip does the same.
+ */
+@Composable
+fun SiteChip(site: String?, modifier: Modifier = Modifier) {
+    val text = when (site) {
+        "home" -> "HOME"
+        "away" -> "AWAY"
+        "neutral" -> "NEUTRAL"
+        else -> return
+    }
+    val filled = site == "home"
+    val background = when (site) {
+        "home" -> MaterialTheme.colorScheme.primaryContainer
+        "neutral" -> MaterialTheme.colorScheme.surfaceVariant
+        else -> Color.Transparent
+    }
+    val content = when (site) {
+        "home" -> MaterialTheme.colorScheme.onPrimaryContainer
+        "neutral" -> MaterialTheme.colorScheme.onSurfaceVariant
+        else -> MaterialTheme.colorScheme.onSurfaceVariant
+    }
+    Box(
+        modifier = modifier
+            .clip(RoundedCornerShape(4.dp))
+            .background(background)
+            .then(
+                if (filled) Modifier
+                else Modifier.border(1.dp, MaterialTheme.colorScheme.outline, RoundedCornerShape(4.dp))
+            )
+            .padding(horizontal = 6.dp, vertical = 1.dp)
+    ) {
+        Text(
+            text,
+            style = MaterialTheme.typography.labelSmall,
+            fontWeight = FontWeight.Bold,
+            color = content
+        )
+    }
 }
 
 /** Short suffix naming a neutral floor, e.g. " (neutral · T-Mobile Center)". */
@@ -109,11 +163,17 @@ fun GamesScreen(
                             verticalAlignment = Alignment.CenterVertically
                         ) {
                             Column(modifier = Modifier.weight(1f)) {
-                                Text(
-                                    "${siteLabel(game.siteOrLegacy)}${game.opponent}",
-                                    style = MaterialTheme.typography.titleMedium,
-                                    fontWeight = FontWeight.SemiBold
-                                )
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.spacedBy(6.dp)
+                                ) {
+                                    SiteChip(game.siteOrLegacy)
+                                    Text(
+                                        "${siteLabel(game.siteOrLegacy)}${game.opponent}",
+                                        style = MaterialTheme.typography.titleMedium,
+                                        fontWeight = FontWeight.SemiBold
+                                    )
+                                }
                                 Text(
                                     "${game.date} · ${game.season}" +
                                         neutralNote(game) +
