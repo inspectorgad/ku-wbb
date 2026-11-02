@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-11-02T19:44:41Z",
+ "generatedAt": "2026-11-02T22:28:27Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -16734,7 +16734,7 @@
    "time": "18:30",
    "site": "home",
    "home": true,
-   "conference": false
+   "conference": true
   },
   {
    "date": "2027-01-09",
@@ -16854,7 +16854,7 @@
    "time": "19:30",
    "site": "away",
    "home": false,
-   "conference": false
+   "conference": true
   },
   {
    "date": "2027-02-16",
@@ -17092,6 +17092,26 @@
    "overallL": 23,
    "nationalRank": null,
    "netRank": 179
+  },
+  {
+   "season": "2026-27",
+   "team": "Arizona",
+   "seo": "arizona",
+   "confW": 0,
+   "confL": 0,
+   "overallW": 1,
+   "overallL": 0,
+   "nationalRank": null
+  },
+  {
+   "season": "2026-27",
+   "team": "Houston",
+   "seo": "houston",
+   "confW": 0,
+   "confL": 0,
+   "overallW": 1,
+   "overallL": 0,
+   "nationalRank": null
   }
  ],
  "polls": [
