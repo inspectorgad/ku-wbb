@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-10-31T01:04:49Z",
+ "generatedAt": "2026-11-02T19:44:41Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -16547,6 +16547,7 @@
    "venue": "Allen Fieldhouse",
    "city": "Lawrence, KS",
    "tv": "ESPN+",
+   "event": "Game Info",
    "time": "11:00",
    "site": "home",
    "home": true,
