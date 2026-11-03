@@ -167,7 +167,8 @@
   "2026-04-14": true,
   "2026-04-15": true,
   "2026-11-01": true,
-  "2026-11-02": true
+  "2026-11-02": true,
+  "2026-11-03": true
  },
  "games": {
   "6515413": {
@@ -421,6 +422,13 @@
    "home": "Kansas",
    "away": "Troy",
    "boxscored": true
+  },
+  "6647847": {
+   "date": "2026-11-03",
+   "final": false,
+   "home": "Kansas",
+   "away": "Omaha",
+   "boxscored": false
   }
  },
  "big12Games": {
