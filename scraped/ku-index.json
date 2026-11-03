@@ -8792,6 +8792,50 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6646421": {
+   "date": "2026-11-02",
+   "season": "2026",
+   "home": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 87,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "FDU",
+    "seo": "fdu",
+    "score": 66,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6646779": {
+   "date": "2026-11-02",
+   "season": "2026",
+   "home": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 61,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Wichita St.",
+    "seo": "wichita-st",
+    "score": 41,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6647026": {
    "date": "2026-11-02",
    "season": "2026",
@@ -8829,6 +8873,72 @@
     "name": "Stanford",
     "seo": "stanford",
     "score": 69,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6648851": {
+   "date": "2026-11-02",
+   "season": "2026",
+   "home": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 90,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Grambling",
+    "seo": "grambling",
+    "score": 61,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6649118": {
+   "date": "2026-11-02",
+   "season": "2026",
+   "home": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 84,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Jackson St.",
+    "seo": "jackson-st",
+    "score": 41,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6649357": {
+   "date": "2026-11-02",
+   "season": "2026",
+   "home": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 81,
+    "winner": true,
+    "rank": 22,
+    "inConference": true
+   },
+   "away": {
+    "name": "Southern U.",
+    "seo": "southern-u",
+    "score": 39,
     "winner": false,
     "rank": null,
     "inConference": false
