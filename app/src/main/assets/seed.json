@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-11-02T22:28:27Z",
+ "generatedAt": "2026-11-03T03:04:17Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -16698,7 +16698,7 @@
    "time": "14:00",
    "site": "home",
    "home": true,
-   "conference": false
+   "conference": true
   },
   {
    "date": "2026-12-30",
@@ -16746,7 +16746,7 @@
    "time": "19:30",
    "site": "home",
    "home": true,
-   "conference": false
+   "conference": true
   },
   {
    "date": "2027-01-13",
@@ -16758,7 +16758,7 @@
    "time": "18:30",
    "site": "away",
    "home": false,
-   "conference": false
+   "conference": true
   },
   {
    "date": "2027-01-16",
@@ -16782,7 +16782,7 @@
    "time": "18:30",
    "site": "home",
    "home": true,
-   "conference": false
+   "conference": true
   },
   {
    "date": "2027-01-24",
@@ -16806,7 +16806,7 @@
    "time": "18:30",
    "site": "home",
    "home": true,
-   "conference": false
+   "conference": true
   },
   {
    "date": "2027-01-31",
@@ -16818,7 +16818,7 @@
    "time": "14:00",
    "site": "home",
    "home": true,
-   "conference": false
+   "conference": true
   },
   {
    "date": "2027-02-06",
@@ -16878,7 +16878,7 @@
    "time": "17:00",
    "site": "away",
    "home": false,
-   "conference": false
+   "conference": true
   },
   {
    "date": "2027-02-24",
@@ -16890,7 +16890,7 @@
    "time": "18:30",
    "site": "away",
    "home": false,
-   "conference": false
+   "conference": true
   },
   {
    "date": "2027-02-28",
@@ -17105,6 +17105,26 @@
   },
   {
    "season": "2026-27",
+   "team": "Arizona St.",
+   "seo": "arizona-st",
+   "confW": 0,
+   "confL": 0,
+   "overallW": 1,
+   "overallL": 0,
+   "nationalRank": null
+  },
+  {
+   "season": "2026-27",
+   "team": "Baylor",
+   "seo": "baylor",
+   "confW": 0,
+   "confL": 0,
+   "overallW": 1,
+   "overallL": 0,
+   "nationalRank": null
+  },
+  {
+   "season": "2026-27",
    "team": "Houston",
    "seo": "houston",
    "confW": 0,
@@ -17112,6 +17132,36 @@
    "overallW": 1,
    "overallL": 0,
    "nationalRank": null
+  },
+  {
+   "season": "2026-27",
+   "team": "Iowa St.",
+   "seo": "iowa-st",
+   "confW": 0,
+   "confL": 0,
+   "overallW": 1,
+   "overallL": 0,
+   "nationalRank": null
+  },
+  {
+   "season": "2026-27",
+   "team": "Kansas St.",
+   "seo": "kansas-st",
+   "confW": 0,
+   "confL": 0,
+   "overallW": 1,
+   "overallL": 0,
+   "nationalRank": null
+  },
+  {
+   "season": "2026-27",
+   "team": "Oklahoma St.",
+   "seo": "oklahoma-st",
+   "confW": 0,
+   "confL": 0,
+   "overallW": 1,
+   "overallL": 0,
+   "nationalRank": 22
   }
  ],
  "polls": [
@@ -17338,7 +17388,7 @@
      "points": "202",
      "previous": "",
      "firstPlaceVotes": 0,
-     "big12": false
+     "big12": true
     },
     {
      "rank": 23,
