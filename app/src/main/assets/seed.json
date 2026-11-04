@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-11-03T03:04:17Z",
+ "generatedAt": "2026-11-04T01:38:54Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -16525,19 +16525,6 @@
    ],
    "site": "neutral",
    "home": false,
-   "conference": false
-  },
-  {
-   "date": "2026-11-03",
-   "opponent": "Omaha",
-   "season": "2026-27",
-   "venue": "Allen Fieldhouse",
-   "city": "Lawrence, KS",
-   "tv": "ESPN+",
-   "event": "Game Info",
-   "time": "18:30",
-   "site": "home",
-   "home": true,
    "conference": false
   },
   {
