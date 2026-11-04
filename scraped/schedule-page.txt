@@ -26,13 +26,15 @@ vs Washburn (exh.)
 50
 Story Recap
 Boxscore
-Upcoming Event: Women's Basketball versus Omaha on November 3, 2026 at 6:30 p.m. CT
-Live
+Completed Event: Women's Basketball versus Omaha on November 3, 2026 , Win , 66, to, 48
+Final
+Nov 3
 Women's Basketball
+66
 vs Omaha
-Audio
-Video
-Stats
+48
+Story Recap
+Boxscore
 Upcoming Event: Women's Basketball versus Drake on November 6, 2026 at 11 a.m. CT
 Fri. 11/06/26
 -
@@ -122,11 +124,11 @@ Lawrence, Kan.
 
 2
 Days
-15
+9
 Hours
-21
+2
 Minutes
-6
+13
 Seconds
 Add To Calendar
 Text Only
@@ -138,11 +140,11 @@ List View
 Table View not selected
 Overall
 Wins
-0
+1
 Losses
 0
 Overall Percentage
-.000
+1.000
 Conf
 Wins
 0
@@ -151,10 +153,10 @@ Losses
 Conference Percentage
 .000
 Streak
----
+W1
 Home
 Wins
-0
+1
 Losses
 0
 Away
@@ -220,16 +222,16 @@ Lawrence, Kan.
 
 TV: ESPN+
 
-Nov 3
-(Tue)
+W, 66-48
 
+Nov 3(Tue)
 6:30 p.m. CT
 
 Game Center
-Watch
-Listen
-Live Stats
-Preview
+Box Score
+Recap
+Photos
+History
 Game Info
 vs
 Drake
@@ -790,24 +792,24 @@ Listen
 History
 Related Videos
 All Videos
+Women's Basketball Highlights vs Omaha
+Tuesday, November 03
 Women's Basketball Postgame Press Conference vs Washburn
 Friday, October 30
 Women's Basketball Highlights vs Washburn
 Friday, October 30
 Women's Basketball Postgame Press Conference vs Northeastern State
 Friday, October 23
-Women's Basketball Highlights vs Northeastern State
-Friday, October 23
 All Videos
 Related News
 All News
+Second Half Surge Lifts Jayhawks to Season-Opening Win over Omaha
+Tuesday, November 03
 Jayhawks Set to Open 2026-27 Campaign Tuesday vs. Omaha
 Monday, November 02
 Kansas Defeats Washburn for Late Night in the Phog
 Thursday, October 29
 Jaliya Davis Named to McClain Award Watch List
-Thursday, October 29
-S’Mya Nichols Earns Third Naismith Watch List Selection
 Thursday, October 29
 All News
 Footer

@@ -426,10 +426,10 @@
   },
   "6647847": {
    "date": "2026-11-03",
-   "final": false,
+   "final": true,
    "home": "Kansas",
    "away": "Omaha",
-   "boxscored": false
+   "boxscored": true
   }
  },
  "big12Games": {
@@ -8837,6 +8837,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6646888": {
+   "date": "2026-11-03",
+   "season": "2026",
+   "home": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 68,
+    "winner": true,
+    "rank": 24,
+    "inConference": true
+   },
+   "away": {
+    "name": "Rhode Island",
+    "seo": "rhode-island",
+    "score": 64,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6647026": {
    "date": "2026-11-02",
    "season": "2026",
@@ -8874,6 +8896,72 @@
     "name": "Stanford",
     "seo": "stanford",
     "score": 69,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6647847": {
+   "date": "2026-11-03",
+   "season": "2026",
+   "home": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 66,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Omaha",
+    "seo": "neb-omaha",
+    "score": 48,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6647988": {
+   "date": "2026-11-03",
+   "season": "2026",
+   "home": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 76,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Eastern Wash.",
+    "seo": "eastern-wash",
+    "score": 67,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6648497": {
+   "date": "2026-11-03",
+   "season": "2026",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 99,
+    "winner": true,
+    "rank": 15,
+    "inConference": true
+   },
+   "away": {
+    "name": "Oral Roberts",
+    "seo": "oral-roberts",
+    "score": 43,
     "winner": false,
     "rank": null,
     "inConference": false
@@ -8940,6 +9028,50 @@
     "name": "Southern U.",
     "seo": "southern-u",
     "score": 39,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6651681": {
+   "date": "2026-11-03",
+   "season": "2026",
+   "home": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 85,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Florida A&M",
+    "seo": "florida-am",
+    "score": 56,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6660800": {
+   "date": "2026-11-03",
+   "season": "2026",
+   "home": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 67,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Idaho St.",
+    "seo": "idaho-st",
+    "score": 50,
     "winner": false,
     "rank": null,
     "inConference": false
