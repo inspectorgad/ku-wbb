@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-11-04T07:57:47Z",
+ "generatedAt": "2026-11-05T01:46:37Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -17221,7 +17221,7 @@
    "time": "17:30",
    "site": "away",
    "home": false,
-   "conference": false
+   "conference": true
   },
   {
    "date": "2027-01-06",
@@ -17626,6 +17626,16 @@
    "season": "2026-27",
    "team": "Baylor",
    "seo": "baylor",
+   "confW": 0,
+   "confL": 0,
+   "overallW": 1,
+   "overallL": 0,
+   "nationalRank": null
+  },
+  {
+   "season": "2026-27",
+   "team": "Cincinnati",
+   "seo": "cincinnati",
    "confW": 0,
    "confL": 0,
    "overallW": 1,
