@@ -124,11 +124,11 @@ Lawrence, Kan.
 
 1
 Days
-15
+8
 Hours
-13
+32
 Minutes
-22
+42
 Seconds
 Add To Calendar
 Text Only
