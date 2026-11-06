@@ -35,15 +35,14 @@ vs Omaha
 48
 Story Recap
 Boxscore
-Upcoming Event: Women's Basketball versus Drake on November 6, 2026 at 11 a.m. CT
-Fri. 11/06/26
--
-11 a.m. CT
+Completed Event: Women's Basketball versus Drake on November 6, 2026 , Win , 74, to, 49
+Final
+Nov 6
 Women's Basketball
+74
 vs Drake
-Audio
-Video
-Stats
+49
+Boxscore
 Upcoming Event: Women's Basketball versus Oral Roberts on November 10, 2026 at 6:30 p.m. CT
 Tue. 11/10/26
 -
@@ -114,21 +113,21 @@ University of Kansas
 
 vs
 
-Drake
+Oral Roberts
 
-Friday, November 6
+Tuesday, November 10
 
 Lawrence, Kan.
 
-11 a.m. CT
+6:30 p.m. CT
 
-0
-Days
-0
-Hours
 4
+Days
+5
+Hours
+25
 Minutes
-21
+40
 Seconds
 Add To Calendar
 Text Only
@@ -140,7 +139,7 @@ List View
 Table View not selected
 Overall
 Wins
-1
+2
 Losses
 0
 Overall Percentage
@@ -153,10 +152,10 @@ Losses
 Conference Percentage
 .000
 Streak
-W1
+W2
 Home
 Wins
-1
+2
 Losses
 0
 Away
@@ -241,17 +240,16 @@ Lawrence, Kan.
 
 TV: ESPN+
 
-Nov 6
-(Fri)
+W, 74-49
 
+Nov 6(Fri)
 11 a.m. CT
 
 Game Center
-Watch
-Listen
-Live Stats
+Box Score
 History
 Explore Lawrence
+Game Info
 vs
 Oral Roberts
 
