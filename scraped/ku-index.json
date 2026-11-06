@@ -170,7 +170,8 @@
   "2026-11-02": true,
   "2026-11-03": true,
   "2026-11-04": true,
-  "2026-11-05": true
+  "2026-11-05": true,
+  "2026-11-06": true
  },
  "games": {
   "6515413": {
@@ -431,6 +432,13 @@
    "home": "Kansas",
    "away": "Omaha",
    "boxscored": true
+  },
+  "6647849": {
+   "date": "2026-11-06",
+   "final": false,
+   "home": "Kansas",
+   "away": "Drake",
+   "boxscored": false
   }
  },
  "big12Games": {
@@ -8794,6 +8802,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6646072": {
+   "date": "2026-11-05",
+   "season": "2026",
+   "home": {
+    "name": "Florida",
+    "seo": "florida",
+    "score": 95,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 65,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6646421": {
    "date": "2026-11-02",
    "season": "2026",
@@ -9073,6 +9103,28 @@
     "name": "East Texas A&M",
     "seo": "tex-am-commerce",
     "score": 58,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6650173": {
+   "date": "2026-11-05",
+   "season": "2026",
+   "home": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 64,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Charlotte",
+    "seo": "charlotte",
+    "score": 37,
     "winner": false,
     "rank": null,
     "inConference": false
