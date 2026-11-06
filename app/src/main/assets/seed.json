@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-11-05T08:27:18Z",
+ "generatedAt": "2026-11-06T01:48:11Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -17401,7 +17401,7 @@
    "time": "14:00",
    "site": "home",
    "home": true,
-   "conference": false
+   "conference": true
   },
   {
    "date": "2027-03-03",
@@ -17714,8 +17714,8 @@
   },
   {
    "season": "2026-27",
-   "team": "UCF",
-   "seo": "ucf",
+   "team": "Texas Tech",
+   "seo": "texas-tech",
    "confW": 0,
    "confL": 0,
    "overallW": 1,
@@ -17741,6 +17741,16 @@
    "overallW": 1,
    "overallL": 0,
    "nationalRank": 24
+  },
+  {
+   "season": "2026-27",
+   "team": "UCF",
+   "seo": "ucf",
+   "confW": 0,
+   "confL": 0,
+   "overallW": 1,
+   "overallL": 1,
+   "nationalRank": null
   }
  ],
  "polls": [
