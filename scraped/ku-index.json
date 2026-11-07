@@ -9111,6 +9111,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6647991": {
+   "date": "2026-11-06",
+   "season": "2026",
+   "home": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 72,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Colorado St.",
+    "seo": "colorado-st",
+    "score": 63,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6648206": {
    "date": "2026-11-05",
    "season": "2026",
