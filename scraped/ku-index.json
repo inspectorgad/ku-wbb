@@ -171,7 +171,8 @@
   "2026-11-03": true,
   "2026-11-04": true,
   "2026-11-05": true,
-  "2026-11-06": true
+  "2026-11-06": true,
+  "2026-11-07": true
  },
  "games": {
   "6515413": {
@@ -9279,6 +9280,28 @@
     "name": "Charlotte",
     "seo": "charlotte",
     "score": 37,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6650486": {
+   "date": "2026-11-06",
+   "season": "2026",
+   "home": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 92,
+    "winner": true,
+    "rank": 22,
+    "inConference": true
+   },
+   "away": {
+    "name": "Morgan St.",
+    "seo": "morgan-st",
+    "score": 38,
     "winner": false,
     "rank": null,
     "inConference": false
