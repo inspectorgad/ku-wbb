@@ -15,7 +15,9 @@ import os
 import re
 from datetime import datetime, timezone
 
+
 from seed_text import fix_mojibake, norm_name, norm_team
+from win_model import Model
 
 TEAM_SEO = "kansas"
 SEED_PATH = "app/src/main/assets/seed.json"
@@ -660,6 +662,85 @@ if ap.get("data") and ap_season:
         f"  AP poll {ap_season}: {len(rows)} teams, "
         f"{sum(1 for r in rows if r['big12'])} from the Big 12"
     )
+
+# --- Win model: a chance for every game still to play ------------------------
+# scripts/win-model.json carries the constants and says at length what the
+# model is and is not worth. Attached only to games with no result: once a
+# game is played the question it answers has been answered on the floor.
+WIN_MODEL = load_json("scripts/win-model.json", {})
+
+
+def net_ranks(payload):
+    """{team key: rank} from a NET snapshot, or {} if it has none."""
+    out = {}
+    for row in payload.get("data", []):
+        rank = str(row_value(row, "rank") or "").strip()
+        team = norm_team(row_value(row, "school", "team") or "")
+        if rank.isdigit() and team:
+            out.setdefault(team, int(rank))
+    return out
+
+
+# The season being forecast is the one the upcoming games belong to.
+upcoming = [g for g in games.values() if g.get("teamScore") is None]
+forecast_season = max((g["season"] for g in upcoming), default=None)
+
+if WIN_MODEL and upcoming and forecast_season:
+    # This season's NET if the NCAA has published one yet (it arrives around
+    # the first Monday of December); otherwise last season's final, shrunk.
+    if net_season == forecast_season:
+        ranks, net_weight, net_label = net_ranks(net), 1.0, f"NET {net_season}"
+    else:
+        prior_season = season_label(int(forecast_season[:4]) - 1)
+        archived = load_json(f"scraped/rankings-net-{prior_season}.json", {})
+        ranks = net_ranks(archived)
+        net_weight = WIN_MODEL.get("staleNetWeight", 0.75)
+        net_label = f"NET {prior_season} x{net_weight:g}"
+
+    if not ranks:
+        print("win model: no NET ranks available; no games rated")
+    else:
+        # Ranked teams are rated from the poll, which is current where the NET
+        # may be a season old. Points as a share of the most any team could
+        # score - every ballot carries one first-place vote, so the first-place
+        # votes count the ballots, which keeps the mapping steady if the panel
+        # changes size.
+        poll_share = {}
+        current_poll = next((p for p in polls if p["season"] == forecast_season), None)
+        if current_poll:
+            ballots = sum(to_int(r.get("firstPlaceVotes")) for r in current_poll["rows"])
+            most = ballots * 25
+            if most:
+                for row in current_poll["rows"]:
+                    poll_share[norm_team(row.get("team") or "")] = to_int(row.get("points")) / most
+
+        model = Model(WIN_MODEL, ranks, poll_share, net_weight)
+        ku_z, ku_source = model.rating_of(norm_team("Kansas"))
+        rated = 0
+        unrated = []
+        for game in upcoming:
+            game.pop("winProbability", None)
+            game.pop("ratingSource", None)
+            if ku_z is None:
+                continue
+            opponent_z, source = model.rating_of(norm_team(game["opponent"]))
+            if opponent_z is None:
+                unrated.append(game["opponent"])
+                continue
+            game["winProbability"] = round(
+                model.probability(ku_z, opponent_z, game.get("site")), 4)
+            game["ratingSource"] = source
+            rated += 1
+        if ku_z is None:
+            print("win model: Kansas is not rated by the poll or the NET; no games rated")
+        else:
+            print(
+                f"win model: {rated} upcoming game(s) rated from {net_label}, "
+                f"Kansas {ku_z:+.2f} from the {ku_source} ({model.fit_note})"
+            )
+            if unrated:
+                print(f"  not rated (no NET row): {', '.join(sorted(set(unrated)))}")
+
 
 # Sorted by conference win %, then conference wins, then overall win % — NOT
 # official Big 12 tiebreakers (those use head-to-head); the UI says as much.
