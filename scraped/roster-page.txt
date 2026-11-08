@@ -26,22 +26,24 @@ vs Washburn (exh.)
 50
 Story Recap
 Boxscore
-Upcoming Event: Women's Basketball versus Omaha on November 3, 2026 at 6:30 p.m. CT
-Tue. 11/03/26
--
-6:30 p.m. CT
+Completed Event: Women's Basketball versus Omaha on November 3, 2026 , Win , 66, to, 48
+Final
+Nov 3
 Women's Basketball
+66
 vs Omaha
-Audio
-Stats
-Upcoming Event: Women's Basketball versus Drake on November 6, 2026 at 11 a.m. CT
-Fri. 11/06/26
--
-11 a.m. CT
+48
+Story Recap
+Boxscore
+Completed Event: Women's Basketball versus Drake on November 6, 2026 , Win , 74, to, 49
+Final
+Nov 6
 Women's Basketball
+74
 vs Drake
-Audio
-Stats
+49
+Story Recap
+Boxscore
 Upcoming Event: Women's Basketball versus Oral Roberts on November 10, 2026 at 6:30 p.m. CT
 Tue. 11/10/26
 -
@@ -49,6 +51,7 @@ Tue. 11/10/26
 Women's Basketball
 vs Oral Roberts
 Audio
+Video
 Stats
 Upcoming Event: Women's Basketball versus Nebraska on November 14, 2026 at 3:30 p.m. CT
 Sat. 11/14/26
@@ -382,20 +385,20 @@ chuck.holl@ku.edu
 Full Bio 
 for Chuck Hollwedel
 Related News
-Kansas Defeats Washburn for Late Night in the Phog
-Thursday, October 29
-Jaliya Davis Named to McClain Award Watch List
-Thursday, October 29
-S’Mya Nichols Earns Third Naismith Watch List Selection
-Thursday, October 29
+Kansas Cruises to 2-0 with Kids Game Win over Drake
+Friday, November 06
+Kansas to Host Drake Friday Morning for Kids Game
+Thursday, November 05
+Second Half Surge Lifts Jayhawks to Season-Opening Win over Omaha
+Tuesday, November 03
 All News
 Related Videos
-Women's Basketball Postgame Press Conference vs Washburn
-Friday, October 30
-Women's Basketball Highlights vs Washburn
-Friday, October 30
-Women's Basketball Postgame Press Conference vs Northeastern State
-Friday, October 23
+Women's Basketball Highlights vs Drake
+Friday, November 06
+Hawk Talk with Lance Leipold
+Thursday, November 05
+Women's Basketball Postgame Press Conference vs Omaha
+Wednesday, November 04
 All Videos
 Skip Ad
 Skip Ad

@@ -1,7 +1,7 @@
 {
  "arizona st": {
   "url": "https://thesundevils.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-31T01:02:27.861Z",
+  "fetchedAt": "2026-11-07T01:11:03.583Z",
   "parserVersion": 2,
   "players": [
    {
@@ -125,7 +125,7 @@
  },
  "arizona": {
   "url": "https://arizonawildcats.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-31T01:02:37.112Z",
+  "fetchedAt": "2026-11-07T01:11:14.352Z",
   "parserVersion": 2,
   "players": [
    {
@@ -249,7 +249,7 @@
  },
  "baylor": {
   "url": "https://baylorbears.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-31T01:02:46.700Z",
+  "fetchedAt": "2026-11-07T01:11:23.759Z",
   "parserVersion": 2,
   "players": [
    {
@@ -364,7 +364,7 @@
  },
  "byu": {
   "url": "https://byucougars.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-31T01:02:56.259Z",
+  "fetchedAt": "2026-11-07T01:11:33.407Z",
   "parserVersion": 2,
   "players": [
    {
@@ -443,7 +443,7 @@
  },
  "cincinnati": {
   "url": "https://gobearcats.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-31T01:03:05.562Z",
+  "fetchedAt": "2026-11-07T01:11:42.673Z",
   "parserVersion": 2,
   "players": [
    {
@@ -576,7 +576,7 @@
  },
  "colorado": {
   "url": "https://cubuffs.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-31T01:03:14.587Z",
+  "fetchedAt": "2026-11-07T01:11:52.406Z",
   "parserVersion": 2,
   "players": [
    {
@@ -613,7 +613,7 @@
     "height": "6-2",
     "academicYear": "Fr.",
     "hometown": "Minneapolis, Minn.",
-    "lastSchool": "St. Micheal-Albertville High School"
+    "lastSchool": "St. Michael-Albertville High School"
    },
    {
     "name": "Lauren Harris",
@@ -709,7 +709,7 @@
  },
  "houston": {
   "url": "https://uhcougars.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-31T01:03:23.973Z",
+  "fetchedAt": "2026-11-07T01:12:02.090Z",
   "parserVersion": 2,
   "players": [
    {
@@ -833,7 +833,7 @@
  },
  "iowa st": {
   "url": "https://cyclones.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-31T01:03:33.626Z",
+  "fetchedAt": "2026-11-07T01:12:11.600Z",
   "parserVersion": 2,
   "players": [
    {
@@ -957,7 +957,7 @@
  },
  "kansas st": {
   "url": "https://kstatesports.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-31T01:03:43.088Z",
+  "fetchedAt": "2026-11-07T01:12:21.209Z",
   "parserVersion": 2,
   "players": [
    {
@@ -1072,7 +1072,7 @@
  },
  "oklahoma st": {
   "url": "https://okstate.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-31T01:03:52.621Z",
+  "fetchedAt": "2026-11-07T01:12:30.556Z",
   "parserVersion": 2,
   "players": [
    {
@@ -1187,7 +1187,7 @@
  },
  "south dakota st": {
   "url": "https://gojacks.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-31T01:04:01.963Z",
+  "fetchedAt": "2026-11-07T01:12:39.960Z",
   "parserVersion": 2,
   "players": [
    {
@@ -1311,7 +1311,7 @@
  },
  "tcu": {
   "url": "https://gofrogs.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-31T01:04:11.612Z",
+  "fetchedAt": "2026-11-07T01:12:49.398Z",
   "parserVersion": 2,
   "players": [
    {
@@ -1426,7 +1426,7 @@
  },
  "texas tech": {
   "url": "https://texastech.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-31T01:04:21.116Z",
+  "fetchedAt": "2026-11-07T01:12:58.582Z",
   "parserVersion": 2,
   "players": [
    {
@@ -1568,7 +1568,7 @@
  },
  "ucf": {
   "url": "https://ucfknights.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-31T01:04:30.175Z",
+  "fetchedAt": "2026-11-07T01:13:08.202Z",
   "parserVersion": 2,
   "players": [
    {
@@ -1692,7 +1692,7 @@
  },
  "utah": {
   "url": "https://utahutes.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-31T01:04:39.842Z",
+  "fetchedAt": "2026-11-07T01:13:18.017Z",
   "parserVersion": 2,
   "players": [
    {
@@ -1816,7 +1816,7 @@
  },
  "west virginia": {
   "url": "https://wvusports.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-10-31T01:04:49.482Z",
+  "fetchedAt": "2026-11-07T01:13:28.134Z",
   "parserVersion": 2,
   "players": [
    {
