@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-10-31T01:04:49Z",
+ "generatedAt": "2026-11-08T03:11:38Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -16562,7 +16562,9 @@
    "time": "18:30",
    "site": "home",
    "home": true,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.9125,
+   "ratingSource": "net"
   },
   {
    "date": "2026-11-14",
@@ -16575,7 +16577,9 @@
    "time": "15:30",
    "site": "neutral",
    "home": false,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.3638,
+   "ratingSource": "net"
   },
   {
    "date": "2026-11-18",
@@ -16587,7 +16591,9 @@
    "time": "19:00",
    "site": "away",
    "home": false,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.0955,
+   "ratingSource": "poll"
   },
   {
    "date": "2026-11-22",
@@ -16600,7 +16606,9 @@
    "time": "13:30",
    "site": "neutral",
    "home": false,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.4673,
+   "ratingSource": "net"
   },
   {
    "date": "2026-11-26",
@@ -16613,7 +16621,9 @@
    "time": "15:00",
    "site": "neutral",
    "home": false,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.9124,
+   "ratingSource": "net"
   },
   {
    "date": "2026-11-27",
@@ -16625,7 +16635,9 @@
    "time": "17:30",
    "site": "neutral",
    "home": false,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.6115,
+   "ratingSource": "net"
   },
   {
    "date": "2026-12-03",
@@ -16637,7 +16649,9 @@
    "time": "18:30",
    "site": "home",
    "home": true,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.8074,
+   "ratingSource": "net"
   },
   {
    "date": "2026-12-06",
@@ -16649,7 +16663,9 @@
    "time": "12:00",
    "site": "home",
    "home": true,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.9734,
+   "ratingSource": "net"
   },
   {
    "date": "2026-12-10",
@@ -16661,7 +16677,9 @@
    "time": "18:30",
    "site": "home",
    "home": true,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.613,
+   "ratingSource": "net"
   },
   {
    "date": "2026-12-13",
@@ -16673,7 +16691,9 @@
    "time": "14:00",
    "site": "home",
    "home": true,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.8315,
+   "ratingSource": "net"
   },
   {
    "date": "2026-12-16",
@@ -16685,7 +16705,9 @@
    "time": "18:30",
    "site": "home",
    "home": true,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.765,
+   "ratingSource": "net"
   },
   {
    "date": "2026-12-20",
@@ -16697,7 +16719,9 @@
    "time": "14:00",
    "site": "home",
    "home": true,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.2089,
+   "ratingSource": "poll"
   },
   {
    "date": "2026-12-30",
@@ -16709,7 +16733,9 @@
    "time": "18:00",
    "site": "away",
    "home": false,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.1541,
+   "ratingSource": "poll"
   },
   {
    "date": "2027-01-02",
@@ -16721,7 +16747,9 @@
    "time": "17:30",
    "site": "away",
    "home": false,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.6392,
+   "ratingSource": "net"
   },
   {
    "date": "2027-01-06",
@@ -16733,7 +16761,9 @@
    "time": "18:30",
    "site": "home",
    "home": true,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.8208,
+   "ratingSource": "net"
   },
   {
    "date": "2027-01-09",
@@ -16745,7 +16775,9 @@
    "time": "19:30",
    "site": "home",
    "home": true,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.483,
+   "ratingSource": "net"
   },
   {
    "date": "2027-01-13",
@@ -16757,7 +16789,9 @@
    "time": "18:30",
    "site": "away",
    "home": false,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.1063,
+   "ratingSource": "poll"
   },
   {
    "date": "2027-01-16",
@@ -16769,7 +16803,9 @@
    "time": "18:00",
    "site": "away",
    "home": false,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.4496,
+   "ratingSource": "net"
   },
   {
    "date": "2027-01-20",
@@ -16781,7 +16817,9 @@
    "time": "18:30",
    "site": "home",
    "home": true,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.4974,
+   "ratingSource": "net"
   },
   {
    "date": "2027-01-24",
@@ -16793,7 +16831,9 @@
    "time": "14:00",
    "site": "away",
    "home": false,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.3864,
+   "ratingSource": "net"
   },
   {
    "date": "2027-01-27",
@@ -16805,7 +16845,9 @@
    "time": "18:30",
    "site": "home",
    "home": true,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.6082,
+   "ratingSource": "net"
   },
   {
    "date": "2027-01-31",
@@ -16817,7 +16859,9 @@
    "time": "14:00",
    "site": "home",
    "home": true,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.6358,
+   "ratingSource": "net"
   },
   {
    "date": "2027-02-06",
@@ -16829,7 +16873,9 @@
    "time": "15:00",
    "site": "away",
    "home": false,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.4214,
+   "ratingSource": "net"
   },
   {
    "date": "2027-02-10",
@@ -16841,7 +16887,9 @@
    "time": "20:00",
    "site": "home",
    "home": true,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.1599,
+   "ratingSource": "poll"
   },
   {
    "date": "2027-02-13",
@@ -16853,7 +16901,9 @@
    "time": "19:30",
    "site": "away",
    "home": false,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.8,
+   "ratingSource": "net"
   },
   {
    "date": "2027-02-16",
@@ -16865,7 +16915,9 @@
    "time": "18:30",
    "site": "home",
    "home": true,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.8625,
+   "ratingSource": "net"
   },
   {
    "date": "2027-02-21",
@@ -16877,7 +16929,9 @@
    "time": "17:00",
    "site": "away",
    "home": false,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.4403,
+   "ratingSource": "net"
   },
   {
    "date": "2027-02-24",
@@ -16889,7 +16943,9 @@
    "time": "18:30",
    "site": "away",
    "home": false,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.3084,
+   "ratingSource": "net"
   },
   {
    "date": "2027-02-28",
@@ -16901,7 +16957,9 @@
    "time": "14:00",
    "site": "home",
    "home": true,
-   "conference": false
+   "conference": false,
+   "winProbability": 0.4903,
+   "ratingSource": "net"
   },
   {
    "date": "2027-03-03",

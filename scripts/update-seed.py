@@ -363,13 +363,22 @@ for game in games.values():
     for line in game.get("lines", []):
         line["player"] = canonical_name(line["player"])
 
-# --- Upcoming games (no results yet) -----------------------------------------
-played_dates = {key[0] for key in games}
+# --- Games the schedule page lists, with or without a result yet -------------
+# A game whose date has passed is kept. It used to be dropped, which meant a
+# game vanished from the app between tip-off and the morning sweep that finds
+# its box score: not upcoming, not played, just gone, taking its venue and tip
+# time with it. Showing it with no result is the honest state, and the screens
+# can say "awaiting result" from the date alone.
+#
+# Nothing old can come back this way: upcoming.json is this season's schedule
+# and carries no scores. A game leaves only when its box score arrives to
+# replace it (the `key in games` check below) or the schedule page stops
+# listing it.
 today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
 for entry in load_json("scraped/upcoming.json", []):
     date = entry.get("date", "")
     opponent = (entry.get("opponent") or "").strip()
-    if not date or not opponent or date < today:
+    if not date or not opponent:
         continue
     key = game_key(date, opponent)
     if key in games:
@@ -681,8 +690,11 @@ def net_ranks(payload):
     return out
 
 
-# The season being forecast is the one the upcoming games belong to.
-upcoming = [g for g in games.values() if g.get("teamScore") is None]
+# The season being forecast is the one the upcoming games belong to. A game
+# that has been played carries no forecast even when its box score has not
+# landed yet: the question it asked was answered on the floor.
+upcoming = [g for g in games.values()
+            if g.get("teamScore") is None and g["date"] >= today]
 forecast_season = max((g["season"] for g in upcoming), default=None)
 
 if WIN_MODEL and upcoming and forecast_season:
