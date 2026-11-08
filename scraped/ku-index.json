@@ -172,7 +172,8 @@
   "2026-11-04": true,
   "2026-11-05": true,
   "2026-11-06": true,
-  "2026-11-07": true
+  "2026-11-07": true,
+  "2026-11-08": true
  },
  "games": {
   "6515413": {
@@ -9001,6 +9002,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6647339": {
+   "date": "2026-11-07",
+   "season": "2026",
+   "home": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 97,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Montana",
+    "seo": "montana",
+    "score": 53,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6647740": {
    "date": "2026-11-02",
    "season": "2026",
@@ -9060,6 +9083,28 @@
     "name": "Morgan St.",
     "seo": "morgan-st",
     "score": 38,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6647780": {
+   "date": "2026-11-07",
+   "season": "2026",
+   "home": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 73,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Fresno St.",
+    "seo": "fresno-st",
+    "score": 56,
     "winner": false,
     "rank": null,
     "inConference": false
