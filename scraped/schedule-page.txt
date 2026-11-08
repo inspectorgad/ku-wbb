@@ -124,11 +124,11 @@ Lawrence, Kan.
 
 2
 Days
-20
+16
 Hours
-3
+34
 Minutes
-53
+35
 Seconds
 Add To Calendar
 Text Only
@@ -458,6 +458,7 @@ Listen
 Live Stats
 History
 Explore Lawrence
+Skip Ad
 vs
 Oklahoma State
 
@@ -633,6 +634,7 @@ Listen
 Live Stats
 History
 Explore Lawrence
+Skip Ad
 vs
 Kansas State
 
