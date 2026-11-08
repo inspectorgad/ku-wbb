@@ -127,7 +127,7 @@ export function parseSchedule(schedText, { stripRank = (s) => s } = {}) {
     // A tournament name sits on the line above "vs"/"at" when there is one
     // ("Cancun Challenge"). Anything that is obviously page furniture is not.
     const above = lines[i - 1] || '';
-    const event = above && !/^(History|Skip Ad|MENU|Explore |Sponsored|Add To|Text Only|Live Stats)/.test(above) &&
+    const event = above && !/^(History|Skip Ad|MENU|Explore |Sponsored|Add To|Text Only|Live Stats|Game Info)/.test(above) &&
       !SHORT.test(above) && !CITY.test(above) && above.length < 60 && /[A-Za-z]/.test(above)
       ? above : null;
 

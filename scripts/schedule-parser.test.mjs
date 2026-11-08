@@ -49,6 +49,18 @@ test('a row carries its venue, city, tip time and channel', () => {
   assert.equal(f.event, 'MarketBeat Invitational');
 });
 
+test('a link label above a row is not mistaken for a tournament', () => {
+  // The line above "vs" is where a tournament name sits, but it is also
+  // where the page puts whatever link it last rendered. "Game Info" turned
+  // up there after the fixture was captured and reached the schedule as
+  // "Omaha Game Info" on the dashboard and in the app.
+  const row = ['Game Info', 'vs', 'Omaha', '', 'Allen Fieldhouse',
+    'Lawrence, Kan.', '', 'Nov 3', '(Tue)', '', '6:30 p.m. CT', '', 'History'].join('\n');
+  const [f] = parseSchedule(`2026-27 Women's Basketball Schedule\n${row}`);
+  assert.equal(f.opponent, 'Omaha');
+  assert.equal(f.event, null);
+});
+
 test('a row with no tip time yet gets none, not the next row\'s', () => {
   const rows = [
     'at', 'West Virginia', '', 'WVU Coliseum', 'Morgantown, W. Va.', '', 'Dec 30', '(Wed)', '', 'History',
