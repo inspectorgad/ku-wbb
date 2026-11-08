@@ -347,6 +347,33 @@
   .ask-note { font-size: 11px; color: var(--muted); margin: 4px 0 0; }
   .ask-error { color: var(--loss); }
   .ask-code summary { font-size: 12px; color: var(--muted); cursor: pointer; margin-top: 6px; }
+  /* ---------- season simulator ---------- */
+  /* Only tokens here, so dark mode comes for free with the rest of the page. */
+  .sim-head { margin: 0 0 6px; font-size: 14px; color: var(--muted); font-weight: 600; }
+  .sim-lines p { margin: 2px 0; font-size: 15px; }
+  .sim-list { margin-top: 14px; border-top: 1px solid var(--chart-grid); }
+  .sim-row {
+    display: grid; grid-template-columns: 56px 1fr 52px auto auto;
+    gap: 8px; align-items: center;
+    padding: 6px 0; border-bottom: 1px solid var(--chart-grid);
+  }
+  .sim-when { color: var(--muted); font-size: 13px; }
+  .sim-who { font-weight: 600; font-size: 14px; }
+  .sim-p { text-align: right; font-size: 13px; }
+  /* The what-if buttons. .chip alone is a static badge, so these carry their
+     own interactive state rather than borrowing one that does not exist. */
+  .sim-row button.chip, button.chip {
+    cursor: pointer; border: 1px solid var(--faint); background: var(--surface);
+    color: var(--muted); font-family: inherit;
+  }
+  .sim-row button.chip:hover { border-color: var(--blue); color: var(--blue); }
+  .sim-row button.chip.on[data-v="W"] { background: var(--win-bg); color: var(--win); border-color: var(--win); }
+  .sim-row button.chip.on[data-v="L"] { background: var(--loss-bg); color: var(--loss); border-color: var(--loss); }
+  @media (max-width: 560px) {
+    .sim-row { grid-template-columns: 48px 1fr auto auto; }
+    .sim-p { display: none; }
+  }
+
   .fineprint { font-size: 11.5px; color: var(--muted); margin: 10px 0 0; line-height: 1.5; }
 
   footer { margin-top: 48px; color: var(--muted); font-size: 12.5px; }
@@ -529,6 +556,18 @@
     </div>
   </section>
 
+  <!-- The season simulator. Filled by simulator.js, which is a module and so
+       cannot see the inline script's DATA; the bridge is window.SIM_INPUTS
+       below. Starts hidden and is shown only for the season it belongs to. -->
+  <section id="simSec" hidden>
+    <div class="sec-head">
+      <h2>How the season might finish</h2>
+      <span class="note">the rest of it played out 20,000 times</span>
+      <div class="rule"></div>
+    </div>
+    <div class="card" id="sim-wrap"></div>
+  </section>
+
   <section>
     <div class="sec-head">
       <h2>Roster</h2>
@@ -661,6 +700,12 @@ const hasResults = s => ALL_GAMES.some(g => g.season === s && g.teamScore != nul
 // Open on the newest season that has been played; once a new season tips off
 // it becomes the default on its own.
 let season = SEASONS.find(hasResults) || SEASONS[0];
+
+// The bridge to simulator.js. Everything in this script is a local of it, and
+// a module cannot reach in, so the simulator's inputs and the selected season
+// are published deliberately rather than the module guessing at page state.
+window.SIM_INPUTS = DATA.simulation || null;
+window.SIM_SEASON = season;
 
 // Phase boundaries are relative to the season's start year, so they keep
 // working for future seasons: non-conference until just before Christmas,
@@ -1715,6 +1760,9 @@ function openGame(n) {
 
 function render(sel) {
   season = sel;
+  // simulator.js hides itself when another season is on screen.
+  window.SIM_SEASON = sel;
+  window.dispatchEvent(new CustomEvent("seasonchange", { detail: sel }));
   buildSeason(season);
   renderHeader();
   marginChart();
@@ -1901,6 +1949,10 @@ function openPlayer(name) {
      own Anthropic API key; nothing above depends on it, so a browser that
      cannot load the module simply shows the rest of the page. -->
 <script type="module" src="ask.js"></script>
+
+<!-- The season simulator. Like Ask, nothing above depends on it: a browser
+     that cannot load the module shows the rest of the page unchanged. -->
+<script type="module" src="simulator.js"></script>
 
 <!-- Add to Home Screen: the worker is what lets this open on a phone with no
      signal, and what keeps it from showing yesterday's numbers to a phone that
