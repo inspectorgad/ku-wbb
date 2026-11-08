@@ -10,7 +10,9 @@ import com.example.data.GameTeamStats
 import com.example.data.OpponentRosterPlayer
 import com.example.data.OpponentStatLine
 import com.example.data.PollEntry
+import com.example.data.SeasonSimulator
 import com.example.data.SeasonSync
+import com.example.data.SimulationStore
 import com.example.data.Seeder
 import com.example.data.StatLine
 import com.example.data.SyncResult
@@ -41,6 +43,12 @@ class JayhawksViewModel(
     private val _dataUpdatedAt = MutableStateFlow(SeasonSync.lastGeneratedAt(device))
     val dataUpdatedAt: StateFlow<String?> = _dataUpdatedAt.asStateFlow()
 
+    // The season simulator's inputs. Null until a seed carrying them has been
+    // merged, which is every seed from now on but not the one an older install
+    // is still sitting on, so the screen is offered only when this is present.
+    private val _simulation = MutableStateFlow(SimulationStore.inputs(device))
+    val simulation: StateFlow<SeasonSimulator.Inputs?> = _simulation.asStateFlow()
+
     // Snackbar messages, emitted only for user-initiated refreshes.
     private val _syncMessages = MutableSharedFlow<String>()
     val syncMessages: SharedFlow<String> = _syncMessages.asSharedFlow()
@@ -50,6 +58,7 @@ class JayhawksViewModel(
             // Bundled data first (also covers first launch offline), then a
             // throttled network sync for anything newer.
             Seeder.sync(device, dao)
+            _simulation.value = SimulationStore.inputs(device)
             if (SeasonSync.shouldAutoSync(device)) refreshInternal(manual = false)
         }
     }
@@ -65,6 +74,7 @@ class JayhawksViewModel(
             _isSyncing.value = false
         }
         _dataUpdatedAt.value = SeasonSync.lastGeneratedAt(device)
+        _simulation.value = SimulationStore.inputs(device)
         if (manual) {
             _syncMessages.emit(
                 when (result) {

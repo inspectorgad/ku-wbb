@@ -47,7 +47,8 @@ fun LeadersScreen(
     modifier: Modifier = Modifier,
     dataUpdatedAt: String? = null,
     // Opens "Ask about the team". Null in previews and screenshot tests.
-    onOpenAsk: (() -> Unit)? = null
+    onOpenAsk: (() -> Unit)? = null,
+    onOpenSimulator: (() -> Unit)? = null
 ) {
     // Seasons ordered most recent first; default selection is the current (latest) season.
     val seasons = games.sortedByDescending { it.date }.map { it.season }.distinct()
@@ -131,6 +132,30 @@ fun LeadersScreen(
                                 "Data updated ${it.take(16).replace('T', ' ')} UTC · pull down to refresh",
                                 style = MaterialTheme.typography.labelSmall,
                                 color = MaterialTheme.colorScheme.onSurfaceVariant
+                            )
+                        }
+                    }
+                }
+            }
+
+            onOpenSimulator?.let { open ->
+                item {
+                    Card(modifier = Modifier.fillMaxWidth().clickable(onClick = open)) {
+                        Column(modifier = Modifier.padding(12.dp)) {
+                            Text(
+                                "How the season might finish ›",
+                                style = MaterialTheme.typography.titleSmall,
+                                fontWeight = FontWeight.Bold
+                            )
+                            Text(
+                                "The rest of the season played out 20,000 times: a projected " +
+                                    "record, where Kansas lands in the Big 12, and the chance of " +
+                                    "the conference tournament and the NCAA place that comes " +
+                                    "with it.",
+                                style = MaterialTheme.typography.bodyMedium
+                            )
+                            Explanation(
+                                "Set any game to a Win or a Loss to see what it would change."
                             )
                         }
                     }

@@ -38,12 +38,14 @@ fun JayhawksApp(viewModel: JayhawksViewModel) {
     // what identifies it across the spellings the sources use.
     var openOpponent by rememberSaveable { mutableStateOf<String?>(null) }
     var askOpen by rememberSaveable { mutableStateOf(false) }
+    var simOpen by rememberSaveable { mutableStateOf(false) }
 
     val players by viewModel.players.collectAsStateWithLifecycle()
     val games by viewModel.games.collectAsStateWithLifecycle()
     val statLines by viewModel.statLines.collectAsStateWithLifecycle()
     val standings by viewModel.standings.collectAsStateWithLifecycle()
     val pollEntries by viewModel.pollEntries.collectAsStateWithLifecycle()
+    val simulation by viewModel.simulation.collectAsStateWithLifecycle()
     val opponentLines by viewModel.opponentLines.collectAsStateWithLifecycle()
     val teamStats by viewModel.teamStats.collectAsStateWithLifecycle()
     val opponentRoster by viewModel.opponentRoster.collectAsStateWithLifecycle()
@@ -56,12 +58,14 @@ fun JayhawksApp(viewModel: JayhawksViewModel) {
     }
 
     val showingDetail =
-        openPlayerId != null || openGameId != null || openOpponent != null || askOpen
+        openPlayerId != null || openGameId != null || openOpponent != null ||
+            askOpen || simOpen
     SystemBackHandler(enabled = showingDetail) {
         openPlayerId = null
         openGameId = null
         openOpponent = null
         askOpen = false
+        simOpen = false
     }
 
     val openPlayer = openPlayerId?.let { id -> players.firstOrNull { it.id == id } }
@@ -72,6 +76,11 @@ fun JayhawksApp(viewModel: JayhawksViewModel) {
         // finds the conversation — and any answer still being worked on —
         // where it was.
         askOpen -> AskScreen(onBack = { askOpen = false })
+
+        // Only openable when there are inputs, but checked again here: a sync
+        // between the tap and the draw could take them away.
+        simOpen && simulation != null ->
+            SimulatorScreen(inputs = simulation!!, onBack = { simOpen = false })
 
         openOpponent != null -> OpponentDetailScreen(
             opponentName = openOpponent!!,
@@ -165,7 +174,8 @@ fun JayhawksApp(viewModel: JayhawksViewModel) {
                         games = games,
                         statLines = statLines,
                         dataUpdatedAt = dataUpdatedAt,
-                        onOpenAsk = { askOpen = true }
+                        onOpenAsk = { askOpen = true },
+                        onOpenSimulator = if (simulation != null) ({ simOpen = true }) else null
                     )
 
                     Tab.Season -> SeasonScreen(

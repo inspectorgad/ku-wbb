@@ -73,6 +73,7 @@ object SeasonSync {
 
             try {
                 Seeder.merge(root, dao)
+                SimulationStore.save(device, root)
             } catch (e: Exception) {
                 return@withContext SyncResult.Failed("merge failed: ${e.message}")
             }

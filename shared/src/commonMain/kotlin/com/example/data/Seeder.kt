@@ -29,7 +29,13 @@ object Seeder {
 
     suspend fun sync(device: Device, dao: JayhawksDao) {
         val json = device.readAsset("seed.json") ?: return
-        runCatching { merge(JSONObject(json), dao) }
+        runCatching {
+            val root = JSONObject(json)
+            merge(root, dao)
+            // Kept beside merge rather than inside it: merge is called from
+            // here and from SeasonSync, and has no device to write with.
+            SimulationStore.save(device, root)
+        }
     }
 
     /**
