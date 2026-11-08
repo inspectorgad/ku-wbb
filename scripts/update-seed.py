@@ -14,6 +14,7 @@ import json
 import os
 import re
 from datetime import datetime, timezone
+from zoneinfo import ZoneInfo
 
 
 from seed_text import fix_mojibake, norm_name, norm_team
@@ -374,7 +375,14 @@ for game in games.values():
 # and carries no scores. A game leaves only when its box score arrives to
 # replace it (the `key in games` check below) or the schedule page stops
 # listing it.
-today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
+# Central, not UTC. This date decides which games still count as upcoming, and
+# so which ones carry a forecast; both displays decide the same question from
+# the reader's own date. In Kansas the UTC date turns over at 6pm, so a UTC
+# "today" would retire a game's forecast while it was still hours from tip-off
+# - and because the forecast is feed-owned, a seed that has dropped it erases
+# it from the phone as well as the page. Kansas keeps Central year round, so
+# the zone handles its own daylight saving.
+today = datetime.now(ZoneInfo("America/Chicago")).strftime("%Y-%m-%d")
 for entry in load_json("scraped/upcoming.json", []):
     date = entry.get("date", "")
     opponent = (entry.get("opponent") or "").strip()
