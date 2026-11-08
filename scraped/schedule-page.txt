@@ -126,9 +126,9 @@ Lawrence, Kan.
 Days
 8
 Hours
-56
+13
 Minutes
-59
+13
 Seconds
 Add To Calendar
 Text Only
