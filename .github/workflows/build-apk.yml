@@ -55,10 +55,21 @@ jobs:
       # by path without a single build noticing. Four scrapes failed before
       # anyone saw it. They belong in front of a merge, not after one.
       #
-      # docs/sim.test.mjs is here because it was running nowhere at all.
+      # `node --test` prints "Could not find" for a file that is not there and
+      # still exits 0, so naming a file here is a trap: this step named
+      # docs/sim.test.mjs, which had never existed in this repository, and
+      # passed green every time while running nothing. Glob instead, say what
+      # matched, and fail when nothing does.
       - name: Run the script tests
         run: |
-          node --test scripts/*.test.mjs docs/sim.test.mjs
+          shopt -s nullglob
+          tests=(scripts/*.test.mjs docs/*.test.mjs)
+          if [ ${#tests[@]} -eq 0 ]; then
+            echo "No JavaScript test files matched - the test step is not testing anything."
+            exit 1
+          fi
+          printf 'running: %s\n' "${tests[@]}"
+          node --test "${tests[@]}"
           python3 -m unittest discover -s scripts -p 'test_*.py'
 
       - name: Build debug APK and Play release bundle

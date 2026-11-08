@@ -79,7 +79,17 @@ jobs:
       # breaks one should fail here rather than quietly write a thinner seed.
       - name: Test the parsers and the calendar feed
         run: |
-          node --test scripts/*.test.mjs
+          # Globbed, and checked: `node --test` exits 0 when it is handed a
+          # path that does not exist, so an empty match must fail here rather
+          # than read as a pass.
+          shopt -s nullglob
+          tests=(scripts/*.test.mjs docs/*.test.mjs)
+          if [ ${#tests[@]} -eq 0 ]; then
+            echo "No JavaScript test files matched - the test step is not testing anything."
+            exit 1
+          fi
+          printf 'running: %s\n' "${tests[@]}"
+          node --test "${tests[@]}"
           python3 -m unittest discover -s scripts -p 'test_*.py'
 
       - name: Scrape NCAA + kuathletics data
