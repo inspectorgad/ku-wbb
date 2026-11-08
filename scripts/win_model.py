@@ -82,9 +82,19 @@ class Model:
                     self.fit_note = f"refitted to {len(pairs)} ranked teams"
 
     def rating_of(self, key):
-        """(z, source) for a normalised team name, or (None, None)."""
+        """(z, source) for a normalised team name, or (None, None).
+
+        net_weight shrinks BOTH kinds of rating, not just the NET one. The
+        poll line maps a share of the poll's points onto the NET's own z
+        scale - it is fitted against NET z values - so a poll rating is a
+        reading on that same scale and has to be shrunk with it. Shrinking
+        only one side would subtract two numbers measured differently:
+        Kansas at 0.75x against a ranked opponent at full size, which makes
+        a forecast against the strongest opponents more confident rather
+        than less, the opposite of what the shrink is for.
+        """
         if key in self.poll_share:
-            return self.intercept + self.slope * self.poll_share[key], "poll"
+            return self.net_weight * (self.intercept + self.slope * self.poll_share[key]), "poll"
         if key in self.z_of:
             return self.net_weight * self.z_of[key], "net"
         return None, None
@@ -111,6 +121,10 @@ def chance(p):
         return ""
     if p < 0.005:
         return "under 1%"
-    if p > 0.995:
+    # >=, not >: 0.995 * 100 + 0.5 is exactly 100.0, so a strict > here let
+    # that one value through to print "100%" - the certainty this function
+    # exists to refuse. The low end needs no such guard, because 0.005 comes
+    # out as "1%" rather than "0%".
+    if p >= 0.995:
         return "over 99%"
     return f"{math.floor(p * 100 + 0.5)}%"

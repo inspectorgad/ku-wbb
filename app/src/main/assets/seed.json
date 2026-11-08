@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-11-08T03:39:52Z",
+ "generatedAt": "2026-11-08T04:15:03Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -17632,7 +17632,7 @@
    "site": "away",
    "home": false,
    "conference": false,
-   "winProbability": 0.0955,
+   "winProbability": 0.2091,
    "ratingSource": "poll"
   },
   {
@@ -17760,7 +17760,7 @@
    "site": "home",
    "home": true,
    "conference": true,
-   "winProbability": 0.2089,
+   "winProbability": 0.3907,
    "ratingSource": "poll"
   },
   {
@@ -17774,7 +17774,7 @@
    "site": "away",
    "home": false,
    "conference": true,
-   "winProbability": 0.1541,
+   "winProbability": 0.2846,
    "ratingSource": "poll"
   },
   {
@@ -17830,7 +17830,7 @@
    "site": "away",
    "home": false,
    "conference": true,
-   "winProbability": 0.1063,
+   "winProbability": 0.2242,
    "ratingSource": "poll"
   },
   {
@@ -17928,7 +17928,7 @@
    "site": "home",
    "home": true,
    "conference": true,
-   "winProbability": 0.1599,
+   "winProbability": 0.3341,
    "ratingSource": "poll"
   },
   {

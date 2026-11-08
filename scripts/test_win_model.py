@@ -109,6 +109,40 @@ class ModelTest(unittest.TestCase):
         self.assertGreater(fresh.probability(ku_f, op_f, "home"),
                            stale.probability(ku_s, op_s, "home"))
 
+    def test_the_shrink_reaches_poll_ratings_too(self):
+        """Shrinking one side only would subtract two different scales.
+
+        The poll line is fitted against NET z values, so a poll rating is a
+        reading on the NET's scale and shrinks with it. When this was applied
+        to the NET branch alone, Kansas (rated from the NET) was shrunk while
+        every ranked opponent was not, and the shipped forecast against
+        Oklahoma State read 21% where a consistent shrink gives 39% - the
+        shrink pushing a game AWAY from a coin toss, which is the opposite of
+        what it is for.
+        """
+        shares = {"t300": 0.9}
+        full = Model(CONFIG, LEAGUE, poll_share=shares, net_weight=1.0)
+        half = Model(CONFIG, LEAGUE, poll_share=shares, net_weight=0.5)
+        self.assertAlmostEqual(half.rating_of("t300")[0],
+                               0.5 * full.rating_of("t300")[0], places=9)
+
+    def test_shrinking_pulls_a_mixed_pair_toward_a_coin_toss(self):
+        """The property the shrink exists for, across the two rating sources.
+
+        test_stale_ratings_are_pulled_toward_a_coin_toss only ever exercised
+        NET against NET, which is why it passed throughout the bug.
+        """
+        shares = {"t300": 0.9}                      # a strong ranked opponent
+        fresh = Model(CONFIG, LEAGUE, poll_share=shares, net_weight=1.0)
+        stale = Model(CONFIG, LEAGUE, poll_share=shares, net_weight=0.75)
+        for site in ("home", "away", "neutral"):
+            p_fresh = fresh.probability(fresh.rating_of("t50")[0],
+                                        fresh.rating_of("t300")[0], site)
+            p_stale = stale.probability(stale.rating_of("t50")[0],
+                                        stale.rating_of("t300")[0], site)
+            self.assertLess(abs(p_stale - 0.5), abs(p_fresh - 0.5),
+                            f"shrinking moved {site} away from a coin toss")
+
     def test_the_poll_is_refitted_only_against_a_current_net(self):
         shares = {f"t{i}": 1.0 - i / 100 for i in range(1, 26)}
         stale = Model(CONFIG, LEAGUE, poll_share=shares, net_weight=0.75)
@@ -151,6 +185,17 @@ class ChanceTest(unittest.TestCase):
 
     def test_nothing_to_say(self):
         self.assertEqual(chance(None), "")
+
+    def test_the_top_boundary_does_not_print_a_certainty(self):
+        """0.995 * 100 + 0.5 is exactly 100.0, so a strict > printed "100%".
+
+        The one value that could reach the end of the function and claim a
+        certainty. Same case as WinChanceTest.kt.
+        """
+        self.assertEqual(chance(0.995), "over 99%")
+        self.assertEqual(chance(0.9949), "99%")
+        # The low end needs no such guard: it rounds to 1%, never 0%.
+        self.assertEqual(chance(0.005), "1%")
 
 
 if __name__ == "__main__":
