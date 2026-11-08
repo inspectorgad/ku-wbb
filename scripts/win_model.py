@@ -8,6 +8,7 @@ scripts/win-model.json holds the constants and says where each came from.
 Separate from update-seed.py so it can be tested on its own, the way
 seed_text and ask_pack are.
 """
+import math
 from statistics import NormalDist
 
 NORM = NormalDist()
@@ -99,6 +100,12 @@ def chance(p):
 
     No game is certain, and a number that says one is will be remembered on
     the night it is wrong.
+
+    Rounds halves up, not to even. Python's round() goes to even, so it makes
+    48.5 into 48 where the app's roundHalfUp makes it 49 - and 0.485 lands on
+    exactly 48.5 as a double, so this is reachable rather than theoretical.
+    The twin of chance() in shared/.../ui/GamesScreen.kt, and the two showing
+    different numbers for the same game is the whole thing to avoid.
     """
     if p is None:
         return ""
@@ -106,4 +113,4 @@ def chance(p):
         return "under 1%"
     if p > 0.995:
         return "over 99%"
-    return f"{round(p * 100)}%"
+    return f"{math.floor(p * 100 + 0.5)}%"

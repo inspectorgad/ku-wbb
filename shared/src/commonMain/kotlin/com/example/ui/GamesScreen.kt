@@ -52,6 +52,8 @@ import com.example.data.StatLine
 import com.example.stats.formatPct
 import com.example.stats.gameFacts
 import com.example.stats.summarize
+import com.example.text.roundHalfUp
+import com.example.text.todayIso
 
 /**
  * "vs " at home, "at " on the road, "vs " for a neutral floor (the opponent is
@@ -62,6 +64,19 @@ fun siteLabel(site: String?): String = when (site) {
     "home", "neutral" -> "vs "
     "away" -> "at "
     else -> ""
+}
+
+/**
+ * "37%", with the ends said in words rather than as a false 0% or 100%.
+ *
+ * No game is certain, and a number claiming one is will be remembered on the
+ * night it is wrong. The twin of chance() in scripts/win_model.py.
+ */
+fun chance(p: Double?): String = when {
+    p == null -> ""
+    p < 0.005 -> "under 1%"
+    p > 0.995 -> "over 99%"
+    else -> "${roundHalfUp(p * 100)}%"
 }
 
 /**
@@ -233,11 +248,35 @@ private fun ResultText(game: Game) {
     val us = game.teamScore
     val them = game.opponentScore
     if (us == null || them == null) {
-        Text(
-            "No result",
-            style = MaterialTheme.typography.labelSmall,
-            color = MaterialTheme.colorScheme.onSurfaceVariant
-        )
+        val forecast = chance(game.winProbability)
+        when {
+            // Played, but the box score has not landed yet. The game stays on
+            // the schedule rather than vanishing, and carries no forecast:
+            // the question it asked was answered on the floor.
+            game.date < todayIso() -> Text(
+                "Awaiting result",
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+            forecast.isNotEmpty() -> Column(horizontalAlignment = Alignment.End) {
+                Text(
+                    forecast,
+                    style = MaterialTheme.typography.titleMedium,
+                    fontWeight = FontWeight.Bold,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+                Text(
+                    "to win",
+                    style = MaterialTheme.typography.labelSmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
+                )
+            }
+            else -> Text(
+                "No result",
+                style = MaterialTheme.typography.labelSmall,
+                color = MaterialTheme.colorScheme.onSurfaceVariant
+            )
+        }
     } else {
         val won = us > them
         Text(

@@ -138,6 +138,16 @@ class ChanceTest(unittest.TestCase):
     def test_ordinary_numbers(self):
         self.assertEqual(chance(0.37), "37%")
         self.assertEqual(chance(0.5), "50%")
+        self.assertEqual(chance(0.9125), "91%")
+
+    def test_halves_round_up_not_to_even(self):
+        """Python's round() goes half-to-even; the app's roundHalfUp does not.
+
+        0.485 lands on exactly 48.5 as a double, so the two conventions give
+        48 and 49 for the same game. Same cases as WinChanceTest.kt.
+        """
+        self.assertEqual(chance(0.485), "49%")
+        self.assertEqual(chance(0.4849), "48%")
 
     def test_nothing_to_say(self):
         self.assertEqual(chance(None), "")
