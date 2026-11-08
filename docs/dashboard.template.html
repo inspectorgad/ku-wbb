@@ -712,6 +712,31 @@ const vsAt = g => {
   const s = siteOf(g);
   return s === "home" ? "vs " : s === "away" ? "at " : s === "neutral" ? "vs " : "";
 };
+// The win model's number for a game still to play. The ends are said in words
+// because no game is certain, and halves round up rather than to even, which
+// is what the app and scripts/win_model.py do - 0.485 is exactly 48.5 as a
+// double, so a different rule here would show a different number for the same
+// game. Twins: chance() in GamesScreen.kt and in win_model.py.
+const chance = p => p == null ? ""
+  : p < 0.005 ? "under 1%"
+  : p > 0.995 ? "over 99%"
+  : Math.floor(p * 100 + 0.5) + "%";
+// The reader's own date, not UTC. The app asks for the system zone, and the
+// two have to agree about which games are still to come: in Kansas the UTC
+// date is already tomorrow from 6pm, so toISOString() here would retire a
+// game's forecast on the evening before it is played, while the phone still
+// showed it. Twin of todayIso() in shared/.../text/Dates.kt.
+const todayIso = () => {
+  const d = new Date(), pad = n => String(n).padStart(2, "0");
+  return `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+};
+// A game whose date has passed with no box score in yet is played, not
+// upcoming, and carries no forecast - the question it asked was answered on
+// the floor. Saying so beats showing a dash that reads as "not rated".
+const forecastCell = g =>
+  g.date < todayIso()
+    ? `<span class="dim">awaiting result</span>`
+    : (chance(g.winProbability) || "—");
 const blankTotals = () =>
   ({ g:0, gs:0, min:0, fgm:0, fga:0, tpm:0, tpa:0, ftm:0, fta:0, oreb:0, reb:0, ast:0, to:0, stl:0, blk:0, pf:0, pts:0 });
 
@@ -946,6 +971,7 @@ function gamesTable() {
          <th class="lft">Quarters</th><th class="lft">Top scorer</th><th class="lft"></th></tr>`
     : `<tr><th class="lft">#</th><th class="lft">Date</th><th class="lft">Site</th>
          <th class="lft">Opponent</th><th class="lft">Tip</th>
+         <th class="lft">Win chance</th>
          <th class="lft">Venue</th><th class="lft"></th></tr>`;
 
   const playedRows = games.map(g => `
@@ -972,9 +998,15 @@ function gamesTable() {
       <td class="lft">${siteChip(g)}</td>
       <td class="lft"><b>${g.opponent}</b>${g.event ? ` <span class="dim">${g.event}</span>` : ""}</td>
       <td class="lft"><span class="phase-lbl">${fmtTime(g.time) || "TBD"}</span></td>
-      ${hasResults ? `<td class="dim">—</td>
+      ${hasResults
+      // The column that holds a score once there is one is where the forecast
+      // belongs: it is this game's number, and "91%" cannot be misread as a
+      // score. A season with nothing played yet heads a column of its own
+      // instead, since there are no results for "Score" to mean.
+      ? `<td>${forecastCell(g)}</td>
       <td class="lft dim" colspan="2">${where(g)}</td>`
-      : `<td class="lft dim wrapcell">${where(g)}</td>`}
+      : `<td class="lft">${forecastCell(g)}</td>
+      <td class="lft dim wrapcell">${where(g)}</td>`}
       <td class="lft"><span class="phase-lbl">${PHASE_TINY[phaseOf(g)]}</span></td>
     </tr>`);
   document.querySelector("#gamesTbl tbody").innerHTML =
