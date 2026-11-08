@@ -75,7 +75,10 @@ fun siteLabel(site: String?): String = when (site) {
 fun chance(p: Double?): String = when {
     p == null -> ""
     p < 0.005 -> "under 1%"
-    p > 0.995 -> "over 99%"
+    // >=, not >: 0.995 * 100 is exactly 99.5, which roundHalfUp turns into
+    // 100, so a strict > let that one value print "100%" - the certainty
+    // this function exists to refuse.
+    p >= 0.995 -> "over 99%"
     else -> "${roundHalfUp(p * 100)}%"
 }
 

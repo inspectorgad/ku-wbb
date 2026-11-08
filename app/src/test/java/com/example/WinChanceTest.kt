@@ -40,4 +40,15 @@ class WinChanceTest {
     fun `a game with no forecast says nothing rather than zero`() {
         assertEquals("", chance(null))
     }
+
+    @Test
+    fun `the top boundary does not print a certainty`() {
+        // 0.995 * 100 is exactly 99.5, which roundHalfUp makes 100, so a
+        // strict > let this one value through as "100%". Same case as
+        // ChanceTest in scripts/test_win_model.py.
+        assertEquals("over 99%", chance(0.995))
+        assertEquals("99%", chance(0.9949))
+        // The low end needs no matching guard: it rounds to 1%, never 0%.
+        assertEquals("1%", chance(0.005))
+    }
 }

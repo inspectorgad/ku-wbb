@@ -717,9 +717,11 @@ const vsAt = g => {
 // is what the app and scripts/win_model.py do - 0.485 is exactly 48.5 as a
 // double, so a different rule here would show a different number for the same
 // game. Twins: chance() in GamesScreen.kt and in win_model.py.
+// >= 0.995, not >: that product is exactly 100.0 after the half-up add, so a
+// strict > let one value print "100%", the certainty this refuses to claim.
 const chance = p => p == null ? ""
   : p < 0.005 ? "under 1%"
-  : p > 0.995 ? "over 99%"
+  : p >= 0.995 ? "over 99%"
   : Math.floor(p * 100 + 0.5) + "%";
 // The reader's own date, not UTC. The app asks for the system zone, and the
 // two have to agree about which games are still to come: in Kansas the UTC
