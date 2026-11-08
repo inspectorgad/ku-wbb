@@ -20,7 +20,11 @@ data = {
 # Optional keys; older seeds simply omit them. standings and polls arrived
 # with the Big 12 section, opponentRosters with the opponent cards — the page
 # reads each defensively, so a seed without one renders without that part.
-for key in ("standings", "polls", "opponentRosters"):
+# This tuple is a whitelist, not documentation: a seed key missing from it is
+# dropped with no error and no log line, and the page's section simply never
+# appears - which reads like a bug in the JavaScript rather than a key that
+# never arrived. Add new keys here as well as to update-seed.py.
+for key in ("standings", "polls", "opponentRosters", "simulation"):
     if key in seed:
         data[key] = seed[key]
 

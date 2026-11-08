@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-11-08T04:15:03Z",
+ "generatedAt": "2026-11-08T13:47:12Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -20525,5 +20525,392 @@
     }
    ]
   }
- ]
+ ],
+ "simulation": {
+  "season": "2026-27",
+  "confTotal": 18,
+  "confTeams": 16,
+  "scale": 1.04,
+  "kansas": {
+   "confW": 0,
+   "confL": 0,
+   "overallW": 2,
+   "overallL": 0,
+   "rating": 0.8217
+  },
+  "remaining": [
+   {
+    "date": "2026-11-10",
+    "opponent": "Oral Roberts",
+    "site": "home",
+    "conference": false,
+    "key": "oral roberts",
+    "p": 0.9125
+   },
+   {
+    "date": "2026-11-14",
+    "opponent": "Nebraska",
+    "site": "neutral",
+    "conference": false,
+    "key": "nebraska",
+    "p": 0.3638
+   },
+   {
+    "date": "2026-11-18",
+    "opponent": "Minnesota",
+    "site": "away",
+    "conference": false,
+    "key": "minnesota",
+    "p": 0.2091
+   },
+   {
+    "date": "2026-11-22",
+    "opponent": "South Dakota State",
+    "site": "neutral",
+    "conference": false,
+    "key": "south dakota st",
+    "p": 0.4673
+   },
+   {
+    "date": "2026-11-26",
+    "opponent": "Washington State",
+    "site": "neutral",
+    "conference": false,
+    "key": "washington st",
+    "p": 0.9124
+   },
+   {
+    "date": "2026-11-27",
+    "opponent": "Miami (OH)",
+    "site": "neutral",
+    "conference": false,
+    "key": "miami (oh)",
+    "p": 0.6115
+   },
+   {
+    "date": "2026-12-03",
+    "opponent": "Missouri State",
+    "site": "home",
+    "conference": false,
+    "key": "missouri st",
+    "p": 0.8074
+   },
+   {
+    "date": "2026-12-06",
+    "opponent": "Kansas City",
+    "site": "home",
+    "conference": false,
+    "key": "kansas city",
+    "p": 0.9734
+   },
+   {
+    "date": "2026-12-10",
+    "opponent": "North Dakota State",
+    "site": "home",
+    "conference": false,
+    "key": "north dakota st",
+    "p": 0.613
+   },
+   {
+    "date": "2026-12-13",
+    "opponent": "Northwestern",
+    "site": "home",
+    "conference": false,
+    "key": "northwestern",
+    "p": 0.8315
+   },
+   {
+    "date": "2026-12-16",
+    "opponent": "Lindenwood",
+    "site": "home",
+    "conference": false,
+    "key": "lindenwood",
+    "p": 0.765
+   },
+   {
+    "date": "2026-12-20",
+    "opponent": "Oklahoma State",
+    "site": "home",
+    "conference": true,
+    "key": "oklahoma st",
+    "p": 0.3907
+   },
+   {
+    "date": "2026-12-30",
+    "opponent": "West Virginia",
+    "site": "away",
+    "conference": true,
+    "key": "west virginia",
+    "p": 0.2846
+   },
+   {
+    "date": "2027-01-02",
+    "opponent": "Cincinnati",
+    "site": "away",
+    "conference": true,
+    "key": "cincinnati",
+    "p": 0.6392
+   },
+   {
+    "date": "2027-01-06",
+    "opponent": "Arizona",
+    "site": "home",
+    "conference": true,
+    "key": "arizona",
+    "p": 0.8208
+   },
+   {
+    "date": "2027-01-09",
+    "opponent": "Baylor",
+    "site": "home",
+    "conference": true,
+    "key": "baylor",
+    "p": 0.483
+   },
+   {
+    "date": "2027-01-13",
+    "opponent": "Oklahoma State",
+    "site": "away",
+    "conference": true,
+    "key": "oklahoma st",
+    "p": 0.2242
+   },
+   {
+    "date": "2027-01-16",
+    "opponent": "Utah",
+    "site": "away",
+    "conference": true,
+    "key": "utah",
+    "p": 0.4496
+   },
+   {
+    "date": "2027-01-20",
+    "opponent": "Iowa State",
+    "site": "home",
+    "conference": true,
+    "key": "iowa st",
+    "p": 0.4974
+   },
+   {
+    "date": "2027-01-24",
+    "opponent": "Colorado",
+    "site": "away",
+    "conference": true,
+    "key": "colorado",
+    "p": 0.3864
+   },
+   {
+    "date": "2027-01-27",
+    "opponent": "Arizona State",
+    "site": "home",
+    "conference": true,
+    "key": "arizona st",
+    "p": 0.6082
+   },
+   {
+    "date": "2027-01-31",
+    "opponent": "Kansas State",
+    "site": "home",
+    "conference": true,
+    "key": "kansas st",
+    "p": 0.6358
+   },
+   {
+    "date": "2027-02-06",
+    "opponent": "BYU",
+    "site": "away",
+    "conference": true,
+    "key": "byu",
+    "p": 0.4214
+   },
+   {
+    "date": "2027-02-10",
+    "opponent": "TCU",
+    "site": "home",
+    "conference": true,
+    "key": "tcu",
+    "p": 0.3341
+   },
+   {
+    "date": "2027-02-13",
+    "opponent": "Houston",
+    "site": "away",
+    "conference": true,
+    "key": "houston",
+    "p": 0.8
+   },
+   {
+    "date": "2027-02-16",
+    "opponent": "UCF",
+    "site": "home",
+    "conference": true,
+    "key": "ucf",
+    "p": 0.8625
+   },
+   {
+    "date": "2027-02-21",
+    "opponent": "Kansas State",
+    "site": "away",
+    "conference": true,
+    "key": "kansas st",
+    "p": 0.4403
+   },
+   {
+    "date": "2027-02-24",
+    "opponent": "Iowa State",
+    "site": "away",
+    "conference": true,
+    "key": "iowa st",
+    "p": 0.3084
+   },
+   {
+    "date": "2027-02-28",
+    "opponent": "Texas Tech",
+    "site": "home",
+    "conference": true,
+    "key": "texas tech",
+    "p": 0.4903
+   }
+  ],
+  "others": [
+   {
+    "team": "Arizona",
+    "key": "arizona",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 17,
+    "pVsAverage": 0.2688,
+    "rating": 0.3143
+   },
+   {
+    "team": "Arizona St.",
+    "key": "arizona st",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 17,
+    "pVsAverage": 0.5204,
+    "rating": 0.8031
+   },
+   {
+    "team": "BYU",
+    "key": "byu",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 17,
+    "pVsAverage": 0.5103,
+    "rating": 0.785
+   },
+   {
+    "team": "Baylor",
+    "key": "baylor",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 17,
+    "pVsAverage": 0.6432,
+    "rating": 1.0325
+   },
+   {
+    "team": "Cincinnati",
+    "key": "cincinnati",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 17,
+    "pVsAverage": 0.2999,
+    "rating": 0.3835
+   },
+   {
+    "team": "Colorado",
+    "key": "colorado",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 17,
+    "pVsAverage": 0.5465,
+    "rating": 0.8507
+   },
+   {
+    "team": "Houston",
+    "key": "houston",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 17,
+    "pVsAverage": 0.1594,
+    "rating": 0.0155
+   },
+   {
+    "team": "Iowa St.",
+    "key": "iowa st",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 16,
+    "pVsAverage": 0.6298,
+    "rating": 1.0064
+   },
+   {
+    "team": "Kansas St.",
+    "key": "kansas st",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 16,
+    "pVsAverage": 0.491,
+    "rating": 0.7501
+   },
+   {
+    "team": "Oklahoma St.",
+    "key": "oklahoma st",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 16,
+    "pVsAverage": 0.7242,
+    "rating": 1.2025
+   },
+   {
+    "team": "TCU",
+    "key": "tcu",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 17,
+    "pVsAverage": 0.7704,
+    "rating": 1.3132
+   },
+   {
+    "team": "Texas Tech",
+    "key": "texas tech",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 17,
+    "pVsAverage": 0.6365,
+    "rating": 1.0193
+   },
+   {
+    "team": "Utah",
+    "key": "utah",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 17,
+    "pVsAverage": 0.4816,
+    "rating": 0.7332
+   },
+   {
+    "team": "West Virginia",
+    "key": "west virginia",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 17,
+    "pVsAverage": 0.6561,
+    "rating": 1.0582
+   },
+   {
+    "team": "UCF",
+    "key": "ucf",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 17,
+    "pVsAverage": 0.2116,
+    "rating": 0.1723
+   }
+  ],
+  "unrated": [
+   "Big 12 Tournament"
+  ]
+ }
 }

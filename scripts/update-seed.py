@@ -18,6 +18,7 @@ from zoneinfo import ZoneInfo
 
 
 from seed_text import fix_mojibake, norm_name, norm_team
+import sim_inputs
 from win_model import Model
 
 TEAM_SEO = "kansas"
@@ -705,6 +706,12 @@ upcoming = [g for g in games.values()
             if g.get("teamScore") is None and g["date"] >= today]
 forecast_season = max((g["season"] for g in upcoming), default=None)
 
+# Bound here rather than only inside the branch below: the simulator reads
+# them after the standings are built, and before December - or in any season
+# with no NET to read - that branch does not run at all.
+model = None
+ku_z = None
+
 if WIN_MODEL and upcoming and forecast_season:
     # This season's NET if the NCAA has published one yet (it arrives around
     # the first Monday of December); otherwise last season's final, shrunk.
@@ -782,6 +789,24 @@ if standings:
     seasons = sorted({r["season"] for r in standings})
     print(f"standings computed for seasons {', '.join(seasons)}: {len(standings)} team rows")
 
+# The simulator's inputs. Needs the standings, so it runs after them; the
+# simulation itself runs on the reader's device, not here.
+simulation = sim_inputs.build(
+    ku_key=norm_team("Kansas"),
+    remaining=upcoming,
+    standings=standings,
+    season=forecast_season,
+    model=model,
+    ku_z=ku_z,
+    norm=norm_team,
+)
+if simulation:
+    left = len(simulation["remaining"])
+    print(f"simulator: {left} game(s) to play, {len(simulation['others']) + 1} teams in the table"
+          + (f", not rated: {', '.join(simulation['unrated'])}" if simulation["unrated"] else ""))
+else:
+    print("simulator: no inputs (nothing left to play, or no ratings yet)")
+
 seed = {
     "formatVersion": 1,
     "generatedAt": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
@@ -797,6 +822,8 @@ if polls:
     seed["polls"] = polls
 if opponent_roster_seed:
     seed["opponentRosters"] = opponent_roster_seed
+if simulation:
+    seed["simulation"] = simulation
 
 os.makedirs(os.path.dirname(SEED_PATH), exist_ok=True)
 
