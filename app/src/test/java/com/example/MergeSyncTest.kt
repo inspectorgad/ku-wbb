@@ -203,7 +203,38 @@ class MergeSyncTest {
         assertNull(played.tipTime)
         assertEquals(71, played.teamScore)
         // Broadcast and event are not re-sent by the box score, and survive.
+        // The schedule page drops a game once it has been played, so this is
+        // the only thing keeping the tournament name on it.
         assertEquals("BTN+", played.tv)
+        assertEquals("MarketBeat Invitational", played.event)
+    }
+
+    @Test
+    fun `a wrong event name is corrected on a game still to be played`() = runTest {
+        // The schedule page puts a "Game Info" link above whichever game is
+        // next, and the parser briefly read that as a tournament name. Fixing
+        // the parser only helps if the correction can reach a phone that
+        // already stored the wrong name, so event is feed-owned while the
+        // game is still a fixture rather than gap-filled.
+        val dao = db.dao()
+        Seeder.merge(
+            JSONObject(
+                """{"players":[],"games":[{"date":"2026-11-10","opponent":"Oral Roberts",
+                    "season":"2026-27","site":"home","event":"Game Info"}]}"""
+            ),
+            dao
+        )
+        assertEquals("Game Info", dao.gamesOnce().single().event)
+
+        // The same fixture, re-sent with no event at all.
+        Seeder.merge(
+            JSONObject(
+                """{"players":[],"games":[{"date":"2026-11-10","opponent":"Oral Roberts",
+                    "season":"2026-27","site":"home"}]}"""
+            ),
+            dao
+        )
+        assertNull(dao.gamesOnce().single().event)
     }
 
     @Test

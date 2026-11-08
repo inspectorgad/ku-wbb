@@ -180,7 +180,13 @@ object Seeder {
                     // played drops it, and that is correct rather than a loss.
                     tipTime = if (seedTeamScore != null) null else seedTip ?: existing.tipTime,
                     tv = seedTv ?: existing.tv,
-                    event = seedEvent ?: existing.event,
+                    // Feed-owned while the game is still a fixture, so a
+                    // correction on the schedule page reaches a phone that
+                    // already synced the wrong name. Not once it has been
+                    // played: the fixture is gone from that page by then, so
+                    // the seed carries no event for it and gap-filling is the
+                    // only thing keeping a real tournament name on the game.
+                    event = if (seedTeamScore != null) existing.event else seedEvent,
                     // Classification is feed-owned: it is derived, never typed
                     // in, and a recomputation must be able to correct it.
                     conference = seedConference,
