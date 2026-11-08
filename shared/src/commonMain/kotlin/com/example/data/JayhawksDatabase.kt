@@ -26,7 +26,7 @@ import androidx.room.RoomDatabaseConstructor
     entities = [Player::class, Game::class, StatLine::class,
         ConferenceStanding::class, PollEntry::class, GameTeamStats::class,
         OpponentStatLine::class, OpponentRosterPlayer::class],
-    version = 9,
+    version = 10,
     exportSchema = true
 )
 @ConstructedBy(JayhawksDatabaseConstructor::class)

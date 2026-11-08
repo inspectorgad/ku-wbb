@@ -217,6 +217,50 @@ class MigrationTest {
     }
 
     @Test
+    fun `a v9 database gains the forecast columns at v10, keeping its games`() {
+        // The upgrade a phone holding a season actually takes. The two new
+        // columns are nullable on purpose: a row written before the model
+        // existed has no forecast, and that is different from a forecast of
+        // zero. Everything already on the row has to survive untouched.
+        val db = openV3()
+        for (m in JayhawksDatabase.migrations()
+            .filter { it.startVersion in 3..8 }.sortedBy { it.startVersion }) {
+            m.migrate(db)
+        }
+        db.execSQL(
+            """INSERT INTO games (id, date, opponent, season, teamScore, opponentScore, site)
+               VALUES (1, '2026-01-11', 'Baylor', '2025-26', 74, 64, 'home')"""
+        )
+        db.execSQL(
+            """INSERT INTO games (id, date, opponent, season, site)
+               VALUES (2, '2027-01-09', 'Baylor', '2026-27', 'home')"""
+        )
+
+        JayhawksDatabase.migrations().single { it.startVersion == 9 }.migrate(db)
+
+        db.query("SELECT date, teamScore, site, winProbability, ratingSource FROM games ORDER BY id").use { c ->
+            c.moveToFirst()
+            assertEquals("2026-01-11", c.getString(0))
+            assertEquals(74, c.getInt(1))
+            assertEquals("home", c.getString(2))
+            // Nothing has synced yet, so there is no forecast to show.
+            assertTrue("a played game should carry no forecast", c.isNull(3))
+            assertTrue("and no rating source", c.isNull(4))
+            c.moveToNext()
+            assertEquals("2027-01-09", c.getString(0))
+            assertTrue("an unplayed game starts with no forecast either", c.isNull(3))
+        }
+
+        // The columns take a forecast once a sync writes one.
+        db.execSQL("UPDATE games SET winProbability = 0.48, ratingSource = 'net' WHERE id = 2")
+        db.query("SELECT winProbability, ratingSource FROM games WHERE id = 2").use { c ->
+            c.moveToFirst()
+            assertEquals(0.48, c.getDouble(0), 1e-9)
+            assertEquals("net", c.getString(1))
+        }
+    }
+
+    @Test
     fun `a v8 database gains the opponent roster table at v9`() {
         // The chain test above proves the table exists at the end of the walk.
         // This is the upgrade a phone holding a season of data actually takes:

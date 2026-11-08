@@ -113,7 +113,16 @@ data class Game(
     val teamScore: Int? = null,
     val opponentScore: Int? = null,
     // Per-quarter (and OT) points from KU's perspective, e.g. "8-11, 26-17, 17-16, 23-20"
-    val periodScores: String? = null
+    val periodScores: String? = null,
+    // The win model's chance that Kansas wins, 0 to 1. Feed-owned and only
+    // ever set on a game still to play: once a game has been played the
+    // question it answers has been answered on the floor, so a game awaiting
+    // its box score carries no number rather than a stale one. Null also for
+    // an opponent the model cannot rate at all.
+    val winProbability: Double? = null,
+    // What the opponent's rating came from, "poll" or "net", so a screen can
+    // own up to a forecast that rests on last season's ranks.
+    val ratingSource: String? = null
 ) {
     /** Site for display, falling back to the older boolean on legacy rows. */
     val siteOrLegacy: String?

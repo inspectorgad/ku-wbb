@@ -114,6 +114,13 @@ object Seeder {
             val seedTeamScore = if (g.has("teamScore")) g.getInt("teamScore") else null
             val seedOppScore = if (g.has("opponentScore")) g.getInt("opponentScore") else null
             val seedPeriodScores = g.optString("periodScores").takeIf { it.isNotBlank() }
+            // Feed-owned, like the site: the model recomputes them every run,
+            // and a game that has been played drops its forecast, which is a
+            // correction rather than a loss. Gap-filling would leave a stale
+            // number on a game whose result has since arrived.
+            val seedWinProbability =
+                if (g.has("winProbability") && !g.isNull("winProbability")) g.optDouble("winProbability") else null
+            val seedRatingSource = g.optString("ratingSource").takeIf { it.isNotBlank() }
             val seedHome = if (g.has("home")) g.getBoolean("home") else null
             val seedSite = g.optString("site").takeIf { it.isNotBlank() }
             val seedVenue = g.optString("venue").takeIf { it.isNotBlank() }
@@ -151,7 +158,9 @@ object Seeder {
                         opponentRecord = seedOppRecord,
                         teamScore = seedTeamScore,
                         opponentScore = seedOppScore,
-                        periodScores = seedPeriodScores
+                        periodScores = seedPeriodScores,
+                        winProbability = seedWinProbability,
+                        ratingSource = seedRatingSource
                     )
                 )
             } else {
@@ -183,7 +192,9 @@ object Seeder {
                     teamScore = if (filledResult) seedTeamScore else existing.teamScore,
                     opponentScore = if (filledResult) seedOppScore else existing.opponentScore,
                     periodScores = existing.periodScores
-                        ?: (if (filledResult) seedPeriodScores else null)
+                        ?: (if (filledResult) seedPeriodScores else null),
+                    winProbability = seedWinProbability,
+                    ratingSource = seedRatingSource
                 )
                 if (updated != existing) dao.updateGame(updated)
             }

@@ -173,10 +173,26 @@ private val MIGRATION_8_9 = object : Migration(8, 9) {
  * copy. ku-volleyball keeps its own migrations private; it also ships no
  * migration test.
  */
+// v9 -> v10: the win model's chance for a game still to play, and what the
+// opponent's rating came from.
+//
+// Both nullable, unlike the opponent columns above: there is a real
+// difference between a game the model rated and one it could not, and an
+// empty string would make a forecast of nothing look like a forecast. A
+// phone upgrading gets nulls and shows no number until the next sync, which
+// is the right answer for rows written before the model existed.
+private val MIGRATION_9_10 = object : Migration(9, 10) {
+    override fun migrate(db: SupportSQLiteDatabase) {
+        db.execSQL("ALTER TABLE games ADD COLUMN winProbability REAL")
+        db.execSQL("ALTER TABLE games ADD COLUMN ratingSource TEXT")
+    }
+}
+
 fun JayhawksDatabase.Companion.migrations(): Array<Migration> =
     arrayOf(
         MIGRATION_1_2, MIGRATION_2_3, MIGRATION_3_4, MIGRATION_4_5,
-        MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8, MIGRATION_8_9
+        MIGRATION_5_6, MIGRATION_6_7, MIGRATION_7_8, MIGRATION_8_9,
+        MIGRATION_9_10
     )
 
 fun JayhawksDatabase.Companion.get(context: Context): JayhawksDatabase =

@@ -91,7 +91,18 @@ jobs:
           if [ -n "$untracked" ]; then
             echo "Room wrote a schema where none is committed:" >&2
             echo "$untracked" >&2
-            echo "If the path moved on purpose, commit it there and delete the old one." >&2
+            echo "A version bump looks like this, and the file below is the one" >&2
+            echo "to commit. If instead the path moved, commit it there and" >&2
+            echo "delete the old one." >&2
+            # Printed for the same reason the diff branch prints it: the
+            # artifact is served from a host some tooling cannot reach, and a
+            # schema nobody can read is a schema nobody can commit.
+            for f in $untracked; do
+              echo "::group::$f (base64)"
+              base64 -w0 "$f"
+              echo
+              echo "::endgroup::"
+            done
             exit 1
           fi
           if ! git diff --exit-code -- app/schemas shared/schemas; then
