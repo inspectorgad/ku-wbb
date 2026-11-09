@@ -9333,6 +9333,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6648529": {
+   "date": "2026-11-09",
+   "season": "2026",
+   "home": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 94,
+    "winner": true,
+    "rank": 22,
+    "inConference": true
+   },
+   "away": {
+    "name": "Northwestern St.",
+    "seo": "northwestern-st",
+    "score": 56,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6648695": {
    "date": "2026-11-08",
    "season": "2026",
