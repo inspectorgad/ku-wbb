@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-11-08T21:20:43Z",
+ "generatedAt": "2026-11-09T01:12:34Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -18196,7 +18196,7 @@
    "seo": "arizona",
    "confW": 0,
    "confL": 0,
-   "overallW": 1,
+   "overallW": 2,
    "overallL": 0,
    "nationalRank": null
   },
@@ -18226,7 +18226,7 @@
    "seo": "baylor",
    "confW": 0,
    "confL": 0,
-   "overallW": 2,
+   "overallW": 3,
    "overallL": 0,
    "nationalRank": null
   },
@@ -18266,7 +18266,7 @@
    "seo": "iowa-st",
    "confW": 0,
    "confL": 0,
-   "overallW": 2,
+   "overallW": 3,
    "overallL": 0,
    "nationalRank": null
   },
@@ -18306,7 +18306,7 @@
    "seo": "tcu",
    "confW": 0,
    "confL": 0,
-   "overallW": 2,
+   "overallW": 3,
    "overallL": 0,
    "nationalRank": 15
   },
