@@ -173,7 +173,8 @@
   "2026-11-05": true,
   "2026-11-06": true,
   "2026-11-07": true,
-  "2026-11-08": true
+  "2026-11-08": true,
+  "2026-11-09": true
  },
  "games": {
   "6515413": {
@@ -8958,6 +8959,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6646861": {
+   "date": "2026-11-08",
+   "season": "2026",
+   "home": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 77,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Eastern Ill.",
+    "seo": "eastern-ill",
+    "score": 61,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6646888": {
    "date": "2026-11-03",
    "season": "2026",
@@ -9105,6 +9128,28 @@
     "name": "Central Ark.",
     "seo": "central-ark",
     "score": 44,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6647754": {
+   "date": "2026-11-08",
+   "season": "2026",
+   "home": {
+    "name": "Baylor",
+    "seo": "baylor",
+    "score": 112,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "A&M-Corpus Christi",
+    "seo": "am-corpus-chris",
+    "score": 40,
     "winner": false,
     "rank": null,
     "inConference": false
@@ -9288,6 +9333,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6648695": {
+   "date": "2026-11-08",
+   "season": "2026",
+   "home": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 74,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Iona",
+    "seo": "iona",
+    "score": 61,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6648851": {
    "date": "2026-11-02",
    "season": "2026",
@@ -9369,6 +9436,28 @@
     "name": "Southern U.",
     "seo": "southern-u",
     "score": 39,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6649903": {
+   "date": "2026-11-08",
+   "season": "2026",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 89,
+    "winner": true,
+    "rank": 15,
+    "inConference": true
+   },
+   "away": {
+    "name": "Tarleton St.",
+    "seo": "tarleton-st",
+    "score": 42,
     "winner": false,
     "rank": null,
     "inConference": false
