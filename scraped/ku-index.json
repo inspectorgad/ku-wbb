@@ -174,7 +174,8 @@
   "2026-11-06": true,
   "2026-11-07": true,
   "2026-11-08": true,
-  "2026-11-09": true
+  "2026-11-09": true,
+  "2026-11-10": true
  },
  "games": {
   "6515413": {
@@ -435,6 +436,13 @@
    "home": "Kansas",
    "away": "Omaha",
    "boxscored": true
+  },
+  "6647848": {
+   "date": "2026-11-10",
+   "final": false,
+   "home": "Kansas",
+   "away": "Oral Roberts",
+   "boxscored": false
   },
   "6647849": {
    "date": "2026-11-06",
