@@ -8879,6 +8879,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6646414": {
+   "date": "2026-11-09",
+   "season": "2026",
+   "home": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 78,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Lamar University",
+    "seo": "lamar",
+    "score": 28,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6646421": {
    "date": "2026-11-02",
    "season": "2026",
@@ -9554,6 +9576,28 @@
     "name": "Morgan St.",
     "seo": "morgan-st",
     "score": 38,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6650652": {
+   "date": "2026-11-09",
+   "season": "2026",
+   "home": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 85,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "South Alabama",
+    "seo": "south-ala",
+    "score": 59,
     "winner": false,
     "rank": null,
     "inConference": false
