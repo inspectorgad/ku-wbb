@@ -9100,6 +9100,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6647027": {
+   "date": "2026-11-10",
+   "season": "2026",
+   "home": {
+    "name": "Houston",
+    "seo": "houston",
+    "score": 89,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "SFA",
+    "seo": "stephen-f-austin",
+    "score": 59,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6647061": {
    "date": "2026-11-07",
    "season": "2026",
@@ -9668,6 +9690,28 @@
     "winner": false,
     "rank": null,
     "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6650576": {
+   "date": "2026-11-10",
+   "season": "2026",
+   "home": {
+    "name": "UNLV",
+    "seo": "unlv",
+    "score": 58,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 65,
+    "winner": true,
+    "rank": null,
+    "inConference": true
    },
    "conferenceGame": false,
    "bracket": false

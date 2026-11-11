@@ -44,15 +44,15 @@ vs Drake
 49
 Story Recap
 Boxscore
-Upcoming Event: Women's Basketball versus Oral Roberts on November 10, 2026 at 6:30 p.m. CT
-Tue. 11/10/26
--
-6:30 p.m. CT
+Completed Event: Women's Basketball versus Oral Roberts on November 10, 2026 , Win , 99, to, 51
+Final
+Nov 10
 Women's Basketball
+99
 vs Oral Roberts
-Audio
-Video
-Stats
+51
+Story Recap
+Boxscore
 Upcoming Event: Women's Basketball versus Nebraska on November 14, 2026 at 3:30 p.m. CT
 Sat. 11/14/26
 -
@@ -124,11 +124,11 @@ Sioux Falls, S.D.
 
 3
 Days
-18
+13
 Hours
-55
+10
 Minutes
-27
+52
 Seconds
 Add To Calendar
 Text Only
@@ -268,6 +268,7 @@ Nov 10(Tue)
 
 Game Center
 Box Score
+Recap
 History
 Explore Lawrence
 Game Info
@@ -803,14 +804,14 @@ Tuesday, November 03
 All Videos
 Related News
 All News
+Davis, Fandel Fuel Kansas in 99-51 Rout of Oral Roberts
+Tuesday, November 10
 KU Concludes Homestand Tuesday, Hosting Oral Roberts
 Monday, November 09
 Jaliya Davis Opens Sophomore Season with Big 12 Starting Five Honor
 Monday, November 09
 Kansas Cruises to 2-0 with Kids Game Win over Drake
 Friday, November 06
-Kansas to Host Drake Friday Morning for Kids Game
-Thursday, November 05
 All News
 Footer
 Home of the Kansas Jayhawks | © 2026 Kansas Athletics, Inc.

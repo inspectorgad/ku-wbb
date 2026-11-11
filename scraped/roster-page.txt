@@ -1,5 +1,6 @@
 2026-27 Women's Basketball Roster - University of Kansas
 Skip to main content
+Pause All Rotators
 University of Kansas Athletics
 Skip Ad
 Skip Scoreboard
@@ -43,15 +44,15 @@ vs Drake
 49
 Story Recap
 Boxscore
-Upcoming Event: Women's Basketball versus Oral Roberts on November 10, 2026 at 6:30 p.m. CT
-Tue. 11/10/26
--
-6:30 p.m. CT
+Completed Event: Women's Basketball versus Oral Roberts on November 10, 2026 , Win , 99, to, 51
+Final
+Nov 10
 Women's Basketball
+99
 vs Oral Roberts
-Audio
-Video
-Stats
+51
+Story Recap
+Boxscore
 Upcoming Event: Women's Basketball versus Nebraska on November 14, 2026 at 3:30 p.m. CT
 Sat. 11/14/26
 -
@@ -384,12 +385,12 @@ chuck.holl@ku.edu
 Full Bio 
 for Chuck Hollwedel
 Related News
+Davis, Fandel Fuel Kansas in 99-51 Rout of Oral Roberts
+Tuesday, November 10
 KU Concludes Homestand Tuesday, Hosting Oral Roberts
 Monday, November 09
 Jaliya Davis Opens Sophomore Season with Big 12 Starting Five Honor
 Monday, November 09
-Kansas Cruises to 2-0 with Kids Game Win over Drake
-Friday, November 06
 All News
 Related Videos
 Women's Basketball Highlights vs Drake
