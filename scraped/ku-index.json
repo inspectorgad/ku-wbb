@@ -175,7 +175,8 @@
   "2026-11-07": true,
   "2026-11-08": true,
   "2026-11-09": true,
-  "2026-11-10": true
+  "2026-11-10": true,
+  "2026-11-11": true
  },
  "games": {
   "6515413": {
@@ -9532,6 +9533,28 @@
     "name": "Southern U.",
     "seo": "southern-u",
     "score": 39,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6649419": {
+   "date": "2026-11-10",
+   "season": "2026",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 78,
+    "winner": true,
+    "rank": 15,
+    "inConference": true
+   },
+   "away": {
+    "name": "Iona",
+    "seo": "iona",
+    "score": 53,
     "winner": false,
     "rank": null,
     "inConference": false
