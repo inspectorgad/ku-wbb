@@ -2,6 +2,7 @@
 Skip to main content
 Pause All Rotators
 University of Kansas Athletics
+Skip Ad
 Skip Scoreboard
 Scoreboard
 Coming Up
@@ -44,11 +45,11 @@ vs Drake
 Story Recap
 Boxscore
 Upcoming Event: Women's Basketball versus Oral Roberts on November 10, 2026 at 6:30 p.m. CT
-Live
+Tue. 11/10/26
+-
+6:30 p.m. CT
 Women's Basketball
-46
 vs Oral Roberts
-21
 Audio
 Video
 Stats
@@ -123,9 +124,9 @@ Sioux Falls, S.D.
 
 3
 Days
-20
+18
 Hours
-1
+55
 Minutes
 27
 Seconds
@@ -139,7 +140,7 @@ List View
 Table View not selected
 Overall
 Wins
-2
+3
 Losses
 0
 Overall Percentage
@@ -152,10 +153,10 @@ Losses
 Conference Percentage
 .000
 Streak
-W2
+W3
 Home
 Wins
-2
+3
 Losses
 0
 Away
@@ -260,16 +261,14 @@ Lawrence, Kan.
 
 TV: ESPN+
 
-Nov 10
-(Tue)
+W, 99-51
 
+Nov 10(Tue)
 6:30 p.m. CT
 
 Game Center
-Watch
-Listen
-Live Stats
-Preview
+Box Score
+History
 Explore Lawrence
 Game Info
 Skip Ad
@@ -458,6 +457,7 @@ Listen
 Live Stats
 History
 Explore Lawrence
+Skip Ad
 vs
 Oklahoma State
 
@@ -633,6 +633,7 @@ Listen
 Live Stats
 History
 Explore Lawrence
+Skip Ad
 vs
 Kansas State
 

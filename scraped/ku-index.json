@@ -440,10 +440,10 @@
   },
   "6647848": {
    "date": "2026-11-10",
-   "final": false,
+   "final": true,
    "home": "Kansas",
    "away": "Oral Roberts",
-   "boxscored": false
+   "boxscored": true
   },
   "6647849": {
    "date": "2026-11-06",
@@ -9269,6 +9269,28 @@
     "name": "Omaha",
     "seo": "neb-omaha",
     "score": 48,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6647848": {
+   "date": "2026-11-10",
+   "season": "2026",
+   "home": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 99,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Oral Roberts",
+    "seo": "oral-roberts",
+    "score": 51,
     "winner": false,
     "rank": null,
     "inConference": false

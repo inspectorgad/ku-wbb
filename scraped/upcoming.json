@@ -4,10 +4,10 @@
   "opponent": "Oral Roberts",
   "site": "home",
   "home": true,
-  "venue": "Allen Fieldhouse",
-  "city": "Lawrence, KS",
+  "venue": null,
+  "city": null,
   "time": "18:30",
-  "tv": "ESPN+",
+  "tv": null,
   "event": null
  },
  {
