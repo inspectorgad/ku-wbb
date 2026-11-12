@@ -125,11 +125,11 @@ Sioux Falls, S.D.
 
 2
 Days
-3
+0
 Hours
-45
+24
 Minutes
-52
+55
 Seconds
 Add To Calendar
 Text Only
@@ -655,6 +655,9 @@ Game Center
 Listen
 Live Stats
 History
+
+Sponsored by:
+
 Explore Lawrence
 at
 BYU
@@ -743,6 +746,9 @@ Game Center
 Listen
 Live Stats
 History
+
+Sponsored by:
+
 at
 Iowa State
 
