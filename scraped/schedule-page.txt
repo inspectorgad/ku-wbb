@@ -125,11 +125,11 @@ Sioux Falls, S.D.
 
 2
 Days
-7
+3
 Hours
-32
+45
 Minutes
-9
+52
 Seconds
 Add To Calendar
 Text Only
@@ -270,6 +270,7 @@ Nov 10(Tue)
 Game Center
 Box Score
 Recap
+Photos
 History
 Explore Lawrence
 Game Info
