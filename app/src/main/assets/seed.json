@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-11-11T23:40:09Z",
+ "generatedAt": "2026-11-12T02:29:59Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -18143,7 +18143,7 @@
   },
   {
    "date": "2026-11-14",
-   "opponent": "Nebraska",
+   "opponent": "#25 Nebraska",
    "season": "2026-27",
    "venue": "Sanford Pentagon",
    "city": "Sioux Falls, SD",
@@ -18152,9 +18152,7 @@
    "time": "15:30",
    "site": "neutral",
    "home": false,
-   "conference": false,
-   "winProbability": 0.3905,
-   "ratingSource": "poll"
+   "conference": false
   },
   {
    "date": "2026-11-18",
@@ -18767,16 +18765,6 @@
   },
   {
    "season": "2026-27",
-   "team": "Cincinnati",
-   "seo": "cincinnati",
-   "confW": 0,
-   "confL": 0,
-   "overallW": 2,
-   "overallL": 0,
-   "nationalRank": null
-  },
-  {
-   "season": "2026-27",
    "team": "Colorado",
    "seo": "colorado",
    "confW": 0,
@@ -18879,6 +18867,16 @@
    "season": "2026-27",
    "team": "UCF",
    "seo": "ucf",
+   "confW": 0,
+   "confL": 0,
+   "overallW": 3,
+   "overallL": 1,
+   "nationalRank": null
+  },
+  {
+   "season": "2026-27",
+   "team": "Cincinnati",
+   "seo": "cincinnati",
    "confW": 0,
    "confL": 0,
    "overallW": 2,
@@ -21075,14 +21073,6 @@
   },
   "remaining": [
    {
-    "date": "2026-11-14",
-    "opponent": "Nebraska",
-    "site": "neutral",
-    "conference": false,
-    "key": "nebraska",
-    "p": 0.3905
-   },
-   {
     "date": "2026-11-18",
     "opponent": "Minnesota",
     "site": "away",
@@ -21337,15 +21327,6 @@
     "rating": 1.0325
    },
    {
-    "team": "Cincinnati",
-    "key": "cincinnati",
-    "confW": 0,
-    "confL": 0,
-    "remaining": 17,
-    "pVsAverage": 0.2985,
-    "rating": 0.3835
-   },
-   {
     "team": "Colorado",
     "key": "colorado",
     "confW": 0,
@@ -21434,9 +21415,19 @@
     "remaining": 17,
     "pVsAverage": 0.2105,
     "rating": 0.1723
+   },
+   {
+    "team": "Cincinnati",
+    "key": "cincinnati",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 17,
+    "pVsAverage": 0.2985,
+    "rating": 0.3835
    }
   ],
   "unrated": [
+   "#25 Nebraska",
    "Big 12 Tournament"
   ]
  }
