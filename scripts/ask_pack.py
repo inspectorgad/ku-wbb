@@ -57,20 +57,33 @@ DEFINITIONS = {
     "period_scores": "points by quarter from KU's side, e.g. '25-14, 17-23, 29-16, 15-22'; "
                      "the periods table has the same thing one row per quarter",
     "exhibition": "an exhibition game: it counts for nothing and is not in any record",
-    "team_key": "the opponent_roster table's canonical school key, with 'State' folded to 'st' "
-                "and punctuation dropped. Its opponent column matches the upcoming table exactly "
-                "— which is the table that roster is for — but a school is printed differently "
-                "between seasons ('Iowa State' upcoming, 'Iowa St.' in last season's games), so "
-                "join on team_key when crossing seasons",
+    "team_key / opponent_key / home_key / away_key": "one normalized spelling per school, with "
+        "'State' folded to 'st', punctuation dropped, a leading poll rank ('#25 Nebraska') and a "
+        "trailing '(exh.)' removed. Every table that names a school carries one. Match teams on "
+        "these keys and never on the display names: a school is printed differently between "
+        "sources and between seasons ('Iowa State' in upcoming, 'Iowa St.' in last season's "
+        "games), so joining on the printed name silently matches nothing",
+    "as_of": "the date the source table was published. team_records carries the NET as it stood "
+             "then, which before about the first Monday of December is last season's final table, "
+             "not this season's — its season column says which",
+    "home / away (big12_results)": "the scoreboard's nominal sides. At a neutral venue — the Big "
+        "12 tournament, holiday events — neither team is really at home, so read them as sides "
+        "rather than as home-court advantage",
+    "conference_game": "true for a regular-season game between two Big 12 members, before that "
+                       "season's conference tournament. Computed the same way the standings are, "
+                       "not copied from the scoreboard's own flag, which is also true for the "
+                       "conference tournament's own games",
+    "bracket": "the game was part of a tournament bracket (the Big 12 tournament, the NCAA "
+               "tournament), so it is outside the regular-season conference record",
 }
 
 
 # The instructions Claude is given, shared by the dashboard (docs/ask.js) and
 # the app (AskEngine.kt) so both ask the same way. The tables are fetched by
 # Claude's own code through the get_table tool; this only says how.
-SYSTEM_RULES = """You are the analyst behind the Kansas Jayhawks women's basketball app and dashboard. You answer questions from coaches and fans about the team, using only the season data you are given.
+SYSTEM_RULES = """You are the analyst behind the Kansas Jayhawks women's basketball app and dashboard. You answer questions from coaches and fans about the team and the teams it plays, using the season data you are given - and the web, when the reader turns web search on for a question.
 
-The complete data is available to your Python code through the get_table tool: tables games, periods (one row per quarter, with each side's points), ku_lines (KU player box score lines per game), team_totals (the official team totals for both sides), opponent_lines, opponent_roster (opposing squads as their schools list them today — the right source for a game not yet played, and the wrong one for a season already played, where it only reaches the players who have not left since), upcoming, standings, poll, roster, and definitions. Call it from inside code execution, for example: import json, pandas as pd; lines = pd.DataFrame(json.loads(await get_table({'table': 'ku_lines'}))). Join tables on (season, date, opponent). A summary of the smaller tables is below for orientation.
+The complete data is available to your Python code through the get_table tool: tables games, periods (one row per quarter, with each side's points), ku_lines (KU player box score lines per game), team_totals (the official team totals for both sides), opponent_lines, opponent_roster (opposing squads as their schools list them today — the right source for a game not yet played, and the wrong one for a season already played, where it only reaches the players who have not left since), upcoming, standings, poll, roster, definitions, team_records (every Division I team's NET row) and big12_results (every final involving a Big 12 team). Call it from inside code execution, for example: import json, pandas as pd; lines = pd.DataFrame(json.loads(await get_table({'table': 'ku_lines'}))). Join tables on (season, date, opponent). A summary of the smaller tables is below for orientation.
 
 How to answer:
 - Compute every number with code from the tables. Do not estimate, recall, or do arithmetic in your head, even for a simple total.
@@ -79,8 +92,38 @@ How to answer:
 - Use basketball conventions: percentages as .447, per-game rates to one decimal, records as 8-10.
 - Records and site splits: the NCAA leaves out games against non-Division I opponents (non_d1), so say which convention you used when it changes the answer. The Big 12 record counts only rows where conference is true.
 - Name small samples plainly (for example "only 3 games").
-- If the data cannot answer the question — injuries, practice, line-ups, recruiting, play-by-play, anything not in the box scores — say so in a sentence instead of guessing.
+- If the data cannot answer the question — injuries, practice, line-ups, recruiting, play-by-play, anything not in the box scores — say so in a sentence instead of guessing; with web search on, look for it on the web instead.
+
+Other teams: team_records is every Division I team's NET row — rank, previous rank, conference, and the overall, home, road, neutral, non-Division I and Quadrant 1-4 records. It carries the season it belongs to and the date it was published, and until the NCAA publishes a season's first NET, around the first Monday of December, it is last season's final table: say which season a NET figure is from rather than presenting an old one as current. big12_results is every final involving a Big 12 team, with each side's points and its AP rank going into that game, so records against ranked teams and points for and against can be computed from it. It is not every Division I game, so a comparison of common opponents is complete only among teams that played a Big 12 side — say so when it matters. opponent_roster is the squads of the schools on our schedule, as those schools list them today. Match teams across all of these on the *_key columns, never on the printed names.
+
+Web search: the reader can turn on web search for a question, and each question says whether it is on. When it is off, answer from the data only, and say plainly when the data cannot answer. When it is on, you may use the web_search tool for what the tables cannot tell you — previews, recaps, injuries and line-up news, coaches' comments, transfers, rankings commentary — preferring official athletics sites, the Big 12, the NCAA, the AP, the WBCA and established news outlets. Even then, take every statistic from the tables when they have it, and keep web material for context. Make clear which statements come from the web, and give each article's date when it matters, since news goes out of date. Search only as much as the question needs.
 """
+
+
+# The AP and the NET spell a few schools differently; without these the two
+# tables would not join. Kept beside team_key so the list is where it is used.
+_ALIASES = {"southern california": "southern cal", "usc": "southern cal"}
+
+
+def team_key(name):
+    """One normalized spelling per school, for matching teams across tables.
+
+    Built on seed_text.norm_team, which the seed's own joins already use, so
+    the opponent_roster keys stored in the seed stay valid. It adds the three
+    things norm_team deliberately leaves alone:
+
+    - a leading poll rank, because the upcoming table prints "#25 Nebraska";
+    - a trailing "(exh.)", so an exhibition joins the other tables;
+    - the handful of schools the AP and the NET spell differently.
+
+    norm_team has to keep "(exh.)" because update-seed.py decides from it
+    whether a game is a conference game. Stripping it here cannot change that:
+    the conference column still comes from the seed's own flag.
+    """
+    n = re.sub(r"^#\d+\s+", "", (name or "").strip())
+    n = re.sub(r"\s*\((?:[Ee]xh\.?|[Ee]xhibition)\)\s*$", "", n)
+    n = norm_team(n)
+    return _ALIASES.get(n, n)
 
 
 def _cell(v):
@@ -171,7 +214,8 @@ def build_pack(seed):
 
     games, periods, ku_lines, team_totals, opp_lines, upcoming = [], [], [], [], [], []
     for g in sorted(seed.get("games", []), key=lambda x: (x["date"], x["opponent"])):
-        base = {"season": g["season"], "date": g["date"], "opponent": g["opponent"]}
+        base = {"season": g["season"], "date": g["date"], "opponent": g["opponent"],
+                "opponent_key": team_key(g["opponent"])}
         if g.get("teamScore") is None:
             upcoming.append({**base, "site": _site(g), "conference": bool(g.get("conference")),
                              "exhibition": "(exh." in g["opponent"].lower(),
@@ -216,6 +260,9 @@ def build_pack(seed):
 
     polls = seed.get("polls") or []
     current_poll = polls[-1] if polls else None
+    # Absent from an older seed, and from the test fixture: the tables below
+    # must then come out as [], never missing.
+    net = seed.get("netRankings") or {}
     pack = {
         "about": "Kansas Jayhawks women's basketball, from the official NCAA box scores and "
                  "kuathletics.com. One record per row; join tables on (season, date, opponent).",
@@ -227,14 +274,16 @@ def build_pack(seed):
         "team_totals": team_totals,
         "opponent_lines": opp_lines,
         "upcoming": upcoming,
-        "standings": [{k: st.get(k) for k in ("season", "team", "confW", "confL", "overallW",
-                                              "overallL", "nationalRank", "netRank")}
+        "standings": [{**{k: st.get(k) for k in ("season", "team", "confW", "confL", "overallW",
+                                                 "overallL", "nationalRank", "netRank")},
+                       "team_key": team_key(st.get("team"))}
                       for st in seed.get("standings", [])],
         "poll": None if not current_poll else {
             "season": current_poll["season"], "name": current_poll.get("name") or "Poll",
             "updated": current_poll.get("updated"),
-            "rows": [{k: r.get(k) for k in ("rank", "rankLabel", "team", "record", "points",
-                                            "previous", "firstPlaceVotes")}
+            "rows": [{**{k: r.get(k) for k in ("rank", "rankLabel", "team", "record", "points",
+                                               "previous", "firstPlaceVotes")},
+                      "team_key": team_key(r.get("team"))}
                      for r in current_poll.get("rows", [])]},
         "roster": [{k: p.get(k) for k in ("name", "jerseyNumber", "position", "height",
                                           "academicYear", "hometown", "lastSchool", "active")}
@@ -251,10 +300,35 @@ def build_pack(seed):
         # the key would mean a join that silently matched nothing at all.
         "opponent_roster": [
             {"opponent": opponent_display.get(t["team"], t["team"]),
-             "team_key": t["team"], "read": t.get("fetchedAt"),
+             "team_key": team_key(t["team"]), "read": t.get("fetchedAt"),
              **{k: (p.get(k) or None) for k in ("name", "jerseyNumber", "position", "height",
                                                 "academicYear", "hometown", "lastSchool")}}
             for t in seed.get("opponentRosters", []) for p in t.get("players", [])
+        ],
+        # Every Division I team's NET row. The NCAA publishes no formula behind
+        # the NET, so this is the published table as it stands, not a rating
+        # worked out here - and it carries the season it belongs to, because
+        # until December it is last season's final.
+        "team_records": [
+            {**{k: r.get(k) for k in ("rank", "team", "previous", "conference", "record",
+                                      "home", "road", "neutral", "nonD1",
+                                      "quad1", "quad2", "quad3", "quad4")},
+             "team_key": team_key(r.get("team")),
+             "season": net.get("season"), "as_of": net.get("asOf")}
+            for r in net.get("rows", [])
+        ],
+        # Every final involving a Big 12 team. Not every Division I game: a
+        # comparison of common opponents with a non-conference side is
+        # therefore incomplete, and the definitions say so.
+        "big12_results": [
+            {"date": r.get("date"), "season": r.get("season"),
+             "home": r.get("home"), "home_key": team_key(r.get("home")),
+             "home_points": r.get("homePoints"), "home_rank": r.get("homeRank"),
+             "away": r.get("away"), "away_key": team_key(r.get("away")),
+             "away_points": r.get("awayPoints"), "away_rank": r.get("awayRank"),
+             "conference_game": bool(r.get("conferenceGame")),
+             "bracket": bool(r.get("bracket"))}
+            for r in seed.get("big12Results", [])
         ],
     }
     pack["system_prompt"] = system_prompt(pack)

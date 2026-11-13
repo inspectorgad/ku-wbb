@@ -35,12 +35,14 @@ const DEFAULT_MODEL = "claude-opus-5-5";
 // Round trips per question: pause_turn resumptions plus get_table answers.
 const MAX_HOPS = 16;
 const TABLES = ["games", "periods", "ku_lines", "team_totals", "opponent_lines",
-  "opponent_roster", "upcoming", "standings", "poll", "roster", "definitions"];
+  "opponent_roster", "upcoming", "standings", "poll", "roster", "definitions",
+  "team_records", "big12_results"];
 const TOOLS = [
   { type: "code_execution_20260120", name: "code_execution" },
   {
     name: "get_table",
-    description: "Returns one table of the Kansas women's basketball season data as a JSON string: " +
+    description: "Returns one table of the Kansas women's basketball season data (or, for " +
+      "opponent_roster, team_records and big12_results, data on other teams) as a JSON string: " +
       "a list of records (one per row) for every table except 'definitions' (a dict of column " +
       "meanings) and 'poll' (a dict with season, name, updated and rows). Call it from Python and " +
       "load it with pandas, e.g. df = pd.DataFrame(json.loads(await get_table({'table': 'ku_lines'}))).",

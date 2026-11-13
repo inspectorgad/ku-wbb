@@ -158,7 +158,8 @@ class TableNamesAgreeTest(unittest.TestCase):
     """
 
     EXPECTED = ["games", "periods", "ku_lines", "team_totals", "opponent_lines",
-                "opponent_roster", "upcoming", "standings", "poll", "roster", "definitions"]
+                "opponent_roster", "upcoming", "standings", "poll", "roster", "definitions",
+                "team_records", "big12_results"]
 
     def test_the_pack_holds_exactly_those_tables(self):
         pack = build_pack(SEED)
@@ -169,7 +170,9 @@ class TableNamesAgreeTest(unittest.TestCase):
         with open(os.path.join(REPO, path)) as f:
             body = re.search(pattern, f.read(), re.S)
         self.assertIsNotNone(body, f"table list not found in {path}")
-        return re.findall(r'"([a-z_]+)"', body.group(1))
+        # Digits too: big12_results has one, and a class of [a-z_] silently
+        # skipped it, so the lists looked like they disagreed when they did not.
+        return re.findall(r'"([a-z0-9_]+)"', body.group(1))
 
     def test_the_dashboard_and_the_app_offer_the_same_tables(self):
         self.assertEqual(self._listed("docs/ask.js", r"const TABLES = \[(.*?)\];"), self.EXPECTED)
