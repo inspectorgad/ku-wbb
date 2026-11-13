@@ -51,8 +51,16 @@ what it means in plain words.
 Type a question and Claude answers it from the season data. It is given a
 Python sandbox and a tool that fetches any table of the season, so every figure
 is computed in code rather than recalled, and "Show the code" lists exactly
-what it ran. It can only answer from the box scores — it knows nothing about
-injuries, practice or line-ups, and says so rather than guessing.
+what it ran. Besides Kansas's own box scores it has the other teams' data too:
+the rosters of the schools on the schedule, every Division I team's NET row,
+every result involving a Big 12 team, and every Division I result this season.
+
+On its own it knows nothing about injuries, practice or line-ups, and says so
+rather than guessing. Turning on web search for a question lets it look those
+up as well — previews, recaps, injury and line-up news — and the pages it used
+are numbered in the answer and listed under it. Each search costs about a cent
+on the reader's own key, at most five a question, and the tool list is fixed
+for a conversation: turning search on partway through starts a new one.
 
 Each reader brings their own Anthropic API key, so questions are billed to
 whoever asks; the cost is shown under every answer, usually a few cents. The
