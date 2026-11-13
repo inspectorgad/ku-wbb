@@ -653,6 +653,41 @@ class MergeSyncTest {
     }
 
     @Test
+    fun `a stand-in row for an opponent that was not known yet is dropped`() = runTest {
+        // kuathletics showed the Cancun Challenge games as "versus TBD" in its
+        // rotator while naming the teams in the table, and the parser kept
+        // both. The ghost had no venue, so it read as a home game, and the
+        // phone held on to it after the page filled the name in.
+        db.dao().insertGame(Game(date = "2026-11-26", opponent = "TBD", season = "2026-27"))
+        Seeder.merge(
+            JSONObject(
+                """{"games": [{"date": "2026-11-26", "opponent": "Washington State",
+                     "season": "2026-27", "site": "neutral",
+                     "venue": "Hard Rock Hotel Rivera Maya"}]}"""
+            ),
+            db.dao()
+        )
+
+        val games = db.dao().gamesOnce()
+        assertEquals(1, games.size)
+        assertEquals("Washington State", games.single().opponent)
+    }
+
+    @Test
+    fun `a stand-in row somebody entered a result against is left alone`() = runTest {
+        // Nothing is called TBD, but if a reader put a score on that row it is
+        // theirs, and a sync does not get to tidy away what it cannot restore.
+        db.dao().insertGame(
+            Game(date = "2026-11-26", opponent = "TBD", season = "2026-27",
+                teamScore = 70, opponentScore = 60)
+        )
+
+        Seeder.merge(emptyJson(), db.dao())
+
+        assertEquals(listOf("TBD"), db.dao().gamesOnce().map { it.opponent })
+    }
+
+    @Test
     fun `an ordinary opponent name is left exactly as it is`() = runTest {
         // A "#" is a rank only at the very front and only before a number.
         val names = listOf("Nebraska", "Miami (OH)", "Texas A&M", "St. #1 Fan")

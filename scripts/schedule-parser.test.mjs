@@ -69,6 +69,57 @@ test('a ranked opponent keeps its name and carries the rank beside it', () => {
   assert.equal(f.opponentRank, 25);
 });
 
+test('the rotator and the table are one game even when they disagree on the name', () => {
+  // kuathletics showed the Cancun Challenge games as "versus TBD" in its
+  // site-wide rotator while the schedule table below already named the teams.
+  // Keyed on date AND opponent, that made one game two: the real fixture, and
+  // a ghost with no venue that siteOf then called a home game. Both reached
+  // the seed, the dashboard and every phone - and a phone kept its copy after
+  // the page filled the name in, because a sync only adds and updates.
+  const page = [
+    "2026-27 Women's Basketball Schedule",
+    "Upcoming Event: Women's Basketball versus TBD on November 26, 2026",
+    'Cancun Challenge', 'vs', 'Washington State', '', 'Hard Rock Hotel Rivera Maya',
+    'Cancun, Mexico', '', 'TV: FloSports', '', 'Nov 26', '(Thu)', '', '3 p.m. CT', '', 'History',
+  ].join('\n');
+
+  const got = parseSchedule(page);
+
+  assert.equal(got.length, 1);
+  assert.equal(got[0].opponent, 'Washington State');
+  assert.equal(got[0].venue, 'Hard Rock Hotel Rivera Maya');
+  assert.equal(siteOf(got[0]), 'neutral');
+});
+
+test('a rotator game the table has not listed yet is still kept', () => {
+  // The merge must not quietly drop a game that only one listing knows about.
+  const page = [
+    "2026-27 Women's Basketball Schedule",
+    "Upcoming Event: Women's Basketball at Iowa State on January 9, 2027 at 2 p.m. CT",
+  ].join('\n');
+
+  const got = parseSchedule(page);
+
+  assert.equal(got.length, 1);
+  assert.deepEqual(
+    [got[0].date, got[0].opponent, got[0].time, siteOf(got[0])],
+    ['2027-01-09', 'Iowa State', '14:00', 'away']
+  );
+});
+
+test('two table rows on one date stay two games', () => {
+  // Only a rotator row collapses into a table row. Two real listings on the
+  // same date are two real games, whatever the sport thinks of that.
+  const rows = [
+    'vs', 'Alpha', '', 'Allen Fieldhouse', 'Lawrence, Kan.', '', 'Dec 20', '(Sun)', '', 'History',
+    'vs', 'Beta', '', 'Allen Fieldhouse', 'Lawrence, Kan.', '', 'Dec 20', '(Sun)', '', 'History',
+  ].join('\n');
+
+  const got = parseSchedule(`2026-27 Women's Basketball Schedule\n${rows}`);
+
+  assert.deepEqual(got.map((f) => f.opponent).sort(), ['Alpha', 'Beta']);
+});
+
 test('a link label above a row is not mistaken for a tournament', () => {
   // The line above "vs" is where a tournament name sits, but it is also
   // where the page puts whatever link it last rendered. "Game Info" turned

@@ -159,17 +159,47 @@ export function parseSchedule(schedText) {
     });
   }
 
-  // De-dup: the rotator repeats on every page view, and its fixtures also
-  // appear in the table. The first sighting sets the date and the side; either
-  // source may fill in a field the other lacks.
+  // De-dup. The rotator repeats on every page view, and the games it names
+  // are in the table below it too.
+  //
+  // A rotator row is matched to a table row by date ALONE, not by date and
+  // opponent. The two listings can disagree about who it is: the rotator says
+  // "TBD" while a tournament bracket is undrawn, and the table already names
+  // the team it will be. Keyed on the name, that one game became two - a real
+  // fixture and a ghost "vs TBD" with no venue, which siteOf then called a
+  // home game. Both reached the seed, the dashboard and every phone, and a
+  // phone kept its copy even after the page filled the name in, because a sync
+  // only adds and updates.
+  //
+  // The table is the listing that settles who it is: it carries the venue, the
+  // city and the broadcaster, while a rotator row carries none of them and is
+  // only ever ahead on the tip time. Two TABLE rows on one date would be two
+  // real games, so those are still kept apart by name.
+  const fromTable = fixtures.filter((f) => f.venue);
+  const fromRotator = fixtures.filter((f) => !f.venue);
+
   const byKey = new Map();
-  for (const f of fixtures) {
-    const k = `${f.date}|${f.opponent.toLowerCase()}`;
-    const prev = byKey.get(k);
-    if (!prev) { byKey.set(k, f); continue; }
-    for (const field of ['city', 'venue', 'time', 'tv', 'event']) {
-      if (!prev[field] && f[field]) prev[field] = f[field];
+  for (const f of fromTable) byKey.set(`${f.date}|${f.opponent.toLowerCase()}`, f);
+
+  const tableByDate = new Map();
+  for (const f of fromTable) {
+    if (!tableByDate.has(f.date)) tableByDate.set(f.date, []);
+    tableByDate.get(f.date).push(f);
+  }
+
+  for (const f of fromRotator) {
+    const sameDate = tableByDate.get(f.date);
+    if (sameDate) {
+      for (const t of sameDate) {
+        for (const field of ['city', 'venue', 'time', 'tv', 'event']) {
+          if (!t[field] && f[field]) t[field] = f[field];
+        }
+      }
+      continue;
     }
+    // A game the table has not listed yet: kept, as it always was.
+    const k = `${f.date}|${f.opponent.toLowerCase()}`;
+    if (!byKey.has(k)) byKey.set(k, f);
   }
   return [...byKey.values()];
 }

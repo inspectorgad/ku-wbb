@@ -60,6 +60,13 @@ object Seeder {
     private val RANKED_NAME = Regex("""^#(\d{1,2})\s+""")
 
     /**
+     * A stand-in for an opponent, never a team. kuathletics' rotator showed
+     * "TBD" for the Cancun Challenge games while the bracket was undrawn, and
+     * the parser kept that beside the table's real name as a second game.
+     */
+    private fun isPlaceholder(opponent: String) = opponent.trim().equals("TBD", ignoreCase = true)
+
+    /**
      * Takes the poll rank back out of an opponent's name, in databases that
      * already hold one.
      *
@@ -79,7 +86,8 @@ object Seeder {
     internal suspend fun healRankedNames(dao: JayhawksDao) {
         val all = dao.gamesOnce()
         val stale = all.filter { RANKED_NAME.containsMatchIn(it.opponent) }
-        if (stale.isEmpty()) return
+        val placeholders = all.filter { isPlaceholder(it.opponent) }
+        if (stale.isEmpty() && placeholders.isEmpty()) return
         val withLines = dao.statLinesOnce().map { it.gameId }.toSet()
         val byKey = all.associateBy { gameKey(it.date, it.opponent) }
         // What a sync cannot put back if the row goes. Every table that points
@@ -109,6 +117,16 @@ object Seeder {
                 // stat lines to tidy it up.
                 else -> dao.updateGame(fixed)
             }
+        }
+
+        // A row standing in for a game whose opponent was not known yet. The
+        // name can never become right - nothing is ever called TBD - and the
+        // real fixture arrived beside it under its own name, so there is
+        // nothing to rename it to and nothing to merge it with. It goes,
+        // unless somebody put a result or a line against it, in which case it
+        // is theirs and not the scrape's to tidy away.
+        for (row in placeholders) {
+            if (!keeps(row)) dao.deleteGame(row)
         }
     }
 
