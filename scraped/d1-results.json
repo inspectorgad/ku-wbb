@@ -13661,7 +13661,7 @@
    "home": {
     "name": "Arkansas",
     "seo": "arkansas",
-    "score": 91,
+    "score": 95,
     "winner": true,
     "rank": null,
     "inConference": false
@@ -13669,7 +13669,7 @@
    "away": {
     "name": "Ark.-Pine Bluff",
     "seo": "ark-pine-bluff",
-    "score": 85,
+    "score": 90,
     "winner": false,
     "rank": null,
     "inConference": false
@@ -14418,6 +14418,28 @@
     "name": "UC Davis",
     "seo": "uc-davis",
     "score": 72,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6661666": {
+   "date": "2026-11-13",
+   "season": "2026",
+   "home": {
+    "name": "Eastern Wash.",
+    "seo": "eastern-wash",
+    "score": 101,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Walla Walla",
+    "seo": "walla-walla",
+    "score": 21,
     "winner": false,
     "rank": null,
     "inConference": false
