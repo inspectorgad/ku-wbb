@@ -17,7 +17,7 @@ from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 
 
-from seed_text import fix_mojibake, norm_name, norm_team
+from seed_text import MONTHS, fix_mojibake, norm_name, norm_team, season_label, snapshot_season
 import sim_inputs
 from win_model import Model
 
@@ -50,11 +50,6 @@ def to_minutes(value):
         return round(float(str(value).strip() or 0))
     except ValueError:
         return 0
-
-
-def season_label(start_year):
-    """2025 -> "2025-26"."""
-    return f"{start_year}-{str(start_year + 1)[-2:]}"
 
 
 def game_key(date, opponent):
@@ -403,6 +398,9 @@ for entry in load_json("scraped/upcoming.json", []):
         # it is home, away or on a neutral floor — no need to wait for the box
         # score. `scheduleSite` is trusted directly by the site derivation.
         "scheduleSite": (entry.get("site") or "").strip() or None,
+        # The schedule page's rank for the opponent, which no other source
+        # carries for a game not yet played.
+        "opponentRank": entry.get("opponentRank"),
         "nominalHome": bool(entry.get("home")),
     }
     for key_name in ("venue", "city", "tv", "event"):
@@ -569,19 +567,6 @@ for season, count in sorted(conference_counts.items()):
 # Both endpoints serve only the current snapshot, so each is keyed by the
 # season in its "Through Games APR. 5, 2026" label (Aug-Dec dates belong to the
 # season starting that year; Jan-Jul to the one that started the year before).
-MONTHS = "JAN FEB MAR APR MAY JUN JUL AUG SEP OCT NOV DEC".split()
-
-
-def snapshot_season(payload):
-    label = (payload.get("updated", "") or "").upper()
-    m = re.search(r"\b(" + "|".join(MONTHS) + r")[A-Z]*\.?\s+\d{1,2},?\s+(20\d{2})", label)
-    if not m:
-        return None
-    month = MONTHS.index(m.group(1)) + 1
-    year = int(m.group(2))
-    return season_label(year if month >= 8 else year - 1)
-
-
 def row_value(row, *candidates):
     """First matching column: sources vary in header capitalization."""
     lowered = {k.strip().lower(): v for k, v in row.items()}

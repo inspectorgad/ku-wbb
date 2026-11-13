@@ -38,6 +38,8 @@ fun JayhawksApp(viewModel: JayhawksViewModel) {
     // what identifies it across the spellings the sources use.
     var openOpponent by rememberSaveable { mutableStateOf<String?>(null) }
     var askOpen by rememberSaveable { mutableStateOf(false) }
+    // A question a game's Preview or Recap button handed to the Ask screen.
+    var askPrefill by rememberSaveable { mutableStateOf<String?>(null) }
     var simOpen by rememberSaveable { mutableStateOf(false) }
 
     val players by viewModel.players.collectAsStateWithLifecycle()
@@ -60,12 +62,22 @@ fun JayhawksApp(viewModel: JayhawksViewModel) {
     val showingDetail =
         openPlayerId != null || openGameId != null || openOpponent != null ||
             askOpen || simOpen
+    // Back closes the top screen only, in the order they stack: Ask opened
+    // from a game's Preview or Recap button steps back to that game rather
+    // than dropping the reader on the list it came from two screens ago.
     SystemBackHandler(enabled = showingDetail) {
-        openPlayerId = null
-        openGameId = null
-        openOpponent = null
-        askOpen = false
-        simOpen = false
+        when {
+            askOpen -> {
+                askOpen = false
+                askPrefill = null
+            }
+            simOpen -> simOpen = false
+            else -> {
+                openPlayerId = null
+                openGameId = null
+                openOpponent = null
+            }
+        }
     }
 
     val openPlayer = openPlayerId?.let { id -> players.firstOrNull { it.id == id } }
@@ -75,7 +87,17 @@ fun JayhawksApp(viewModel: JayhawksViewModel) {
         // Ask keeps its thread in AskSession, so closing it and coming back
         // finds the conversation — and any answer still being worked on —
         // where it was.
-        askOpen -> AskScreen(onBack = { askOpen = false })
+        askOpen -> AskScreen(
+            onBack = {
+                askOpen = false
+                askPrefill = null
+            },
+            prefill = askPrefill,
+            // Dropped the moment it has been dealt with, so coming back to
+            // this screen - after a rotation, or after Android rebuilt the
+            // app from its saved state - never asks it a second time.
+            onPrefillTaken = { askPrefill = null }
+        )
 
         // Only openable when there are inputs, but checked again here: a sync
         // between the tap and the draw could take them away.
@@ -117,7 +139,11 @@ fun JayhawksApp(viewModel: JayhawksViewModel) {
             },
             onSaveStatLine = viewModel::saveStatLine,
             onDeleteStatLine = viewModel::deleteStatLine,
-            onBack = { openGameId = null }
+            onBack = { openGameId = null },
+            onAskClaude = { q ->
+                askPrefill = q
+                askOpen = true
+            }
         )
 
         else -> Scaffold(
@@ -174,7 +200,12 @@ fun JayhawksApp(viewModel: JayhawksViewModel) {
                         games = games,
                         statLines = statLines,
                         dataUpdatedAt = dataUpdatedAt,
-                        onOpenAsk = { askOpen = true },
+                        // A plain "Ask about the team" starts on an empty box,
+                        // never on whatever game was previewed last.
+                        onOpenAsk = {
+                            askPrefill = null
+                            askOpen = true
+                        },
                         onOpenSimulator = if (simulation != null) ({ simOpen = true }) else null
                     )
 

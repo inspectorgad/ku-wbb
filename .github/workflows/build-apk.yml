@@ -72,6 +72,19 @@ jobs:
           node --test "${tests[@]}"
           python3 -m unittest discover -s scripts -p 'test_*.py'
 
+      # A branch build is the test build, so Ask Claude must read this
+      # branch's data: the published pack is main's, and would have neither
+      # the new tables nor a prompt that mentions them. Pinned to this exact
+      # commit, so the APK handed out keeps reading the data it was built
+      # against even after the branch moves on. Never on main, where the
+      # published pack is the right one.
+      - name: Point Ask Claude at this branch's data
+        if: github.ref != 'refs/heads/main'
+        run: |
+          set -euo pipefail
+          python3 scripts/pin_ask_pack.py \
+            "https://raw.githubusercontent.com/$GITHUB_REPOSITORY/$GITHUB_SHA/docs/ask-data.json"
+
       - name: Build debug APK and Play release bundle
         env:
           VERSION_CODE: ${{ github.run_number }}
@@ -150,6 +163,39 @@ jobs:
         with:
           name: ku-wbb-release-aab
           path: app/build/outputs/bundle/release/app-release.aab
+
+      # A branch build otherwise leaves only an Actions artifact, which is a
+      # zip that needs a GitHub login to fetch - no use on a phone. This puts
+      # the APK in a pre-release of its own instead.
+      #
+      # Never latest-apk, and never --latest: SeasonSync, AskEngine.PACK_URLS
+      # and the README's install link all read releases/latest/download/...,
+      # so a new "latest" would point every installed app at a test build.
+      # The Play bundle is not published at all - its pack URL is pinned to
+      # this commit, which is not something to hand to Play.
+      #
+      # It stays in this workflow because github.run_number here already
+      # numbers a branch build above main's, so the test APK installs over
+      # the everyday app and keeps the saved API key. A workflow of its own
+      # would start again at 1 and Android would refuse it as a downgrade.
+      - name: Publish the test APK to its own pre-release
+        if: github.ref != 'refs/heads/main'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          tag=ask-claude-test
+          gh release view "$tag" --repo "$GITHUB_REPOSITORY" > /dev/null 2>&1 || \
+            gh release create "$tag" \
+              --repo "$GITHUB_REPOSITORY" \
+              --title "Ask Claude test build" \
+              --notes "A test build of the Ask Claude work, from branch $GITHUB_REF_NAME. Its season data is pinned to the commit it was built from. Not the everyday app: that is the latest-apk release." \
+              --prerelease \
+              --latest=false \
+              --target "$GITHUB_SHA"
+          cp app/build/outputs/apk/debug/app-debug.apk ku-wbb-ask-test.apk
+          gh release upload "$tag" ku-wbb-ask-test.apk --repo "$GITHUB_REPOSITORY" --clobber
+          echo "Test APK: https://github.com/$GITHUB_REPOSITORY/releases/download/$tag/ku-wbb-ask-test.apk"
 
       # Publish the APK to a rolling "latest-apk" release for one-tap phone
       # download:

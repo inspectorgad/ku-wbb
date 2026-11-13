@@ -158,18 +158,34 @@ class TableNamesAgreeTest(unittest.TestCase):
     """
 
     EXPECTED = ["games", "periods", "ku_lines", "team_totals", "opponent_lines",
-                "opponent_roster", "upcoming", "standings", "poll", "roster", "definitions"]
+                "opponent_roster", "upcoming", "standings", "poll", "roster", "definitions",
+                "team_records", "big12_results", "d1_results"]
+
+    # Everything in the pack that is not a table.
+    NOT_TABLES = {"about", "generated_at", "system_prompt"}
 
     def test_the_pack_holds_exactly_those_tables(self):
         pack = build_pack(SEED)
         self.assertEqual(sorted(t for t in self.EXPECTED if t != "poll" or pack["poll"]),
                          sorted(t for t in self.EXPECTED if pack.get(t) is not None))
 
+    def test_the_pack_offers_no_table_the_lists_leave_out(self):
+        """Both directions, which the test above only checks one way.
+
+        It iterates EXPECTED, so a table the pack writes but the five lists do
+        not name was invisible to it - and that is a table Claude is never
+        offered and can never fetch. d1_results shipped in the pack that way.
+        """
+        extra = set(build_pack(SEED)) - self.NOT_TABLES - set(self.EXPECTED)
+        self.assertEqual(set(), extra, f"in the pack but not offered to Claude: {sorted(extra)}")
+
     def _listed(self, path, pattern):
         with open(os.path.join(REPO, path)) as f:
             body = re.search(pattern, f.read(), re.S)
         self.assertIsNotNone(body, f"table list not found in {path}")
-        return re.findall(r'"([a-z_]+)"', body.group(1))
+        # Digits too: big12_results has one, and a class of [a-z_] silently
+        # skipped it, so the lists looked like they disagreed when they did not.
+        return re.findall(r'"([a-z0-9_]+)"', body.group(1))
 
     def test_the_dashboard_and_the_app_offer_the_same_tables(self):
         self.assertEqual(self._listed("docs/ask.js", r"const TABLES = \[(.*?)\];"), self.EXPECTED)

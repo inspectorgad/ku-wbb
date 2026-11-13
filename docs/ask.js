@@ -19,6 +19,11 @@
 // Only /v1/messages is used. Anthropic does not allow the Files API to be
 // called from a web page (its CORS preflight answers "Disallowed CORS
 // origin"); /v1/messages does allow browser calls.
+//
+// With the "Search the web" box ticked, Claude may also search the internet
+// (Anthropic's web search tool, run on Anthropic's side) for what the tables
+// cannot tell it. Pages it cites are numbered in the answer, [1], and listed
+// under it - Anthropic requires the sources to be shown with the answer.
 import { Anthropic } from "./vendor/anthropic-sdk-0.128.0.mjs";
 
 // Opus 5.5 by default: the newest Opus, about 20% cheaper than Opus 5, at its
@@ -34,13 +39,135 @@ const MODELS = {
 const DEFAULT_MODEL = "claude-opus-5-5";
 // Round trips per question: pause_turn resumptions plus get_table answers.
 const MAX_HOPS = 16;
+// Sent in the reader's place when a paused answer is resumed; it isn't one of
+// the reader's questions. Word for word the app's (AskEngine.kt).
+const CONTINUE_NOTE = "(Sent by the app, not the reader: Anthropic paused your answer partway through. " +
+  "Carry on from where it stopped \u2014 run again any search that hadn't happened yet \u2014 " +
+  "without repeating what you've already written.)";
+
+// Sent in the reader's place when an answer is set back because Claude searched
+// while its code waited on get_table; word for word the app's.
+const SEPARATE_NOTE = "(Sent by the app, not the reader: your last step asked for a web search while your " +
+  "Python was waiting on get_table, which the app can't handle, so it was set aside. " +
+  "Start again, and run your searches and your Python in separate steps.)";
+// Times an answer is set back and asked again for that.
+const MAX_ASK_AGAIN = 1;
+
+// Asked of Claude with every web-search question; word for word the app's.
+const SEARCH_APART = "Search before or after running Python, not in the same step: the app can't " +
+  "run a search while your code is waiting on get_table.";
+
+const answeredIds = (content) => new Set(content.filter((b) => b.tool_use_id).map((b) => b.tool_use_id));
+// A server tool call with no result after it: not carried out yet.
+const isWaiting = (b, answered) => b.type === "server_tool_use" && !answered.has(b.id);
+
+// True when a reply that stopped for the page's tables also holds a web search
+// Claude asked for at the same moment. Anthropic's guide says that search runs
+// when the tables go back, but a web-search question of exactly that kind was
+// refused there as a prefill.
+function waitsOnSearch(content) {
+  const answered = answeredIds(content);
+  return content.some((b) => isWaiting(b, answered) && b.name === "web_search");
+}
+
+// True when a paused reply ends on a search or code run Anthropic hasn't carried
+// out yet - the shape its guide resumes by sending the reply back as it is.
+function endsOnWaitingServerTool(content) {
+  return content.length > 0 && isWaiting(content[content.length - 1], answeredIds(content));
+}
+
+// A paused reply cut back to its last finished step: everything before the
+// first search or code run Anthropic hadn't carried out yet, less any thinking
+// left at the end. Only the end is cut, so what is kept reads exactly as Claude
+// wrote it.
+function finishedPart(content) {
+  const answered = answeredIds(content);
+  const pending = content.findIndex((b) => isWaiting(b, answered));
+  const kept = pending < 0 ? content.slice() : content.slice(0, pending);
+  while (kept.length && ["thinking", "redacted_thinking"].includes(kept[kept.length - 1].type)) kept.pop();
+  return kept;
+}
+
+// A reply that was cut short (max_tokens), kept as far as it is complete: no
+// search, code run or table request left half made, and no thinking at the end.
+function settledPart(content) {
+  const kept = finishedPart(content);
+  while (kept.length && ["tool_use", "thinking", "redacted_thinking"].includes(kept[kept.length - 1].type)) kept.pop();
+  return kept;
+}
+
+// After a refusal partway through a streamed answer, a fallback model carries
+// on from it, marked by a "fallback" block. Before that block Anthropic takes
+// back the text, the results of searches and code runs (including one whose
+// call was in an earlier message), the calls that have their result here, and
+// the block itself - not thinking, table requests or calls left waiting.
+function echoable(content) {
+  const cut = content.map((b) => b.type).lastIndexOf("fallback");
+  if (cut < 0) return content;
+  const answered = answeredIds(content);
+  return content.filter((b, i) => i >= cut || b.type === "text" || b.type === "fallback" ||
+    (b.type === "server_tool_use" && answered.has(b.id)) ||
+    (b.tool_use_id && b.type !== "tool_result"));
+}
+
+// Where in the answer a request sits, added to a rejected request's error so a
+// screenshot of it says which step failed and how the request ended.
+function requestDetail(hop, previous) {
+  const last = conversation[conversation.length - 1];
+  const types = (last?.content || []).map((b) => b.type).slice(-3);
+  const n = (previous?.content || []).length;
+  const reply = previous ? ` Reply before it (${previous.model}, ${previous.stop_reason}, ` +
+    `${n} block${n === 1 ? "" : "s"}): ${describe(previous.content || [])}.` : "";
+  return `(For the developer: request ${hop + 1} of this answer; it ended with a ` +
+    `${last?.role || "missing"} message: ${types.join(", ")}.${reply})`;
+}
+
+// A reply's blocks in a few words, for a rejected request's error: each block's
+// type, the tool it calls and who called it, a search or code run not yet
+// carried out, and a server tool's error. Long replies keep their first two
+// and last six.
+function describe(content) {
+  const answered = answeredIds(content);
+  const words = content.map((b) => [b.type,
+    b.type.endsWith("tool_use") ? b.name : null,
+    b.caller?.type ? `via ${b.caller.type}` : null,
+    isWaiting(b, answered) ? "(waiting)" : null,
+    b.content?.error_code ? `(error ${b.content.error_code})` : null].filter(Boolean).join(" "));
+  if (!words.length) return "nothing";
+  return (words.length > 8 ? [...words.slice(0, 2), "...", ...words.slice(-6)] : words).join(", ");
+}
+
+// Forgets the thread back to `size` messages. If what goes held Claude's code,
+// its sandbox may be left paused on a call nobody will answer, so the next
+// request starts a fresh one; the season tables come again through get_table.
+function rollBack(size) {
+  if (conversation.length <= size) return;
+  const gone = conversation.slice(size);
+  const blocks = gone.flatMap((m) => (Array.isArray(m.content) ? m.content : []));
+  if (blocks.some((b) => (b.type || "").endsWith("tool_use"))) containerId = null;
+  conversation.length = size;
+}
+
 const TABLES = ["games", "periods", "ku_lines", "team_totals", "opponent_lines",
-  "opponent_roster", "upcoming", "standings", "poll", "roster", "definitions"];
+  "opponent_roster", "upcoming", "standings", "poll", "roster", "definitions",
+  "team_records", "big12_results", "d1_results"];
+// Anthropic's price for one web search ($10 per 1,000), and the most one
+// question may use - the same as the app (AskEngine.kt).
+const SEARCH_DOLLARS = 0.01;
+const MAX_SEARCHES = 5;
+// The basic web search, called by Claude directly rather than from its Python,
+// so results and citations reach the answer as they are. Localized to Lawrence
+// so local coverage ranks well.
+const WEB_SEARCH = {
+  type: "web_search_20250305", name: "web_search", max_uses: MAX_SEARCHES,
+  user_location: { type: "approximate", city: "Lawrence", region: "Kansas", country: "US", timezone: "America/Chicago" },
+};
 const TOOLS = [
   { type: "code_execution_20260120", name: "code_execution" },
   {
     name: "get_table",
-    description: "Returns one table of the Kansas women's basketball season data as a JSON string: " +
+    description: "Returns one table of the Kansas women's basketball season data (or, for " +
+      "opponent_roster, team_records and big12_results, data on other teams) as a JSON string: " +
       "a list of records (one per row) for every table except 'definitions' (a dict of column " +
       "meanings) and 'poll' (a dict with season, name, updated and rows). Call it from Python and " +
       "load it with pandas, e.g. df = pd.DataFrame(json.loads(await get_table({'table': 'ku_lines'}))).",
@@ -58,6 +185,8 @@ const EXAMPLES = [
   "What is our record when we lead after the first quarter, and when we trail at the half?",
   "Compare our rebounding at home, on the road and at neutral sites.",
   "Which quarter do we lose ground in most often in Big 12 losses?",
+  // Needs the web: nothing in the season data says who is fit to play.
+  "What injury or line-up news is there for our next opponent? (turn web search on)",
 ];
 
 // The instructions and data summary Claude is given are built by the pipeline
@@ -77,6 +206,7 @@ const store = {
 };
 const KEY_SLOT = "ku-wbb-ask-api-key";
 const MODEL_SLOT = "ku-wbb-ask-model";
+const WEB_SLOT = "ku-wbb-ask-web";
 
 let memoryKey = null; // used when browser storage is blocked
 let pack = null;
@@ -84,6 +214,14 @@ let systemText = null;
 let conversation = []; // Anthropic message params, appended in full each turn
 let containerId = null;
 let running = null; // the stream in flight, for Stop
+let shown = []; // the messages the answer on screen was drawn from
+let asking = false; // a question is in hand, from loading the data to the answer
+// Whether this conversation declares the web search tool, settled by its first
+// question (null before that). The tool list can't change partway through: on
+// Claude Opus 5.5 each turn's reasoning is bound to the tools it was written
+// with, and Anthropic rejects the conversation once they differ. Turning search
+// on in a conversation begun without it therefore starts a new one.
+let webDeclared = null;
 
 // --- The data -------------------------------------------------------------------
 
@@ -110,16 +248,29 @@ async function ask(question) {
   const cfg = MODELS[model];
   const client = new Anthropic({ apiKey: key, dangerouslyAllowBrowser: true });
 
+  asking = true;
+  const web = $("ask-web").checked;
+  const restarted = web && conversation.length > 0 && webDeclared === false;
+  if (restarted) newConversation();
+  if (!conversation.length) webDeclared = web;
   const turn = addTurn(question);
+  if (restarted) note(turn, "Web search was turned on, so this question started a new conversation: " +
+    "Claude can't take on web search partway through one.");
   let mark = conversation.length;
+  shown = []; // nothing drawn yet for this question
+  // Fixed for the whole conversation; the question says whether it may search.
+  const tools = webDeclared ? [...TOOLS, WEB_SEARCH] : TOOLS;
   setBusy(true, "Loading the season data…");
+  let detail = ""; // where the last request sat, for a rejected request's error
   try {
     await loadPack();
     conversation.push({ role: "user", content: [
-      { type: "text", text: `Today is ${new Date().toLocaleDateString("en-CA")}. ${question}` }] });
+      { type: "text", text: `Today is ${new Date().toLocaleDateString("en-CA")}. ` +
+        `Web search is ${web ? "on" : "off"} for this question. ${web ? SEARCH_APART + " " : ""}${question}` }] });
 
-    const usage = { input: 0, write: 0, read: 0, output: 0 };
+    const usage = { input: 0, write: 0, read: 0, output: 0, searches: 0 };
     let final = null;
+    let asksAgain = 0;
     for (let hop = 0; hop < MAX_HOPS; hop++) {
       setBusy(true, hop ? "Still working…" : "Thinking…");
       const params = {
@@ -127,22 +278,26 @@ async function ask(question) {
         max_tokens: 16000,
         cache_control: { type: "ephemeral" },
         system: [{ type: "text", text: systemText, cache_control: { type: "ephemeral" } }],
-        tools: TOOLS,
+        tools,
         messages: conversation,
         ...(containerId ? { container: containerId } : {}),
         ...(cfg.effort ? { output_config: { effort: cfg.effort } } : {}),
         ...(cfg.fallbacks ? { betas: ["server-side-fallback-2026-07-01"], fallbacks: "default" } : {}),
       };
+      detail = requestDetail(hop, final);
       running = client.beta.messages.stream(params);
       running.on("streamEvent", (ev) => {
         if (ev.type === "content_block_start" && ev.content_block.type === "server_tool_use") {
-          setBusy(true, "Running Python on the season data…");
+          setBusy(true, ev.content_block.name === "web_search" ? "Searching the web…" : "Running Python on the season data…");
         } else if (ev.type === "content_block_start" && ev.content_block.type === "text") {
           setBusy(true, "Writing the answer…");
         }
       });
       const earlier = conversation.slice(mark);
-      running.on("text", () => renderAnswer(turn, [...earlier, running.currentMessage]));
+      running.on("text", () => {
+        shown = [...earlier, running.currentMessage];
+        renderAnswer(turn, shown);
+      });
       final = await running.finalMessage();
       running = null;
       const u = final.usage || {};
@@ -150,47 +305,106 @@ async function ask(question) {
       usage.write += u.cache_creation_input_tokens || 0;
       usage.read += u.cache_read_input_tokens || 0;
       usage.output += u.output_tokens || 0;
+      usage.searches += u.server_tool_use?.web_search_requests || 0;
       if (final.container?.id) containerId = final.container.id;
       if (final.stop_reason === "refusal") break;
-      conversation.push({ role: "assistant", content: final.content });
-      if (final.stop_reason === "tool_use") {
+      const content = echoable(final.content);
+      const calls = content.filter((b) => b.type === "tool_use");
+      if (final.stop_reason === "tool_use" && calls.length) {
+        if (waitsOnSearch(content) && asksAgain < MAX_ASK_AGAIN) {
+          // Claude asked for a web search at the same moment its Python asked
+          // the page for a table. Anthropic's guide says the search runs when
+          // the table goes back, but that request is the one refused as a
+          // prefill. So the answer so far is set aside, paused code and all,
+          // and the question asked again with a note to keep the two apart.
+          asksAgain++;
+          rollBack(mark + 1);
+          containerId = null; // this reply's code is paused in it
+          conversation.push({ role: "user", content: [{ type: "text", text: SEPARATE_NOTE }] });
+          continue;
+        }
         // Claude's code asked for tables: answer every pending call in one
         // message of tool_result blocks only, then let the code carry on.
-        const calls = final.content.filter((b) => b.type === "tool_use");
+        conversation.push({ role: "assistant", content });
         conversation.push({ role: "user", content: calls.map((c) => tableResult(c)) });
         setBusy(true, "Running Python on the season data…");
         continue;
       }
-      if (final.stop_reason !== "pause_turn") break;
+      if (final.stop_reason === "pause_turn" || final.stop_reason === "tool_use") {
+        // Paused: Anthropic stopped a long turn (a run of web searches, say), or
+        // stopped for a tool call the page has nothing to run.
+        if (endsOnWaitingServerTool(content)) {
+          // Anthropic's documented continuation: the reply goes back as it is,
+          // and the API resumes from the search or code run it hadn't carried out.
+          conversation.push({ role: "assistant", content });
+        } else {
+          // Paused anywhere else, the reply as it is would read as a prefill. It
+          // is kept up to its last finished step and Claude is asked, in a
+          // message of its own, to carry on.
+          const finished = finishedPart(content);
+          if (finished.length) conversation.push({ role: "assistant", content: finished });
+          if (conversation[conversation.length - 1].content?.[0]?.text !== CONTINUE_NOTE) {
+            conversation.push({ role: "user", content: [{ type: "text", text: CONTINUE_NOTE }] });
+          }
+        }
+        continue;
+      }
+      // Finished, or cut short (max_tokens): kept as far as it is complete, so a
+      // follow-up never comes after a half-made tool call, and an empty reply
+      // isn't kept at all - the API refuses an empty message anywhere but last.
+      const kept = final.stop_reason === "end_turn" ? content : settledPart(content);
+      if (kept.length) conversation.push({ role: "assistant", content: kept });
+      break;
     }
 
+    // Taken before any rollback, so the sources and code shown always match
+    // the text shown, [n] marks included.
+    const answered = conversation.slice(mark);
     if (final.stop_reason === "refusal") {
-      conversation.length = mark; // the declined question leaves no trace in the thread
+      rollBack(mark); // the declined question leaves no trace in the thread
+      cancelDraw(); // a draw of text streamed just before must not cover this
       turn.answer.replaceChildren(el("p", "ask-note",
         "Claude declined to answer that one. Try rephrasing it as a question about the stats."));
     } else {
-      renderAnswer(turn, conversation.slice(mark));
+      renderAnswer(turn, answered);
       if (final.stop_reason === "tool_use" || final.stop_reason === "pause_turn") {
         // Out of round trips mid-answer. The thread cannot continue from a
         // pending tool call, so it is rolled back; the reader can ask again.
-        conversation.length = mark;
+        rollBack(mark);
         note(turn, "Claude was still working when this page stopped waiting. Try a narrower question.");
       }
       if (final.stop_reason === "max_tokens") note(turn, "The answer hit its length limit and was cut short.");
     }
-    showCode(turn, conversation.slice(mark));
+    if (final.stop_reason !== "refusal") {
+      showSources(turn, answered);
+      showCode(turn, answered);
+    }
     note(turn, costLine(cfg, usage, model));
   } catch (e) {
-    conversation.length = mark;
+    // What was on screen when it stopped, so its [n] marks keep their sources.
+    const partial = shown.length ? shown : conversation.slice(mark);
+    rollBack(mark);
     if (e instanceof Anthropic.APIUserAbortError) {
+      showSources(turn, partial);
       note(turn, "Stopped.");
     } else {
+      cancelDraw();
       turn.answer.replaceChildren(el("p", "ask-error", explainError(e)));
+      if (e instanceof Anthropic.BadRequestError && detail) turn.answer.append(el("p", "ask-note", detail));
     }
   } finally {
     running = null;
+    asking = false;
     setBusy(false);
   }
+}
+
+function newConversation() {
+  conversation = [];
+  containerId = null;
+  webDeclared = null;
+  $("ask-thread").replaceChildren();
+  $("ask-new").hidden = true;
 }
 
 // One get_table call answered from the loaded data.
@@ -215,11 +429,15 @@ function explainError(e) {
 }
 
 function costLine(cfg, u, model) {
-  const dollars = (u.input * cfg.input + u.write * cfg.input * 1.25 + u.read * cfg.input * cfg.cacheRead + u.output * cfg.output) / 1e6;
+  const searches = u.searches || 0;
+  const dollars = (u.input * cfg.input + u.write * cfg.input * 1.25 + u.read * cfg.input * cfg.cacheRead + u.output * cfg.output) / 1e6 +
+    searches * SEARCH_DOLLARS;
   const cents = dollars * 100;
   const price = cents < 1 ? "under 1¢" : `about ${cents < 10 ? cents.toFixed(1) : Math.round(cents)}¢`;
   return `${MODELS[model].label.split(" —")[0]} · ${price}` +
-    (u.read ? " (season data read from cache)" : "") + " · plus a little code-execution time";
+    (u.read ? " (season data read from cache)" : "") +
+    (searches ? ` · ${searches} web search${searches === 1 ? "" : "es"} included` : "") +
+    " · plus a little code-execution time";
 }
 
 // --- Rendering --------------------------------------------------------------------
@@ -243,15 +461,72 @@ function addTurn(question) {
 }
 
 let pendingRender = null;
+function cancelDraw() {
+  if (pendingRender) cancelAnimationFrame(pendingRender);
+  pendingRender = null;
+}
+// The answer text with each cited passage followed by its source numbers, and
+// the sources in order - the same as the app's AskEngine. A cited answer
+// arrives as a run of text blocks that together make up the sentences, so
+// neighbouring text blocks are joined as they are; text separated by code or
+// searches starts a new paragraph.
+function answerWithSources(messages) {
+  let out = "";
+  const sources = [];
+  for (const m of messages.filter((x) => x && x.role === "assistant")) {
+    let joined = false;
+    for (const b of m.content || []) {
+      if (b.type !== "text") { joined = false; continue; }
+      if (!joined && out.trim()) out += "\n\n";
+      out += b.text;
+      const numbers = [];
+      for (const c of b.citations || []) {
+        if (!/^https?:\/\//.test(c.url || "")) continue;
+        let src = sources.find((x) => x.url === c.url);
+        if (!src) { src = { number: sources.length + 1, title: c.title || c.url, url: c.url }; sources.push(src); }
+        if (!numbers.includes(src.number)) numbers.push(src.number);
+      }
+      out += numbers.map((n) => ` [${n}]`).join("");
+      joined = true;
+    }
+  }
+  return { text: out.trim(), sources };
+}
+
 function renderAnswer(turn, messages) {
-  const text = messages.filter((m) => m && m.role === "assistant")
-    .flatMap((m) => m.content).filter((b) => b.type === "text").map((b) => b.text).join("\n\n");
+  const { text } = answerWithSources(messages);
   if (pendingRender) cancelAnimationFrame(pendingRender);
   pendingRender = requestAnimationFrame(() => { turn.answer.innerHTML = markdown(text); });
 }
 
 function note(turn, text) {
   turn.wrap.appendChild(el("p", "ask-note", text));
+}
+
+// The web pages the answer cites, numbered as in its text, and what Claude
+// searched for.
+function showSources(turn, messages) {
+  const { sources } = answerWithSources(messages);
+  if (sources.length) {
+    const box = el("div", "ask-sources");
+    box.appendChild(el("p", "ask-label", "Sources from the web"));
+    const ol = el("ol");
+    for (const src of sources) {
+      const li = el("li");
+      const a = el("a", null, src.title);
+      a.href = src.url; // only http(s), checked when collected
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      li.appendChild(a);
+      ol.appendChild(li);
+    }
+    box.appendChild(ol);
+    turn.wrap.appendChild(box);
+  }
+  const searches = messages.filter((m) => m.role === "assistant").flatMap((m) => m.content)
+    .filter((b) => b.type === "server_tool_use" && b.name === "web_search" && b.input?.query)
+    .map((b) => `"${b.input.query}"`);
+  if (searches.length) note(turn, "Searched the web for: " + searches.join("; "));
 }
 
 // The Python Claude ran, for anyone who wants to check the working.
@@ -342,6 +617,9 @@ function init() {
   }
   sel.value = store.get(MODEL_SLOT) in MODELS ? store.get(MODEL_SLOT) : DEFAULT_MODEL;
   sel.onchange = () => store.set(MODEL_SLOT, sel.value, true);
+  const web = $("ask-web");
+  web.checked = store.get(WEB_SLOT) === "1";
+  web.onchange = () => store.set(WEB_SLOT, web.checked ? "1" : "0", true);
 
   $("ask-key-save").onclick = () => {
     const v = $("ask-key").value.trim();
@@ -359,7 +637,7 @@ function init() {
   };
   const submit = () => {
     const q = $("ask-q").value.trim();
-    if (!q || running) return;
+    if (!q || running || asking) return;
     $("ask-q").value = "";
     ask(q);
   };
@@ -368,12 +646,7 @@ function init() {
     if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); submit(); }
   });
   $("ask-stop").onclick = () => running?.abort();
-  $("ask-new").onclick = () => {
-    conversation = [];
-    containerId = null;
-    $("ask-thread").replaceChildren();
-    $("ask-new").hidden = true;
-  };
+  $("ask-new").onclick = newConversation;
   const ex = $("ask-examples");
   for (const q of EXAMPLES) {
     const b = el("button", "ask-btn ask-example", q);
@@ -381,6 +654,62 @@ function init() {
     ex.appendChild(b);
   }
   refreshKeyState();
+
+  // The Preview and Recap buttons elsewhere on the page hand a question over
+  // here. It is asked straight away unless that would cost the reader
+  // something they did not choose - a key they have not saved, a question
+  // already in flight, or a restart that would clear the thread - and then it
+  // waits in the box with the reason, where pressing Ask makes the decision
+  // theirs. The app's Ask screen does the same.
+  //
+  // Every path says something. A press that looks like nothing happened is
+  // worse than one that is refused out loud, especially from the game sheet,
+  // which closes itself to bring the reader here.
+  const park = (q, why) => {
+    const box = $("ask-q");
+    // Never over-write a question the reader is part-way through: the textarea
+    // has no undo once it is replaced, and these branches exist to protect
+    // them from a press, not to cost them a paragraph.
+    if (box.value.trim()) {
+      showError("Finish or clear the question in the box first, then press Preview or Recap again.");
+    } else {
+      box.value = q;
+      showError(why);
+    }
+  };
+  window.kuAskAbout = (q) => {
+    $("ask-wrap").scrollIntoView({ behavior: "smooth", block: "start" });
+    // `running` is null for real stretches while a question is still in hand
+    // (loading the pack, between get_table hops), so `asking` is the one that
+    // actually says whether this box is busy.
+    if (running || asking) {
+      park(q, "A question is already running. Press Ask when it has finished.");
+    } else if (!apiKey()) {
+      park(q, "Add your Anthropic API key above, then press Ask.");
+    } else if ($("ask-web").checked && conversation.length > 0 && webDeclared === false) {
+      park(q, "Web search is on, so this would start a new conversation and clear the thread. " +
+        "Press Ask to go ahead, or turn web search off.");
+    } else {
+      ask(q);
+    }
+  };
 }
+
+// The Preview and Recap buttons' questions, word for word the app's
+// previewQuestion() and recapQuestion() in AskScreen.kt. docs/ask.test.mjs
+// compares the two files and fails when they drift apart.
+//
+// `versus` carries its own trailing space - it is the dashboard's vsAt(g) and
+// the app's siteLabel(site): "vs ", "at ", or nothing when the site is
+// unknown, so a game with no site still reads as a sentence.
+window.kuPreviewQuestion = (date, versus, opponent) =>
+  `Give me a short scouting report for the ${date} game ${versus}${opponent}: their season so far ` +
+  "and what they do well, our last meeting and any common opponents, the players to watch " +
+  "on each side, how we match up, and where each of us stands in the NET and the Big 12 " +
+  "standings.";
+window.kuRecapQuestion = (date, versus, opponent) =>
+  `Recap the ${date} game ${versus}${opponent}: the result and how each quarter went, our standout ` +
+  "players and theirs, how our shooting, rebounding and turnovers compared with our season " +
+  "averages, and where the game was won or lost in the team totals.";
 
 init();

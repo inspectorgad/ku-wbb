@@ -33,6 +33,21 @@ const INDEX_VERSION = 3;
 
 fs.mkdirSync('scraped', { recursive: true });
 
+// Every Division I final, for "Ask about the team" to compare common
+// opponents. Kept apart from the index, with its own swept-dates list, so
+// back-filling it re-reads each date once without clearing the index's own
+// cache and re-sweeping the Big 12 games that are already captured.
+const RESULTS_PATH = 'scraped/d1-results.json';
+const results = fs.existsSync(RESULTS_PATH)
+  ? JSON.parse(fs.readFileSync(RESULTS_PATH, 'utf8'))
+  : { sweptDates: {}, games: {} };
+results.sweptDates ??= {};
+results.games ??= {};
+// The current season only, as the volleyball app does: a scouting question is
+// about this season, and every season kept is another ~5,000 games in a file
+// the app downloads.
+const D1_SEASON = String(Math.max(...SEASONS.map(Number)));
+
 const INDEX_PATH = 'scraped/ku-index.json';
 const index = fs.existsSync(INDEX_PATH)
   ? JSON.parse(fs.readFileSync(INDEX_PATH, 'utf8'))
@@ -75,7 +90,13 @@ for (const season of SEASONS) {
     if (date > today) break;
     // Rescan recent dates (results may have just gone final); skip older
     // dates we've already scanned.
-    if (index.scannedDates[date] && date < recentCutoff) continue;
+    // The results file only keeps the current season, so only its dates need
+    // re-reading when back-filling; an older date already scanned stays
+    // skipped, which is the difference between ~13 extra reads and ~180.
+    const [dy, dm] = date.split('-').map(Number);
+    const dateSeason = String(dm >= 8 ? dy : dy - 1);
+    const needsD1 = dateSeason === D1_SEASON && !results.sweptDates[date];
+    if (index.scannedDates[date] && !needsD1 && date < recentCutoff) continue;
 
     const [y, m, d] = date.split('-');
     let data;
@@ -85,6 +106,7 @@ for (const season of SEASONS) {
       // Days with no D1 games return 404; that still counts as scanned.
       if (String(e.message).startsWith('404')) {
         index.scannedDates[date] = true;
+        results.sweptDates[date] = true;
       } else {
         console.log(`scoreboard ${date}: ${e.message}`);
       }
@@ -127,6 +149,28 @@ for (const season of SEASONS) {
         };
       }
 
+      // Every Division I final of the current season. The scoreboard for this
+      // date has already been fetched for the Big 12 capture above, so keeping
+      // the rest of its games costs no extra request.
+      if (g.gameState === 'final' && dateSeason === D1_SEASON) {
+        const plain = (s) => ({
+          name: s?.names?.short ?? '',
+          seo: s?.names?.seo ?? '',
+          score: Number(s?.score ?? 0),
+          winner: Boolean(s?.winner),
+          rank: s?.rank ? Number(s.rank) : null,
+          inConference: confTags(s).includes(CONFERENCE_SEO),
+        });
+        results.games[g.gameID] = {
+          date,
+          season: dateSeason,
+          home: plain(g.home),
+          away: plain(g.away),
+          conferenceGame: homeInConf && awayInConf,
+          bracket: Boolean(g.bracketRound || g.bracketId),
+        };
+      }
+
       if (!sides.some((s) => s?.names?.seo === TEAM_SEO)) continue;
       const existing = index.games[g.gameID];
       if (existing?.final && existing?.boxscored) continue;
@@ -140,10 +184,12 @@ for (const season of SEASONS) {
       console.log(`found KU game ${g.gameID} on ${date}: ${g.away?.names?.short} at ${g.home?.names?.short} (${g.gameState})`);
     }
     index.scannedDates[date] = true;
+    results.sweptDates[date] = true;
   }
 }
 
 console.log(`big12 games captured: ${Object.keys(index.big12Games).length}`);
+console.log(`d1 ${D1_SEASON} results captured: ${Object.keys(results.games).length}`);
 
 // --- 1b. Rankings snapshots (best effort; never fail the run) ---------------
 // Both endpoints serve only the CURRENT poll/ranking — no per-season history.
@@ -200,6 +246,7 @@ for (const [gameId, meta] of Object.entries(index.games)) {
   }
 }
 
+fs.writeFileSync(RESULTS_PATH, JSON.stringify(results, null, 1));
 fs.writeFileSync(INDEX_PATH, JSON.stringify(index, null, 1));
 
 // --- 3. kuathletics.com: current roster + upcoming schedule ----------------
@@ -248,6 +295,9 @@ try {
   const fixtures = parseSchedule(schedText).map((f) => ({
     date: f.date,
     opponent: f.opponent,
+    // The schedule page's "#25" for a ranked opponent, kept apart from the
+    // name so every source spells the school the same way.
+    opponentRank: f.opponentRank ?? null,
     site: siteOf(f),
     // Kept so an older seed builder, which knows only this field, still places
     // the game on the right side of a home/away split.

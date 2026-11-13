@@ -78,3 +78,27 @@ def norm_team(name):
     n = re.sub(r"\bstate\b", "st", n)
     n = re.sub(r"\buniversity\b", "", n)
     return re.sub(r"\s+", " ", n).strip()
+
+
+MONTHS = "JAN FEB MAR APR MAY JUN JUL AUG SEP OCT NOV DEC".split()
+
+
+def season_label(start_year):
+    """2025 -> "2025-26"."""
+    return f"{start_year}-{str(start_year + 1)[-2:]}"
+
+
+def snapshot_season(payload):
+    """Which season an NCAA ranking snapshot belongs to, from its "as of" line.
+
+    Here rather than in update-seed.py because ask_pack.py needs it too, and
+    update-seed.py cannot be imported: its name has a hyphen in it and it runs
+    the whole build on import.
+    """
+    label = (payload.get("updated", "") or "").upper()
+    m = re.search(r"\b(" + "|".join(MONTHS) + r")[A-Z]*\.?\s+\d{1,2},?\s+(20\d{2})", label)
+    if not m:
+        return None
+    month = MONTHS.index(m.group(1)) + 1
+    year = int(m.group(2))
+    return season_label(year if month >= 8 else year - 1)

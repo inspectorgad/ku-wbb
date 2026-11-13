@@ -11,7 +11,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { parseSchedule, siteOf, to24h, postalCity } from './schedule-parser.mjs';
+import { splitRank, parseSchedule, siteOf, to24h, postalCity } from './schedule-parser.mjs';
 
 const page = fs.readFileSync(
   new URL('./fixtures/schedule-page-2026-09-27.txt', import.meta.url), 'utf8'
@@ -47,6 +47,26 @@ test('a row carries its venue, city, tip time and channel', () => {
   assert.equal(f.city, 'Sioux Falls, SD');
   assert.equal(f.tv, 'BTN+');
   assert.equal(f.event, 'MarketBeat Invitational');
+});
+
+test('a ranked opponent keeps its name and carries the rank beside it', () => {
+  // The schedule page prints "#25 Nebraska". Left on the name, the fixture
+  // keys differently from its own box score (which says "Nebraska"), the win
+  // model cannot find the team in the NET table - the Nov 14 game silently
+  // lost its win chance that way - and the non-Division-I check would call a
+  // ranked team non-Division I.
+  assert.deepEqual(splitRank('#25 Nebraska'), { opponent: 'Nebraska', opponentRank: 25 });
+  assert.deepEqual(splitRank('#1 South Carolina'), { opponent: 'South Carolina', opponentRank: 1 });
+  assert.deepEqual(splitRank('Nebraska'), { opponent: 'Nebraska', opponentRank: null });
+  // Not every parenthesis or hash is a rank.
+  assert.deepEqual(splitRank('Miami (OH)'), { opponent: 'Miami (OH)', opponentRank: null });
+  assert.deepEqual(splitRank(''), { opponent: '', opponentRank: null });
+
+  const row = ['vs', '#25 Nebraska', '', 'Sanford Pentagon', 'Sioux Falls, S.D.', '',
+    'Nov 14', '(Sat)', '', '3:30 p.m. CT', '', 'History'].join('\n');
+  const [f] = parseSchedule(`2026-27 Women's Basketball Schedule\n${row}`);
+  assert.equal(f.opponent, 'Nebraska');
+  assert.equal(f.opponentRank, 25);
 });
 
 test('a link label above a row is not mistaken for a tournament', () => {

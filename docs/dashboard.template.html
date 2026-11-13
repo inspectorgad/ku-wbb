@@ -345,6 +345,12 @@
   .ask-table { overflow-x: auto; margin: 0 0 8px; }
   .ask-table th, .ask-table td { white-space: nowrap; }
   .ask-note { font-size: 11px; color: var(--muted); margin: 4px 0 0; }
+  /* The web-search box and the sources an answer cites. */
+  .ask-web-check { align-items: flex-start; margin: 6px 0; }
+  .ask-web-check input { margin-top: 2px; flex: none; }
+  .ask-sources { font-size: 12px; margin-top: 6px; }
+  .ask-sources ol { margin: 2px 0 0; padding-left: 22px; }
+  .ask-sources a { color: var(--blue); overflow-wrap: anywhere; }
   .ask-error { color: var(--loss); }
   .ask-code summary { font-size: 12px; color: var(--muted); cursor: pointer; margin-top: 6px; }
   /* ---------- season simulator ---------- */
@@ -367,6 +373,19 @@
     color: var(--muted); font-family: inherit;
   }
   .sim-row button.chip:hover { border-color: var(--blue); color: var(--blue); }
+  /* The Preview and Recap buttons that hand a question to the Ask box. The
+     hover above is scoped to the simulator, so these carry their own — and in
+     the game sheet's blue banner they borrow the jersey badge's translucent
+     white rather than sitting there as a pale card. */
+  button.chip.ask-mini { margin-right: 8px; font-weight: 700; white-space: nowrap; }
+  button.chip.ask-mini:hover { border-color: var(--blue); color: var(--blue); }
+  .m-head button.chip.ask-mini {
+    margin: 8px 0 0; background: rgba(255,255,255,.16); color: #fff;
+    border-color: rgba(255,255,255,.35);
+  }
+  .m-head button.chip.ask-mini:hover {
+    background: rgba(255,255,255,.28); color: #fff; border-color: #fff;
+  }
   .sim-row button.chip.on[data-v="W"] { background: var(--win-bg); color: var(--win); border-color: var(--win); }
   .sim-row button.chip.on[data-v="L"] { background: var(--loss-bg); color: var(--loss); border-color: var(--loss); }
   @media (max-width: 560px) {
@@ -426,6 +445,11 @@
       <button class="ask-btn ask-go" id="ask-go">Ask</button>
       <button class="ask-btn" id="ask-stop" hidden>Stop</button>
     </div>
+    <label class="ask-check ask-web-check"><input type="checkbox" id="ask-web"><span>Search the web too
+      — lets Claude look up news, previews and injury reports, and list the pages it used
+      (numbered like [1] in the answer). Statistics still come from the box scores. Each search costs
+      1¢ on your Anthropic account plus reading the pages, at most 5 searches a question; web pages
+      can be wrong or dated. Turning it on partway through a conversation starts a new one.</span></label>
     <div class="ask-row"><span id="ask-status" class="ask-status" role="status"></span>
       <button class="ask-btn" id="ask-new" hidden>New conversation</button></div>
     <div class="ask-examples" id="ask-examples"></div>
@@ -435,8 +459,11 @@
       default), less with Sonnet 5, and follow-ups within a few minutes cost less because the season
       data is cached. Claude works from the same validated box scores this page is built from, and
       computes every figure by running Python on them rather than from memory — "Show the code"
-      under an answer lists exactly what it ran. It knows nothing about injuries, practice or
-      line-ups.</p>
+      under an answer lists exactly what it ran. Besides Kansas's own data it has the other teams'
+      too: the rosters of the schools KU plays, every Division I team's NET row, and every result
+      involving a Big 12 team. On its own it knows nothing about injuries, practice or line-ups and
+      says so; tick "Search the web too" to let it look such things up, with the pages it used
+      listed under the answer.</p>
   </section>
 
   <section id="chartSec">
@@ -632,8 +659,13 @@
     <div>
       <h3 id="gTitle"></h3>
       <div class="sub" id="gSub"></div>
+      <button class="chip ask-mini" id="gRecap" type="button">Recap this game with Claude</button>
     </div>
-    <button class="m-close" id="gClose" aria-label="Close">✕</button>
+    <!-- autofocus, because a dialog focuses its first focusable child and that
+         is now the Recap button: a reader who pressed Space or Enter on a box
+         score they had just opened would have spent money on a question they
+         never asked. Dismissing is the safe thing for a stray key to do. -->
+    <button class="m-close" id="gClose" aria-label="Close" autofocus>✕</button>
   </div>
   <div class="m-body">
     <div class="m-sec" id="gFactsSec">
@@ -1038,12 +1070,20 @@ function gamesTable() {
   // venue, broadcaster and event.
   const where = g =>
     `${g.venue || ""}${g.city ? ` · ${g.city}` : ""}${g.tv ? ` · TV ${g.tv}` : ""}`;
+  // One tap to Claude for a scouting report, through the Ask box below. It
+  // rides in the fixture-details cell, which only scheduled rows have, so the
+  // played rows and the shared Opponent column keep the width they had — and
+  // it leads that cell rather than trailing it, because the venue, city and
+  // broadcaster can be long enough to push a trailing chip off the right edge
+  // on a phone, where the table scrolls sideways.
+  const previewChip = i =>
+    `<button class="chip ask-mini" type="button" data-ask-preview="${i}">Preview</button>`;
   const upcomingRows = upcoming.map((g, i) => `
     <tr>
       <td class="dim">${games.length + i + 1}</td>
       <td class="lft">${fmtDate(g.date)}</td>
       <td class="lft">${siteChip(g)}</td>
-      <td class="lft"><b>${g.opponent}</b>${g.event ? ` <span class="dim">${g.event}</span>` : ""}</td>
+      <td class="lft">${g.opponentRank ? `<span class="dim">#${g.opponentRank}</span> ` : ""}<b>${g.opponent}</b>${g.event ? ` <span class="dim">${g.event}</span>` : ""}</td>
       <td class="lft"><span class="phase-lbl">${fmtTime(g.time) || "TBD"}</span></td>
       ${hasResults
       // The column that holds a score once there is one is where the forecast
@@ -1051,9 +1091,9 @@ function gamesTable() {
       // score. A season with nothing played yet heads a column of its own
       // instead, since there are no results for "Score" to mean.
       ? `<td>${forecastCell(g)}</td>
-      <td class="lft dim" colspan="2">${where(g)}</td>`
+      <td class="lft dim" colspan="2">${previewChip(i)}${where(g)}</td>`
       : `<td class="lft">${forecastCell(g)}</td>
-      <td class="lft dim wrapcell">${where(g)}</td>`}
+      <td class="lft dim wrapcell">${previewChip(i)}${where(g)}</td>`}
       <td class="lft"><span class="phase-lbl">${PHASE_TINY[phaseOf(g)]}</span></td>
     </tr>`);
   document.querySelector("#gamesTbl tbody").innerHTML =
@@ -1657,8 +1697,32 @@ gmodal.addEventListener("click", ev => { if (ev.target === gmodal) gmodal.close(
 // A played row carries its game number; the scheduled rows below have no box
 // score to open, so they carry none and this does nothing for them.
 document.getElementById("gamesTbl").addEventListener("click", ev => {
+  // A Preview chip sits in a scheduled row, which carries no data-g, so the
+  // two never collide. Delegated because gamesTable() rebuilds every row on a
+  // season change, and a handler bound to a chip would go with the old one.
+  const i = ev.target.closest("[data-ask-preview]")?.dataset.askPreview;
+  if (i != null) {
+    askAboutGame(upcoming[+i], "kuPreviewQuestion");
+    return;
+  }
   const n = ev.target.closest("tr[data-g]")?.dataset.g;
   if (n) openGame(+n);
+});
+
+// Hands a game's question to the Ask box. ask.js is a module loaded after this
+// script and defines these on window, so they are looked up at click time and
+// the page still works when that module does not load at all.
+function askAboutGame(g, builder) {
+  if (!g || !window.kuAskAbout || !window[builder]) return false;
+  window.kuAskAbout(window[builder](g.date, vsAt(g), g.opponent));
+  return true;
+}
+document.getElementById("gRecap").addEventListener("click", () => {
+  // Closed only once the question is in the Ask box's hands. kuAskAbout always
+  // either asks or says why it did not, so closing then is taking the reader
+  // somewhere; closing when the module never loaded would just destroy the box
+  // score they were reading and leave them nothing.
+  if (askAboutGame(openGameShown, "kuRecapQuestion")) gmodal.close();
 });
 
 const BOX_COLS = [
@@ -1677,9 +1741,13 @@ function boxTable(table, lines, nameOf) {
       BOX_COLS.map(([, f]) => `<td>${f(l) ?? 0}</td>`).join("") + "</tr>").join("");
 }
 
+// The game the sheet is showing, so its Recap button knows what to ask about.
+let openGameShown = null;
+
 function openGame(n) {
   const g = games[n - 1];
   if (!g) return;
+  openGameShown = g;
   document.getElementById("gTitle").textContent =
     `${vsAt(g)}${g.opponent} · ${g.teamScore}–${g.opponentScore}`;
   document.getElementById("gSub").textContent = [
