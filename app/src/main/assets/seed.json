@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-11-12T08:48:42Z",
+ "generatedAt": "2026-11-13T02:07:33Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -18815,16 +18815,6 @@
   },
   {
    "season": "2026-27",
-   "team": "Oklahoma St.",
-   "seo": "oklahoma-st",
-   "confW": 0,
-   "confL": 0,
-   "overallW": 3,
-   "overallL": 0,
-   "nationalRank": 19
-  },
-  {
-   "season": "2026-27",
    "team": "TCU",
    "seo": "tcu",
    "confW": 0,
@@ -18862,6 +18852,16 @@
    "overallW": 3,
    "overallL": 0,
    "nationalRank": 24
+  },
+  {
+   "season": "2026-27",
+   "team": "Oklahoma St.",
+   "seo": "oklahoma-st",
+   "confW": 0,
+   "confL": 0,
+   "overallW": 3,
+   "overallL": 1,
+   "nationalRank": 19
   },
   {
    "season": "2026-27",
@@ -21363,15 +21363,6 @@
     "rating": 0.7501
    },
    {
-    "team": "Oklahoma St.",
-    "key": "oklahoma st",
-    "confW": 0,
-    "confL": 0,
-    "remaining": 16,
-    "pVsAverage": 0.7233,
-    "rating": 1.2035
-   },
-   {
     "team": "TCU",
     "key": "tcu",
     "confW": 0,
@@ -21406,6 +21397,15 @@
     "remaining": 17,
     "pVsAverage": 0.6703,
     "rating": 1.09
+   },
+   {
+    "team": "Oklahoma St.",
+    "key": "oklahoma st",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 16,
+    "pVsAverage": 0.7233,
+    "rating": 1.2035
    },
    {
     "team": "UCF",
