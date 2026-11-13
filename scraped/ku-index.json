@@ -177,7 +177,8 @@
   "2026-11-09": true,
   "2026-11-10": true,
   "2026-11-11": true,
-  "2026-11-12": true
+  "2026-11-12": true,
+  "2026-11-13": true
  },
  "games": {
   "6515413": {
@@ -9735,6 +9736,28 @@
     "winner": false,
     "rank": null,
     "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6650488": {
+   "date": "2026-11-12",
+   "season": "2026",
+   "home": {
+    "name": "Tulsa",
+    "seo": "tulsa",
+    "score": 64,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 62,
+    "winner": false,
+    "rank": 19,
+    "inConference": true
    },
    "conferenceGame": false,
    "bracket": false
