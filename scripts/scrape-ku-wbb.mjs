@@ -295,6 +295,9 @@ try {
   const fixtures = parseSchedule(schedText).map((f) => ({
     date: f.date,
     opponent: f.opponent,
+    // The schedule page's "#25" for a ranked opponent, kept apart from the
+    // name so every source spells the school the same way.
+    opponentRank: f.opponentRank ?? null,
     site: siteOf(f),
     // Kept so an older seed builder, which knows only this field, still places
     // the game on the right side of a home/away split.

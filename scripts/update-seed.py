@@ -398,6 +398,9 @@ for entry in load_json("scraped/upcoming.json", []):
         # it is home, away or on a neutral floor — no need to wait for the box
         # score. `scheduleSite` is trusted directly by the site derivation.
         "scheduleSite": (entry.get("site") or "").strip() or None,
+        # The schedule page's rank for the opponent, which no other source
+        # carries for a game not yet played.
+        "opponentRank": entry.get("opponentRank"),
         "nominalHome": bool(entry.get("home")),
     }
     for key_name in ("venue", "city", "tv", "event"):

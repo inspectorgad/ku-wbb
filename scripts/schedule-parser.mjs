@@ -52,7 +52,21 @@ export function postalCity(text) {
   return code ? `${m[1]}, ${code}` : text.trim();
 }
 
-export function parseSchedule(schedText, { stripRank = (s) => s } = {}) {
+// "#25 Nebraska" is how the schedule page prints a ranked opponent. The rank
+// is display, not part of the school's name, and leaving it on the name is not
+// cosmetic: every other source writes plain "Nebraska", so the fixture keys
+// differently from its own box score, the win model cannot find the team in
+// the NET table, and the non-Division-I check would call it non-Division I.
+// Split out here, at the one place the page is read, and carried as data.
+const RANKED = /^#(\d{1,2})\s+/;
+export function splitRank(name) {
+  const t = (name || '').trim();
+  const m = RANKED.exec(t);
+  return m ? { opponent: t.slice(m[0].length).trim(), opponentRank: Number(m[1]) }
+    : { opponent: t, opponentRank: null };
+}
+
+export function parseSchedule(schedText) {
   const fixtures = [];
 
   // Source 1 — the rotator's accessibility labels:
@@ -64,7 +78,7 @@ export function parseSchedule(schedText, { stripRank = (s) => s } = {}) {
     const date = `${m[5]}-${String(month).padStart(2, '0')}-${String(m[4]).padStart(2, '0')}`;
     fixtures.push({
       date,
-      opponent: stripRank(m[2]),
+      ...splitRank(m[2]),
       away: m[1] === 'at',
       time: to24h(m[6]),
       venue: null,
@@ -91,7 +105,7 @@ export function parseSchedule(schedText, { stripRank = (s) => s } = {}) {
     if (lines[i] !== 'vs' && lines[i] !== 'at') continue;
     let j = i + 1;
     while (j < lines.length && !lines[j]) j++;
-    const opponent = stripRank(lines[j]);
+    const { opponent, opponentRank } = splitRank(lines[j]);
     if (!opponent) continue;
     // The date follows within the venue/TV block; a bounded look-ahead keeps a
     // row without one from adopting the next row's date.
@@ -135,6 +149,7 @@ export function parseSchedule(schedText, { stripRank = (s) => s } = {}) {
     fixtures.push({
       date: `${year}-${String(month).padStart(2, '0')}-${String(found[2]).padStart(2, '0')}`,
       opponent,
+      opponentRank,
       away: lines[i] === 'at',
       city: cityAt >= 0 ? postalCity(between[cityAt]) : null,
       venue: cityAt > 0 ? between[cityAt - 1] : null,

@@ -187,7 +187,12 @@ fun GamesScreen(
                                 ) {
                                     SiteChip(game.siteOrLegacy)
                                     Text(
-                                        "${siteLabel(game.siteOrLegacy)}${game.opponent}",
+                                        // The rank is carried beside the name
+                                        // rather than inside it, so it shows
+                                        // here the way the dashboard shows it.
+                                        siteLabel(game.siteOrLegacy) +
+                                            (game.opponentRank?.let { "#$it " } ?: "") +
+                                            game.opponent,
                                         style = MaterialTheme.typography.titleMedium,
                                         fontWeight = FontWeight.SemiBold
                                     )

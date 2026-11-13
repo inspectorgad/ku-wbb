@@ -1057,7 +1057,7 @@ function gamesTable() {
       <td class="dim">${games.length + i + 1}</td>
       <td class="lft">${fmtDate(g.date)}</td>
       <td class="lft">${siteChip(g)}</td>
-      <td class="lft"><b>${g.opponent}</b>${g.event ? ` <span class="dim">${g.event}</span>` : ""}</td>
+      <td class="lft">${g.opponentRank ? `<span class="dim">#${g.opponentRank}</span> ` : ""}<b>${g.opponent}</b>${g.event ? ` <span class="dim">${g.event}</span>` : ""}</td>
       <td class="lft"><span class="phase-lbl">${fmtTime(g.time) || "TBD"}</span></td>
       ${hasResults
       // The column that holds a score once there is one is where the forecast
