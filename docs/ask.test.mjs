@@ -37,18 +37,26 @@ function jsBuilder(name) {
  * literals of a `fun name(...) = "..." + "..."` with its $placeholders filled.
  */
 function ktBuilder(name) {
-  const head = `fun ${name}(date: String, versus: String, opponent: String) =`;
-  const at = askKt.indexOf(head);
-  assert.ok(at >= 0, `${name} is not in AskScreen.kt`);
+  // Tolerant of an added return type, extra spacing or renamed parameters, so
+  // a refactor that changes no wording cannot turn CI red on its own.
+  const head = new RegExp(`fun\\s+${name}\\s*\\(([^)]*)\\)\\s*(?::\\s*\\w+\\s*)?=`);
+  const m = head.exec(askKt);
+  assert.ok(m, `${name} is not in AskScreen.kt`);
+  const params = m[1].split(',').map(p => p.split(':')[0].trim()).filter(Boolean);
+  assert.equal(params.length, 3, `${name} should take date, versus and opponent`);
+  const at = m.index;
   const pieces = [];
-  for (const line of askKt.slice(at + head.length).split('\n').slice(1)) {
+  for (const line of askKt.slice(at + m[0].length).split('\n').slice(1)) {
     if (!line.startsWith(' ')) break;            // the next top-level declaration
     pieces.push(line);
     if (!line.trimEnd().endsWith('+')) break;    // the end of the concatenation
   }
   const text = pieces.join('\n').match(/"([^"]*)"/g).map(s => s.slice(1, -1)).join('');
-  return (date, versus, opponent) =>
-    text.replace(/\$(date|versus|opponent)/g, (_, k) => ({ date, versus, opponent }[k]));
+  const slot = new RegExp(`\\$(${params.join('|')})`, 'g');
+  return (date, versus, opponent) => {
+    const by = { [params[0]]: date, [params[1]]: versus, [params[2]]: opponent };
+    return text.replace(slot, (_, k) => by[k]);
+  };
 }
 
 const CASES = [
@@ -117,9 +125,15 @@ test('a handed-over question never quietly spends or destroys anything', () => {
   // not saved, or clear the thread by taking web search on partway through.
   const body = /window\.kuAskAbout = \(q\) => \{([\s\S]*?)\n  \};/.exec(askJs);
   assert.ok(body, 'window.kuAskAbout is not in docs/ask.js');
-  assert.match(body[1], /if \(running \|\| asking\) return;/);
-  assert.match(body[1], /if \(!apiKey\(\)\)/);
+  assert.match(body[1], /if \(running \|\| asking\)/);
+  assert.match(body[1], /!apiKey\(\)/);
   assert.match(body[1], /webDeclared === false/);
+  // Every refusal parks the question and says why; none of them returns in
+  // silence, because the game sheet closes itself to bring the reader here.
+  assert.equal((body[1].match(/park\(q, /g) || []).length, 3);
+  assert.doesNotMatch(body[1], /return;/);
+  // And parking never costs the reader a question they were part-way through.
+  assert.match(askJs, /if \(box\.value\.trim\(\)\) \{/);
   // The same three in the app, where the engine is asked rather than the DOM,
   // and a fourth the dashboard has no need of: the app's question survives in
   // saved state across a rotation or a killed process, so it is taken once and

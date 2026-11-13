@@ -657,21 +657,37 @@ function init() {
 
   // The Preview and Recap buttons elsewhere on the page hand a question over
   // here. It is asked straight away unless that would cost the reader
-  // something they did not choose - a key they have not saved, or a restart
-  // that would clear the thread - and then it waits in the box, where pressing
-  // Ask makes the decision theirs. The app's Ask screen does the same.
+  // something they did not choose - a key they have not saved, a question
+  // already in flight, or a restart that would clear the thread - and then it
+  // waits in the box with the reason, where pressing Ask makes the decision
+  // theirs. The app's Ask screen does the same.
+  //
+  // Every path says something. A press that looks like nothing happened is
+  // worse than one that is refused out loud, especially from the game sheet,
+  // which closes itself to bring the reader here.
+  const park = (q, why) => {
+    const box = $("ask-q");
+    // Never over-write a question the reader is part-way through: the textarea
+    // has no undo once it is replaced, and these branches exist to protect
+    // them from a press, not to cost them a paragraph.
+    if (box.value.trim()) {
+      showError("Finish or clear the question in the box first, then press Preview or Recap again.");
+    } else {
+      box.value = q;
+      showError(why);
+    }
+  };
   window.kuAskAbout = (q) => {
     $("ask-wrap").scrollIntoView({ behavior: "smooth", block: "start" });
     // `running` is null for real stretches while a question is still in hand
     // (loading the pack, between get_table hops), so `asking` is the one that
     // actually says whether this box is busy.
-    if (running || asking) return;
-    if (!apiKey()) {
-      $("ask-q").value = q;
-      showError("Add your Anthropic API key above, then press Ask.");
+    if (running || asking) {
+      park(q, "A question is already running. Press Ask when it has finished.");
+    } else if (!apiKey()) {
+      park(q, "Add your Anthropic API key above, then press Ask.");
     } else if ($("ask-web").checked && conversation.length > 0 && webDeclared === false) {
-      $("ask-q").value = q;
-      showError("Web search is on, so this would start a new conversation and clear the thread. " +
+      park(q, "Web search is on, so this would start a new conversation and clear the thread. " +
         "Press Ask to go ahead, or turn web search off.");
     } else {
       ask(q);

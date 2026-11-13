@@ -244,8 +244,19 @@ fun AskScreen(
                     "thread. Turn web search off to keep it."
             else -> null
         }
-        prefillNote = why
-        if (key != null && why == null) AskSession.ask(q, key, model, webSearch) else question = q
+        if (key != null && why == null) {
+            prefillNote = null
+            AskSession.ask(q, key, model, webSearch)
+        } else if (question.isBlank()) {
+            prefillNote = why
+            question = q
+        } else {
+            // Never over-write a question the reader is part-way through
+            // typing: these branches exist to protect them from a press, not
+            // to cost them a paragraph.
+            prefillNote =
+                "Finish or clear the question in the box first, then press Preview or Recap again."
+        }
         onPrefillTaken()
     }
 

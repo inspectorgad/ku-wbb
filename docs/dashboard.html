@@ -661,7 +661,11 @@
       <div class="sub" id="gSub"></div>
       <button class="chip ask-mini" id="gRecap" type="button">Recap this game with Claude</button>
     </div>
-    <button class="m-close" id="gClose" aria-label="Close">✕</button>
+    <!-- autofocus, because a dialog focuses its first focusable child and that
+         is now the Recap button: a reader who pressed Space or Enter on a box
+         score they had just opened would have spent money on a question they
+         never asked. Dismissing is the safe thing for a stray key to do. -->
+    <button class="m-close" id="gClose" aria-label="Close" autofocus>✕</button>
   </div>
   <div class="m-body">
     <div class="m-sec" id="gFactsSec">
@@ -1709,12 +1713,16 @@ document.getElementById("gamesTbl").addEventListener("click", ev => {
 // script and defines these on window, so they are looked up at click time and
 // the page still works when that module does not load at all.
 function askAboutGame(g, builder) {
-  if (!g || !window.kuAskAbout || !window[builder]) return;
+  if (!g || !window.kuAskAbout || !window[builder]) return false;
   window.kuAskAbout(window[builder](g.date, vsAt(g), g.opponent));
+  return true;
 }
 document.getElementById("gRecap").addEventListener("click", () => {
-  gmodal.close();
-  askAboutGame(openGameShown, "kuRecapQuestion");
+  // Closed only once the question is in the Ask box's hands. kuAskAbout always
+  // either asks or says why it did not, so closing then is taking the reader
+  // somewhere; closing when the module never loaded would just destroy the box
+  // score they were reading and leave them nothing.
+  if (askAboutGame(openGameShown, "kuRecapQuestion")) gmodal.close();
 });
 
 const BOX_COLS = [
