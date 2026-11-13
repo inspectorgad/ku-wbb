@@ -159,12 +159,25 @@ class TableNamesAgreeTest(unittest.TestCase):
 
     EXPECTED = ["games", "periods", "ku_lines", "team_totals", "opponent_lines",
                 "opponent_roster", "upcoming", "standings", "poll", "roster", "definitions",
-                "team_records", "big12_results"]
+                "team_records", "big12_results", "d1_results"]
+
+    # Everything in the pack that is not a table.
+    NOT_TABLES = {"about", "generated_at", "system_prompt"}
 
     def test_the_pack_holds_exactly_those_tables(self):
         pack = build_pack(SEED)
         self.assertEqual(sorted(t for t in self.EXPECTED if t != "poll" or pack["poll"]),
                          sorted(t for t in self.EXPECTED if pack.get(t) is not None))
+
+    def test_the_pack_offers_no_table_the_lists_leave_out(self):
+        """Both directions, which the test above only checks one way.
+
+        It iterates EXPECTED, so a table the pack writes but the five lists do
+        not name was invisible to it - and that is a table Claude is never
+        offered and can never fetch. d1_results shipped in the pack that way.
+        """
+        extra = set(build_pack(SEED)) - self.NOT_TABLES - set(self.EXPECTED)
+        self.assertEqual(set(), extra, f"in the pack but not offered to Claude: {sorted(extra)}")
 
     def _listed(self, path, pattern):
         with open(os.path.join(REPO, path)) as f:

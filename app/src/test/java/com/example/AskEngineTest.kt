@@ -153,7 +153,8 @@ class AskEngineTest {
         // five; this assertion is the backstop that catches forgetting.
         assertEquals(
             listOf("games", "periods", "ku_lines", "team_totals", "opponent_lines",
-                "opponent_roster", "upcoming", "standings", "poll", "roster", "definitions"),
+                "opponent_roster", "upcoming", "standings", "poll", "roster", "definitions",
+                "team_records", "big12_results", "d1_results"),
             AskEngine.TABLES
         )
         // Volleyball's tables must not have come along with the port.

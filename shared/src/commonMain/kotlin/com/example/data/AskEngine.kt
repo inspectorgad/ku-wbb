@@ -387,7 +387,7 @@ class AskEngine(
         val TABLES = listOf(
             "games", "periods", "ku_lines", "team_totals", "opponent_lines",
             "opponent_roster", "upcoming", "standings", "poll", "roster", "definitions",
-            "team_records", "big12_results"
+            "team_records", "big12_results", "d1_results"
         )
 
         /**

@@ -150,7 +150,7 @@ function rollBack(size) {
 
 const TABLES = ["games", "periods", "ku_lines", "team_totals", "opponent_lines",
   "opponent_roster", "upcoming", "standings", "poll", "roster", "definitions",
-  "team_records", "big12_results"];
+  "team_records", "big12_results", "d1_results"];
 // Anthropic's price for one web search ($10 per 1,000), and the most one
 // question may use - the same as the app (AskEngine.kt).
 const SEARCH_DOLLARS = 0.01;
