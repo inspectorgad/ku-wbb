@@ -56,8 +56,63 @@ object Seeder {
      */
     internal fun normalizeTeam(name: String): String = normTeam(name)
 
+    /** How a ranked opponent used to be stored: "#25 Nebraska". */
+    private val RANKED_NAME = Regex("""^#(\d{1,2})\s+""")
+
+    /**
+     * Takes the poll rank back out of an opponent's name, in databases that
+     * already hold one.
+     *
+     * The schedule page writes a ranked opponent as "#25 Nebraska", and that
+     * used to reach the seed as the name. [normTeam] keeps the prefix, so when
+     * the name was corrected at the source the next sync keyed the fixture
+     * differently from the row already stored, found nothing to update, and
+     * inserted a second one. Nothing else takes it away: a sync only adds and
+     * updates, because a game entered by hand has to survive one. So every
+     * phone that synced before the correction shows the game twice until this
+     * runs.
+     *
+     * Renamed in place when nothing holds the corrected name yet, dropped when
+     * something does - and of the two it is the stale row that goes, unless it
+     * is the one carrying a result or stat lines, which a sync cannot put back.
+     */
+    internal suspend fun healRankedNames(dao: JayhawksDao) {
+        val all = dao.gamesOnce()
+        val stale = all.filter { RANKED_NAME.containsMatchIn(it.opponent) }
+        if (stale.isEmpty()) return
+        val withLines = dao.statLinesOnce().map { it.gameId }.toSet()
+        val byKey = all.associateBy { gameKey(it.date, it.opponent) }
+        // What a sync cannot put back if the row goes.
+        val keeps = { g: Game -> g.teamScore != null || g.id in withLines }
+        for (old in stale) {
+            val match = RANKED_NAME.find(old.opponent) ?: continue
+            val clean = old.opponent.removeRange(match.range).trim()
+            if (clean.isEmpty()) continue
+            val fixed = old.copy(
+                opponent = clean,
+                // Only when the row has none: a rank the box score recorded at
+                // the time beats one read back out of the name.
+                opponentRank = old.opponentRank ?: match.groupValues[1].toInt()
+            )
+            val twin = byKey[gameKey(old.date, clean)]
+            when {
+                twin == null -> dao.updateGame(fixed)
+                !keeps(old) -> dao.deleteGame(old)
+                !keeps(twin) -> {
+                    dao.deleteGame(twin)
+                    dao.updateGame(fixed)
+                }
+                // Both carry something of their own. Rename and leave them;
+                // a duplicate on screen is better than deleting a night's
+                // stat lines to tidy it up.
+                else -> dao.updateGame(fixed)
+            }
+        }
+    }
+
     /** Also used by [SeasonSync] for network-fetched season data. */
     suspend fun merge(root: JSONObject, dao: JayhawksDao) {
+        healRankedNames(dao)
         val existingByName = dao.playersOnce().associateBy { it.name }
         val playerIdsByName = existingByName.mapValues { it.value.id }.toMutableMap()
 

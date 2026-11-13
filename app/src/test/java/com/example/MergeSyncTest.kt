@@ -3,6 +3,7 @@ package com.example
 import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
+import com.example.data.Game
 import com.example.data.JayhawksDatabase
 import com.example.data.Seeder
 import com.example.data.StatLine
@@ -578,5 +579,89 @@ class MergeSyncTest {
             db.dao()
         )
         assertEquals(listOf("Real Player"), db.dao().opponentRosterOnce().map { it.name })
+    }
+
+    // --- a rank that used to live inside the opponent's name ---------------
+    //
+    // The schedule page writes "#25 Nebraska". That reached the seed as the
+    // name until the parser was fixed, and normTeam keeps the prefix, so the
+    // corrected name keyed differently from the row already stored and the
+    // next sync inserted a second one beside it. Nothing else took it away:
+    // a sync only adds and updates, because a game entered by hand has to
+    // survive one. Every phone that synced before the fix showed the game
+    // twice, and these go through merge() because that is the only thing a
+    // phone ever calls.
+
+    private fun fixtureJson(opponent: String, rank: Int? = null): JSONObject {
+        val rankField = if (rank == null) "" else """, "opponentRank": $rank"""
+        return JSONObject(
+            """{"games": [{"date": "2026-11-14", "opponent": "$opponent",
+                 "season": "2026-27", "site": "neutral"$rankField}]}"""
+        )
+    }
+
+    /** A sync carrying no games at all: the repair still runs. */
+    private fun emptyJson() = JSONObject("""{"games": []}""")
+
+    @Test
+    fun `a fixture stored under a ranked name is not synced in again beside itself`() = runTest {
+        // What a phone that synced before the fix is holding.
+        Seeder.merge(fixtureJson("#25 Nebraska"), db.dao())
+        assertEquals(listOf("#25 Nebraska"), db.dao().gamesOnce().map { it.opponent })
+
+        // The seed spells it properly now, and carries the rank beside it.
+        Seeder.merge(fixtureJson("Nebraska", rank = 25), db.dao())
+
+        val games = db.dao().gamesOnce()
+        assertEquals(1, games.size)
+        assertEquals("Nebraska", games.single().opponent)
+        assertEquals(25, games.single().opponentRank)
+    }
+
+    @Test
+    fun `the rank is read back out of the name with no fresh row to merge into`() = runTest {
+        Seeder.merge(fixtureJson("#25 Nebraska"), db.dao())
+
+        Seeder.merge(emptyJson(), db.dao())
+
+        val game = db.dao().gamesOnce().single()
+        assertEquals("Nebraska", game.opponent)
+        assertEquals(25, game.opponentRank)
+    }
+
+    @Test
+    fun `when both rows exist the one carrying stat lines is the one kept`() = runTest {
+        // A line was entered against the stale row before the fix landed...
+        Seeder.merge(fixtureJson("#25 Nebraska"), db.dao())
+        val stale = db.dao().gamesOnce().single()
+        db.dao().upsertStatLine(StatLine(gameId = stale.id, playerId = 0, points = 14))
+        // ...and a later sync put the corrected one beside it.
+        val freshId = db.dao().insertGame(
+            Game(date = "2026-11-14", opponent = "Nebraska", season = "2026-27", site = "neutral")
+        )
+        assertEquals(2, db.dao().gamesOnce().size)
+
+        Seeder.merge(emptyJson(), db.dao())
+
+        val game = db.dao().gamesOnce().single()
+        assertEquals("Nebraska", game.opponent)
+        assertEquals(stale.id, game.id)
+        assertTrue(freshId != game.id)
+        assertEquals(14, db.dao().statLinesOnce().single().points)
+    }
+
+    @Test
+    fun `an ordinary opponent name is left exactly as it is`() = runTest {
+        // A "#" is a rank only at the very front and only before a number.
+        val names = listOf("Nebraska", "Miami (OH)", "Texas A&M", "St. #1 Fan")
+        names.forEachIndexed { i, name ->
+            db.dao().insertGame(
+                Game(date = "2026-12-1$i", opponent = name, season = "2026-27")
+            )
+        }
+
+        Seeder.merge(emptyJson(), db.dao())
+
+        assertEquals(names.sorted(), db.dao().gamesOnce().map { it.opponent }.sorted())
     }
 }
