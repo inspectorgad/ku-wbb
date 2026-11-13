@@ -17,7 +17,7 @@ from datetime import datetime, timezone
 from zoneinfo import ZoneInfo
 
 
-from seed_text import fix_mojibake, norm_name, norm_team
+from seed_text import MONTHS, fix_mojibake, norm_name, norm_team, season_label, snapshot_season
 import sim_inputs
 from win_model import Model
 
@@ -50,11 +50,6 @@ def to_minutes(value):
         return round(float(str(value).strip() or 0))
     except ValueError:
         return 0
-
-
-def season_label(start_year):
-    """2025 -> "2025-26"."""
-    return f"{start_year}-{str(start_year + 1)[-2:]}"
 
 
 def game_key(date, opponent):
@@ -531,39 +526,6 @@ for game in big12_games:
             rec["_rankDate"] = game["date"]
             rec["nationalRank"] = s["rank"]
 
-# Every final involving a Big 12 team, for "Ask about the team" to compute
-# records against ranked sides, points for and against, and common opponents.
-# conference_game is the standings rule above, not the index's raw
-# conferenceGame: that flag is also true for the 15 Big 12 tournament games of
-# 2025-26, so copying it would disagree with the table this very file builds.
-# The ranks are each side's AP rank going into the game, which the pack's
-# current-poll table cannot give.
-big12_results = []
-for game in big12_games:
-    start = to_int(game.get("season")) or to_int(game.get("date", "")[:4])
-    season = season_label(start)
-    cutoff = tournament_start.get(season)
-    home, away = game.get("home") or {}, game.get("away") or {}
-    if home.get("score") is None or away.get("score") is None:
-        continue  # not played yet; the schedule is the upcoming table's job
-    big12_results.append({
-        "date": game.get("date", ""),
-        "season": season,
-        "home": home.get("name") or "",
-        "homePoints": home.get("score"),
-        "homeRank": home.get("rank"),
-        "away": away.get("name") or "",
-        "awayPoints": away.get("score"),
-        "awayRank": away.get("rank"),
-        "conferenceGame": (
-            bool(game.get("conferenceGame"))
-            and not game.get("bracket")
-            and (cutoff is None or game.get("date", "") < cutoff)
-        ),
-        "bracket": bool(game.get("bracket")),
-    })
-big12_results.sort(key=lambda r: (r["date"], r["home"], r["away"]))
-
 # --- Conference games ---------------------------------------------------------
 # A KU game counts toward the Big 12 record when the opponent is a member that
 # season, the game is regular season, and it falls before the conference
@@ -602,19 +564,6 @@ for season, count in sorted(conference_counts.items()):
 # Both endpoints serve only the current snapshot, so each is keyed by the
 # season in its "Through Games APR. 5, 2026" label (Aug-Dec dates belong to the
 # season starting that year; Jan-Jul to the one that started the year before).
-MONTHS = "JAN FEB MAR APR MAY JUN JUL AUG SEP OCT NOV DEC".split()
-
-
-def snapshot_season(payload):
-    label = (payload.get("updated", "") or "").upper()
-    m = re.search(r"\b(" + "|".join(MONTHS) + r")[A-Z]*\.?\s+\d{1,2},?\s+(20\d{2})", label)
-    if not m:
-        return None
-    month = MONTHS.index(m.group(1)) + 1
-    year = int(m.group(2))
-    return season_label(year if month >= 8 else year - 1)
-
-
 def row_value(row, *candidates):
     """First matching column: sources vary in header capitalization."""
     lowered = {k.strip().lower(): v for k, v in row.items()}
@@ -629,35 +578,6 @@ ap = load_json("scraped/rankings-ap.json", {})
 net = load_json("scraped/rankings-net.json", {})
 
 net_season = snapshot_season(net)
-
-# Every Division I team's NET row, for "Ask about the team". It carries its own
-# season and "as of" because until the NCAA publishes a season's first NET -
-# around the first Monday of December - this file is last season's final, and
-# an answer that presented it as this season's would be wrong in a way nobody
-# could see.
-net_rankings = {
-    "season": net_season,
-    "asOf": (net.get("updated") or "").strip() or None,
-    "rows": [
-        {
-            "rank": to_int(row_value(row, "rank")),
-            "team": row_value(row, "school", "team") or "",
-            "previous": to_int(row_value(row, "prev", "previous")) or None,
-            "conference": row_value(row, "conf", "conference") or None,
-            "record": row_value(row, "record") or None,
-            "home": row_value(row, "home") or None,
-            "road": row_value(row, "road") or None,
-            "neutral": row_value(row, "neutral") or None,
-            "nonD1": row_value(row, "non-div i", "non-div 1", "non-divi") or None,
-            "quad1": row_value(row, "quad 1") or None,
-            "quad2": row_value(row, "quad 2") or None,
-            "quad3": row_value(row, "quad 3") or None,
-            "quad4": row_value(row, "quad 4") or None,
-        }
-        for row in net.get("data", [])
-        if str(row_value(row, "rank") or "").strip().isdigit()
-    ],
-} if net.get("data") else None
 
 # The NET table lists every Division I team, so an opponent absent from it is
 # not Division I. That matters because the NCAA's own record and site splits
@@ -886,12 +806,6 @@ if opponent_roster_seed:
     seed["opponentRosters"] = opponent_roster_seed
 if simulation:
     seed["simulation"] = simulation
-# For "Ask about the team" only; build-dashboard.py's key whitelist keeps them
-# off the page, and the app ignores keys it does not know.
-if net_rankings and net_rankings["rows"]:
-    seed["netRankings"] = net_rankings
-if big12_results:
-    seed["big12Results"] = big12_results
 
 os.makedirs(os.path.dirname(SEED_PATH), exist_ok=True)
 

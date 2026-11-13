@@ -13,9 +13,10 @@ NCAA box scores; nothing is recomputed or estimated.
 """
 
 import json
+import os
 import re
 
-from seed_text import norm_team
+from seed_text import norm_team, season_label, snapshot_season
 
 # The box score, in the order the NCAA publishes it. Player lines carry `min`
 # and `gs` on top of these; the official team totals carry only these.
@@ -100,6 +101,27 @@ Web search: the reader can turn on web search for a question, and each question 
 """
 
 
+# Where the scrape leaves the files these tables are built from. They are not
+# carried in the seed: the app downloads the seed on every sync and would be
+# paying for ~200KB of other teams' data it never reads, and `scraped/` is
+# committed, so CI and the nightly run both have it.
+SCRAPED = "scraped"
+
+
+def _scraped(name, root=SCRAPED):
+    """One scraped file, or None when it is not there.
+
+    The tests build a pack from a fixture seed with no scraped/ beside it, so
+    every table built from one of these must come out as [] - never missing,
+    and never None.
+    """
+    try:
+        with open(os.path.join(root, name)) as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return None
+
+
 # The AP and the NET spell a few schools differently; without these the two
 # tables would not join. Kept beside team_key so the list is where it is used.
 _ALIASES = {"southern california": "southern cal", "usc": "southern cal"}
@@ -124,6 +146,114 @@ def team_key(name):
     n = re.sub(r"\s*\((?:[Ee]xh\.?|[Ee]xhibition)\)\s*$", "", n)
     n = norm_team(n)
     return _ALIASES.get(n, n)
+
+
+
+def _row_value(row, *candidates):
+    """First matching column; the NCAA's tables vary in header capitalization."""
+    lowered = {k.strip().lower(): v for k, v in (row or {}).items()}
+    for c in candidates:
+        if c in lowered:
+            return lowered[c]
+    return None
+
+
+def _to_int(value):
+    try:
+        return round(float(str(value).strip() or 0))
+    except (TypeError, ValueError):
+        return 0
+
+
+def net_table(payload):
+    """Every Division I team's NET row, with the season it belongs to.
+
+    The NCAA publishes no formula behind the NET, so this is its table as
+    published, not a rating worked out here. The season matters: until the
+    first NET of a season appears, around the first Monday of December, this
+    file is last season's final one.
+    """
+    payload = payload or {}
+    season, as_of = snapshot_season(payload), (payload.get("updated") or "").strip() or None
+    rows = []
+    for row in payload.get("data", []):
+        rank = str(_row_value(row, "rank") or "").strip()
+        team = _row_value(row, "school", "team") or ""
+        if not rank.isdigit() or not team:
+            continue
+        rows.append({
+            "rank": int(rank), "team": team, "team_key": team_key(team),
+            "previous": _to_int(_row_value(row, "prev", "previous")) or None,
+            "conference": _row_value(row, "conf", "conference") or None,
+            "record": _row_value(row, "record") or None,
+            "home": _row_value(row, "home") or None,
+            "road": _row_value(row, "road") or None,
+            "neutral": _row_value(row, "neutral") or None,
+            "non_d1": _row_value(row, "non-div i", "non-div 1", "non-divi") or None,
+            "quad1": _row_value(row, "quad 1") or None,
+            "quad2": _row_value(row, "quad 2") or None,
+            "quad3": _row_value(row, "quad 3") or None,
+            "quad4": _row_value(row, "quad 4") or None,
+            "season": season, "as_of": as_of,
+        })
+    return rows
+
+
+def _result_rows(games, tournament_start):
+    """Finals as flat rows, with conference_game on the standings' own rule."""
+    rows = []
+    for g in games:
+        home, away = g.get("home") or {}, g.get("away") or {}
+        if home.get("score") is None or away.get("score") is None:
+            continue  # not played yet; the schedule is the upcoming table's job
+        start = _to_int(g.get("season")) or _to_int((g.get("date") or "")[:4])
+        season = season_label(start)
+        cutoff = tournament_start.get(season)
+        rows.append({
+            "date": g.get("date") or "", "season": season,
+            "home": home.get("name") or "", "home_key": team_key(home.get("name")),
+            "home_points": home.get("score"), "home_rank": home.get("rank"),
+            "away": away.get("name") or "", "away_key": team_key(away.get("name")),
+            "away_points": away.get("score"), "away_rank": away.get("rank"),
+            # The standings rule, not the scoreboard's own conferenceGame: that
+            # flag is also true for the Big 12 tournament's own games, so
+            # copying it would disagree with the standings table.
+            "conference_game": (
+                bool(g.get("conferenceGame"))
+                and not g.get("bracket")
+                and (cutoff is None or (g.get("date") or "") < cutoff)
+            ),
+            "bracket": bool(g.get("bracket")),
+        })
+    rows.sort(key=lambda r: (r["date"], r["home"], r["away"]))
+    return rows
+
+
+def _tournament_start(games):
+    """Season label -> the date of its first conference-tournament game."""
+    out = {}
+    for g in games:
+        if not (g.get("bracket") and g.get("conferenceGame")):
+            continue
+        start = _to_int(g.get("season")) or _to_int((g.get("date") or "")[:4])
+        season, date = season_label(start), g.get("date") or ""
+        if season not in out or date < out[season]:
+            out[season] = date
+    return out
+
+
+def results_tables(index, d1):
+    """(big12_results, d1_results) from the sweep's own files.
+
+    big12_results is every final involving a Big 12 team; d1_results is every
+    Division I final the sweep saw. The second is a superset, so the
+    conference-tournament cutoff is read from both together: a Big 12
+    tournament game is in the index whichever file it came from.
+    """
+    big12 = list((index or {}).get("big12Games", {}).values())
+    every = list((d1 or {}).get("games", {}).values())
+    cutoff = _tournament_start(big12 + every)
+    return _result_rows(big12, cutoff), _result_rows(every, cutoff)
 
 
 def _cell(v):
@@ -209,7 +339,7 @@ def _periods(game_base, period_scores, regulation=4):
     return rows
 
 
-def build_pack(seed):
+def build_pack(seed, scraped=SCRAPED):
     players = {p["name"].lower(): p for p in seed.get("players", [])}
 
     games, periods, ku_lines, team_totals, opp_lines, upcoming = [], [], [], [], [], []
@@ -260,9 +390,11 @@ def build_pack(seed):
 
     polls = seed.get("polls") or []
     current_poll = polls[-1] if polls else None
-    # Absent from an older seed, and from the test fixture: the tables below
-    # must then come out as [], never missing.
-    net = seed.get("netRankings") or {}
+    # Read beside the seed rather than carried in it. A fixture with no
+    # scraped/ gives [] for each of these, never a missing key.
+    net_rows = net_table(_scraped("rankings-net.json", scraped))
+    big12_rows, d1_rows = results_tables(
+        _scraped("ku-index.json", scraped), _scraped("d1-results.json", scraped))
     pack = {
         "about": "Kansas Jayhawks women's basketball, from the official NCAA box scores and "
                  "kuathletics.com. One record per row; join tables on (season, date, opponent).",
@@ -309,27 +441,12 @@ def build_pack(seed):
         # the NET, so this is the published table as it stands, not a rating
         # worked out here - and it carries the season it belongs to, because
         # until December it is last season's final.
-        "team_records": [
-            {**{k: r.get(k) for k in ("rank", "team", "previous", "conference", "record",
-                                      "home", "road", "neutral", "nonD1",
-                                      "quad1", "quad2", "quad3", "quad4")},
-             "team_key": team_key(r.get("team")),
-             "season": net.get("season"), "as_of": net.get("asOf")}
-            for r in net.get("rows", [])
-        ],
-        # Every final involving a Big 12 team. Not every Division I game: a
-        # comparison of common opponents with a non-conference side is
-        # therefore incomplete, and the definitions say so.
-        "big12_results": [
-            {"date": r.get("date"), "season": r.get("season"),
-             "home": r.get("home"), "home_key": team_key(r.get("home")),
-             "home_points": r.get("homePoints"), "home_rank": r.get("homeRank"),
-             "away": r.get("away"), "away_key": team_key(r.get("away")),
-             "away_points": r.get("awayPoints"), "away_rank": r.get("awayRank"),
-             "conference_game": bool(r.get("conferenceGame")),
-             "bracket": bool(r.get("bracket"))}
-            for r in seed.get("big12Results", [])
-        ],
+        "team_records": net_rows,
+        # Every final involving a Big 12 team, and every Division I final the
+        # sweep has seen. The first is the one to reach for about the Big 12;
+        # the second makes a common-opponent comparison complete.
+        "big12_results": big12_rows,
+        "d1_results": d1_rows,
     }
     pack["system_prompt"] = system_prompt(pack)
     return pack

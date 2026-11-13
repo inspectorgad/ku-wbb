@@ -345,6 +345,12 @@
   .ask-table { overflow-x: auto; margin: 0 0 8px; }
   .ask-table th, .ask-table td { white-space: nowrap; }
   .ask-note { font-size: 11px; color: var(--muted); margin: 4px 0 0; }
+  /* The web-search box and the sources an answer cites. */
+  .ask-web-check { align-items: flex-start; margin: 6px 0; }
+  .ask-web-check input { margin-top: 2px; flex: none; }
+  .ask-sources { font-size: 12px; margin-top: 6px; }
+  .ask-sources ol { margin: 2px 0 0; padding-left: 22px; }
+  .ask-sources a { color: var(--blue); overflow-wrap: anywhere; }
   .ask-error { color: var(--loss); }
   .ask-code summary { font-size: 12px; color: var(--muted); cursor: pointer; margin-top: 6px; }
   /* ---------- season simulator ---------- */
@@ -426,6 +432,11 @@
       <button class="ask-btn ask-go" id="ask-go">Ask</button>
       <button class="ask-btn" id="ask-stop" hidden>Stop</button>
     </div>
+    <label class="ask-check ask-web-check"><input type="checkbox" id="ask-web"><span>Search the web too
+      — lets Claude look up news, previews and injury reports, and list the pages it used
+      (numbered like [1] in the answer). Statistics still come from the box scores. Each search costs
+      1¢ on your Anthropic account plus reading the pages, at most 5 searches a question; web pages
+      can be wrong or dated. Turning it on partway through a conversation starts a new one.</span></label>
     <div class="ask-row"><span id="ask-status" class="ask-status" role="status"></span>
       <button class="ask-btn" id="ask-new" hidden>New conversation</button></div>
     <div class="ask-examples" id="ask-examples"></div>
@@ -435,8 +446,11 @@
       default), less with Sonnet 5, and follow-ups within a few minutes cost less because the season
       data is cached. Claude works from the same validated box scores this page is built from, and
       computes every figure by running Python on them rather than from memory — "Show the code"
-      under an answer lists exactly what it ran. It knows nothing about injuries, practice or
-      line-ups.</p>
+      under an answer lists exactly what it ran. Besides Kansas's own data it has the other teams'
+      too: the rosters of the schools KU plays, every Division I team's NET row, and every result
+      involving a Big 12 team. On its own it knows nothing about injuries, practice or line-ups and
+      says so; tick "Search the web too" to let it look such things up, with the pages it used
+      listed under the answer.</p>
   </section>
 
   <section id="chartSec">
