@@ -66,17 +66,16 @@ jobs:
       # week's tables and prompt, which is the one way a test of it can mislead.
       # Pinned to the commit, not the branch, so the build keeps reading the
       # data it was built against however the branch moves on. Must come before
-      # the Gradle link below, which compiles this file. Twin of the step in
-      # build-apk.yml.
+      # the Gradle link below, which compiles this file. The Android build does
+      # the same, through the same script: this one runs on a Mac, where sed -i
+      # reads its argument as a backup suffix, so the two cannot share a line of
+      # sed even when they want the same edit.
       - name: Point Ask Claude at this branch's data
         if: github.ref != 'refs/heads/main'
         run: |
           set -euo pipefail
-          url="https://raw.githubusercontent.com/$GITHUB_REPOSITORY/$GITHUB_SHA/docs/ask-data.json"
-          file=shared/src/commonMain/kotlin/com/example/data/AskEngine.kt
-          grep -q 'https://inspectorgad.github.io/ku-wbb/ask-data.json' "$file"
-          sed -i "s|\( *\)\(\"https://inspectorgad.github.io/ku-wbb/ask-data.json\",\)|\1\"$url\",\n\1\2|" "$file"
-          sed -n '/val PACK_URLS/,/)/p' "$file"
+          python3 scripts/pin_ask_pack.py \
+            "https://raw.githubusercontent.com/$GITHUB_REPOSITORY/$GITHUB_SHA/docs/ask-data.json"
 
       # The same link Xcode's build step asks for, run first so a Kotlin error
       # reads plainly here rather than deep in the Xcode log; Xcode then finds

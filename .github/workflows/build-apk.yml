@@ -82,11 +82,8 @@ jobs:
         if: github.ref != 'refs/heads/main'
         run: |
           set -euo pipefail
-          url="https://raw.githubusercontent.com/$GITHUB_REPOSITORY/$GITHUB_SHA/docs/ask-data.json"
-          file=shared/src/commonMain/kotlin/com/example/data/AskEngine.kt
-          grep -q 'https://inspectorgad.github.io/ku-wbb/ask-data.json' "$file"
-          sed -i "s|\( *\)\(\"https://inspectorgad.github.io/ku-wbb/ask-data.json\",\)|\1\"$url\",\n\1\2|" "$file"
-          sed -n '/val PACK_URLS/,/)/p' "$file"
+          python3 scripts/pin_ask_pack.py \
+            "https://raw.githubusercontent.com/$GITHUB_REPOSITORY/$GITHUB_SHA/docs/ask-data.json"
 
       - name: Build debug APK and Play release bundle
         env:
