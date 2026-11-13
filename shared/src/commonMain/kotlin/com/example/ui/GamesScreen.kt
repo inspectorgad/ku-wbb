@@ -26,6 +26,7 @@ import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Switch
@@ -424,7 +425,9 @@ fun GameDetailScreen(
     onDeleteGame: (Game) -> Unit,
     onSaveStatLine: (StatLine) -> Unit,
     onDeleteStatLine: (StatLine) -> Unit,
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    // Opens "Ask about the team" with a preview or recap question.
+    onAskClaude: ((String) -> Unit)? = null
 ) {
     var showEditDialog by remember { mutableStateOf(false) }
     var showDeleteConfirm by remember { mutableStateOf(false) }
@@ -502,6 +505,31 @@ fun GameDetailScreen(
                             )
                         }
                         ResultText(game)
+                    }
+                }
+            }
+
+            // One tap to Claude for a scouting report before the game or a
+            // recap after it, through "Ask about the team". Which one is
+            // decided by the box score, not the date: a game whose date has
+            // passed but whose score has not landed is still a preview.
+            onAskClaude?.let { ask ->
+                item {
+                    val hasResult = game.teamScore != null && game.opponentScore != null
+                    val versus = siteLabel(game.siteOrLegacy)
+                    OutlinedButton(
+                        onClick = {
+                            ask(
+                                if (hasResult) recapQuestion(game.date, versus, game.opponent)
+                                else previewQuestion(game.date, versus, game.opponent)
+                            )
+                        },
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Text(
+                            if (hasResult) "Recap this game with Claude"
+                            else "Preview this game with Claude"
+                        )
                     }
                 }
             }

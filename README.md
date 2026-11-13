@@ -55,6 +55,15 @@ what it ran. Besides Kansas's own box scores it has the other teams' data too:
 the rosters of the schools on the schedule, every Division I team's NET row,
 every result involving a Big 12 team, and every Division I result this season.
 
+Every game carries a button that asks for it: a scouting report before it is
+played, a recap once the box score is in — their season and ours, the last
+meeting, common opponents, who to watch, and where the quarters or the team
+totals decided it. The app puts it on the game page and the dashboard puts a
+*Preview* chip on each scheduled row and a *Recap* button in the game sheet.
+The question lands in the Ask box worded the same on both, and waits there
+rather than being sent if that would cost anything the reader did not choose —
+a key they have not saved, or a new conversation.
+
 On its own it knows nothing about injuries, practice or line-ups, and says so
 rather than guessing. Turning on web search for a question lets it look those
 up as well — previews, recaps, injury and line-up news — and the pages it used

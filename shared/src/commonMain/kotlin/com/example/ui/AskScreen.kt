@@ -174,6 +174,13 @@ object AskSession {
         running?.cancel()
     }
 
+    /**
+     * Whether asking this now would sweep the thread off the screen. Only the
+     * engine knows — it pins its tool list for the life of a conversation — so
+     * a caller that must not destroy the reader's history asks here first.
+     */
+    fun wouldRestart(webSearch: Boolean): Boolean = engine.startsNewConversation(webSearch)
+
     fun newConversation() {
         val job = running
         turns.clear()
@@ -187,7 +194,7 @@ object AskSession {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AskScreen(onBack: () -> Unit) {
+fun AskScreen(onBack: () -> Unit, prefill: String? = null) {
     val device = LocalDevice.current
     var savedKey by remember { mutableStateOf(AskSession.sessionKey ?: AskKeyStore.load(device)) }
     var model by remember { mutableStateOf(AskKeyStore.model(device)) }
@@ -199,6 +206,26 @@ fun AskScreen(onBack: () -> Unit) {
 
     LaunchedEffect(turns.size) {
         if (turns.isNotEmpty()) listState.animateScrollToItem(turns.size + 1)
+    }
+    // A question handed over by a Preview or Recap button: asked at once when a
+    // key is saved, otherwise waiting in the box. Asked once, not again on a
+    // return to this screen.
+    //
+    // It is asked with the switch where the reader left it, never with web
+    // search forced on: a search costs them about a cent, and tapping Preview
+    // is not consent to spend it. The one thing a tap must never do is destroy
+    // what is on screen, so a question that would restart the conversation -
+    // web search newly on, with a thread begun without it - waits in the box
+    // instead, where pressing Ask makes the restart the reader's own choice.
+    LaunchedEffect(prefill) {
+        val q = prefill ?: return@LaunchedEffect
+        if (turns.any { it.question == q }) return@LaunchedEffect
+        val key = savedKey
+        if (key != null && AskSession.running == null && !AskSession.wouldRestart(webSearch)) {
+            AskSession.ask(q, key, model, webSearch)
+        } else {
+            question = q
+        }
     }
 
     Scaffold(
@@ -482,3 +509,33 @@ private fun AskInput(
     }
 }
 
+/**
+ * The Preview button's question, for a game not yet played. The dashboard's
+ * ask.js asks the same, word for word.
+ *
+ * `versus` carries its own trailing space - it is `siteLabel(site)`, which is
+ * "vs ", "at ", or nothing at all when the site is unknown, so a game with no
+ * site still reads as a sentence rather than a gap.
+ *
+ * Every clause names something the pack can answer: their season from
+ * d1_results and big12_results with team_records behind it, our last meeting
+ * from games, common opponents from d1_results, their players from
+ * opponent_roster, ours from roster and ku_lines, the match-up from
+ * team_totals, and the standing from team_records and standings. The app's own
+ * win estimate is deliberately left out: it is not in the data Claude can
+ * fetch, and it is already on the screen beside the button.
+ */
+fun previewQuestion(date: String, versus: String, opponent: String) =
+    "Give me a short scouting report for the $date game $versus$opponent: their season so far " +
+        "and what they do well, our last meeting and any common opponents, the players to watch " +
+        "on each side, how we match up, and where each of us stands in the NET and the Big 12 " +
+        "standings."
+
+/**
+ * The Recap button's question, for a game with a final score. Quarters, not
+ * sets; team_totals, not the sum of the player lines.
+ */
+fun recapQuestion(date: String, versus: String, opponent: String) =
+    "Recap the $date game $versus$opponent: the result and how each quarter went, our standout " +
+        "players and theirs, how our shooting, rebounding and turnovers compared with our season " +
+        "averages, and where the game was won or lost in the team totals."

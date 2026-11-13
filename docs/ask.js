@@ -654,6 +654,46 @@ function init() {
     ex.appendChild(b);
   }
   refreshKeyState();
+
+  // The Preview and Recap buttons elsewhere on the page hand a question over
+  // here. It is asked straight away unless that would cost the reader
+  // something they did not choose - a key they have not saved, or a restart
+  // that would clear the thread - and then it waits in the box, where pressing
+  // Ask makes the decision theirs. The app's Ask screen does the same.
+  window.kuAskAbout = (q) => {
+    $("ask-wrap").scrollIntoView({ behavior: "smooth", block: "start" });
+    // `running` is null for real stretches while a question is still in hand
+    // (loading the pack, between get_table hops), so `asking` is the one that
+    // actually says whether this box is busy.
+    if (running || asking) return;
+    if (!apiKey()) {
+      $("ask-q").value = q;
+      showError("Add your Anthropic API key above, then press Ask.");
+    } else if ($("ask-web").checked && conversation.length > 0 && webDeclared === false) {
+      $("ask-q").value = q;
+      showError("Web search is on, so this would start a new conversation and clear the thread. " +
+        "Press Ask to go ahead, or turn web search off.");
+    } else {
+      ask(q);
+    }
+  };
 }
+
+// The Preview and Recap buttons' questions, word for word the app's
+// previewQuestion() and recapQuestion() in AskScreen.kt. docs/ask.test.mjs
+// compares the two files and fails when they drift apart.
+//
+// `versus` carries its own trailing space - it is the dashboard's vsAt(g) and
+// the app's siteLabel(site): "vs ", "at ", or nothing when the site is
+// unknown, so a game with no site still reads as a sentence.
+window.kuPreviewQuestion = (date, versus, opponent) =>
+  `Give me a short scouting report for the ${date} game ${versus}${opponent}: their season so far ` +
+  "and what they do well, our last meeting and any common opponents, the players to watch " +
+  "on each side, how we match up, and where each of us stands in the NET and the Big 12 " +
+  "standings.";
+window.kuRecapQuestion = (date, versus, opponent) =>
+  `Recap the ${date} game ${versus}${opponent}: the result and how each quarter went, our standout ` +
+  "players and theirs, how our shooting, rebounding and turnovers compared with our season " +
+  "averages, and where the game was won or lost in the team totals.";
 
 init();
