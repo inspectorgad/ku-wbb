@@ -623,8 +623,9 @@ class AskEngine(
                     .put("name", "get_table")
                     .put(
                         "description",
-                        "Returns one table of the Kansas women's basketball season data (or, for opponent_roster, "
-                            "team_records and big12_results, data on other teams) as a JSON string: " +
+                        "Returns one table of the Kansas women's basketball season data (or, for " +
+                            "opponent_roster, team_records and big12_results, data on other teams) " +
+                            "as a JSON string: " +
                             "a list of records (one per row) for every table except 'definitions' (a dict of " +
                             "column meanings) and 'poll' (a dict with season, name, updated and rows). Call it " +
                             "from Python and load it with pandas, e.g. " +
