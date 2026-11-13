@@ -114,11 +114,14 @@ class AskEngineTest {
         assertEquals("RULES\n\nsummary", body1.getJSONArray("system").getJSONObject(0).getString("text"))
         assertFalse(body1.has("container"))
         val tools = body1.getJSONArray("tools")
+        // Two: the sandbox and get_table. Web search is declared only when the
+        // reader turns it on, and this question did not.
+        assertEquals(2, tools.length())
         assertEquals("code_execution_20260120", tools.getJSONObject(0).getString("type"))
         assertEquals("code_execution_20260120",
             tools.getJSONObject(1).getJSONArray("allowed_callers").getString(0))
         assertEquals(
-            "Today is 2026-09-26. How did we do?",
+            "Today is 2026-09-26. Web search is off for this question. How did we do?",
             body1.getJSONArray("messages").getJSONObject(0).getJSONArray("content").getJSONObject(0).getString("text")
         )
 

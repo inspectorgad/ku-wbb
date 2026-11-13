@@ -32,6 +32,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
@@ -45,6 +46,8 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalUriHandler
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
@@ -54,6 +57,7 @@ import com.example.data.ASK_MODELS
 import com.example.data.AskEngine
 import com.example.data.AskKeyStore
 import com.example.data.AskModel
+import com.example.data.AskSource
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.CoroutineStart
@@ -67,11 +71,22 @@ import com.example.text.todayIso
 const val EXPLAIN_ASK =
     "Type a question about the team and Claude, Anthropic's AI, answers it from the season data: " +
         "every game, every quarter's score, both teams' box scores, the official team totals, the " +
-        "schedule, the Big 12 standings, the AP poll and the roster. Claude works each answer out by " +
-        "running Python on the data rather than from memory, and \"Show the code\" under an answer " +
-        "lists exactly what it ran. It can only answer from the box scores — it knows nothing about " +
-        "injuries, practice or line-ups. Follow-up questions build on the earlier ones until you tap " +
-        "New conversation."
+        "schedule, the Big 12 standings, the AP poll and the roster — and, for other teams, the " +
+        "rosters of the schools we play, every Division I team's NET row, and every result involving " +
+        "a Big 12 team. Claude works each answer out by running Python on the data rather than from " +
+        "memory, and \"Show the code\" under an answer lists exactly what it ran. On its own it knows " +
+        "nothing about injuries, practice or line-ups; turn on web search below to let it look those " +
+        "up. Follow-up questions build on the earlier ones until you tap New conversation."
+
+const val EXPLAIN_ASK_WEB =
+    "Web search lets Claude also search the internet for this question — previews, recaps, injury " +
+        "and line-up news, coaches' comments — and it lists the pages it used under the answer, " +
+        "numbered to match the [1], [2] marks in the text. Statistics still come from the box scores. " +
+        "Each search costs 1 cent on your Anthropic account plus the cost of reading the pages, so a " +
+        "question can cost several cents more; it uses at most 5 searches. Web pages can be wrong or " +
+        "out of date, so check the dates on the sources. Turning it on partway through a conversation " +
+        "starts a new one with your next question, because Claude can't take on web search partway " +
+        "through; turning it off keeps the conversation going."
 
 const val EXPLAIN_ASK_KEY =
     "This uses your own Anthropic API key, so questions are billed to your Anthropic account — " +
@@ -83,6 +98,8 @@ private val EXAMPLES = listOf(
     "What is our record when we lead after the first quarter, and when we trail at the half?",
     "Compare our rebounding at home, on the road and at neutral sites.",
     "Which quarter do we lose ground in most often in Big 12 losses?",
+    // Needs the web: nothing in the season data says who is fit to play.
+    "What injury or line-up news is there for our next opponent? (turn web search on)",
 )
 
 /** One question and whatever came back for it. */
@@ -92,6 +109,8 @@ class AskTurn(val question: String) {
     var code by mutableStateOf<List<String>>(emptyList())
     var notes by mutableStateOf<List<String>>(emptyList())
     var error by mutableStateOf<String?>(null)
+    var sources by mutableStateOf<List<AskSource>>(emptyList())
+    var searches by mutableStateOf<List<String>>(emptyList())
 }
 
 /**
@@ -109,8 +128,12 @@ object AskSession {
     var sessionKey: String? = null
     private var resetting: Job? = null
 
-    fun ask(question: String, key: String, model: AskModel) {
+    fun ask(question: String, key: String, model: AskModel, webSearch: Boolean = false) {
         if (running != null) return
+        // A conversation begun without web search can't take it on: the engine
+        // starts a new one, so the earlier turns leave the screen too. (After
+        // New conversation the list is already empty, so this changes nothing.)
+        if (engine.startsNewConversation(webSearch)) turns.clear()
         val turn = AskTurn(question).also { turns += it }
         val today = todayIso()
         // Off the main thread: the requests carry the season's tables, and
@@ -121,14 +144,19 @@ object AskSession {
         val job = scope.launch(Dispatchers.Default, start = CoroutineStart.LAZY) {
             try {
                 resetting?.join()
-                val result = engine.ask(question, key, model, today) { status, partial ->
+                val result = engine.ask(question, key, model, today, webSearch) { status, partial, sources ->
                     turn.status = status
-                    if (partial.isNotEmpty()) turn.answer = partial
+                    if (partial.isNotEmpty()) {
+                        turn.answer = partial
+                        turn.sources = sources
+                    }
                 }
                 turn.answer = result.text
                 turn.code = result.code
                 turn.notes = result.notes
                 turn.error = result.error
+                turn.sources = result.sources
+                turn.searches = result.searches
             } catch (e: CancellationException) {
                 turn.notes = listOf("Stopped.")
             } catch (e: Exception) {
@@ -163,6 +191,7 @@ fun AskScreen(onBack: () -> Unit) {
     val device = LocalDevice.current
     var savedKey by remember { mutableStateOf(AskSession.sessionKey ?: AskKeyStore.load(device)) }
     var model by remember { mutableStateOf(AskKeyStore.model(device)) }
+    var webSearch by remember { mutableStateOf(AskKeyStore.webSearch(device)) }
     var question by rememberSaveable { mutableStateOf("") }
     val busy = AskSession.running != null
     val listState = rememberLazyListState()
@@ -244,12 +273,17 @@ fun AskScreen(onBack: () -> Unit) {
                 busy = busy,
                 hasKey = savedKey != null,
                 showNew = turns.isNotEmpty(),
+                webSearch = webSearch,
+                onWebSearch = {
+                    webSearch = it
+                    AskKeyStore.saveWebSearch(device, it)
+                },
                 onAsk = {
                     val q = question.trim()
                     val key = savedKey
                     if (q.isNotEmpty() && key != null) {
                         question = ""
-                        AskSession.ask(q, key, model)
+                        AskSession.ask(q, key, model, webSearch)
                     }
                 },
                 onStop = AskSession::stop,
@@ -365,10 +399,36 @@ private fun TurnCard(turn: AskTurn) {
                     )
                     if (showCode) turn.code.forEach { CodeBox(it) }
                 }
+                if (turn.sources.isNotEmpty()) Sources(turn.sources)
+                if (turn.searches.isNotEmpty()) {
+                    Text(
+                        "Searched the web for: " + turn.searches.joinToString("; ") { "\"$it\"" },
+                        style = MaterialTheme.typography.labelSmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
                 turn.notes.forEach {
                     Text(it, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
                 }
             }
+        }
+    }
+}
+
+/** The web pages an answer cites, numbered as in its text; each opens in the browser. */
+@Composable
+private fun Sources(sources: List<AskSource>) {
+    val uri = LocalUriHandler.current
+    Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
+        Text("Sources from the web", style = MaterialTheme.typography.labelMedium, fontWeight = FontWeight.Bold)
+        sources.forEach { s ->
+            Text(
+                "[${s.number}] ${s.title}",
+                style = MaterialTheme.typography.bodySmall,
+                color = MaterialTheme.colorScheme.primary,
+                textDecoration = TextDecoration.Underline,
+                modifier = Modifier.clickable { runCatching { uri.openUri(s.url) } }.padding(vertical = 2.dp)
+            )
         }
     }
 }
@@ -380,6 +440,8 @@ private fun AskInput(
     busy: Boolean,
     hasKey: Boolean,
     showNew: Boolean,
+    webSearch: Boolean,
+    onWebSearch: (Boolean) -> Unit,
     onAsk: () -> Unit,
     onStop: () -> Unit,
     onNew: () -> Unit
@@ -393,6 +455,17 @@ private fun AskInput(
             maxLines = 4,
             modifier = Modifier.fillMaxWidth()
         )
+        var explainWeb by remember { mutableStateOf(false) }
+        Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(top = 4.dp)) {
+            Switch(checked = webSearch, onCheckedChange = onWebSearch)
+            Text(
+                if (webSearch) "Web search on" else "Web search off",
+                style = MaterialTheme.typography.bodySmall,
+                modifier = Modifier.padding(start = 8.dp)
+            )
+            TextButton(onClick = { explainWeb = !explainWeb }) { Text(if (explainWeb) "Hide" else "What's this?") }
+        }
+        if (explainWeb) Explanation(EXPLAIN_ASK_WEB)
         Row(
             modifier = Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(top = 4.dp),
             horizontalArrangement = Arrangement.spacedBy(8.dp),
