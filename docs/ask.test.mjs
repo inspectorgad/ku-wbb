@@ -120,6 +120,12 @@ test('a handed-over question never quietly spends or destroys anything', () => {
   assert.match(body[1], /if \(running \|\| asking\) return;/);
   assert.match(body[1], /if \(!apiKey\(\)\)/);
   assert.match(body[1], /webDeclared === false/);
-  // The same three in the app, where the engine is asked rather than the DOM.
-  assert.match(askKt, /AskSession\.running == null && !AskSession\.wouldRestart\(webSearch\)/);
+  // The same three in the app, where the engine is asked rather than the DOM,
+  // and a fourth the dashboard has no need of: the app's question survives in
+  // saved state across a rotation or a killed process, so it is taken once and
+  // dropped rather than asked again by a composition that comes back.
+  assert.match(askKt, /key == null ->/);
+  assert.match(askKt, /AskSession\.running != null ->/);
+  assert.match(askKt, /AskSession\.wouldRestart\(webSearch\) ->/);
+  assert.match(askKt, /onPrefillTaken\(\)/);
 });

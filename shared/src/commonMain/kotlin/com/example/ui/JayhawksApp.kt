@@ -92,7 +92,11 @@ fun JayhawksApp(viewModel: JayhawksViewModel) {
                 askOpen = false
                 askPrefill = null
             },
-            prefill = askPrefill
+            prefill = askPrefill,
+            // Dropped the moment it has been dealt with, so coming back to
+            // this screen - after a rotation, or after Android rebuilt the
+            // app from its saved state - never asks it a second time.
+            onPrefillTaken = { askPrefill = null }
         )
 
         // Only openable when there are inputs, but checked again here: a sync

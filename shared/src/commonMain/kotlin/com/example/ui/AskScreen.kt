@@ -176,10 +176,14 @@ object AskSession {
 
     /**
      * Whether asking this now would sweep the thread off the screen. Only the
-     * engine knows — it pins its tool list for the life of a conversation — so
-     * a caller that must not destroy the reader's history asks here first.
+     * engine knows whether it would start a new conversation — it pins its
+     * tool list for the life of one — but what that costs is measured in what
+     * the reader can see, so an empty screen has nothing to protect: New
+     * conversation empties `turns` at once and resets the engine in its own
+     * time, and in between there is no history left to lose.
      */
-    fun wouldRestart(webSearch: Boolean): Boolean = engine.startsNewConversation(webSearch)
+    fun wouldRestart(webSearch: Boolean): Boolean =
+        turns.isNotEmpty() && engine.startsNewConversation(webSearch)
 
     fun newConversation() {
         val job = running
@@ -194,12 +198,19 @@ object AskSession {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AskScreen(onBack: () -> Unit, prefill: String? = null) {
+fun AskScreen(
+    onBack: () -> Unit,
+    prefill: String? = null,
+    // Called once the prefill has been dealt with, so the caller can drop it.
+    onPrefillTaken: () -> Unit = {}
+) {
     val device = LocalDevice.current
     var savedKey by remember { mutableStateOf(AskSession.sessionKey ?: AskKeyStore.load(device)) }
     var model by remember { mutableStateOf(AskKeyStore.model(device)) }
     var webSearch by remember { mutableStateOf(AskKeyStore.webSearch(device)) }
     var question by rememberSaveable { mutableStateOf("") }
+    // Why a handed-over question is sitting in the box instead of being asked.
+    var prefillNote by rememberSaveable { mutableStateOf<String?>(null) }
     val busy = AskSession.running != null
     val listState = rememberLazyListState()
     val turns = AskSession.turns
@@ -207,25 +218,35 @@ fun AskScreen(onBack: () -> Unit, prefill: String? = null) {
     LaunchedEffect(turns.size) {
         if (turns.isNotEmpty()) listState.animateScrollToItem(turns.size + 1)
     }
-    // A question handed over by a Preview or Recap button: asked at once when a
-    // key is saved, otherwise waiting in the box. Asked once, not again on a
-    // return to this screen.
+    // A question handed over by a Preview or Recap button.
+    //
+    // Taken exactly once: the caller drops it as soon as this has run, so a
+    // rotation, a dark-mode switch or a return from a killed process cannot
+    // quietly ask it again on the reader's account. By the same token a second
+    // tap of the button is a second deliberate press and asks again, which is
+    // what the dashboard does and what a reader whose first try failed wants.
     //
     // It is asked with the switch where the reader left it, never with web
     // search forced on: a search costs them about a cent, and tapping Preview
-    // is not consent to spend it. The one thing a tap must never do is destroy
-    // what is on screen, so a question that would restart the conversation -
-    // web search newly on, with a thread begun without it - waits in the box
-    // instead, where pressing Ask makes the restart the reader's own choice.
+    // is not consent to spend it. Nor may a tap destroy what is on screen, so
+    // when asking now would clear the thread - web search newly on, with a
+    // conversation begun without it - the question waits in the box with the
+    // reason beside it, and pressing Ask makes that the reader's own choice.
     LaunchedEffect(prefill) {
         val q = prefill ?: return@LaunchedEffect
-        if (turns.any { it.question == q }) return@LaunchedEffect
         val key = savedKey
-        if (key != null && AskSession.running == null && !AskSession.wouldRestart(webSearch)) {
-            AskSession.ask(q, key, model, webSearch)
-        } else {
-            question = q
+        val why = when {
+            key == null -> "Add your Anthropic API key above, then press Ask."
+            AskSession.running != null ->
+                "A question is already running. Press Ask when it has finished."
+            AskSession.wouldRestart(webSearch) ->
+                "Web search is on, so pressing Ask will start a new conversation and clear the " +
+                    "thread. Turn web search off to keep it."
+            else -> null
         }
+        prefillNote = why
+        if (key != null && why == null) AskSession.ask(q, key, model, webSearch) else question = q
+        onPrefillTaken()
     }
 
     Scaffold(
@@ -294,6 +315,14 @@ fun AskScreen(onBack: () -> Unit, prefill: String? = null) {
                     }
                 }
             }
+            prefillNote?.let {
+                Text(
+                    it,
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.error,
+                    modifier = Modifier.padding(horizontal = 16.dp)
+                )
+            }
             AskInput(
                 question = question,
                 onQuestion = { question = it },
@@ -310,6 +339,7 @@ fun AskScreen(onBack: () -> Unit, prefill: String? = null) {
                     val key = savedKey
                     if (q.isNotEmpty() && key != null) {
                         question = ""
+                        prefillNote = null
                         AskSession.ask(q, key, model, webSearch)
                     }
                 },

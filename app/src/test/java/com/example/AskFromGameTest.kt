@@ -1,6 +1,7 @@
 package com.example
 
 import androidx.compose.material3.Surface
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.test.assertCountEquals
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.junit4.createComposeRule
@@ -8,7 +9,12 @@ import androidx.compose.ui.test.onAllNodesWithText
 import androidx.compose.ui.test.onNodeWithText
 import androidx.compose.ui.test.performClick
 import com.example.data.Game
+import com.example.platform.Device
+import com.example.platform.Settings
+import com.example.platform.SettingsEditor
+import com.example.ui.AskScreen
 import com.example.ui.GameDetailScreen
+import com.example.ui.LocalDevice
 import com.example.ui.previewQuestion
 import com.example.ui.recapQuestion
 import com.example.ui.theme.MyApplicationTheme
@@ -151,4 +157,83 @@ class AskFromGameTest {
         rule.onAllNodesWithText("Recap this game with Claude").assertCountEquals(0)
         rule.onAllNodesWithText("Preview this game with Claude").assertCountEquals(0)
     }
+
+    @Test
+    fun `a handed-over question is taken once, and says why it is waiting`() {
+        // The question survives in saved state, so a rotation or a return from
+        // a killed process rebuilds this screen with it still in hand. Taking
+        // it exactly once is what stops that rebuild asking it again on the
+        // reader's account; this pins the callback that does the taking.
+        var taken = 0
+        val q = previewQuestion("2026-11-14", "vs ", "Nebraska")
+        rule.setContent {
+            CompositionLocalProvider(LocalDevice provides FakeDevice()) {
+                MyApplicationTheme {
+                    Surface {
+                        AskScreen(onBack = {}, prefill = q, onPrefillTaken = { taken++ })
+                    }
+                }
+            }
+        }
+        rule.waitForIdle()
+
+        assertEquals(1, taken)
+        // No key saved, so it waits in the box and says so rather than
+        // looking like an ordinary question that simply did not go.
+        rule.onNodeWithText(q).assertIsDisplayed()
+        rule.onNodeWithText("Add your Anthropic API key above, then press Ask.").assertIsDisplayed()
+    }
+
+    @Test
+    fun `with nothing handed over nothing is taken`() {
+        var taken = 0
+        rule.setContent {
+            CompositionLocalProvider(LocalDevice provides FakeDevice()) {
+                MyApplicationTheme {
+                    Surface {
+                        AskScreen(onBack = {}, onPrefillTaken = { taken++ })
+                    }
+                }
+            }
+        }
+        rule.waitForIdle()
+
+        assertEquals(0, taken)
+    }
+}
+
+/** A phone that remembers nothing and has no key saved. */
+private class FakeDevice : Device {
+    private val groups = mutableMapOf<String, MutableMap<String, Any>>()
+
+    override fun settings(name: String): Settings {
+        val values = groups.getOrPut(name) { mutableMapOf() }
+        return object : Settings {
+            override fun string(key: String): String? = values[key] as? String
+            override fun long(key: String, default: Long): Long = values[key] as? Long ?: default
+            override fun int(key: String, default: Int): Int = values[key] as? Int ?: default
+            override fun boolean(key: String, default: Boolean): Boolean =
+                values[key] as? Boolean ?: default
+
+            override fun edit(changes: SettingsEditor.() -> Unit) {
+                val editor = object : SettingsEditor {
+                    override fun putString(key: String, value: String?) {
+                        if (value == null) values.remove(key) else values[key] = value
+                    }
+                    override fun putLong(key: String, value: Long) { values[key] = value }
+                    override fun putInt(key: String, value: Int) { values[key] = value }
+                    override fun putBoolean(key: String, value: Boolean) { values[key] = value }
+                    override fun remove(key: String) { values.remove(key) }
+                }
+                editor.changes()
+            }
+        }
+    }
+
+    override fun readFile(name: String): String? = null
+    override fun writeFile(name: String, text: String): Boolean = false
+    override fun readAsset(name: String): String? = null
+    override fun loadSecret(name: String): String? = null
+    override fun saveSecret(name: String, value: String): Boolean = false
+    override fun forgetSecret(name: String) {}
 }
