@@ -82,7 +82,9 @@ object Seeder {
         if (stale.isEmpty()) return
         val withLines = dao.statLinesOnce().map { it.gameId }.toSet()
         val byKey = all.associateBy { gameKey(it.date, it.opponent) }
-        // What a sync cannot put back if the row goes.
+        // What a sync cannot put back if the row goes. Every table that points
+        // at a game deletes with it (ON DELETE CASCADE), so dropping the wrong
+        // one of the pair takes a night's stat lines with it and says nothing.
         val keeps = { g: Game -> g.teamScore != null || g.id in withLines }
         for (old in stale) {
             val match = RANKED_NAME.find(old.opponent) ?: continue

@@ -5,6 +5,7 @@ import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
 import com.example.data.Game
 import com.example.data.JayhawksDatabase
+import com.example.data.Player
 import com.example.data.Seeder
 import com.example.data.StatLine
 import kotlinx.coroutines.test.runTest
@@ -634,7 +635,8 @@ class MergeSyncTest {
         // A line was entered against the stale row before the fix landed...
         Seeder.merge(fixtureJson("#25 Nebraska"), db.dao())
         val stale = db.dao().gamesOnce().single()
-        db.dao().upsertStatLine(StatLine(gameId = stale.id, playerId = 0, points = 14))
+        val playerId = db.dao().insertPlayer(Player(name = "Ada Alpha"))
+        db.dao().upsertStatLine(StatLine(gameId = stale.id, playerId = playerId, points = 14))
         // ...and a later sync put the corrected one beside it.
         val freshId = db.dao().insertGame(
             Game(date = "2026-11-14", opponent = "Nebraska", season = "2026-27", site = "neutral")
