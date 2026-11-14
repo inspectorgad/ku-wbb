@@ -457,10 +457,10 @@
   },
   "6647850": {
    "date": "2026-11-14",
-   "final": false,
+   "final": true,
    "home": "Nebraska",
    "away": "Kansas",
-   "boxscored": false
+   "boxscored": true
   }
  },
  "big12Games": {
@@ -8890,6 +8890,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6646113": {
+   "date": "2026-11-14",
+   "season": "2026",
+   "home": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 82,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "New Mexico",
+    "seo": "new-mexico",
+    "score": 65,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6646414": {
    "date": "2026-11-09",
    "season": "2026",
@@ -9169,6 +9191,28 @@
     "name": "Northwestern",
     "seo": "northwestern",
     "score": 53,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6646913": {
+   "date": "2026-11-14",
+   "season": "2026",
+   "home": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 72,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Youngstown St.",
+    "seo": "youngstown-st",
+    "score": 63,
     "winner": false,
     "rank": null,
     "inConference": false
@@ -9546,6 +9590,28 @@
     "winner": false,
     "rank": null,
     "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6647850": {
+   "date": "2026-11-14",
+   "season": "2026",
+   "home": {
+    "name": "Nebraska",
+    "seo": "nebraska",
+    "score": 105,
+    "winner": true,
+    "rank": 25,
+    "inConference": false
+   },
+   "away": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 73,
+    "winner": false,
+    "rank": null,
+    "inConference": true
    },
    "conferenceGame": false,
    "bracket": false

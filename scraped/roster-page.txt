@@ -8,15 +8,6 @@ Scoreboard
 Coming Up
 View Calendar 
 Skip Ad
-Completed Event: Women's Basketball versus Northeastern State (exh.) on October 22, 2026 , Win , 90, to, 43
-Final
-Oct 22
-Women's Basketball
-90
-vs Northeastern State (exh.)
-43
-Story Recap
-Boxscore
 Completed Event: Women's Basketball versus Washburn (exh.) on October 29, 2026 , Win , 68, to, 50
 Final
 Oct 29
@@ -53,15 +44,13 @@ vs Oral Roberts
 51
 Story Recap
 Boxscore
-Upcoming Event: Women's Basketball versus #25 Nebraska on November 14, 2026 at 3:30 p.m. CT
-Live
+Completed Event: Women's Basketball versus #25 Nebraska on November 14, 2026 , Loss , 72, to, 105
+Final
+Nov 14
 Women's Basketball
-13
+72
 vs #25 Nebraska
-18
-Audio
-Video
-Stats
+105
 Upcoming Event: Women's Basketball at Minnesota on November 18, 2026 at 7 p.m. CT
 Wed. 11/18/26
 -
@@ -95,6 +84,14 @@ Women's Basketball
 vs Miami (OH)
 Audio
 Video
+Upcoming Event: Women's Basketball versus Missouri State on December 3, 2026 at 6:30 p.m. CT
+Thu. 12/03/26
+-
+6:30 p.m. CT
+Women's Basketball
+vs Missouri State
+Audio
+Stats
 MENU
 Toggle Navigation
 , Opens in new window
