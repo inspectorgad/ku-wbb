@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-11-13T15:23:22Z",
+ "generatedAt": "2026-11-14T01:47:03Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -18870,9 +18870,19 @@
    "seo": "west-virginia",
    "confW": 0,
    "confL": 0,
-   "overallW": 3,
+   "overallW": 4,
    "overallL": 0,
    "nationalRank": 24
+  },
+  {
+   "season": "2026-27",
+   "team": "UCF",
+   "seo": "ucf",
+   "confW": 0,
+   "confL": 0,
+   "overallW": 4,
+   "overallL": 1,
+   "nationalRank": null
   },
   {
    "season": "2026-27",
@@ -18883,16 +18893,6 @@
    "overallW": 3,
    "overallL": 1,
    "nationalRank": 19
-  },
-  {
-   "season": "2026-27",
-   "team": "UCF",
-   "seo": "ucf",
-   "confW": 0,
-   "confL": 0,
-   "overallW": 3,
-   "overallL": 1,
-   "nationalRank": null
   },
   {
    "season": "2026-27",
@@ -19177,7 +19177,7 @@
  "opponentRosters": [
   {
    "team": "arizona",
-   "fetchedAt": "2026-11-07",
+   "fetchedAt": "2026-11-14",
    "players": [
     {
      "name": "Arynn Finley",
@@ -19300,7 +19300,7 @@
   },
   {
    "team": "arizona st",
-   "fetchedAt": "2026-11-07",
+   "fetchedAt": "2026-11-14",
    "players": [
     {
      "name": "Madison Morson",
@@ -19423,7 +19423,7 @@
   },
   {
    "team": "baylor",
-   "fetchedAt": "2026-11-07",
+   "fetchedAt": "2026-11-14",
    "players": [
     {
      "name": "Taliah Scott",
@@ -19537,7 +19537,7 @@
   },
   {
    "team": "byu",
-   "fetchedAt": "2026-11-07",
+   "fetchedAt": "2026-11-14",
    "players": [
     {
      "name": "Sydney Benally",
@@ -19615,7 +19615,7 @@
   },
   {
    "team": "cincinnati",
-   "fetchedAt": "2026-11-07",
+   "fetchedAt": "2026-11-14",
    "players": [
     {
      "name": "Yar Tong",
@@ -19747,7 +19747,7 @@
   },
   {
    "team": "colorado",
-   "fetchedAt": "2026-11-07",
+   "fetchedAt": "2026-11-14",
    "players": [
     {
      "name": "Brooke Walker",
@@ -19879,7 +19879,7 @@
   },
   {
    "team": "houston",
-   "fetchedAt": "2026-11-07",
+   "fetchedAt": "2026-11-14",
    "players": [
     {
      "name": "Esmeralda Enriquez",
@@ -20002,7 +20002,7 @@
   },
   {
    "team": "iowa st",
-   "fetchedAt": "2026-11-07",
+   "fetchedAt": "2026-11-14",
    "players": [
     {
      "name": "Sienna Harvey",
@@ -20125,7 +20125,7 @@
   },
   {
    "team": "kansas st",
-   "fetchedAt": "2026-11-07",
+   "fetchedAt": "2026-11-14",
    "players": [
     {
      "name": "Brandie Harrod",
@@ -20239,7 +20239,7 @@
   },
   {
    "team": "oklahoma st",
-   "fetchedAt": "2026-11-07",
+   "fetchedAt": "2026-11-14",
    "players": [
     {
      "name": "LA Sneed",
@@ -20353,7 +20353,7 @@
   },
   {
    "team": "south dakota st",
-   "fetchedAt": "2026-11-07",
+   "fetchedAt": "2026-11-14",
    "players": [
     {
      "name": "Audrey Shindelar",
@@ -20476,7 +20476,7 @@
   },
   {
    "team": "tcu",
-   "fetchedAt": "2026-11-07",
+   "fetchedAt": "2026-11-14",
    "players": [
     {
      "name": "Camille Williams",
@@ -20590,7 +20590,7 @@
   },
   {
    "team": "texas tech",
-   "fetchedAt": "2026-11-07",
+   "fetchedAt": "2026-11-14",
    "players": [
     {
      "name": "Milania Jordan",
@@ -20731,7 +20731,7 @@
   },
   {
    "team": "ucf",
-   "fetchedAt": "2026-11-07",
+   "fetchedAt": "2026-11-14",
    "players": [
     {
      "name": "Key Roseby",
@@ -20854,7 +20854,7 @@
   },
   {
    "team": "utah",
-   "fetchedAt": "2026-11-07",
+   "fetchedAt": "2026-11-14",
    "players": [
     {
      "name": "Lena Girardi",
@@ -20977,7 +20977,7 @@
   },
   {
    "team": "west virginia",
-   "fetchedAt": "2026-11-07",
+   "fetchedAt": "2026-11-14",
    "players": [
     {
      "name": "Nylah Wilson",
@@ -21429,15 +21429,6 @@
     "rating": 1.09
    },
    {
-    "team": "Oklahoma St.",
-    "key": "oklahoma st",
-    "confW": 0,
-    "confL": 0,
-    "remaining": 16,
-    "pVsAverage": 0.7233,
-    "rating": 1.2035
-   },
-   {
     "team": "UCF",
     "key": "ucf",
     "confW": 0,
@@ -21445,6 +21436,15 @@
     "remaining": 17,
     "pVsAverage": 0.2105,
     "rating": 0.1723
+   },
+   {
+    "team": "Oklahoma St.",
+    "key": "oklahoma st",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 16,
+    "pVsAverage": 0.7233,
+    "rating": 1.2035
    },
    {
     "team": "Arizona",
