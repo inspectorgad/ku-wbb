@@ -15988,6 +15988,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6661657": {
+   "date": "2026-11-14",
+   "season": "2026",
+   "home": {
+    "name": "San Diego",
+    "seo": "san-diego",
+    "score": 94,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "CSUN",
+    "seo": "cal-st-northridge",
+    "score": 67,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6661665": {
    "date": "2026-11-06",
    "season": "2026",

@@ -44,13 +44,15 @@ vs Oral Roberts
 51
 Story Recap
 Boxscore
-Completed Event: Women's Basketball versus #25 Nebraska on November 14, 2026 , Loss , 72, to, 105
+Completed Event: Women's Basketball versus #25 Nebraska on November 14, 2026 , Loss , 73, to, 105
 Final
 Nov 14
 Women's Basketball
-72
+73
 vs #25 Nebraska
 105
+Story Recap
+Boxscore
 Upcoming Event: Women's Basketball at Minnesota on November 18, 2026 at 7 p.m. CT
 Wed. 11/18/26
 -
@@ -124,9 +126,9 @@ Minneapolis, Minn.
 Days
 1
 Hours
-10
+2
 Minutes
-53
+37
 Seconds
 Add To Calendar
 Text Only
@@ -281,13 +283,16 @@ Sioux Falls, S.D.
 
 TV: BTN+
 
-L, 72-105
+L, 73-105
 
 Nov 14(Sat)
 3:30 p.m. CT
 
 Game Center
+Box Score
+Recap
 History
+Game Info
 at
 Minnesota
 
@@ -807,13 +812,13 @@ Wednesday, November 04
 All Videos
 Related News
 All News
+No. 25 Nebraska Hands Kansas First Defeat
+Saturday, November 14
 Jayhawks to Renew Rivalry with No. 25 Nebraska Saturday in South Dakota
 Friday, November 13
 Davis, Fandel Fuel Kansas in 99-51 Rout of Oral Roberts
 Tuesday, November 10
 KU Concludes Homestand Tuesday, Hosting Oral Roberts
-Monday, November 09
-Jaliya Davis Opens Sophomore Season with Big 12 Starting Five Honor
 Monday, November 09
 All News
 Footer
