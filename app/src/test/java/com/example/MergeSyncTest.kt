@@ -798,10 +798,14 @@ class MergeSyncTest {
                 venue = "Hard Rock Hotel Rivera Maya", tipTime = "15:00")
         )
         val json = JSONObject(
+            // "Someone New" FIRST, deliberately. Listed second it reaches the
+            // stored row only after the exact match in the loop has claimed
+            // it, so the test would pass with the pre-pass deleted and guard
+            // nothing. First, it can only be stopped by the pre-pass.
             """{"games": [
-                 {"date": "2026-11-26", "opponent": "Washington State", "season": "2026-27",
-                  "venue": "Hard Rock Hotel Rivera Maya", "time": "15:00"},
                  {"date": "2026-11-26", "opponent": "Someone New", "season": "2026-27",
+                  "venue": "Hard Rock Hotel Rivera Maya", "time": "15:00"},
+                 {"date": "2026-11-26", "opponent": "Washington State", "season": "2026-27",
                   "venue": "Hard Rock Hotel Rivera Maya", "time": "15:00"}]}"""
         )
 
