@@ -1402,6 +1402,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6645893": {
+   "date": "2026-11-14",
+   "season": "2026",
+   "home": {
+    "name": "Yale",
+    "seo": "yale",
+    "score": 65,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Rider",
+    "seo": "rider",
+    "score": 47,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6645927": {
    "date": "2026-11-02",
    "season": "2026",
