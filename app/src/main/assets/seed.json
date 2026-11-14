@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-11-14T07:58:31Z",
+ "generatedAt": "2026-11-14T21:40:11Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -18826,16 +18826,6 @@
   },
   {
    "season": "2026-27",
-   "team": "Kansas St.",
-   "seo": "kansas-st",
-   "confW": 0,
-   "confL": 0,
-   "overallW": 4,
-   "overallL": 0,
-   "nationalRank": null
-  },
-  {
-   "season": "2026-27",
    "team": "TCU",
    "seo": "tcu",
    "confW": 0,
@@ -18873,6 +18863,16 @@
    "overallW": 4,
    "overallL": 0,
    "nationalRank": 24
+  },
+  {
+   "season": "2026-27",
+   "team": "Kansas St.",
+   "seo": "kansas-st",
+   "confW": 0,
+   "confL": 0,
+   "overallW": 4,
+   "overallL": 1,
+   "nationalRank": null
   },
   {
    "season": "2026-27",
@@ -21384,15 +21384,6 @@
     "rating": 1.0064
    },
    {
-    "team": "Kansas St.",
-    "key": "kansas st",
-    "confW": 0,
-    "confL": 0,
-    "remaining": 16,
-    "pVsAverage": 0.4893,
-    "rating": 0.7501
-   },
-   {
     "team": "TCU",
     "key": "tcu",
     "confW": 0,
@@ -21427,6 +21418,15 @@
     "remaining": 17,
     "pVsAverage": 0.6703,
     "rating": 1.09
+   },
+   {
+    "team": "Kansas St.",
+    "key": "kansas st",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 16,
+    "pVsAverage": 0.4893,
+    "rating": 0.7501
    },
    {
     "team": "UCF",
