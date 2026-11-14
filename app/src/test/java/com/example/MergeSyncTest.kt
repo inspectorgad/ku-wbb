@@ -687,6 +687,89 @@ class MergeSyncTest {
         assertEquals(listOf("TBD"), db.dao().gamesOnce().map { it.opponent })
     }
 
+    // --- the general case: the source renames a fixture --------------------
+
+    private fun cancunJson(opponent: String) = JSONObject(
+        """{"games": [{"date": "2026-11-26", "opponent": "$opponent", "season": "2026-27",
+             "site": "neutral", "venue": "Hard Rock Hotel Rivera Maya",
+             "city": "Cancun, Mexico", "time": "15:00", "tv": "FloSports"}]}"""
+    )
+
+    @Test
+    fun `a fixture renamed at the source is taken over, not duplicated`() = runTest {
+        // The bracket is drawn between one sync and the next. Same date, same
+        // venue, same tip time, different name.
+        Seeder.merge(cancunJson("Cancun Challenge Winner"), db.dao())
+        val before = db.dao().gamesOnce().single()
+
+        Seeder.merge(cancunJson("Washington State"), db.dao())
+
+        val games = db.dao().gamesOnce()
+        assertEquals(1, games.size)
+        assertEquals("Washington State", games.single().opponent)
+        // Taken over, not replaced: the row the reader may have been looking at
+        // keeps its identity, and anything hanging off it keeps pointing here.
+        assertEquals(before.id, games.single().id)
+    }
+
+    @Test
+    fun `a game somebody entered themselves is not taken over by a rename`() = runTest {
+        // Same date as a scheduled game, but none of its details - which is
+        // what a hand-entered game looks like, and why the venue or the tip
+        // time has to match before anything is adopted.
+        val mine = db.dao().insertGame(
+            Game(date = "2026-11-26", opponent = "Practice Scrimmage", season = "2026-27")
+        )
+
+        Seeder.merge(cancunJson("Washington State"), db.dao())
+
+        val games = db.dao().gamesOnce().sortedBy { it.opponent }
+        assertEquals(listOf("Practice Scrimmage", "Washington State"), games.map { it.opponent })
+        assertEquals(mine, games.first().id)
+    }
+
+    @Test
+    fun `a played game is never taken over by a rename`() = runTest {
+        // A result is the one thing a sync cannot put back, so a row carrying
+        // one is never adopted even when everything else lines up.
+        db.dao().insertGame(
+            Game(date = "2026-11-26", opponent = "Someone Else", season = "2026-27",
+                venue = "Hard Rock Hotel Rivera Maya", tipTime = "15:00",
+                teamScore = 70, opponentScore = 60)
+        )
+
+        Seeder.merge(cancunJson("Washington State"), db.dao())
+
+        assertEquals(
+            listOf("Someone Else", "Washington State"),
+            db.dao().gamesOnce().map { it.opponent }.sorted()
+        )
+    }
+
+    @Test
+    fun `a row another game in the same sync answers to is not taken over`() = runTest {
+        // Two games on nearby dates in one tournament. The second must not
+        // swallow the first's row just because the first was renamed.
+        db.dao().insertGame(
+            Game(date = "2026-11-26", opponent = "Washington State", season = "2026-27",
+                venue = "Hard Rock Hotel Rivera Maya", tipTime = "15:00")
+        )
+        val json = JSONObject(
+            """{"games": [
+                 {"date": "2026-11-26", "opponent": "Washington State", "season": "2026-27",
+                  "venue": "Hard Rock Hotel Rivera Maya", "time": "15:00"},
+                 {"date": "2026-11-26", "opponent": "Someone New", "season": "2026-27",
+                  "venue": "Hard Rock Hotel Rivera Maya", "time": "15:00"}]}"""
+        )
+
+        Seeder.merge(json, db.dao())
+
+        assertEquals(
+            listOf("Someone New", "Washington State"),
+            db.dao().gamesOnce().map { it.opponent }.sorted()
+        )
+    }
+
     @Test
     fun `an ordinary opponent name is left exactly as it is`() = runTest {
         // A "#" is a rank only at the very front and only before a number.

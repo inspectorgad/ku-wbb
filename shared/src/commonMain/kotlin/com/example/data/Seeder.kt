@@ -184,10 +184,20 @@ object Seeder {
 
         // Tournament weekends can put two games on nearby dates, so games
         // are keyed by date + opponent rather than date alone.
-        val gamesByKey = dao.gamesOnce().associateBy { gameKey(it.date, it.opponent) }
+        val storedGames = dao.gamesOnce()
+        val gamesByKey = storedGames.associateBy { gameKey(it.date, it.opponent) }
         val gamesWithLines = dao.statLinesOnce().map { it.gameId }.toSet()
+        val storedByDate = storedGames.groupBy { it.date }
 
         val games = root.optJSONArray("games") ?: return
+
+        // Which stored rows this payload already answers to by name. A rename
+        // may never take one of these: it belongs to a game of its own.
+        val claimed = mutableSetOf<Long>()
+        for (i in 0 until games.length()) {
+            val g = games.getJSONObject(i)
+            gamesByKey[gameKey(g.getString("date"), g.getString("opponent"))]?.let { claimed += it.id }
+        }
         for (i in 0 until games.length()) {
             val g = games.getJSONObject(i)
             val date = g.getString("date")
@@ -216,7 +226,32 @@ object Seeder {
             val seedOppSeed = g.optInt("opponentSeed").takeIf { it > 0 }
             val seedOppRecord = g.optString("opponentRecord").takeIf { it.isNotBlank() }
 
-            val existing = gamesByKey[gameKey(date, opponent)]
+            // The source can rename a fixture: a bracket is drawn and "TBD"
+            // becomes a team, a poll rank is added or dropped, a spelling is
+            // corrected. Keyed on the name alone the sync sees a game it has
+            // never met, inserts it, and leaves the old row sitting there for
+            // good - which is how both "#25 Nebraska" and "vs TBD" came to sit
+            // beside the real game on a phone.
+            //
+            // So a fixture that has been renamed is adopted rather than
+            // duplicated. Only a row that can still BE this game is taken: the
+            // same date, no result and no stat lines, not already claimed by
+            // another game in this payload, and sharing the venue or the tip
+            // time - which a scraped fixture keeps across a rename and a game
+            // somebody typed in themselves will not have. More than one
+            // candidate means it is not obvious, and nothing is touched.
+            //
+            // Renaming rather than deleting, because the worst this can do is
+            // relabel a row; it can never take one away.
+            val exact = gamesByKey[gameKey(date, opponent)]
+            val existing = exact ?: storedByDate[date].orEmpty().singleOrNull { row ->
+                row.id !in claimed &&
+                    row.teamScore == null && row.opponentScore == null &&
+                    row.id !in gamesWithLines &&
+                    ((seedVenue != null && row.venue == seedVenue) ||
+                        (seedTip != null && row.tipTime == seedTip))
+            }
+            if (existing != null) claimed += existing.id
             val gameId: Long
             if (existing == null) {
                 gameId = dao.insertGame(
@@ -253,6 +288,12 @@ object Seeder {
                 // and only the box score's venue settles it. Gap-filling would
                 // mean a correction never reached an already-synced phone.
                 val updated = existing.copy(
+                    // Only when this row was adopted under another name. An
+                    // exact match keeps the spelling it was stored with: the
+                    // two already mean the same team to normTeam, and re-keying
+                    // every game in the database to tidy that up is a bigger
+                    // change than it looks.
+                    opponent = if (exact == null) opponent else existing.opponent,
                     home = seedHome ?: existing.home,
                     site = seedSite ?: existing.site,
                     venue = seedVenue ?: existing.venue,
