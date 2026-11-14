@@ -12,7 +12,8 @@
   "2026-11-10": true,
   "2026-11-11": true,
   "2026-11-12": true,
-  "2026-11-13": true
+  "2026-11-13": true,
+  "2026-11-14": true
  },
  "games": {
   "6645408": {
@@ -317,6 +318,28 @@
     "seo": "stonehill",
     "score": 63,
     "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6645504": {
+   "date": "2026-11-13",
+   "season": "2026",
+   "home": {
+    "name": "Stonehill",
+    "seo": "stonehill",
+    "score": 63,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "West Ga.",
+    "seo": "west-ga",
+    "score": 65,
+    "winner": true,
     "rank": null,
     "inConference": false
    },
@@ -954,6 +977,28 @@
     "name": "UMES",
     "seo": "umes",
     "score": 58,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6645772": {
+   "date": "2026-11-13",
+   "season": "2026",
+   "home": {
+    "name": "N.C. A&T",
+    "seo": "nc-at",
+    "score": 80,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Guilford",
+    "seo": "guilford",
+    "score": 32,
     "winner": false,
     "rank": null,
     "inConference": false
@@ -4393,6 +4438,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6646889": {
+   "date": "2026-11-13",
+   "season": "2026",
+   "home": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 66,
+    "winner": true,
+    "rank": 24,
+    "inConference": true
+   },
+   "away": {
+    "name": "Northwestern",
+    "seo": "northwestern",
+    "score": 53,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6646892": {
    "date": "2026-11-05",
    "season": "2026",
@@ -5089,6 +5156,28 @@
    "away": {
     "name": "UMass Lowell",
     "seo": "umass-lowell",
+    "score": 61,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6647160": {
+   "date": "2026-11-13",
+   "season": "2026",
+   "home": {
+    "name": "Cornell",
+    "seo": "cornell",
+    "score": 64,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Canisius",
+    "seo": "canisius",
     "score": 61,
     "winner": false,
     "rank": null,
@@ -6725,6 +6814,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6647808": {
+   "date": "2026-11-13",
+   "season": "2026",
+   "home": {
+    "name": "Monmouth",
+    "seo": "monmouth",
+    "score": 125,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Bry. & Strat. (Alb.)",
+    "seo": "bry-strat-alb",
+    "score": 31,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6647847": {
    "date": "2026-11-03",
    "season": "2026",
@@ -7334,6 +7445,28 @@
     "name": "Cleveland St.",
     "seo": "cleveland-st",
     "score": 71,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6648063": {
+   "date": "2026-11-13",
+   "season": "2026",
+   "home": {
+    "name": "Omaha",
+    "seo": "neb-omaha",
+    "score": 77,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Drake",
+    "seo": "drake",
+    "score": 73,
     "winner": false,
     "rank": null,
     "inConference": false
@@ -10443,6 +10576,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6649863": {
+   "date": "2026-11-13",
+   "season": "2026",
+   "home": {
+    "name": "Hawaii",
+    "seo": "hawaii",
+    "score": 93,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Saint Mary's (CA)",
+    "seo": "st-marys-ca",
+    "score": 89,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6649901": {
    "date": "2026-11-04",
    "season": "2026",
@@ -11559,6 +11714,28 @@
     "seo": "umbc",
     "score": 91,
     "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6650666": {
+   "date": "2026-11-13",
+   "season": "2026",
+   "home": {
+    "name": "UMBC",
+    "seo": "umbc",
+    "score": 0,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Morgan St.",
+    "seo": "morgan-st",
+    "score": 0,
+    "winner": false,
     "rank": null,
     "inConference": false
    },
@@ -14066,6 +14243,28 @@
     "name": "Le Moyne",
     "seo": "le-moyne",
     "score": 41,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6660818": {
+   "date": "2026-11-13",
+   "season": "2026",
+   "home": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 77,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Le Moyne",
+    "seo": "le-moyne",
+    "score": 44,
     "winner": false,
     "rank": null,
     "inConference": false

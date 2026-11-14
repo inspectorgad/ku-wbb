@@ -178,7 +178,8 @@
   "2026-11-10": true,
   "2026-11-11": true,
   "2026-11-12": true,
-  "2026-11-13": true
+  "2026-11-13": true,
+  "2026-11-14": true
  },
  "games": {
   "6515413": {
@@ -453,6 +454,13 @@
    "home": "Kansas",
    "away": "Drake",
    "boxscored": true
+  },
+  "6647850": {
+   "date": "2026-11-14",
+   "final": false,
+   "home": "Nebraska",
+   "away": "Kansas",
+   "boxscored": false
   }
  },
  "big12Games": {
@@ -9102,6 +9110,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6646889": {
+   "date": "2026-11-13",
+   "season": "2026",
+   "home": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 66,
+    "winner": true,
+    "rank": 24,
+    "inConference": true
+   },
+   "away": {
+    "name": "Northwestern",
+    "seo": "northwestern",
+    "score": 53,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6647025": {
    "date": "2026-11-05",
    "season": "2026",
@@ -10019,6 +10049,28 @@
     "name": "Le Moyne",
     "seo": "le-moyne",
     "score": 41,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6660818": {
+   "date": "2026-11-13",
+   "season": "2026",
+   "home": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 77,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Le Moyne",
+    "seo": "le-moyne",
+    "score": 44,
     "winner": false,
     "rank": null,
     "inConference": false
