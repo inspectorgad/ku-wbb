@@ -243,8 +243,19 @@ object Seeder {
             //
             // Renaming rather than deleting, because the worst this can do is
             // relabel a row; it can never take one away.
+            // Never into a name the repair at the top of this function would
+            // reject. The parser still keeps a rotator-only game the schedule
+            // table has not listed, and the rotator writes "TBD" until a
+            // bracket is drawn - with a tip time and no venue, which is
+            // exactly what the tip-time arm below matches on. Adopting a real
+            // fixture into that name would hand the placeholder sweep a live
+            // row to delete on the very next sync, taking the team totals and
+            // the opponent's box score with it through ON DELETE CASCADE.
+            // That would make this the one thing the change promises it can
+            // never do.
+            val adoptable = !isPlaceholder(opponent) && !RANKED_NAME.containsMatchIn(opponent)
             val exact = gamesByKey[gameKey(date, opponent)]
-            val existing = exact ?: storedByDate[date].orEmpty().singleOrNull { row ->
+            val existing = exact ?: if (!adoptable) null else storedByDate[date].orEmpty().singleOrNull { row ->
                 row.id !in claimed &&
                     row.teamScore == null && row.opponentScore == null &&
                     row.id !in gamesWithLines &&
@@ -314,9 +325,14 @@ object Seeder {
                     conference = seedConference,
                     overtime = seedOvertime ?: existing.overtime,
                     nonD1 = seedNonD1,
-                    opponentRank = seedOppRank ?: existing.opponentRank,
-                    opponentSeed = seedOppSeed ?: existing.opponentSeed,
-                    opponentRecord = seedOppRecord ?: existing.opponentRecord,
+                    // These describe who the opponent WAS coming in. On a row
+                    // taken over from another name they belong to the other
+                    // team, so they go with the name rather than lingering on
+                    // a game they were never about.
+                    opponentRank = seedOppRank ?: if (exact == null) null else existing.opponentRank,
+                    opponentSeed = seedOppSeed ?: if (exact == null) null else existing.opponentSeed,
+                    opponentRecord =
+                        seedOppRecord ?: if (exact == null) null else existing.opponentRecord,
                     teamScore = if (filledResult) seedTeamScore else existing.teamScore,
                     opponentScore = if (filledResult) seedOppScore else existing.opponentScore,
                     periodScores = existing.periodScores

@@ -713,6 +713,49 @@ class MergeSyncTest {
     }
 
     @Test
+    fun `a real fixture is never taken over into a stand-in name`() = runTest {
+        // The parser still keeps a rotator-only game the schedule table has
+        // not listed, and the rotator says "TBD" until a bracket is drawn: a
+        // tip time, no venue. Adopting the real fixture into that name would
+        // hand the placeholder sweep a live row to delete on the next sync,
+        // and every table pointing at a game goes with it.
+        db.dao().insertGame(
+            Game(date = "2026-11-26", opponent = "Washington State", season = "2026-27",
+                venue = "Hard Rock Hotel Rivera Maya", tipTime = "18:00")
+        )
+        val rotatorOnly = JSONObject(
+            """{"games": [{"date": "2026-11-26", "opponent": "TBD",
+                 "season": "2026-27", "time": "18:00"}]}"""
+        )
+
+        Seeder.merge(rotatorOnly, db.dao())
+        // And again, because the delete would land on the sync after the rename.
+        Seeder.merge(rotatorOnly, db.dao())
+
+        assertTrue(
+            "the real fixture must survive",
+            db.dao().gamesOnce().any { it.opponent == "Washington State" }
+        )
+    }
+
+    @Test
+    fun `a taken-over row does not keep the last opponent's rank and record`() = runTest {
+        db.dao().insertGame(
+            Game(date = "2026-11-26", opponent = "Cancun Challenge Winner", season = "2026-27",
+                venue = "Hard Rock Hotel Rivera Maya", tipTime = "15:00",
+                opponentRank = 25, opponentSeed = 3, opponentRecord = "5-0")
+        )
+
+        Seeder.merge(cancunJson("Washington State"), db.dao())
+
+        val game = db.dao().gamesOnce().single()
+        assertEquals("Washington State", game.opponent)
+        assertNull(game.opponentRank)
+        assertNull(game.opponentSeed)
+        assertNull(game.opponentRecord)
+    }
+
+    @Test
     fun `a game somebody entered themselves is not taken over by a rename`() = runTest {
         // Same date as a scheduled game, but none of its details - which is
         // what a hand-entered game looks like, and why the venue or the tip
