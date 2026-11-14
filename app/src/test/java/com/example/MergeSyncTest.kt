@@ -3,7 +3,9 @@ package com.example
 import android.content.Context
 import androidx.room.Room
 import androidx.test.core.app.ApplicationProvider
+import com.example.data.Game
 import com.example.data.JayhawksDatabase
+import com.example.data.Player
 import com.example.data.Seeder
 import com.example.data.StatLine
 import kotlinx.coroutines.test.runTest
@@ -578,5 +580,255 @@ class MergeSyncTest {
             db.dao()
         )
         assertEquals(listOf("Real Player"), db.dao().opponentRosterOnce().map { it.name })
+    }
+
+    // --- a rank that used to live inside the opponent's name ---------------
+    //
+    // The schedule page writes "#25 Nebraska". That reached the seed as the
+    // name until the parser was fixed, and normTeam keeps the prefix, so the
+    // corrected name keyed differently from the row already stored and the
+    // next sync inserted a second one beside it. Nothing else took it away:
+    // a sync only adds and updates, because a game entered by hand has to
+    // survive one. Every phone that synced before the fix showed the game
+    // twice, and these go through merge() because that is the only thing a
+    // phone ever calls.
+
+    private fun fixtureJson(opponent: String, rank: Int? = null): JSONObject {
+        val rankField = if (rank == null) "" else """, "opponentRank": $rank"""
+        return JSONObject(
+            """{"games": [{"date": "2026-11-14", "opponent": "$opponent",
+                 "season": "2026-27", "site": "neutral"$rankField}]}"""
+        )
+    }
+
+    /** A sync carrying no games at all: the repair still runs. */
+    private fun emptyJson() = JSONObject("""{"games": []}""")
+
+    @Test
+    fun `a fixture stored under a ranked name is not synced in again beside itself`() = runTest {
+        // What a phone that synced before the fix is holding.
+        Seeder.merge(fixtureJson("#25 Nebraska"), db.dao())
+        assertEquals(listOf("#25 Nebraska"), db.dao().gamesOnce().map { it.opponent })
+
+        // The seed spells it properly now, and carries the rank beside it.
+        Seeder.merge(fixtureJson("Nebraska", rank = 25), db.dao())
+
+        val games = db.dao().gamesOnce()
+        assertEquals(1, games.size)
+        assertEquals("Nebraska", games.single().opponent)
+        assertEquals(25, games.single().opponentRank)
+    }
+
+    @Test
+    fun `the rank is read back out of the name with no fresh row to merge into`() = runTest {
+        Seeder.merge(fixtureJson("#25 Nebraska"), db.dao())
+
+        Seeder.merge(emptyJson(), db.dao())
+
+        val game = db.dao().gamesOnce().single()
+        assertEquals("Nebraska", game.opponent)
+        assertEquals(25, game.opponentRank)
+    }
+
+    @Test
+    fun `when both rows exist the one carrying stat lines is the one kept`() = runTest {
+        // A line was entered against the stale row before the fix landed...
+        Seeder.merge(fixtureJson("#25 Nebraska"), db.dao())
+        val stale = db.dao().gamesOnce().single()
+        val playerId = db.dao().insertPlayer(Player(name = "Ada Alpha"))
+        db.dao().upsertStatLine(StatLine(gameId = stale.id, playerId = playerId, points = 14))
+        // ...and a later sync put the corrected one beside it.
+        val freshId = db.dao().insertGame(
+            Game(date = "2026-11-14", opponent = "Nebraska", season = "2026-27", site = "neutral")
+        )
+        assertEquals(2, db.dao().gamesOnce().size)
+
+        Seeder.merge(emptyJson(), db.dao())
+
+        val game = db.dao().gamesOnce().single()
+        assertEquals("Nebraska", game.opponent)
+        assertEquals(stale.id, game.id)
+        assertTrue(freshId != game.id)
+        assertEquals(14, db.dao().statLinesOnce().single().points)
+    }
+
+    @Test
+    fun `a stand-in row for an opponent that was not known yet is dropped`() = runTest {
+        // kuathletics showed the Cancun Challenge games as "versus TBD" in its
+        // rotator while naming the teams in the table, and the parser kept
+        // both. The ghost had no venue, so it read as a home game, and the
+        // phone held on to it after the page filled the name in.
+        db.dao().insertGame(Game(date = "2026-11-26", opponent = "TBD", season = "2026-27"))
+        Seeder.merge(
+            JSONObject(
+                """{"games": [{"date": "2026-11-26", "opponent": "Washington State",
+                     "season": "2026-27", "site": "neutral",
+                     "venue": "Hard Rock Hotel Rivera Maya"}]}"""
+            ),
+            db.dao()
+        )
+
+        val games = db.dao().gamesOnce()
+        assertEquals(1, games.size)
+        assertEquals("Washington State", games.single().opponent)
+    }
+
+    @Test
+    fun `a stand-in row somebody entered a result against is left alone`() = runTest {
+        // Nothing is called TBD, but if a reader put a score on that row it is
+        // theirs, and a sync does not get to tidy away what it cannot restore.
+        db.dao().insertGame(
+            Game(date = "2026-11-26", opponent = "TBD", season = "2026-27",
+                teamScore = 70, opponentScore = 60)
+        )
+
+        Seeder.merge(emptyJson(), db.dao())
+
+        assertEquals(listOf("TBD"), db.dao().gamesOnce().map { it.opponent })
+    }
+
+    // --- the general case: the source renames a fixture --------------------
+
+    private fun cancunJson(opponent: String) = JSONObject(
+        """{"games": [{"date": "2026-11-26", "opponent": "$opponent", "season": "2026-27",
+             "site": "neutral", "venue": "Hard Rock Hotel Rivera Maya",
+             "city": "Cancun, Mexico", "time": "15:00", "tv": "FloSports"}]}"""
+    )
+
+    @Test
+    fun `a fixture renamed at the source is taken over, not duplicated`() = runTest {
+        // The bracket is drawn between one sync and the next. Same date, same
+        // venue, same tip time, different name.
+        Seeder.merge(cancunJson("Cancun Challenge Winner"), db.dao())
+        val before = db.dao().gamesOnce().single()
+
+        Seeder.merge(cancunJson("Washington State"), db.dao())
+
+        val games = db.dao().gamesOnce()
+        assertEquals(1, games.size)
+        assertEquals("Washington State", games.single().opponent)
+        // Taken over, not replaced: the row the reader may have been looking at
+        // keeps its identity, and anything hanging off it keeps pointing here.
+        assertEquals(before.id, games.single().id)
+    }
+
+    @Test
+    fun `a real fixture is never taken over into a stand-in name`() = runTest {
+        // The parser still keeps a rotator-only game the schedule table has
+        // not listed, and the rotator says "TBD" until a bracket is drawn: a
+        // tip time, no venue. Adopting the real fixture into that name would
+        // hand the placeholder sweep a live row to delete on the next sync,
+        // and every table pointing at a game goes with it.
+        db.dao().insertGame(
+            Game(date = "2026-11-26", opponent = "Washington State", season = "2026-27",
+                venue = "Hard Rock Hotel Rivera Maya", tipTime = "18:00")
+        )
+        val rotatorOnly = JSONObject(
+            """{"games": [{"date": "2026-11-26", "opponent": "TBD",
+                 "season": "2026-27", "time": "18:00"}]}"""
+        )
+
+        Seeder.merge(rotatorOnly, db.dao())
+        // And again, because the delete would land on the sync after the rename.
+        Seeder.merge(rotatorOnly, db.dao())
+
+        assertTrue(
+            "the real fixture must survive",
+            db.dao().gamesOnce().any { it.opponent == "Washington State" }
+        )
+    }
+
+    @Test
+    fun `a taken-over row does not keep the last opponent's rank and record`() = runTest {
+        db.dao().insertGame(
+            Game(date = "2026-11-26", opponent = "Cancun Challenge Winner", season = "2026-27",
+                venue = "Hard Rock Hotel Rivera Maya", tipTime = "15:00",
+                opponentRank = 25, opponentSeed = 3, opponentRecord = "5-0")
+        )
+
+        Seeder.merge(cancunJson("Washington State"), db.dao())
+
+        val game = db.dao().gamesOnce().single()
+        assertEquals("Washington State", game.opponent)
+        assertNull(game.opponentRank)
+        assertNull(game.opponentSeed)
+        assertNull(game.opponentRecord)
+    }
+
+    @Test
+    fun `a game somebody entered themselves is not taken over by a rename`() = runTest {
+        // Same date as a scheduled game, but none of its details - which is
+        // what a hand-entered game looks like, and why the venue or the tip
+        // time has to match before anything is adopted.
+        val mine = db.dao().insertGame(
+            Game(date = "2026-11-26", opponent = "Practice Scrimmage", season = "2026-27")
+        )
+
+        Seeder.merge(cancunJson("Washington State"), db.dao())
+
+        val games = db.dao().gamesOnce().sortedBy { it.opponent }
+        assertEquals(listOf("Practice Scrimmage", "Washington State"), games.map { it.opponent })
+        assertEquals(mine, games.first().id)
+    }
+
+    @Test
+    fun `a played game is never taken over by a rename`() = runTest {
+        // A result is the one thing a sync cannot put back, so a row carrying
+        // one is never adopted even when everything else lines up.
+        db.dao().insertGame(
+            Game(date = "2026-11-26", opponent = "Someone Else", season = "2026-27",
+                venue = "Hard Rock Hotel Rivera Maya", tipTime = "15:00",
+                teamScore = 70, opponentScore = 60)
+        )
+
+        Seeder.merge(cancunJson("Washington State"), db.dao())
+
+        assertEquals(
+            listOf("Someone Else", "Washington State"),
+            db.dao().gamesOnce().map { it.opponent }.sorted()
+        )
+    }
+
+    @Test
+    fun `a row another game in the same sync answers to is not taken over`() = runTest {
+        // Two games on nearby dates in one tournament. The second must not
+        // swallow the first's row just because the first was renamed.
+        db.dao().insertGame(
+            Game(date = "2026-11-26", opponent = "Washington State", season = "2026-27",
+                venue = "Hard Rock Hotel Rivera Maya", tipTime = "15:00")
+        )
+        val json = JSONObject(
+            // "Someone New" FIRST, deliberately. Listed second it reaches the
+            // stored row only after the exact match in the loop has claimed
+            // it, so the test would pass with the pre-pass deleted and guard
+            // nothing. First, it can only be stopped by the pre-pass.
+            """{"games": [
+                 {"date": "2026-11-26", "opponent": "Someone New", "season": "2026-27",
+                  "venue": "Hard Rock Hotel Rivera Maya", "time": "15:00"},
+                 {"date": "2026-11-26", "opponent": "Washington State", "season": "2026-27",
+                  "venue": "Hard Rock Hotel Rivera Maya", "time": "15:00"}]}"""
+        )
+
+        Seeder.merge(json, db.dao())
+
+        assertEquals(
+            listOf("Someone New", "Washington State"),
+            db.dao().gamesOnce().map { it.opponent }.sorted()
+        )
+    }
+
+    @Test
+    fun `an ordinary opponent name is left exactly as it is`() = runTest {
+        // A "#" is a rank only at the very front and only before a number.
+        val names = listOf("Nebraska", "Miami (OH)", "Texas A&M", "St. #1 Fan")
+        names.forEachIndexed { i, name ->
+            db.dao().insertGame(
+                Game(date = "2026-12-1$i", opponent = name, season = "2026-27")
+            )
+        }
+
+        Seeder.merge(emptyJson(), db.dao())
+
+        assertEquals(names.sorted(), db.dao().gamesOnce().map { it.opponent }.sorted())
     }
 }

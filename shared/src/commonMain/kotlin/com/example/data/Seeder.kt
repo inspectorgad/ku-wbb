@@ -56,8 +56,83 @@ object Seeder {
      */
     internal fun normalizeTeam(name: String): String = normTeam(name)
 
+    /** How a ranked opponent used to be stored: "#25 Nebraska". */
+    private val RANKED_NAME = Regex("""^#(\d{1,2})\s+""")
+
+    /**
+     * A stand-in for an opponent, never a team. kuathletics' rotator showed
+     * "TBD" for the Cancun Challenge games while the bracket was undrawn, and
+     * the parser kept that beside the table's real name as a second game.
+     */
+    private fun isPlaceholder(opponent: String) = opponent.trim().equals("TBD", ignoreCase = true)
+
+    /**
+     * Takes the poll rank back out of an opponent's name, in databases that
+     * already hold one.
+     *
+     * The schedule page writes a ranked opponent as "#25 Nebraska", and that
+     * used to reach the seed as the name. [normTeam] keeps the prefix, so when
+     * the name was corrected at the source the next sync keyed the fixture
+     * differently from the row already stored, found nothing to update, and
+     * inserted a second one. Nothing else takes it away: a sync only adds and
+     * updates, because a game entered by hand has to survive one. So every
+     * phone that synced before the correction shows the game twice until this
+     * runs.
+     *
+     * Renamed in place when nothing holds the corrected name yet, dropped when
+     * something does - and of the two it is the stale row that goes, unless it
+     * is the one carrying a result or stat lines, which a sync cannot put back.
+     */
+    internal suspend fun healRankedNames(dao: JayhawksDao) {
+        val all = dao.gamesOnce()
+        val stale = all.filter { RANKED_NAME.containsMatchIn(it.opponent) }
+        val placeholders = all.filter { isPlaceholder(it.opponent) }
+        if (stale.isEmpty() && placeholders.isEmpty()) return
+        val withLines = dao.statLinesOnce().map { it.gameId }.toSet()
+        val byKey = all.associateBy { gameKey(it.date, it.opponent) }
+        // What a sync cannot put back if the row goes. Every table that points
+        // at a game deletes with it (ON DELETE CASCADE), so dropping the wrong
+        // one of the pair takes a night's stat lines with it and says nothing.
+        val keeps = { g: Game -> g.teamScore != null || g.id in withLines }
+        for (old in stale) {
+            val match = RANKED_NAME.find(old.opponent) ?: continue
+            val clean = old.opponent.removeRange(match.range).trim()
+            if (clean.isEmpty()) continue
+            val fixed = old.copy(
+                opponent = clean,
+                // Only when the row has none: a rank the box score recorded at
+                // the time beats one read back out of the name.
+                opponentRank = old.opponentRank ?: match.groupValues[1].toInt()
+            )
+            val twin = byKey[gameKey(old.date, clean)]
+            when {
+                twin == null -> dao.updateGame(fixed)
+                !keeps(old) -> dao.deleteGame(old)
+                !keeps(twin) -> {
+                    dao.deleteGame(twin)
+                    dao.updateGame(fixed)
+                }
+                // Both carry something of their own. Rename and leave them;
+                // a duplicate on screen is better than deleting a night's
+                // stat lines to tidy it up.
+                else -> dao.updateGame(fixed)
+            }
+        }
+
+        // A row standing in for a game whose opponent was not known yet. The
+        // name can never become right - nothing is ever called TBD - and the
+        // real fixture arrived beside it under its own name, so there is
+        // nothing to rename it to and nothing to merge it with. It goes,
+        // unless somebody put a result or a line against it, in which case it
+        // is theirs and not the scrape's to tidy away.
+        for (row in placeholders) {
+            if (!keeps(row)) dao.deleteGame(row)
+        }
+    }
+
     /** Also used by [SeasonSync] for network-fetched season data. */
     suspend fun merge(root: JSONObject, dao: JayhawksDao) {
+        healRankedNames(dao)
         val existingByName = dao.playersOnce().associateBy { it.name }
         val playerIdsByName = existingByName.mapValues { it.value.id }.toMutableMap()
 
@@ -109,10 +184,20 @@ object Seeder {
 
         // Tournament weekends can put two games on nearby dates, so games
         // are keyed by date + opponent rather than date alone.
-        val gamesByKey = dao.gamesOnce().associateBy { gameKey(it.date, it.opponent) }
+        val storedGames = dao.gamesOnce()
+        val gamesByKey = storedGames.associateBy { gameKey(it.date, it.opponent) }
         val gamesWithLines = dao.statLinesOnce().map { it.gameId }.toSet()
+        val storedByDate = storedGames.groupBy { it.date }
 
         val games = root.optJSONArray("games") ?: return
+
+        // Which stored rows this payload already answers to by name. A rename
+        // may never take one of these: it belongs to a game of its own.
+        val claimed = mutableSetOf<Long>()
+        for (i in 0 until games.length()) {
+            val g = games.getJSONObject(i)
+            gamesByKey[gameKey(g.getString("date"), g.getString("opponent"))]?.let { claimed += it.id }
+        }
         for (i in 0 until games.length()) {
             val g = games.getJSONObject(i)
             val date = g.getString("date")
@@ -141,7 +226,43 @@ object Seeder {
             val seedOppSeed = g.optInt("opponentSeed").takeIf { it > 0 }
             val seedOppRecord = g.optString("opponentRecord").takeIf { it.isNotBlank() }
 
-            val existing = gamesByKey[gameKey(date, opponent)]
+            // The source can rename a fixture: a bracket is drawn and "TBD"
+            // becomes a team, a poll rank is added or dropped, a spelling is
+            // corrected. Keyed on the name alone the sync sees a game it has
+            // never met, inserts it, and leaves the old row sitting there for
+            // good - which is how both "#25 Nebraska" and "vs TBD" came to sit
+            // beside the real game on a phone.
+            //
+            // So a fixture that has been renamed is adopted rather than
+            // duplicated. Only a row that can still BE this game is taken: the
+            // same date, no result and no stat lines, not already claimed by
+            // another game in this payload, and sharing the venue or the tip
+            // time - which a scraped fixture keeps across a rename and a game
+            // somebody typed in themselves will not have. More than one
+            // candidate means it is not obvious, and nothing is touched.
+            //
+            // Renaming rather than deleting, because the worst this can do is
+            // relabel a row; it can never take one away.
+            // Never into a name the repair at the top of this function would
+            // reject. The parser still keeps a rotator-only game the schedule
+            // table has not listed, and the rotator writes "TBD" until a
+            // bracket is drawn - with a tip time and no venue, which is
+            // exactly what the tip-time arm below matches on. Adopting a real
+            // fixture into that name would hand the placeholder sweep a live
+            // row to delete on the very next sync, taking the team totals and
+            // the opponent's box score with it through ON DELETE CASCADE.
+            // That would make this the one thing the change promises it can
+            // never do.
+            val adoptable = !isPlaceholder(opponent) && !RANKED_NAME.containsMatchIn(opponent)
+            val exact = gamesByKey[gameKey(date, opponent)]
+            val existing = exact ?: if (!adoptable) null else storedByDate[date].orEmpty().singleOrNull { row ->
+                row.id !in claimed &&
+                    row.teamScore == null && row.opponentScore == null &&
+                    row.id !in gamesWithLines &&
+                    ((seedVenue != null && row.venue == seedVenue) ||
+                        (seedTip != null && row.tipTime == seedTip))
+            }
+            if (existing != null) claimed += existing.id
             val gameId: Long
             if (existing == null) {
                 gameId = dao.insertGame(
@@ -178,6 +299,12 @@ object Seeder {
                 // and only the box score's venue settles it. Gap-filling would
                 // mean a correction never reached an already-synced phone.
                 val updated = existing.copy(
+                    // Only when this row was adopted under another name. An
+                    // exact match keeps the spelling it was stored with: the
+                    // two already mean the same team to normTeam, and re-keying
+                    // every game in the database to tidy that up is a bigger
+                    // change than it looks.
+                    opponent = if (exact == null) opponent else existing.opponent,
                     home = seedHome ?: existing.home,
                     site = seedSite ?: existing.site,
                     venue = seedVenue ?: existing.venue,
@@ -198,9 +325,14 @@ object Seeder {
                     conference = seedConference,
                     overtime = seedOvertime ?: existing.overtime,
                     nonD1 = seedNonD1,
-                    opponentRank = seedOppRank ?: existing.opponentRank,
-                    opponentSeed = seedOppSeed ?: existing.opponentSeed,
-                    opponentRecord = seedOppRecord ?: existing.opponentRecord,
+                    // These describe who the opponent WAS coming in. On a row
+                    // taken over from another name they belong to the other
+                    // team, so they go with the name rather than lingering on
+                    // a game they were never about.
+                    opponentRank = seedOppRank ?: if (exact == null) null else existing.opponentRank,
+                    opponentSeed = seedOppSeed ?: if (exact == null) null else existing.opponentSeed,
+                    opponentRecord =
+                        seedOppRecord ?: if (exact == null) null else existing.opponentRecord,
                     teamScore = if (filledResult) seedTeamScore else existing.teamScore,
                     opponentScore = if (filledResult) seedOppScore else existing.opponentScore,
                     periodScores = existing.periodScores
