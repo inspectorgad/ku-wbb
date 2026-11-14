@@ -9088,6 +9088,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6646783": {
+   "date": "2026-11-14",
+   "season": "2026",
+   "home": {
+    "name": "Minnesota",
+    "seo": "minnesota",
+    "score": 68,
+    "winner": true,
+    "rank": 18,
+    "inConference": false
+   },
+   "away": {
+    "name": "Kansas St.",
+    "seo": "kansas-st",
+    "score": 65,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6646861": {
    "date": "2026-11-08",
    "season": "2026",
