@@ -2817,15 +2817,15 @@
    "home": {
     "name": "High Point",
     "seo": "high-point",
-    "score": 0,
-    "winner": false,
+    "score": 87,
+    "winner": true,
     "rank": null,
     "inConference": false
    },
    "away": {
     "name": "South Carolina St.",
     "seo": "south-carolina-st",
-    "score": 0,
+    "score": 56,
     "winner": false,
     "rank": null,
     "inConference": false
@@ -2905,7 +2905,7 @@
    "home": {
     "name": "Penn",
     "seo": "penn",
-    "score": 0,
+    "score": 60,
     "winner": false,
     "rank": null,
     "inConference": false
@@ -2913,8 +2913,8 @@
    "away": {
     "name": "North Carolina",
     "seo": "north-carolina",
-    "score": 0,
-    "winner": false,
+    "score": 71,
+    "winner": true,
     "rank": 23,
     "inConference": false
    },
@@ -7013,6 +7013,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6647612": {
+   "date": "2026-11-14",
+   "season": "2026",
+   "home": {
+    "name": "New Hampshire",
+    "seo": "new-hampshire",
+    "score": 87,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Colgate",
+    "seo": "colgate",
+    "score": 49,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6647637": {
    "date": "2026-11-02",
    "season": "2026",
@@ -9945,15 +9967,15 @@
    "home": {
     "name": "Green Bay",
     "seo": "green-bay",
-    "score": 0,
-    "winner": false,
+    "score": 81,
+    "winner": true,
     "rank": null,
     "inConference": false
    },
    "away": {
     "name": "Wisconsin",
     "seo": "wisconsin",
-    "score": 0,
+    "score": 76,
     "winner": false,
     "rank": null,
     "inConference": false
