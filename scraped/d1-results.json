@@ -13,7 +13,8 @@
   "2026-11-11": true,
   "2026-11-12": true,
   "2026-11-13": true,
-  "2026-11-14": true
+  "2026-11-14": true,
+  "2026-11-15": true
  },
  "games": {
   "6645408": {
@@ -889,6 +890,28 @@
     "name": "Georgetown",
     "seo": "georgetown",
     "score": 74,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6645711": {
+   "date": "2026-11-14",
+   "season": "2026",
+   "home": {
+    "name": "George Washington",
+    "seo": "george-washington",
+    "score": 65,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "LIU",
+    "seo": "long-island",
+    "score": 54,
     "winner": false,
     "rank": null,
     "inConference": false
@@ -6110,6 +6133,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6647287": {
+   "date": "2026-11-14",
+   "season": "2026",
+   "home": {
+    "name": "Mercyhurst",
+    "seo": "mercyhurst",
+    "score": 50,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Akron",
+    "seo": "akron",
+    "score": 63,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6647311": {
    "date": "2026-11-02",
    "season": "2026",
@@ -6572,6 +6617,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6647462": {
+   "date": "2026-11-14",
+   "season": "2026",
+   "home": {
+    "name": "Hampton",
+    "seo": "hampton",
+    "score": 50,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Norfolk St.",
+    "seo": "norfolk-st",
+    "score": 53,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6647512": {
    "date": "2026-11-02",
    "season": "2026",
@@ -6874,6 +6941,28 @@
     "seo": "pensacola-christian",
     "score": 58,
     "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6647560": {
+   "date": "2026-11-14",
+   "season": "2026",
+   "home": {
+    "name": "Bellarmine",
+    "seo": "bellarmine",
+    "score": 55,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Bradley",
+    "seo": "bradley",
+    "score": 65,
+    "winner": true,
     "rank": null,
     "inConference": false
    },
@@ -14574,6 +14663,28 @@
     "seo": "south-fla",
     "score": 69,
     "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6651864": {
+   "date": "2026-11-14",
+   "season": "2026",
+   "home": {
+    "name": "Northwestern",
+    "seo": "northwestern",
+    "score": 75,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "App State",
+    "seo": "appalachian-st",
+    "score": 61,
+    "winner": false,
     "rank": null,
     "inConference": false
    },
