@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-11-14T23:49:07Z",
+ "generatedAt": "2026-11-15T22:02:22Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -19276,7 +19276,7 @@
    "seo": "baylor",
    "confW": 0,
    "confL": 0,
-   "overallW": 4,
+   "overallW": 5,
    "overallL": 0,
    "nationalRank": null
   },
@@ -19316,7 +19316,7 @@
    "seo": "tcu",
    "confW": 0,
    "confL": 0,
-   "overallW": 5,
+   "overallW": 6,
    "overallL": 0,
    "nationalRank": 15
   },
@@ -19362,11 +19362,31 @@
   },
   {
    "season": "2026-27",
+   "team": "Oklahoma St.",
+   "seo": "oklahoma-st",
+   "confW": 0,
+   "confL": 0,
+   "overallW": 4,
+   "overallL": 1,
+   "nationalRank": 19
+  },
+  {
+   "season": "2026-27",
    "team": "UCF",
    "seo": "ucf",
    "confW": 0,
    "confL": 0,
    "overallW": 4,
+   "overallL": 1,
+   "nationalRank": null
+  },
+  {
+   "season": "2026-27",
+   "team": "Cincinnati",
+   "seo": "cincinnati",
+   "confW": 0,
+   "confL": 0,
+   "overallW": 3,
    "overallL": 1,
    "nationalRank": null
   },
@@ -19382,28 +19402,8 @@
   },
   {
    "season": "2026-27",
-   "team": "Oklahoma St.",
-   "seo": "oklahoma-st",
-   "confW": 0,
-   "confL": 0,
-   "overallW": 3,
-   "overallL": 1,
-   "nationalRank": 19
-  },
-  {
-   "season": "2026-27",
    "team": "Arizona",
    "seo": "arizona",
-   "confW": 0,
-   "confL": 0,
-   "overallW": 2,
-   "overallL": 1,
-   "nationalRank": null
-  },
-  {
-   "season": "2026-27",
-   "team": "Cincinnati",
-   "seo": "cincinnati",
    "confW": 0,
    "confL": 0,
    "overallW": 2,
@@ -21917,15 +21917,6 @@
     "rating": 0.7501
    },
    {
-    "team": "UCF",
-    "key": "ucf",
-    "confW": 0,
-    "confL": 0,
-    "remaining": 17,
-    "pVsAverage": 0.2105,
-    "rating": 0.1723
-   },
-   {
     "team": "Oklahoma St.",
     "key": "oklahoma st",
     "confW": 0,
@@ -21935,13 +21926,13 @@
     "rating": 1.2035
    },
    {
-    "team": "Arizona",
-    "key": "arizona",
+    "team": "UCF",
+    "key": "ucf",
     "confW": 0,
     "confL": 0,
     "remaining": 17,
-    "pVsAverage": 0.2674,
-    "rating": 0.3143
+    "pVsAverage": 0.2105,
+    "rating": 0.1723
    },
    {
     "team": "Cincinnati",
@@ -21951,6 +21942,15 @@
     "remaining": 17,
     "pVsAverage": 0.2985,
     "rating": 0.3835
+   },
+   {
+    "team": "Arizona",
+    "key": "arizona",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 17,
+    "pVsAverage": 0.2674,
+    "rating": 0.3143
    }
   ],
   "unrated": [
