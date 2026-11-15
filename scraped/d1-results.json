@@ -9873,6 +9873,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6648625": {
+   "date": "2026-11-15",
+   "season": "2026",
+   "home": {
+    "name": "Kentucky",
+    "seo": "kentucky",
+    "score": 81,
+    "winner": true,
+    "rank": 12,
+    "inConference": false
+   },
+   "away": {
+    "name": "Eastern Mich.",
+    "seo": "eastern-mich",
+    "score": 47,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6648641": {
    "date": "2026-11-02",
    "season": "2026",
@@ -10769,6 +10791,28 @@
     "seo": "fort-valley-st",
     "score": 50,
     "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6648980": {
+   "date": "2026-11-15",
+   "season": "2026",
+   "home": {
+    "name": "UMass Lowell",
+    "seo": "umass-lowell",
+    "score": 53,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "West Ga.",
+    "seo": "west-ga",
+    "score": 65,
+    "winner": true,
     "rank": null,
     "inConference": false
    },
@@ -15916,6 +15960,28 @@
     "name": "Monroe",
     "seo": "",
     "score": 46,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6661281": {
+   "date": "2026-11-15",
+   "season": "2026",
+   "home": {
+    "name": "Purdue",
+    "seo": "purdue",
+    "score": 70,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Samford",
+    "seo": "samford",
+    "score": 61,
     "winner": false,
     "rank": null,
     "inConference": false
