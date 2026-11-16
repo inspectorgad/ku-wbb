@@ -5254,6 +5254,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6646836": {
+   "date": "2026-11-16",
+   "season": "2026",
+   "home": {
+    "name": "Weber St.",
+    "seo": "weber-st",
+    "score": 123,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Northern N.M.",
+    "seo": "no-new-mexico",
+    "score": 46,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6646858": {
    "date": "2026-11-03",
    "season": "2026",
@@ -8510,6 +8532,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6647889": {
+   "date": "2026-11-16",
+   "season": "2026",
+   "home": {
+    "name": "Bowling Green",
+    "seo": "bowling-green",
+    "score": 120,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Lawrence Tech",
+    "seo": "lawrence-tech",
+    "score": 38,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6647890": {
    "date": "2026-11-10",
    "season": "2026",
@@ -9324,6 +9368,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6648149": {
+   "date": "2026-11-16",
+   "season": "2026",
+   "home": {
+    "name": "Presbyterian",
+    "seo": "presbyterian",
+    "score": 35,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "UNCW",
+    "seo": "unc-wilmington",
+    "score": 61,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6648179": {
    "date": "2026-11-03",
    "season": "2026",
@@ -9449,6 +9515,28 @@
     "name": "Georgian Court",
     "seo": "georgian-court",
     "score": 75,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6648233": {
+   "date": "2026-11-16",
+   "season": "2026",
+   "home": {
+    "name": "Radford",
+    "seo": "radford",
+    "score": 98,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Ferrum",
+    "seo": "ferrum",
+    "score": 41,
     "winner": false,
     "rank": null,
     "inConference": false
@@ -17105,6 +17193,28 @@
     "name": "Le Moyne",
     "seo": "le-moyne",
     "score": 44,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6660819": {
+   "date": "2026-11-16",
+   "season": "2026",
+   "home": {
+    "name": "Miami (FL)",
+    "seo": "miami-fl",
+    "score": 87,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Le Moyne",
+    "seo": "le-moyne",
+    "score": 40,
     "winner": false,
     "rank": null,
     "inConference": false
