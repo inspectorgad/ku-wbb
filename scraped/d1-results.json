@@ -6068,6 +6068,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6647062": {
+   "date": "2026-11-16",
+   "season": "2026",
+   "home": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 85,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Penn St.",
+    "seo": "penn-st",
+    "score": 41,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6647086": {
    "date": "2026-11-05",
    "season": "2026",
