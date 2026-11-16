@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-11-16T08:33:16Z",
+ "generatedAt": "2026-11-16T19:49:02Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -18657,7 +18657,7 @@
    "date": "2026-11-18",
    "opponent": "Minnesota",
    "season": "2026-27",
-   "opponentRank": null,
+   "opponentRank": 17,
    "venue": "The Barn",
    "city": "Minneapolis, MN",
    "tv": "Peacock",
@@ -18665,7 +18665,7 @@
    "site": "away",
    "home": false,
    "conference": false,
-   "winProbability": 0.2035,
+   "winProbability": 0.205,
    "ratingSource": "poll"
   },
   {
@@ -18802,7 +18802,7 @@
    "site": "home",
    "home": true,
    "conference": true,
-   "winProbability": 0.3901,
+   "winProbability": 0.4727,
    "ratingSource": "poll"
   },
   {
@@ -18817,7 +18817,7 @@
    "site": "away",
    "home": false,
    "conference": true,
-   "winProbability": 0.2704,
+   "winProbability": 0.2672,
    "ratingSource": "poll"
   },
   {
@@ -18877,7 +18877,7 @@
    "site": "away",
    "home": false,
    "conference": true,
-   "winProbability": 0.2238,
+   "winProbability": 0.2877,
    "ratingSource": "poll"
   },
   {
@@ -18982,7 +18982,7 @@
    "site": "home",
    "home": true,
    "conference": true,
-   "winProbability": 0.3261,
+   "winProbability": 0.319,
    "ratingSource": "poll"
   },
   {
@@ -19348,7 +19348,7 @@
    "confL": 0,
    "overallW": 4,
    "overallL": 0,
-   "nationalRank": 24
+   "nationalRank": 22
   },
   {
    "season": "2026-27",
@@ -19368,7 +19368,7 @@
    "confL": 0,
    "overallW": 4,
    "overallL": 1,
-   "nationalRank": 19
+   "nationalRank": 25
   },
   {
    "season": "2026-27",
@@ -19415,24 +19415,24 @@
   {
    "season": "2026-27",
    "name": "AP Top 25",
-   "updated": "Through Games NOV. 8, 2026",
+   "updated": "Through Games NOV. 15, 2026",
    "rows": [
     {
      "rank": 1,
      "rankLabel": "1",
      "team": "South Carolina",
-     "record": "2-0",
-     "points": "823",
+     "record": "4-0",
+     "points": "825",
      "previous": "",
-     "firstPlaceVotes": 32,
+     "firstPlaceVotes": 33,
      "big12": false
     },
     {
      "rank": 2,
      "rankLabel": "2",
      "team": "Michigan",
-     "record": "2-0",
-     "points": "777",
+     "record": "3-0",
+     "points": "787",
      "previous": "",
      "firstPlaceVotes": 0,
      "big12": false
@@ -19440,19 +19440,19 @@
     {
      "rank": 3,
      "rankLabel": "3",
-     "team": "Southern Cal",
-     "record": "2-0",
-     "points": "734",
+     "team": "Louisville",
+     "record": "6-0",
+     "points": "728",
      "previous": "",
-     "firstPlaceVotes": 1,
+     "firstPlaceVotes": 0,
      "big12": false
     },
     {
      "rank": 4,
      "rankLabel": "4",
-     "team": "UConn",
-     "record": "2-1",
-     "points": "733",
+     "team": "Southern Cal",
+     "record": "3-1",
+     "points": "720",
      "previous": "",
      "firstPlaceVotes": 0,
      "big12": false
@@ -19461,8 +19461,8 @@
      "rank": 5,
      "rankLabel": "5",
      "team": "Duke",
-     "record": "2-0",
-     "points": "681",
+     "record": "4-0",
+     "points": "698",
      "previous": "",
      "firstPlaceVotes": 0,
      "big12": false
@@ -19471,8 +19471,8 @@
      "rank": 6,
      "rankLabel": "6",
      "team": "Texas",
-     "record": "2-0",
-     "points": "641",
+     "record": "4-0",
+     "points": "656",
      "previous": "",
      "firstPlaceVotes": 0,
      "big12": false
@@ -19480,9 +19480,9 @@
     {
      "rank": 7,
      "rankLabel": "7",
-     "team": "Louisville",
-     "record": "3-0",
-     "points": "613",
+     "team": "UConn",
+     "record": "3-2",
+     "points": "617",
      "previous": "",
      "firstPlaceVotes": 0,
      "big12": false
@@ -19490,9 +19490,9 @@
     {
      "rank": 8,
      "rankLabel": "8",
-     "team": "Vanderbilt",
-     "record": "2-0",
-     "points": "609",
+     "team": "Iowa",
+     "record": "4-1",
+     "points": "562",
      "previous": "",
      "firstPlaceVotes": 0,
      "big12": false
@@ -19501,8 +19501,8 @@
      "rank": 9,
      "rankLabel": "9",
      "team": "LSU",
-     "record": "2-0",
-     "points": "561",
+     "record": "4-0",
+     "points": "558",
      "previous": "",
      "firstPlaceVotes": 0,
      "big12": false
@@ -19511,18 +19511,18 @@
      "rank": 10,
      "rankLabel": "10",
      "team": "UCLA",
-     "record": "2-0",
-     "points": "469",
+     "record": "4-0",
+     "points": "506",
      "previous": "",
      "firstPlaceVotes": 0,
      "big12": false
     },
     {
-     "rank": 10,
-     "rankLabel": "10",
-     "team": "Iowa",
-     "record": "2-1",
-     "points": "469",
+     "rank": 11,
+     "rankLabel": "11",
+     "team": "Vanderbilt",
+     "record": "4-1",
+     "points": "480",
      "previous": "",
      "firstPlaceVotes": 0,
      "big12": false
@@ -19531,8 +19531,8 @@
      "rank": 12,
      "rankLabel": "12",
      "team": "Kentucky",
-     "record": "3-0",
-     "points": "447",
+     "record": "5-0",
+     "points": "475",
      "previous": "",
      "firstPlaceVotes": 0,
      "big12": false
@@ -19541,8 +19541,8 @@
      "rank": 13,
      "rankLabel": "13",
      "team": "Notre Dame",
-     "record": "2-0",
-     "points": "430",
+     "record": "4-0",
+     "points": "451",
      "previous": "",
      "firstPlaceVotes": 0,
      "big12": false
@@ -19551,8 +19551,8 @@
      "rank": 14,
      "rankLabel": "14",
      "team": "Oklahoma",
-     "record": "2-0",
-     "points": "363",
+     "record": "4-0",
+     "points": "405",
      "previous": "",
      "firstPlaceVotes": 0,
      "big12": false
@@ -19561,8 +19561,8 @@
      "rank": 15,
      "rankLabel": "15",
      "team": "TCU",
-     "record": "3-0",
-     "points": "336",
+     "record": "6-0",
+     "points": "350",
      "previous": "",
      "firstPlaceVotes": 0,
      "big12": true
@@ -19571,8 +19571,8 @@
      "rank": 16,
      "rankLabel": "16",
      "team": "Washington",
-     "record": "2-0",
-     "points": "314",
+     "record": "3-0",
+     "points": "283",
      "previous": "",
      "firstPlaceVotes": 0,
      "big12": false
@@ -19580,9 +19580,9 @@
     {
      "rank": 17,
      "rankLabel": "17",
-     "team": "Ohio State",
-     "record": "3-0",
-     "points": "282",
+     "team": "Minnesota",
+     "record": "4-0",
+     "points": "264",
      "previous": "",
      "firstPlaceVotes": 0,
      "big12": false
@@ -19590,9 +19590,9 @@
     {
      "rank": 18,
      "rankLabel": "18",
-     "team": "Minnesota",
-     "record": "2-0",
-     "points": "268",
+     "team": "Maryland",
+     "record": "2-1",
+     "points": "260",
      "previous": "",
      "firstPlaceVotes": 0,
      "big12": false
@@ -19600,19 +19600,19 @@
     {
      "rank": 19,
      "rankLabel": "19",
-     "team": "Oklahoma State",
-     "record": "2-0",
-     "points": "216",
+     "team": "Ole Miss",
+     "record": "4-0",
+     "points": "224",
      "previous": "",
      "firstPlaceVotes": 0,
-     "big12": true
+     "big12": false
     },
     {
      "rank": 19,
      "rankLabel": "19",
-     "team": "Maryland",
-     "record": "1-1",
-     "points": "216",
+     "team": "Ohio State",
+     "record": "4-1",
+     "points": "224",
      "previous": "",
      "firstPlaceVotes": 0,
      "big12": false
@@ -19620,9 +19620,9 @@
     {
      "rank": 21,
      "rankLabel": "21",
-     "team": "Ole Miss",
-     "record": "2-0",
-     "points": "214",
+     "team": "Illinois",
+     "record": "3-0",
+     "points": "156",
      "previous": "",
      "firstPlaceVotes": 0,
      "big12": false
@@ -19630,19 +19630,19 @@
     {
      "rank": 22,
      "rankLabel": "22",
-     "team": "Illinois",
-     "record": "2-0",
-     "points": "134",
+     "team": "West Virginia",
+     "record": "4-0",
+     "points": "115",
      "previous": "",
      "firstPlaceVotes": 0,
-     "big12": false
+     "big12": true
     },
     {
      "rank": 23,
      "rankLabel": "23",
-     "team": "North Carolina",
-     "record": "0-2",
-     "points": "110",
+     "team": "Nebraska",
+     "record": "4-0",
+     "points": "111",
      "previous": "",
      "firstPlaceVotes": 0,
      "big12": false
@@ -19650,22 +19650,22 @@
     {
      "rank": 24,
      "rankLabel": "24",
-     "team": "West Virginia",
-     "record": "3-0",
-     "points": "108",
+     "team": "North Carolina",
+     "record": "2-2",
+     "points": "79",
      "previous": "",
      "firstPlaceVotes": 0,
-     "big12": true
+     "big12": false
     },
     {
      "rank": 25,
      "rankLabel": "25",
-     "team": "Nebraska",
-     "record": "2-0",
-     "points": "44",
+     "team": "Oklahoma State",
+     "record": "4-1",
+     "points": "71",
      "previous": "",
      "firstPlaceVotes": 0,
-     "big12": false
+     "big12": true
     }
    ]
   }
@@ -21605,7 +21605,7 @@
     "site": "away",
     "conference": false,
     "key": "minnesota",
-    "p": 0.2035
+    "p": 0.205
    },
    {
     "date": "2026-11-22",
@@ -21677,7 +21677,7 @@
     "site": "home",
     "conference": true,
     "key": "oklahoma st",
-    "p": 0.3901
+    "p": 0.4727
    },
    {
     "date": "2026-12-30",
@@ -21685,7 +21685,7 @@
     "site": "away",
     "conference": true,
     "key": "west virginia",
-    "p": 0.2704
+    "p": 0.2672
    },
    {
     "date": "2027-01-02",
@@ -21717,7 +21717,7 @@
     "site": "away",
     "conference": true,
     "key": "oklahoma st",
-    "p": 0.2238
+    "p": 0.2877
    },
    {
     "date": "2027-01-16",
@@ -21773,7 +21773,7 @@
     "site": "home",
     "conference": true,
     "key": "tcu",
-    "p": 0.3261
+    "p": 0.319
    },
    {
     "date": "2027-02-13",
@@ -21823,7 +21823,7 @@
     "confW": 0,
     "confL": 0,
     "remaining": 17,
-    "pVsAverage": 0.5187,
+    "pVsAverage": 0.5232,
     "rating": 0.8031
    },
    {
@@ -21832,7 +21832,7 @@
     "confW": 0,
     "confL": 0,
     "remaining": 17,
-    "pVsAverage": 0.5086,
+    "pVsAverage": 0.5131,
     "rating": 0.785
    },
    {
@@ -21841,7 +21841,7 @@
     "confW": 0,
     "confL": 0,
     "remaining": 17,
-    "pVsAverage": 0.6416,
+    "pVsAverage": 0.6458,
     "rating": 1.0325
    },
    {
@@ -21850,7 +21850,7 @@
     "confW": 0,
     "confL": 0,
     "remaining": 17,
-    "pVsAverage": 0.5448,
+    "pVsAverage": 0.5493,
     "rating": 0.8507
    },
    {
@@ -21859,7 +21859,7 @@
     "confW": 0,
     "confL": 0,
     "remaining": 17,
-    "pVsAverage": 0.1585,
+    "pVsAverage": 0.161,
     "rating": 0.0155
    },
    {
@@ -21868,7 +21868,7 @@
     "confW": 0,
     "confL": 0,
     "remaining": 16,
-    "pVsAverage": 0.6283,
+    "pVsAverage": 0.6325,
     "rating": 1.0064
    },
    {
@@ -21877,8 +21877,8 @@
     "confW": 0,
     "confL": 0,
     "remaining": 17,
-    "pVsAverage": 0.7756,
-    "rating": 1.3296
+    "pVsAverage": 0.7843,
+    "rating": 1.3443
    },
    {
     "team": "Texas Tech",
@@ -21886,7 +21886,7 @@
     "confW": 0,
     "confL": 0,
     "remaining": 17,
-    "pVsAverage": 0.6349,
+    "pVsAverage": 0.6391,
     "rating": 1.0193
    },
    {
@@ -21895,7 +21895,7 @@
     "confW": 0,
     "confL": 0,
     "remaining": 17,
-    "pVsAverage": 0.4799,
+    "pVsAverage": 0.4845,
     "rating": 0.7332
    },
    {
@@ -21904,8 +21904,8 @@
     "confW": 0,
     "confL": 0,
     "remaining": 17,
-    "pVsAverage": 0.6703,
-    "rating": 1.09
+    "pVsAverage": 0.6779,
+    "rating": 1.0974
    },
    {
     "team": "Kansas St.",
@@ -21913,7 +21913,7 @@
     "confW": 0,
     "confL": 0,
     "remaining": 16,
-    "pVsAverage": 0.4893,
+    "pVsAverage": 0.4938,
     "rating": 0.7501
    },
    {
@@ -21922,8 +21922,8 @@
     "confW": 0,
     "confL": 0,
     "remaining": 16,
-    "pVsAverage": 0.7233,
-    "rating": 1.2035
+    "pVsAverage": 0.6551,
+    "rating": 1.0511
    },
    {
     "team": "UCF",
@@ -21931,7 +21931,7 @@
     "confW": 0,
     "confL": 0,
     "remaining": 17,
-    "pVsAverage": 0.2105,
+    "pVsAverage": 0.2135,
     "rating": 0.1723
    },
    {
@@ -21940,7 +21940,7 @@
     "confW": 0,
     "confL": 0,
     "remaining": 17,
-    "pVsAverage": 0.2674,
+    "pVsAverage": 0.271,
     "rating": 0.3143
    },
    {
@@ -21949,7 +21949,7 @@
     "confW": 0,
     "confL": 0,
     "remaining": 17,
-    "pVsAverage": 0.2985,
+    "pVsAverage": 0.3023,
     "rating": 0.3835
    }
   ],
