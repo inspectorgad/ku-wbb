@@ -3868,6 +3868,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6646510": {
+   "date": "2026-11-15",
+   "season": "2026",
+   "home": {
+    "name": "SMU",
+    "seo": "smu",
+    "score": 77,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Nicholls",
+    "seo": "nicholls-st",
+    "score": 65,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6646532": {
    "date": "2026-11-02",
    "season": "2026",
@@ -7293,6 +7315,28 @@
     "name": "Quinnipiac",
     "seo": "quinnipiac",
     "score": 66,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6647514": {
+   "date": "2026-11-15",
+   "season": "2026",
+   "home": {
+    "name": "Syracuse",
+    "seo": "syracuse",
+    "score": 82,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Canisius",
+    "seo": "canisius",
+    "score": 68,
     "winner": false,
     "rank": null,
     "inConference": false
@@ -10952,6 +10996,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6648697": {
+   "date": "2026-11-15",
+   "season": "2026",
+   "home": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 84,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Oregon St.",
+    "seo": "oregon-st",
+    "score": 80,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6648704": {
    "date": "2026-11-08",
    "season": "2026",
@@ -12816,6 +12882,28 @@
     "seo": "st-marys-ca",
     "score": 89,
     "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6649865": {
+   "date": "2026-11-15",
+   "season": "2026",
+   "home": {
+    "name": "Hawaii",
+    "seo": "hawaii",
+    "score": 49,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "LMU (CA)",
+    "seo": "loyola-marymount",
+    "score": 59,
+    "winner": true,
     "rank": null,
     "inConference": false
    },

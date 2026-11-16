@@ -9838,6 +9838,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6648697": {
+   "date": "2026-11-15",
+   "season": "2026",
+   "home": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 84,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Oregon St.",
+    "seo": "oregon-st",
+    "score": 80,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6648708": {
    "date": "2026-11-15",
    "season": "2026",
