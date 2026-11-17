@@ -125,11 +125,11 @@ Minneapolis, Minn.
 
 1
 Days
-3
+1
 Hours
-5
+3
 Minutes
-54
+24
 Seconds
 Add To Calendar
 Text Only
