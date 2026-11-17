@@ -9149,6 +9149,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6647958": {
+   "date": "2026-11-17",
+   "season": "2026",
+   "home": {
+    "name": "Mississippi St.",
+    "seo": "mississippi-st",
+    "score": 88,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Alabama St.",
+    "seo": "alabama-st",
+    "score": 46,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6647963": {
    "date": "2026-11-10",
    "season": "2026",
@@ -9677,6 +9699,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6648127": {
+   "date": "2026-11-17",
+   "season": "2026",
+   "home": {
+    "name": "Oregon",
+    "seo": "oregon",
+    "score": 97,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Murray St.",
+    "seo": "murray-st",
+    "score": 76,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6648145": {
    "date": "2026-11-03",
    "season": "2026",
@@ -10176,6 +10220,28 @@
     "name": "Chico St.",
     "seo": "chico-st",
     "score": 44,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6648359": {
+   "date": "2026-11-17",
+   "season": "2026",
+   "home": {
+    "name": "Western Ill.",
+    "seo": "western-ill",
+    "score": 60,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Purdue Fort Wayne",
+    "seo": "ipfw",
+    "score": 56,
     "winner": false,
     "rank": null,
     "inConference": false
@@ -12179,6 +12245,28 @@
     "seo": "jessup",
     "score": 51,
     "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6648912": {
+   "date": "2026-11-17",
+   "season": "2026",
+   "home": {
+    "name": "Nevada",
+    "seo": "nevada",
+    "score": 63,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Pepperdine",
+    "seo": "pepperdine",
+    "score": 74,
+    "winner": true,
     "rank": null,
     "inConference": false
    },
@@ -15434,6 +15522,28 @@
     "name": "Arkansas St.",
     "seo": "arkansas-st",
     "score": 61,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6651072": {
+   "date": "2026-11-17",
+   "season": "2026",
+   "home": {
+    "name": "Illinois St.",
+    "seo": "illinois-st",
+    "score": 77,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Loyola Chicago",
+    "seo": "loyola-chicago",
+    "score": 58,
     "winner": false,
     "rank": null,
     "inConference": false
