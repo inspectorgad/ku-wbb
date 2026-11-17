@@ -5695,6 +5695,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6646891": {
+   "date": "2026-11-17",
+   "season": "2026",
+   "home": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 98,
+    "winner": true,
+    "rank": 22,
+    "inConference": true
+   },
+   "away": {
+    "name": "Akron",
+    "seo": "akron",
+    "score": 60,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6646892": {
    "date": "2026-11-05",
    "season": "2026",
@@ -5798,6 +5820,28 @@
     "name": "Youngstown St.",
     "seo": "youngstown-st",
     "score": 63,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6646914": {
+   "date": "2026-11-17",
+   "season": "2026",
+   "home": {
+    "name": "Youngstown St.",
+    "seo": "youngstown-st",
+    "score": 82,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Heidelberg",
+    "seo": "heidelberg",
+    "score": 37,
     "winner": false,
     "rank": null,
     "inConference": false
@@ -12317,6 +12361,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6649104": {
+   "date": "2026-11-17",
+   "season": "2026",
+   "home": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 82,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "North Florida",
+    "seo": "north-florida",
+    "score": 64,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6649118": {
    "date": "2026-11-02",
    "season": "2026",
@@ -16446,6 +16512,28 @@
     "name": "Clinton",
     "seo": "clinton",
     "score": 35,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6651783": {
+   "date": "2026-11-17",
+   "season": "2026",
+   "home": {
+    "name": "Winthrop",
+    "seo": "winthrop",
+    "score": 65,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "South Carolina St.",
+    "seo": "south-carolina-st",
+    "score": 46,
     "winner": false,
     "rank": null,
     "inConference": false

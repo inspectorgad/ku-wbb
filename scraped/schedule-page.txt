@@ -125,11 +125,11 @@ Minneapolis, Minn.
 
 1
 Days
-10
+6
 Hours
-9
+15
 Minutes
-13
+15
 Seconds
 Add To Calendar
 Text Only
@@ -311,7 +311,8 @@ Game Center
 Watch
 Listen
 Live Stats
-History
+Preview
+Game Info
 28.5 Hoops Invitational
 vs
 South Dakota State
@@ -814,14 +815,14 @@ Wednesday, November 04
 All Videos
 Related News
 All News
+Kansas Headed to Face Second Straight Ranked Foe in No. 17 Minnesota
+Tuesday, November 17
 Davis Repeats as Big 12 Starting Five Selection
 Monday, November 16
 No. 25 Nebraska Hands Kansas First Defeat
 Saturday, November 14
 Jayhawks to Renew Rivalry with No. 25 Nebraska Saturday in South Dakota
 Friday, November 13
-Davis, Fandel Fuel Kansas in 99-51 Rout of Oral Roberts
-Tuesday, November 10
 All News
 Footer
 Home of the Kansas Jayhawks | © 2026 Kansas Athletics, Inc.
