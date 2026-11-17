@@ -124,11 +124,11 @@ Minneapolis, Minn.
 
 1
 Days
-23
+20
 Hours
-58
+49
 Minutes
-38
+20
 Seconds
 Add To Calendar
 Text Only
@@ -460,7 +460,6 @@ Listen
 Live Stats
 History
 Explore Lawrence
-Skip Ad
 vs
 Oklahoma State
 
