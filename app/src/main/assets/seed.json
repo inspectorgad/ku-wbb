@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-11-17T04:10:39Z",
+ "generatedAt": "2026-11-17T18:44:45Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -19346,9 +19346,19 @@
    "seo": "west-virginia",
    "confW": 0,
    "confL": 0,
-   "overallW": 4,
+   "overallW": 5,
    "overallL": 0,
    "nationalRank": 22
+  },
+  {
+   "season": "2026-27",
+   "team": "UCF",
+   "seo": "ucf",
+   "confW": 0,
+   "confL": 0,
+   "overallW": 5,
+   "overallL": 1,
+   "nationalRank": null
   },
   {
    "season": "2026-27",
@@ -19369,16 +19379,6 @@
    "overallW": 4,
    "overallL": 1,
    "nationalRank": 25
-  },
-  {
-   "season": "2026-27",
-   "team": "UCF",
-   "seo": "ucf",
-   "confW": 0,
-   "confL": 0,
-   "overallW": 4,
-   "overallL": 1,
-   "nationalRank": null
   },
   {
    "season": "2026-27",
@@ -21908,6 +21908,15 @@
     "rating": 1.0974
    },
    {
+    "team": "UCF",
+    "key": "ucf",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 17,
+    "pVsAverage": 0.2135,
+    "rating": 0.1723
+   },
+   {
     "team": "Kansas St.",
     "key": "kansas st",
     "confW": 0,
@@ -21924,15 +21933,6 @@
     "remaining": 16,
     "pVsAverage": 0.6551,
     "rating": 1.0511
-   },
-   {
-    "team": "UCF",
-    "key": "ucf",
-    "confW": 0,
-    "confL": 0,
-    "remaining": 17,
-    "pVsAverage": 0.2135,
-    "rating": 0.1723
    },
    {
     "team": "Arizona",
