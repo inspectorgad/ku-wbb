@@ -14408,6 +14408,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6650021": {
+   "date": "2026-11-18",
+   "season": "2026",
+   "home": {
+    "name": "UAlbany",
+    "seo": "albany-ny",
+    "score": 65,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Bucknell",
+    "seo": "bucknell",
+    "score": 59,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6650047": {
    "date": "2026-11-02",
    "season": "2026",
@@ -15501,6 +15523,28 @@
     "name": "Morgan St.",
     "seo": "morgan-st",
     "score": 50,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6650680": {
+   "date": "2026-11-18",
+   "season": "2026",
+   "home": {
+    "name": "Pittsburgh",
+    "seo": "pittsburgh",
+    "score": 72,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "UMBC",
+    "seo": "umbc",
+    "score": 59,
     "winner": false,
     "rank": null,
     "inConference": false
