@@ -2,6 +2,7 @@
 Skip to main content
 Pause All Rotators
 University of Kansas Athletics
+Skip Ad
 Skip Scoreboard
 Scoreboard
 Coming Up
@@ -124,11 +125,11 @@ Minneapolis, Minn.
 
 0
 Days
-21
+15
 Hours
-52
+57
 Minutes
-5
+7
 Seconds
 Add To Calendar
 Text Only
@@ -462,6 +463,7 @@ Listen
 Live Stats
 History
 Explore Lawrence
+Skip Ad
 vs
 Oklahoma State
 
@@ -637,6 +639,7 @@ Listen
 Live Stats
 History
 Explore Lawrence
+Skip Ad
 vs
 Kansas State
 
