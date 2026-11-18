@@ -4904,6 +4904,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6646625": {
+   "date": "2026-11-18",
+   "season": "2026",
+   "home": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 90,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Utah St.",
+    "seo": "utah-st",
+    "score": 78,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6646635": {
    "date": "2026-11-02",
    "season": "2026",
@@ -17854,6 +17876,28 @@
    "away": {
     "name": "Western Ill.",
     "seo": "western-ill",
+    "score": 35,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6651926": {
+   "date": "2026-11-18",
+   "season": "2026",
+   "home": {
+    "name": "La Salle",
+    "seo": "la-salle",
+    "score": 80,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Rowan",
+    "seo": "rowan",
     "score": 35,
     "winner": false,
     "rank": null,
