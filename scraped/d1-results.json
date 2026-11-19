@@ -2903,6 +2903,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6646114": {
+   "date": "2026-11-18",
+   "season": "2026",
+   "home": {
+    "name": "New Mexico",
+    "seo": "new-mexico",
+    "score": 58,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 75,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6646121": {
    "date": "2026-11-02",
    "season": "2026",
@@ -3469,6 +3491,28 @@
     "seo": "air-force",
     "score": 66,
     "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6646250": {
+   "date": "2026-11-18",
+   "season": "2026",
+   "home": {
+    "name": "Air Force",
+    "seo": "air-force",
+    "score": 55,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Southern Utah",
+    "seo": "southern-utah",
+    "score": 66,
+    "winner": true,
     "rank": null,
     "inConference": false
    },
@@ -8007,6 +8051,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6647346": {
+   "date": "2026-11-18",
+   "season": "2026",
+   "home": {
+    "name": "Gonzaga",
+    "seo": "gonzaga",
+    "score": 84,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Montana",
+    "seo": "montana",
+    "score": 61,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6647348": {
    "date": "2026-11-08",
    "season": "2026",
@@ -10867,6 +10933,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6648181": {
+   "date": "2026-11-18",
+   "season": "2026",
+   "home": {
+    "name": "CSU Bakersfield",
+    "seo": "bakersfield",
+    "score": 51,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Utah Tech",
+    "seo": "utah-tech",
+    "score": 55,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6648205": {
    "date": "2026-11-02",
    "season": "2026",
@@ -10926,6 +11014,28 @@
     "name": "Warner Pacific",
     "seo": "warner-pacific",
     "score": 33,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6648208": {
+   "date": "2026-11-18",
+   "season": "2026",
+   "home": {
+    "name": "Portland",
+    "seo": "portland",
+    "score": 83,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Portland St.",
+    "seo": "portland-st",
+    "score": 54,
     "winner": false,
     "rank": null,
     "inConference": false
@@ -13060,6 +13170,28 @@
     "name": "UC Irvine",
     "seo": "uc-irvine",
     "score": 42,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6648732": {
+   "date": "2026-11-18",
+   "season": "2026",
+   "home": {
+    "name": "UC Irvine",
+    "seo": "uc-irvine",
+    "score": 66,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Idaho St.",
+    "seo": "idaho-st",
+    "score": 51,
     "winner": false,
     "rank": null,
     "inConference": false

@@ -8924,6 +8924,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6646114": {
+   "date": "2026-11-18",
+   "season": "2026",
+   "home": {
+    "name": "New Mexico",
+    "seo": "new-mexico",
+    "score": 58,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 75,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6646414": {
    "date": "2026-11-09",
    "season": "2026",
