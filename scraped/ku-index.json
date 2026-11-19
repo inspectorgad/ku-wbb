@@ -183,7 +183,8 @@
   "2026-11-15": true,
   "2026-11-16": true,
   "2026-11-17": true,
-  "2026-11-18": true
+  "2026-11-18": true,
+  "2026-11-19": true
  },
  "games": {
   "6515413": {
@@ -9891,6 +9892,50 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6648418": {
+   "date": "2026-11-18",
+   "season": "2026",
+   "home": {
+    "name": "UNI",
+    "seo": "uni",
+    "score": 57,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Iowa St.",
+    "seo": "iowa-st",
+    "score": 72,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6648431": {
+   "date": "2026-11-18",
+   "season": "2026",
+   "home": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 77,
+    "winner": true,
+    "rank": 25,
+    "inConference": true
+   },
+   "away": {
+    "name": "St. John's (NY)",
+    "seo": "st-johns-ny",
+    "score": 63,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6648497": {
    "date": "2026-11-03",
    "season": "2026",
@@ -10265,6 +10310,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6649985": {
+   "date": "2026-11-18",
+   "season": "2026",
+   "home": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 63,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Western Caro.",
+    "seo": "western-caro",
+    "score": 45,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6650173": {
    "date": "2026-11-05",
    "season": "2026",
@@ -10566,6 +10633,28 @@
     "name": "Le Moyne",
     "seo": "le-moyne",
     "score": 44,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6660895": {
+   "date": "2026-11-18",
+   "season": "2026",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 96,
+    "winner": true,
+    "rank": 15,
+    "inConference": true
+   },
+   "away": {
+    "name": "UT Arlington",
+    "seo": "texas-arlington",
+    "score": 48,
     "winner": false,
     "rank": null,
     "inConference": false
