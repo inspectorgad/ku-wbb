@@ -469,10 +469,10 @@
   },
   "6647851": {
    "date": "2026-11-18",
-   "final": false,
+   "final": true,
    "home": "Minnesota",
    "away": "Kansas",
-   "boxscored": false
+   "boxscored": true
   }
  },
  "big12Games": {
@@ -9775,6 +9775,28 @@
     "name": "Kansas",
     "seo": "kansas",
     "score": 73,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6647851": {
+   "date": "2026-11-18",
+   "season": "2026",
+   "home": {
+    "name": "Minnesota",
+    "seo": "minnesota",
+    "score": 76,
+    "winner": true,
+    "rank": 17,
+    "inConference": false
+   },
+   "away": {
+    "name": "Kansas",
+    "seo": "kansas",
+    "score": 58,
     "winner": false,
     "rank": null,
     "inConference": true
