@@ -1033,6 +1033,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6645680": {
+   "date": "2026-11-19",
+   "season": "2026",
+   "home": {
+    "name": "Elon",
+    "seo": "elon",
+    "score": 66,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Liberty",
+    "seo": "liberty",
+    "score": 56,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6645706": {
    "date": "2026-11-02",
    "season": "2026",
@@ -2983,6 +3005,28 @@
    "away": {
     "name": "Southeast Mo. St.",
     "seo": "southeast-mo-st",
+    "score": 50,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6646124": {
+   "date": "2026-11-19",
+   "season": "2026",
+   "home": {
+    "name": "Florida St.",
+    "seo": "florida-st",
+    "score": 63,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Purdue",
+    "seo": "purdue",
     "score": 50,
     "winner": false,
     "rank": null,
@@ -11967,6 +12011,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6648458": {
+   "date": "2026-11-19",
+   "season": "2026",
+   "home": {
+    "name": "Rutgers",
+    "seo": "rutgers",
+    "score": 91,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "UMES",
+    "seo": "umes",
+    "score": 47,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6648471": {
    "date": "2026-11-08",
    "season": "2026",
@@ -16448,6 +16514,28 @@
     "name": "Stillman",
     "seo": "stillman",
     "score": 47,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6650648": {
+   "date": "2026-11-19",
+   "season": "2026",
+   "home": {
+    "name": "Duke",
+    "seo": "duke",
+    "score": 111,
+    "winner": true,
+    "rank": 5,
+    "inConference": false
+   },
+   "away": {
+    "name": "Fordham",
+    "seo": "fordham",
+    "score": 44,
     "winner": false,
     "rank": null,
     "inConference": false
@@ -21596,6 +21684,28 @@
     "name": "D'Youville",
     "seo": "dyouville",
     "score": 56,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6665979": {
+   "date": "2026-11-19",
+   "season": "2026",
+   "home": {
+    "name": "Penn St.",
+    "seo": "penn-st",
+    "score": 72,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Bowling Green",
+    "seo": "bowling-green",
+    "score": 70,
     "winner": false,
     "rank": null,
     "inConference": false
