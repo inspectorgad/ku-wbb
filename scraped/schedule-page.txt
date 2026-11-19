@@ -2,21 +2,11 @@
 Skip to main content
 Pause All Rotators
 University of Kansas Athletics
-Skip Ad
 Skip Scoreboard
 Scoreboard
 Coming Up
 View Calendar 
 Skip Ad
-Completed Event: Women's Basketball versus Washburn (exh.) on October 29, 2026 , Win , 68, to, 50
-Final
-Oct 29
-Women's Basketball
-68
-vs Washburn (exh.)
-50
-Story Recap
-Boxscore
 Completed Event: Women's Basketball versus Omaha on November 3, 2026 , Win , 66, to, 48
 Final
 Nov 3
@@ -53,15 +43,14 @@ vs #25 Nebraska
 105
 Story Recap
 Boxscore
-Upcoming Event: Women's Basketball at #17 Minnesota on November 18, 2026 at 7 p.m. CT
-Wed. 11/18/26
--
-7 p.m. CT
+Completed Event: Women's Basketball at #17 Minnesota on November 18, 2026 , Loss , 58, to, 76
+Final
+Nov 18
 Women's Basketball
+58
 at #17 Minnesota
-Audio
-Video
-Stats
+76
+Boxscore
 Upcoming Event: Women's Basketball versus South Dakota State on November 22, 2026 at 1:30 p.m. CT
 Sun. 11/22/26
 -
@@ -93,6 +82,14 @@ Thu. 12/03/26
 6:30 p.m. CT
 Women's Basketball
 vs Missouri State
+Audio
+Stats
+Upcoming Event: Women's Basketball versus Kansas City on December 6, 2026 at 12 p.m. CT
+Sun. 12/06/26
+-
+12 p.m. CT
+Women's Basketball
+vs Kansas City
 Audio
 Stats
 MENU
@@ -127,9 +124,9 @@ Kansas City, Mo.
 Days
 16
 Hours
-18
+12
 Minutes
-24
+38
 Seconds
 Add To Calendar
 Text Only
@@ -143,9 +140,9 @@ Overall
 Wins
 3
 Losses
-1
+2
 Overall Percentage
-.750
+.600
 Conf
 Wins
 0
@@ -154,7 +151,7 @@ Losses
 Conference Percentage
 .000
 Streak
-L1
+L2
 Home
 Wins
 3
@@ -164,7 +161,7 @@ Away
 Wins
 0
 Losses
-0
+1
 Neutral
 Wins
 0
@@ -302,16 +299,14 @@ Minneapolis, Minn.
 
 TV: Peacock
 
-Nov 18
-(Wed)
+L, 58-76
 
+Nov 18(Wed)
 7 p.m. CT
 
 Game Center
-Watch
-Listen
-Live Stats
-Preview
+Box Score
+History
 Game Info
 28.5 Hoops Invitational
 vs
@@ -463,7 +458,6 @@ Listen
 Live Stats
 History
 Explore Lawrence
-Skip Ad
 vs
 Oklahoma State
 
