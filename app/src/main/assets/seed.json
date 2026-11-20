@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-11-20T02:35:17Z",
+ "generatedAt": "2026-11-20T09:07:37Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -19909,6 +19909,16 @@
   },
   {
    "season": "2026-27",
+   "team": "Arizona",
+   "seo": "arizona",
+   "confW": 0,
+   "confL": 0,
+   "overallW": 4,
+   "overallL": 1,
+   "nationalRank": null
+  },
+  {
+   "season": "2026-27",
    "team": "Cincinnati",
    "seo": "cincinnati",
    "confW": 0,
@@ -19924,16 +19934,6 @@
    "confW": 0,
    "confL": 0,
    "overallW": 4,
-   "overallL": 1,
-   "nationalRank": null
-  },
-  {
-   "season": "2026-27",
-   "team": "Arizona",
-   "seo": "arizona",
-   "confW": 0,
-   "confL": 0,
-   "overallW": 3,
    "overallL": 1,
    "nationalRank": null
   },
@@ -22455,6 +22455,15 @@
     "rating": 1.0511
    },
    {
+    "team": "Arizona",
+    "key": "arizona",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 17,
+    "pVsAverage": 0.271,
+    "rating": 0.3143
+   },
+   {
     "team": "Cincinnati",
     "key": "cincinnati",
     "confW": 0,
@@ -22471,15 +22480,6 @@
     "remaining": 17,
     "pVsAverage": 0.6391,
     "rating": 1.0193
-   },
-   {
-    "team": "Arizona",
-    "key": "arizona",
-    "confW": 0,
-    "confL": 0,
-    "remaining": 17,
-    "pVsAverage": 0.271,
-    "rating": 0.3143
    }
   ],
   "unrated": [
