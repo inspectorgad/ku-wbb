@@ -2310,6 +2310,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6645956": {
+   "date": "2026-11-20",
+   "season": "2026",
+   "home": {
+    "name": "Sacramento St.",
+    "seo": "sacramento-st",
+    "score": 63,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Pacific",
+    "seo": "pacific",
+    "score": 46,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6645976": {
    "date": "2026-11-02",
    "season": "2026",
@@ -8888,6 +8910,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6647447": {
+   "date": "2026-11-20",
+   "season": "2026",
+   "home": {
+    "name": "Tulane",
+    "seo": "tulane",
+    "score": 76,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Alcorn",
+    "seo": "alcorn",
+    "score": 39,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6647450": {
    "date": "2026-11-02",
    "season": "2026",
@@ -11808,6 +11852,28 @@
     "seo": "minot-st",
     "score": 68,
     "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6648259": {
+   "date": "2026-11-20",
+   "season": "2026",
+   "home": {
+    "name": "North Dakota",
+    "seo": "north-dakota",
+    "score": 58,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Jacksonville St.",
+    "seo": "jacksonville-st",
+    "score": 65,
+    "winner": true,
     "rank": null,
     "inConference": false
    },
@@ -17864,6 +17930,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6650970": {
+   "date": "2026-11-20",
+   "season": "2026",
+   "home": {
+    "name": "Akron",
+    "seo": "akron",
+    "score": 73,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Robert Morris",
+    "seo": "robert-morris",
+    "score": 76,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6650980": {
    "date": "2026-11-02",
    "season": "2026",
@@ -22851,6 +22939,28 @@
     "name": "Northeastern",
     "seo": "northeastern",
     "score": 71,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6666126": {
+   "date": "2026-11-20",
+   "season": "2026",
+   "home": {
+    "name": "Central Ark.",
+    "seo": "central-ark",
+    "score": 76,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Grambling",
+    "seo": "grambling",
+    "score": 82,
     "winner": true,
     "rank": null,
     "inConference": false
