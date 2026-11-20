@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-11-19T09:33:54Z",
+ "generatedAt": "2026-11-20T02:35:17Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -19859,16 +19859,6 @@
   },
   {
    "season": "2026-27",
-   "team": "Texas Tech",
-   "seo": "texas-tech",
-   "confW": 0,
-   "confL": 0,
-   "overallW": 4,
-   "overallL": 0,
-   "nationalRank": null
-  },
-  {
-   "season": "2026-27",
    "team": "Utah",
    "seo": "utah",
    "confW": 0,
@@ -19886,6 +19876,16 @@
    "overallW": 5,
    "overallL": 0,
    "nationalRank": 22
+  },
+  {
+   "season": "2026-27",
+   "team": "UCF",
+   "seo": "ucf",
+   "confW": 0,
+   "confL": 0,
+   "overallW": 6,
+   "overallL": 1,
+   "nationalRank": null
   },
   {
    "season": "2026-27",
@@ -19909,18 +19909,18 @@
   },
   {
    "season": "2026-27",
-   "team": "UCF",
-   "seo": "ucf",
+   "team": "Cincinnati",
+   "seo": "cincinnati",
    "confW": 0,
    "confL": 0,
-   "overallW": 5,
+   "overallW": 4,
    "overallL": 1,
    "nationalRank": null
   },
   {
    "season": "2026-27",
-   "team": "Cincinnati",
-   "seo": "cincinnati",
+   "team": "Texas Tech",
+   "seo": "texas-tech",
    "confW": 0,
    "confL": 0,
    "overallW": 4,
@@ -22410,15 +22410,6 @@
     "rating": 1.3443
    },
    {
-    "team": "Texas Tech",
-    "key": "texas tech",
-    "confW": 0,
-    "confL": 0,
-    "remaining": 17,
-    "pVsAverage": 0.6391,
-    "rating": 1.0193
-   },
-   {
     "team": "Utah",
     "key": "utah",
     "confW": 0,
@@ -22435,6 +22426,15 @@
     "remaining": 17,
     "pVsAverage": 0.6779,
     "rating": 1.0974
+   },
+   {
+    "team": "UCF",
+    "key": "ucf",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 17,
+    "pVsAverage": 0.2135,
+    "rating": 0.1723
    },
    {
     "team": "Kansas St.",
@@ -22455,15 +22455,6 @@
     "rating": 1.0511
    },
    {
-    "team": "UCF",
-    "key": "ucf",
-    "confW": 0,
-    "confL": 0,
-    "remaining": 17,
-    "pVsAverage": 0.2135,
-    "rating": 0.1723
-   },
-   {
     "team": "Cincinnati",
     "key": "cincinnati",
     "confW": 0,
@@ -22471,6 +22462,15 @@
     "remaining": 17,
     "pVsAverage": 0.3023,
     "rating": 0.3835
+   },
+   {
+    "team": "Texas Tech",
+    "key": "texas tech",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 17,
+    "pVsAverage": 0.6391,
+    "rating": 1.0193
    },
    {
     "team": "Arizona",
