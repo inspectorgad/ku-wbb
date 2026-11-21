@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-11-21T08:44:20Z",
+ "generatedAt": "2026-11-21T20:14:27Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -19879,16 +19879,6 @@
   },
   {
    "season": "2026-27",
-   "team": "UCF",
-   "seo": "ucf",
-   "confW": 0,
-   "confL": 0,
-   "overallW": 6,
-   "overallL": 1,
-   "nationalRank": null
-  },
-  {
-   "season": "2026-27",
    "team": "Baylor",
    "seo": "baylor",
    "confW": 0,
@@ -19935,6 +19925,16 @@
    "confL": 0,
    "overallW": 4,
    "overallL": 1,
+   "nationalRank": null
+  },
+  {
+   "season": "2026-27",
+   "team": "UCF",
+   "seo": "ucf",
+   "confW": 0,
+   "confL": 0,
+   "overallW": 6,
+   "overallL": 2,
    "nationalRank": null
   },
   {
@@ -22428,15 +22428,6 @@
     "rating": 1.0511
    },
    {
-    "team": "UCF",
-    "key": "ucf",
-    "confW": 0,
-    "confL": 0,
-    "remaining": 17,
-    "pVsAverage": 0.2135,
-    "rating": 0.1723
-   },
-   {
     "team": "Baylor",
     "key": "baylor",
     "confW": 0,
@@ -22480,6 +22471,15 @@
     "remaining": 17,
     "pVsAverage": 0.6391,
     "rating": 1.0193
+   },
+   {
+    "team": "UCF",
+    "key": "ucf",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 17,
+    "pVsAverage": 0.2135,
+    "rating": 0.1723
    }
   ],
   "unrated": [
