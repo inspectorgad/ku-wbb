@@ -79,6 +79,7 @@ Women's Basketball
 vs Miami (OH)
 Audio
 Video
+Stats
 Upcoming Event: Women's Basketball versus Missouri State on December 3, 2026 at 6:30 p.m. CT
 Thu. 12/03/26
 -
@@ -125,11 +126,11 @@ Kansas City, Mo.
 
 1
 Days
-20
+16
 Hours
-11
+41
 Minutes
-9
+27
 Seconds
 Add To Calendar
 Text Only
@@ -370,6 +371,7 @@ Nov 27
 Game Center
 Watch
 Listen
+Live Stats
 History
 
 Sponsored by:
@@ -640,7 +642,6 @@ Listen
 Live Stats
 History
 Explore Lawrence
-Skip Ad
 vs
 Kansas State
 

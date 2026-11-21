@@ -1,7 +1,7 @@
 {
  "arizona st": {
   "url": "https://thesundevils.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-14T01:44:44.478Z",
+  "fetchedAt": "2026-11-21T02:48:42.864Z",
   "parserVersion": 2,
   "players": [
    {
@@ -125,7 +125,7 @@
  },
  "arizona": {
   "url": "https://arizonawildcats.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-14T01:44:53.613Z",
+  "fetchedAt": "2026-11-21T02:48:51.968Z",
   "parserVersion": 2,
   "players": [
    {
@@ -224,7 +224,7 @@
     "position": "G",
     "height": "5-8",
     "academicYear": "Fr.",
-    "hometown": "Ocala, Fla.",
+    "hometown": "Broward County, Fla.",
     "lastSchool": "Grandview Prep"
    },
    {
@@ -249,7 +249,7 @@
  },
  "baylor": {
   "url": "https://baylorbears.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-14T01:45:03.207Z",
+  "fetchedAt": "2026-11-21T02:49:01.446Z",
   "parserVersion": 2,
   "players": [
    {
@@ -364,7 +364,7 @@
  },
  "byu": {
   "url": "https://byucougars.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-14T01:45:12.534Z",
+  "fetchedAt": "2026-11-21T02:49:11.282Z",
   "parserVersion": 2,
   "players": [
    {
@@ -443,7 +443,7 @@
  },
  "cincinnati": {
   "url": "https://gobearcats.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-14T01:45:22.030Z",
+  "fetchedAt": "2026-11-21T02:49:21.056Z",
   "parserVersion": 2,
   "players": [
    {
@@ -576,7 +576,7 @@
  },
  "colorado": {
   "url": "https://cubuffs.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-14T01:45:31.290Z",
+  "fetchedAt": "2026-11-21T02:49:30.545Z",
   "parserVersion": 2,
   "players": [
    {
@@ -709,7 +709,7 @@
  },
  "houston": {
   "url": "https://uhcougars.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-14T01:45:40.452Z",
+  "fetchedAt": "2026-11-21T02:49:40.022Z",
   "parserVersion": 2,
   "players": [
    {
@@ -833,7 +833,7 @@
  },
  "iowa st": {
   "url": "https://cyclones.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-14T01:45:49.530Z",
+  "fetchedAt": "2026-11-21T02:49:49.486Z",
   "parserVersion": 2,
   "players": [
    {
@@ -957,7 +957,7 @@
  },
  "kansas st": {
   "url": "https://kstatesports.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-14T01:45:58.913Z",
+  "fetchedAt": "2026-11-21T02:49:59.069Z",
   "parserVersion": 2,
   "players": [
    {
@@ -1072,7 +1072,7 @@
  },
  "oklahoma st": {
   "url": "https://okstate.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-14T01:46:08.135Z",
+  "fetchedAt": "2026-11-21T02:50:08.464Z",
   "parserVersion": 2,
   "players": [
    {
@@ -1187,7 +1187,7 @@
  },
  "south dakota st": {
   "url": "https://gojacks.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-14T01:46:17.481Z",
+  "fetchedAt": "2026-11-21T02:50:18.001Z",
   "parserVersion": 2,
   "players": [
    {
@@ -1311,7 +1311,7 @@
  },
  "tcu": {
   "url": "https://gofrogs.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-14T01:46:26.723Z",
+  "fetchedAt": "2026-11-21T02:50:27.273Z",
   "parserVersion": 2,
   "players": [
    {
@@ -1426,7 +1426,7 @@
  },
  "texas tech": {
   "url": "https://texastech.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-14T01:46:36.102Z",
+  "fetchedAt": "2026-11-21T02:50:36.757Z",
   "parserVersion": 2,
   "players": [
    {
@@ -1568,7 +1568,7 @@
  },
  "ucf": {
   "url": "https://ucfknights.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-14T01:46:45.380Z",
+  "fetchedAt": "2026-11-21T02:50:46.138Z",
   "parserVersion": 2,
   "players": [
    {
@@ -1692,7 +1692,7 @@
  },
  "utah": {
   "url": "https://utahutes.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-14T01:46:54.529Z",
+  "fetchedAt": "2026-11-21T02:50:55.439Z",
   "parserVersion": 2,
   "players": [
    {
@@ -1816,7 +1816,7 @@
  },
  "west virginia": {
   "url": "https://wvusports.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-14T01:47:03.802Z",
+  "fetchedAt": "2026-11-21T02:51:04.801Z",
   "parserVersion": 2,
   "players": [
    {
