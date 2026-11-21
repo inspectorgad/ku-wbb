@@ -1475,6 +1475,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6645733": {
+   "date": "2026-11-21",
+   "season": "2026",
+   "home": {
+    "name": "Binghamton",
+    "seo": "binghamton",
+    "score": 81,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Daemen",
+    "seo": "daemen",
+    "score": 44,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6645734": {
    "date": "2026-11-02",
    "season": "2026",
@@ -4291,6 +4313,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6646325": {
+   "date": "2026-11-21",
+   "season": "2026",
+   "home": {
+    "name": "LIU",
+    "seo": "long-island",
+    "score": 65,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Saint Peter's",
+    "seo": "st-peters",
+    "score": 53,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6646326": {
    "date": "2026-11-03",
    "season": "2026",
@@ -6183,6 +6227,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6646705": {
+   "date": "2026-11-21",
+   "season": "2026",
+   "home": {
+    "name": "George Mason",
+    "seo": "george-mason",
+    "score": 55,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "James Madison",
+    "seo": "james-madison",
+    "score": 52,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6646711": {
    "date": "2026-11-03",
    "season": "2026",
@@ -7173,6 +7239,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6646895": {
+   "date": "2026-11-21",
+   "season": "2026",
+   "home": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 54,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Florida St.",
+    "seo": "florida-st",
+    "score": 81,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6646912": {
    "date": "2026-11-10",
    "season": "2026",
@@ -7518,6 +7606,28 @@
     "name": "Mount St. Mary's",
     "seo": "mt-st-marys",
     "score": 37,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6647005": {
+   "date": "2026-11-21",
+   "season": "2026",
+   "home": {
+    "name": "Mount St. Mary's",
+    "seo": "mt-st-marys",
+    "score": 78,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "St. Mary's (MD)",
+    "seo": "st-marys-md",
+    "score": 28,
     "winner": false,
     "rank": null,
     "inConference": false
@@ -8310,6 +8420,28 @@
     "name": "Columbia",
     "seo": "columbia",
     "score": 58,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6647192": {
+   "date": "2026-11-21",
+   "season": "2026",
+   "home": {
+    "name": "Maryland",
+    "seo": "maryland",
+    "score": 109,
+    "winner": true,
+    "rank": 18,
+    "inConference": false
+   },
+   "away": {
+    "name": "Morgan St.",
+    "seo": "morgan-st",
+    "score": 39,
     "winner": false,
     "rank": null,
     "inConference": false
@@ -12453,6 +12585,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6648281": {
+   "date": "2026-11-21",
+   "season": "2026",
+   "home": {
+    "name": "Ohio",
+    "seo": "ohio",
+    "score": 71,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Xavier",
+    "seo": "xavier",
+    "score": 62,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6648303": {
    "date": "2026-11-02",
    "season": "2026",
@@ -14543,6 +14697,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6648744": {
+   "date": "2026-11-21",
+   "season": "2026",
+   "home": {
+    "name": "Duquesne",
+    "seo": "duquesne",
+    "score": 81,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Stony Brook",
+    "seo": "stony-brook",
+    "score": 65,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6648779": {
    "date": "2026-11-02",
    "season": "2026",
@@ -15087,6 +15263,28 @@
     "seo": "creighton",
     "score": 66,
     "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6648968": {
+   "date": "2026-11-21",
+   "season": "2026",
+   "home": {
+    "name": "UTSA",
+    "seo": "utsa",
+    "score": 52,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "North Dakota St.",
+    "seo": "north-dakota-st",
+    "score": 50,
+    "winner": false,
     "rank": null,
     "inConference": false
    },
@@ -16208,6 +16406,28 @@
     "name": "Sacred Heart",
     "seo": "sacred-heart",
     "score": 49,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6649592": {
+   "date": "2026-11-21",
+   "season": "2026",
+   "home": {
+    "name": "Detroit Mercy",
+    "seo": "detroit",
+    "score": 62,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Sacred Heart",
+    "seo": "sacred-heart",
+    "score": 55,
     "winner": false,
     "rank": null,
     "inConference": false
@@ -21752,6 +21972,28 @@
     "name": "Le Moyne",
     "seo": "le-moyne",
     "score": 40,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6660820": {
+   "date": "2026-11-21",
+   "season": "2026",
+   "home": {
+    "name": "Niagara",
+    "seo": "niagara",
+    "score": 72,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Le Moyne",
+    "seo": "le-moyne",
+    "score": 63,
     "winner": false,
     "rank": null,
     "inConference": false
