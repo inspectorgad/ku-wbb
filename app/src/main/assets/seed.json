@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-11-21T20:14:27Z",
+ "generatedAt": "2026-11-21T22:19:20Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -19823,7 +19823,7 @@
    "seo": "houston",
    "confW": 0,
    "confL": 0,
-   "overallW": 5,
+   "overallW": 6,
    "overallL": 0,
    "nationalRank": null
   },
@@ -19899,6 +19899,16 @@
   },
   {
    "season": "2026-27",
+   "team": "Texas Tech",
+   "seo": "texas-tech",
+   "confW": 0,
+   "confL": 0,
+   "overallW": 5,
+   "overallL": 1,
+   "nationalRank": null
+  },
+  {
+   "season": "2026-27",
    "team": "Arizona",
    "seo": "arizona",
    "confW": 0,
@@ -19911,16 +19921,6 @@
    "season": "2026-27",
    "team": "Cincinnati",
    "seo": "cincinnati",
-   "confW": 0,
-   "confL": 0,
-   "overallW": 4,
-   "overallL": 1,
-   "nationalRank": null
-  },
-  {
-   "season": "2026-27",
-   "team": "Texas Tech",
-   "seo": "texas-tech",
    "confW": 0,
    "confL": 0,
    "overallW": 4,
@@ -22446,6 +22446,15 @@
     "rating": 0.7501
    },
    {
+    "team": "Texas Tech",
+    "key": "texas tech",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 17,
+    "pVsAverage": 0.6391,
+    "rating": 1.0193
+   },
+   {
     "team": "Arizona",
     "key": "arizona",
     "confW": 0,
@@ -22462,15 +22471,6 @@
     "remaining": 17,
     "pVsAverage": 0.3023,
     "rating": 0.3835
-   },
-   {
-    "team": "Texas Tech",
-    "key": "texas tech",
-    "confW": 0,
-    "confL": 0,
-    "remaining": 17,
-    "pVsAverage": 0.6391,
-    "rating": 1.0193
    },
    {
     "team": "UCF",
