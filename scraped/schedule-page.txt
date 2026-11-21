@@ -126,11 +126,11 @@ Kansas City, Mo.
 
 1
 Days
-16
+10
 Hours
-41
+45
 Minutes
-27
+40
 Seconds
 Add To Calendar
 Text Only
@@ -642,6 +642,7 @@ Listen
 Live Stats
 History
 Explore Lawrence
+Skip Ad
 vs
 Kansas State
 
