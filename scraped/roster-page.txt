@@ -8,15 +8,6 @@ Scoreboard
 Coming Up
 View Calendar 
 Skip Ad
-Completed Event: Women's Basketball versus Omaha on November 3, 2026 , Win , 66, to, 48
-Final
-Nov 3
-Women's Basketball
-66
-vs Omaha
-48
-Story Recap
-Boxscore
 Completed Event: Women's Basketball versus Drake on November 6, 2026 , Win , 74, to, 49
 Final
 Nov 6
@@ -53,15 +44,13 @@ at #17 Minnesota
 76
 Story Recap
 Boxscore
-Upcoming Event: Women's Basketball versus South Dakota State on November 22, 2026 at 1:30 p.m. CT
-Live
+Completed Event: Women's Basketball versus South Dakota State on November 22, 2026 , Loss , 70, to, 77
+Final
+Nov 22
 Women's Basketball
-14
+70
 vs South Dakota State
-25
-Audio
-Video
-Stats
+77
 Upcoming Event: Women's Basketball versus Washington State on November 26, 2026 at 3 p.m. CT
 Thu. 11/26/26
 -
@@ -94,6 +83,14 @@ Sun. 12/06/26
 12 p.m. CT
 Women's Basketball
 vs Kansas City
+Audio
+Stats
+Upcoming Event: Women's Basketball versus North Dakota State on December 10, 2026 at 6:30 p.m. CT
+Thu. 12/10/26
+-
+6:30 p.m. CT
+Women's Basketball
+vs North Dakota State
 Audio
 Stats
 MENU

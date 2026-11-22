@@ -8,15 +8,6 @@ Scoreboard
 Coming Up
 View Calendar 
 Skip Ad
-Completed Event: Women's Basketball versus Omaha on November 3, 2026 , Win , 66, to, 48
-Final
-Nov 3
-Women's Basketball
-66
-vs Omaha
-48
-Story Recap
-Boxscore
 Completed Event: Women's Basketball versus Drake on November 6, 2026 , Win , 74, to, 49
 Final
 Nov 6
@@ -53,15 +44,13 @@ at #17 Minnesota
 76
 Story Recap
 Boxscore
-Upcoming Event: Women's Basketball versus South Dakota State on November 22, 2026 at 1:30 p.m. CT
-Live
+Completed Event: Women's Basketball versus South Dakota State on November 22, 2026 , Loss , 70, to, 77
+Final
+Nov 22
 Women's Basketball
-14
+70
 vs South Dakota State
-25
-Audio
-Video
-Stats
+77
 Upcoming Event: Women's Basketball versus Washington State on November 26, 2026 at 3 p.m. CT
 Thu. 11/26/26
 -
@@ -96,6 +85,14 @@ Women's Basketball
 vs Kansas City
 Audio
 Stats
+Upcoming Event: Women's Basketball versus North Dakota State on December 10, 2026 at 6:30 p.m. CT
+Thu. 12/10/26
+-
+6:30 p.m. CT
+Women's Basketball
+vs North Dakota State
+Audio
+Stats
 MENU
 Toggle Navigation
 , Opens in new window
@@ -124,13 +121,13 @@ Cancun, Mexico
 
 3 p.m. CT
 
-4
+3
 Days
-0
+22
 Hours
-31
+45
 Minutes
-23
+48
 Seconds
 Add To Calendar
 Text Only
@@ -144,9 +141,9 @@ Overall
 Wins
 3
 Losses
-2
+3
 Overall Percentage
-.600
+.500
 Conf
 Wins
 0
@@ -155,7 +152,7 @@ Losses
 Conference Percentage
 .000
 Streak
-L2
+L3
 Home
 Wins
 3
@@ -170,7 +167,7 @@ Neutral
 Wins
 0
 Losses
-1
+2
 Skip Ad
 vs
 Northeastern State (exh.)
@@ -322,17 +319,13 @@ Kansas City, Mo.
 
 TV: ESPN+
 
-Nov 22
-(Sun)
+L, 70-77
 
+Nov 22(Sun)
 1:30 p.m. CT
 
 Game Center
-Watch
-Listen
-Live Stats
-Preview
-Game Info
+History
 Cancun Challenge
 vs
 Washington State
