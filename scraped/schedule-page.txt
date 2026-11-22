@@ -126,11 +126,11 @@ Kansas City, Mo.
 
 0
 Days
-21
+17
 Hours
-10
+55
 Minutes
-40
+50
 Seconds
 Add To Calendar
 Text Only
