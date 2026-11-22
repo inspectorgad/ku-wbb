@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-11-22T22:14:11Z",
+ "generatedAt": "2026-11-22T22:22:33Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -20404,16 +20404,6 @@
   },
   {
    "season": "2026-27",
-   "team": "TCU",
-   "seo": "tcu",
-   "confW": 0,
-   "confL": 0,
-   "overallW": 7,
-   "overallL": 0,
-   "nationalRank": 15
-  },
-  {
-   "season": "2026-27",
    "team": "Utah",
    "seo": "utah",
    "confW": 0,
@@ -20431,6 +20421,16 @@
    "overallW": 5,
    "overallL": 0,
    "nationalRank": 22
+  },
+  {
+   "season": "2026-27",
+   "team": "TCU",
+   "seo": "tcu",
+   "confW": 0,
+   "confL": 0,
+   "overallW": 7,
+   "overallL": 1,
+   "nationalRank": 15
   },
   {
    "season": "2026-27",
@@ -20508,8 +20508,8 @@
    "seo": "kansas",
    "confW": 0,
    "confL": 0,
-   "overallW": 4,
-   "overallL": 2,
+   "overallW": 3,
+   "overallL": 3,
    "nationalRank": null
   }
  ],
@@ -22696,8 +22696,8 @@
   "kansas": {
    "confW": 0,
    "confL": 0,
-   "overallW": 4,
-   "overallL": 2,
+   "overallW": 3,
+   "overallL": 3,
    "rating": 0.8217
   },
   "remaining": [
@@ -22949,15 +22949,6 @@
     "rating": 1.0064
    },
    {
-    "team": "TCU",
-    "key": "tcu",
-    "confW": 0,
-    "confL": 0,
-    "remaining": 17,
-    "pVsAverage": 0.7843,
-    "rating": 1.3443
-   },
-   {
     "team": "Utah",
     "key": "utah",
     "confW": 0,
@@ -22974,6 +22965,15 @@
     "remaining": 17,
     "pVsAverage": 0.6779,
     "rating": 1.0974
+   },
+   {
+    "team": "TCU",
+    "key": "tcu",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 17,
+    "pVsAverage": 0.7843,
+    "rating": 1.3443
    },
    {
     "team": "Baylor",
