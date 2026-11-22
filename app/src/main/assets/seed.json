@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-11-22T01:34:09Z",
+ "generatedAt": "2026-11-22T20:28:37Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -19879,6 +19879,16 @@
   },
   {
    "season": "2026-27",
+   "team": "Texas Tech",
+   "seo": "texas-tech",
+   "confW": 0,
+   "confL": 0,
+   "overallW": 6,
+   "overallL": 1,
+   "nationalRank": null
+  },
+  {
+   "season": "2026-27",
    "team": "Baylor",
    "seo": "baylor",
    "confW": 0,
@@ -19891,16 +19901,6 @@
    "season": "2026-27",
    "team": "Kansas St.",
    "seo": "kansas-st",
-   "confW": 0,
-   "confL": 0,
-   "overallW": 5,
-   "overallL": 1,
-   "nationalRank": null
-  },
-  {
-   "season": "2026-27",
-   "team": "Texas Tech",
-   "seo": "texas-tech",
    "confW": 0,
    "confL": 0,
    "overallW": 5,
@@ -22428,6 +22428,15 @@
     "rating": 1.0511
    },
    {
+    "team": "Texas Tech",
+    "key": "texas tech",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 17,
+    "pVsAverage": 0.6391,
+    "rating": 1.0193
+   },
+   {
     "team": "Baylor",
     "key": "baylor",
     "confW": 0,
@@ -22444,15 +22453,6 @@
     "remaining": 16,
     "pVsAverage": 0.4938,
     "rating": 0.7501
-   },
-   {
-    "team": "Texas Tech",
-    "key": "texas tech",
-    "confW": 0,
-    "confL": 0,
-    "remaining": 17,
-    "pVsAverage": 0.6391,
-    "rating": 1.0193
    },
    {
     "team": "Arizona",
