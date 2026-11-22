@@ -1784,6 +1784,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6645778": {
+   "date": "2026-11-21",
+   "season": "2026",
+   "home": {
+    "name": "Saint Louis",
+    "seo": "saint-louis",
+    "score": 61,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Southeast Mo. St.",
+    "seo": "southeast-mo-st",
+    "score": 73,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6645800": {
    "date": "2026-11-02",
    "season": "2026",
@@ -7240,6 +7262,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6646866": {
+   "date": "2026-11-21",
+   "season": "2026",
+   "home": {
+    "name": "Murray St.",
+    "seo": "murray-st",
+    "score": 89,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Eastern Ill.",
+    "seo": "eastern-ill",
+    "score": 57,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6646884": {
    "date": "2026-11-02",
    "season": "2026",
@@ -11108,6 +11152,28 @@
     "winner": false,
     "rank": null,
     "inConference": true
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6647778": {
+   "date": "2026-11-21",
+   "season": "2026",
+   "home": {
+    "name": "Alas. Anchorage",
+    "seo": "alas-anchorage",
+    "score": 40,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Louisville",
+    "seo": "louisville",
+    "score": 113,
+    "winner": true,
+    "rank": 3,
+    "inConference": false
    },
    "conferenceGame": false,
    "bracket": false
@@ -15072,6 +15138,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6648733": {
+   "date": "2026-11-21",
+   "season": "2026",
+   "home": {
+    "name": "San Diego",
+    "seo": "san-diego",
+    "score": 58,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "UC Irvine",
+    "seo": "uc-irvine",
+    "score": 53,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6648737": {
    "date": "2026-11-02",
    "season": "2026",
@@ -17360,6 +17448,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6649867": {
+   "date": "2026-11-21",
+   "season": "2026",
+   "home": {
+    "name": "Gonzaga",
+    "seo": "gonzaga",
+    "score": 63,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Hawaii",
+    "seo": "hawaii",
+    "score": 57,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6649901": {
    "date": "2026-11-04",
    "season": "2026",
@@ -18504,6 +18614,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6650514": {
+   "date": "2026-11-21",
+   "season": "2026",
+   "home": {
+    "name": "Seattle U",
+    "seo": "seattle",
+    "score": 78,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Chicago St.",
+    "seo": "chicago-st",
+    "score": 50,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6650544": {
    "date": "2026-11-02",
    "season": "2026",
@@ -18587,6 +18719,28 @@
     "score": 76,
     "winner": true,
     "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6650562": {
+   "date": "2026-11-21",
+   "season": "2026",
+   "home": {
+    "name": "Columbia",
+    "seo": "columbia",
+    "score": 47,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Duke",
+    "seo": "duke",
+    "score": 71,
+    "winner": true,
+    "rank": 5,
     "inConference": false
    },
    "conferenceGame": false,
@@ -20610,6 +20764,28 @@
     "seo": "richmond",
     "score": 83,
     "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6651559": {
+   "date": "2026-11-21",
+   "season": "2026",
+   "home": {
+    "name": "Davidson",
+    "seo": "davidson",
+    "score": 63,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Charlotte",
+    "seo": "charlotte",
+    "score": 44,
+    "winner": false,
     "rank": null,
     "inConference": false
    },
