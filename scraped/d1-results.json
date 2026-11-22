@@ -6338,6 +6338,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6646626": {
+   "date": "2026-11-22",
+   "season": "2026",
+   "home": {
+    "name": "TCU",
+    "seo": "tcu",
+    "score": 26,
+    "winner": false,
+    "rank": 15,
+    "inConference": true
+   },
+   "away": {
+    "name": "Utah St.",
+    "seo": "utah-st",
+    "score": 85,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6646635": {
    "date": "2026-11-02",
    "season": "2026",
@@ -6927,6 +6949,28 @@
     "score": 57,
     "winner": false,
     "rank": 19,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6646726": {
+   "date": "2026-11-22",
+   "season": "2026",
+   "home": {
+    "name": "Ole Miss",
+    "seo": "ole-miss",
+    "score": 66,
+    "winner": true,
+    "rank": 19,
+    "inConference": false
+   },
+   "away": {
+    "name": "Alabama A&M",
+    "seo": "alabama-am",
+    "score": 47,
+    "winner": false,
+    "rank": null,
     "inConference": false
    },
    "conferenceGame": false,
@@ -11866,16 +11910,16 @@
    "home": {
     "name": "South Dakota St.",
     "seo": "south-dakota-st",
-    "score": 70,
-    "winner": false,
+    "score": 77,
+    "winner": true,
     "rank": null,
     "inConference": false
    },
    "away": {
     "name": "Kansas",
     "seo": "kansas",
-    "score": 77,
-    "winner": true,
+    "score": 70,
+    "winner": false,
     "rank": null,
     "inConference": true
    },
@@ -24437,6 +24481,28 @@
     "name": "Eastern Ky.",
     "seo": "eastern-ky",
     "score": 63,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6662209": {
+   "date": "2026-11-22",
+   "season": "2026",
+   "home": {
+    "name": "Tennessee St.",
+    "seo": "tennessee-st",
+    "score": 55,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "UT Arlington",
+    "seo": "texas-arlington",
+    "score": 95,
     "winner": true,
     "rank": null,
     "inConference": false
