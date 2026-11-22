@@ -10628,6 +10628,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6650175": {
+   "date": "2026-11-22",
+   "season": "2026",
+   "home": {
+    "name": "South Fla.",
+    "seo": "south-fla",
+    "score": 53,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 55,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6650486": {
    "date": "2026-11-06",
    "season": "2026",
