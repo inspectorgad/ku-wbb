@@ -1,7 +1,7 @@
 {
  "sport": "Women's Basketball",
  "title": "DI Women's Basketball: Associated Press",
- "updated": "Through Games NOV. 15, 2026",
+ "updated": "Through Games NOV. 22, 2026",
  "page": 1,
  "pages": 1,
  "data": [
@@ -9,176 +9,176 @@
    "RANK": "1",
    "SCHOOL": "South Carolina (33)",
    "POINTS": "825",
-   "RECORD": "4-0",
+   "RECORD": "6-0",
    "PREVIOUS RANKING": "1"
   },
   {
    "RANK": "2",
    "SCHOOL": "Michigan",
-   "POINTS": "787",
-   "RECORD": "3-0",
+   "POINTS": "780",
+   "RECORD": "5-0",
    "PREVIOUS RANKING": "2"
   },
   {
    "RANK": "3",
    "SCHOOL": "Louisville",
-   "POINTS": "728",
-   "RECORD": "6-0",
-   "PREVIOUS RANKING": "7"
+   "POINTS": "749",
+   "RECORD": "9-0",
+   "PREVIOUS RANKING": "3"
   },
   {
    "RANK": "4",
    "SCHOOL": "Southern Cal",
-   "POINTS": "720",
-   "RECORD": "3-1",
-   "PREVIOUS RANKING": "3"
+   "POINTS": "719",
+   "RECORD": "4-1",
+   "PREVIOUS RANKING": "4"
   },
   {
    "RANK": "5",
    "SCHOOL": "Duke",
-   "POINTS": "698",
-   "RECORD": "4-0",
+   "POINTS": "675",
+   "RECORD": "6-0",
    "PREVIOUS RANKING": "5"
   },
   {
    "RANK": "6",
    "SCHOOL": "Texas",
-   "POINTS": "656",
-   "RECORD": "4-0",
+   "POINTS": "663",
+   "RECORD": "6-0",
    "PREVIOUS RANKING": "6"
   },
   {
    "RANK": "7",
    "SCHOOL": "UConn",
-   "POINTS": "617",
-   "RECORD": "3-2",
-   "PREVIOUS RANKING": "4"
+   "POINTS": "638",
+   "RECORD": "6-1",
+   "PREVIOUS RANKING": "7"
   },
   {
    "RANK": "8",
    "SCHOOL": "Iowa",
-   "POINTS": "562",
-   "RECORD": "4-1",
-   "PREVIOUS RANKING": "10"
+   "POINTS": "567",
+   "RECORD": "6-1",
+   "PREVIOUS RANKING": "8"
   },
   {
    "RANK": "9",
    "SCHOOL": "LSU",
-   "POINTS": "558",
-   "RECORD": "4-0",
+   "POINTS": "541",
+   "RECORD": "7-0",
    "PREVIOUS RANKING": "9"
   },
   {
    "RANK": "10",
    "SCHOOL": "UCLA",
-   "POINTS": "506",
-   "RECORD": "4-0",
+   "POINTS": "488",
+   "RECORD": "6-0",
    "PREVIOUS RANKING": "10"
   },
   {
    "RANK": "11",
-   "SCHOOL": "Vanderbilt",
-   "POINTS": "480",
-   "RECORD": "4-1",
-   "PREVIOUS RANKING": "8"
+   "SCHOOL": "Kentucky",
+   "POINTS": "475",
+   "RECORD": "7-0",
+   "PREVIOUS RANKING": "12"
   },
   {
    "RANK": "12",
-   "SCHOOL": "Kentucky",
-   "POINTS": "475",
-   "RECORD": "5-0",
-   "PREVIOUS RANKING": "12"
+   "SCHOOL": "Vanderbilt",
+   "POINTS": "457",
+   "RECORD": "6-1",
+   "PREVIOUS RANKING": "11"
   },
   {
    "RANK": "13",
    "SCHOOL": "Notre Dame",
-   "POINTS": "451",
-   "RECORD": "4-0",
+   "POINTS": "434",
+   "RECORD": "6-0",
    "PREVIOUS RANKING": "13"
   },
   {
    "RANK": "14",
    "SCHOOL": "Oklahoma",
-   "POINTS": "405",
-   "RECORD": "4-0",
+   "POINTS": "424",
+   "RECORD": "6-0",
    "PREVIOUS RANKING": "14"
   },
   {
    "RANK": "15",
    "SCHOOL": "TCU",
-   "POINTS": "350",
-   "RECORD": "6-0",
+   "POINTS": "367",
+   "RECORD": "7-0",
    "PREVIOUS RANKING": "15"
   },
   {
    "RANK": "16",
    "SCHOOL": "Washington",
-   "POINTS": "283",
-   "RECORD": "3-0",
+   "POINTS": "343",
+   "RECORD": "6-0",
    "PREVIOUS RANKING": "16"
   },
   {
    "RANK": "17",
    "SCHOOL": "Minnesota",
-   "POINTS": "264",
-   "RECORD": "4-0",
-   "PREVIOUS RANKING": "18"
+   "POINTS": "279",
+   "RECORD": "6-0",
+   "PREVIOUS RANKING": "17"
   },
   {
    "RANK": "18",
    "SCHOOL": "Maryland",
-   "POINTS": "260",
-   "RECORD": "2-1",
-   "PREVIOUS RANKING": "19"
-  },
-  {
-   "RANK": "19",
-   "SCHOOL": "Ole Miss",
-   "POINTS": "224",
-   "RECORD": "4-0",
-   "PREVIOUS RANKING": "21"
+   "POINTS": "236",
+   "RECORD": "5-1",
+   "PREVIOUS RANKING": "18"
   },
   {
    "RANK": "19",
    "SCHOOL": "Ohio State",
-   "POINTS": "224",
-   "RECORD": "4-1",
-   "PREVIOUS RANKING": "17"
+   "POINTS": "208",
+   "RECORD": "5-2",
+   "PREVIOUS RANKING": "T19"
+  },
+  {
+   "RANK": "20",
+   "SCHOOL": "Illinois",
+   "POINTS": "177",
+   "RECORD": "6-0",
+   "PREVIOUS RANKING": "21"
   },
   {
    "RANK": "21",
-   "SCHOOL": "Illinois",
-   "POINTS": "156",
-   "RECORD": "3-0",
-   "PREVIOUS RANKING": "22"
+   "SCHOOL": "Ole Miss",
+   "POINTS": "141",
+   "RECORD": "5-1",
+   "PREVIOUS RANKING": "T19"
   },
   {
    "RANK": "22",
    "SCHOOL": "West Virginia",
-   "POINTS": "115",
-   "RECORD": "4-0",
-   "PREVIOUS RANKING": "24"
+   "POINTS": "125",
+   "RECORD": "5-0",
+   "PREVIOUS RANKING": "22"
   },
   {
    "RANK": "23",
    "SCHOOL": "Nebraska",
-   "POINTS": "111",
-   "RECORD": "4-0",
-   "PREVIOUS RANKING": "25"
+   "POINTS": "109",
+   "RECORD": "6-0",
+   "PREVIOUS RANKING": "23"
   },
   {
    "RANK": "24",
    "SCHOOL": "North Carolina",
-   "POINTS": "79",
-   "RECORD": "2-2",
-   "PREVIOUS RANKING": "23"
+   "POINTS": "85",
+   "RECORD": "5-1",
+   "PREVIOUS RANKING": "24"
   },
   {
    "RANK": "25",
-   "SCHOOL": "Oklahoma State",
-   "POINTS": "71",
-   "RECORD": "4-1",
-   "PREVIOUS RANKING": "19"
+   "SCHOOL": "Baylor",
+   "POINTS": "57",
+   "RECORD": "6-1",
+   "PREVIOUS RANKING": "NR"
   }
  ]
 }

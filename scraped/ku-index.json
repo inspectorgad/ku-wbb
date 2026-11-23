@@ -9661,6 +9661,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6647329": {
+   "date": "2026-11-23",
+   "season": "2026",
+   "home": {
+    "name": "Utah",
+    "seo": "utah",
+    "score": 66,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Iowa",
+    "seo": "iowa",
+    "score": 75,
+    "winner": true,
+    "rank": 8,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6647339": {
    "date": "2026-11-07",
    "season": "2026",
