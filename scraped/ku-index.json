@@ -187,7 +187,8 @@
   "2026-11-19": true,
   "2026-11-20": true,
   "2026-11-21": true,
-  "2026-11-22": true
+  "2026-11-22": true,
+  "2026-11-23": true
  },
  "games": {
   "6515413": {
@@ -9182,16 +9183,16 @@
    "home": {
     "name": "TCU",
     "seo": "tcu",
-    "score": 26,
-    "winner": false,
+    "score": 85,
+    "winner": true,
     "rank": 15,
     "inConference": true
    },
    "away": {
     "name": "Utah St.",
     "seo": "utah-st",
-    "score": 85,
-    "winner": true,
+    "score": 26,
+    "winner": false,
     "rank": null,
     "inConference": false
    },
@@ -10799,6 +10800,28 @@
     "score": 90,
     "winner": true,
     "rank": 19,
+    "inConference": true
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6650494": {
+   "date": "2026-11-22",
+   "season": "2026",
+   "home": {
+    "name": "Wichita St.",
+    "seo": "wichita-st",
+    "score": 43,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Oklahoma St.",
+    "seo": "oklahoma-st",
+    "score": 92,
+    "winner": true,
+    "rank": 25,
     "inConference": true
    },
    "conferenceGame": false,
