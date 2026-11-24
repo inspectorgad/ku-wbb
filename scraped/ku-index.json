@@ -188,7 +188,8 @@
   "2026-11-20": true,
   "2026-11-21": true,
   "2026-11-22": true,
-  "2026-11-23": true
+  "2026-11-23": true,
+  "2026-11-24": true
  },
  "games": {
   "6515413": {
@@ -10427,6 +10428,28 @@
     "winner": false,
     "rank": null,
     "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6648699": {
+   "date": "2026-11-23",
+   "season": "2026",
+   "home": {
+    "name": "Vanderbilt",
+    "seo": "vanderbilt",
+    "score": 93,
+    "winner": true,
+    "rank": 12,
+    "inConference": false
+   },
+   "away": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 62,
+    "winner": false,
+    "rank": null,
+    "inConference": true
    },
    "conferenceGame": false,
    "bracket": false

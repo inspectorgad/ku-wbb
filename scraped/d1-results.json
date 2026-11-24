@@ -22,7 +22,8 @@
   "2026-11-20": true,
   "2026-11-21": true,
   "2026-11-22": true,
-  "2026-11-23": true
+  "2026-11-23": true,
+  "2026-11-24": true
  },
  "games": {
   "6645408": {
@@ -4513,6 +4514,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6646289": {
+   "date": "2026-11-23",
+   "season": "2026",
+   "home": {
+    "name": "Grand Canyon",
+    "seo": "grand-canyon",
+    "score": 60,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "High Point",
+    "seo": "high-point",
+    "score": 54,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6646296": {
    "date": "2026-11-02",
    "season": "2026",
@@ -5320,6 +5343,28 @@
     "name": "Presbyterian",
     "seo": "presbyterian",
     "score": 63,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6646446": {
+   "date": "2026-11-23",
+   "season": "2026",
+   "home": {
+    "name": "Wake Forest",
+    "seo": "wake-forest",
+    "score": 84,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Wofford",
+    "seo": "wofford",
+    "score": 48,
     "winner": false,
     "rank": null,
     "inConference": false
@@ -9375,6 +9420,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6647251": {
+   "date": "2026-11-23",
+   "season": "2026",
+   "home": {
+    "name": "Miami (FL)",
+    "seo": "miami-fl",
+    "score": 58,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Michigan",
+    "seo": "michigan",
+    "score": 79,
+    "winner": true,
+    "rank": 2,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6647252": {
    "date": "2026-11-08",
    "season": "2026",
@@ -10387,6 +10454,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6647469": {
+   "date": "2026-11-23",
+   "season": "2026",
+   "home": {
+    "name": "Norfolk St.",
+    "seo": "norfolk-st",
+    "score": 58,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "App State",
+    "seo": "appalachian-st",
+    "score": 56,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6647512": {
    "date": "2026-11-02",
    "season": "2026",
@@ -10468,6 +10557,28 @@
     "name": "Canisius",
     "seo": "canisius",
     "score": 55,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6647516": {
+   "date": "2026-11-23",
+   "season": "2026",
+   "home": {
+    "name": "Duquesne",
+    "seo": "duquesne",
+    "score": 59,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Canisius",
+    "seo": "canisius",
+    "score": 43,
     "winner": false,
     "rank": null,
     "inConference": false
@@ -12851,6 +12962,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6648031": {
+   "date": "2026-11-23",
+   "season": "2026",
+   "home": {
+    "name": "N.C. Central",
+    "seo": "nc-central",
+    "score": 54,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Elon",
+    "seo": "elon",
+    "score": 74,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6648032": {
    "date": "2026-11-10",
    "season": "2026",
@@ -14639,16 +14772,16 @@
    "home": {
     "name": "Virginia",
     "seo": "virginia",
-    "score": 86,
-    "winner": true,
+    "score": 66,
+    "winner": false,
     "rank": null,
     "inConference": false
    },
    "away": {
     "name": "Oklahoma",
     "seo": "oklahoma",
-    "score": 66,
-    "winner": false,
+    "score": 86,
+    "winner": true,
     "rank": 14,
     "inConference": false
    },
@@ -15751,6 +15884,28 @@
     "winner": false,
     "rank": null,
     "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6648699": {
+   "date": "2026-11-23",
+   "season": "2026",
+   "home": {
+    "name": "Vanderbilt",
+    "seo": "vanderbilt",
+    "score": 93,
+    "winner": true,
+    "rank": 12,
+    "inConference": false
+   },
+   "away": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 62,
+    "winner": false,
+    "rank": null,
+    "inConference": true
    },
    "conferenceGame": false,
    "bracket": false
@@ -17179,6 +17334,28 @@
     "seo": "california",
     "score": 70,
     "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6649285": {
+   "date": "2026-11-23",
+   "season": "2026",
+   "home": {
+    "name": "California",
+    "seo": "california",
+    "score": 71,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Gonzaga",
+    "seo": "gonzaga",
+    "score": 60,
+    "winner": false,
     "rank": null,
     "inConference": false
    },
@@ -25633,6 +25810,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6663775": {
+   "date": "2026-11-23",
+   "season": "2026",
+   "home": {
+    "name": "VCU",
+    "seo": "vcu",
+    "score": 65,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Morgan St.",
+    "seo": "morgan-st",
+    "score": 55,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6663963": {
    "date": "2026-11-02",
    "season": "2026",
@@ -26705,6 +26904,28 @@
     "seo": "chicago-st",
     "score": 65,
     "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6679254": {
+   "date": "2026-11-23",
+   "season": "2026",
+   "home": {
+    "name": "Old Dominion",
+    "seo": "old-dominion",
+    "score": 76,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Memphis",
+    "seo": "memphis",
+    "score": 79,
+    "winner": true,
     "rank": null,
     "inConference": false
    },
