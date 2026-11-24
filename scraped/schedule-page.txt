@@ -125,11 +125,11 @@ Cancun, Mexico
 
 2
 Days
-19
+17
 Hours
-47
+31
 Minutes
-38
+55
 Seconds
 Add To Calendar
 Text Only
@@ -464,7 +464,6 @@ Listen
 Live Stats
 History
 Explore Lawrence
-Skip Ad
 vs
 Oklahoma State
 
