@@ -9684,6 +9684,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6647165": {
+   "date": "2026-11-24",
+   "season": "2026",
+   "home": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 70,
+    "winner": true,
+    "rank": 22,
+    "inConference": true
+   },
+   "away": {
+    "name": "Florida",
+    "seo": "florida",
+    "score": 62,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6647329": {
    "date": "2026-11-23",
    "season": "2026",
