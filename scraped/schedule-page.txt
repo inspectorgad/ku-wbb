@@ -125,11 +125,11 @@ Cancun, Mexico
 
 2
 Days
-4
+0
 Hours
-44
+40
 Minutes
-21
+16
 Seconds
 Add To Calendar
 Text Only
@@ -349,10 +349,11 @@ Game Center
 Watch
 Listen
 Live Stats
-History
+Preview
 
 Sponsored by:
 
+Game Info
 vs
 Miami (OH)
 
@@ -370,10 +371,11 @@ Game Center
 Watch
 Listen
 Live Stats
-History
+Preview
 
 Sponsored by:
 
+Game Info
 vs
 Missouri State
 
@@ -816,13 +818,13 @@ Wednesday, November 04
 All Videos
 Related News
 All News
+Kansas Bound for Mexico to Compete at Cancun Challenge
+Tuesday, November 24
 Jayhawks Fall to South Dakota State in Kansas City, 77-70
 Sunday, November 22
 Jayhawks to Meet South Dakota State Sunday at T-Mobile Center
 Friday, November 20
 Jayhawks Drop Road Matchup at No. 17 Minnesota
-Wednesday, November 18
-Nichols Named to Wooden Award Preseason Watch List
 Wednesday, November 18
 All News
 Footer
