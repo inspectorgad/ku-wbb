@@ -16592,6 +16592,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6648798": {
+   "date": "2026-11-23",
+   "season": "2026",
+   "home": {
+    "name": "Southern California",
+    "seo": "southern-california",
+    "score": 100,
+    "winner": true,
+    "rank": 4,
+    "inConference": false
+   },
+   "away": {
+    "name": "Northern Ariz.",
+    "seo": "northern-ariz",
+    "score": 52,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6648810": {
    "date": "2026-11-02",
    "season": "2026",
