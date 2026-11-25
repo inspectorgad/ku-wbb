@@ -9223,6 +9223,50 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6646747": {
+   "date": "2026-11-24",
+   "season": "2026",
+   "home": {
+    "name": "Utah Valley",
+    "seo": "utah-valley",
+    "score": 48,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "BYU",
+    "seo": "byu",
+    "score": 77,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6646777": {
+   "date": "2026-11-24",
+   "season": "2026",
+   "home": {
+    "name": "Arizona St.",
+    "seo": "arizona-st",
+    "score": 75,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "San Jose St.",
+    "seo": "san-jose-st",
+    "score": 50,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6646779": {
    "date": "2026-11-02",
    "season": "2026",
@@ -9678,6 +9722,28 @@
     "name": "Penn St.",
     "seo": "penn-st",
     "score": 41,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6647118": {
+   "date": "2026-11-24",
+   "season": "2026",
+   "home": {
+    "name": "UCF",
+    "seo": "ucf",
+    "score": 102,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Jacksonville",
+    "seo": "jacksonville",
+    "score": 101,
     "winner": false,
     "rank": null,
     "inConference": false
