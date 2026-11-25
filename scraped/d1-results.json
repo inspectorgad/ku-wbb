@@ -17165,6 +17165,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6648722": {
+   "date": "2026-11-24",
+   "season": "2026",
+   "home": {
+    "name": "Portland St.",
+    "seo": "portland-st",
+    "score": 79,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Cal St. Fullerton",
+    "seo": "cal-st-fullerton",
+    "score": 82,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6648732": {
    "date": "2026-11-18",
    "season": "2026",
