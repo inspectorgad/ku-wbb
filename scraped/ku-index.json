@@ -10565,6 +10565,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6648700": {
+   "date": "2026-11-25",
+   "season": "2026",
+   "home": {
+    "name": "George Washington",
+    "seo": "george-washington",
+    "score": 69,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Arizona",
+    "seo": "arizona",
+    "score": 72,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6648708": {
    "date": "2026-11-15",
    "season": "2026",
