@@ -125,11 +125,11 @@ Cancun, Mexico
 
 1
 Days
-5
+1
 Hours
-0
+26
 Minutes
-51
+24
 Seconds
 Add To Calendar
 Text Only
