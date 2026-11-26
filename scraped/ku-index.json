@@ -10089,6 +10089,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6647782": {
+   "date": "2026-11-26",
+   "season": "2026",
+   "home": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 61,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Georgia",
+    "seo": "georgia",
+    "score": 52,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6647847": {
    "date": "2026-11-03",
    "season": "2026",
