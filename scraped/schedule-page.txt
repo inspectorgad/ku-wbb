@@ -8,15 +8,6 @@ Scoreboard
 Coming Up
 View Calendar 
 Skip Ad
-Completed Event: Women's Basketball versus Drake on November 6, 2026 , Win , 74, to, 49
-Final
-Nov 6
-Women's Basketball
-74
-vs Drake
-49
-Story Recap
-Boxscore
 Completed Event: Women's Basketball versus Oral Roberts on November 10, 2026 , Win , 99, to, 51
 Final
 Nov 10
@@ -53,13 +44,13 @@ vs South Dakota State
 77
 Story Recap
 Boxscore
-Upcoming Event: Women's Basketball versus Washington State on November 26, 2026 at 3 p.m. CT
-Live
+Completed Event: Women's Basketball versus Washington State on November 26, 2026 , Win , 69, to, 58
+Final
+Nov 26
 Women's Basketball
+69
 vs Washington State
-Audio
-Video
-Stats
+58
 Upcoming Event: Women's Basketball versus Miami (OH) on November 27, 2026 at 5:30 p.m. CT
 Fri. 11/27/26
 -
@@ -91,6 +82,14 @@ Thu. 12/10/26
 6:30 p.m. CT
 Women's Basketball
 vs North Dakota State
+Audio
+Stats
+Upcoming Event: Women's Basketball versus Northwestern on December 13, 2026 at 2 p.m. CT
+Sun. 12/13/26
+-
+2 p.m. CT
+Women's Basketball
+vs Northwestern
 Audio
 Stats
 MENU
@@ -125,9 +124,9 @@ Cancun, Mexico
 Days
 0
 Hours
-55
+25
 Minutes
-46
+34
 Seconds
 Add To Calendar
 Text Only
@@ -139,11 +138,11 @@ List View
 Table View not selected
 Overall
 Wins
-3
+4
 Losses
 3
 Overall Percentage
-.500
+.571
 Conf
 Wins
 0
@@ -152,7 +151,7 @@ Losses
 Conference Percentage
 .000
 Streak
-L3
+W1
 Home
 Wins
 3
@@ -165,7 +164,7 @@ Losses
 1
 Neutral
 Wins
-0
+1
 Losses
 2
 Skip Ad
@@ -338,20 +337,16 @@ Cancun, Mexico
 
 TV: FloSports
 
-Nov 26
-(Thu)
+W, 69-58
 
+Nov 26(Thu)
 3 p.m. CT
 
 Game Center
-Watch
-Listen
-Live Stats
-Preview
+History
 
 Sponsored by:
 
-Game Info
 vs
 Miami (OH)
 
