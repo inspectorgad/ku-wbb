@@ -11123,6 +11123,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6651491": {
+   "date": "2026-11-26",
+   "season": "2026",
+   "home": {
+    "name": "Notre Dame",
+    "seo": "notre-dame",
+    "score": 78,
+    "winner": true,
+    "rank": 13,
+    "inConference": false
+   },
+   "away": {
+    "name": "West Virginia",
+    "seo": "west-virginia",
+    "score": 64,
+    "winner": false,
+    "rank": 22,
+    "inConference": true
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6651681": {
    "date": "2026-11-03",
    "season": "2026",
