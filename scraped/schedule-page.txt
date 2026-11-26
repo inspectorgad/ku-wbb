@@ -2,6 +2,7 @@
 Skip to main content
 Pause All Rotators
 University of Kansas Athletics
+Skip Ad
 Skip Scoreboard
 Scoreboard
 Coming Up
@@ -124,11 +125,11 @@ Cancun, Mexico
 
 0
 Days
-17
+10
 Hours
-13
+58
 Minutes
-53
+32
 Seconds
 Add To Calendar
 Text Only
