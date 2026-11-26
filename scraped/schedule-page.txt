@@ -124,9 +124,9 @@ Cancun, Mexico
 Days
 0
 Hours
-25
+17
 Minutes
-34
+44
 Seconds
 Add To Calendar
 Text Only
