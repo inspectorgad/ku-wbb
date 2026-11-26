@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-11-26T01:08:03Z",
+ "generatedAt": "2026-11-26T19:16:13Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -20414,16 +20414,6 @@
   },
   {
    "season": "2026-27",
-   "team": "West Virginia",
-   "seo": "west-virginia",
-   "confW": 0,
-   "confL": 0,
-   "overallW": 6,
-   "overallL": 0,
-   "nationalRank": 22
-  },
-  {
-   "season": "2026-27",
    "team": "Oklahoma St.",
    "seo": "oklahoma-st",
    "confW": 0,
@@ -20461,6 +20451,16 @@
    "overallW": 6,
    "overallL": 1,
    "nationalRank": null
+  },
+  {
+   "season": "2026-27",
+   "team": "West Virginia",
+   "seo": "west-virginia",
+   "confW": 0,
+   "confL": 0,
+   "overallW": 6,
+   "overallL": 1,
+   "nationalRank": 22
   },
   {
    "season": "2026-27",
@@ -22958,15 +22958,6 @@
     "rating": 1.3622
    },
    {
-    "team": "West Virginia",
-    "key": "west virginia",
-    "confW": 0,
-    "confL": 0,
-    "remaining": 17,
-    "pVsAverage": 0.6817,
-    "rating": 1.1079
-   },
-   {
     "team": "Oklahoma St.",
     "key": "oklahoma st",
     "confW": 0,
@@ -23001,6 +22992,15 @@
     "remaining": 17,
     "pVsAverage": 0.6377,
     "rating": 1.0193
+   },
+   {
+    "team": "West Virginia",
+    "key": "west virginia",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 17,
+    "pVsAverage": 0.6817,
+    "rating": 1.1079
    },
    {
     "team": "UCF",
