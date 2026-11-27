@@ -21149,6 +21149,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6649989": {
+   "date": "2026-11-26",
+   "season": "2026",
+   "home": {
+    "name": "Miami (OH)",
+    "seo": "miami-oh",
+    "score": 70,
+    "winner": true,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 56,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6650009": {
    "date": "2026-11-07",
    "season": "2026",
