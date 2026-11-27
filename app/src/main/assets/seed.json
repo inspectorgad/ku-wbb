@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-11-27T19:10:01Z",
+ "generatedAt": "2026-11-27T22:19:33Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -20819,16 +20819,6 @@
   },
   {
    "season": "2026-27",
-   "team": "BYU",
-   "seo": "byu",
-   "confW": 0,
-   "confL": 0,
-   "overallW": 8,
-   "overallL": 0,
-   "nationalRank": null
-  },
-  {
-   "season": "2026-27",
    "team": "Colorado",
    "seo": "colorado",
    "confW": 0,
@@ -20863,17 +20853,17 @@
    "seo": "tcu",
    "confW": 0,
    "confL": 0,
-   "overallW": 8,
+   "overallW": 9,
    "overallL": 0,
    "nationalRank": 15
   },
   {
    "season": "2026-27",
-   "team": "Oklahoma St.",
-   "seo": "oklahoma-st",
+   "team": "BYU",
+   "seo": "byu",
    "confW": 0,
    "confL": 0,
-   "overallW": 7,
+   "overallW": 8,
    "overallL": 1,
    "nationalRank": null
   },
@@ -20916,6 +20906,16 @@
    "overallW": 6,
    "overallL": 1,
    "nationalRank": 22
+  },
+  {
+   "season": "2026-27",
+   "team": "Oklahoma St.",
+   "seo": "oklahoma-st",
+   "confW": 0,
+   "confL": 0,
+   "overallW": 7,
+   "overallL": 2,
+   "nationalRank": null
   },
   {
    "season": "2026-27",
@@ -23360,15 +23360,6 @@
     "rating": 0.8031
    },
    {
-    "team": "BYU",
-    "key": "byu",
-    "confW": 0,
-    "confL": 0,
-    "remaining": 17,
-    "pVsAverage": 0.5117,
-    "rating": 0.785
-   },
-   {
     "team": "Colorado",
     "key": "colorado",
     "confW": 0,
@@ -23405,13 +23396,13 @@
     "rating": 1.3622
    },
    {
-    "team": "Oklahoma St.",
-    "key": "oklahoma st",
+    "team": "BYU",
+    "key": "byu",
     "confW": 0,
     "confL": 0,
-    "remaining": 16,
-    "pVsAverage": 0.6582,
-    "rating": 1.0599
+    "remaining": 17,
+    "pVsAverage": 0.5117,
+    "rating": 0.785
    },
    {
     "team": "Texas Tech",
@@ -23448,6 +23439,15 @@
     "remaining": 17,
     "pVsAverage": 0.6817,
     "rating": 1.1079
+   },
+   {
+    "team": "Oklahoma St.",
+    "key": "oklahoma st",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 16,
+    "pVsAverage": 0.6582,
+    "rating": 1.0599
    },
    {
     "team": "UCF",
