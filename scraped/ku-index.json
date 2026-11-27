@@ -191,7 +191,8 @@
   "2026-11-23": true,
   "2026-11-24": true,
   "2026-11-25": true,
-  "2026-11-26": true
+  "2026-11-26": true,
+  "2026-11-27": true
  },
  "games": {
   "6515413": {
@@ -494,6 +495,13 @@
    "home": "Washington St.",
    "away": "Kansas",
    "boxscored": true
+  },
+  "6647854": {
+   "date": "2026-11-27",
+   "final": false,
+   "home": "Kansas",
+   "away": "Miami (OH)",
+   "boxscored": false
   }
  },
  "big12Games": {
@@ -8982,6 +8990,28 @@
     "name": "Purdue",
     "seo": "purdue",
     "score": 57,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
+  "6646257": {
+   "date": "2026-11-26",
+   "season": "2026",
+   "home": {
+    "name": "Texas Tech",
+    "seo": "texas-tech",
+    "score": 66,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "away": {
+    "name": "Air Force",
+    "seo": "air-force",
+    "score": 60,
     "winner": false,
     "rank": null,
     "inConference": false
