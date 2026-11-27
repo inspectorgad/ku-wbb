@@ -10141,6 +10141,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6647783": {
+   "date": "2026-11-27",
+   "season": "2026",
+   "home": {
+    "name": "Oregon",
+    "seo": "oregon",
+    "score": 66,
+    "winner": false,
+    "rank": null,
+    "inConference": false
+   },
+   "away": {
+    "name": "Colorado",
+    "seo": "colorado",
+    "score": 68,
+    "winner": true,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6647847": {
    "date": "2026-11-03",
    "season": "2026",
