@@ -124,9 +124,9 @@ Cancun, Mexico
 
 0
 Days
-13
+7
 Hours
-23
+58
 Minutes
 57
 Seconds
