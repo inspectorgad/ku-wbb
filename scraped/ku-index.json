@@ -11154,6 +11154,28 @@
    "conferenceGame": false,
    "bracket": false
   },
+  "6649991": {
+   "date": "2026-11-27",
+   "season": "2026",
+   "home": {
+    "name": "Minnesota",
+    "seo": "minnesota",
+    "score": 69,
+    "winner": true,
+    "rank": 17,
+    "inConference": false
+   },
+   "away": {
+    "name": "Cincinnati",
+    "seo": "cincinnati",
+    "score": 50,
+    "winner": false,
+    "rank": null,
+    "inConference": true
+   },
+   "conferenceGame": false,
+   "bracket": false
+  },
   "6650173": {
    "date": "2026-11-05",
    "season": "2026",
