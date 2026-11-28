@@ -1,7 +1,7 @@
 {
  "arizona st": {
   "url": "https://thesundevils.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-21T02:48:42.864Z",
+  "fetchedAt": "2026-11-28T03:31:12.997Z",
   "parserVersion": 2,
   "players": [
    {
@@ -125,7 +125,7 @@
  },
  "arizona": {
   "url": "https://arizonawildcats.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-21T02:48:51.968Z",
+  "fetchedAt": "2026-11-28T03:31:22.499Z",
   "parserVersion": 2,
   "players": [
    {
@@ -192,6 +192,15 @@
     "lastSchool": ""
    },
    {
+    "name": "Dionna Gray",
+    "jerseyNumber": "21",
+    "position": "G",
+    "height": "5-6",
+    "academicYear": "5th",
+    "hometown": "Huntington, WV",
+    "lastSchool": "Huntington HS"
+   },
+   {
     "name": "Priyanka Ponnam",
     "jerseyNumber": "24",
     "position": "G",
@@ -235,21 +244,12 @@
     "academicYear": "R-So.",
     "hometown": "Billings, Mont.",
     "lastSchool": "Skyview HS"
-   },
-   {
-    "name": "Dionna Gray",
-    "jerseyNumber": "52",
-    "position": "G",
-    "height": "5-6",
-    "academicYear": "5th",
-    "hometown": "Huntington, WV",
-    "lastSchool": "Huntington HS"
    }
   ]
  },
  "baylor": {
   "url": "https://baylorbears.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-21T02:49:01.446Z",
+  "fetchedAt": "2026-11-28T03:31:31.998Z",
   "parserVersion": 2,
   "players": [
    {
@@ -364,7 +364,7 @@
  },
  "byu": {
   "url": "https://byucougars.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-21T02:49:11.282Z",
+  "fetchedAt": "2026-11-28T03:31:41.613Z",
   "parserVersion": 2,
   "players": [
    {
@@ -443,7 +443,7 @@
  },
  "cincinnati": {
   "url": "https://gobearcats.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-21T02:49:21.056Z",
+  "fetchedAt": "2026-11-28T03:31:51.036Z",
   "parserVersion": 2,
   "players": [
    {
@@ -576,7 +576,7 @@
  },
  "colorado": {
   "url": "https://cubuffs.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-21T02:49:30.545Z",
+  "fetchedAt": "2026-11-28T03:32:00.484Z",
   "parserVersion": 2,
   "players": [
    {
@@ -709,7 +709,7 @@
  },
  "houston": {
   "url": "https://uhcougars.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-21T02:49:40.022Z",
+  "fetchedAt": "2026-11-28T03:32:09.737Z",
   "parserVersion": 2,
   "players": [
    {
@@ -833,7 +833,7 @@
  },
  "iowa st": {
   "url": "https://cyclones.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-21T02:49:49.486Z",
+  "fetchedAt": "2026-11-28T03:32:19.172Z",
   "parserVersion": 2,
   "players": [
    {
@@ -957,7 +957,7 @@
  },
  "kansas st": {
   "url": "https://kstatesports.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-21T02:49:59.069Z",
+  "fetchedAt": "2026-11-28T03:32:28.879Z",
   "parserVersion": 2,
   "players": [
    {
@@ -1072,7 +1072,7 @@
  },
  "oklahoma st": {
   "url": "https://okstate.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-21T02:50:08.464Z",
+  "fetchedAt": "2026-11-28T03:32:38.321Z",
   "parserVersion": 2,
   "players": [
    {
@@ -1187,7 +1187,7 @@
  },
  "south dakota st": {
   "url": "https://gojacks.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-21T02:50:18.001Z",
+  "fetchedAt": "2026-11-28T03:32:47.558Z",
   "parserVersion": 2,
   "players": [
    {
@@ -1311,7 +1311,7 @@
  },
  "tcu": {
   "url": "https://gofrogs.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-21T02:50:27.273Z",
+  "fetchedAt": "2026-11-28T03:32:57.010Z",
   "parserVersion": 2,
   "players": [
    {
@@ -1426,7 +1426,7 @@
  },
  "texas tech": {
   "url": "https://texastech.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-21T02:50:36.757Z",
+  "fetchedAt": "2026-11-28T03:33:06.750Z",
   "parserVersion": 2,
   "players": [
    {
@@ -1568,7 +1568,7 @@
  },
  "ucf": {
   "url": "https://ucfknights.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-21T02:50:46.138Z",
+  "fetchedAt": "2026-11-28T03:33:16.264Z",
   "parserVersion": 2,
   "players": [
    {
@@ -1692,7 +1692,7 @@
  },
  "utah": {
   "url": "https://utahutes.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-21T02:50:55.439Z",
+  "fetchedAt": "2026-11-28T03:33:25.866Z",
   "parserVersion": 2,
   "players": [
    {
@@ -1816,7 +1816,7 @@
  },
  "west virginia": {
   "url": "https://wvusports.com/sports/womens-basketball/roster",
-  "fetchedAt": "2026-11-21T02:51:04.801Z",
+  "fetchedAt": "2026-11-28T03:33:35.325Z",
   "parserVersion": 2,
   "players": [
    {

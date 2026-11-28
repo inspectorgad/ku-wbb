@@ -8,15 +8,6 @@ Scoreboard
 Coming Up
 View Calendar 
 Skip Ad
-Completed Event: Women's Basketball versus Oral Roberts on November 10, 2026 , Win , 99, to, 51
-Final
-Nov 10
-Women's Basketball
-99
-vs Oral Roberts
-51
-Story Recap
-Boxscore
 Completed Event: Women's Basketball versus #25 Nebraska on November 14, 2026 , Loss , 73, to, 105
 Final
 Nov 14
@@ -53,15 +44,15 @@ vs Washington State
 58
 Story Recap
 Boxscore
-Upcoming Event: Women's Basketball versus Miami (OH) on November 27, 2026 at 5:30 p.m. CT
-Fri. 11/27/26
--
-5:30 p.m. CT
+Completed Event: Women's Basketball versus Miami (OH) on November 27, 2026 , Win , 75, to, 63
+Final
+Nov 27
 Women's Basketball
+75
 vs Miami (OH)
-Audio
-Video
-Stats
+63
+Story Recap
+Boxscore
 Upcoming Event: Women's Basketball versus Missouri State on December 3, 2026 at 6:30 p.m. CT
 Thu. 12/03/26
 -
@@ -92,6 +83,14 @@ Sun. 12/13/26
 2 p.m. CT
 Women's Basketball
 vs Northwestern
+Audio
+Stats
+Upcoming Event: Women's Basketball versus Lindenwood on December 16, 2026 at 6:30 p.m. CT
+Wed. 12/16/26
+-
+6:30 p.m. CT
+Women's Basketball
+vs Lindenwood
 Audio
 Stats
 MENU
@@ -385,20 +384,20 @@ chuck.holl@ku.edu
 Full Bio 
 for Chuck Hollwedel
 Related News
+Kansas Takes Down Miami (Ohio) in Cancun Finale
+Friday, November 27
 Jayhawks Open Cancun Challenge with 69-58 Win Over Washington State
 Thursday, November 26
 Kansas Bound for Mexico to Compete at Cancun Challenge
 Tuesday, November 24
-Jayhawks Fall to South Dakota State in Kansas City, 77-70
-Sunday, November 22
 All News
 Related Videos
+Women's Basketball Highlights vs Miami (Ohio)
+Friday, November 27
 Women's Basketball Highlights vs Washington State
 Thursday, November 26
 Women's Basketball Highlights vs Oral Roberts
 Wednesday, November 11
-Women's Basketball Highlights vs Drake
-Friday, November 06
 All Videos
 Skip Ad
 Skip Ad
