@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-11-27T22:19:33Z",
+ "generatedAt": "2026-11-28T00:40:58Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -20833,7 +20833,7 @@
    "seo": "houston",
    "confW": 0,
    "confL": 0,
-   "overallW": 7,
+   "overallW": 8,
    "overallL": 0,
    "nationalRank": null
   },
@@ -20843,7 +20843,7 @@
    "seo": "iowa-st",
    "confW": 0,
    "confL": 0,
-   "overallW": 7,
+   "overallW": 8,
    "overallL": 0,
    "nationalRank": null
   },
@@ -20909,18 +20909,18 @@
   },
   {
    "season": "2026-27",
-   "team": "Oklahoma St.",
-   "seo": "oklahoma-st",
+   "team": "UCF",
+   "seo": "ucf",
    "confW": 0,
    "confL": 0,
-   "overallW": 7,
+   "overallW": 8,
    "overallL": 2,
    "nationalRank": null
   },
   {
    "season": "2026-27",
-   "team": "UCF",
-   "seo": "ucf",
+   "team": "Oklahoma St.",
+   "seo": "oklahoma-st",
    "confW": 0,
    "confL": 0,
    "overallW": 7,
@@ -23441,15 +23441,6 @@
     "rating": 1.1079
    },
    {
-    "team": "Oklahoma St.",
-    "key": "oklahoma st",
-    "confW": 0,
-    "confL": 0,
-    "remaining": 16,
-    "pVsAverage": 0.6582,
-    "rating": 1.0599
-   },
-   {
     "team": "UCF",
     "key": "ucf",
     "confW": 0,
@@ -23457,6 +23448,15 @@
     "remaining": 17,
     "pVsAverage": 0.2125,
     "rating": 0.1723
+   },
+   {
+    "team": "Oklahoma St.",
+    "key": "oklahoma st",
+    "confW": 0,
+    "confL": 0,
+    "remaining": 16,
+    "pVsAverage": 0.6582,
+    "rating": 1.0599
    },
    {
     "team": "Utah",
