@@ -1,6 +1,6 @@
 {
  "formatVersion": 1,
- "generatedAt": "2026-11-28T01:59:12Z",
+ "generatedAt": "2026-11-28T03:33:35Z",
  "team": "Kansas Jayhawks Women's Basketball",
  "players": [
   {
@@ -21806,7 +21806,7 @@
  "opponentRosters": [
   {
    "team": "arizona",
-   "fetchedAt": "2026-11-21",
+   "fetchedAt": "2026-11-28",
    "players": [
     {
      "name": "Arynn Finley",
@@ -21872,6 +21872,15 @@
      "lastSchool": ""
     },
     {
+     "name": "Dionna Gray",
+     "jerseyNumber": "21",
+     "position": "G",
+     "height": "5-6",
+     "academicYear": "5th",
+     "hometown": "Huntington, WV",
+     "lastSchool": "Huntington HS"
+    },
+    {
      "name": "Priyanka Ponnam",
      "jerseyNumber": "24",
      "position": "G",
@@ -21915,21 +21924,12 @@
      "academicYear": "R-So.",
      "hometown": "Billings, Mont.",
      "lastSchool": "Skyview HS"
-    },
-    {
-     "name": "Dionna Gray",
-     "jerseyNumber": "52",
-     "position": "G",
-     "height": "5-6",
-     "academicYear": "5th",
-     "hometown": "Huntington, WV",
-     "lastSchool": "Huntington HS"
     }
    ]
   },
   {
    "team": "arizona st",
-   "fetchedAt": "2026-11-21",
+   "fetchedAt": "2026-11-28",
    "players": [
     {
      "name": "Madison Morson",
@@ -22052,7 +22052,7 @@
   },
   {
    "team": "baylor",
-   "fetchedAt": "2026-11-21",
+   "fetchedAt": "2026-11-28",
    "players": [
     {
      "name": "Taliah Scott",
@@ -22166,7 +22166,7 @@
   },
   {
    "team": "byu",
-   "fetchedAt": "2026-11-21",
+   "fetchedAt": "2026-11-28",
    "players": [
     {
      "name": "Sydney Benally",
@@ -22244,7 +22244,7 @@
   },
   {
    "team": "cincinnati",
-   "fetchedAt": "2026-11-21",
+   "fetchedAt": "2026-11-28",
    "players": [
     {
      "name": "Yar Tong",
@@ -22376,7 +22376,7 @@
   },
   {
    "team": "colorado",
-   "fetchedAt": "2026-11-21",
+   "fetchedAt": "2026-11-28",
    "players": [
     {
      "name": "Brooke Walker",
@@ -22508,7 +22508,7 @@
   },
   {
    "team": "houston",
-   "fetchedAt": "2026-11-21",
+   "fetchedAt": "2026-11-28",
    "players": [
     {
      "name": "Esmeralda Enriquez",
@@ -22631,7 +22631,7 @@
   },
   {
    "team": "iowa st",
-   "fetchedAt": "2026-11-21",
+   "fetchedAt": "2026-11-28",
    "players": [
     {
      "name": "Sienna Harvey",
@@ -22754,7 +22754,7 @@
   },
   {
    "team": "kansas st",
-   "fetchedAt": "2026-11-21",
+   "fetchedAt": "2026-11-28",
    "players": [
     {
      "name": "Brandie Harrod",
@@ -22868,7 +22868,7 @@
   },
   {
    "team": "oklahoma st",
-   "fetchedAt": "2026-11-21",
+   "fetchedAt": "2026-11-28",
    "players": [
     {
      "name": "LA Sneed",
@@ -22982,7 +22982,7 @@
   },
   {
    "team": "south dakota st",
-   "fetchedAt": "2026-11-21",
+   "fetchedAt": "2026-11-28",
    "players": [
     {
      "name": "Audrey Shindelar",
@@ -23105,7 +23105,7 @@
   },
   {
    "team": "tcu",
-   "fetchedAt": "2026-11-21",
+   "fetchedAt": "2026-11-28",
    "players": [
     {
      "name": "Camille Williams",
@@ -23219,7 +23219,7 @@
   },
   {
    "team": "texas tech",
-   "fetchedAt": "2026-11-21",
+   "fetchedAt": "2026-11-28",
    "players": [
     {
      "name": "Milania Jordan",
@@ -23360,7 +23360,7 @@
   },
   {
    "team": "ucf",
-   "fetchedAt": "2026-11-21",
+   "fetchedAt": "2026-11-28",
    "players": [
     {
      "name": "Key Roseby",
@@ -23483,7 +23483,7 @@
   },
   {
    "team": "utah",
-   "fetchedAt": "2026-11-21",
+   "fetchedAt": "2026-11-28",
    "players": [
     {
      "name": "Lena Girardi",
@@ -23606,7 +23606,7 @@
   },
   {
    "team": "west virginia",
-   "fetchedAt": "2026-11-21",
+   "fetchedAt": "2026-11-28",
    "players": [
     {
      "name": "Nylah Wilson",
